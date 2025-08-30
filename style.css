@@ -107,10 +107,10 @@ body {
 html, body {
     height: 100%;
     overflow: auto;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 body::-webkit-scrollbar, html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    display: none; 
 }
 @keyframes gradientMove {
 	0% {background-position: 0% 50%;}
@@ -178,7 +178,8 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 .button-row {
 	margin-top: -16px;
 }
-/* Home section styles */
+
+    /*Home Page*/
 #home-section {
     position: relative;
     overflow: hidden;
@@ -262,7 +263,6 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     padding: 40px 0;
 }
 .section > * {
-    /* Remove card/table-like styling from section content */
     width: auto;
     max-width: none;
     background: none;
