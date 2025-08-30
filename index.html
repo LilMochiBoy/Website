@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logo-zendo">
+        <img src="Zendo.png" alt="Logo" class="logo">
+    <span class="logo-zendo-text">Zendo</span>
+    <span class="nav-separator"></span>
+    <nav class="navbar">
+            <a href="#home-section" class="nav-link">Home</a>
+            <a href="#team-section" class="nav-link">Team</a>
+            <a href="#about-section" class="nav-link">About</a>
+            <a href="#contact-section" class="nav-link">Contact</a>
+        </nav>
+    </div>
+    <div class="login-btn">
+        <button class="main-btn" id="loginBtn">Log In</button>
+    </div>
+    <div class="center-content">
+        <div class="section" id="home-section">
+            <h1 class="zendo-title">
+                Welcome to <span class="zendo-calligraphy">Zendo</span>
+            </h1>
+            <p class="choose-language">Choose a language to start learning:</p>
+            <div class="button-row">
+                <button class="main-btn" id="chineseBtn">Learn Chinese</button>
+                <button class="main-btn" id="englishBtn">Learn English</button>
+            </div>
+            <div class="word-flow-container">
+            </div>
+        </div>
+        <div class="section" id="team-section">
+            <h1>Our Team</h1>
+            <div class="team-grid team-grid-3x2">
+                <div class="team-card">
+                    <img src="Photo 2.jpg" alt="Richard Alexander" class="team-photo">
+                    <h2>刘明坚</h2>
+                    <p><strong>ID:</strong> 1820242128</p>
+                    <p><strong>Role:</strong> CEO</p>
+                </div>
+                <div class="team-card">
+                    <img src="Photo 3.jpg" alt="Vanessa Minerva" class="team-photo">
+                    <h2>陈惠怡</h2>
+                    <p><strong>ID:</strong> 1820242114</p>
+                    <p><strong>Role:</strong> CIO & Writer</p>
+                </div>
+                <div class="team-card">
+                    <img src="Photo 4.jpg" alt="Member 3" class="team-photo">
+                    <h2>吴丽翡</h2>
+                    <p><strong>ID:</strong> 1820242121</p>
+                    <p><strong>Role:</strong> Designer & Writer</p>
+                </div>
+                <div class="team-card">
+                    <img src="Photo 5.jpg" alt="Timothy Nathanael" class="team-photo">
+                    <h2>吴家锦</h2>
+                    <p><strong>ID:</strong> 1820242141</p>
+                    <p><strong>Role:</strong> Designer & Progammer</p>
+                </div>
+                <div class="team-card">
+                    <img src="Photo 6.jpg" alt="Reynard" class="team-photo">
+                    <h2>廖泰诚</h2>
+                    <p><strong>ID:</strong> 1820242123</p>
+                    <p><strong>Role:</strong> Programmer</p>
+                </div>
+                <div class="team-card">
+                    <img src="Photo 1.jpg" alt="Valentino Jovan" class="team-photo">
+                    <h2>黄友帆</h2>
+                    <p><strong>ID:</strong> 1820242130</p>
+                    <p><strong>Role:</strong> Programmer</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="about-section">
+            <h1>About Zendo</h1>
+            <p>Zendo is an e-learning platform designed to make language learning fun and effective.</p>
+        </div>
+        <div class="section" id="contact-section">
+            <h1>Contact Us</h1>
+            <p>Have questions? Reach out to us!</p>
+        </div>
+        <div class="modal-bg" id="loginModalBg">
+            <div class="modal">
+                <h2>Log In</h2>
+                <input type="text" id="loginUsername" placeholder="Username">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button class="main-btn" onclick="loginSubmit()">Log In</button>
+                <div style="margin-top:16px; font-size:15px; color:#ccc;">
+                    Don't have an account yet? <a href="#" style="color:#357abd; font-weight:600; text-decoration:none;" onclick="showSignUp()">Sign up</a>
+                </div>
+                <button class="main-btn" style="margin-top:10px;" onclick="closeLoginModal()">Close</button>
+            </div>
+        </div>
+        <div class="modal-bg" id="signupModalBg">
+            <div class="modal">
+                <h2>Sign Up</h2>
+                <input type="text" id="signupUsername" placeholder="Username">
+                <input type="email" id="signupEmail" placeholder="Email">
+                <input type="password" id="signupPassword" placeholder="Password">
+                <input type="password" id="signupConfirm" placeholder="Confirmation Password">
+                <button class="main-btn" onclick="signupSubmit()">Sign Up</button>
+                <button class="main-btn" style="margin-top:10px;" onclick="closeSignUpModal()">Close</button>
+            </div>
+        </div>
+    <div class="modal-bg" id="modalBg">
+        <div class="modal" id="modalContent">
+            <span id="modalText"></span><br>
+            <button class="main-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+        </div>
+    </div>
+</body>
+</html>
