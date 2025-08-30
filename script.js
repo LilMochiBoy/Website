@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.cursor = 'pointer';
         card.onclick = function() {
                 var member = teamInfo[idx];
-                // Unique accent colors and essay backgrounds for each member
                 var accentColors = [
                     '#3b5998', // Richard Alexander
                     '#8e44ad', // Vanessa Minerva
