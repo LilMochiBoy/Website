@@ -112,8 +112,17 @@
             <button class="main-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
-    <script src="script.js"></script>
-        </div>
     </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('chineseBtn').onclick = function() {
+                window.location.href = 'chinese.html';
+            };
+            document.getElementById('englishBtn').onclick = function() {
+                window.location.href = 'english.html';
+            };
+        });
+    </script>
 </body>
 </html>

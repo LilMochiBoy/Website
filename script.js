@@ -41,31 +41,78 @@ function signupSubmit() {
     closeSignUpModal();
 }
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('loginBtn').onclick = openLoginModal;
-    document.getElementById('chineseBtn').onclick = function() {
-        alert('Start learning Chinese!');
-    };
+    var loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) loginBtn.onclick = openLoginModal;
+
+    var chineseBtn = document.getElementById('chineseBtn');
+    if (chineseBtn) {
+        chineseBtn.onclick = function() {
+            alert('Start learning Chinese!');
+        };
+    }
 
     var teamCards = document.querySelectorAll('.team-card');
     var teamInfo = [
-        {
-            name: '刘明坚', englishName: 'Richard Alexander Leonardy', age: 19, id: '1820242128', role: 'CEO', photo: 'Photo 2.jpg', bio: 'Leader and visionary of Zendo.', essay: ''
-        },
-        {
-            name: '陈惠怡', englishName: 'Vanessa Minerva Sutanto', age: 19, id: '1820242114', role: 'CIO & Writer', photo: 'Photo 3.jpg', bio: 'Chief Information Officer and content creator.', essay: 'Hellooo, my name is Vanessa Minerva Sutanto (Chinese Name: 陈惠怡)! I\'m from Indonesia and I\'m in my second year in Computer Science major! For this project, I am thrilled to be contributing as the CIO (Chief Integration Officer) where my main responsibility is to ensure that all parts of the project come together smoothly and that we meet all deadlines. My days are spent coordinating the team\'s workflow, facilitating clear communication, and meticulously tracking progress to ensure everyone\'s tasks are aligned and meeting the project\'s requirements. I believe that a well-organized process is the backbone of any successful project. A critical part of my responsibility is the final quality check. I organize all our project assets, from the HTML and CSS structures to the JavaScript functionality and media files. I run thorough checks for consistency in style and code, verify that every interactive link works perfectly, and ensure all content is formatted correctly for an optimal user journey. As the final submitter, I take great care in compiling everything into a polished and organized package that truly reflects our team\'s hard work. It\'s been an incredible experience collaborating with such a dedicated and talented team, and I\'m excited to see how our hard work comes to life and make an impact!'
-        },
-        {
-            name: '吴丽翡', englishName: 'Velerie Roxanne Gabriel', age: 19, id: '1820242121', role: 'Designer & Writer', photo: 'Photo 4.jpg', bio: 'Designs and writes for Zendo.', essay: 'Hello, I\'m Velerie Roxanne Gabrielle (Chinese name: 吴丽翡), and I\'m responsible for both the design and writing aspects of our team\'s project. As the designer, my role is to create the visual identity of our website, ensuring that it is not only visually appealing but also functional and user-friendly. This includes working on the layout, color schemes, typography, and overall aesthetic of the site. I collaborate closely with the rest of the team to ensure that our design aligns with the project\'s theme and objectives. In addition to design, I\'m also in charge of the written content. I work on crafting engaging text for various sections of the site, including the homepage, team introduction, and other content that helps visitors understand our project and its purpose. I believe that well-thought-out design and clear, informative writing go hand in hand, and my goal is to create a seamless and cohesive experience for our users. I am truly passionate about combining creativity with functionality. Every design element I choose, and every piece of content I write, has a clear purpose: to contribute to a positive user experience. This project is an exciting opportunity for me to contribute my skills in both design and writing, and I am thrilled to see how our collective efforts come together in the final product.'
-        },
-        {
-            name: '吴家锦', englishName: 'Timothy Nathaniel Sudirgo', age: 19, id: '1820242141', role: 'Designer & Progammer', photo: 'Photo 5.jpg', bio: 'Designs and codes for Zendo.', essay: "Hello and welcome! My name is Timothy Nathaniel Sudirgo (Chinese Name: 吴家锦). I'm a 19-year-old student from Surabaya, Indonesia. Outside of my academic and coding life, I have a deep passion for the arts. You can almost always find me listening to a diverse range of music, which helps me focus and think creatively, or watching movies. These hobbies are more than just pastimes. They are my source of inspiration and a way to see design and structure from new perspectives.\nI am currently furthering my education as a second-year Computer Science student at the Beijing Institute of Technology (北京理工大学). This project offered an exciting opportunity to apply my classroom knowledge in a real-world setting. My specific contribution was as the designer and the programmer of front-end developer for our team. I coded the entire design of the website you see and interact with today using HTML and CSS, focusing on creating an experience that is both visually appealing and easy to navigate.\nThe initial spark for this platform came from my personal experience navigating life and studies in China. Understanding the challenges of language learning firsthand motivated me to channel my technical skills into creating a tool that could make mastering English and Chinese more intuitive, structured, and perhaps even a little bit fun for others on a similar path. It has been an incredible journey blending my hobbies, studies, and personal experience into this project, and I sincerely hope you find it useful on your own language-learning adventure."
-        },
-        {
-            name: '廖泰诚', englishName: 'Reynard Jave Hanson', age: 19, id: '1820242123', role: 'Programmer', photo: 'Photo 6.jpg', bio: 'Backend and frontend developer.', essay: "My name is Reynard Jave Hanson (Chinese name: 廖泰诚), and I am 19 years old. I come from Indonesia and am currently studying Computer Science at Beijing Institute of Technology in China. I am motivated by the idea that the skills I develop from creating this website will give me the ability to create innovative solutions for real-world challenges in the future.\nOutside of academics, I enjoy spending my free time on activities that keep me active and energized. My hobbies include swimming, cycling, and working out. These activities not only help me maintain a healthy lifestyle outside of coding, but also teach me discipline, consistency, and resilience qualities that I believe are just as important in the world of programming.\nIn this website project, my role is the programmer. My responsibilities include building the HTML structure that forms the foundation of each page, applying CSS to design layouts and styling, and implementing interactive features and dynamic content using JavaScript. I also work on debugging errors and fixing broken layouts or links to ensure that the website functions smoothly and delivers a seamless user experience.\nThrough this project, I am gaining valuable hands-on experience and strengthening my technical skills. My goal is to continue learning, growing, and contributing to projects that combine creativity, usability, and functionality in the field of web development."
-        },
-        {
-                name: '黄友帆', englishName: 'Valentino Jovan', age: 18, id: '1820242130', role: 'Programmer', photo: 'Photo 1.jpg', bio: 'Programmer and technical support.', essay: "Hello! My name is Valentino Jovan, and my Chinese name is 黄友帆. I am 18 years old and come from Indonesia. Currently, I am a Computer Science student at Beijing Institute of Technology. I chose this major because I am passionate about technology and its potential to solve real world problems. I believe that a strong foundation in computer science will open many doors for my future career and allow me to contribute meaningfully to society.\n\nBeyond academics, I am an avid soccer player. Soccer has been a part of my life since childhood, and it has taught me valuable lessons about teamwork, discipline, and perseverance. Playing soccer helps me stay active and provides a healthy balance to my studies. It is also a way for me to connect with others and build lasting friendships.\n\nIn our website development project, my main responsibility is ensuring the program to work and tidy the code structure. I strive to ensure that our website is both easy to use and user friendly. Working on this project has given me the opportunity to apply my knowledge, collaborate with my teammates, and improve my skills. I am grateful for the chance to learn and grow through this experience, and I look forward to contributing even more in the future."
-        }
+    {
+        name: '刘明坚', 
+        englishName: 'Richard Alexander Leonardy', 
+        age: 19, 
+        id: '1820242128', 
+        role: 'CEO', 
+        photo: 'Photo 2.jpg', 
+        bio: 'Leader and visionary of Zendo.', 
+        essay: "Hi! I’m Richard Alexander Leonardy (Chinese name: 刘明坚), and I’m the CEO of our team. In this project, I help guide the team, organize tasks, and make sure everything stays on track. I enjoy taking responsibility and contributing to planning and coordination so the project runs smoothly. Being part of this team has also taught me a lot about teamwork and how to keep things moving efficiently while balancing everyone’s ideas and input.<br><br>Outside of the project, I like spending time playing basketball. It is a great way to stay active, challenge myself both physically and mentally, and take a break from schoolwork. I also enjoy keeping things simple and comfortable in my daily life, from the way I dress to the way I organize my time. I find that having consistent habits helps me stay focused and productive while still leaving room for hobbies and relaxation.<br><br>I enjoy thinking through ideas, planning ahead, and figuring out ways to tackle challenges effectively. I am someone who likes to stay curious and motivated, always looking for ways to learn and grow. I also value balance, working hard on projects or school tasks while making sure I take the time to enjoy life and recharge. Overall, I try to approach everything thoughtfully, stay engaged, and make the most of every experience."
+    },
+    {
+        name: '陈惠怡', 
+        englishName: 'Vanessa Minerva Sutanto', 
+        age: 19, 
+        id: '1820242114', 
+        role: 'CIO & Writer', 
+        photo: 'Photo 3.jpg', 
+        bio: 'Chief Information Officer and content creator.', 
+        essay: "Hi! I’m Vanessa Minerva Sutanto (Chinese name: 陈惠怡), and I’m the CIO & Writer of our team. In this project, I ensure all parts of the project come together smoothly and that we meet all deadlines. My days are spent coordinating the team’s workflow, facilitating clear communication, and meticulously tracking progress to ensure everyone’s tasks are aligned and meeting requirements. I believe a well-organized process is the backbone of any successful project.<br><br>A critical part of my responsibility is the final quality check. I organize all our project assets, from the HTML and CSS structures to the JavaScript functionality and media files. I run thorough checks for consistency in style and code, verify that every interactive link works perfectly, and ensure all content is formatted correctly for an optimal user journey. As the final submitter, I take great care in compiling everything into a polished and organized package that truly reflects our team’s hard work.<br><br>It’s been an incredible experience collaborating with such a dedicated and talented team, and I’m excited to see how our hard work comes to life and make an impact!"
+    },
+    {
+        name: '吴丽翡', 
+        englishName: 'Velerie Roxanne Gabriel', 
+        age: 19, 
+        id: '1820242121', 
+        role: 'Designer & Writer', 
+        photo: 'Photo 4.jpg', 
+        bio: 'Designs and writes for Zendo.', 
+        essay: "Hi! I’m Velerie Roxanne Gabriel (Chinese name: 吴丽翡), and I’m responsible for both the design and writing aspects of our team’s project. As the designer, my role is to create the visual identity of our website, ensuring that it is not only visually appealing but also functional and user-friendly. This includes working on the layout, color schemes, typography, and overall aesthetic of the site. I collaborate closely with the rest of the team to ensure that our design aligns with the project’s theme and objectives.<br><br>In addition to design, I’m also in charge of the written content. I work on crafting engaging text for various sections of the site, including the homepage, team introduction, and other content that helps visitors understand our project and its purpose. I believe that well-thought-out design and clear, informative writing go hand in hand, and my goal is to create a seamless and cohesive experience for our users.<br><br>I am truly passionate about combining creativity with functionality. Every design element I choose, and every piece of content I write, has a clear purpose: to contribute to a positive user experience. This project is an exciting opportunity for me to contribute my skills in both design and writing, and I am thrilled to see how our collective efforts come together in the final product."
+    },
+    {
+        name: '吴家锦', 
+        englishName: 'Timothy Nathaniel Sudirgo', 
+        age: 19, 
+        id: '1820242141', 
+        role: 'Designer & Programmer', 
+        photo: 'Photo 5.jpg', 
+        bio: 'Designs and codes for Zendo.', 
+        essay: "Hi! I’m Timothy Nathaniel Sudirgo (Chinese name: 吴家锦), and I’m the Designer & Programmer of our team. I coded the entire design of the website you see and interact with today using HTML and CSS, focusing on creating an experience that is both visually appealing and easy to navigate. My personal experience navigating life and studies in China inspired me to create a tool that could make mastering English and Chinese more intuitive, structured, and fun for others on a similar path.<br><br>Outside of my academic and coding life, I have a deep passion for the arts. You can almost always find me listening to a diverse range of music, which helps me focus and think creatively, or watching movies. These hobbies are my source of inspiration and a way to see design and structure from new perspectives.<br><br>It has been an incredible journey blending my hobbies, studies, and personal experience into this project, and I sincerely hope you find it useful on your own language-learning adventure."
+    },
+    {
+        name: '廖泰诚', 
+        englishName: 'Reynard Jave Hanson', 
+        age: 19, 
+        id: '1820242123', 
+        role: 'Programmer', 
+        photo: 'Photo 6.jpg', 
+        bio: 'Backend and frontend developer.', 
+        essay: "Hi! I’m Reynard Jave Hanson (Chinese name: 廖泰诚), and I am the Programmer of our team. My responsibilities include building the HTML structure that forms the foundation of each page, applying CSS to design layouts and styling, and implementing interactive features and dynamic content using JavaScript. I also work on debugging errors and fixing broken layouts or links to ensure that the website functions smoothly and delivers a seamless user experience.<br><br>I am motivated by the idea that the skills I develop from creating this website will give me the ability to create innovative solutions for real-world challenges in the future.<br><br>Outside of academics, I enjoy spending my free time on activities that keep me active and energized. My hobbies include swimming, cycling, and working out. These activities not only help me maintain a healthy lifestyle outside of coding, but also teach me discipline, consistency, and resilience qualities that I believe are just as important in the world of programming.<br><br>Through this project, I am gaining valuable hands-on experience and strengthening my technical skills. My goal is to continue learning, growing, and contributing to projects that combine creativity, usability, and functionality in the field of web development."
+    },
+    {
+        name: '黄友帆', 
+        englishName: 'Valentino Jovan', 
+        age: 18, 
+        id: '1820242130', 
+        role: 'Programmer', 
+        photo: 'Photo 1.jpg', 
+        bio: 'Programmer and technical support.', 
+        essay: "Hi! I’m Valentino Jovan (Chinese name: 黄友帆), and I’m the Programmer of our team. My main responsibility is ensuring the program works and keeping the code structure tidy for a user-friendly website. I strive to ensure that our website is both easy to use and user friendly.<br><br>I am passionate about technology and its potential to solve real-world problems. I believe that a strong foundation in computer science will open many doors for my future career and allow me to contribute meaningfully to society.<br><br>Beyond academics, I am an avid soccer player. Soccer has been a part of my life since childhood, and it has taught me valuable lessons about teamwork, discipline, and perseverance. Playing soccer helps me stay active and provides a healthy balance to my studies. It is also a way for me to connect with others and build lasting friendships.<br><br>Working on this project has given me the opportunity to apply my knowledge, collaborate with my teammates, and improve my skills. I am grateful for the chance to learn and grow through this experience, and I look forward to contributing even more in the future."
+    }
     ];
     teamCards.forEach(function(card, idx) {
         card.style.cursor = 'pointer';
