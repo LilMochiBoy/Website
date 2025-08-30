@@ -15,7 +15,6 @@ function showSignUp() {
     openSignUpModal();
 }
 function loginSubmit() {
-    // Dummy login logic
     var user = document.getElementById('loginUsername').value;
     var pass = document.getElementById('loginPassword').value;
     if (user && pass) {
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 });
 
-// Animated flowing words for Home page
+// Flowing Texts
 const flowingWords = [
     { text: "Hello", side: "right" },
     { text: "你好", side: "left" },
@@ -95,14 +94,12 @@ function animateWords() {
         let tries = 0;
         while (tries < 10) {
             const randomPercent = Math.floor(Math.random() * (maxPercent - minPercent + 1)) + minPercent;
-            // Check for overlap (within 12% of another word)
             if (!activePositions.some(pos => Math.abs(pos - randomPercent) < 12)) {
                 activePositions.push(randomPercent);
                 return randomPercent;
             }
             tries++;
         }
-        // If can't find, just return a random position
         const fallback = Math.floor(Math.random() * (maxPercent - minPercent + 1)) + minPercent;
         activePositions.push(fallback);
         return fallback;
@@ -130,7 +127,6 @@ function animateWords() {
 
 window.addEventListener('DOMContentLoaded', animateWords);
 
-// Fade out home section on scroll
 window.addEventListener('scroll', function() {
     const home = document.getElementById('home-section');
     if (!home) return;
