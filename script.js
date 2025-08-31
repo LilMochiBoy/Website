@@ -1,3 +1,40 @@
+// Panda words randomizer (fade-in animation)
+
+const pandaWordsList = ["Hello!", "Welcome", "朋友", "欢迎", "谢谢", "ThankYou", "现在", "Home"];
+let lastPandaWordIdx = null;
+let lastPandaPosIdx = null;
+function showRandomPandaWord() {
+    const wordClasses = ["panda-word-1", "panda-word-2", "panda-word-3", "panda-word-4"];
+    // Hide all words
+    wordClasses.forEach(cls => {
+        const el = document.querySelector('.' + cls);
+        if (el) {
+            el.style.opacity = 0;
+        }
+    });
+    // Pick a random word and position, avoiding last used
+    let idx, posIdx;
+    let tries = 0;
+    do {
+        idx = Math.floor(Math.random() * pandaWordsList.length);
+        posIdx = Math.floor(Math.random() * wordClasses.length);
+        tries++;
+    } while ((idx === lastPandaWordIdx || posIdx === lastPandaPosIdx) && tries < 10);
+    lastPandaWordIdx = idx;
+    lastPandaPosIdx = posIdx;
+    const el = document.querySelector('.' + wordClasses[posIdx]);
+    if (el) {
+        el.textContent = pandaWordsList[idx];
+        setTimeout(() => {
+            el.style.opacity = 1;
+        }, 100);
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+    showRandomPandaWord();
+    setInterval(showRandomPandaWord, 1500);
+});
 function openLoginModal() {
     document.getElementById('loginModalBg').style.display = 'flex';
 }

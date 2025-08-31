@@ -54,6 +54,7 @@
     flex: 1.2;
     min-width: 340px;
     margin-bottom: -60px;
+    margin-left: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,13 +86,15 @@
     font-size: 2rem;
     color: #3793e0;
     font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.8s;
 }
 .panda-word-1 {
-    left: 25%;
+    left: 20%;
     top: 15%;
 }
 .panda-word-2 {
-    left: 15%;
+    left: 5%;
     top: 70%;
 }
 .panda-word-3 {
