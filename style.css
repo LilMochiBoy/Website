@@ -374,6 +374,14 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     color: #4a90e2;
     font-weight: 600;
 }
+/* Make the learn english and learn chinese buttons bigger */
+#englishBtn, #chineseBtn {
+    font-size: 2rem;
+    padding: 24px 48px;
+    border-radius: 16px;
+    min-width: 220px;
+    min-height: 80px;
+}
 @media (max-width: 900px) {
     .team-grid-3x2 {
         grid-template-columns: repeat(2, 1fr);
