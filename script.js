@@ -355,6 +355,16 @@ function showProfilePopup(username, profilePicUrl) {
     };
 }
 
+function restoreLoginBtn() {
+    const loginBtnDiv = document.querySelector('.login-btn');
+    if (loginBtnDiv) {
+        loginBtnDiv.innerHTML = `<button class="main-btn" id="loginBtn">Log In</button>`;
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginBtn) loginBtn.onclick = openLoginModal;
+    }
+    closeModal();
+}
+
 function showAccountPopup(username) {
     const html = `
         <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
@@ -364,16 +374,6 @@ function showAccountPopup(username) {
         </div>
     `;
     showModal(html);
-
-    function restoreLoginBtn() {
-        const loginBtnDiv = document.querySelector('.login-btn');
-        if (loginBtnDiv) {
-            loginBtnDiv.innerHTML = `<button class="main-btn" id="loginBtn">Log In</button>`;
-            // Re-attach login button event
-            document.getElementById('loginBtn').onclick = openLoginModal;
-        }
-        closeModal();
-    }
 
     document.getElementById('changeAccountBtn').onclick = restoreLoginBtn;
     document.getElementById('logoutBtn').onclick = function() {
