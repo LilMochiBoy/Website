@@ -14,32 +14,65 @@ function showSignUp() {
     closeLoginModal();
     openSignUpModal();
 }
+
+// Updated loginSubmit to use backend
 function loginSubmit() {
     var user = document.getElementById('loginUsername').value;
     var pass = document.getElementById('loginPassword').value;
-    if (user && pass) {
-        alert('Logged in as ' + user);
-        closeLoginModal();
-    } else {
-        alert('Please enter username and password.');
+    if (!user || !pass) {
+        showModal('Please enter username and password.');
+        return;
     }
+    fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username: user, password: pass})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success) {
+            closeLoginModal();
+            setLoggedInUI(user);
+            showModal('Login successful! Welcome, ' + user);
+        } else {
+            showModal('Login failed: ' + data.message);
+        }
+    })
+    .catch(() => showModal('Unable to connect to server.'));
 }
+
+// Updated signupSubmit to use backend
 function signupSubmit() {
     var user = document.getElementById('signupUsername').value;
     var email = document.getElementById('signupEmail').value;
     var pass = document.getElementById('signupPassword').value;
     var confirm = document.getElementById('signupConfirm').value;
     if (!user || !email || !pass || !confirm) {
-        alert('Please fill all fields.');
+        showModal('Please fill all fields.');
         return;
     }
     if (pass !== confirm) {
-        alert('Passwords do not match.');
+        showModal('Passwords do not match!');
         return;
     }
-    alert('Account created for ' + user + ' (' + email + ')');
-    closeSignUpModal();
+    fetch('http://localhost:3000/api/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username: user, email: email, password: pass})
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success) {
+            closeSignUpModal();
+            setLoggedInUI(user);
+            showModal('Sign up successful! You are now logged in.');
+        } else {
+            showModal('Sign up failed: ' + data.message);
+        }
+    })
+    .catch(() => showModal('Unable to connect to server.'));
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     var loginBtn = document.getElementById('loginBtn');
     if (loginBtn) loginBtn.onclick = openLoginModal;
@@ -250,7 +283,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Modal for team info
+// Modal for team info and messages
 function showModal(html) {
     var modalBg = document.getElementById('modalBg');
     var modalText = document.getElementById('modalText');
@@ -262,4 +295,91 @@ function showModal(html) {
 function closeModal() {
     var modalBg = document.getElementById('modalBg');
     if (modalBg) modalBg.style.display = 'none';
+}
+
+function setLoggedInUI(username, profilePicUrl = null) {
+    const loginBtnDiv = document.querySelector('.login-btn');
+    if (loginBtnDiv) {
+        loginBtnDiv.innerHTML = `
+            <div class="user-profile" style="display:flex;align-items:center;gap:12px;">
+                <button id="profilePicBtn" style="width:40px;height:40px;border-radius:50%;background:#eee;overflow:hidden;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;padding:0;">
+                    <img src="${profilePicUrl ? profilePicUrl : 'default-profile.png'}" alt="Profile" style="width:100%;height:100%;object-fit:cover;">
+                </button>
+                <button id="usernameBtn" style="background:none;border:none;font-weight:600;font-size:1.1em;color:#fff;cursor:pointer;">${username}</button>
+            </div>
+            <input type="file" id="profilePicInput" style="display:none;" accept="image/*">
+        `;
+
+        document.getElementById('profilePicBtn').onclick = function() {
+            showProfilePopup(username, profilePicUrl);
+        };
+        document.getElementById('usernameBtn').onclick = function() {
+            showAccountPopup(username);
+        };
+    }
+}
+
+function showProfilePopup(username, profilePicUrl) {
+    const html = `
+        <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+            <div class="profile-pic" style="width:80px;height:80px;border-radius:50%;background:#eee;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+                <img src="${profilePicUrl ? profilePicUrl : 'default-profile.png'}" alt="Profile" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div style="font-size:1.3em;font-weight:600;">${username}</div>
+            <button class="main-btn" id="changePicBtn" style="margin-bottom:8px;">Change Profile Picture</button>
+            <button class="main-btn" id="removeProfileBtn" style="background:#e74c3c;color:#fff;">Remove Profile</button>
+            <input type="file" id="profilePicInputPopup" style="display:none;" accept="image/*">
+        </div>
+    `;
+    showModal(html);
+
+    document.getElementById('changePicBtn').onclick = function() {
+        document.getElementById('profilePicInputPopup').click();
+    };
+    document.getElementById('profilePicInputPopup').onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                document.querySelector('.profile-pic img').src = evt.target.result;
+                setLoggedInUI(username, evt.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    document.getElementById('removeProfileBtn').onclick = function() {
+        // Remove profile logic (frontend only)
+        const loginBtnDiv = document.querySelector('.login-btn');
+        if (loginBtnDiv) loginBtnDiv.innerHTML = `<button class="main-btn" id="loginBtn">Log In</button>`;
+        closeModal();
+    };
+}
+
+function showAccountPopup(username) {
+    const html = `
+        <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+            <div style="font-size:1.3em;font-weight:600;">${username}</div>
+            <button class="main-btn" id="changeAccountBtn" style="margin-bottom:8px;">Change Account</button>
+            <button class="main-btn" id="logoutBtn" style="background:#e74c3c;color:#fff;">Log Out</button>
+        </div>
+    `;
+    showModal(html);
+
+    function restoreLoginBtn() {
+        const loginBtnDiv = document.querySelector('.login-btn');
+        if (loginBtnDiv) {
+            loginBtnDiv.innerHTML = `<button class="main-btn" id="loginBtn">Log In</button>`;
+            // Re-attach login button event
+            document.getElementById('loginBtn').onclick = openLoginModal;
+        }
+        closeModal();
+    }
+
+    document.getElementById('changeAccountBtn').onclick = restoreLoginBtn;
+    document.getElementById('logoutBtn').onclick = function() {
+        // Log out logic (frontend only)
+        const loginBtnDiv = document.querySelector('.login-btn');
+        if (loginBtnDiv) loginBtnDiv.innerHTML = `<button class="main-btn" id="loginBtn">Log In</button>`;
+        closeModal();
+    };
 }

@@ -1,0 +1,25 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Team project website",
+  "homepage": "https://github.com/LilMochiBoy/Website#readme",
+  "bugs": {
+    "url": "https://github.com/LilMochiBoy/Website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LilMochiBoy/Website.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
