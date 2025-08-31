@@ -376,10 +376,5 @@ function showAccountPopup(username) {
     showModal(html);
 
     document.getElementById('changeAccountBtn').onclick = restoreLoginBtn;
-    document.getElementById('logoutBtn').onclick = function() {
-        // Log out logic (frontend only)
-        const loginBtnDiv = document.querySelector('.login-btn');
-        if (loginBtnDiv) loginBtnDiv.innerHTML = `<button class="main-btn" id="loginBtn">Log In</button>`;
-        closeModal();
-    };
+    document.getElementById('logoutBtn').onclick = restoreLoginBtn;
 }

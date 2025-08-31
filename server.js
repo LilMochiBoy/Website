@@ -36,13 +36,5 @@ app.post('/api/login', (req, res) => {
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
 
-fetch('http://localhost:3000/api/signup', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({username: user, email: email, password: pass})
-})
-.then(res => res.json())
-.then(data => {
-    // handle response
-})
-.catch(() => showModal('Unable to connect to server.'));
+// REMOVE ALL CODE BELOW THIS LINE!
+// The fetch(...) block is frontend code and should NOT be in server.js.
