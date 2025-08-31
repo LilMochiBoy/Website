@@ -23,25 +23,27 @@
     </div>
     <div class="center-content">
         <div class="section" id="home-section">
-            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; min-height: 70vh; width: 100%;">
-                <div style="flex: 1; min-width: 380px; max-width: 520px; padding-left: 10vw; display: flex; flex-direction: column; align-items: center;">
-                    <h1 style="font-size: 4.5rem; font-weight: bold; color: #f7f7fa; margin-bottom: 0em;">Welcome to</h1>
-                    <div style="font-size: 6.2rem; font-family: 'Satisfy', cursive; color: #4a90e2; font-weight: 800; text-shadow: 0 0 40px #1e3c72, 0 2px 16px #000; margin-bottom: 0.2em;">Zendo</div>
-                    <div style="font-size: 1.5rem; color: #f7f7fa; margin-bottom: 1.5em;">Learn languages the fun way —<br>simple, interactive, and effective.</div>
-                    <div style="display: flex; gap: 18px; margin-top: 22px;">
-                        <button class="main-btn" id="chineseBtn" style="min-width: 220px; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; background: #3793e0;">
-                            <img src="China flag.png" alt="China Flag" style="height: 28px; width: 38px; object-fit: cover; border-radius: 4px;"> Start Learning Chinese
+            <div class="home-flex-row">
+                <div class="home-hero">
+                    <h1 class="home-title">Welcome to</h1>
+                    <div class="home-zendo">Zendo</div>
+                    <div class="home-desc">Learn languages the fun way —<br>simple, interactive, and effective.</div>
+                    <div class="home-btn-row">
+                        <button class="main-btn" id="chineseBtn">
+                            <img src="China flag.png" alt="China Flag" class="flag-img"> Start Learning Chinese
                         </button>
-                        <button class="main-btn" id="englishBtn" style="min-width: 220px; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; background: #3793e0;">
-                            <img src="English flag.webp" alt="UK Flag" style="height: 28px; width: 38px; object-fit: cover; border-radius: 4px;"> Start Learning English
+                        <button class="main-btn" id="englishBtn">
+                            <img src="English flag.webp" alt="UK Flag" class="flag-img"> Start Learning English
                         </button>
                     </div>
                 </div>
-                <div style="flex: 1.2; min-width: 340px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <div class="home-panda-area">
                     <img src="Panda.png" alt="Learning Character" class="panda-img">
-                    <span style="position: absolute; left: 25%; top: 15%; font-size: 2rem; color: #3793e0; font-weight: bold;">朋友</span>
-                    <span style="position: absolute; left: 10%; top: 70%; font-size: 2rem; color: #3793e0; font-weight: bold;">Welcome</span>
-                    <span style="position: absolute; left: 70%; top: 50%; font-size: 1.6rem; color: #3793e0; font-weight: bold;">Good morning</span>
+                    <div class="panda-oval-shadow"></div>
+                    <span class="panda-word panda-word-1">朋友</span>
+                    <span class="panda-word panda-word-2">欢迎</span>
+                    <span class="panda-word panda-word-3">Hello!</span>
+                    <span class="panda-word panda-word-4">Welcomee</span>
                 </div>
             </div>
         </div>

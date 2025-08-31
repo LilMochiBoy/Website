@@ -1,3 +1,108 @@
+.home-flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    width: 100%;
+}
+.home-hero {
+    flex: 1;
+    min-width: 380px;
+    max-width: 520px;
+    padding-left: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-title {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: #f7f7fa;
+    margin-bottom: 0em;
+}
+.home-zendo {
+    font-size: 6.2rem;
+    font-family: 'Satisfy', cursive;
+    color: #4a90e2;
+    font-weight: 800;
+    text-shadow: 0 0 40px #1e3c72, 0 2px 16px #000;
+    margin-bottom: 0.2em;
+}
+.home-desc {
+    font-size: 1.5rem;
+    color: #f7f7fa;
+    margin-bottom: 1.5em;
+}
+.home-btn-row {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    margin-top: 22px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.flag-img {
+    height: 32px;
+    width: 44px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 12px;
+}
+.home-panda-area {
+    flex: 1.2;
+    min-width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    filter: brightness(0.9) contrast(1.1);
+}
+.panda-img {
+    height: 400px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 2;
+    border-radius: 0px;
+    transition: box-shadow 0.10s, filter 0.3s;
+}
+.panda-oval-shadow {
+    width: 230px;
+    height: 35px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 50%;
+    margin-top: -45px;
+    margin-bottom: 8px;
+    filter: blur(2px);
+    z-index: 1;
+}
+.panda-word {
+    position: absolute;
+    font-size: 2rem;
+    color: #3793e0;
+    font-weight: bold;
+}
+.panda-word-1 {
+    left: 25%;
+    top: 15%;
+}
+.panda-word-2 {
+    left: 15%;
+    top: 70%;
+}
+.panda-word-3 {
+    left: 75%;
+    top: 10%;
+    font-size: 1.6rem;
+}
+.panda-word-4 {
+    left: 71%;
+    top: 60%;
+    font-size: 1.6rem;
+}
 .nav-separator {
 	display: inline-block;
 	margin-left: 20px;
@@ -100,9 +205,8 @@ body {
 	background: linear-gradient(270deg, #000000, #1e3c72, #000000);
 	background-size: 600% 600%;
 	animation: gradientMove 40s ease infinite;
-	/* Hide scrollbars but allow scrolling */
     overflow: auto;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; 
 }
 html, body {
     height: 100%;
@@ -129,28 +233,32 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 	z-index: 2100;
 }
 .main-btn {
-  background: #4a90e2; /* keep your main color */
+  background: #4a90e2;
   color: white;
   font-size: 1.2rem;
   padding: 14px 28px;
-  border: 2px solid #357abd; /* slightly darker border for depth */
-  border-radius: 6px;
+  border: 2px solid #357abd;
+  border-radius: 28px;
   cursor: pointer;
   font-weight: bold;
   font-family: sans-serif;
 
-  /* 3D key effect */
-  box-shadow: 0 4px #2a5d9f; /* shadow below the key */
+  box-shadow: 0 4px #2a5d9f; 
   transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
 }
 
 .main-btn:hover {
-  background: #5aa0e2; /* slight lighten on hover */
+  background: #5aa0e2; 
 }
 
 .main-btn:active {
-  transform: translateY(4px); /* pressed down */
-  box-shadow: 0 0 #234e85; /* shadow disappears when pressed */
+  transform: translateY(4px); 
+  box-shadow: 0 0 #234e85; 
 }
 
 .center-content {
@@ -191,7 +299,6 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     z-index: 5;
 }
 
-    /*Home Page*/
 #home-section {
     position: relative;
     overflow: hidden;
@@ -403,14 +510,15 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     color: #4a90e2;
     font-weight: 600;
 }
-/* Make the learn english and learn chinese buttons bigger */
+
 #englishBtn, #chineseBtn {
-    font-size: 24px;
+    font-size: 18px;
     padding: 12px 24px;
-    border-radius: 16px;
+    border-radius: 20px;
     min-width: 120px;
     min-height: 40px;
     opacity: 1;
+    align-items: center;
 }
 .panda-img {
     height: 400px;
