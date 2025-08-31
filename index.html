@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Zendo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -90,63 +90,100 @@
         </div>
         <div class="section" id="about-section" style="display: flex; flex-direction: column; align-items: center;">
     <div style="max-width: 700px; width: 100%; text-align: justify; margin: 0 auto;">
-        <h1 style="text-align: center;">About Zendo</h1>
-        <p>
-            Welcome to Zendo, where language learning feels like playing a game!<br><br>
-            We believe learning English or Chinese should be exciting, not boring. That’s why Zendo turns your study journey into a game-like adventure, full of levels, challenges, and rewards. Instead of just memorizing words, you’ll level up your skills, unlock new abilities, and see your progress with every step.
-        </p>
-        <h2 style="margin-top:32px; text-align: center;">How It Works</h2>
-        <p>
-            In Zendo, you’ll progress through four main levels — just like stages in a game:
-        </p>
-        <ul style="margin-bottom:24px;">
-            <li><strong>Level 1: Beginner</strong><br>
-                Your starting zone. Learn the basics, collect your first phrases, and build a strong foundation.
-            </li>
-            <li><strong>Level 2: Intermediate</strong><br>
-                Unlock more challenges. Talk about daily life, explore real conversations, and gain new confidence.
-            </li>
-            <li><strong>Level 3: Advanced</strong><br>
-                Face tougher quests. Discuss culture, ideas, and more complex topics. Read stories, articles, and sharpen your skills.
-            </li>
-            <li><strong>Level 4: Proficient / Mastery</strong><br>
-                Reach the final boss level. Speak like a native, understand deep texts, and use the language naturally in any situation.
-            </li>
-        </ul>
-        <h2 style="margin-top:32px; text-align: center;">Why Learn with Zendo?</h2>
-        <ul>
-            <li><strong>Gamified Experience:</strong> Earn points, badges, and achievements as you learn.</li>
-            <li><strong>Clear Progression:</strong> Move through levels step by step, just like in your favorite game.</li>
-            <li><strong>Choose Your Path:</strong> Learn English, Chinese, or both at your own pace.</li>
-            <li><strong>Motivation Built In:</strong> Learning becomes addictive when progress feels like winning.</li>
-        </ul>
-        <p style="margin-top:24px;">
-            At Zendo, every lesson is a quest, every word is a treasure, and every level takes you closer to fluency. Join us, and turn language learning into your greatest adventure.
-        </p>
+        <h1 style="text-align: center;">About <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Zendo</span></h1>
+        <p>Welcome to Zendo, where language learning feels like playing a game!</p>
+        <div style="display: flex; flex-direction: column; gap: 24px; align-items: center; margin: 32px 0;">
+            <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffd58055; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #3a2a5a; position: relative;">
+                <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🎉</span>
+                Fun Learning Experience<br>
+                <span style='font-size:1.05rem; font-weight:400; color:#6a3a5a;'>Learning English or Chinese becomes <span style='background: #fffbe6; border-radius: 6px; padding: 2px 8px;'>exciting</span>, not boring!</span>
+            </div>
+            <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #2a3a5a; position: relative;">
+                <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🕹️</span>
+                Game-Like Journey<br>
+                <span style='font-size:1.05rem; font-weight:400; color:#3b8dd4;'>Study is transformed into an <span style='background: #e6f7ff; border-radius: 6px; padding: 2px 8px;'>adventure</span> with levels, challenges, and rewards.</span>
+            </div>
+            <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #2a5a3a; position: relative;">
+                <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🚀</span>
+                Skill Growth & Progress<br>
+                <span style='font-size:1.05rem; font-weight:400; color:#2a5a3a;'>Level up, unlock abilities, and <span style='background: #e6fff7; border-radius: 6px; padding: 2px 8px;'>track progress</span> step by step.</span>
+            </div>
+        </div>
+    <h1 style="margin-top:32px; text-align: center; font-size:2.3rem; font-weight:700;">How It <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Works</span></h1>
+        <div id="level-squares" style="display: flex; flex-direction: column; gap: 24px; align-items: center; margin: 32px 0;">
+            <div style="display: flex; flex-direction: row; gap: 24px; justify-content: center; align-items: stretch; width: 100%; flex-wrap: wrap;">
+                <div class="level-square" onclick="toggleLevelDetail(1)" style="cursor:pointer; background: linear-gradient(90deg, #322a53 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #00000055; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 1 : Beginner</span>
+                    <div id="level-detail-1" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">🌱 Your starting zone. Learn the basics, collect your first phrases, and build a strong foundation.</div>
+                </div>
+                <div class="level-square" onclick="toggleLevelDetail(2)" style="cursor:pointer; background: linear-gradient(90deg, #bdc6f655 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 2 : Intermediate</span>
+                    <div id="level-detail-2" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">💬 Unlock more challenges. Talk about daily life, explore real conversations, and gain new confidence.</div>
+                </div>
+                <div class="level-square" onclick="toggleLevelDetail(3)" style="cursor:pointer; background: linear-gradient(90deg, #283b3b 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 3 : Advanced</span>
+                    <div id="level-detail-3" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">📚 Face tougher quests. Discuss culture, ideas, and more complex topics. Read stories, articles, and sharpen your skills.</div>
+                </div>
+                <div class="level-square" onclick="toggleLevelDetail(4)" style="cursor:pointer; background: linear-gradient(90deg, #5f3f43 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffb3ba55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 4 : Proficient/Mastery</span>
+                    <div id="level-detail-4" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">🏆 Reach the final boss level. Speak like a native, understand deep texts, and use the language naturally in any situation.</div>
+                </div>
+            </div>
+        </div>
+    <h1 style="margin-top:50px; margin-bottom:-10px;text-align: center; font-size:2.3rem; font-weight:700;">Why Learn with <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Zendo</span>?</h1>
+        <div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 0;">
+  <!-- Timeline line -->
+  <div style="position: absolute; top: 50%; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #7883d0 0%, #3b8dd4 100%); border-radius: 3px; z-index: 0;"></div>
+  <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 32px; position: relative; z-index: 1;">
+    <div style="background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Gamified Experience</div>
+      <div style="font-size: 1rem; text-align: justify;">Earn points, badges, and achievements as you learn.<span style='float:right;'>🎮</span></div>
+    </div>
+    <div style="background: linear-gradient(135deg, #232946 0%, #282a36 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Clear Progression</div>
+      <div style="font-size: 1rem; text-align: justify;">Move through levels step by step, just like in your favorite game.<span style='float:right;'>📈</span></div>
+    </div>
+    <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Choose Your Path</div>
+      <div style="font-size: 1rem; text-align: justify;">Learn English, Chinese, or both at your own pace.<span style='float:right;'>🛤️</span></div>
+    </div>
+    <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Motivation Built In</div>
+      <div style="font-size: 1rem; text-align: justify;">Learning becomes addictive when progress feels like winning.<span style='float:right;'>🏆</span></div>
+    </div>
+  </div>
+</div>
     </div>
 </div>
-        <div class="section" id="contact-section" style="display: flex; flex-direction: column; align-items: center;">
-    <div style="max-width: 700px; width: 100%; text-align: justify; margin: 0 auto;">
-        <h1 style="text-align: center;">Contact Us</h1>
-        <p>
-            Have a question? Stuck on a level? Or just want to say hi? 📨<br><br>
-            We’d love to hear from you! At Zendo, you’re not just a learner, you’re part of our community.
-        </p>
-        <h2 style="margin-top:32px; text-align: center;">Ways to Reach Us</h2>
-        <ul>
-            <li><strong>📧 Email Support</strong><br>
-                Got technical issues or feedback? Send us a message at <a href="mailto:support@zendo.com">support@zendo.com</a>
-            </li>
-            <li><strong>💬 Live Chat</strong><br>
-                Need quick help while learning? Use our in-app chat and our team will guide you.
-            </li>
-            <li><strong>🌍 Community Forum</strong><br>
-                Join other learners, share tips, and celebrate your progress. You’re never on this journey alone!
-            </li>
-            <li><strong>📱 Social Media</strong><br>
-                Follow us on Instagram, TikTok, and Twitter to get daily learning tips, challenges, and updates.
-            </li>
-        </ul>
+        <div class="section" id="contact-section" style="margin-top:-80px; display: flex; flex-direction: column; align-items: center;">
+    <div style="max-width: 700px; width: 100%; margin: 0 auto; margin-top: 0; background: rgba(20,30,60,0.85); border-radius: 18px; box-shadow: 0 2px 16px #23294655; padding: 38px 32px; color: #f4f4fb;">
+        <h1 style="text-align: center; font-family: 'Montserrat', Arial, sans-serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 10px;">Contact <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Us</span></h1>
+        <div style="text-align: center; font-size: 1.35rem; margin-bottom: 32px; font-family: 'Montserrat', Arial, sans-serif;">Have questions or need support? We’re here to help!</div>
+    <div style="display: flex; justify-content: flex-start; gap: 48px; margin-bottom: 32px; flex-wrap: wrap; margin-left: 40px;">
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">📧</div>
+                <div style="font-size: 1.1rem; font-weight: 700;">Email</div>
+                <div style="font-size: 1rem; color: #b3c6ff;">zendo.support@mail.com</div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">☎️</div>
+                <div style="font-size: 1.1rem; font-weight: 700;">Telephone</div>
+                <div style="font-size: 1rem; color: #b3c6ff;">+86 135-7924-6581</div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">📸</div>
+                <div style="font-size: 1.1rem; font-weight: 700;">Instagram</div>
+                <div style="font-size: 1rem; color: #b3c6ff;">@Zendo.ign</div>
+            </div>
+        </div>
+        <form style="display: flex; flex-direction: column; gap: 16px; align-items: center; margin-top: 10px;">
+            <div style="display: flex; gap: 16px; width: 100%;">
+                <input type="text" placeholder="Your Name" style="flex:1; padding: 12px; border-radius: 8px; border: none; background: #232946; color: #f4f4fb; font-size: 1rem; font-family: 'Montserrat', Arial, sans-serif;">
+                <input type="email" placeholder="Your Email" style="flex:1; padding: 12px; border-radius: 8px; border: none; background: #232946; color: #f4f4fb; font-size: 1rem; font-family: 'Montserrat', Arial, sans-serif;">
+            </div>
+            <textarea placeholder="Message" style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #232946; color: #f4f4fb; font-size: 1rem; font-family: 'Montserrat', Arial, sans-serif; min-height: 48px; resize: none; box-sizing: border-box;"></textarea>
+            <button type="submit" style="width: 100%; background: linear-gradient(90deg, #7f9cf5, #357abd); color: #fff; font-size: 1.2rem; font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; border: none; border-radius: 8px; padding: 14px 0; margin-top: 8px; cursor: pointer; box-shadow: 0 2px 8px #23294655;">Send Message</button>
+        </form>
     </div>
 </div>
         <div class="modal-bg" id="loginModalBg">
@@ -180,6 +217,43 @@
     </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        function toggleLevelDetail(level) {
+            for (let i = 1; i <= 4; i++) {
+                const detail = document.getElementById('level-detail-' + i);
+                if (i === level) {
+                    if (detail.style.display === 'block') {
+                        detail.style.display = 'none';
+                        detail.classList.remove('fade-in');
+                    } else {
+                        // Close all others first
+                        for (let j = 1; j <= 4; j++) {
+                            if (j !== i) {
+                                const otherDetail = document.getElementById('level-detail-' + j);
+                                otherDetail.style.display = 'none';
+                                otherDetail.classList.remove('fade-in');
+                            }
+                        }
+                        detail.style.display = 'block';
+                        detail.classList.add('fade-in');
+                    }
+                } else {
+                    detail.style.display = 'none';
+                    detail.classList.remove('fade-in');
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeInDetail 0.4s;
+        }
+        @keyframes fadeInDetail {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('chineseBtn').onclick = function() {
