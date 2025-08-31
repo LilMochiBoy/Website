@@ -274,6 +274,12 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     box-sizing: border-box;
     padding: 40px 0;
 }
+/* Remove box-shadow and border-radius for home section to make Panda box invisible */
+#home-section {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
 .section > * {
     width: auto;
     max-width: none;
@@ -405,6 +411,16 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     min-width: 120px;
     min-height: 40px;
     opacity: 1;
+}
+.panda-img {
+    height: 400px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 2;
+    filter: brightness(0.8) contrast(1.1);
+    border-radius: 0px;
+    transition: box-shadow 0.10s, filter 0.3s;
 }
 @media (max-width: 900px) {
     .team-grid-3x2 {
