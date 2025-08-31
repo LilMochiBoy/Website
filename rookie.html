@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rookie - Zendo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #rookie-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .game-area {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            min-height: 400px;
+            background: #1d1c1a;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .player, .boss {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+            position: relative;
+        }
+
+        .player img, .boss img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .health-bar {
+            width: 100px;
+            height: 12px;
+            background: #3d3d3d;
+            border-radius: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .health-fill {
+            width: 100%;
+            height: 100%;
+            background: #ff0000;
+            transition: width 0.3s;
+        }
+
+        .question-box {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            background: #29264e;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .answers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .answer-btn {
+            margin: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .answer-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .missiles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .missile {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: red;
+            border-radius: 50%;
+            animation: missileMove 0.6s forwards;
+        }
+
+        @keyframes missileMove {
+            0% {transform: translate(0,0) rotate(0deg);}
+            50% {transform: translate(20px,-80px) rotate(20deg);}
+            100% {transform: translate(0,-160px) rotate(0deg);}
+        }
+    </style>
+</head>
+<body>
+    <div id="rookie-section">
+        <h1>Rookie 🐣</h1>
+        <div class="game-area">
+            <div class="player">
+                <img src="chara.png" alt="Player">
+                <div class="health-bar"><div class="health-fill" id="player-health"></div></div>
+            </div>
+
+            <div class="boss">
+                <img src="boss.png" alt="Boss">
+                <div class="health-bar"><div class="health-fill" id="boss-health"></div></div>
+            </div>
+
+            <div class="missiles"></div>
+
+            <div class="question-box">
+                <h2 id="question-text">Loading question...</h2>
+                <div class="answers">
+                    <button class="answer-btn"></button>
+                    <button class="answer-btn"></button>
+                    <button class="answer-btn"></button>
+                    <button class="answer-btn"></button>
+                </div>
+            </div>
+        </div>
+        <button class="main-btn" style="margin-top: 24px;" onclick="window.location.href='chinese.html'">
+    Back to Level Selection
+</button>
+
+    </div>
+
+    <script src="rookie.js"></script>
+</body>
+</html>

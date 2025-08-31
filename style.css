@@ -120,7 +120,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 .logo {
 	height: 48px;
 	border-radius: 10px;
-	box-shadow: 0 2px 8px #222;
+	box-shadow: 0 2px 8px #1e3c72;
 }
 .login-btn {
 	position: absolute;
@@ -129,20 +129,30 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 	z-index: 2100;
 }
 .main-btn {
-	margin: 10px;
-	padding: 10px 20px;
-	background: #4a90e2;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	font-size: 16px;
-	cursor: pointer;
-	transition: background 0.2s;
-	box-shadow: 0 2px 8px #222;
+  background: #4a90e2; /* keep your main color */
+  color: white;
+  font-size: 1.2rem;
+  padding: 14px 28px;
+  border: 2px solid #357abd; /* slightly darker border for depth */
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: sans-serif;
+
+  /* 3D key effect */
+  box-shadow: 0 4px #2a5d9f; /* shadow below the key */
+  transition: all 0.1s ease;
 }
+
 .main-btn:hover {
-	background: #357abd;
+  background: #5aa0e2; /* slight lighten on hover */
 }
+
+.main-btn:active {
+  transform: translateY(4px); /* pressed down */
+  box-shadow: 0 0 #234e85; /* shadow disappears when pressed */
+}
+
 .center-content {
     display: flex;
     flex-direction: column;
@@ -177,6 +187,8 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 }
 .button-row {
 	margin-top: -16px;
+    position: relative;
+    z-index: 5;
 }
 
     /*Home Page*/
@@ -203,7 +215,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     height: 220px;
     pointer-events: none;
     overflow: visible;
-    z-index: 2;
+    z-index: 0; /* Changed from 2 to 0 to be behind buttons */
 }
 .word-flow {
     position: absolute;
@@ -279,6 +291,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     margin-top: 32px;
     width: 90vw;
     max-width: 1200px;
+    border-radius: 16px;
 }
 .team-grid-3x2 {
     display: grid;
@@ -313,8 +326,18 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     text-align: center;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+    
+    border: 3px solid #4a90e2; /* added border */
 }
+
+/* Optional: highlight border on hover */
+.team-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 16px 48px #1e3c72, 0 4px 32px #0008;
+    border-color: #fff;
+}
+
 .team-card::before {
     content: '';
     position: absolute;
@@ -376,11 +399,12 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 }
 /* Make the learn english and learn chinese buttons bigger */
 #englishBtn, #chineseBtn {
-    font-size: 2rem;
-    padding: 24px 48px;
+    font-size: 24px;
+    padding: 12px 24px;
     border-radius: 16px;
-    min-width: 220px;
-    min-height: 80px;
+    min-width: 120px;
+    min-height: 40px;
+    opacity: 1;
 }
 @media (max-width: 900px) {
     .team-grid-3x2 {
@@ -416,3 +440,122 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
         height: 80px;
     }
 }
+#rookie-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.game-area {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 400px;
+    background: #1d1c1a;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.player, .boss {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+/* Adjust horizontal position */
+.player {
+    margin-left: 80px;   /* move player a bit to the right */
+}
+
+.boss {
+    margin-right: 80px;  /* move boss a bit to the left */
+}
+
+.player img, .boss img {
+    width: 200px;
+    height: 200px;
+}
+
+.health-bar {
+    width: 100px;
+    height: 12px;
+    background: #3d3d3d;
+    border-radius: 6px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.health-fill {
+    width: 100%;
+    height: 100%;
+    background: #ff0000;
+    transition: width 0.3s;
+}
+
+.question-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    background: #29264e;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.answer-btn {
+    margin: 6px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #4a90e2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.answer-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Missile base style */
+.missile {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: red;
+    border-radius: 50%;
+}
+
+/* Player → Boss */
+@keyframes missileMovePlayer {
+    0% { transform: translate(0,0) rotate(0deg); }
+    50% { transform: translate(calc(50vw - 100px), -50px) rotate(20deg); }
+    100% { transform: translate(calc(100vw - 200px), 0) rotate(0deg); }
+}
+
+@keyframes missileMoveBoss {
+    0% { transform: translate(0,0) rotate(0deg); }
+    50% { transform: translate(calc(-50vw + 100px), -50px) rotate(-20deg); }
+    100% { transform: translate(calc(-100vw + 200px), 0) rotate(0deg); }
+}
+
