@@ -53,6 +53,7 @@
 .home-panda-area {
     flex: 1.2;
     min-width: 340px;
+    margin-bottom: -60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,8 +75,8 @@
     height: 35px;
     background: rgba(0,0,0,0.35);
     border-radius: 50%;
-    margin-top: -45px;
-    margin-bottom: 8px;
+    margin-top: -55px;
+    margin-bottom: 14px;
     filter: blur(2px);
     z-index: 1;
 }
@@ -368,7 +369,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
         transform: rotate(-20deg);
     }
 }
-/* Other sections styles */
+
 .section {
     min-height: 60vh;
     width: 100vw;
@@ -381,7 +382,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     box-sizing: border-box;
     padding: 40px 0;
 }
-/* Remove box-shadow and border-radius for home section to make Panda box invisible */
+
 #home-section {
     box-shadow: none !important;
     border-radius: 0 !important;
