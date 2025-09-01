@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rookie - Zendo</title>
+    <title>Rookie Level - Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         #rookie-section {
@@ -115,38 +116,100 @@
             50% {transform: translate(20px,-80px) rotate(20deg);}
             100% {transform: translate(0,-160px) rotate(0deg);}
         }
+
+        .logo-zendo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 8px;
+        }
+
+        .logo-zendo-text {
+            font-family: 'Satisfy', cursive;
+            font-size: 2em;
+            color: #fff;
+        }
+
+        .center-content {
+            text-align: center;
+            color: #fff;
+        }
+
+        .main-btn {
+            background: #4a90e2;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .main-btn:hover {
+            background: #357ab8;
+        }
+
+        /* Only the game area has the background image */
+        .rookie-game-area {
+            background-image: url('rookie bg.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
-    <div id="rookie-section">
-        <h1>Rookie 🐣</h1>
-        <div class="game-area">
-            <div class="player">
-                <img src="chara.png" alt="Player">
-                <div class="health-bar"><div class="health-fill" id="player-health"></div></div>
-            </div>
+    <div class="logo-zendo">
+        <img src="Zendo.png" alt="Logo" class="logo">
+        <span class="logo-zendo-text">Zendo</span>
+    </div>
+    <div class="center-content">
+        <div id="rookie-section">
+            <h1>Rookie 🐣</h1>
+            <div class="game-area rookie-game-area">
+                <div class="player">
+                    <img src="chara.png" alt="Player">
+                    <div class="health-bar"><div class="health-fill" id="player-health"></div></div>
+                </div>
 
-            <div class="boss">
-                <img src="boss.png" alt="Boss">
-                <div class="health-bar"><div class="health-fill" id="boss-health"></div></div>
-            </div>
+                <div class="boss">
+                    <img src="boss.png" alt="Boss">
+                    <div class="health-bar"><div class="health-fill" id="boss-health"></div></div>
+                </div>
 
-            <div class="missiles"></div>
+                <div class="missiles"></div>
 
-            <div class="question-box">
-                <h2 id="question-text">Loading question...</h2>
-                <div class="answers">
-                    <button class="answer-btn"></button>
-                    <button class="answer-btn"></button>
-                    <button class="answer-btn"></button>
-                    <button class="answer-btn"></button>
+                <div class="question-box">
+                    <h2 id="question-text">Loading question...</h2>
+                    <div class="answers">
+                        <button class="answer-btn"></button>
+                        <button class="answer-btn"></button>
+                        <button class="answer-btn"></button>
+                        <button class="answer-btn"></button>
+                    </div>
                 </div>
             </div>
+            <button class="main-btn" style="margin-top: 24px;" onclick="window.location.href='chinese.html'">
+        Back to Level Selection
+    </button>
         </div>
-        <button class="main-btn" style="margin-top: 24px;" onclick="window.location.href='chinese.html'">
-    Back to Level Selection
-</button>
 
+        <h1 style="margin-top: 32px;">Rookie Level Overview</h1>
+        <ul style="margin-top:24px; font-size:1.2em; color: #fff;">
+            <li>Learning pinyin, tones, greetings, numbers, and simple daily expressions.</li>
+            <li>Can introduce yourself, order food, and handle very basic conversations.</li>
+        </ul>
+        <button class="main-btn" style="margin-top:32px;" onclick="window.location.href='chinese.html'">Back to Levels</button>
+        <button class="main-btn" style="margin-top:16px;" onclick="window.location.href='index.html'">Back to Home</button>
     </div>
 
     <script src="rookie.js"></script>
