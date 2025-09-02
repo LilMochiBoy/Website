@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Rookie Quiz Level 5: Daily Objects & Places</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
 		.buzzer-effect {
@@ -128,6 +128,7 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
+			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,7 +162,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<span class="duo-title">Rookie Quiz 5: Daily Objects & Places</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -171,8 +172,41 @@
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
 	<script>
-	// Pause modal logic
+	function shuffleArray(arr) {
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
+	}
+
+	const originalQuestions = [
+		{ q: 'Translate: 学校', options: ['School', 'Book', 'Desk', 'Teacher'], answer: 0 },
+		{ q: '"书" = ___', options: ['Book', 'School', 'Chair', 'Computer'], answer: 0 },
+		{ q: 'Fill in: 这是我的___.', options: ['book', 'school', 'teacher', 'desk'], answer: 0 },
+		{ q: 'Match objects: 桌子', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 3 },
+		{ q: 'Match objects: 椅子', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 0 },
+		{ q: 'Match objects: 手机', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 1 },
+		{ q: 'Match objects: 电脑', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 2 },
+		{ q: 'Translate: 老师在教室里。', options: ['The teacher is in the classroom.', 'The teacher is at home.', 'The teacher is at the park.', 'The teacher is in the shop.'], answer: 0 },
+		{ q: 'Which is “water”?', options: ['火', '水', '木', '土'], answer: 1 },
+		{ q: 'Write pinyin: 火', options: ['huǒ', 'shuǐ', 'mù', 'tǔ'], answer: 0 },
+		{ q: 'Translate: 苹果', options: ['Apple', 'Rice', 'Bread', 'Milk'], answer: 0 },
+		{ q: '米饭 = ___', options: ['Rice', 'Bread', 'Apple', 'Milk'], answer: 0 },
+		{ q: 'Choose the odd one:', options: ['苹果', '水', '米饭', '面包'], answer: 1 },
+		{ q: 'Translate: 茶', options: ['Tea', 'Coffee', 'Milk', 'Juice'], answer: 0 },
+		{ q: 'Fill in: 我喜欢喝___.', options: ['tea', 'coffee', 'milk', 'juice'], answer: 0 },
+		{ q: 'Translate into Mandarin: I eat bread.', options: ['我吃面包。', '我喝水。', '我吃米饭。', '我吃苹果。'], answer: 0 },
+		{ q: 'Fill in: 他在喝___.', options: ['milk', 'tea', 'coffee', 'juice'], answer: 0 },
+		{ q: 'Translate: 牛奶', options: ['Milk', 'Juice', 'Tea', 'Coffee'], answer: 0 }
+	];
+
+	const questions = shuffleArray([...originalQuestions]);
+
+	let current = 0;
+	let score = 0;
 	let paused = false;
+
 	const pauseBtn = document.getElementById('pause-btn');
 	const pauseModal = document.getElementById('pause-modal');
 	const resumeBtn = document.getElementById('resume-btn');
@@ -192,7 +226,6 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		// Re-shuffle questions for a fresh start
 		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
 		shuffleArray(questions);
 		showQuestion();
@@ -201,98 +234,6 @@
 	exitBtn.onclick = function() {
 		window.location.href = 'rookie.html';
 	};
-	// Duolingo-style quiz logic
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
-
-	const originalQuestions = [
-		{
-			q: 'How do you say "Hello" in Mandarin?',
-			options: ['谢谢', '你好', '再见', '对不起'],
-			answer: 1
-		},
-		{
-			q: '"谢谢" means:',
-			options: ['Hello', 'Thank you', 'Goodbye', 'Sorry'],
-			answer: 1
-		},
-		{
-			q: 'Translate: 再见 (zàijiàn).',
-			options: ['Goodbye', 'Hello', 'Thank you', 'Sorry'],
-			answer: 0
-		},
-		{
-			q: 'Which tone is mā (妈 – mother)?',
-			options: ['First tone', 'Second tone', 'Third tone', 'Fourth tone'],
-			answer: 0
-		},
-		{
-			q: 'Which one is the rising tone?',
-			options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-			answer: 1
-		},
-        {
-            q: 'Which one is the falling tone?',
-            options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-            answer: 3
-        },
-		{
-			q: 'Fill in: To greet your teacher, say: ___ 好.',
-			options: ['老师', '谢谢', '你好', '再见'],
-			answer: 0
-		},
-		{
-			q: 'True or False: "老师" means student.',
-			options: ['True', 'False'],
-			answer: 1
-		},
-		{
-			q: 'Translate into English: 你好吗？',
-			options: ['How are you?', 'Hello!', 'Goodbye!', 'Thank you!'],
-			answer: 0
-		},
-		{
-			q: 'Fill in: Q: 你好吗？ A: 我___好。',
-			options: ['很', '不', '没', '再'],
-			answer: 0
-		},
-		{
-			q: 'Which pinyin is correct for "中国"?',
-			options: ['Zhōngguó', 'Zhángguó', 'Zhingguo', 'Zhonggua'],
-			answer: 0
-		},
-		{
-			q: 'What does 您 mean?',
-			options: ['You (polite)', 'We', 'He', 'She'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 不客气',
-			options: ['You’re welcome', 'Sorry', 'Hello', 'Goodbye'],
-			answer: 0
-		},
-		{
-			q: 'Fill in: 对不起 → ___关系',
-			options: ['没', '很', '不', '再'],
-			answer: 0
-		},
-		{
-			q: 'Write the pinyin for 谢谢.',
-			options: ['xièxie', 'xiexia', 'xiéxié', 'xìexìe'],
-			answer: 0
-		}
-	];
-
-	// Shuffle questions at the start
-	const questions = shuffleArray([...originalQuestions]);
-
-	let current = 0;
-	let score = 0;
 
 	function showQuestion() {
 		const q = questions[current];
@@ -301,12 +242,9 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
 		const shuffledOptions = shuffleArray(optionObjs);
-		// Find new correct answer index
 		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		// Store for checkAnswer
 		q._shuffledOptions = shuffledOptions;
 		q._shuffledAnswerIdx = newAnswerIdx;
 
@@ -315,7 +253,6 @@
 			btn.className = `answer-btn-custom border-c${i + 1}`;
 			btn.textContent = optObj.text;
 			btn.onclick = () => checkAnswer(i);
-			// Add fill div
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
 			btn.appendChild(fill);
@@ -333,23 +270,19 @@
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
-			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
 			const btn = btns[idx];
 			const fill = btn.querySelector('.answer-fill');
 			fill.style.height = '100%';
-			// Disable all buttons during animation
 			btns.forEach(b => b.disabled = true);
-			// Wait for animation to finish, then next question
 			setTimeout(() => {
 				if (!paused) nextQuestion();
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
-			// Show full-screen buzzer effect
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
 			buzzerDiv.className = 'buzzer-effect';

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Rookie Quiz Level 2: Numbers & Days</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
 		.buzzer-effect {
@@ -36,13 +36,6 @@
 			border-radius: 50%;
 			background: #fff;
 			box-shadow: 0 2px 8px #1e3c72;
-		}
-		.duo-title {
-			font-size: 2.2rem;
-			font-weight: 700;
-			color: #4a90e2;
-			font-family: 'Segoe UI', Arial, sans-serif;
-			text-shadow: 0 2px 8px #222;
 		}
 		.quiz-progress {
 			margin: 18px auto 0 auto;
@@ -150,6 +143,10 @@
 	</style>
 </head>
 <body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
+	<div class="duo-header">
+		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title" style="font-size:2.2rem;font-weight:700;color:#4a90e2;font-family:'Segoe UI',Arial,sans-serif;text-shadow:0 2px 8px #222;">Rookie Quiz 2: Numbers & Days</span>
+	</div>
 	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
 	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
 		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
@@ -159,10 +156,6 @@
 			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
 		</div>
 	</div>
-	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
-	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
 	</div>
@@ -171,8 +164,38 @@
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
 	<script>
-	// Pause modal logic
+	function shuffleArray(arr) {
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
+	}
+
+	const originalQuestions = [
+		{ q: 'What is “一” in numbers?', options: ['1', '2', '3', '4'], answer: 0 },
+		{ q: 'Write pinyin: 八', options: ['ba', 'bā', 'bā', 'bà'], answer: 1 },
+		{ q: '九 + 一 = ___', options: ['十', '十一', '九', '八'], answer: 0 },
+		{ q: 'Which means “seven”?', options: ['四', '七', '九', '十'], answer: 1 },
+		{ q: 'Match the numbers: 九', options: ['6', '2', '10', '9'], answer: 3 },
+		{ q: 'Translate: 今天', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 1 },
+		{ q: 'Fill in: 星期一 = ____.', options: ['Monday', 'Sunday', 'Friday', 'Saturday'], answer: 0 },
+		{ q: '"明天" means:', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 2 },
+		{ q: 'Write in characters: shíyī', options: ['十一', '十二', '十', '一'], answer: 0 },
+		{ q: 'Translate: 昨天', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 0 },
+		{ q: 'Which is correct word order for dates in Mandarin?', options: ['Month – Day – Year', 'Year – Month – Day', 'Day – Month – Year', 'Day – Year – Month'], answer: 1 },
+		{ q: 'Translate into Mandarin: Friday', options: ['星期五', '星期天', '星期一', '星期六'], answer: 0 },
+		{ q: 'Write pinyin: 十二', options: ['shíèr', 'shíyī', 'shíliù', 'shíjiǔ'], answer: 0 },
+		{ q: 'Fill in: 今天星期___.', options: ['一', '八', '好', '七'], answer: 0 },
+		{ q: 'True or False: 星期天 = Sunday.', options: ['True', 'False'], answer: 0 }
+	];
+
+	const questions = shuffleArray([...originalQuestions]);
+
+	let current = 0;
+	let score = 0;
 	let paused = false;
+
 	const pauseBtn = document.getElementById('pause-btn');
 	const pauseModal = document.getElementById('pause-modal');
 	const resumeBtn = document.getElementById('resume-btn');
@@ -192,7 +215,6 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		// Re-shuffle questions for a fresh start
 		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
 		shuffleArray(questions);
 		showQuestion();
@@ -201,98 +223,6 @@
 	exitBtn.onclick = function() {
 		window.location.href = 'rookie.html';
 	};
-	// Duolingo-style quiz logic
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
-
-	const originalQuestions = [
-		{
-			q: 'How do you say "Hello" in Mandarin?',
-			options: ['谢谢', '你好', '再见', '对不起'],
-			answer: 1
-		},
-		{
-			q: '"谢谢" means:',
-			options: ['Hello', 'Thank you', 'Goodbye', 'Sorry'],
-			answer: 1
-		},
-		{
-			q: 'Translate: 再见 (zàijiàn).',
-			options: ['Goodbye', 'Hello', 'Thank you', 'Sorry'],
-			answer: 0
-		},
-		{
-			q: 'Which tone is mā (妈 – mother)?',
-			options: ['First tone', 'Second tone', 'Third tone', 'Fourth tone'],
-			answer: 0
-		},
-		{
-			q: 'Which one is the rising tone?',
-			options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-			answer: 1
-		},
-        {
-            q: 'Which one is the falling tone?',
-            options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-            answer: 3
-        },
-		{
-			q: 'Fill in: To greet your teacher, say: ___ 好.',
-			options: ['老师', '谢谢', '你好', '再见'],
-			answer: 0
-		},
-		{
-			q: 'True or False: "老师" means student.',
-			options: ['True', 'False'],
-			answer: 1
-		},
-		{
-			q: 'Translate into English: 你好吗？',
-			options: ['How are you?', 'Hello!', 'Goodbye!', 'Thank you!'],
-			answer: 0
-		},
-		{
-			q: 'Fill in: Q: 你好吗？ A: 我___好。',
-			options: ['很', '不', '没', '再'],
-			answer: 0
-		},
-		{
-			q: 'Which pinyin is correct for "中国"?',
-			options: ['Zhōngguó', 'Zhángguó', 'Zhingguo', 'Zhonggua'],
-			answer: 0
-		},
-		{
-			q: 'What does 您 mean?',
-			options: ['You (polite)', 'We', 'He', 'She'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 不客气',
-			options: ['You’re welcome', 'Sorry', 'Hello', 'Goodbye'],
-			answer: 0
-		},
-		{
-			q: 'Fill in: 对不起 → ___关系',
-			options: ['没', '很', '不', '再'],
-			answer: 0
-		},
-		{
-			q: 'Write the pinyin for 谢谢.',
-			options: ['xièxie', 'xiexia', 'xiéxié', 'xìexìe'],
-			answer: 0
-		}
-	];
-
-	// Shuffle questions at the start
-	const questions = shuffleArray([...originalQuestions]);
-
-	let current = 0;
-	let score = 0;
 
 	function showQuestion() {
 		const q = questions[current];
@@ -301,12 +231,9 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
 		const shuffledOptions = shuffleArray(optionObjs);
-		// Find new correct answer index
 		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		// Store for checkAnswer
 		q._shuffledOptions = shuffledOptions;
 		q._shuffledAnswerIdx = newAnswerIdx;
 
@@ -315,7 +242,6 @@
 			btn.className = `answer-btn-custom border-c${i + 1}`;
 			btn.textContent = optObj.text;
 			btn.onclick = () => checkAnswer(i);
-			// Add fill div
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
 			btn.appendChild(fill);
@@ -333,15 +259,12 @@
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
-			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
 			const btn = btns[idx];
 			const fill = btn.querySelector('.answer-fill');
 			fill.style.height = '100%';
-			// Disable all buttons during animation
 			btns.forEach(b => b.disabled = true);
-			// Wait for animation to finish, then next question
 			setTimeout(() => {
 				if (!paused) nextQuestion();
 			}, 850);
@@ -349,7 +272,6 @@
 			const feedback = document.getElementById('quiz-feedback');
 			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
-			// Show full-screen buzzer effect
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
 			buzzerDiv.className = 'buzzer-effect';

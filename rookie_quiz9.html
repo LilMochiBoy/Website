@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Rookie Quiz Level 9: Simple Conversations</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
 		.buzzer-effect {
@@ -128,6 +128,7 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
+			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,7 +162,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<span class="duo-title">Rookie Quiz 9: Simple Conversations</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -171,8 +172,38 @@
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
 	<script>
-	// Pause modal logic
+	function shuffleArray(arr) {
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
+	}
+
+	const originalQuestions = [
+		{ q: 'Translate: 你叫什么名字？', options: ['What is your name?', 'Where are you from?', 'How old are you?', 'What do you do?'], answer: 0 },
+		{ q: 'Fill in: 我叫___.', options: ['Lily', 'China', 'English', 'Beijing'], answer: 0 },
+		{ q: 'Translate: 你是哪国人？', options: ['Which country are you from?', 'What is your name?', 'How old are you?', 'Where do you live?'], answer: 0 },
+		{ q: 'Translate: 我是美国人。', options: ['I am American.', 'I am Chinese.', 'I am English.', 'I am Canadian.'], answer: 0 },
+		{ q: 'Fill in: 我会说___语。', options: ['汉', '美', '英', '法'], answer: 0 },
+		{ q: 'Translate: 你会说汉语吗？', options: ['Can you speak Chinese?', 'Can you speak English?', 'Can you speak French?', 'Can you speak Japanese?'], answer: 0 },
+		{ q: 'Translate: 我会说中文。', options: ['I can speak Chinese.', 'I can speak English.', 'I can speak French.', 'I can speak Japanese.'], answer: 0 },
+		{ q: 'Fill in: 你去___吗？', options: ['学校', '商店', '图书馆', '饭店'], answer: 0 },
+		{ q: 'Translate: 我不去图书馆。', options: ['I am not going to the library.', 'I am not going to the shop.', 'I am not going to the restaurant.', 'I am not going to the school.'], answer: 0 },
+		{ q: 'Translate: 我想喝水。', options: ['I want to drink water.', 'I want to eat rice.', 'I want to go home.', 'I want to sleep.'], answer: 0 },
+		{ q: 'Fill in: 这本书___大。', options: ['很', '不', '也', '都'], answer: 0 },
+		{ q: 'Translate: 你家在哪里？', options: ['Where is your home?', 'Where is your school?', 'Where is your shop?', 'Where is your library?'], answer: 0 },
+		{ q: 'Translate: 我住在北京。', options: ['I live in Beijing.', 'I live in Shanghai.', 'I live in New York.', 'I live in London.'], answer: 0 },
+		{ q: 'Fill in: 这件衣服太___了。', options: ['大', '小', '长', '短'], answer: 0 },
+		{ q: 'Translate: 我们一起去看电影，好吗？', options: ['Shall we go to the movies together?', 'Shall we go to the park together?', 'Shall we go to the shop together?', 'Shall we go to the restaurant together?'], answer: 0 }
+	];
+
+	const questions = shuffleArray([...originalQuestions]);
+
+	let current = 0;
+	let score = 0;
 	let paused = false;
+
 	const pauseBtn = document.getElementById('pause-btn');
 	const pauseModal = document.getElementById('pause-modal');
 	const resumeBtn = document.getElementById('resume-btn');
@@ -192,7 +223,6 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		// Re-shuffle questions for a fresh start
 		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
 		shuffleArray(questions);
 		showQuestion();
@@ -201,98 +231,6 @@
 	exitBtn.onclick = function() {
 		window.location.href = 'rookie.html';
 	};
-	// Duolingo-style quiz logic
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
-
-	const originalQuestions = [
-		{
-			q: 'How do you say "Hello" in Mandarin?',
-			options: ['谢谢', '你好', '再见', '对不起'],
-			answer: 1
-		},
-		{
-			q: '"谢谢" means:',
-			options: ['Hello', 'Thank you', 'Goodbye', 'Sorry'],
-			answer: 1
-		},
-		{
-			q: 'Translate: 再见 (zàijiàn).',
-			options: ['Goodbye', 'Hello', 'Thank you', 'Sorry'],
-			answer: 0
-		},
-		{
-			q: 'Which tone is mā (妈 – mother)?',
-			options: ['First tone', 'Second tone', 'Third tone', 'Fourth tone'],
-			answer: 0
-		},
-		{
-			q: 'Which one is the rising tone?',
-			options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-			answer: 1
-		},
-        {
-            q: 'Which one is the falling tone?',
-            options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-            answer: 3
-        },
-		{
-			q: 'Fill in: To greet your teacher, say: ___ 好.',
-			options: ['老师', '谢谢', '你好', '再见'],
-			answer: 0
-		},
-		{
-			q: 'True or False: "老师" means student.',
-			options: ['True', 'False'],
-			answer: 1
-		},
-		{
-			q: 'Translate into English: 你好吗？',
-			options: ['How are you?', 'Hello!', 'Goodbye!', 'Thank you!'],
-			answer: 0
-		},
-		{
-			q: 'Fill in: Q: 你好吗？ A: 我___好。',
-			options: ['很', '不', '没', '再'],
-			answer: 0
-		},
-		{
-			q: 'Which pinyin is correct for "中国"?',
-			options: ['Zhōngguó', 'Zhángguó', 'Zhingguo', 'Zhonggua'],
-			answer: 0
-		},
-		{
-			q: 'What does 您 mean?',
-			options: ['You (polite)', 'We', 'He', 'She'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 不客气',
-			options: ['You’re welcome', 'Sorry', 'Hello', 'Goodbye'],
-			answer: 0
-		},
-		{
-			q: 'Fill in: 对不起 → ___关系',
-			options: ['没', '很', '不', '再'],
-			answer: 0
-		},
-		{
-			q: 'Write the pinyin for 谢谢.',
-			options: ['xièxie', 'xiexia', 'xiéxié', 'xìexìe'],
-			answer: 0
-		}
-	];
-
-	// Shuffle questions at the start
-	const questions = shuffleArray([...originalQuestions]);
-
-	let current = 0;
-	let score = 0;
 
 	function showQuestion() {
 		const q = questions[current];
@@ -301,12 +239,9 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
 		const shuffledOptions = shuffleArray(optionObjs);
-		// Find new correct answer index
 		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		// Store for checkAnswer
 		q._shuffledOptions = shuffledOptions;
 		q._shuffledAnswerIdx = newAnswerIdx;
 
@@ -315,7 +250,6 @@
 			btn.className = `answer-btn-custom border-c${i + 1}`;
 			btn.textContent = optObj.text;
 			btn.onclick = () => checkAnswer(i);
-			// Add fill div
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
 			btn.appendChild(fill);
@@ -333,23 +267,19 @@
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
-			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
 			const btn = btns[idx];
 			const fill = btn.querySelector('.answer-fill');
 			fill.style.height = '100%';
-			// Disable all buttons during animation
 			btns.forEach(b => b.disabled = true);
-			// Wait for animation to finish, then next question
 			setTimeout(() => {
 				if (!paused) nextQuestion();
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
-			// Show full-screen buzzer effect
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
 			buzzerDiv.className = 'buzzer-effect';
