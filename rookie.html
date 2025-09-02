@@ -14,29 +14,44 @@
             overflow: hidden;
             background: #181818;
         }
+        .map-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            max-width: 90vw;
+            aspect-ratio: 1536 / 1024;
+            max-height: 90vh;
+            transform: translate(-50%, -50%);
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .rookie-map-bg {
-            position: fixed;
+            position: absolute;
             top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('rookie map.png');
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
             z-index: 0;
         }
         .map-btns-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 1536px;
-            height: 1024px;
-            pointer-events: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         .level-btn {
             position: absolute;
-            width: 64px;
-            height: 64px;
+            width: 4.2%;
+            height: 7%;
+            min-width: 40px;
+            min-height: 40px;
+            max-width: 70px;
+            max-height: 70px;
             border-radius: 50%;
             background: rgba(74,144,226,0.85);
             color: #fff;
@@ -63,30 +78,24 @@
             cursor: not-allowed;
             pointer-events: none;
         }
-        /* Responsive scaling for smaller screens */
-        @media (max-width: 1536px), (max-height: 1024px) {
-            .map-btns-container {
-                transform: scale(
-                    min(calc(100vw / 1536), calc(100vh / 1024))
-                );
-                transform-origin: top left;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="rookie-map-bg"></div>
-    <div class="map-btns-container">
-        <div class="level-btn" id="level1" style="left:79px; top:227px;">1</div>
-        <div class="level-btn locked" id="level2" style="left:314px; top:209px;">2</div>
-        <div class="level-btn locked" id="level3" style="left:603px; top:243px;">3</div>
-        <div class="level-btn locked" id="level4" style="left:482px; top:407px;">4</div>
-        <div class="level-btn locked" id="level5" style="left:431px; top:573px;">5</div>
-        <div class="level-btn locked" id="level6" style="left:740px; top:563px;">6</div>
-        <div class="level-btn locked" id="level7" style="left:1133px; top:497px;">7</div>
-        <div class="level-btn locked" id="level8" style="left:1398px; top:641px;">8</div>
-        <div class="level-btn locked" id="level9" style="left:1122px; top:721px;">9</div>
-        <div class="level-btn locked" id="level10" style="left:869px; top:838px;">10</div>
+    <div class="map-wrapper">
+        <img src="rookie map.png" alt="Rookie Map" class="rookie-map-bg">
+        <div class="map-btns-container">
+            <!-- Positions are % of map size based on 1536x1024 -->
+            <div class="level-btn" id="level1" style="left:3.2%; top:22.2%;">1</div> <!-- 30px left -->
+            <div class="level-btn locked" id="level2" style="left:18.6%; top:21.2%;">2</div> <!-- 30px left -->
+            <div class="level-btn locked" id="level3" style="left:39.3%; top:30.6%;">3</div>
+            <div class="level-btn locked" id="level4" style="left:29.5%; top:42.7%;">4</div> <!-- 30px left, 20px down -->
+            <div class="level-btn locked" id="level5" style="left:28.1%; top:63.0%;">5</div>
+            <div class="level-btn locked" id="level6" style="left:48.2%; top:60.8%;">6</div> <!-- 20px up -->
+            <div class="level-btn locked" id="level7" style="left:68.6%; top:54.4%;">7</div> <!-- 40px left -->
+            <div class="level-btn locked" id="level8" style="left:84.5%; top:70.6%;">8</div> <!-- 40px left, 20px up -->
+            <div class="level-btn locked" id="level9" style="left:69.8%; top:78.2%;">9</div> <!-- 20px up -->
+            <div class="level-btn locked" id="level10" style="left:53.3%; top:91.6%;">10</div> <!-- 20px left, 20px up -->
+        </div>
     </div>
     <script>
         // When level 1 is clicked, open the quiz
