@@ -6,205 +6,94 @@
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        #rookie-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            width: 100%;
-        }
-
-        .game-area {
-            position: relative;
-            width: 90%;
-            max-width: 900px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            min-height: 400px;
-            background: #1d1c1a;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-
-        .player, .boss {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 120px;
-            position: relative;
-        }
-
-        .player img, .boss img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .health-bar {
-            width: 100px;
-            height: 12px;
-            background: #3d3d3d;
-            border-radius: 6px;
-            margin-top: 8px;
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
+            background: #181818;
         }
-
-        .health-fill {
-            width: 100%;
-            height: 100%;
-            background: #ff0000;
-            transition: width 0.3s;
+        .rookie-map-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('rookie map.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
         }
-
-        .question-box {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            background: #29264e;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .answers {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 12px;
-        }
-
-        .answer-btn {
-            margin: 6px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-            background: #4a90e2;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-
-        .answer-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .missiles {
-            position: absolute;
+        .map-btns-container {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 1536px;
+            height: 1024px;
             pointer-events: none;
         }
-
-        .missile {
+        .level-btn {
             position: absolute;
-            width: 16px;
-            height: 16px;
-            background: red;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
-            animation: missileMove 0.6s forwards;
-        }
-
-        @keyframes missileMove {
-            0% {transform: translate(0,0) rotate(0deg);}
-            50% {transform: translate(20px,-80px) rotate(20deg);}
-            100% {transform: translate(0,-160px) rotate(0deg);}
-        }
-
-        .logo-zendo {
+            background: rgba(74,144,226,0.85);
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: bold;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 16px #23294655;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            margin-right: 8px;
-        }
-
-        .logo-zendo-text {
-            font-family: 'Satisfy', cursive;
-            font-size: 2em;
-            color: #fff;
-        }
-
-        .center-content {
-            text-align: center;
-            color: #fff;
-        }
-
-        .main-btn {
-            background: #4a90e2;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
             cursor: pointer;
-            font-size: 1em;
-            transition: background 0.3s;
+            pointer-events: auto;
+            transition: transform 0.15s, background 0.2s, opacity 0.2s;
         }
-
-        .main-btn:hover {
+        .level-btn:hover:not(.locked) {
             background: #357ab8;
+            transform: scale(1.12);
         }
-
-        /* Only the game area has the background image */
-        .rookie-game-area {
-            background-image: url('rookie bg.png');
-            background-size: cover;
-            background-position: center;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        .level-btn.locked {
+            background: #bdbec8;
+            color: #888;
+            border: 3px solid #aaa;
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        /* Responsive scaling for smaller screens */
+        @media (max-width: 1536px), (max-height: 1024px) {
+            .map-btns-container {
+                transform: scale(
+                    min(calc(100vw / 1536), calc(100vh / 1024))
+                );
+                transform-origin: top left;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="logo-zendo">
-        <img src="Zendo.png" alt="Logo" class="logo">
-        <span class="logo-zendo-text">Zendo</span>
+    <div class="rookie-map-bg"></div>
+    <div class="map-btns-container">
+        <div class="level-btn" id="level1" style="left:79px; top:227px;">1</div>
+        <div class="level-btn locked" id="level2" style="left:314px; top:209px;">2</div>
+        <div class="level-btn locked" id="level3" style="left:603px; top:243px;">3</div>
+        <div class="level-btn locked" id="level4" style="left:482px; top:407px;">4</div>
+        <div class="level-btn locked" id="level5" style="left:431px; top:573px;">5</div>
+        <div class="level-btn locked" id="level6" style="left:740px; top:563px;">6</div>
+        <div class="level-btn locked" id="level7" style="left:1133px; top:497px;">7</div>
+        <div class="level-btn locked" id="level8" style="left:1398px; top:641px;">8</div>
+        <div class="level-btn locked" id="level9" style="left:1122px; top:721px;">9</div>
+        <div class="level-btn locked" id="level10" style="left:869px; top:838px;">10</div>
     </div>
-    <div class="center-content">
-        <div id="rookie-section">
-            <h1>Rookie 🐣</h1>
-            <div class="game-area rookie-game-area">
-                <div class="player">
-                    <img src="chara.png" alt="Player">
-                    <div class="health-bar"><div class="health-fill" id="player-health"></div></div>
-                </div>
-
-                <div class="boss">
-                    <img src="boss.png" alt="Boss">
-                    <div class="health-bar"><div class="health-fill" id="boss-health"></div></div>
-                </div>
-
-                <div class="missiles"></div>
-
-                <div class="question-box">
-                    <h2 id="question-text">Loading question...</h2>
-                    <div class="answers">
-                        <button class="answer-btn"></button>
-                        <button class="answer-btn"></button>
-                        <button class="answer-btn"></button>
-                        <button class="answer-btn"></button>
-                    </div>
-                </div>
-            </div>
-            <button class="main-btn" style="margin-top: 24px;" onclick="window.location.href='chinese.html'">
-                Back to Level Selection
-            </button>
-        </div>
-        <button class="main-btn" style="margin-top:16px;" onclick="window.location.href='index.html'">Back to Home</button>
-    </div>
-
-    <script src="rookie.js"></script>
+    <script>
+        // When level 1 is clicked, open the quiz (replace with your quiz logic or redirect)
+        document.getElementById('level1').onclick = function() {
+            window.location.href = 'rookie_quiz.html'; // Change to your actual quiz file
+        };
+        // To unlock next levels after completion, you will need to add logic here later.
+    </script>
 </body>
 </html>
