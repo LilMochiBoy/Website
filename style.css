@@ -697,3 +697,115 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     max-width: 900px;
 }
 
+/* Contact Section Styles */
+.contact-box {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0;
+    background: rgba(20,30,60,0.85);
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #23294655;
+    padding: 38px 32px;
+    color: #f4f4fb;
+}
+.contact-header {
+    text-align: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+.contact-header-us {
+    font-family: 'Satisfy', cursive;
+    background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing:2px;
+    text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;
+}
+.contact-subtitle {
+    text-align: center;
+    font-size: 1.35rem;
+    margin-bottom: 32px;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.contact-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    margin-left: 80px;
+}
+.contact-method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+.contact-icon {
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+}
+.contact-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.contact-detail {
+    font-size: 1rem;
+    color: #b3c6ff;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+}
+.contact-form-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+.contact-input {
+    flex:1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #232946;
+    color: #f4f4fb;
+    font-size: 1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.contact-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #232946;
+    color: #f4f4fb;
+    font-size: 1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    min-height: 48px;
+    resize: none;
+    box-sizing: border-box;
+}
+.contact-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #7f9cf5, #357abd);
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 0;
+    margin-top: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #23294655;
+}
+

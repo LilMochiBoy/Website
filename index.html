@@ -156,33 +156,33 @@
     </div>
 </div>
         <div class="section" id="contact-section" style="margin-top:-80px; display: flex; flex-direction: column; align-items: center;">
-    <div style="max-width: 700px; width: 100%; margin: 0 auto; margin-top: 0; background: rgba(20,30,60,0.85); border-radius: 18px; box-shadow: 0 2px 16px #23294655; padding: 38px 32px; color: #f4f4fb;">
-        <h1 style="text-align: center; font-family: 'Montserrat', Arial, sans-serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 10px;">Contact <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Us</span></h1>
-        <div style="text-align: center; font-size: 1.35rem; margin-bottom: 32px; font-family: 'Montserrat', Arial, sans-serif;">Have questions or need support? We’re here to help!</div>
-    <div style="display: flex; justify-content: flex-start; gap: 48px; margin-bottom: 32px; flex-wrap: wrap; margin-left: 40px;">
-            <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
-                <div style="font-size: 2.2rem; margin-bottom: 6px;">📧</div>
-                <div style="font-size: 1.1rem; font-weight: 700;">Email</div>
-                <div style="font-size: 1rem; color: #b3c6ff;">zendo.support@mail.com</div>
+    <div class="contact-box">
+        <h1 class="contact-header">Contact <span class="contact-header-us">Us</span></h1>
+        <div class="contact-subtitle">Have questions or need support? We’re here to help!</div>
+        <div class="contact-row">
+            <div class="contact-method">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-detail">zendo.support@mail.com</div>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
-                <div style="font-size: 2.2rem; margin-bottom: 6px;">☎️</div>
-                <div style="font-size: 1.1rem; font-weight: 700;">Telephone</div>
-                <div style="font-size: 1rem; color: #b3c6ff;">+86 135-7924-6581</div>
+            <div class="contact-method">
+                <div class="contact-icon">☎️</div>
+                <div class="contact-label">Telephone</div>
+                <div class="contact-detail">+86 135-7924-6581</div>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px;">
-                <div style="font-size: 2.2rem; margin-bottom: 6px;">📸</div>
-                <div style="font-size: 1.1rem; font-weight: 700;">Instagram</div>
-                <div style="font-size: 1rem; color: #b3c6ff;">@Zendo.ign</div>
+            <div class="contact-method">
+                <div class="contact-icon">📸</div>
+                <div class="contact-label">Instagram</div>
+                <div class="contact-detail">@Zendo.ign</div>
             </div>
         </div>
-        <form style="display: flex; flex-direction: column; gap: 16px; align-items: center; margin-top: 10px;">
-            <div style="display: flex; gap: 16px; width: 100%;">
-                <input type="text" placeholder="Your Name" style="flex:1; padding: 12px; border-radius: 8px; border: none; background: #232946; color: #f4f4fb; font-size: 1rem; font-family: 'Montserrat', Arial, sans-serif;">
-                <input type="email" placeholder="Your Email" style="flex:1; padding: 12px; border-radius: 8px; border: none; background: #232946; color: #f4f4fb; font-size: 1rem; font-family: 'Montserrat', Arial, sans-serif;">
+        <form class="contact-form">
+            <div class="contact-form-row">
+                <input type="text" placeholder="Your Name" class="contact-input">
+                <input type="email" placeholder="Your Email" class="contact-input">
             </div>
-            <textarea placeholder="Message" style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #232946; color: #f4f4fb; font-size: 1rem; font-family: 'Montserrat', Arial, sans-serif; min-height: 48px; resize: none; box-sizing: border-box;"></textarea>
-            <button type="submit" style="width: 100%; background: linear-gradient(90deg, #7f9cf5, #357abd); color: #fff; font-size: 1.2rem; font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; border: none; border-radius: 8px; padding: 14px 0; margin-top: 8px; cursor: pointer; box-shadow: 0 2px 8px #23294655;">Send Message</button>
+            <textarea placeholder="Message" class="contact-textarea"></textarea>
+            <button type="submit" class="contact-btn">Send Message</button>
         </form>
     </div>
 </div>
@@ -253,7 +253,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
-    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('chineseBtn').onclick = function() {
