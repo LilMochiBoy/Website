@@ -181,24 +181,33 @@
 	}
 
 	const originalQuestions = [
+		// 61. Translate: 学校
 		{ q: 'Translate: 学校', options: ['School', 'Book', 'Desk', 'Teacher'], answer: 0 },
+		// 62. "书" = ___
 		{ q: '"书" = ___', options: ['Book', 'School', 'Chair', 'Computer'], answer: 0 },
-		{ q: 'Fill in: 这是我的___.', options: ['book', 'school', 'teacher', 'desk'], answer: 0 },
+		// 64-68. Match objects (grouped)
 		{ q: 'Match objects: 桌子', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 3 },
 		{ q: 'Match objects: 椅子', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 0 },
 		{ q: 'Match objects: 手机', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 1 },
 		{ q: 'Match objects: 电脑', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 2 },
+		// 69. Translate: 老师在教室里。
 		{ q: 'Translate: 老师在教室里。', options: ['The teacher is in the classroom.', 'The teacher is at home.', 'The teacher is at the park.', 'The teacher is in the shop.'], answer: 0 },
+		// 70. Which is “water”?
 		{ q: 'Which is “water”?', options: ['火', '水', '木', '土'], answer: 1 },
+		// 71. Write pinyin: 火
 		{ q: 'Write pinyin: 火', options: ['huǒ', 'shuǐ', 'mù', 'tǔ'], answer: 0 },
+		// 72. Translate: 苹果
 		{ q: 'Translate: 苹果', options: ['Apple', 'Rice', 'Bread', 'Milk'], answer: 0 },
+		// 73. 米饭 = ___
 		{ q: '米饭 = ___', options: ['Rice', 'Bread', 'Apple', 'Milk'], answer: 0 },
+		// 74. Choose the odd one:
 		{ q: 'Choose the odd one:', options: ['苹果', '水', '米饭', '面包'], answer: 1 },
+		// 75. Translate: 茶
 		{ q: 'Translate: 茶', options: ['Tea', 'Coffee', 'Milk', 'Juice'], answer: 0 },
-		{ q: 'Fill in: 我喜欢喝___.', options: ['tea', 'coffee', 'milk', 'juice'], answer: 0 },
-		{ q: 'Translate into Mandarin: I eat bread.', options: ['我吃面包。', '我喝水。', '我吃米饭。', '我吃苹果。'], answer: 0 },
-		{ q: 'Fill in: 他在喝___.', options: ['milk', 'tea', 'coffee', 'juice'], answer: 0 },
-		{ q: 'Translate: 牛奶', options: ['Milk', 'Juice', 'Tea', 'Coffee'], answer: 0 }
+		// 76. Fill in: 我喜欢喝___。
+		{ q: 'Fill in: 我喜欢喝___。', options: ['tea', 'table', 'passport', 'jacket'], answer: 0 },
+		// 78. Fill in: 他在喝___。
+		{ q: 'Fill in: 他在喝___。', options: ['milk', 'book', 'desk', 'computer'], answer: 0 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);

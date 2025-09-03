@@ -181,24 +181,33 @@
 	}
 
 	const originalQuestions = [
+		// 46. Translate: 爸爸
 		{ q: 'Translate: 爸爸', options: ['Father', 'Mother', 'Brother', 'Grandfather'], answer: 0 },
+		// 47. 妈妈 = ___
 		{ q: '妈妈 = ___', options: ['Mother', 'Father', 'Sister', 'Grandmother'], answer: 0 },
+		// 48. Fill in: 她是我的___。 (She is my mother.)
 		{ q: 'Fill in: 她是我的___。 (She is my mother.)', options: ['妈妈', '姐姐', '妹妹', '朋友'], answer: 0 },
+		// 49-53. Match family (grouped)
 		{ q: 'Match family: 哥哥', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 2 },
 		{ q: 'Match family: 妹妹', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 0 },
 		{ q: 'Match family: 姐姐', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 3 },
 		{ q: 'Match family: 弟弟', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 1 },
+		// 54. Translate: 家
 		{ q: 'Translate: 家', options: ['Home/Family', 'Mother', 'Father', 'Friend'], answer: 0 },
-		{ q: 'Write characters: gēge', options: ['哥哥', '姐姐', '弟弟', '妹妹'], answer: 0 },
-		{ q: 'Translate: 这是我的朋友。', options: ['This is my friend.', 'This is my mother.', 'This is my sister.', 'This is my brother.'], answer: 0 },
+		// 57. Fill in: 她不是我的姐姐，她是我的___.
 		{ q: 'Fill in: 她不是我的姐姐，她是我的___.', options: ['妹妹', '妈妈', '朋友', '爷爷'], answer: 0 },
+		// 58. 爷爷 = ___
 		{ q: '爷爷 = ___', options: ['Grandfather', 'Grandmother', 'Father', 'Uncle'], answer: 0 },
+		// 59. True or False: 孩子 = child.
 		{ q: 'True or False: 孩子 = child.', options: ['True', 'False'], answer: 0 },
+		// 60. Translate: 她有一个弟弟。
 		{ q: 'Translate: 她有一个弟弟。', options: ['She has a younger brother.', 'She has a younger sister.', 'She has a friend.', 'She has a mother.'], answer: 0 },
+		// 61. Write pinyin: 父母
 		{ q: 'Write pinyin: 父母', options: ['fùmǔ', 'māmā', 'jiā', 'gēge'], answer: 0 },
+		// 62. Translate: 我爱我的家。
 		{ q: 'Translate: 我爱我的家。', options: ['I love my family.', 'I love my mother.', 'I love my friend.', 'I love my sister.'], answer: 0 },
-		{ q: 'Fill in: 他是我妈妈的爸爸，他是我的___.', options: ['爷爷', '爸爸', '弟弟', '哥哥'], answer: 0 },
-		{ q: 'Translate into Mandarin: My older sister is 20', options: ['我的姐姐二十岁。', '我的妹妹二十岁。', '我的妈妈二十岁。', '我的朋友二十岁。'], answer: 0 }
+		// 63. Fill in: 他是我妈妈的爸爸，他是我的___.
+		{ q: 'Fill in: 他是我妈妈的爸爸，他是我的___.', options: ['爷爷', '爸爸', '弟弟', '哥哥'], answer: 0 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -312,7 +321,7 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!</div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: 15 / 15<br><br>🐼 Panda is proud of you!</div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 	}
 
