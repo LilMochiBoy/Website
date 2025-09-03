@@ -18,5 +18,15 @@
     "username": "Tester",
     "password": "123",
     "email": "Tester@gmail.com"
+  },
+  {
+    "username": "User",
+    "password": "123",
+    "email": "User@gmail.com"
+  },
+  {
+    "username": "User1",
+    "password": "123",
+    "email": "User1@gmail.com"
   }
 ]
