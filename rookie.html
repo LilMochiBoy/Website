@@ -87,59 +87,76 @@
         <div class="map-btns-container">
             <!-- Positions are % of map size based on 1536x1024 -->
             <div class="level-btn" id="level1" style="left:3.2%; top:22.2%;">1</div> <!-- 30px left -->
-            <div class="level-btn" id="level2" style="left:18.6%; top:21.2%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">2</div> <!-- 30px left -->
-            <div class="level-btn" id="level3" style="left:39.3%; top:30.6%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">3</div>
-            <div class="level-btn" id="level4" style="left:29.5%; top:42.7%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">4</div> <!-- 30px left, 20px down -->
-            <div class="level-btn" id="level5" style="left:28.1%; top:63.0%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">5</div>
-            <div class="level-btn" id="level6" style="left:48.2%; top:60.8%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">6</div> <!-- 20px up -->
-            <div class="level-btn" id="level7" style="left:68.6%; top:54.4%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">7</div> <!-- 40px left -->
-            <div class="level-btn" id="level8" style="left:84.5%; top:70.6%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">8</div> <!-- 40px left, 20px up -->
-            <div class="level-btn" id="level9" style="left:69.8%; top:78.2%; background:rgba(74,144,226,0.85); color:#fff; border:3px solid #fff;">9</div> <!-- 20px up -->
+            <div class="level-btn locked" id="level2" style="left:18.6%; top:21.2%;">2</div> <!-- 30px left -->
+            <div class="level-btn locked" id="level3" style="left:39.3%; top:30.6%;">3</div>
+            <div class="level-btn locked" id="level4" style="left:29.5%; top:42.7%;">4</div> <!-- 30px left, 20px down -->
+            <div class="level-btn locked" id="level5" style="left:28.1%; top:63.0%;">5</div>
+            <div class="level-btn locked" id="level6" style="left:48.2%; top:60.8%;">6</div> <!-- 20px up -->
+            <div class="level-btn locked" id="level7" style="left:68.6%; top:54.4%;">7</div> <!-- 40px left -->
+            <div class="level-btn locked" id="level8" style="left:84.5%; top:70.6%;">8</div> <!-- 40px left, 20px up -->
+            <div class="level-btn locked" id="level9" style="left:69.8%; top:78.2%;">9</div> <!-- 20px up -->
             <div class="level-btn locked" id="level10" style="left:53.3%; top:91.6%;">10</div> <!-- 20px left, 20px up -->
         </div>
     </div>
     <script>
-        // When level 1 is clicked, open the quiz
-        document.getElementById('level1').onclick = function() {
-            window.location.href = 'rookie_quiz1.html';
-        };
-        // When level 2 is clicked, open the quiz 2
-        document.getElementById('level2').onclick = function() {
-            window.location.href = 'rookie_quiz2.html';
-        };
-        // When level 3 is clicked, open the quiz 3
-        document.getElementById('level3').onclick = function() {
-            window.location.href = 'rookie_quiz3.html';
-        };
-        // When level 4 is clicked, open the quiz 4
-        document.getElementById('level4').onclick = function() {
-            window.location.href = 'rookie_quiz4.html';
-        };
-        // When level 5 is clicked, open the quiz 5
-        document.getElementById('level5').onclick = function() {
-            window.location.href = 'rookie_quiz5.html';
-        };
-        // When level 6 is clicked, open the quiz 6
-        document.getElementById('level6').onclick = function() {
-            window.location.href = 'rookie_quiz6.html';
-        };
-        // When level 7 is clicked, open the quiz 7
-        document.getElementById('level7').onclick = function() {
-            window.location.href = 'rookie_quiz7.html';
-        };
-        // When level 8 is clicked, open the quiz 8
-        document.getElementById('level8').onclick = function() {
-            window.location.href = 'rookie_quiz8.html';
-        };
-        // When level 9 is clicked, open the quiz 9
-        document.getElementById('level9').onclick = function() {
-            window.location.href = 'rookie_quiz9.html';
-        };
+
+        // Check login status (replace with your actual login logic)
+        function isLoggedIn() {
+            // Example: check for a user ID in localStorage (customize as needed)
+            return !!localStorage.getItem('rookieUserId');
+        }
+
+        // If not logged in, reset progress to Level 1
+        if (!isLoggedIn()) {
+            localStorage.setItem('rookieUnlockedLevel', '1');
+        }
+
+        function getUnlockedLevel() {
+            return parseInt(localStorage.getItem('rookieUnlockedLevel') || '1');
+        }
+        function setUnlockedLevel(level) {
+            localStorage.setItem('rookieUnlockedLevel', String(level));
+        }
+
+        function updateLevelLocks() {
+            const unlockedLevel = getUnlockedLevel();
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.getElementById('level' + i);
+                if (!btn) continue;
+                if (i <= unlockedLevel) {
+                    btn.classList.remove('locked');
+                    btn.style.background = 'rgba(74,144,226,0.85)';
+                    btn.style.color = '#fff';
+                    btn.style.border = '3px solid #fff';
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                    btn.onclick = function() {
+                        window.location.href = 'rookie_quiz' + i + '.html';
+                    };
+                } else {
+                    btn.classList.add('locked');
+                    btn.style.background = '#bdbec8';
+                    btn.style.color = '#888';
+                    btn.style.border = '3px solid #aaa';
+                    btn.style.opacity = '0.6';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = null;
+                }
+            }
+        }
+
+        // Call on page load
+        updateLevelLocks();
+
         // Back button leads to Chinese proficiency selection (chinese.html)
         document.getElementById('back-btn').onclick = function() {
             window.location.href = 'chinese.html';
         };
-        // To unlock next levels after completion, you will need to add logic here later.
+
+        // After quiz completion, each quiz page should call:
+        // setUnlockedLevel(nextLevelNumber);
+        // For example, after finishing level 1, call setUnlockedLevel(2)
+        // You need to add this call to each quiz page after the player finishes the quiz.
     </script>
 </body>
 </html>

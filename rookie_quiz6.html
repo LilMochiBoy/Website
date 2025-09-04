@@ -306,11 +306,19 @@
 		bar.style.width = ((current / questions.length) * 100) + '%';
 	}
 
+	function setUnlockedLevel(level) {
+		const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
+		if (level > unlocked) {
+			localStorage.setItem('rookieUnlockedLevel', String(level));
+		}
+	}
+
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!</div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
+		setUnlockedLevel(7);
 	}
 
 	showQuestion();
