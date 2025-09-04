@@ -57,7 +57,7 @@ function loginSubmit() {
     var user = document.getElementById('loginUsername').value;
     var pass = document.getElementById('loginPassword').value;
     if (!user || !pass) {
-        showModal('Please enter username and password.');
+        showModal(`<div style='font-size:1.1em;font-weight:600;margin-bottom:12px;color:#e74c3c;'>Please enter both username and password.</div>`);
         return;
     }
     fetch('http://localhost:3000/api/login', {
@@ -85,7 +85,7 @@ function signupSubmit() {
     var pass = document.getElementById('signupPassword').value;
     var confirm = document.getElementById('signupConfirm').value;
     if (!user || !email || !pass || !confirm) {
-        showModal('Please fill all fields.');
+        showModal(`<div style='font-size:1.1em;font-weight:600;margin-bottom:12px;color:#e74c3c;'>Please fill in all fields before signing up.</div>`);
         return;
     }
     if (pass !== confirm) {

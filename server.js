@@ -43,6 +43,24 @@ app.post('/api/login', (req, res) => {
     }
 });
 
+
+// Contact form endpoint
+app.post('/api/contact', (req, res) => {
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+        return res.json({ success: false, message: 'All fields required.' });
+    }
+    // Save message to file (or send email, etc.)
+    const CONTACT_FILE = 'contact_messages.json';
+    let messages = [];
+    if (fs.existsSync(CONTACT_FILE)) {
+        messages = JSON.parse(fs.readFileSync(CONTACT_FILE));
+    }
+    messages.push({ name, email, message, date: new Date().toISOString() });
+    fs.writeFileSync(CONTACT_FILE, JSON.stringify(messages, null, 2));
+    res.json({ success: true });
+});
+
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
 
 // REMOVE ALL CODE BELOW THIS LINE!

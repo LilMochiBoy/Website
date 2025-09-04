@@ -176,12 +176,12 @@
                 <div class="contact-detail">@Zendo.ign</div>
             </div>
         </div>
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm">
             <div class="contact-form-row">
-                <input type="text" placeholder="Your Name" class="contact-input">
-                <input type="email" placeholder="Your Email" class="contact-input">
+                <input type="text" placeholder="Your Name" class="contact-input" id="contactName">
+                <input type="email" placeholder="Your Email" class="contact-input" id="contactEmail">
             </div>
-            <textarea placeholder="Message" class="contact-textarea"></textarea>
+            <textarea placeholder="Message" class="contact-textarea" id="contactMessage"></textarea>
             <button type="submit" class="contact-btn">Send Message</button>
         </form>
     </div>
@@ -243,6 +243,39 @@
                 }
             }
         }
+
+        // Contact form handler
+        document.addEventListener('DOMContentLoaded', function() {
+            var contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var name = document.getElementById('contactName').value.trim();
+                    var email = document.getElementById('contactEmail').value.trim();
+                    var message = document.getElementById('contactMessage').value.trim();
+                    if (!name || !email || !message) {
+                        showModal(`<div style='font-size:1.1em;font-weight:600;margin-bottom:12px;color:#e74c3c;'>Please fill in all fields before sending your message.</div><button class='main-btn' onclick='closeModal()'>Close</button>`);
+                            showModal(`<div style='font-size:1.1em;font-weight:600;margin-bottom:12px;color:#e74c3c;'>Please fill in all fields before sending your message.</div>`);
+                        return;
+                    }
+                    fetch('http://localhost:3000/api/contact', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ name, email, message })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                                    showModal(`<div style='font-size:1.2em;font-weight:600;margin-bottom:12px;'>Message sent! Thank you for contacting us.</div>`);
+                            contactForm.reset();
+                        } else {
+                            showModal('Failed to send message: ' + data.message);
+                        }
+                    })
+                    .catch(() => showModal('Unable to connect to server.'));
+                });
+            }
+        });
     </script>
     <style>
         .fade-in {
