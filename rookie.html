@@ -106,10 +106,7 @@
             return !!localStorage.getItem('rookieUserId');
         }
 
-        // If not logged in, reset progress to Level 1
-        if (!isLoggedIn()) {
-            localStorage.setItem('rookieUnlockedLevel', '1');
-        }
+    // Progress will NOT reset on every page load. Only reset when explicitly requested (e.g., logout or reset button).
 
         function getUnlockedLevel() {
             return parseInt(localStorage.getItem('rookieUnlockedLevel') || '1');

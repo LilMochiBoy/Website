@@ -322,15 +322,32 @@
 		const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
 		if (level > unlocked) {
 			localStorage.setItem('rookieUnlockedLevel', String(level));
+			// If logged in, update backend
+			var username = localStorage.getItem('rookieUserId');
+			if (username) {
+				fetch('http://localhost:3000/api/updateProgress', {
+					method: 'POST',
+					headers: {'Content-Type': 'application/json'},
+					body: JSON.stringify({ username, unlockedLevel: level })
+				});
+			}
 		}
 	}
 
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!</div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(6);
+		setTimeout(function() {
+			var btn = document.getElementById('nextLevelBtn');
+			if (btn) {
+				btn.onclick = function() {
+					window.location.href = 'rookie_quiz6.html';
+				};
+			}
+		}, 100);
 	}
 
 	showQuestion();

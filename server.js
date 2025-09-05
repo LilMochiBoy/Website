@@ -1,8 +1,41 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+
+
+app.post('/api/getProgress', (req, res) => {
+    const { username } = req.body;
+    if (!username) return res.json({ success: false, message: 'No username.' });
+    let users = loadUsers();
+    let user = users.find(u => u.username === username);
+    if (user) {
+        res.json({ success: true, unlockedLevel: user.unlockedLevel || 1 });
+    } else {
+        res.json({ success: false, message: 'User not found.' });
+    }
+});
+
+app.post('/api/updateProgress', (req, res) => {
+    const { username, unlockedLevel } = req.body;
+    if (!username || typeof unlockedLevel !== 'number') {
+        return res.json({ success: false, message: 'Missing data.' });
+    }
+    let users = loadUsers();
+    let user = users.find(u => u.username === username);
+    if (user) {
+        user.unlockedLevel = unlockedLevel;
+        saveUsers(users);
+        res.json({ success: true });
+    } else {
+        res.json({ success: false, message: 'User not found.' });
+    }
+});
 
 app.use(cors());
 app.use(bodyParser.json());

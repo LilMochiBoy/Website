@@ -26,6 +26,15 @@
         const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
         if (level > unlocked) {
             localStorage.setItem('rookieUnlockedLevel', String(level));
+            // If logged in, update backend
+            var username = localStorage.getItem('rookieUserId');
+            if (username) {
+                fetch('http://localhost:3000/api/updateProgress', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ username, unlockedLevel: level })
+                });
+            }
         }
     }
     // If you want to unlock future levels, call setUnlockedLevel(11) here after quiz completion.
