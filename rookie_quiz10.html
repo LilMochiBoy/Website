@@ -1,34 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 10: Advanced Conversations</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body { background: #232946; color: #f7f7fa; font-family: 'Segoe UI', Arial, sans-serif; }
-        .duo-header { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 32px; margin-bottom: 18px; }
-        .duo-img { width: 64px; height: 64px; border-radius: 50%; background: #fff; box-shadow: 0 2px 8px #1e3c72; }
-        .duo-title { font-size: 2.2rem; font-weight: 700; color: #4a90e2; text-shadow: 0 2px 8px #222; }
-        .quiz-finish { font-size: 1.5rem; color: #4a90e2; font-weight: 700; margin-top: 24px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boss Level</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      width: 100%;
+      background: url(icebg.jpg);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .game-area {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      min-height: 72vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-top: 20px;
+      padding-bottom: 120px;
+    }
+
+    .battle-scene {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .boss-container {
+      position: absolute;
+      bottom: 0px;
+      z-index: 1;
+    }
+
+    .boss {
+      width: 60vw;
+      max-width: 540px;
+      aspect-ratio: 1/1;
+      background-image: url("boss.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      image-rendering: pixelated;
+      opacity: 0.9;
+    }
+
+    .character-container {
+      position: absolute;
+      bottom: 0px;
+      z-index: 4;
+    }
+
+    .character {
+      width: 15vw;
+      max-width: 120px;
+      aspect-ratio: 1/1;
+      background-image: url("chara.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      image-rendering: pixelated;
+    }
+
+    .boss-container .health-bar {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .character-container .health-bar {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .health-bar {
+      width: 150px;
+      height: 15px;
+      background: #444;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      opacity: 1;
+      transition: opacity 1s ease, width 0.3s linear;
+    }
+
+    .health {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #ff0000, #ff0000);
+      transition: width 0.4s ease;
+    }
+
+    .question-box {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(to top, rgba(180, 220, 255, 0.95), rgba(230, 250, 255, 0.85));
+      border-top: 2px solid #aee6ff;
+      box-shadow: 0 -6px 20px rgba(150, 220, 255, 0.5);
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 10;
+      backdrop-filter: blur(8px) brightness(1.2);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .answers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    .answers button, #continueBtn {
+      background: linear-gradient(to bottom, #d0f4ff, #90e0ef);
+      color: #023e8a;
+      border: 1px solid #caf0f8;
+      border-radius: 12px;
+      padding: 12px 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 180, 255, 0.3), inset 0 -2px 6px rgba(255,255,255,0.6);
+    }
+
+    .answers button:hover, #continueBtn:hover {
+      background: linear-gradient(to bottom, #e0faff, #a5e6f0);
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0, 180, 255, 0.5), inset 0 -2px 6px rgba(255,255,255,0.8);
+    }
+
+    .answers button:active, #continueBtn:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px #2c80b4, 0 4px 6px rgba(0,0,0,0.25);
+    }
+
+    .rocket, .boss-missile {
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: none;
+    }
+
+    .rocket {
+      width: 200px;
+      height: 200px;
+      background-image: url('MagicAtt.png');
+      z-index: 3;
+    }
+
+    .boss-missile {
+      width: 150px;
+      height: 150px;
+      background-image: url('BossAtt.png');
+      z-index: 2;
+    }
+
+    .dead {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      pointer-events: none;
+    }
+
+    .fadeout { opacity: 0; }
+
+    .fragment {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: explode 0.5s forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+    }
+
+    #actionBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      z-index: 1000;
+      box-shadow: 0 6px #2c80b4, 0 6px 10px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    #actionBtn:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px #2c80b4, 0 8px 12px rgba(0,0,0,0.35);
+    }
+
+    #actionBtn:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px #2c80b4, 0 4px 6px rgba(0,0,0,0.25);
+    }
+
+    .damage {
+      animation: hitFlash 0.3s;
+    }
+
+    @keyframes hitFlash {
+      0% { filter: brightness(2); }
+      50% { filter: brightness(0.5); }
+      100% { filter: brightness(1); }
+    }
+
+    #selectedWords {
+      margin: 5px 0;
+      min-height: 40px;
+      border: 1px dashed #aaa;
+      padding: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      box-sizing: border-box;
+      max-height: none;
+      overflow-y: auto;
+    }
+
+    .word-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .word-pool button.selected {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .multiple-choice {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 10: Advanced Conversations</span>
+  <div class="game-area">
+    <div class="battle-scene">
+      <div class="boss-container">
+        <div class="health-bar"><div class="health" id="bossHealth"></div></div>
+        <div class="boss" id="boss"></div>
+      </div>
+      <div class="character-container">
+        <div class="health-bar"><div class="health" id="playerHealth"></div></div>
+        <div class="character" id="player"></div>
+      </div>
     </div>
-    <div id="quiz-content">
-        <div class="quiz-finish">Level 10 is coming soon!<br>Stay tuned for more advanced Mandarin practice.<br><br>🐼 Panda is proud of you!</div>
-    </div>
-    <script>
-    function setUnlockedLevel(level) {
-        const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
-        if (level > unlocked) {
-            localStorage.setItem('rookieUnlockedLevel', String(level));
-        }
+    <div class="rocket" id="rocket"></div>
+    <div class="boss-missile" id="bossRocket"></div>
+  </div>
+
+  <div class="question-box" id="questionBox">
+    <p id="questionText">Loading question...</p>
+    <div class="answers" id="answersContainer"></div>
+    <button id="actionBtn">Submit</button>
+  </div>
+
+  <script>
+    let playerHP = 100;
+    let bossHP = 100;
+
+    const questions = [
+      { type: "multiple", text: "A: 你好吗？\\nB: ___。", options: ["我很好","我不去","我吃饭"], correct: 0, speak:["A: 你好吗？","我很好。"] },
+      { type: "arrange", text: "Arrange the words: I am a student", words:["学生","我","是"], correct:"我 是 学生" },
+      { type: "multiple", text: "A: 你从哪里来？\\nB: 我从 ___ 来。", options:["中国","谢谢","明天"], correct:0, speak:["A: 你从哪里来？","我从中国来。"] },
+      { type:"arrange", text:"Arrange the words: She likes tea", words:["喜欢","茶","她"], correct:"她 喜欢 茶" },
+      { type:"arrange", text:"Arrange the words: 我喜欢吃饺子", words:["eat","dumplings","I","like"], correct:"I like eat dumplings" },
+      { type:"arrange", text:"Arrange the words: 明天我去学校", words:["tomorrow","I","will","go","school"], correct:"tomorrow I will go school" },
+      { type:"arrange", text:"Arrange the words: He is my friend", words:["他","朋友","是","我的"], correct:"他 是 我的 朋友" },
+      { type:"arrange", text:"Arrange the words: 我每天早上跑步", words:["run","every","morning","I"], correct:"I run every morning" },
+      { type:"arrange", text:"Arrange the words: I like reading books", words:["我","书","喜欢","读"], correct:"我 喜欢 读 书" },
+      { type:"arrange", text:"Arrange the words: 今天是星期五", words:["today","is","Friday"], correct:"today is Friday" },
+      { type:"arrange", text:"Arrange the words: They are playing basketball", words:["他们","打","篮球","在"], correct:"他们 在 打 篮球" },
+      { type:"arrange", text:"Arrange the words: 我们明天去公园", words:["go","to","the","park","tomorrow","we"], correct:"we go to the park tomorrow" },
+      { type:"multiple", text:"Translate: 'I like to eat dumplings.'", options:["我喜欢吃饺子","我喜欢踢足球","我会说中文"], correct:0, speak:["I like to eat dumplings.","我喜欢吃饺子。"] },
+      { type:"multiple", text:"A: 现在几点？\\nB: ___。", options:["三点","北京","昨天"], correct:0, speak:["A: 现在几点？","三点。"] },
+      { type:"multiple", text:"Which one means 'library'?", options:["图书馆","教室","商店"], correct:0 },
+      { type:"multiple", text:"A: 你会说英语吗？\\nB: ___。", options:["我会","我不吃","我去学校"], correct:0, speak:["A: 你会说英语吗？","我会。"] },
+      { type:"multiple", text:"Translate: 'Tomorrow I will go to school.'", options:["明天我去学校","今天我在家","我喜欢看电影"], correct:0, speak:["Tomorrow I will go to school.","明天我去学校。"] },
+      { type:"multiple", text:"Fill in the blank: 我喜欢喝 ___。", options:["水","书","桌子"], correct:0, speak:["我喜欢喝什么？","我喜欢喝水。"] },
+      { type:"arrange", text:"Arrange the words: I am hungry", words:["我","饿","是"], correct:"我 是 饿" },
+      { type:"arrange", text:"Arrange the words: 他在看书", words:["He","is","reading","a","book"], correct:"He is reading a book" },
+    ];
+
+    function shuffleArray(array){for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];}}shuffleArray(questions);
+
+    let currentQuestion = 0;
+    const questionText = document.getElementById('questionText');
+    const answersContainer = document.getElementById('answersContainer');
+    const actionBtn = document.getElementById('actionBtn');
+    let isSubmitPhase = true;
+
+    function cleanDialogue(text){return text.replace(/^[A-D][:.\s]+/,'').trim();}
+    function speak(text){if('speechSynthesis' in window){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';window.speechSynthesis.speak(u);}}
+
+    function loadQuestion(){
+      if(currentQuestion>=questions.length){questionText.textContent="🎉 You finished all questions! 🎉";answersContainer.innerHTML="";actionBtn.style.display="none";return;}
+      const q=questions[currentQuestion];
+      questionText.textContent=q.text;
+      answersContainer.innerHTML="";
+      isSubmitPhase=true;
+      actionBtn.textContent="Submit";
+      actionBtn.style.display="block";
+
+      if(q.type==="multiple"&&q.speak&&q.speak[0])speak(cleanDialogue(q.speak[0]));
+
+      if(q.type==="multiple"||!q.type){
+        const optionsDiv=document.createElement("div");
+        optionsDiv.classList.add("multiple-choice");
+        let selectedOption=null;
+        const options=[...q.options];shuffleArray(options);
+
+        options.forEach(opt=>{
+          const btn=document.createElement("button");btn.textContent=opt;
+          btn.onclick=()=>{selectedOption=q.options.indexOf(opt);optionsDiv.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));btn.classList.add("selected");if(q.speak)speak(opt);};
+          optionsDiv.appendChild(btn);
+        });
+        answersContainer.appendChild(optionsDiv);
+        actionBtn.onclick=()=>{
+          if(isSubmitPhase){
+            if(selectedOption===null)return;
+            document.querySelectorAll("#answersContainer button").forEach(btn=>btn.disabled=true);
+            if(selectedOption===q.correct)playerAttack();else bossAttack();
+            actionBtn.textContent="Continue";isSubmitPhase=false;
+          } else {currentQuestion++;loadQuestion();}
+        };
+      } else if(q.type==="arrange"){
+        let selectedWords=[];
+        const selectedDiv=document.createElement("div");selectedDiv.id="selectedWords";
+        const poolDiv=document.createElement("div");poolDiv.classList.add("word-pool");
+        q.words.forEach(word=>{
+          const btn=document.createElement("button");btn.textContent=word;btn.dataset.selected="false";
+          btn.onclick=()=>{
+            if(btn.dataset.selected==="false"){
+              const ansBtn=document.createElement("button");ansBtn.textContent=word;
+              ansBtn.onclick=()=>{selectedDiv.removeChild(ansBtn);selectedWords=selectedWords.filter(w=>w!==word);btn.classList.remove("selected");btn.dataset.selected="false";};
+              selectedDiv.appendChild(ansBtn);selectedWords.push(word);btn.classList.add("selected");btn.dataset.selected="true";speak(word);
+            }
+          };
+          poolDiv.appendChild(btn);
+        });
+        answersContainer.appendChild(selectedDiv);answersContainer.appendChild(poolDiv);
+        actionBtn.onclick=()=>{
+          if(isSubmitPhase){if(selectedWords.join(" ")===q.correct)playerAttack();else bossAttack();actionBtn.textContent="Continue";isSubmitPhase=false;} else {currentQuestion++;loadQuestion();}
+        };
+      }
     }
-    // If you want to unlock future levels, call setUnlockedLevel(11) here after quiz completion.
-    </script>
+
+    function playerAttack(){
+      const rocket=document.getElementById("rocket"),boss=document.getElementById("boss"),bossHealth=document.getElementById("bossHealth"),gameArea=document.querySelector('.game-area');
+      const bossRect=boss.getBoundingClientRect(),playerRect=document.getElementById("player").getBoundingClientRect(),areaRect=gameArea.getBoundingClientRect();
+      let startX=playerRect.left-areaRect.left+playerRect.width/2-65;
+      let startY=playerRect.top-areaRect.top+playerRect.height/2-140;
+      let endX=bossRect.left-areaRect.left+bossRect.width/2;
+      let endY=bossRect.top-areaRect.top+bossRect.height/2-80;
+      let controlX=startX+(endX-startX)/2+100,controlY=(startY+endY)/2;
+      rocket.style.display="block";let progress=0;
+      function animate(){progress+=0.02;if(progress>=1){rocket.style.display="none";bossHP=Math.max(0,bossHP-10);bossHealth.style.width=bossHP+"%";boss.classList.add("damage");explode(boss);setTimeout(()=>boss.classList.remove("damage"),300);if(bossHP===0){boss.classList.add("dead");bossHealth.parentElement.classList.add("fadeout");setTimeout(()=>bossHealth.parentElement.style.display="none",1000);endGame(true);}return;}
+        const x=(1-progress)**2*startX+2*(1-progress)*progress*controlX+progress**2*endX;
+        const y=(1-progress)**2*startY+2*(1-progress)*progress*controlY+progress**2*endY;
+        rocket.style.left=x+"px";rocket.style.top=y+"px";requestAnimationFrame(animate);}
+      requestAnimationFrame(animate);
+    }
+
+    function bossAttack(){
+      const bossRocket=document.getElementById("bossRocket"),player=document.getElementById("player"),playerHealth=document.getElementById("playerHealth"),gameArea=document.querySelector('.game-area');
+      const bossRect=document.getElementById("boss").getBoundingClientRect(),playerRect=player.getBoundingClientRect(),areaRect=gameArea.getBoundingClientRect();
+      let startX=bossRect.left-areaRect.left+bossRect.width/2-120,startY=bossRect.top-areaRect.top+bossRect.height/2,endX=playerRect.left-areaRect.left+playerRect.width/2-80,endY=playerRect.top-areaRect.top+playerRect.height/2-80;
+      let controlX=startX+(endX-startX)/2-250,controlY=startY-80+Math.random()*40;
+      bossRocket.style.display="block";let progress=0;
+      function animate(){progress+=0.02;if(progress>=1){bossRocket.style.display="none";playerHP=Math.max(0,playerHP-20);playerHealth.style.width=playerHP+"%";player.classList.add("damage");explode(player);setTimeout(()=>player.classList.remove("damage"),300);if(playerHP===0){player.classList.add("dead");playerHealth.parentElement.classList.add("fadeout");setTimeout(()=>playerHealth.parentElement.style.display="none",1000);endGame(false);}return;}
+        const x=(1-progress)**2*startX+2*(1-progress)*progress*controlX+progress**2*endX;
+        const y=(1-progress)**2*startY+2*(1-progress)*progress*controlY+progress**2*endY;
+        bossRocket.style.left=x+"px";bossRocket.style.top=y+"px";requestAnimationFrame(animate);}
+      requestAnimationFrame(animate);
+    }
+
+    function explode(target){
+      const gameArea=document.querySelector('.game-area');const rect=target.getBoundingClientRect(),areaRect=gameArea.getBoundingClientRect();
+      for(let i=0;i<20;i++){const frag=document.createElement('div');frag.classList.add('fragment');frag.style.setProperty('--x',(Math.random()-0.5)*200+'px');frag.style.setProperty('--y',(Math.random()-0.5)*200+'px');frag.style.left=rect.left-areaRect.left+rect.width/2+'px';frag.style.top=rect.top-areaRect.top+rect.height/2+'px';gameArea.appendChild(frag);frag.addEventListener('animationend',()=>frag.remove());}
+    }
+
+    function endGame(playerWon){
+      questionText.textContent=playerWon?"🎉 You defeated the boss! 🎉":"💀 You were defeated! 💀";
+      answersContainer.innerHTML="";actionBtn.style.display="block";actionBtn.textContent="Continue";actionBtn.onclick=()=>{window.location.href="test.html";};
+    }
+
+    loadQuestion();
+  </script>
 </body>
 </html>
