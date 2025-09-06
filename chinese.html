@@ -5,6 +5,16 @@
     <title>Choose Your Chinese Level - Zendo</title>
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            min-height: 100vh;
+            overflow: auto;
+            background: #181818;
+        }
+    </style>
 </head>
 <body>
     <div class="logo-zendo">
@@ -25,7 +35,7 @@
                 </ul>
             </button>
             <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;"
-                onclick="alert('You selected Explorer 🧭')">
+                onclick="window.location.href='explorer.html'">
                 <span style="font-weight:bold; font-size:1.3em;">Explorer 🧭</span>
                 <ul style="margin-top:12px;">
                     <li>Able to talk about familiar topics, daily life, and simple opinions.</li>
