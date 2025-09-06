@@ -8,6 +8,13 @@
 </head>
 <body>
     <div class="logo-zendo" id="logoZendo">
+        <button id="menuBtn" style="background:none; border:none; margin-right:18px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;">
+            <span style="display:block; width:28px; height:22px;">
+                <span style="display:block; height:4px; width:100%; background:#1976d2; border-radius:2px; margin-bottom:5px;"></span>
+                <span style="display:block; height:4px; width:100%; background:#1976d2; border-radius:2px; margin-bottom:5px;"></span>
+                <span style="display:block; height:4px; width:100%; background:#1976d2; border-radius:2px;"></span>
+            </span>
+        </button>
         <img src="Zendo.png" alt="Logo" class="logo" id="appLogo">
         <span class="logo-zendo-text">Zendo</span>
         <span class="nav-separator"></span>
@@ -220,7 +227,7 @@
             <!-- App Logo Sidebar Tab -->
             <div id="logoSidebarBg" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,40,60,0.35); z-index:9999;">
                 <div id="logoSidebar" style="position:fixed; top:0; left:0; height:100vh; width:270px; background:#181818; color:#fff; box-shadow:2px 0 16px #0008; display:flex; flex-direction:column; padding:18px 0 0 0; transition:transform 0.3s cubic-bezier(.4,0,.2,1); transform:translateX(0); z-index:10000;">
-                    <button onclick="document.getElementById('logoSidebarBg').style.display='none'" style="background:none; border:none; color:#fff; font-size:1.7em; position:absolute; top:14px; right:14px; cursor:pointer;">&times;</button>
+                    <button onclick="document.getElementById('logoSidebarBg').style.display='none'; document.getElementById('achievementsPanel').style.display='none';" style="background:none; border:none; color:#fff; font-size:1.7em; position:absolute; top:14px; right:14px; cursor:pointer;">&times;</button>
                     <div style="padding:0 0 18px 0; border-bottom:1px solid #333;">
                         <div style="display:flex; align-items:center; gap:12px; padding:0 24px 18px 24px;">
                             <img src='Zendo.png' alt='Logo' style='width:38px; height:38px; border-radius:8px;'>
@@ -233,6 +240,103 @@
                             <a href="profile.html" id="sidebarProfileLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
                                 <span style="font-size:1.3em;">👤</span> Profile
                             </a>
+                            <script>
+                            // Profile sidebar logic
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var profileLink = document.getElementById('sidebarProfileLink');
+                                if (profileLink) {
+                                    profileLink.onclick = function(e) {
+                                        e.preventDefault();
+                                        document.getElementById('profilePanel').style.display = 'block';
+                                        document.getElementById('logoSidebarBg').style.display = 'block';
+                                    };
+                                }
+                            });
+                            </script>
+    <!-- Profile Panel -->
+    <div id="profilePanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:#181c23; overflow-y:auto;">
+        <div class="profile-container" style="margin:48px auto 0 auto; max-width:1200px; display:flex; flex-wrap:wrap; gap:32px;">
+            <div style="flex:2; min-width:340px; max-width:520px;">
+                <div style="background:#202a36; border-radius:18px; padding:32px 28px 24px 28px; box-shadow:0 2px 16px #0003; display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:120px; height:120px; background:#232a33; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; position:relative;">
+                        <img src="chara.png" alt="Avatar" style="width:90px; height:90px; border-radius:50%; object-fit:cover;">
+                        <button style="position:absolute; top:8px; right:8px; background:#232a33; border:none; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; font-size:1.2em;">✎</button>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:1.5em; font-weight:700; color:#fff;">Valentino Jovan</div>
+                        <div style="color:#6fa3ff; font-size:1em; margin-bottom:2px;">ValentinoJ575991</div>
+                        <div style="color:#b0b8c1; font-size:0.98em; margin-bottom:6px;">Joined March 2023</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;">
+                            <span style="color:#6fa3ff; font-weight:600;">0 Following</span>
+                            <span style="color:#6fa3ff; font-weight:600;">0 Followers</span>
+                            <img src="China flag.png" alt="Country" style="width:22px; height:16px; border-radius:3px; margin-left:8px;">
+                        </div>
+                    </div>
+                    <div style="width:100%; height:1px; background:#263040; margin:18px 0 18px 0;"></div>
+                    <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
+                        <button style="background:#3ea6ff; color:#fff; border:none; border-radius:12px; padding:10px 0; font-size:1.1em; font-weight:600; margin-bottom:2px; cursor:pointer;">+ Add Friends</button>
+                        <button style="background:#232a33; color:#6fa3ff; border:1px solid #3ea6ff; border-radius:12px; padding:10px 0; font-size:1.1em; font-weight:600; cursor:pointer;">Share Profile</button>
+                    </div>
+                </div>
+                <!-- Statistics -->
+                <div style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.2em; font-weight:700; color:#fff; margin-bottom:18px;">Statistics</div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Day streak
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Total XP
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.1em; color:#fff; font-weight:700;">None</div>
+                            Current league
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Top 3 finishes
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievements -->
+                <div style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                        <div style="font-size:1.2em; font-weight:700; color:#fff;">Achievements</div>
+                        <a href="#" style="color:#6fa3ff; font-weight:600; font-size:1em; text-decoration:none;">VIEW ALL</a>
+                    </div>
+                    <div style="margin-top:16px; color:#b0b8c1;">No achievements yet.</div>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div style="flex:1.2; min-width:320px; max-width:420px; display:flex; flex-direction:column; gap:28px;">
+                <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+                        <img src="China flag.png" alt="Lang" style="width:22px; height:16px; border-radius:3px;">
+                        <span style="color:#fff; font-weight:700; font-size:1.1em;">Following</span>
+                        <span style="color:#b0b8c1; font-weight:600; font-size:1.1em;">Followers</span>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:center; margin-bottom:12px;">
+                        <img src="Panda.png" alt="Friends" style="width:120px; height:80px;">
+                    </div>
+                    <div style="color:#b0b8c1; text-align:center; font-size:1.05em;">Learning is more fun and effective when you connect with others.</div>
+                </div>
+                <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.1em; font-weight:700; color:#fff; margin-bottom:12px;">Add friends</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <button style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                            <span style="font-size:1.2em;">🔍</span> Find friends
+                        </button>
+                        <button style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                            <span style="font-size:1.2em;">🐼</span> Invite friends
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Close button removed as requested -->
+        </div>
+    </div
 </div>
 <script>
 // Hide Profile link in sidebar if on profile.html
@@ -241,79 +345,547 @@ if (window.location.pathname.endsWith('profile.html')) {
     if (profileLink) profileLink.style.display = 'none';
 }
 </script>
-                            <a href="#achievements" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
+                            <a href="achievements.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
                                 <span style="font-size:1.3em;">🏅</span> Achievements
                             </a>
-                            <a href="#leaderboard" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
+    <!-- Leaderboard Panel -->
+    <div id="leaderboardPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #ffd580 100%); overflow-y:auto;">
+        <div class="leaderboard-container" style="max-width:900px; margin:48px auto 0 auto; padding:36px 18px 48px 18px; background:#f4f4fb; border-radius:24px; box-shadow:0 6px 32px #23294655;">
+            <div class="leaderboard-title" style="font-size:2.3rem; font-weight:800; text-align:center; margin-bottom:18px; font-family:'Satisfy',cursive; background:linear-gradient(90deg,#ffd580 0%,#ffb3ba 100%); background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; letter-spacing:2px;">Leaderboard</div>
+            <style>
+            .leaderboard-card {
+                background: linear-gradient(120deg, #232946 0%, #ffd58033 100%);
+                border-radius: 22px;
+                box-shadow: 0 6px 24px #ffd58055, 0 0 0 4px #23294622;
+                padding: 36px 32px;
+                width: 100%;
+                max-width: 420px;
+                text-align: center;
+                color: #232946;
+                position: relative;
+                font-size: 1.18em;
+                margin: 0 auto;
+                transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+                overflow: hidden;
+            }
+            .leaderboard-card:hover {
+                transform: translateY(-6px) scale(1.03);
+                box-shadow: 0 12px 32px #ffd58099, 0 0 0 6px #ffd58044;
+                z-index: 2;
+            }
+            .leaderboard-card.top-1 {
+                background: linear-gradient(120deg,#ffd700 0%,#fffbe6 100%);
+                border: 3px solid #ffd700;
+                color: #b8860b;
+                box-shadow: 0 0 32px #ffd70099, 0 0 0 6px #fffbe6cc;
+            }
+            .leaderboard-card.top-2 {
+                background: linear-gradient(120deg,#c0c0c0 0%,#fffbe6 100%);
+                border: 3px solid #c0c0c0;
+                color: #232946;
+                box-shadow: 0 0 32px #c0c0c099, 0 0 0 6px #fffbe6cc;
+            }
+            .leaderboard-card.top-3 {
+                background: linear-gradient(120deg,#cd7f32 0%,#fffbe6 100%);
+                border: 3px solid #cd7f32;
+                color: #232946;
+                box-shadow: 0 0 32px #cd7f3299, 0 0 0 6px #fffbe6cc;
+            }
+            .leaderboard-rank {
+                font-size: 2em;
+                font-weight: 900;
+                color: #ffd580;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+                text-shadow: 0 2px 8px #ffd58088, 0 0 2px #232946;
+                position: relative;
+            }
+            .leaderboard-username {
+                font-size: 1.25em;
+                font-weight: 800;
+                margin-bottom: 8px;
+                color: #357abd;
+                letter-spacing: 1px;
+                text-shadow: 0 2px 8px #bae1ff88;
+            }
+            .leaderboard-points {
+                font-size: 1.13em;
+                color: #232946;
+                margin-bottom: 8px;
+                font-weight: 700;
+                background: linear-gradient(90deg, #ffd580 0%, #fffbe6 100%);
+                border-radius: 8px;
+                padding: 2px 12px;
+                display: inline-block;
+                box-shadow: 0 2px 8px #ffd58033;
+            }
+            .leaderboard-level {
+                font-size: 1.08em;
+                color: #ffd580;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-shadow: 0 2px 8px #ffd58088;
+            }
+            /* Animated gradient border for top 1 */
+            .leaderboard-card.top-1::before {
+                content: '';
+                position: absolute;
+                top: -4px; left: -4px; right: -4px; bottom: -4px;
+                border-radius: 26px;
+                background: linear-gradient(120deg, #ffd700, #ffd580, #fffbe6, #ffd700);
+                z-index: 0;
+                opacity: 0.5;
+                filter: blur(8px);
+                animation: borderGlow 2.5s linear infinite;
+            }
+            @keyframes borderGlow {
+                0% { opacity: 0.5; }
+                50% { opacity: 0.8; }
+                100% { opacity: 0.5; }
+            }
+            /* Icon for top 3 */
+            .leaderboard-card.top-1 .leaderboard-rank::after {
+                content: ' 🥇';
+                font-size: 1.1em;
+                margin-left: 6px;
+            }
+            .leaderboard-card.top-2 .leaderboard-rank::after {
+                content: ' 🥈';
+                font-size: 1.1em;
+                margin-left: 6px;
+            }
+            .leaderboard-card.top-3 .leaderboard-rank::after {
+                content: ' 🥉';
+                font-size: 1.1em;
+                margin-left: 6px;
+            }
+            /* Add a subtle animated background to all cards */
+            .leaderboard-card {
+                background-size: 200% 200%;
+                animation: cardBgMove 6s ease-in-out infinite;
+            }
+            @keyframes cardBgMove {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            </style>
+            <div class="leaderboard-list" style="display:flex; flex-wrap:wrap; gap:28px; justify-content:center;">
+                <div style="width:100%; display:flex; flex-direction:column; gap:18px; align-items:center;">
+                    <div class="leaderboard-card top-1">
+                        <div class="leaderboard-rank">🥇 #1</div>
+                        <div class="leaderboard-username">ZenMaster</div>
+                        <div class="leaderboard-points">9820 pts</div>
+                        <div class="leaderboard-level">Master 🏆</div>
+                    </div>
+                    <div class="leaderboard-card top-2">
+                        <div class="leaderboard-rank">🥈 #2</div>
+                        <div class="leaderboard-username">LinguaLion</div>
+                        <div class="leaderboard-points">9510 pts</div>
+                        <div class="leaderboard-level">Master 🏆</div>
+                    </div>
+                    <div class="leaderboard-card top-3">
+                        <div class="leaderboard-rank">🥉 #3</div>
+                        <div class="leaderboard-username">PandaPro</div>
+                        <div class="leaderboard-points">9275 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#4</div>
+                        <div class="leaderboard-username">MandarinMaverick</div>
+                        <div class="leaderboard-points">9100 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#ffd580 0%,#6fa3ff 100%); border-radius:18px; box-shadow:0 0 24px #ffd58099; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#5</div>
+                        <div class="leaderboard-username">QuizWhiz</div>
+                        <div class="leaderboard-points">8990 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                        <div style="position:absolute; right:18px; top:18px; font-size:1.7em; filter:drop-shadow(0 0 8px #ffd580cc);">✨</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#6</div>
+                        <div class="leaderboard-username">DragonDuo</div>
+                        <div class="leaderboard-points">8825 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#7</div>
+                        <div class="leaderboard-username">LuckyLotus</div>
+                        <div class="leaderboard-points">8700 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#8</div>
+                        <div class="leaderboard-username">HanHero</div>
+                        <div class="leaderboard-points">8600 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#9</div>
+                        <div class="leaderboard-username">QuizCrane</div>
+                        <div class="leaderboard-points">8500 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#10</div>
+                        <div class="leaderboard-username">FirePhoenix</div>
+                        <div class="leaderboard-points">8450 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#11</div>
+                        <div class="leaderboard-username">MoonRabbit</div>
+                        <div class="leaderboard-points">8300 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#12</div>
+                        <div class="leaderboard-username">BambooKnight</div>
+                        <div class="leaderboard-points">8250 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#13</div>
+                        <div class="leaderboard-username">QuizTiger</div>
+                        <div class="leaderboard-points">8200 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#14</div>
+                        <div class="leaderboard-username">LotusLeaf</div>
+                        <div class="leaderboard-points">8150 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#15</div>
+                        <div class="leaderboard-username">MandarinMongoose</div>
+                        <div class="leaderboard-points">8100 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#16</div>
+                        <div class="leaderboard-username">QuizDragon</div>
+                        <div class="leaderboard-points">8050 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#17</div>
+                        <div class="leaderboard-username">MandarinFalcon</div>
+                        <div class="leaderboard-points">8000 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#18</div>
+                        <div class="leaderboard-username">QuizPhoenix</div>
+                        <div class="leaderboard-points">7950 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#19</div>
+                        <div class="leaderboard-username">LotusTiger</div>
+                        <div class="leaderboard-points">7900 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#20</div>
+                        <div class="leaderboard-username">QuizLeaf</div>
+                        <div class="leaderboard-points">7850 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#21</div>
+                        <div class="leaderboard-username">MandarinCrane</div>
+                        <div class="leaderboard-points">7800 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#22</div>
+                        <div class="leaderboard-username">QuizFalcon</div>
+                        <div class="leaderboard-points">7750 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#23</div>
+                        <div class="leaderboard-username">LotusPhoenix</div>
+                        <div class="leaderboard-points">7700 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#24</div>
+                        <div class="leaderboard-username">MandarinRabbit</div>
+                        <div class="leaderboard-points">7650 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#25</div>
+                        <div class="leaderboard-username">QuizKnight</div>
+                        <div class="leaderboard-points">7600 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#26</div>
+                        <div class="leaderboard-username">LotusRabbit</div>
+                        <div class="leaderboard-points">7550 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#27</div>
+                        <div class="leaderboard-username">MandarinKnight</div>
+                        <div class="leaderboard-points">7500 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#28</div>
+                        <div class="leaderboard-username">QuizMongoose</div>
+                        <div class="leaderboard-points">7450 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#29</div>
+                        <div class="leaderboard-username">LotusMongoose</div>
+                        <div class="leaderboard-points">7400 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#30</div>
+                        <div class="leaderboard-username">MandarinLeaf</div>
+                        <div class="leaderboard-points">7350 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#31</div>
+                        <div class="leaderboard-username">QuizRabbit</div>
+                        <div class="leaderboard-points">7300 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#32</div>
+                        <div class="leaderboard-username">LotusKnight</div>
+                        <div class="leaderboard-points">7250 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#33</div>
+                        <div class="leaderboard-username">MandarinTiger</div>
+                        <div class="leaderboard-points">7200 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#34</div>
+                        <div class="leaderboard-username">QuizFalconer</div>
+                        <div class="leaderboard-points">7150 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#35</div>
+                        <div class="leaderboard-username">LotusFalcon</div>
+                        <div class="leaderboard-points">7100 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#36</div>
+                        <div class="leaderboard-username">MandarinPhoenix</div>
+                        <div class="leaderboard-points">7050 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#37</div>
+                        <div class="leaderboard-username">QuizLeafy</div>
+                        <div class="leaderboard-points">7000 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#38</div>
+                        <div class="leaderboard-username">LotusDragon</div>
+                        <div class="leaderboard-points">6950 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#39</div>
+                        <div class="leaderboard-username">MandarinLion</div>
+                        <div class="leaderboard-points">6900 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#40</div>
+                        <div class="leaderboard-username">QuizMaster</div>
+                        <div class="leaderboard-points">6850 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Lessons Panel -->
+    <div id="lessonsPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #1a1a2e 100%); overflow-y:auto;">
+        <div class="lessons-container" style="margin:48px auto 0 auto;">
+            <div class="lesson-title">Choose Your Chinese Proficiency Level</div>
+            <p>Select the level that best matches your current Chinese skills:</p>
+            <div style="display: flex; flex-direction: column; gap: 24px; max-width: 600px; width: 100%; align-items: center;">
+                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
+                    <span style="font-weight:bold; font-size:1.3em;">Rookie 🐣</span>
+                    <ul style="margin-top:12px;">
+                        <li>Learning pinyin, tones, greetings, numbers, and simple daily expressions.</li>
+                        <li>Can introduce yourself, order food, and handle very basic conversations.</li>
+                    </ul>
+                </button>
+                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
+                    <span style="font-weight:bold; font-size:1.3em;">Explorer 🧭</span>
+                    <ul style="margin-top:12px;">
+                        <li>Able to talk about familiar topics, daily life, and simple opinions.</li>
+                        <li>Can read short texts, understand common grammar, and manage most situations in Chinese.</li>
+                    </ul>
+                </button>
+                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
+                    <span style="font-weight:bold; font-size:1.3em;">Challenger ⚔️</span>
+                    <ul style="margin-top:12px;">
+                        <li>Comfortable discussing abstract topics, culture, and professional subjects.</li>
+                        <li>Can read news, short stories, and write more complex sentences.</li>
+                    </ul>
+                </button>
+                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
+                    <span style="font-weight:bold; font-size:1.3em;">Master 🏆</span>
+                    <ul style="margin-top:12px;">
+                        <li>Near-native fluency, able to use Chinese naturally and with cultural nuance.</li>
+                        <li>Can understand literature, formal texts, and express yourself almost like a native.</li>
+                    </ul>
+                </button>
+            </div>
+        </div>
+    </div>
+                            <script>
+                            // Sidebar menu logic for panel transitions
+                            document.addEventListener('DOMContentLoaded', function() {
+                                function showPanel(panelId) {
+                                    var panels = ['homePanel', 'profilePanel', 'achievementsPanel', 'leaderboardPanel', 'lessonsPanel'];
+                                    panels.forEach(function(id) {
+                                        var el = document.getElementById(id);
+                                        if (el) el.style.display = (id === panelId) ? 'block' : 'none';
+                                    });
+                                    document.getElementById('logoSidebarBg').style.display = 'block';
+                                }
+                                var homeLink = document.querySelector('#logoSidebar a[href="#home-section"]');
+                                var profileLink = document.getElementById('sidebarProfileLink');
+                                var achievementsLink = document.querySelector('#logoSidebar a[href="achievements.html"]');
+                                var leaderboardLink = document.getElementById('sidebarLeaderboardLink');
+                                var lessonsLink = document.getElementById('sidebarLessonsLink');
+                                if (homeLink) homeLink.onclick = function(e) { e.preventDefault(); showPanel('homePanel'); };
+                                if (profileLink) profileLink.onclick = function(e) { e.preventDefault(); showPanel('profilePanel'); };
+                                if (achievementsLink) achievementsLink.onclick = function(e) { e.preventDefault(); showPanel('achievementsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
+                                if (leaderboardLink) leaderboardLink.onclick = function(e) { e.preventDefault(); showPanel('leaderboardPanel'); };
+                                if (lessonsLink) lessonsLink.onclick = function(e) { e.preventDefault(); showPanel('lessonsPanel'); };
+                            });
+                            </script>
+                            <a href="#" id="sidebarLeaderboardLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
                                 <span style="font-size:1.3em;">📊</span> Leaderboard
                             </a>
-                            <a href="#lessons" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px 8px 12px;">
+                            <a href="lessons.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px 8px 12px; cursor:pointer;">
                                 <span style="font-size:1.3em;">📚</span> Lessons
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-    <script>
-        function toggleLevelDetail(level) {
-            for (let i = 1; i <= 4; i++) {
-                const detail = document.getElementById('level-detail-' + i);
-                if (i === level) {
-                    if (detail.style.display === 'block') {
-                        detail.style.display = 'none';
-                        detail.classList.remove('fade-in');
-                    } else {
-                        // Close all others first
-                        for (let j = 1; j <= 4; j++) {
-                            if (j !== i) {
-                                const otherDetail = document.getElementById('level-detail-' + j);
-                                otherDetail.style.display = 'none';
-                                otherDetail.classList.remove('fade-in');
-                            }
-                        }
-                        detail.style.display = 'block';
-                        detail.classList.add('fade-in');
-                    }
-                } else {
-                    detail.style.display = 'none';
-                    detail.classList.remove('fade-in');
-                }
-            }
-        }
-
-        // Contact form handler
-        document.addEventListener('DOMContentLoaded', function() {
-            var contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    var name = document.getElementById('contactName').value.trim();
-                    var email = document.getElementById('contactEmail').value.trim();
-                    var message = document.getElementById('contactMessage').value.trim();
-                    if (!name || !email || !message) {
-                        showModal(`<div style='font-size:1.1em;font-weight:600;margin-bottom:12px;color:#e74c3c;'>Please fill in all fields before sending your message.</div><button class='main-btn' onclick='closeModal()'>Close</button>`);
-                            showModal(`<div style='font-size:1.1em;font-weight:600;margin-bottom:12px;color:#e74c3c;'>Please fill in all fields before sending your message.</div>`);
-                        return;
-                    }
-                    fetch('http://localhost:3000/api/contact', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({ name, email, message })
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.success) {
-                                    showModal(`<div style='font-size:1.2em;font-weight:600;margin-bottom:12px;'>Message sent! Thank you for contacting us.</div>`);
-                            contactForm.reset();
-                        } else {
-                            showModal('Failed to send message: ' + data.message);
-                        }
-                    })
-                    .catch(() => showModal('Unable to connect to server.'));
-                });
-            }
-        });
-    </script>
+    <!-- Achievements Panel -->
+    <div id="achievementsPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #ffd580 100%); overflow-y:auto;">
+        <div class="achievements-container" style="margin:48px auto 0 auto;">
+            <div class="achievements-title">Achievements</div>
+            <div class="achievement-list">
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-title">First Steps</div>
+                    <div class="achievement-desc">Complete your first lesson.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🎯</div>
+                    <div class="achievement-title">Quiz Novice</div>
+                    <div class="achievement-desc">Score 80%+ on any quiz.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">📚</div>
+                    <div class="achievement-title">Bookworm</div>
+                    <div class="achievement-desc">Read 10 learning materials.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">💬</div>
+                    <div class="achievement-title">Conversation Starter</div>
+                    <div class="achievement-desc">Finish your first speaking exercise.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🔥</div>
+                    <div class="achievement-title">Streak Master</div>
+                    <div class="achievement-desc">Study 7 days in a row.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🌏</div>
+                    <div class="achievement-title">Globetrotter</div>
+                    <div class="achievement-desc">Complete lessons in both Chinese and English.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🧠</div>
+                    <div class="achievement-title">Memory Champ</div>
+                    <div class="achievement-desc">Score 100% on a vocabulary test.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">👑</div>
+                    <div class="achievement-title">Level Up!</div>
+                    <div class="achievement-desc">Reach Explorer level.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">⚔️</div>
+                    <div class="achievement-title">Boss Defeated</div>
+                    <div class="achievement-desc">Win a boss level challenge.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🕹️</div>
+                    <div class="achievement-title">Game On</div>
+                    <div class="achievement-desc">Unlock the game mode.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🥇</div>
+                    <div class="achievement-title">Leaderboard Top 10</div>
+                    <div class="achievement-desc">Reach the top 10 in the leaderboard.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🧩</div>
+                    <div class="achievement-title">Puzzle Solver</div>
+                    <div class="achievement-desc">Complete a sentence arrangement puzzle.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🎓</div>
+                    <div class="achievement-title">Master Learner</div>
+                    <div class="achievement-desc">Reach Master level.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">💡</div>
+                    <div class="achievement-title">Insightful</div>
+                    <div class="achievement-desc">Leave feedback or a suggestion.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🤝</div>
+                    <div class="achievement-title">Team Player</div>
+                    <div class="achievement-desc">Participate in a group challenge.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+            </div>
+            <button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="document.getElementById('achievementsPanel').style.display='none'">Close</button>
+        </div>
+    </div>
     <style>
         .fade-in {
             animation: fadeInDetail 0.4s;
@@ -331,12 +903,11 @@ if (window.location.pathname.endsWith('profile.html')) {
             document.getElementById('englishBtn').onclick = function() {
                 window.location.href = 'english.html';
             };
-            // Logo tab/modal logic
-            var appLogo = document.getElementById('appLogo');
+            // Menu button logic for sidebar
+            var menuBtn = document.getElementById('menuBtn');
             var logoSidebarBg = document.getElementById('logoSidebarBg');
-            if (appLogo && logoSidebarBg) {
-                appLogo.style.cursor = 'pointer';
-                appLogo.onclick = function() {
+            if (menuBtn && logoSidebarBg) {
+                menuBtn.onclick = function() {
                     logoSidebarBg.style.display = 'block';
                 };
                 // Optional: close sidebar when clicking outside
