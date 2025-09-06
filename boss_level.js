@@ -101,6 +101,9 @@ function showQuestion() {
       e.dataTransfer.setData('text/plain', idx);
     };
     btn.onclick = () => selectWord(idx);
+    // Always speak on mousedown/touchstart for instant feedback
+    btn.addEventListener('mousedown', (e) => { speakWord(word); });
+    btn.addEventListener('touchstart', (e) => { speakWord(word); });
     scrambledWords.appendChild(btn);
   });
   answerBox.ondragover = (e) => e.preventDefault();
@@ -152,6 +155,9 @@ function renderAnswerBox() {
       speakWord(word);
       removeWord(i);
     };
+    // Always speak on mousedown/touchstart for instant feedback
+    span.addEventListener('mousedown', (e) => { speakWord(word); });
+    span.addEventListener('touchstart', (e) => { speakWord(word); });
     answerBox.appendChild(span);
   });
 
