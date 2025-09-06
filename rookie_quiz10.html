@@ -24,24 +24,6 @@
 			height: 60vh;
 			margin-top: 30px;
 		}
-		.health-bar {
-			width: 400px;
-			height: 32px;
-			background: linear-gradient(90deg, #e0eafc, #cfdef3);
-			border-radius: 20px;
-			overflow: hidden;
-			margin-bottom: 24px;
-			border: 2px solid #2196f3;
-			box-shadow: 0 2px 12px rgba(33,150,243,0.12);
-			position: relative;
-		}
-		.health-fill {
-			height: 100%;
-			background: linear-gradient(90deg, #4caf50 60%, #f44336 100%);
-			width: 100%;
-			transition: width 0.4s cubic-bezier(.4,2,.3,1);
-			box-shadow: 0 2px 8px rgba(76,175,80,0.15);
-		}
 		.boss-img {
 			width: 420px;
 			height: auto;
@@ -156,12 +138,10 @@
 	</style>
 </head>
 <body>
-	<div class="boss-container">
-		<div class="health-bar">
-			<div class="health-fill" id="healthFill"></div>
-		</div>
-		<img src="Boss.png" alt="Boss" class="boss-img">
-	</div>
+	   <div class="boss-container">
+		   <img src="Boss.png" alt="Boss" class="boss-img">
+		   <div id="bossHearts" style="margin-top: 18px;"></div>
+	   </div>
 	<div class="quiz-container">
 		<div id="questionText"></div>
 		<div class="scrambled-words" id="scrambledWords"></div>
@@ -169,6 +149,12 @@
 		<button class="submit-btn" id="submitBtn">Submit</button>
 		<div class="feedback" id="feedback"></div>
 	</div>
-	<script src="boss_level.js"></script>
+		 <script src="boss_level.js"></script>
+		 <script>
+		 // Boss hearts UI initialization (for fallback if boss_level.js doesn't handle)
+		 if (typeof renderBossHearts === 'function') {
+			 renderBossHearts();
+		 }
+		 </script>
 </body>
 </html>
