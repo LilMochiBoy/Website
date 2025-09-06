@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenger Level - Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #181818;
+        }
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: #222;
+        }
+        .map-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            max-width: 90vw;
+            aspect-ratio: 1536 / 1024;
+            max-height: 90vh;
+            transform: translate(-50%, -50%);
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .challenger-map-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            z-index: 0;
+        }
+        .back-btn {
+            margin-top: 32px;
+            padding: 14px 32px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: #1565c0;
+            transform: scale(1.05);
+        }
+        .level-btn {
+            position: absolute;
+            width: 3.5vw;
+            min-width: 36px;
+            height: 3.5vw;
+            min-height: 36px;
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 50%;
+            background: #fffbe6;
+            color: #222;
+            border: 2px solid #222;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            cursor: pointer;
+            z-index: 2;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .level-btn:hover {
+            background: #ffe082;
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body>
+    <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#1976d2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
+    <div class="map-wrapper">
+    <img src="Lastbg.png" alt="Challenger Map" class="challenger-map-bg">
+    <!-- Level buttons placed over black dots (adjusted to match new image) -->
+    <button class="level-btn" id="challenger-level-1" style="left:19%;top:10%;">1</button> <!-- top left dot on building -->
+    <button class="level-btn" id="challenger-level-2" style="left:13%;top:19%;">2</button> <!-- leftmost dot on path -->
+    <button class="level-btn" style="left:21%;top:22%;">3</button> <!-- right of building -->
+    <button class="level-btn" style="left:29%;top:38%;">4</button> <!-- left curve -->
+    <button class="level-btn" style="left:38%;top:51%;">5</button> <!-- center curve -->
+    <button class="level-btn" style="left:56%;top:54%;">6</button> <!-- bridge left -->
+    <button class="level-btn" style="left:60%;top:44%;">7</button> <!-- bridge center -->
+    <button class="level-btn" style="left:63%;top:54%;">8</button> <!-- bridge right -->
+    <button class="level-btn" style="left:81%;top:62%;">9</button> <!-- right curve -->
+    <button class="level-btn" style="left:73%;top:81%;">10</button> <!-- bottom right -->
+    </div>
+    <script>
+        document.getElementById('back-btn').onclick = function() {
+            window.location.href = 'chinese.html';
+        };
+        // Add click events for Level 1 and Level 2
+        document.getElementById('challenger-level-1').onclick = function() {
+            window.location.href = 'challenger_quiz1.html';
+        };
+        document.getElementById('challenger-level-2').onclick = function() {
+            window.location.href = 'challenger_quiz2.html';
+        };
+    </script>
+</body>
+</html>
