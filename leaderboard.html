@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Zendo Leaderboard</title>
+	<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		body {
+			background: linear-gradient(120deg, #232946 0%, #ffd580 100%);
+			font-family: 'Montserrat', Arial, sans-serif;
+			margin: 0;
+			color: #232946;
+		}
+		.leaderboard-container {
+			max-width: 900px;
+			margin: 48px auto 0 auto;
+			padding: 36px 18px 48px 18px;
+			background: #f4f4fb;
+			border-radius: 24px;
+			box-shadow: 0 6px 32px #23294655;
+		}
+		.leaderboard-title {
+			font-size: 2.3rem;
+			font-weight: 800;
+			text-align: center;
+			margin-bottom: 18px;
+			font-family: 'Satisfy', cursive;
+			background: linear-gradient(90deg, #ffd580 0%, #ffb3ba 100%);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			letter-spacing: 2px;
+		}
+		.leaderboard-table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0 12px;
+		}
+		.leaderboard-table th {
+			background: #ffd580;
+			color: #232946;
+			font-size: 1.15rem;
+			font-weight: 700;
+			padding: 14px 0;
+			border-radius: 12px 12px 0 0;
+		}
+		.leaderboard-table td {
+			background: #fffbe6;
+			color: #232946;
+			font-size: 1.08rem;
+			font-weight: 600;
+			padding: 12px 0;
+			text-align: center;
+			border-radius: 0 0 12px 12px;
+			box-shadow: 0 2px 8px #ffd58033;
+		}
+		.leaderboard-table tr.top-1 td {
+			background: linear-gradient(90deg, #ffd700 0%, #fffbe6 100%);
+			color: #b8860b;
+			font-size: 1.18rem;
+			font-weight: 800;
+		}
+		.leaderboard-table tr.top-2 td {
+			background: linear-gradient(90deg, #c0c0c0 0%, #fffbe6 100%);
+			color: #232946;
+			font-size: 1.15rem;
+			font-weight: 700;
+		}
+		.leaderboard-table tr.top-3 td {
+			background: linear-gradient(90deg, #cd7f32 0%, #fffbe6 100%);
+			color: #232946;
+			font-size: 1.13rem;
+			font-weight: 700;
+		}
+		@media (max-width: 600px) {
+			.leaderboard-container {
+				padding: 12px 2vw 24px 2vw;
+			}
+			.leaderboard-table th, .leaderboard-table td {
+				font-size: 1em;
+				padding: 8px 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="achievements-container">
+		<div class="achievements-title">Leaderboard</div>
+		<div class="achievement-list">
+			</div>
+				<div class="leaderboard-card top-1" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em; border: 2.5px solid #ffd700; box-shadow: 0 0 18px #ffd70099;">
+					<div class="leaderboard-rank" style="font-size: 1.5em; font-weight: 800; color: #ffd580; margin-bottom: 8px;">#1</div>
+					<div class="leaderboard-username" style="font-size: 1.2em; font-weight: 700; margin-bottom: 6px; color: #bae1ff;">ZenMaster</div>
+					<div class="leaderboard-points" style="font-size: 1.1em; color: #fffbe6; margin-bottom: 6px;">9820 pts</div>
+					<div class="leaderboard-level" style="font-size: 1em; color: #ffd580; font-weight: 600;">Master 🏆</div>
+				</div>
+				<div class="leaderboard-card top-2" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em; border: 2.5px solid #c0c0c0; box-shadow: 0 0 18px #c0c0c099;">
+					<div class="leaderboard-rank" style="font-size: 1.5em; font-weight: 800; color: #ffd580; margin-bottom: 8px;">#2</div>
+					<div class="leaderboard-username" style="font-size: 1.2em; font-weight: 700; margin-bottom: 6px; color: #bae1ff;">LinguaLion</div>
+					<div class="leaderboard-points" style="font-size: 1.1em; color: #fffbe6; margin-bottom: 6px;">9510 pts</div>
+					<div class="leaderboard-level" style="font-size: 1em; color: #ffd580; font-weight: 600;">Master 🏆</div>
+				</div>
+				<div class="leaderboard-card top-3" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em; border: 2.5px solid #cd7f32; box-shadow: 0 0 18px #cd7f3299;">
+					<div class="leaderboard-rank" style="font-size: 1.5em; font-weight: 800; color: #ffd580; margin-bottom: 8px;">#3</div>
+					<div class="leaderboard-username" style="font-size: 1.2em; font-weight: 700; margin-bottom: 6px; color: #bae1ff;">PandaPro</div>
+					<div class="leaderboard-points" style="font-size: 1.1em; color: #fffbe6; margin-bottom: 6px;">9275 pts</div>
+					<div class="leaderboard-level" style="font-size: 1em; color: #ffd580; font-weight: 600;">Challenger ⚔️</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#4</div>
+					<div class="leaderboard-username">MandarinMaverick</div>
+					<div class="leaderboard-points">9100 pts</div>
+					<div class="leaderboard-level">Challenger ⚔️</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#5</div>
+					<div class="leaderboard-username">QuizWhiz</div>
+					<div class="leaderboard-points">8990 pts</div>
+					<div class="leaderboard-level">Explorer 🧭</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#6</div>
+					<div class="leaderboard-username">DragonDuo</div>
+					<div class="leaderboard-points">8825 pts</div>
+					<div class="leaderboard-level">Explorer 🧭</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#7</div>
+					<div class="leaderboard-username">LuckyLotus</div>
+					<div class="leaderboard-points">8700 pts</div>
+					<div class="leaderboard-level">Explorer 🧭</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#8</div>
+					<div class="leaderboard-username">HanHero</div>
+					<div class="leaderboard-points">8600 pts</div>
+					<div class="leaderboard-level">Explorer 🧭</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#9</div>
+					<div class="leaderboard-username">QuizCrane</div>
+					<div class="leaderboard-points">8500 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#10</div>
+					<div class="leaderboard-username">FirePhoenix</div>
+					<div class="leaderboard-points">8450 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#11</div>
+					<div class="leaderboard-username">MoonRabbit</div>
+					<div class="leaderboard-points">8300 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#12</div>
+					<div class="leaderboard-username">BambooKnight</div>
+					<div class="leaderboard-points">8250 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#13</div>
+					<div class="leaderboard-username">QuizTiger</div>
+					<div class="leaderboard-points">8200 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#14</div>
+					<div class="leaderboard-username">LotusLeaf</div>
+					<div class="leaderboard-points">8150 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+				<div class="leaderboard-card" style="background: linear-gradient(120deg, #232946 0%, #ffd58033 100%); border-radius: 18px; box-shadow: 0 4px 18px #ffd58055; padding: 32px 28px; min-width: 220px; max-width: 260px; flex: 1 1 220px; text-align: center; color: #fff; position: relative; font-size: 1.15em;">
+					<div class="leaderboard-rank">#15</div>
+					<div class="leaderboard-username">MandarinMongoose</div>
+					<div class="leaderboard-points">8100 pts</div>
+					<div class="leaderboard-level">Rookie 🐣</div>
+				</div>
+			</div>
+			<!-- Add more cards for other ranks as needed -->
+		</div>
+	</div>
+</body>
+</html>
