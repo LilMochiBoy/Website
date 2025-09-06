@@ -1,6 +1,3 @@
-// boss_level.js
-// Handles boss health, question logic, and UI for Boss Level
-
 const questions = [
   {
     type: "arrange",
@@ -54,27 +51,42 @@ const questions = [
   }
 ];
 
+
 let currentQuestion = 0;
 let selectedWords = [];
 let selectedWordIndices = [];
-let bossHealth = 10;
-const maxHealth = 10;
 
-const healthFill = document.getElementById('healthFill');
+// Boss hearts logic
+let bossMaxHearts = 5;
+let bossHearts = bossMaxHearts;
+
+const bossHeartsDiv = document.getElementById('bossHearts');
+
+function renderBossHearts() {
+  if (!bossHeartsDiv) return;
+  bossHeartsDiv.innerHTML = '';
+  for (let i = 0; i < bossMaxHearts; i++) {
+    const img = document.createElement('img');
+    img.src = i < bossHearts ? 'Heart.png' : 'Emptyheart.png';
+    img.alt = i < bossHearts ? 'Heart' : 'Empty Heart';
+    img.style.width = '38px';
+    img.style.height = '38px';
+    img.style.margin = '0 4px';
+    bossHeartsDiv.appendChild(img);
+  }
+}
+
 const questionText = document.getElementById('questionText');
 const scrambledWords = document.getElementById('scrambledWords');
 const answerBox = document.getElementById('answerBox');
 const submitBtn = document.getElementById('submitBtn');
 const feedback = document.getElementById('feedback');
 
-function updateHealthBar() {
-  const percent = (bossHealth / maxHealth) * 100;
-  healthFill.style.width = percent + '%';
-}
 
 function showQuestion() {
   const q = questions[currentQuestion];
-  questionText.textContent = q.text;
+  // Show question number and boss hearts
+  questionText.textContent = `Boss Level: Arrange the sentence (${currentQuestion + 1} / ${questions.length})`;
   scrambledWords.innerHTML = '';
   selectedWords = [];
   selectedWordIndices = [];
@@ -97,6 +109,7 @@ function showQuestion() {
     const idx = parseInt(e.dataTransfer.getData('text/plain'));
     selectWord(idx);
   };
+  renderBossHearts();
 }
 
 function selectWord(idx) {
@@ -108,6 +121,7 @@ function selectWord(idx) {
     selectedWordIndices.push(idx);
     renderAnswerBox();
   }
+}
 
 function renderAnswerBox() {
   answerBox.innerHTML = '';
@@ -122,7 +136,7 @@ function renderAnswerBox() {
     span.onclick = () => removeWord(i);
     answerBox.appendChild(span);
   });
-  // Allow rearranging answer words
+
   answerBox.ondragover = (e) => e.preventDefault();
   answerBox.ondrop = (e) => {
     e.preventDefault();
@@ -136,47 +150,43 @@ function renderAnswerBox() {
       renderAnswerBox();
     }
   };
+}
+
 function removeWord(i) {
   selectedWords.splice(i, 1);
   selectedWordIndices.splice(i, 1);
-  // Unselect the word in scrambledWords
   const btns = scrambledWords.querySelectorAll('.word-btn');
   btns.forEach(btn => btn.classList.remove('selected'));
   selectedWordIndices.forEach(idx => btns[idx].classList.add('selected'));
   renderAnswerBox();
-}
-}
 }
 
 function checkAnswer() {
   const q = questions[currentQuestion];
   const userAnswer = selectedWords.join('') + '。';
   if (userAnswer === q.correct) {
-    bossHealth--;
-    updateHealthBar();
+    // Reduce boss heart
+    if (bossHearts > 0) bossHearts--;
+    renderBossHearts();
     feedback.textContent = 'Correct!';
     feedback.style.color = '#4caf50';
     setTimeout(() => {
       currentQuestion++;
-      if (currentQuestion < questions.length && bossHealth > 0) {
+      if (currentQuestion < questions.length && bossHearts > 0) {
         showQuestion();
-        updateHealthBar();
-      } else if (bossHealth <= 0) {
-        questionText.textContent = 'Congratulations! You defeated the Boss!';
+      } else if (bossHearts === 0) {
+        questionText.textContent = 'You defeated the Boss!';
         scrambledWords.innerHTML = '';
         answerBox.innerHTML = '';
         submitBtn.style.display = 'none';
         feedback.textContent = '';
-        healthFill.style.width = '0%';
-        healthFill.style.background = '#4caf50';
+        renderBossHearts();
       } else {
-        questionText.textContent = 'Congratulations! You defeated the Boss!';
+        questionText.textContent = 'Congratulations! You completed the game!';
         scrambledWords.innerHTML = '';
-        answerBox.textContent = '';
+        answerBox.innerHTML = '';
         submitBtn.style.display = 'none';
         feedback.textContent = '';
-        healthFill.style.width = '0%';
-        healthFill.style.background = '#4caf50';
       }
     }, 1000);
   } else {
@@ -184,12 +194,12 @@ function checkAnswer() {
     feedback.style.color = '#f44336';
     setTimeout(() => {
       showQuestion();
-      updateHealthBar();
     }, 1000);
   }
 }
 
 submitBtn.onclick = checkAnswer;
 
-updateHealthBar();
+
+renderBossHearts();
 showQuestion();
