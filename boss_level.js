@@ -112,6 +112,20 @@ function showQuestion() {
   renderBossHearts();
 }
 
+function speakWord(word) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utter = new window.SpeechSynthesisUtterance(word);
+    if (/^[\u4e00-\u9fa5]+$/.test(word)) {
+      utter.lang = 'zh-CN';
+    } else {
+      utter.lang = 'en-US';
+    }
+    utter.rate = 1.1;
+    window.speechSynthesis.speak(utter);
+  }
+}
+
 function selectWord(idx) {
   const q = questions[currentQuestion];
   const btns = scrambledWords.querySelectorAll('.word-btn');
@@ -121,6 +135,7 @@ function selectWord(idx) {
     selectedWordIndices.push(idx);
     renderAnswerBox();
   }
+  speakWord(q.words[idx]);
 }
 
 function renderAnswerBox() {
@@ -133,7 +148,10 @@ function renderAnswerBox() {
     span.ondragstart = (e) => {
       e.dataTransfer.setData('answer-index', i);
     };
-    span.onclick = () => removeWord(i);
+    span.onclick = () => {
+      speakWord(word);
+      removeWord(i);
+    };
     answerBox.appendChild(span);
   });
 
