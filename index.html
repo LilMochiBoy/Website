@@ -230,9 +230,17 @@
                             <a href="#home-section" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; background:#232323; margin:4px 12px 0 12px;">
                                 <span style="font-size:1.3em;">🏠</span> Home
                             </a>
-                            <a href="#profile" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
+                            <a href="profile.html" id="sidebarProfileLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
                                 <span style="font-size:1.3em;">👤</span> Profile
                             </a>
+</div>
+<script>
+// Hide Profile link in sidebar if on profile.html
+if (window.location.pathname.endsWith('profile.html')) {
+    var profileLink = document.getElementById('sidebarProfileLink');
+    if (profileLink) profileLink.style.display = 'none';
+}
+</script>
                             <a href="#achievements" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
                                 <span style="font-size:1.3em;">🏅</span> Achievements
                             </a>
