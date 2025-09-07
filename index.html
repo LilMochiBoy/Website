@@ -230,7 +230,7 @@
                             <span style='font-family:Montserrat,sans-serif; font-size:1.35em; font-weight:800;'>Zendo</span>
                         </div>
                         <div style="display:flex; flex-direction:column; gap:2px;">
-                            <a href="#home-section" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; background:#232323; margin:4px 12px 0 12px;">
+                            <a href="#home-section" id="sidebarHomeLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:4px 12px 0 12px;">
                                 <span style="font-size:1.3em;">🏠</span> Home
                             </a>
                             <a href="profile.html" id="sidebarProfileLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
@@ -349,6 +349,13 @@ if (window.location.pathname.endsWith('profile.html')) {
         <div class="leaderboard-container" style="max-width:900px; margin:48px auto 0 auto; padding:36px 18px 48px 18px; background:#f4f4fb; border-radius:24px; box-shadow:0 6px 32px #23294655;">
             <div class="leaderboard-title" style="font-size:2.3rem; font-weight:800; text-align:center; margin-bottom:18px; font-family:'Satisfy',cursive; background:linear-gradient(90deg,#ffd580 0%,#ffb3ba 100%); background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; letter-spacing:2px;">Leaderboard</div>
             <style>
+            /* Sidebar active button highlight */
+            .sidebar-btn-active {
+                background: linear-gradient(90deg, #ffd580 0%, #bae1ff 100%);
+                color: #232946 !important;
+                box-shadow: 0 2px 12px #ffd58055;
+                font-weight: 800;
+            }
             .leaderboard-card {
                 background: linear-gradient(120deg, #232946 0%, #ffd58033 100%);
                 border-radius: 22px;
@@ -715,31 +722,17 @@ if (window.location.pathname.endsWith('profile.html')) {
     </div>
     <!-- Lessons Panel -->
     <div id="lessonsPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #1a1a2e 100%); overflow-y:auto;">
-        <div class="lessons-container" style="margin:48px auto 0 auto;">
-            <div class="lesson-title">Choose Your Chinese Proficiency Level</div>
-            <p>Select the level that best matches your current Chinese skills:</p>
-            <div style="display: flex; flex-direction: column; gap: 24px; max-width: 600px; width: 100%; align-items: center;">
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Rookie 🐣</span>
-                    <ul style="margin-top:12px;">
-                        <li>Learning pinyin, tones, greetings, numbers, and simple daily expressions.</li>
-                        <li>Can introduce yourself, order food, and handle very basic conversations.</li>
-                    </ul>
-                </button>
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Explorer 🧭</span>
-                    <ul style="margin-top:12px;">
-                        <li>Able to talk about familiar topics, daily life, and simple opinions.</li>
-                        <li>Can read short texts, understand common grammar, and manage most situations in Chinese.</li>
-                    </ul>
-                </button>
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Challenger ⚔️</span>
-                    <ul style="margin-top:12px;">
-                        <li>Comfortable discussing abstract topics, culture, and professional subjects.</li>
-                        <li>Can read news, short stories, and write more complex sentences.</li>
-                    </ul>
-                </button>
+        <div class="lessons-container" style="margin:48px auto 0 auto; max-width:1200px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
+                <div style="font-size:2.1em; font-weight:800; color:#ffd580; margin-bottom:12px;">Lessons</div>
+                <div style="display:flex; gap:16px; margin-bottom:18px;">
+                    <button onclick="document.getElementById('lessonsFrame').src='lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">All Lessons</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='rookie_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bae1ff; color:#232946; font-weight:700; cursor:pointer;">Rookie</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='explorer_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bdbec8; color:#232946; font-weight:700; cursor:pointer;">Explorer</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='challenger_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">Challenger</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='master_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#cd7f32; color:#fffbe6; font-weight:700; cursor:pointer;">Master</button>
+                </div>
+                <iframe id="lessonsFrame" src="lessons.html" style="width:100%; min-height:700px; border-radius:18px; border:none; box-shadow:0 4px 24px #23294633; background:#fff;" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -753,8 +746,21 @@ if (window.location.pathname.endsWith('profile.html')) {
                                         if (el) el.style.display = (id === panelId) ? 'block' : 'none';
                                     });
                                     document.getElementById('logoSidebarBg').style.display = 'block';
+                                    // Highlight active sidebar button
+                                    var sidebarBtns = [
+                                        document.querySelector('#logoSidebar a[href="#home-section"]'),
+                                        document.getElementById('sidebarProfileLink'),
+                                        document.querySelector('#logoSidebar a[href="achievements.html"]'),
+                                        document.getElementById('sidebarLeaderboardLink'),
+                                        document.getElementById('sidebarLessonsLink')
+                                    ];
+                                    sidebarBtns.forEach(function(btn, idx) {
+                                        if (!btn) return;
+                                        btn.classList.remove('sidebar-btn-active');
+                                        if (panelId === panels[idx]) btn.classList.add('sidebar-btn-active');
+                                    });
                                 }
-                                var homeLink = document.querySelector('#logoSidebar a[href="#home-section"]');
+                                var homeLink = document.getElementById('sidebarHomeLink');
                                 var profileLink = document.getElementById('sidebarProfileLink');
                                 var achievementsLink = document.querySelector('#logoSidebar a[href="achievements.html"]');
                                 var leaderboardLink = document.getElementById('sidebarLeaderboardLink');
@@ -763,7 +769,7 @@ if (window.location.pathname.endsWith('profile.html')) {
                                 if (profileLink) profileLink.onclick = function(e) { e.preventDefault(); showPanel('profilePanel'); };
                                 if (achievementsLink) achievementsLink.onclick = function(e) { e.preventDefault(); showPanel('achievementsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
                                 if (leaderboardLink) leaderboardLink.onclick = function(e) { e.preventDefault(); showPanel('leaderboardPanel'); };
-                                if (lessonsLink) lessonsLink.onclick = function(e) { e.preventDefault(); showPanel('lessonsPanel'); };
+                                if (lessonsLink) lessonsLink.onclick = function(e) { e.preventDefault(); showPanel('lessonsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
                             });
                             </script>
                             <a href="#" id="sidebarLeaderboardLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
