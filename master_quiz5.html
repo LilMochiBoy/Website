@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Master Quiz Level 5</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
 		.buzzer-effect {
@@ -161,7 +161,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<span class="duo-title">Master Quiz 5: Pro Masters</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -199,8 +199,8 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
-	};
+		   window.location.href = 'master.html';
+	   };
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -212,151 +212,156 @@
 
 	const originalQuestions = [
     {
-        q: 'Translate into English:<br>他坚持每天跑步，不管天气怎么样。',
+        q: 'Translate into English:<br>无论遇到什么困难，他都从来没有放弃过。',
         options: [
-            'He insists on running every day, no matter what the weather is like.',
-            'He runs only when the weather is good.',
-            'He likes running in the rain.',
-            'He never runs when it rains.'
+            'No matter what difficulties he encountered, he never gave up.',
+            'He gave up whenever he met difficulties.',
+            'He never had any difficulties.',
+            'He always avoided difficulties.'
         ],
         answer: 0
     },
     {
-        q: 'Which sentence correctly uses the word “尽管”?',
+        q: 'Which sentence correctly uses “既然…就…”?',
         options: [
-            'a) 尽管他很忙，他还是来参加了会议。',
-            'b) 他尽管很累，所以睡觉了。',
-            'c) 他尽管不喜欢运动，因为他不健康。',
-            'd) 尽管他迟到了，所以老师生气。'
+            '既然下雨，你就带伞吧。',
+            '下雨既然，你就带伞吧。',
+            '就既然下雨，你带伞吧。',
+            '你既然下雨，就带伞吧。'
         ],
         answer: 0
     },
     {
-        q: 'Fill in the blank:<br>老师要求我们在下周五之前把作业___。',
+        q: 'Fill in:<br>他___(despite) 生病了，还坚持去工作。',
         options: [
-            '完成',
-            '完了',
-            '结束',
-            '完结'
+            '尽管',
+            '虽然',
+            '如果',
+            '因为'
         ],
         answer: 0
     },
     {
-        q: 'Choose the correct measure word:<br>一___知识 (a piece of knowledge)',
+        q: 'Choose the correct idiom for “superficial understanding”:',
         options: [
-            '个',
-            '条',
-            '项',
-            '张'
+            '纸上谈兵',
+            '一知半解',
+            '水落石出',
+            '全力以赴'
         ],
-        answer: 2
+        answer: 1
     },
     {
-        q: 'Translate into Chinese:<br>“Although it was raining, we still went to the library.”',
+        q: 'Translate into Chinese:<br>“He pretended not to know, but in fact he understood everything.”',
         options: [
-            '尽管下雨了，我们还是去了图书馆。',
-            '因为下雨了，我们没有去图书馆。',
-            '我们去图书馆是因为下雨了。',
-            '下雨了，所以我们去了图书馆。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best synonym of “复杂”:',
-        options: [
-            '困难',
-            '简单',
-            '复杂',
-            '繁琐'
-        ],
-        answer: 3
-    },
-    {
-        q: 'Rearrange into a proper sentence:<br>成功 / 需要 / 努力 / 和 / 耐心',
-        options: [
-            '成功需要努力和耐心。',
-            '努力和耐心需要成功。',
-            '需要成功和耐心努力。',
-            '耐心和努力成功需要。'
+            '他假装不知道，其实什么都明白。',
+            '他真的什么都不懂。',
+            '他不想明白。',
+            '他假装明白，其实什么都不知道。'
         ],
         answer: 0
     },
     {
-        q: 'Translate:<br>他的话让我很感动。',
+        q: 'Which of the following best expresses the meaning of “归根到底”?',
         options: [
-            'His words moved me.',
-            'He was touched by my words.',
-            'His words made me angry.',
-            'He made me laugh.'
+            'In the end / Ultimately',
+            'On the contrary',
+            'Little by little',
+            'Suddenly'
         ],
         answer: 0
     },
     {
-        q: 'Fill in with the right word:<br>我们必须保护环境，减少空气___。',
+        q: 'Rearrange into a proper sentence:<br>解决 / 问题 / 最好的方法 / 是 / 沟通',
         options: [
-            '污染',
-            '新鲜',
-            '清洁',
-            '流动'
+            '最好的方法是沟通解决问题。',
+            '沟通是解决问题最好的方法。',
+            '解决问题的方法最好的沟通是。',
+            '问题沟通是最好的方法解决。'
+        ],
+        answer: 1
+    },
+    {
+        q: 'Translate into English:<br>他被迫接受了这个条件。',
+        options: [
+            'He was forced to accept this condition.',
+            'He refused to accept this condition.',
+            'He happily accepted this condition.',
+            'He ignored this condition.'
         ],
         answer: 0
     },
     {
-        q: 'Which idiom means “to kill two birds with one stone”?',
+        q: 'Fill in:<br>科学家正在努力___新的能源解决方案。',
         options: [
-            '一举两得',
+            '发现',
+            '发明',
+            '发展',
+            '发起'
+        ],
+        answer: 1
+    },
+    {
+        q: 'Which idiom means “to add details that ruin something”?',
+        options: [
             '画蛇添足',
+            '守株待兔',
             '亡羊补牢',
-            '井底之蛙'
+            '掩耳盗铃'
         ],
         answer: 0
     },
     {
-        q: 'Translate into English:<br>他来中国是为了提高汉语水平。',
+        q: 'Translate into Chinese:<br>“The government has implemented stricter policies to control pollution。”',
         options: [
-            'He came to China to improve his Chinese.',
-            'He came to China to travel.',
-            'He came to China for business.',
-            'He came to China to visit friends.'
+            '政府已经实施了更严格的政策来控制污染。',
+            '政府忽视了污染问题。',
+            '政府没有采取措施。',
+            '政府鼓励污染。'
         ],
         answer: 0
     },
     {
-        q: 'Choose the correct usage of “不仅…而且…”',
+        q: 'Fill in the blank with a suitable conjunction:<br>___你不喜欢，也不要随便批评别人。',
         options: [
-            '他不仅会说英语，而且会说汉语。',
-            '他不仅会说英语，因为他会说汉语。',
-            '他不仅会说英语，所以会说汉语。',
-            '他不仅会说英语，但是会说汉语。'
+            '即使',
+            '虽然',
+            '因为',
+            '如果'
         ],
         answer: 0
     },
     {
-        q: 'Fill in: 这件事很___，我们必须认真对待。',
+        q: 'Which word best fits:<br>他的话有很大的___力。 (influence)',
         options: [
-            '重要',
-            '容易',
-            '轻松',
-            '简单'
+            '影响',
+            '感情',
+            '情绪',
+            '改变'
         ],
         answer: 0
     },
     {
-        q: 'Translate into Chinese:<br>“Global warming is a big challenge for humanity.”',
+        q: 'Translate into English:<br>在经济全球化的背景下，国家之间的联系越来越紧密。',
         options: [
-            '全球变暖是人类面临的重大挑战。',
-            '人类喜欢全球变暖。',
-            '全球变暖对人类没有影响。',
-            '人类解决了全球变暖的问题。'
+            'In the context of economic globalization, the connections between countries are becoming closer and closer.',
+            'Countries are becoming more independent.',
+            'Globalization has no effect on countries.',
+            'Countries are becoming more isolated.'
         ],
         answer: 0
     },
     {
-        q: 'Short Writing (5–6 sentences):<br>Write about an environmental problem in your country and give one possible solution in Chinese.',
-        options: ['__OPEN_ENDED__'],
+        q: 'Short Writing (5–6 sentences):<br>Write about a time when you overcame a big challenge, explaining how you felt and what you learned.',
+        options: [
+            'Open-ended',
+            'Open-ended',
+            'Open-ended',
+            'Open-ended'
+        ],
         answer: 0
     }
-	];
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -370,37 +375,6 @@
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
-
-		// Open-ended question support
-		if (q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
-			const textarea = document.createElement('textarea');
-			textarea.style.width = '100%';
-			textarea.style.height = '120px';
-			textarea.style.fontSize = '1.2rem';
-			textarea.style.marginBottom = '18px';
-			textarea.placeholder = '请用中文写5-6句话...';
-			answersDiv.appendChild(textarea);
-
-			const submitBtn = document.createElement('button');
-			submitBtn.textContent = 'Submit';
-			submitBtn.className = 'answer-btn-custom border-c1';
-			submitBtn.style.width = '220px';
-			submitBtn.style.margin = '0 auto';
-			submitBtn.onclick = () => {
-				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5–6 sentences.</span>';
-					return;
-				}
-				score++;
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
-				setTimeout(() => {
-					if (!paused) nextQuestion();
-				}, 900);
-			};
-			answersDiv.appendChild(submitBtn);
-			updateProgress();
-			return;
-		}
 
 		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
@@ -500,7 +474,7 @@
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'challenger_quiz2.html';
+					window.location.href = 'master_quiz6.html';
 				};
 			}
 		}, 100);

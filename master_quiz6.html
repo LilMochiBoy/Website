@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Master Quiz Level 6</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
 		.buzzer-effect {
@@ -161,7 +161,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<span class="duo-title">Master Quiz 6: Pro Masters</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -199,8 +199,8 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
-	};
+		   window.location.href = 'master.html';
+	   };
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -212,151 +212,156 @@
 
 	const originalQuestions = [
     {
-        q: 'Translate into English:<br>他坚持每天跑步，不管天气怎么样。',
+        q: 'Translate into English:<br>他不仅有才华，而且非常勤奋。',
         options: [
-            'He insists on running every day, no matter what the weather is like.',
-            'He runs only when the weather is good.',
-            'He likes running in the rain.',
-            'He never runs when it rains.'
+            'He is not only talented but also very diligent.',
+            'He is only talented.',
+            'He is only diligent.',
+            'He is neither talented nor diligent.'
         ],
         answer: 0
     },
     {
-        q: 'Which sentence correctly uses the word “尽管”?',
+        q: 'Choose the correct usage of “宁可…也不…”',
         options: [
-            'a) 尽管他很忙，他还是来参加了会议。',
-            'b) 他尽管很累，所以睡觉了。',
-            'c) 他尽管不喜欢运动，因为他不健康。',
-            'd) 尽管他迟到了，所以老师生气。'
+            '我宁可努力，也不放弃。',
+            '我宁可不放弃，也努力。',
+            '我努力宁可，也不放弃。',
+            '不放弃我宁可，也努力。'
         ],
         answer: 0
     },
     {
-        q: 'Fill in the blank:<br>老师要求我们在下周五之前把作业___。',
+        q: 'Fill in:<br>这个问题太___了，我需要更多时间来考虑。 (complicated)',
         options: [
-            '完成',
-            '完了',
-            '结束',
-            '完结'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct measure word:<br>一___知识 (a piece of knowledge)',
-        options: [
-            '个',
-            '条',
-            '项',
-            '张'
-        ],
-        answer: 2
-    },
-    {
-        q: 'Translate into Chinese:<br>“Although it was raining, we still went to the library.”',
-        options: [
-            '尽管下雨了，我们还是去了图书馆。',
-            '因为下雨了，我们没有去图书馆。',
-            '我们去图书馆是因为下雨了。',
-            '下雨了，所以我们去了图书馆。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best synonym of “复杂”:',
-        options: [
-            '困难',
-            '简单',
             '复杂',
-            '繁琐'
-        ],
-        answer: 3
-    },
-    {
-        q: 'Rearrange into a proper sentence:<br>成功 / 需要 / 努力 / 和 / 耐心',
-        options: [
-            '成功需要努力和耐心。',
-            '努力和耐心需要成功。',
-            '需要成功和耐心努力。',
-            '耐心和努力成功需要。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>他的话让我很感动。',
-        options: [
-            'His words moved me.',
-            'He was touched by my words.',
-            'His words made me angry.',
-            'He made me laugh.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in with the right word:<br>我们必须保护环境，减少空气___。',
-        options: [
-            '污染',
-            '新鲜',
-            '清洁',
-            '流动'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “to kill two birds with one stone”?',
-        options: [
-            '一举两得',
-            '画蛇添足',
-            '亡羊补牢',
-            '井底之蛙'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into English:<br>他来中国是为了提高汉语水平。',
-        options: [
-            'He came to China to improve his Chinese.',
-            'He came to China to travel.',
-            'He came to China for business.',
-            'He came to China to visit friends.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct usage of “不仅…而且…”',
-        options: [
-            '他不仅会说英语，而且会说汉语。',
-            '他不仅会说英语，因为他会说汉语。',
-            '他不仅会说英语，所以会说汉语。',
-            '他不仅会说英语，但是会说汉语。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in: 这件事很___，我们必须认真对待。',
-        options: [
-            '重要',
+            '简单',
             '容易',
-            '轻松',
-            '简单'
+            '清楚'
         ],
         answer: 0
     },
     {
-        q: 'Translate into Chinese:<br>“Global warming is a big challenge for humanity.”',
+        q: 'Which idiom means “to waste effort by doing something pointless”?',
         options: [
-            '全球变暖是人类面临的重大挑战。',
-            '人类喜欢全球变暖。',
-            '全球变暖对人类没有影响。',
-            '人类解决了全球变暖的问题。'
+            '对牛弹琴',
+            '望梅止渴',
+            '水滴石穿',
+            '入木三分'
         ],
         answer: 0
     },
     {
-        q: 'Short Writing (5–6 sentences):<br>Write about an environmental problem in your country and give one possible solution in Chinese.',
-        options: ['__OPEN_ENDED__'],
+        q: 'Translate into Chinese:<br>“She insisted on doing it her own way, even though everyone disagreed.”',
+        options: [
+            '尽管大家都不同意，她还是坚持按照自己的方式去做。',
+            '她同意大家的做法。',
+            '她放弃了自己的想法。',
+            '她没有坚持自己的方式。'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Which best matches the meaning of “无可奈何”?',
+        options: [
+            'Helpless / Have no choice',
+            'Very angry',
+            'Careful and serious',
+            'Unexpectedly lucky'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Rearrange into correct order:<br>责任 / 每个人 / 社会 / 都有 / 的',
+        options: [
+            '每个人都有社会的责任。',
+            '社会的责任每个人都有。',
+            '都有每个人社会的责任。',
+            '的责任社会都有每个人。'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Translate into English:<br>他在会议上提出了一个非常有价值的建议。',
+        options: [
+            'He made a very valuable suggestion at the meeting.',
+            'He refused to give any suggestions at the meeting.',
+            'He was late for the meeting.',
+            'He disagreed with all suggestions at the meeting.'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Fill in:<br>我们要勇于___自己的错误。',
+        options: [
+            '承认',
+            '接受',
+            '承担',
+            '面对'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Which idiom means “to make a fresh start after failure”?',
+        options: [
+            '东山再起',
+            '夜郎自大',
+            '指鹿为马',
+            '三心二意'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Translate into Chinese:<br>“The rapid development of technology has changed people’s lifestyles。”',
+        options: [
+            '科技的迅速发展改变了人们的生活方式。',
+            '科技让人们变得懒惰。',
+            '科技没有影响生活。',
+            '科技让生活变得更困难。'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Fill in:<br>她是一个很有___的领导。 (charisma)',
+        options: [
+            '魅力',
+            '性格',
+            '个性',
+            '能力'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Which best expresses the meaning of “举足轻重”?',
+        options: [
+            'Very influential / critical',
+            'Very easy',
+            'Very small',
+            'Very common'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Translate into English:<br>这个计划的实施需要大量的资金支持。',
+        options: [
+            'The implementation of this plan requires a large amount of financial support.',
+            'This plan does not need any support.',
+            'This plan is already completed.',
+            'This plan is not important.'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Short Writing (5–6 sentences):<br>Discuss the role of technology in education today and its potential disadvantages.',
+        options: [
+            'Open-ended',
+            'Open-ended',
+            'Open-ended',
+            'Open-ended'
+        ],
         answer: 0
     }
-	];
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -370,37 +375,6 @@
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
-
-		// Open-ended question support
-		if (q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
-			const textarea = document.createElement('textarea');
-			textarea.style.width = '100%';
-			textarea.style.height = '120px';
-			textarea.style.fontSize = '1.2rem';
-			textarea.style.marginBottom = '18px';
-			textarea.placeholder = '请用中文写5-6句话...';
-			answersDiv.appendChild(textarea);
-
-			const submitBtn = document.createElement('button');
-			submitBtn.textContent = 'Submit';
-			submitBtn.className = 'answer-btn-custom border-c1';
-			submitBtn.style.width = '220px';
-			submitBtn.style.margin = '0 auto';
-			submitBtn.onclick = () => {
-				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5–6 sentences.</span>';
-					return;
-				}
-				score++;
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
-				setTimeout(() => {
-					if (!paused) nextQuestion();
-				}, 900);
-			};
-			answersDiv.appendChild(submitBtn);
-			updateProgress();
-			return;
-		}
 
 		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
@@ -500,7 +474,7 @@
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'challenger_quiz2.html';
+					window.location.href = 'master_quiz7.html';
 				};
 			}
 		}, 100);

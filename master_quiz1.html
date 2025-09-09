@@ -199,7 +199,7 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
+		window.location.href = 'master.html';
 	};
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
@@ -211,151 +211,156 @@
 	}
 
 	const originalQuestions = [
-    {
-        q: 'Translate into English:<br>他坚持每天跑步，不管天气怎么样。',
-        options: [
-            'He insists on running every day, no matter what the weather is like.',
-            'He runs only when the weather is good.',
-            'He likes running in the rain.',
-            'He never runs when it rains.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which sentence correctly uses the word “尽管”?',
-        options: [
-            'a) 尽管他很忙，他还是来参加了会议。',
-            'b) 他尽管很累，所以睡觉了。',
-            'c) 他尽管不喜欢运动，因为他不健康。',
-            'd) 尽管他迟到了，所以老师生气。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in the blank:<br>老师要求我们在下周五之前把作业___。',
-        options: [
-            '完成',
-            '完了',
-            '结束',
-            '完结'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct measure word:<br>一___知识 (a piece of knowledge)',
-        options: [
-            '个',
-            '条',
-            '项',
-            '张'
-        ],
-        answer: 2
-    },
-    {
-        q: 'Translate into Chinese:<br>“Although it was raining, we still went to the library.”',
-        options: [
-            '尽管下雨了，我们还是去了图书馆。',
-            '因为下雨了，我们没有去图书馆。',
-            '我们去图书馆是因为下雨了。',
-            '下雨了，所以我们去了图书馆。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best synonym of “复杂”:',
-        options: [
-            '困难',
-            '简单',
-            '复杂',
-            '繁琐'
-        ],
-        answer: 3
-    },
-    {
-        q: 'Rearrange into a proper sentence:<br>成功 / 需要 / 努力 / 和 / 耐心',
-        options: [
-            '成功需要努力和耐心。',
-            '努力和耐心需要成功。',
-            '需要成功和耐心努力。',
-            '耐心和努力成功需要。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>他的话让我很感动。',
-        options: [
-            'His words moved me.',
-            'He was touched by my words.',
-            'His words made me angry.',
-            'He made me laugh.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in with the right word:<br>我们必须保护环境，减少空气___。',
-        options: [
-            '污染',
-            '新鲜',
-            '清洁',
-            '流动'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “to kill two birds with one stone”?',
-        options: [
-            '一举两得',
-            '画蛇添足',
-            '亡羊补牢',
-            '井底之蛙'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into English:<br>他来中国是为了提高汉语水平。',
-        options: [
-            'He came to China to improve his Chinese.',
-            'He came to China to travel.',
-            'He came to China for business.',
-            'He came to China to visit friends.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct usage of “不仅…而且…”',
-        options: [
-            '他不仅会说英语，而且会说汉语。',
-            '他不仅会说英语，因为他会说汉语。',
-            '他不仅会说英语，所以会说汉语。',
-            '他不仅会说英语，但是会说汉语。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in: 这件事很___，我们必须认真对待。',
-        options: [
-            '重要',
-            '容易',
-            '轻松',
-            '简单'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“Global warming is a big challenge for humanity.”',
-        options: [
-            '全球变暖是人类面临的重大挑战。',
-            '人类喜欢全球变暖。',
-            '全球变暖对人类没有影响。',
-            '人类解决了全球变暖的问题。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Short Writing (5–6 sentences):<br>Write about an environmental problem in your country and give one possible solution in Chinese.',
-        options: ['__OPEN_ENDED__'],
-        answer: 0
-    }
+		{
+			q: 'Translate: 无论结果如何，我们都应该尽力而为。',
+			options: [
+				'No matter the result, we should all do our best.',
+				'We should wait for the result before trying.',
+				'We should not care about the result.',
+				'The result is more important than the effort.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Which sentence correctly uses “哪怕”:',
+			options: [
+				'哪怕下雨，我也要去。',
+				'我哪怕很高兴，所以笑了。',
+				'哪怕他迟到，因为堵车。',
+				'他哪怕努力，可是成功了。'
+			],
+			answer: 0
+		},
+		{
+			q: 'Fill in: 他在北京生活了十年，汉语已经非常___。',
+			options: [
+				'流利',
+				'干净',
+				'热闹',
+				'清楚'
+			],
+			answer: 0
+		},
+		{
+			q: 'Translate: “The government should balance economic growth and environmental protection。”',
+			options: [
+				'政府应该平衡经济发展和环境保护。',
+				'政府应该只关注经济发展。',
+				'政府应该忽视环境保护。',
+				'政府应该停止经济发展。'
+			],
+			answer: 0
+		},
+		{
+			q: 'Which idiom means “to turn danger into safety”?',
+			options: [
+				'化险为夷',
+				'杯弓蛇影',
+				'掩耳盗铃',
+				'守株待兔'
+			],
+			answer: 0
+		},
+		{
+			q: 'Reading comprehension: What is the main idea of this passage?<br>“近年来，随着互联网的发展，越来越多的人开始依赖网络获取信息和娱乐。然而，这也带来了一些负面影响，比如青少年的沉迷问题。”',
+			options: [
+				'Internet helps students study better.',
+				'Internet brings both benefits and problems.',
+				'Internet is only harmful for teenagers.',
+				'Internet should be banned.'
+			],
+			answer: 1
+		},
+		{
+			q: 'Translate: 他对未来充满了希望。',
+			options: [
+				'He is full of hope for the future.',
+				'He is afraid of the future.',
+				'He doesn’t care about the future.',
+				'He is disappointed in the future.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Rearrange:<br>未来 / 我们 / 会 / 面临 / 许多 / 挑战',
+			options: [
+				'未来我们会面临许多挑战',
+				'我们会未来面临许多挑战',
+				'我们许多会面临未来挑战',
+				'许多挑战我们会面临未来'
+			],
+			answer: 0
+		},
+		{
+			q: 'Fill in with the right word:<br>他的话很有___，大家都认真听。',
+			options: [
+				'意义',
+				'意见',
+				'意图',
+				'意外'
+			],
+			answer: 0
+		},
+		{
+			q: 'Translate into Chinese:<br>“Despite his failure, he still doesn’t give up。”',
+		 options: [
+				'尽管他失败了，他仍然不放弃。',
+				'他失败了，所以放弃了。',
+				'他成功了，但不放弃。',
+				'他失败了，也不努力。'
+			],
+			answer: 0
+		},
+		{
+			q: 'Write pinyin: 坚持',
+			options: [
+				'jiānchí',
+				'jiànchí',
+				'jiānqí',
+				'jiànqí'
+			],
+			answer: 0
+		},
+		{
+			q: 'Which word fits:<br>他总是___，让别人不太舒服。(arrogant)',
+			options: [
+				'自信',
+				'自大',
+				'自然',
+				'自律'
+			],
+			answer: 1
+		},
+		{
+			q: 'Translate: 这次经历让我明白了团队合作的重要性。',
+			options: [
+				'This experience made me understand the importance of teamwork.',
+				'This experience made me dislike teamwork.',
+				'This experience was not important.',
+				'This experience was about working alone.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Short Writing (4–5 sentences): Describe an unforgettable challenge you faced.',
+			options: [
+				'Open-ended',
+				'Open-ended',
+				'Open-ended',
+				'Open-ended'
+			],
+			answer: 0
+		},
+		{
+			q: 'Choose correct synonym: “欣赏” is closest to',
+			options: [
+				'喜欢',
+				'感激',
+				'赞美',
+				'观看'
+			],
+			answer: 2
+		}
 	];
 
 	// Shuffle questions at the start
@@ -371,33 +376,35 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		// Open-ended question support
-		if (q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
+		// If open-ended, show a textarea
+		if (q.options[0] === 'Open-ended') {
 			const textarea = document.createElement('textarea');
 			textarea.style.width = '100%';
 			textarea.style.height = '120px';
 			textarea.style.fontSize = '1.2rem';
-			textarea.style.marginBottom = '18px';
-			textarea.placeholder = '请用中文写5-6句话...';
+			textarea.style.margin = '24px 0';
+			textarea.placeholder = 'Type your answer here...';
 			answersDiv.appendChild(textarea);
 
 			const submitBtn = document.createElement('button');
 			submitBtn.textContent = 'Submit';
-			submitBtn.className = 'answer-btn-custom border-c1';
-			submitBtn.style.width = '220px';
-			submitBtn.style.margin = '0 auto';
+			submitBtn.style.marginTop = '18px';
+			submitBtn.style.padding = '12px 32px';
+			submitBtn.style.fontSize = '1.1rem';
+			submitBtn.style.borderRadius = '8px';
+			submitBtn.style.background = '#4a90e2';
+			submitBtn.style.color = '#fff';
+			submitBtn.style.border = 'none';
+			submitBtn.style.boxShadow = '0 2px 8px #222';
+			submitBtn.style.cursor = 'pointer';
 			submitBtn.onclick = () => {
-				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5–6 sentences.</span>';
-					return;
-				}
-				score++;
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
+				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Answer submitted!</span>';
 				setTimeout(() => {
-					if (!paused) nextQuestion();
+					nextQuestion();
 				}, 900);
 			};
 			answersDiv.appendChild(submitBtn);
+			document.getElementById('quiz-feedback').textContent = '';
 			updateProgress();
 			return;
 		}
@@ -430,6 +437,10 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
+		if(q.options[0] === 'Open-ended') {
+			nextQuestion();
+			return;
+		}
 		if(idx === q._shuffledAnswerIdx) {
 			correct = true;
 			score++;
@@ -500,7 +511,7 @@
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'challenger_quiz2.html';
+				 window.location.href = 'master_quiz2.html';
 				};
 			}
 		}, 100);

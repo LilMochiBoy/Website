@@ -211,82 +211,152 @@
 	}
 
 	const originalQuestions = [
-		{
-			q: 'Translate: 昨天我去学校。',
-			options: ['Yesterday I went to school.', 'Tomorrow I will go to school.', 'I am going to school now.', 'I will go to school.'],
-			answer: 0
-		},
-		{
-			q: 'Fill in the blank: 明天我___去商店。 (will)',
-			options: ['要', '会', '了', '过'],
-			answer: 0
-		},
-		{
-			q: 'Match: 1-c, 2-b, 3-d, 4-a',
-			options: ['1-c', '2-b', '3-d', '4-a'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 他昨天没来。',
-			options: ['He didn’t come yesterday.', 'He will come tomorrow.', 'He comes every day.', 'He is coming now.'],
-			answer: 0
-		},
-		{
-			q: 'Which is correct for past action? (b)',
-			options: ['a) 着', 'b) 了', 'c) 过', 'd) 吗'],
-			answer: 1
-		},
-		{
-			q: 'Which word fits: 我吃___饭了。',
-			options: ['过', '了', '着', '会'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 我去过中国。',
-			options: ['I have been to China.', 'I will go to China.', 'I am going to China.', 'I go to China every year.'],
-			answer: 0
-		},
-		{
-			q: 'Which word indicates experience in the past?',
-			options: ['过', '了', '着', '会'],
-			answer: 0
-		},
-		{
-			q: 'Which word means "will" or "want to"?',
-			options: ['要', '会', '了', '过'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 我今天很忙，所以不去图书馆。',
-			options: ['I am very busy today, so I’m not going to the library.', 'I am going to the library today.', 'I was busy yesterday.', 'I will go to the library tomorrow.'],
-			answer: 0
-		},
-		{
-			q: 'True or False: 过 = experience, not completion',
-			options: ['True', 'False'],
-			answer: 0
-		},
-		{
-			q: 'Translate into Mandarin: I studied yesterday.',
-			options: ['我昨天学习了。', '我明天学习。', '我现在学习。', '我会学习。'],
-			answer: 0
-		},
-		{
-			q: 'Fill in the blank: 她明天不___工作。',
-			options: ['工作', '学习', '去', '玩'],
-			answer: 0
-		},
-		{
-			q: 'Translate: 我以前不喜欢茶，现在喜欢。',
-			options: ['Before I didn’t like tea, now I do.', 'I like tea now and before.', 'I never liked tea.', 'I will like tea in the future.'],
-			answer: 0
-		},
-		{
-			q: 'Write the pinyin for 以后.',
-			options: ['yǐhòu', 'yíhòu', 'yǐhou', 'yíhou'],
-			answer: 0
-		}
-	];
+        {
+            q: 'Translate: 我希望以后能出国留学。',
+            options: [
+                'I hope to study abroad in the future.',
+                'I want to work abroad.',
+                'I studied abroad before.',
+                'I am studying abroad now.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Which is the antonym of 乐观?',
+            options: [
+                '悲观',
+                '开心',
+                '积极',
+                '热情'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Fill in: 他很___，努力，所以成绩很好。',
+            options: [
+                '聪明',
+                '懒惰',
+                '马虎',
+                '粗心'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate into Chinese: “The teacher encouraged us to ask questions bravely.”',
+            options: [
+                '老师鼓励我们勇敢地提问。',
+                '老师让我们不要提问。',
+                '老师不喜欢我们提问。',
+                '老师要求我们安静。'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Which is the correct word for “efficient”?',
+            options: [
+                '有效',
+                '有效率',
+                '高效',
+                '效力'
+            ],
+            answer: 2
+        },
+        {
+            q: 'Translate: 经过几年的努力，他终于实现了梦想。',
+            options: [
+                'After years of hard work, he finally achieved his dream.',
+                'He worked hard for a few days.',
+                'He gave up his dream.',
+                'He is still working hard.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Rearrange: 经验 / 比 / 知识 / 更 / 重要',
+            options: [
+                '经验比知识更重要。',
+                '知识比经验更重要。',
+                '更重要比经验知识。',
+                '经验更重要比知识。'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Choose the correct idiom for “a drop in the ocean”:',
+            options: [
+                '沧海一粟',
+                '画蛇添足',
+                '亡羊补牢',
+                '一举两得'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Fill in: 这项___需要很多人一起合作。 (task)',
+            options: [
+                '任务',
+                '活动',
+                '比赛',
+                '作业'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate: 我们要尊重不同的文化。',
+            options: [
+                'We should respect different cultures.',
+                'We should change different cultures.',
+                'We should ignore different cultures.',
+                'We should learn only our own culture.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Multiple choice: Which is formal?',
+            options: [
+                '我想吃饭了。',
+                '我饿了。',
+                '我需要用餐。',
+                '吃点东西吧。'
+            ],
+            answer: 2
+        },
+        {
+            q: 'Translate into English: 他性格开朗，很容易交朋友。',
+            options: [
+                'He is outgoing and makes friends easily.',
+                'He is shy and doesn’t like friends.',
+                'He is very serious.',
+                'He is not friendly.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Which word means “challenge”?',
+            options: [
+                '挑战',
+                '挑衅',
+                '质问',
+                '考验'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Fill in: 科学技术发展很快，给人们的生活带来了很多___。 (convenience)',
+            options: [
+                '便利',
+                '困难',
+                '问题',
+                '危险'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Short Writing: Write a 5–6 sentence email to a professor asking for advice about studying abroad.',
+            options: ['__OPEN_ENDED__'],
+            answer: 0
+        }
+    ];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -301,12 +371,41 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
+		// Open-ended question support
+		if (q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
+			const textarea = document.createElement('textarea');
+			textarea.style.width = '100%';
+			textarea.style.height = '120px';
+			textarea.style.fontSize = '1.2rem';
+			textarea.style.marginBottom = '18px';
+			textarea.placeholder = 'Write your answer here (5–6 sentences)...';
+			answersDiv.appendChild(textarea);
+
+			const submitBtn = document.createElement('button');
+			submitBtn.textContent = 'Submit';
+			submitBtn.className = 'answer-btn-custom border-c1';
+			submitBtn.style.width = '220px';
+			submitBtn.style.margin = '0 auto';
+			submitBtn.onclick = () => {
+				if (textarea.value.trim().length < 15) {
+					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5–6 sentences.</span>';
+					return;
+				}
+				score++;
+				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
+				setTimeout(() => {
+					if (!paused) nextQuestion();
+				}, 900);
+			};
+			answersDiv.appendChild(submitBtn);
+			updateProgress();
+			return;
+		}
+
 		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
 		const shuffledOptions = shuffleArray(optionObjs);
-		// Find new correct answer index
 		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		// Store for checkAnswer
 		q._shuffledOptions = shuffledOptions;
 		q._shuffledAnswerIdx = newAnswerIdx;
 
@@ -315,7 +414,6 @@
 			btn.className = `answer-btn-custom border-c${i + 1}`;
 			btn.textContent = optObj.text;
 			btn.onclick = () => checkAnswer(i);
-			// Add fill div
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
 			btn.appendChild(fill);
@@ -399,7 +497,7 @@
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-					window.location.href = 'challenger_quiz2.html';
+				 window.location.href = 'challenger_quiz2.html';
 				};
 			}
 		}, 100);

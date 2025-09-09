@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Master Quiz Level 7</title>
 	<link rel="stylesheet" href="style.css">
 	<style>
 		.buzzer-effect {
@@ -161,7 +161,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<span class="duo-title">Master Quiz 7: Pro Masters</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -199,8 +199,8 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
-	};
+		   window.location.href = 'master.html';
+	   };
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -212,151 +212,156 @@
 
 	const originalQuestions = [
     {
-        q: 'Translate into English:<br>他坚持每天跑步，不管天气怎么样。',
+        q: 'Translate into English:<br>无论结果如何，他都不会放弃。',
         options: [
-            'He insists on running every day, no matter what the weather is like.',
-            'He runs only when the weather is good.',
-            'He likes running in the rain.',
-            'He never runs when it rains.'
+            'No matter the result, he will not give up.',
+            'He will give up if he fails.',
+            'He only cares about the result.',
+            'He is not interested in the result.'
         ],
         answer: 0
     },
     {
-        q: 'Which sentence correctly uses the word “尽管”?',
+        q: 'Which sentence uses “以免” correctly?',
         options: [
-            'a) 尽管他很忙，他还是来参加了会议。',
-            'b) 他尽管很累，所以睡觉了。',
-            'c) 他尽管不喜欢运动，因为他不健康。',
-            'd) 尽管他迟到了，所以老师生气。'
+            '他带了雨伞，以免下雨的时候淋湿。',
+            '他带了雨伞，以免天气很好。',
+            '他带了雨伞，以免他喜欢散步。',
+            '他带了雨伞，以免去旅游。'
         ],
         answer: 0
     },
     {
-        q: 'Fill in the blank:<br>老师要求我们在下周五之前把作业___。',
+        q: 'Fill in with the correct connector:<br>他不仅聪明，___很勤奋。',
         options: [
-            '完成',
-            '完了',
-            '结束',
-            '完结'
+            '而且',
+            '但是',
+            '所以',
+            '如果'
         ],
         answer: 0
     },
     {
-        q: 'Choose the correct measure word:<br>一___知识 (a piece of knowledge)',
+        q: 'Translate into Chinese:<br>“She studies hard in order to achieve her dream。”',
         options: [
-            '个',
-            '条',
-            '项',
-            '张'
+            '她努力学习，为了实现她的梦想。',
+            '她努力学习，因为她喜欢玩。',
+            '她不喜欢学习。',
+            '她已经实现了梦想。'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Which word best fits?<br>他的讲话很有___，大家都认真听。',
+        options: [
+            '感情',
+            '魅力',
+            '表情',
+            '表演'
+        ],
+        answer: 1
+    },
+    {
+        q: 'Write the pinyin:<br>艰难',
+        options: [
+            'jiānnán',
+            'jiāngnán',
+            'jiānnān',
+            'jiāngnān'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Translate into English:<br>他抱怨说生活太辛苦了。',
+        options: [
+            'He complained that life was too hard.',
+            'He said life was very happy.',
+            'He enjoys a comfortable life.',
+            'He never complains about life.'
+        ],
+        answer: 0
+    },
+    {
+        q: 'Choose the correct synonym for “逐渐”:',
+        options: [
+            '突然',
+            '渐渐',
+            '马上',
+            '立刻'
+        ],
+        answer: 1
+    },
+    {
+        q: 'Fill in:<br>他___了很大的努力，终于考上了大学。',
+        options: [
+            '给',
+            '做',
+            '付出',
+            '出现'
         ],
         answer: 2
     },
     {
-        q: 'Translate into Chinese:<br>“Although it was raining, we still went to the library.”',
+        q: 'Translate into Chinese:<br>“Cultural exchange helps us understand each other better。”',
         options: [
-            '尽管下雨了，我们还是去了图书馆。',
-            '因为下雨了，我们没有去图书馆。',
-            '我们去图书馆是因为下雨了。',
-            '下雨了，所以我们去了图书馆。'
+            '文化交流有助于我们更好地相互理解。',
+            '文化交流让我们变得富有。',
+            '文化交流让我们学习外语。',
+            '文化交流让我们喜欢旅游。'
         ],
         answer: 0
     },
     {
-        q: 'Choose the best synonym of “复杂”:',
+        q: 'Which idiom means “don’t give up halfway”?',
         options: [
-            '困难',
-            '简单',
-            '复杂',
-            '繁琐'
-        ],
-        answer: 3
-    },
-    {
-        q: 'Rearrange into a proper sentence:<br>成功 / 需要 / 努力 / 和 / 耐心',
-        options: [
-            '成功需要努力和耐心。',
-            '努力和耐心需要成功。',
-            '需要成功和耐心努力。',
-            '耐心和努力成功需要。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>他的话让我很感动。',
-        options: [
-            'His words moved me.',
-            'He was touched by my words.',
-            'His words made me angry.',
-            'He made me laugh.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in with the right word:<br>我们必须保护环境，减少空气___。',
-        options: [
-            '污染',
-            '新鲜',
-            '清洁',
-            '流动'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “to kill two birds with one stone”?',
-        options: [
-            '一举两得',
-            '画蛇添足',
-            '亡羊补牢',
+            '半途而废',
+            '一见钟情',
+            '自相矛盾',
             '井底之蛙'
         ],
         answer: 0
     },
     {
-        q: 'Translate into English:<br>他来中国是为了提高汉语水平。',
+        q: 'Rearrange into a correct sentence:<br>我们 / 尊重 / 应该 / 不同 / 的 / 文化',
         options: [
-            'He came to China to improve his Chinese.',
-            'He came to China to travel.',
-            'He came to China for business.',
-            'He came to China to visit friends.'
+            '我们应该尊重不同的文化',
+            '我们尊重应该不同的文化',
+            '不同的文化我们应该尊重',
+            '应该我们尊重不同的文化'
         ],
         answer: 0
     },
     {
-        q: 'Choose the correct usage of “不仅…而且…”',
+        q: 'Translate into English:<br>科学技术的发展改变了我们的生活方式。',
         options: [
-            '他不仅会说英语，而且会说汉语。',
-            '他不仅会说英语，因为他会说汉语。',
-            '他不仅会说英语，所以会说汉语。',
-            '他不仅会说英语，但是会说汉语。'
+            'The development of science and technology has changed our way of life.',
+            'Science and technology have no effect on our lives.',
+            'Our way of life has not changed.',
+            'Science and technology make life more difficult.'
         ],
         answer: 0
     },
     {
-        q: 'Fill in: 这件事很___，我们必须认真对待。',
+        q: 'Fill in:<br>他在演讲中表现得很___。(confident)',
         options: [
-            '重要',
-            '容易',
-            '轻松',
-            '简单'
+            '自信',
+            '紧张',
+            '害羞',
+            '激动'
         ],
         answer: 0
     },
     {
-        q: 'Translate into Chinese:<br>“Global warming is a big challenge for humanity.”',
+        q: 'Short Writing (6–7 sentences):<br>Write about a time when you faced a difficult challenge and how you overcame it, in Chinese.',
         options: [
-            '全球变暖是人类面临的重大挑战。',
-            '人类喜欢全球变暖。',
-            '全球变暖对人类没有影响。',
-            '人类解决了全球变暖的问题。'
+            'Open-ended',
+            'Open-ended',
+            'Open-ended',
+            'Open-ended'
         ],
-        answer: 0
-    },
-    {
-        q: 'Short Writing (5–6 sentences):<br>Write about an environmental problem in your country and give one possible solution in Chinese.',
-        options: ['__OPEN_ENDED__'],
         answer: 0
     }
-	];
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -370,37 +375,6 @@
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
-
-		// Open-ended question support
-		if (q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
-			const textarea = document.createElement('textarea');
-			textarea.style.width = '100%';
-			textarea.style.height = '120px';
-			textarea.style.fontSize = '1.2rem';
-			textarea.style.marginBottom = '18px';
-			textarea.placeholder = '请用中文写5-6句话...';
-			answersDiv.appendChild(textarea);
-
-			const submitBtn = document.createElement('button');
-			submitBtn.textContent = 'Submit';
-			submitBtn.className = 'answer-btn-custom border-c1';
-			submitBtn.style.width = '220px';
-			submitBtn.style.margin = '0 auto';
-			submitBtn.onclick = () => {
-				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5–6 sentences.</span>';
-					return;
-				}
-				score++;
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
-				setTimeout(() => {
-					if (!paused) nextQuestion();
-				}, 900);
-			};
-			answersDiv.appendChild(submitBtn);
-			updateProgress();
-			return;
-		}
 
 		// Shuffle options and track correct answer
 		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
@@ -500,7 +474,7 @@
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'challenger_quiz2.html';
+					window.location.href = 'master_quiz8.html';
 				};
 			}
 		}, 100);

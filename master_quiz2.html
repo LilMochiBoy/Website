@@ -62,8 +62,7 @@
 		.quiz-question {
 			font-size: 2rem;
 			font-weight: 700;
-			margin: 96px 0 32px 0;
-            margin-bottom: 130px;
+			margin: 96px 0 16px 0;   /* Reduced bottom margin for closer spacing */
 			color: #f7f7fa;
 			text-align: center;
 		}
@@ -72,7 +71,7 @@
 			grid-template-columns: 1fr 1fr;
 			gap: 32px;
 			margin-bottom: 32px;
-			margin-top: 48px;
+			margin-top: 50px;         /* Reduced top margin for closer spacing */
 			width: calc(100vw - 80px);
 			max-width: calc(100vw - 80px);
 			padding-left: 40px;
@@ -199,7 +198,7 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
+		window.location.href = 'master.html';
 	};
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
@@ -211,151 +210,156 @@
 	}
 
 	const originalQuestions = [
-    {
-        q: 'Translate into English:<br>他坚持每天跑步，不管天气怎么样。',
-        options: [
-            'He insists on running every day, no matter what the weather is like.',
-            'He runs only when the weather is good.',
-            'He likes running in the rain.',
-            'He never runs when it rains.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which sentence correctly uses the word “尽管”?',
-        options: [
-            'a) 尽管他很忙，他还是来参加了会议。',
-            'b) 他尽管很累，所以睡觉了。',
-            'c) 他尽管不喜欢运动，因为他不健康。',
-            'd) 尽管他迟到了，所以老师生气。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in the blank:<br>老师要求我们在下周五之前把作业___。',
-        options: [
-            '完成',
-            '完了',
-            '结束',
-            '完结'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct measure word:<br>一___知识 (a piece of knowledge)',
-        options: [
-            '个',
-            '条',
-            '项',
-            '张'
-        ],
-        answer: 2
-    },
-    {
-        q: 'Translate into Chinese:<br>“Although it was raining, we still went to the library.”',
-        options: [
-            '尽管下雨了，我们还是去了图书馆。',
-            '因为下雨了，我们没有去图书馆。',
-            '我们去图书馆是因为下雨了。',
-            '下雨了，所以我们去了图书馆。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best synonym of “复杂”:',
-        options: [
-            '困难',
-            '简单',
-            '复杂',
-            '繁琐'
-        ],
-        answer: 3
-    },
-    {
-        q: 'Rearrange into a proper sentence:<br>成功 / 需要 / 努力 / 和 / 耐心',
-        options: [
-            '成功需要努力和耐心。',
-            '努力和耐心需要成功。',
-            '需要成功和耐心努力。',
-            '耐心和努力成功需要。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>他的话让我很感动。',
-        options: [
-            'His words moved me.',
-            'He was touched by my words.',
-            'His words made me angry.',
-            'He made me laugh.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in with the right word:<br>我们必须保护环境，减少空气___。',
-        options: [
-            '污染',
-            '新鲜',
-            '清洁',
-            '流动'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “to kill two birds with one stone”?',
-        options: [
-            '一举两得',
-            '画蛇添足',
-            '亡羊补牢',
-            '井底之蛙'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into English:<br>他来中国是为了提高汉语水平。',
-        options: [
-            'He came to China to improve his Chinese.',
-            'He came to China to travel.',
-            'He came to China for business.',
-            'He came to China to visit friends.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct usage of “不仅…而且…”',
-        options: [
-            '他不仅会说英语，而且会说汉语。',
-            '他不仅会说英语，因为他会说汉语。',
-            '他不仅会说英语，所以会说汉语。',
-            '他不仅会说英语，但是会说汉语。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in: 这件事很___，我们必须认真对待。',
-        options: [
-            '重要',
-            '容易',
-            '轻松',
-            '简单'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“Global warming is a big challenge for humanity.”',
-        options: [
-            '全球变暖是人类面临的重大挑战。',
-            '人类喜欢全球变暖。',
-            '全球变暖对人类没有影响。',
-            '人类解决了全球变暖的问题。'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Short Writing (5–6 sentences):<br>Write about an environmental problem in your country and give one possible solution in Chinese.',
-        options: ['__OPEN_ENDED__'],
-        answer: 0
-    }
+		{
+			q: 'Translate: 他不但聪明，而且非常勤奋。',
+			options: [
+				'He is not only smart but also very diligent.',
+				'He is not only tall but also strong.',
+				'He is not only rich but also generous.',
+				'He is not only happy but also lucky.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Which idiom means “not worth seeing”?',
+			options: [
+				'不值一提',
+				'不堪入目',
+				'不可思议',
+				'不容忽视'
+			],
+			answer: 1
+		},
+		{
+			q: 'Fill in: 如果明天下雨，我们就___计划。',
+			options: [
+				'取消',
+				'删除',
+				'丢弃',
+				'放弃'
+			],
+			answer: 0
+		},
+		{
+			q: 'Translate: “He achieved success through hard work rather than luck.”',
+			options: [
+				'他是通过努力工作而不是靠运气取得成功的。',
+				'他靠运气取得了成功。',
+				'他没有取得成功。',
+				'他不喜欢努力工作。'
+			],
+			answer: 0
+		},
+		{
+			q: 'Reading:<br>“近年来，环境问题日益严重，特别是空气污染和水污染，已经影响到人们的生活质量。<br>为了改善环境，各国政府采取了许多措施。”<br><br><b>Question:</b> Which problems are mentioned?',
+			options: [
+				'Deforestation',
+				'Air and water pollution',
+				'Climate change',
+				'Noise pollution'
+			],
+			answer: 1
+		},
+		{
+			q: 'Translate: 我差点儿忘了告诉你一个重要的消息。',
+			options: [
+				'I almost forgot to tell you an important message.',
+				'I forgot your name.',
+				'I remembered everything.',
+				'I told you everything.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Rearrange:<br>需要 / 我们 / 共同 / 解决 / 这个问题',
+			options: [
+				'我们需要共同解决这个问题',
+				'共同需要我们解决这个问题',
+				'我们共同需要解决这个问题',
+				'这个问题我们需要共同解决'
+			],
+			answer: 0
+		},
+		{
+			q: 'Translate into Chinese:<br>“Cultural exchange helps promote mutual understanding among people.”',
+			options: [
+				'文化交流有助于促进人们之间的相互理解。',
+				'文化交流让人们变得富有。',
+				'文化交流让人们学习外语。',
+				'文化交流让人们喜欢旅游。'
+			],
+			answer: 0
+		},
+		{
+			q: 'Fill in: 他很___，总是关心别人。(kind)',
+			options: [
+				'善良',
+				'美丽',
+				'快乐',
+				'干净'
+			],
+			answer: 0
+		},
+		{
+			q: 'Which idiom means “a blessing in disguise”?',
+			options: [
+				'塞翁失马',
+				'画蛇添足',
+				'胸有成竹',
+				'草木皆兵'
+			],
+			answer: 0
+		},
+		{
+			q: 'Translate: 他一直努力工作，希望能得到升职。',
+			options: [
+				'He has been working hard, hoping to get a promotion.',
+				'He has been working hard, hoping to get a vacation.',
+				'He has been working hard, hoping to get a car.',
+				'He has been working hard, hoping to get a house.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Write pinyin: 挑战',
+			options: [
+				'tiǎozhàn',
+				'tiáozhàn',
+				'tiǎozhān',
+				'tiáozhān'
+			],
+			answer: 0
+		},
+		{
+			q: 'Translate into English:<br>我们必须遵守规则，不然会受到惩罚。',
+			options: [
+				'We must follow the rules, otherwise we will be punished.',
+				'We must break the rules, otherwise we will be punished.',
+				'We must ignore the rules, otherwise we will be rewarded.',
+				'We must write the rules, otherwise we will be punished.'
+			],
+			answer: 0
+		},
+		{
+			q: 'Fill in: 他讲话很___，大家都听得懂。 (clear)',
+			options: [
+				'清楚',
+				'流利',
+				'热闹',
+				'干净'
+			],
+			answer: 0
+		},
+		{
+			q: 'Short Writing: Write 5–6 sentences about an important tradition in your culture.',
+			options: [
+				'Open-ended',
+				'Open-ended',
+				'Open-ended',
+				'Open-ended'
+			],
+			answer: 0
+		}
 	];
 
 	// Shuffle questions at the start
@@ -371,33 +375,35 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		// Open-ended question support
-		if (q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
+		// If open-ended, show a textarea
+		if (q.options[0] === 'Open-ended') {
 			const textarea = document.createElement('textarea');
 			textarea.style.width = '100%';
 			textarea.style.height = '120px';
 			textarea.style.fontSize = '1.2rem';
-			textarea.style.marginBottom = '18px';
-			textarea.placeholder = '请用中文写5-6句话...';
+			textarea.style.margin = '24px 0';
+			textarea.placeholder = 'Type your answer here...';
 			answersDiv.appendChild(textarea);
 
 			const submitBtn = document.createElement('button');
 			submitBtn.textContent = 'Submit';
-			submitBtn.className = 'answer-btn-custom border-c1';
-			submitBtn.style.width = '220px';
-			submitBtn.style.margin = '0 auto';
+			submitBtn.style.marginTop = '18px';
+			submitBtn.style.padding = '10px 32px'; 
+			submitBtn.style.fontSize = '1rem';     
+			submitBtn.style.borderRadius = '8px';
+			submitBtn.style.background = '#4a90e2';
+			submitBtn.style.color = '#fff';
+			submitBtn.style.border = 'none';
+			submitBtn.style.boxShadow = '0 2px 8px #222';
+			submitBtn.style.cursor = 'pointer';
 			submitBtn.onclick = () => {
-				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5–6 sentences.</span>';
-					return;
-				}
-				score++;
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
+				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Answer submitted!</span>';
 				setTimeout(() => {
-					if (!paused) nextQuestion();
+					nextQuestion();
 				}, 900);
 			};
 			answersDiv.appendChild(submitBtn);
+			document.getElementById('quiz-feedback').textContent = '';
 			updateProgress();
 			return;
 		}
@@ -430,6 +436,10 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
+		if(q.options[0] === 'Open-ended') {
+			nextQuestion();
+			return;
+		}
 		if(idx === q._shuffledAnswerIdx) {
 			correct = true;
 			score++;
@@ -500,7 +510,7 @@
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'challenger_quiz2.html';
+				 window.location.href = 'master_quiz2.html';
 				};
 			}
 		}, 100);
