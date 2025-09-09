@@ -851,7 +851,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     gap: 48px;
     margin-bottom: 32px;
     flex-wrap: wrap;
-    margin-left: 80px;
+    margin-left: -40px;
 }
 .contact-method {
     display: flex;
