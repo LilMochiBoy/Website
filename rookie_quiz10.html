@@ -310,6 +310,135 @@
       border-radius: 8px;
       margin: 2px;
     }
+
+    /* Pause Button and Modal */
+    #pause-btn {
+      position: fixed;
+      top: 24px;
+      left: 32px;
+      z-index: 1000;
+      padding: 12px 24px;
+      font-size: 1.4rem;
+      border-radius: 8px;
+      background: #4a90e2;
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px #222;
+      cursor: pointer;
+    }
+
+    #pause-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(30,30,50,0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #pause-modal > div {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 40px 24px;
+      box-shadow: 0 8px 32px #23294699;
+      min-width: 220px;
+      max-width: 340px;
+      text-align: center;
+    }
+
+    #pause-modal h2 {
+      color: #4a90e2;
+      margin-bottom: 20px;
+    }
+
+    #resume-btn, #restart-btn, #exit-btn {
+      margin: 0;
+      padding: 12px 0;
+      font-size: 1.08rem;
+      border-radius: 8px;
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px #222;
+      cursor: pointer;
+      display: inline-block;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    #resume-btn {
+      background: #4a90e2;
+    }
+
+    #restart-btn {
+      background: #ffd54f;
+      color: #232946;
+    }
+
+    #exit-btn {
+      background: #e57373;
+    }
+
+    /* Celebratory Popup Modal */
+    #victoryModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(30,30,50,0.85);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #victoryModal > div {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 32px;
+      box-shadow: 0 8px 32px #23294699;
+      min-width: 280px;
+      max-width: 90vw;
+      text-align: center;
+      animation: popIn 0.5s cubic-bezier(.4,1.6,.4,1);
+    }
+
+    #victoryModal h2 {
+      color: #4a90e2;
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+    }
+
+    #victoryModal p {
+      font-size: 1.25rem;
+      color: #232946;
+      margin-bottom: 24px;
+    }
+
+    #victoryCloseBtn {
+      padding: 14px 38px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      background: #4a90e2;
+      color: #fff;
+      border: none;
+      box-shadow: 0 2px 8px #222;
+      cursor: pointer;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      80% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -345,6 +474,28 @@
     <p id="questionText">Loading question...</p>
     <div class="answers" id="answersContainer"></div>
     <button id="actionBtn">Submit</button>
+  </div>
+
+  <!-- Pause Button and Modal -->
+  <button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+  <div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:18px;padding:40px 24px;box-shadow:0 8px 32px #23294699;min-width:220px;max-width:340px;text-align:center;">
+      <h2 style="color:#4a90e2;margin-bottom:20px;">Game Paused</h2>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;">
+        <button id="resume-btn" style="margin:0;padding:12px 0;font-size:1.08rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;width:100%;max-width:200px;">Resume</button>
+        <button id="restart-btn" style="margin:0;padding:12px 0;font-size:1.08rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;width:100%;max-width:200px;">Restart</button>
+        <button id="exit-btn" style="margin:0;padding:12px 0;font-size:1.08rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;width:100%;max-width:200px;">Exit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Celebratory Popup Modal -->
+  <div id="victoryModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:3000;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:24px;padding:48px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;animation:popIn 0.5s cubic-bezier(.4,1.6,.4,1);">
+      <h2 style="color:#4a90e2;font-size:2.2rem;margin-bottom:18px;">🎉 You have defeated the boss! 🎉</h2>
+      <p style="font-size:1.25rem;color:#232946;margin-bottom:24px;">Congratulations! You completed the challenge.</p>
+      <button id="victoryCloseBtn" style="padding:14px 38px;font-size:1.1rem;border-radius:10px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Continue</button>
+    </div>
   </div>
 
   <script>
@@ -497,25 +648,25 @@
 				});
 
 				selectedDiv.addEventListener("drop", e=>{
-				e.preventDefault();
-				const dragging = document.querySelector(".dragging");
-				if (dragging) {
-					dragging.classList.remove("dragging"); // restore normal look
-				}
-				});
+			 e.preventDefault();
+			 const dragging = document.querySelector(".dragging");
+			 if (dragging) {
+			   dragging.classList.remove("dragging"); // restore normal look
+			 }
+			 });
 
 				function getDragAfterElement(container, x) {
-				const draggableElements = [...container.querySelectorAll(".answer-word:not(.dragging)")];
-				return draggableElements.reduce((closest, child)=>{
-					const box = child.getBoundingClientRect();
-					const offset = x - box.left - box.width / 2;
-					if (offset < 0 && offset > closest.offset) {
-					return { offset: offset, element: child };
-					} else {
-					return closest;
-					}
-				}, { offset: Number.NEGATIVE_INFINITY }).element;
-				}
+			 const draggableElements = [...container.querySelectorAll(".answer-word:not(.dragging)")];
+			 return draggableElements.reduce((closest, child)=>{
+				 const box = child.getBoundingClientRect();
+				 const offset = x - box.left - box.width / 2;
+				 if (offset < 0 && offset > closest.offset) {
+				 return { offset: offset, element: child };
+				 } else {
+				 return closest;
+				 }
+			 }, { offset: Number.NEGATIVE_INFINITY }).element;
+			 }
 				}
 			};
 			poolDiv.appendChild(btn);
@@ -532,7 +683,7 @@
 				else bossAttack();
 
 				actionBtn.textContent="Continue";
-				isSubmitPhase=false;
+			 isSubmitPhase=false;
 			} else {
 				currentQuestion++;
 				loadQuestion();
@@ -598,8 +749,42 @@
     }
 
     function endGame(win){
-      if(win){alert("You defeated the boss! 🎉");}else{alert("You were defeated. 💀");}
+      if(win){
+        // Show celebratory popup
+        var victoryModal = document.getElementById('victoryModal');
+        var victoryCloseBtn = document.getElementById('victoryCloseBtn');
+        victoryModal.style.display = 'flex';
+        victoryCloseBtn.onclick = function() {
+          victoryModal.style.display = 'none';
+        };
+      }else{
+        alert("You were defeated. 💀");
+      }
     }
+
+    let paused = false;
+    const pauseBtn = document.getElementById('pause-btn');
+    const pauseModal = document.getElementById('pause-modal');
+    const resumeBtn = document.getElementById('resume-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    const exitBtn = document.getElementById('exit-btn');
+
+    pauseBtn.onclick = function() {
+      paused = true;
+      pauseModal.style.display = 'flex';
+    };
+    resumeBtn.onclick = function() {
+      paused = false;
+      pauseModal.style.display = 'none';
+    };
+    restartBtn.onclick = function() {
+      paused = false;
+      pauseModal.style.display = 'none';
+      location.reload();
+    };
+    exitBtn.onclick = function() {
+      window.location.href = 'rookie.html';
+    };
 
     loadQuestion();
   </script>
