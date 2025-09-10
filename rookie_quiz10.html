@@ -310,138 +310,18 @@
       border-radius: 8px;
       margin: 2px;
     }
-
-    /* Pause Button and Modal */
-    #pause-btn {
-      position: fixed;
-      top: 24px;
-      left: 32px;
-      z-index: 1000;
-      padding: 12px 24px;
-      font-size: 1.4rem;
-      border-radius: 8px;
-      background: #4a90e2;
-      color: #fff;
-      border: none;
-      box-shadow: 0 2px 8px #222;
-      cursor: pointer;
-    }
-
-    #pause-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(30,30,50,0.85);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #pause-modal > div {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 18px;
-      background: #fff;
-      border-radius: 18px;
-      padding: 40px 24px;
-      box-shadow: 0 8px 32px #23294699;
-      min-width: 220px;
-      max-width: 340px;
-      text-align: center;
-    }
-
-    #pause-modal h2 {
-      color: #4a90e2;
-      margin-bottom: 20px;
-    }
-
-    #resume-btn, #restart-btn, #exit-btn {
-      margin: 0;
-      padding: 12px 0;
-      font-size: 1.08rem;
-      border-radius: 8px;
-      color: #fff;
-      border: none;
-      box-shadow: 0 2px 8px #222;
-      cursor: pointer;
-      display: inline-block;
-      width: 100%;
-      max-width: 200px;
-    }
-
-    #resume-btn {
-      background: #4a90e2;
-    }
-
-    #restart-btn {
-      background: #ffd54f;
-      color: #232946;
-    }
-
-    #exit-btn {
-      background: #e57373;
-    }
-
-    /* Celebratory Popup Modal */
-    #victoryModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(30,30,50,0.85);
-      z-index: 3000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #victoryModal > div {
-      background: #fff;
-      border-radius: 24px;
-      padding: 48px 32px;
-      box-shadow: 0 8px 32px #23294699;
-      min-width: 280px;
-      max-width: 90vw;
-      text-align: center;
-      animation: popIn 0.5s cubic-bezier(.4,1.6,.4,1);
-    }
-
-    #victoryModal h2 {
-      color: #4a90e2;
-      font-size: 2.2rem;
-      margin-bottom: 18px;
-    }
-
-    #victoryModal p {
-      font-size: 1.25rem;
-      color: #232946;
-      margin-bottom: 24px;
-    }
-
-    #victoryCloseBtn {
-      padding: 14px 38px;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      background: #4a90e2;
-      color: #fff;
-      border: none;
-      box-shadow: 0 2px 8px #222;
-      cursor: pointer;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.7); opacity: 0; }
-      80% { transform: scale(1.05); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
   </style>
 </head>
 <body>
+<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+    <h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
+    <button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+    <button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+    <button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+  </div>
+</div>
 
   <!-- Boss health -->
   <div class="boss-health-top">
@@ -476,20 +356,7 @@
     <button id="actionBtn">Submit</button>
   </div>
 
-  <!-- Pause Button and Modal -->
-  <button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
-  <div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
-    <div style="background:#fff;border-radius:18px;padding:40px 24px;box-shadow:0 8px 32px #23294699;min-width:220px;max-width:340px;text-align:center;">
-      <h2 style="color:#4a90e2;margin-bottom:20px;">Game Paused</h2>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;">
-        <button id="resume-btn" style="margin:0;padding:12px 0;font-size:1.08rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;width:100%;max-width:200px;">Resume</button>
-        <button id="restart-btn" style="margin:0;padding:12px 0;font-size:1.08rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;width:100%;max-width:200px;">Restart</button>
-        <button id="exit-btn" style="margin:0;padding:12px 0;font-size:1.08rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;width:100%;max-width:200px;">Exit</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Celebratory Popup Modal -->
+    <!-- Celebratory Popup Modal -->
   <div id="victoryModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:3000;align-items:center;justify-content:center;">
     <div style="background:#fff;border-radius:24px;padding:48px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;animation:popIn 0.5s cubic-bezier(.4,1.6,.4,1);">
       <h2 style="color:#4a90e2;font-size:2.2rem;margin-bottom:18px;">🎉 You have defeated the boss! 🎉</h2>
@@ -498,17 +365,84 @@
     </div>
   </div>
 
+  <!-- Defeat Popup Modal -->
+  <div id="defeatModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:3000;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:24px;padding:48px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;animation:popIn 0.5s cubic-bezier(.4,1.6,.4,1);">
+      <h2 style="color:#e57373;font-size:2.2rem;margin-bottom:18px;">💀 You were defeated! 💀</h2>
+      <p style="font-size:1.25rem;color:#232946;margin-bottom:24px;">Don't worry, try again!</p>
+      <button id="defeatCloseBtn" style="padding:14px 38px;font-size:1.1rem;border-radius:10px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button>
+    </div>
+  </div>
+  
   <script>
     let playerHP = 5; // hearts
     let bossHP = 100; // percentage
+
+    let paused = false;
+
+const pauseBtn = document.getElementById('pause-btn');
+const pauseModal = document.getElementById('pause-modal');
+const resumeBtn = document.getElementById('resume-btn');
+const restartBtn = document.getElementById('restart-btn');
+const exitBtn = document.getElementById('exit-btn');
+
+pauseBtn.onclick = function() {
+  paused = true;
+  pauseModal.style.display = 'flex';
+};
+
+resumeBtn.onclick = function() {
+  paused = false;
+  pauseModal.style.display = 'none';
+};
+
+restartBtn.onclick = function () {
+  paused = false;
+  pauseModal.style.display = 'none';
+
+  // reset HP
+  playerHP = 5;
+  bossHP = 100;
+
+  // restore hearts
+  const hearts = document.getElementById("playerHearts").children;
+  for (let i = 0; i < hearts.length; i++) {
+    hearts[i].style.display = "block";
+  }
+
+  // restore boss health bar
+  document.getElementById("bossHealthTop").style.width = bossHP + "%";
+
+  // reset game state
+  currentQuestion = 0;
+  score = 0;
+
+  // shuffle questions
+  shuffleArray(questions);
+
+  // reset rockets
+  document.getElementById("rocket").style.display = "none";
+  document.getElementById("bossRocket").style.display = "none";
+
+  // clear "dead" classes
+  document.getElementById("player").classList.remove("dead");
+  document.getElementById("boss").classList.remove("dead");
+
+  // restart first question
+  loadQuestion();
+};
+
+exitBtn.onclick = function() {
+  window.location.href = 'rookie.html'; // or "choose-level.html" if you prefer
+};
 
     const questions = [
 		{ type: "multiple", text: "A: 你好吗？\nB: ___。", options: ["我很好","我不去","我吃饭"], correct: 0, speak:["A: 你好吗？","我很好。"] },
 		{ type: "arrange", text: "Arrange the words: I am a student", words:["学生","我","是"], correct:"我 是 学生" },
 		{ type: "multiple", text: "A: 你从哪里来？\nB: 我从 ___ 来。", options:["中国","谢谢","明天"], correct:0, speak:["A: 你从哪里来？","我从中国来。"] },
 		{ type:"arrange", text:"Arrange the words: She likes tea", words:["喜欢","茶","她"], correct:"她 喜欢 茶" },
-		{ type:"arrange", text:"Arrange the words: 我喜欢吃饺子", words:["eat","dumplings","I","like"], correct:"I like eat dumplings" },
-		{ type:"arrange", text:"Arrange the words: 明天我去学校", words:["tomorrow","I","will","go","school"], correct:"tomorrow I will go school" },
+		{ type:"arrange", text:"Arrange the words: 我喜欢吃饺子", words:["eat","to","dumplings","I","like"], correct:"I like to eat dumplings" },
+		{ type:"arrange", text:"Arrange the words: 明天我去学校", words:["tomorrow","to","I","will","go","school"], correct:"tomorrow I will go to school" },
 		{ type:"arrange", text:"Arrange the words: He is my friend", words:["他","朋友","是","我的"], correct:"他 是 我的 朋友" },
 		{ type:"arrange", text:"Arrange the words: 我每天早上跑步", words:["run","every","morning","I"], correct:"I run every morning" },
 		{ type:"arrange", text:"Arrange the words: I like reading books", words:["我","书","喜欢","读"], correct:"我 喜欢 读 书" },
@@ -518,10 +452,10 @@
 		{ type:"multiple", text:"Translate: 'I like to eat dumplings.'", options:["我喜欢吃饺子","我喜欢踢足球","我会说中文"], correct:0, speak:["I like to eat dumplings.","我喜欢吃饺子。"] },
 		{ type:"multiple", text:"A: 现在几点？\nB: ___。", options:["三点","北京","昨天"], correct:0, speak:["A: 现在几点？","三点。"] },
 		{ type:"multiple", text:"Which one means 'library'?", options:["图书馆","教室","商店"], correct:0 },
-		{ type:"multiple", text:"A: 你会说英语吗？\nB: ___。", options:["我会","我不吃","我去学校"], correct:0, speak:["A: 你会说英语吗？","我会。"] },
+		{ type:"multiple", text:"A: 你会说英语吗？\nB: ___。", options:["我会说英语","我不会说中文","我会说韩语"], correct:0, speak:["A: 你会说英语吗？","我会说英语。"] },
 		{ type:"multiple", text:"Translate: 'Tomorrow I will go to school.'", options:["明天我去学校","今天我在家","我喜欢看电影"], correct:0, speak:["Tomorrow I will go to school.","明天我去学校。"] },
 		{ type:"multiple", text:"Fill in the blank: 我喜欢喝 ___。", options:["水","书","桌子"], correct:0, speak:["我喜欢喝什么？","我喜欢喝水。"] },
-		{ type:"arrange", text:"Arrange the words: I am hungry", words:["我","饿","是"], correct:"我 是 饿" },
+		{ type:"arrange", text:"Arrange the words: I am hungry", words:["我","了","饿","死"], correct:"我 饿 死 了" },
 		{ type:"arrange", text:"Arrange the words: 他在看书", words:["He","is","reading","a","book"], correct:"He is reading a book" },
 		{ type:"arrange", words:["我","是","学生","一个"], correct:"我 是 一个 学生", speak:["我是一个学生。"] },
 		{ type:"arrange", words:["他","喜欢","吃","苹果"], correct:"他 喜欢 吃 苹果", speak:["他喜欢吃苹果。"] },
@@ -648,25 +582,25 @@
 				});
 
 				selectedDiv.addEventListener("drop", e=>{
-			 e.preventDefault();
-			 const dragging = document.querySelector(".dragging");
-			 if (dragging) {
-			   dragging.classList.remove("dragging"); // restore normal look
-			 }
-			 });
+				e.preventDefault();
+				const dragging = document.querySelector(".dragging");
+				if (dragging) {
+					dragging.classList.remove("dragging"); // restore normal look
+				}
+				});
 
 				function getDragAfterElement(container, x) {
-			 const draggableElements = [...container.querySelectorAll(".answer-word:not(.dragging)")];
-			 return draggableElements.reduce((closest, child)=>{
-				 const box = child.getBoundingClientRect();
-				 const offset = x - box.left - box.width / 2;
-				 if (offset < 0 && offset > closest.offset) {
-				 return { offset: offset, element: child };
-				 } else {
-				 return closest;
-				 }
-			 }, { offset: Number.NEGATIVE_INFINITY }).element;
-			 }
+				const draggableElements = [...container.querySelectorAll(".answer-word:not(.dragging)")];
+				return draggableElements.reduce((closest, child)=>{
+					const box = child.getBoundingClientRect();
+					const offset = x - box.left - box.width / 2;
+					if (offset < 0 && offset > closest.offset) {
+					return { offset: offset, element: child };
+					} else {
+					return closest;
+					}
+				}, { offset: Number.NEGATIVE_INFINITY }).element;
+				}
 				}
 			};
 			poolDiv.appendChild(btn);
@@ -683,7 +617,7 @@
 				else bossAttack();
 
 				actionBtn.textContent="Continue";
-			 isSubmitPhase=false;
+				isSubmitPhase=false;
 			} else {
 				currentQuestion++;
 				loadQuestion();
@@ -716,6 +650,10 @@
         const y=(1-progress)**2*startY+2*(1-progress)*progress*controlY+progress**2*endY;
         rocket.style.left=x+"px";rocket.style.top=y+"px";requestAnimationFrame(animate);
       }
+      if (!paused) {
+        progress += 0.02;
+      }
+      if (paused) return;
       requestAnimationFrame(animate);
     }
 
@@ -740,6 +678,10 @@
         const y=(1-progress)**2*startY+2*(1-progress)*progress*controlY+progress**2*endY;
         bossRocket.style.left=x+"px";bossRocket.style.top=y+"px";requestAnimationFrame(animate);
       }
+      if (!paused) {
+        progress += 0.02;
+      }
+      if (paused) return;
       requestAnimationFrame(animate);
     }
 
@@ -757,34 +699,18 @@
         victoryCloseBtn.onclick = function() {
           victoryModal.style.display = 'none';
         };
-      }else{
-        alert("You were defeated. 💀");
+      } else {
+        // Show defeat modal
+        const defeatModal = document.getElementById('defeatModal');
+        const defeatCloseBtn = document.getElementById('defeatCloseBtn');
+        defeatModal.style.display = 'flex';
+        defeatCloseBtn.onclick = function() {
+          defeatModal.style.display = 'none';
+          // Restart game on close
+          restartBtn.click();
+        };
       }
     }
-
-    let paused = false;
-    const pauseBtn = document.getElementById('pause-btn');
-    const pauseModal = document.getElementById('pause-modal');
-    const resumeBtn = document.getElementById('resume-btn');
-    const restartBtn = document.getElementById('restart-btn');
-    const exitBtn = document.getElementById('exit-btn');
-
-    pauseBtn.onclick = function() {
-      paused = true;
-      pauseModal.style.display = 'flex';
-    };
-    resumeBtn.onclick = function() {
-      paused = false;
-      pauseModal.style.display = 'none';
-    };
-    restartBtn.onclick = function() {
-      paused = false;
-      pauseModal.style.display = 'none';
-      location.reload();
-    };
-    exitBtn.onclick = function() {
-      window.location.href = 'rookie.html';
-    };
 
     loadQuestion();
   </script>
