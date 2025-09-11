@@ -39,9 +39,6 @@
                         <button class="main-btn" id="chineseBtn">
                             <img src="China flag.png" alt="China Flag" class="flag-img"> Start Learning Chinese
                         </button>
-                        <button class="main-btn" id="englishBtn">
-                            <img src="English flag.webp" alt="UK Flag" class="flag-img"> Start Learning English
-                        </button>
                     </div>
                 </div>
                 <div class="home-panda-area">
@@ -103,7 +100,7 @@
             <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffd58055; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #3a2a5a; position: relative;">
                 <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🎉</span>
                 Fun Learning Experience<br>
-                <span style='font-size:1.05rem; font-weight:400; color:#6a3a5a;'>Learning English or Chinese becomes <span style='background: #fffbe6; border-radius: 6px; padding: 2px 8px;'>exciting</span> and not boring!</span>
+                <span style='font-size:1.05rem; font-weight:400; color:#6a3a5a;'>Language learning becomes <span style='background: #fffbe6; border-radius: 6px; padding: 2px 8px;'>exciting</span> and not boring!</span>
             </div>
             <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #2a3a5a; position: relative;">
                 <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🕹️</span>
@@ -148,7 +145,7 @@
     </div>
     <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
       <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Choose Your Path</div>
-      <div style="font-size: 1rem; text-align: justify;">Learn English, Chinese, or both at your own pace.<span style='float:right;'>🛤️</span></div>
+      <div style="font-size: 1rem; text-align: justify;">Learn Chinese at your own pace.<span style='float:right;'>🛤️</span></div>
     </div>
     <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
       <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Motivation Built In</div>
@@ -620,7 +617,7 @@ if (window.location.pathname.endsWith('profile.html')) {
                         <div class="leaderboard-points">7650 pts</div>
                         <div class="leaderboard-level">Rookie 🐣</div>
                     </div>
-                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#ffd580 0%,#6fa3ff 100%); border-radius:18px; box-shadow:0 0 24px #ffd58099; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
                         <div class="leaderboard-rank">#25</div>
                         <div class="leaderboard-username">QuizKnight</div>
                         <div class="leaderboard-points">7600 pts</div>
@@ -818,12 +815,6 @@ if (window.location.pathname.endsWith('profile.html')) {
                     <div class="achievement-locked">Locked</div>
                 </div>
                 <div class="achievement-card locked">
-                    <div class="achievement-icon">🌏</div>
-                    <div class="achievement-title">Globetrotter</div>
-                    <div class="achievement-desc">Complete lessons in both Chinese and English.</div>
-                    <div class="achievement-locked">Locked</div>
-                </div>
-                <div class="achievement-card locked">
                     <div class="achievement-icon">🧠</div>
                     <div class="achievement-title">Memory Champ</div>
                     <div class="achievement-desc">Score 100% on a vocabulary test.</div>
@@ -888,9 +879,6 @@ if (window.location.pathname.endsWith('profile.html')) {
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('chineseBtn').onclick = function() {
                 window.location.href = 'chinese.html';
-            };
-            document.getElementById('englishBtn').onclick = function() {
-                window.location.href = 'english.html';
             };
             // Menu button logic for sidebar
             var menuBtn = document.getElementById('menuBtn');
