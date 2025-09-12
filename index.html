@@ -100,7 +100,7 @@
             <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffd58055; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #3a2a5a; position: relative;">
                 <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🎉</span>
                 Fun Learning Experience<br>
-                <span style='font-size:1.05rem; font-weight:400; color:#6a3a5a;'>Learning English or Chinese becomes <span style='background: #fffbe6; border-radius: 6px; padding: 2px 8px;'>exciting</span> and not boring!</span>
+                <span style='font-size:1.05rem; font-weight:400; color:#6a3a5a;'>Language learning becomes <span style='background: #fffbe6; border-radius: 6px; padding: 2px 8px;'>exciting</span> and not boring!</span>
             </div>
             <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #2a3a5a; position: relative;">
                 <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🕹️</span>
@@ -116,30 +116,22 @@
     <h1 style="margin-top:32px; text-align: center; font-size:2.3rem; font-weight:700;">How It <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Works</span></h1>
         <div id="level-squares" style="display: flex; flex-direction: column; gap: 24px; align-items: center; margin: 32px 0;">
             <div style="display: flex; flex-direction: row; gap: 24px; justify-content: center; align-items: stretch; width: 100%; flex-wrap: wrap;">
-                    <div class="level-square" style="background: linear-gradient(90deg, #322a53 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #00000055; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                        Rookie 🐣<br>
-                        <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
-                            Welcome to the start of your journey! As a Rookie, you’re just beginning to unlock the secrets of a new language. This is where you build your foundation every phrase you learn is like collecting your first treasures. Small steps now will prepare you for the challenges ahead.
-                        </span>
-                    </div>
-                    <div class="level-square" style="background: linear-gradient(90deg, #bdc6f655 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                        Explorer 🧭<br>
-                        <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
-                            You’ve leveled up! As an Explorer, you’re ready to go beyond the basics and discover new worlds of conversation. Each new word and sentence is like charting unknown territory. Curiosity and practice will guide you as you travel deeper into the language.
-                        </span>
-                    </div>
-                    <div class="level-square" style="background: linear-gradient(90deg, #283b3b 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                        Challenger ⚔️<br>
-                        <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
-                            Now the real test begins. As a Challenger, you face tougher quests longer texts, deeper conversations, and more complex ideas. This is where your skills are sharpened. Every challenge overcome makes you stronger and brings you closer to mastery.
-                        </span>
-                    </div>
-                    <div class="level-square" style="background: linear-gradient(90deg, #5f3f43 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffb3ba55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                        Master 🏆<br>
-                        <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
-                            You’ve reached the pinnacle of your journey! As a Master, you command the language with confidence and grace. Whether it’s daily conversations, cultural insights, or formal expressions, you can handle it all. Mastery isn’t the end it’s the beginning of endless possibilities.
-                        </span>
-                    </div>
+                <div class="level-square" onclick="toggleLevelDetail(1)" style="cursor:pointer; background: linear-gradient(90deg, #322a53 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #00000055; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 1 : Rookie 🐣</span>
+                    <div id="level-detail-1" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">🌱 Your starting zone. Learn the basics, collect your first phrases, and build a strong foundation.</div>
+                </div>
+                <div class="level-square" onclick="toggleLevelDetail(2)" style="cursor:pointer; background: linear-gradient(90deg, #bdc6f655 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 2 : Explorer 🧭</span>
+                    <div id="level-detail-2" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">💬 Unlock more challenges. Talk about daily life, explore real conversations, and gain new confidence.</div>
+                </div>
+                <div class="level-square" onclick="toggleLevelDetail(3)" style="cursor:pointer; background: linear-gradient(90deg, #283b3b 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 3 : Challenger ⚔️</span>
+                    <div id="level-detail-3" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">📚 Face tougher quests. Discuss culture, ideas, and more complex topics. Read stories, articles, and sharpen your skills.</div>
+                </div>
+                <div class="level-square" onclick="toggleLevelDetail(4)" style="cursor:pointer; background: linear-gradient(90deg, #5f3f43 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffb3ba55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 4 : Master 🏆</span>
+                    <div id="level-detail-4" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">🏆 Reach the final boss level. Speak like a native, understand deep texts, and use the language naturally in any situation.</div>
+                </div>
             </div>
         </div>
     <h1 style="margin-top:50px; margin-bottom:-10px;text-align: center; font-size:2.3rem; font-weight:700;">Why Learn with <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Zendo</span>?</h1>
@@ -157,7 +149,7 @@
     </div>
     <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
       <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Choose Your Path</div>
-      <div style="font-size: 1rem; text-align: justify;">Learn English, Chinese, or both at your own pace.<span style='float:right;'>🛤️</span></div>
+      <div style="font-size: 1rem; text-align: justify;">Learn Chinese at your own pace.<span style='float:right;'>🛤️</span></div>
     </div>
     <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
       <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Motivation Built In</div>
@@ -239,7 +231,7 @@
                             <span style='font-family:Montserrat,sans-serif; font-size:1.35em; font-weight:800;'>Zendo</span>
                         </div>
                         <div style="display:flex; flex-direction:column; gap:2px;">
-                            <a href="#home-section" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; background:#232323; margin:4px 12px 0 12px;">
+                            <a href="#home-section" id="sidebarHomeLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:4px 12px 0 12px;">
                                 <span style="font-size:1.3em;">🏠</span> Home
                             </a>
                             <a href="profile.html" id="sidebarProfileLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
@@ -358,6 +350,13 @@ if (window.location.pathname.endsWith('profile.html')) {
         <div class="leaderboard-container" style="max-width:900px; margin:48px auto 0 auto; padding:36px 18px 48px 18px; background:#f4f4fb; border-radius:24px; box-shadow:0 6px 32px #23294655;">
             <div class="leaderboard-title" style="font-size:2.3rem; font-weight:800; text-align:center; margin-bottom:18px; font-family:'Satisfy',cursive; background:linear-gradient(90deg,#ffd580 0%,#ffb3ba 100%); background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; letter-spacing:2px;">Leaderboard</div>
             <style>
+            /* Sidebar active button highlight */
+            .sidebar-btn-active {
+                background: linear-gradient(90deg, #ffd580 0%, #bae1ff 100%);
+                color: #232946 !important;
+                box-shadow: 0 2px 12px #ffd58055;
+                font-weight: 800;
+            }
             .leaderboard-card {
                 background: linear-gradient(120deg, #232946 0%, #ffd58033 100%);
                 border-radius: 22px;
@@ -479,15 +478,15 @@ if (window.location.pathname.endsWith('profile.html')) {
                 <div style="width:100%; display:flex; flex-direction:column; gap:18px; align-items:center;">
                     <div class="leaderboard-card top-1">
                         <div class="leaderboard-rank">🥇 #1</div>
-                        <div class="leaderboard-username">ZenMaster</div>
-                        <div class="leaderboard-points">9820 pts</div>
-                        <div class="leaderboard-level">Master 🏆</div>
+                        <div class="leaderboard-username">PandaPro</div>
+                        <div class="leaderboard-points">9275 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
                     </div>
                     <div class="leaderboard-card top-2">
                         <div class="leaderboard-rank">🥈 #2</div>
-                        <div class="leaderboard-username">LinguaLion</div>
-                        <div class="leaderboard-points">9510 pts</div>
-                        <div class="leaderboard-level">Master 🏆</div>
+                        <div class="leaderboard-username">MandarinMaverick</div>
+                        <div class="leaderboard-points">9100 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
                     </div>
                     <div class="leaderboard-card top-3">
                         <div class="leaderboard-rank">🥉 #3</div>
@@ -622,7 +621,7 @@ if (window.location.pathname.endsWith('profile.html')) {
                         <div class="leaderboard-points">7650 pts</div>
                         <div class="leaderboard-level">Rookie 🐣</div>
                     </div>
-                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#ffd580 0%,#6fa3ff 100%); border-radius:18px; box-shadow:0 0 24px #ffd58099; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
                         <div class="leaderboard-rank">#25</div>
                         <div class="leaderboard-username">QuizKnight</div>
                         <div class="leaderboard-points">7600 pts</div>
@@ -724,38 +723,17 @@ if (window.location.pathname.endsWith('profile.html')) {
     </div>
     <!-- Lessons Panel -->
     <div id="lessonsPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #1a1a2e 100%); overflow-y:auto;">
-        <div class="lessons-container" style="margin:48px auto 0 auto;">
-            <div class="lesson-title">Choose Your Chinese Proficiency Level</div>
-            <p>Select the level that best matches your current Chinese skills:</p>
-            <div style="display: flex; flex-direction: column; gap: 24px; max-width: 600px; width: 100%; align-items: center;">
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Rookie 🐣</span>
-                    <ul style="margin-top:12px;">
-                        <li>Learning pinyin, tones, greetings, numbers, and simple daily expressions.</li>
-                        <li>Can introduce yourself, order food, and handle very basic conversations.</li>
-                    </ul>
-                </button>
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Explorer 🧭</span>
-                    <ul style="margin-top:12px;">
-                        <li>Able to talk about familiar topics, daily life, and simple opinions.</li>
-                        <li>Can read short texts, understand common grammar, and manage most situations in Chinese.</li>
-                    </ul>
-                </button>
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Challenger ⚔️</span>
-                    <ul style="margin-top:12px;">
-                        <li>Comfortable discussing abstract topics, culture, and professional subjects.</li>
-                        <li>Can read news, short stories, and write more complex sentences.</li>
-                    </ul>
-                </button>
-                <button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;">
-                    <span style="font-weight:bold; font-size:1.3em;">Master 🏆</span>
-                    <ul style="margin-top:12px;">
-                        <li>Near-native fluency, able to use Chinese naturally and with cultural nuance.</li>
-                        <li>Can understand literature, formal texts, and express yourself almost like a native.</li>
-                    </ul>
-                </button>
+        <div class="lessons-container" style="margin:48px auto 0 auto; max-width:1200px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
+                <div style="font-size:2.1em; font-weight:800; color:#ffd580; margin-bottom:12px;">Lessons</div>
+                <div style="display:flex; gap:16px; margin-bottom:18px;">
+                    <button onclick="document.getElementById('lessonsFrame').src='lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">All Lessons</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='rookie_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bae1ff; color:#232946; font-weight:700; cursor:pointer;">Rookie</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='explorer_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bdbec8; color:#232946; font-weight:700; cursor:pointer;">Explorer</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='challenger_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">Challenger</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='master_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#cd7f32; color:#fffbe6; font-weight:700; cursor:pointer;">Master</button>
+                </div>
+                <iframe id="lessonsFrame" src="lessons.html" style="width:100%; min-height:700px; border-radius:18px; border:none; box-shadow:0 4px 24px #23294633; background:#fff;" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -769,8 +747,21 @@ if (window.location.pathname.endsWith('profile.html')) {
                                         if (el) el.style.display = (id === panelId) ? 'block' : 'none';
                                     });
                                     document.getElementById('logoSidebarBg').style.display = 'block';
+                                    // Highlight active sidebar button
+                                    var sidebarBtns = [
+                                        document.querySelector('#logoSidebar a[href="#home-section"]'),
+                                        document.getElementById('sidebarProfileLink'),
+                                        document.querySelector('#logoSidebar a[href="achievements.html"]'),
+                                        document.getElementById('sidebarLeaderboardLink'),
+                                        document.getElementById('sidebarLessonsLink')
+                                    ];
+                                    sidebarBtns.forEach(function(btn, idx) {
+                                        if (!btn) return;
+                                        btn.classList.remove('sidebar-btn-active');
+                                        if (panelId === panels[idx]) btn.classList.add('sidebar-btn-active');
+                                    });
                                 }
-                                var homeLink = document.querySelector('#logoSidebar a[href="#home-section"]');
+                                var homeLink = document.getElementById('sidebarHomeLink');
                                 var profileLink = document.getElementById('sidebarProfileLink');
                                 var achievementsLink = document.querySelector('#logoSidebar a[href="achievements.html"]');
                                 var leaderboardLink = document.getElementById('sidebarLeaderboardLink');
@@ -779,7 +770,7 @@ if (window.location.pathname.endsWith('profile.html')) {
                                 if (profileLink) profileLink.onclick = function(e) { e.preventDefault(); showPanel('profilePanel'); };
                                 if (achievementsLink) achievementsLink.onclick = function(e) { e.preventDefault(); showPanel('achievementsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
                                 if (leaderboardLink) leaderboardLink.onclick = function(e) { e.preventDefault(); showPanel('leaderboardPanel'); };
-                                if (lessonsLink) lessonsLink.onclick = function(e) { e.preventDefault(); showPanel('lessonsPanel'); };
+                                if (lessonsLink) lessonsLink.onclick = function(e) { e.preventDefault(); showPanel('lessonsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
                             });
                             </script>
                             <a href="#" id="sidebarLeaderboardLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
@@ -828,12 +819,6 @@ if (window.location.pathname.endsWith('profile.html')) {
                     <div class="achievement-locked">Locked</div>
                 </div>
                 <div class="achievement-card locked">
-                    <div class="achievement-icon">🌏</div>
-                    <div class="achievement-title">Globetrotter</div>
-                    <div class="achievement-desc">Complete lessons in both Chinese and English.</div>
-                    <div class="achievement-locked">Locked</div>
-                </div>
-                <div class="achievement-card locked">
                     <div class="achievement-icon">🧠</div>
                     <div class="achievement-title">Memory Champ</div>
                     <div class="achievement-desc">Score 100% on a vocabulary test.</div>
@@ -870,12 +855,6 @@ if (window.location.pathname.endsWith('profile.html')) {
                     <div class="achievement-locked">Locked</div>
                 </div>
                 <div class="achievement-card locked">
-                    <div class="achievement-icon">🎓</div>
-                    <div class="achievement-title">Master Learner</div>
-                    <div class="achievement-desc">Reach Master level.</div>
-                    <div class="achievement-locked">Locked</div>
-                </div>
-                <div class="achievement-card locked">
                     <div class="achievement-icon">💡</div>
                     <div class="achievement-title">Insightful</div>
                     <div class="achievement-desc">Leave feedback or a suggestion.</div>
@@ -891,13 +870,18 @@ if (window.location.pathname.endsWith('profile.html')) {
             <button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="document.getElementById('achievementsPanel').style.display='none'">Close</button>
         </div>
     </div>
+    <div id="levelModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:3000;align-items:center;justify-content:center;">
+        <div style="background:#fff;border-radius:18px;padding:24px 16px;box-shadow:0 4px 18px #23294699;min-width:220px;max-width:340px;text-align:left;animation:popIn 0.5s cubic-bezier(.4,1.6,.4,1);">
+            <h2 id="levelModalTitle" style="color:#4f8cff;font-size:1.15rem;margin-bottom:12px;"></h2>
+            <p id="levelModalDesc" style="font-size:0.98rem;color:#232946;margin-bottom:18px;line-height:1.5;"></p>
+            <button onclick="closeLevelModal()" style="padding:8px 18px;font-size:0.98rem;border-radius:8px;background:#4f8cff;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Close</button>
+        </div>
+    </div>
     <style>
-        .fade-in {
-            animation: fadeInDetail 0.4s;
-        }
-        @keyframes fadeInDetail {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes popIn {
+            0% { transform: scale(0.7); opacity: 0; }
+            80% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
     <script>
@@ -906,15 +890,10 @@ if (window.location.pathname.endsWith('profile.html')) {
             if (chineseBtn) chineseBtn.onclick = function() {
                 window.location.href = 'chinese.html';
             };
-            var englishBtn = document.getElementById('englishBtn');
-            if (englishBtn) englishBtn.onclick = function() {
+            document.getElementById('englishBtn').onclick = function() {
                 window.location.href = 'english.html';
             };
-        });
-    </script>
-    <script>
-        // Ensure sidebar menu logic runs after DOM is loaded
-        window.addEventListener('DOMContentLoaded', function() {
+            // Menu button logic for sidebar
             var menuBtn = document.getElementById('menuBtn');
             var logoSidebarBg = document.getElementById('logoSidebarBg');
             if (menuBtn && logoSidebarBg) {
