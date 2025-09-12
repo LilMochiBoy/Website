@@ -115,24 +115,27 @@
         </div>
     <h1 style="margin-top:32px; text-align: center; font-size:2.3rem; font-weight:700;">How It <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Works</span></h1>
         <div id="level-squares" style="display: flex; flex-direction: column; gap: 24px; align-items: center; margin: 32px 0;">
-            <div style="display: flex; flex-direction: row; gap: 24px; justify-content: center; align-items: stretch; width: 100%; flex-wrap: wrap;">
-                <div class="level-square" onclick="toggleLevelDetail(1)" style="cursor:pointer; background: linear-gradient(90deg, #322a53 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #00000055; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 1 : Rookie 🐣</span>
-                    <div id="level-detail-1" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">🌱 Your starting zone. Learn the basics, collect your first phrases, and build a strong foundation.</div>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(240px, 1fr)); column-gap: 64px; row-gap: 32px; justify-items: center; align-items: stretch; margin: 0 auto; transform: translateX(-50px);">
+                <div class="level-square" style="background: linear-gradient(90deg, #322a53 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #00000055; padding: 32px 24px; min-width: 220px; max-width: 320px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    Rookie 🐣<br>
+                    <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
+                        Welcome to the beginning of your journey! As a Rookie, you’ll learn the essentials — the alphabet or pinyin, greetings, numbers, and simple daily phrases. Every new word is a small victory that prepares you for the road ahead.
+                    </span>
                 </div>
-                <div class="level-square" onclick="toggleLevelDetail(2)" style="cursor:pointer; background: linear-gradient(90deg, #bdc6f655 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 2 : Explorer 🧭</span>
-                    <div id="level-detail-2" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">💬 Unlock more challenges. Talk about daily life, explore real conversations, and gain new confidence.</div>
+                <div class="level-square" style="background: linear-gradient(90deg, #283b3b 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 32px 24px; min-width: 220px; max-width: 320px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    Challenger ⚔️<br>
+                    <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
+                        You’re growing stronger! As a Challenger, you face deeper quests: real conversations, reading short texts, and expressing your own thoughts. Grammar, vocabulary, and culture become your battlegrounds, sharpening your skills as you push forward.
+                    </span>
                 </div>
-                <div class="level-square" onclick="toggleLevelDetail(3)" style="cursor:pointer; background: linear-gradient(90deg, #283b3b 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 3 : Challenger ⚔️</span>
-                    <div id="level-detail-3" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">📚 Face tougher quests. Discuss culture, ideas, and more complex topics. Read stories, articles, and sharpen your skills.</div>
-                </div>
-                <div class="level-square" onclick="toggleLevelDetail(4)" style="cursor:pointer; background: linear-gradient(90deg, #5f3f43 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffb3ba55; padding: 32px 24px; min-width: 220px; max-width: 320px; flex: 1 1 220px; text-align: center; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
-                    <span style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">Level 4 : Master 🏆</span>
-                    <div id="level-detail-4" style="display:none; margin-top:18px; font-size:1.15rem; font-family: 'Montserrat', Arial, sans-serif; font-weight:500; color:#ffffff; text-align:justify;">🏆 Reach the final boss level. Speak like a native, understand deep texts, and use the language naturally in any situation.</div>
+                <div class="level-square" style="background: linear-gradient(90deg, #5f3f43 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffb3ba55; padding: 32px 24px; min-width: 220px; max-width: 320px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    Master 🏆<br>
+                    <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
+                        You’ve reached the summit! As a Master, you command the language with confidence and fluency. From casual conversations to complex discussions, you speak naturally and with cultural understanding. This is where you truly shine as a language hero.
+                    </span>
                 </div>
             </div>
+        </div>
         </div>
     <h1 style="margin-top:50px; margin-bottom:-10px;text-align: center; font-size:2.3rem; font-weight:700;">Why Learn with <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Zendo</span>?</h1>
         <div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 0;">
@@ -163,18 +166,18 @@
     <div class="contact-box">
         <h1 class="contact-header">Contact <span class="contact-header-us">Us</span></h1>
         <div class="contact-subtitle">Have questions or need support? We’re here to help!</div>
-        <div class="contact-row">
-            <div class="contact-method">
+    <div class="contact-row" style="justify-content: flex-start;">
+            <div class="contact-method" style="align-items: center; text-align: center;">
                 <div class="contact-icon">📧</div>
                 <div class="contact-label">Email</div>
                 <div class="contact-detail">zendo.support@mail.com</div>
             </div>
-            <div class="contact-method">
+            <div class="contact-method" style="align-items: center; text-align: center;">
                 <div class="contact-icon">☎️</div>
                 <div class="contact-label">Telephone</div>
                 <div class="contact-detail">+86 135-7924-6581</div>
             </div>
-            <div class="contact-method">
+            <div class="contact-method" style="align-items: center; text-align: center;">
                 <div class="contact-icon">📸</div>
                 <div class="contact-label">Instagram</div>
                 <div class="contact-detail">@Zendo.ign</div>
@@ -890,19 +893,20 @@ if (window.location.pathname.endsWith('profile.html')) {
             if (chineseBtn) chineseBtn.onclick = function() {
                 window.location.href = 'chinese.html';
             };
-            document.getElementById('englishBtn').onclick = function() {
+            var englishBtn = document.getElementById('englishBtn');
+            if (englishBtn) englishBtn.onclick = function() {
                 window.location.href = 'english.html';
             };
-            // Menu button logic for sidebar
+            // Sidebar menu logic
             var menuBtn = document.getElementById('menuBtn');
             var logoSidebarBg = document.getElementById('logoSidebarBg');
             if (menuBtn && logoSidebarBg) {
-                menuBtn.onclick = function() {
+                menuBtn.addEventListener('click', function(e) {
                     logoSidebarBg.style.display = 'block';
-                };
-                logoSidebarBg.onclick = function(e) {
+                });
+                logoSidebarBg.addEventListener('click', function(e) {
                     if (e.target === logoSidebarBg) logoSidebarBg.style.display = 'none';
-                };
+                });
             } else {
                 console.error('Sidebar menu elements not found:', {menuBtn, logoSidebarBg});
             }
