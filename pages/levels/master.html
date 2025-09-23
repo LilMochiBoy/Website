@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Level - Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #181818;
+        }
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: #222;
+        }
+        .map-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            max-width: 90vw;
+            aspect-ratio: 1536 / 1024;
+            max-height: 90vh;
+            transform: translate(-50%, -50%);
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .explorer-map-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            z-index: 0;
+        }
+        .map-btns-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .logo-zendo {
+            display: flex;
+            align-items: center;
+            margin-top: 32px;
+            margin-left: 32px;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            margin-right: 16px;
+        }
+        .logo-zendo-text {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.2em;
+            color: #1976d2;
+            font-weight: bold;
+        }
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+        .explorer-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 18px;
+            text-shadow: 0 2px 12px #90caf9;
+        }
+        .explorer-desc {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 32px;
+            background: rgba(255,255,255,0.7);
+            padding: 18px 32px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(33,150,243,0.10);
+        }
+        .main-btn {
+            width: 100%;
+            padding: 32px;
+            font-size: 1.25rem;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: rgba(30,60,114,0.15);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 12px rgba(33,150,243,0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .main-btn:hover {
+            background: rgba(30,60,114,0.25);
+            transform: scale(1.03);
+        }
+        .back-btn {
+            margin-top: 32px;
+            padding: 14px 32px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: #1565c0;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#1976d2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
+        <div class="map-wrapper">
+            <img src="../../assets/images/masterbg.png" alt="Explorer Map" class="explorer-map-bg">
+            <!-- Level Buttons 11-20, positioned as in the provided image -->
+            <button class="level-btn" style="position:absolute; left:600px; top:25px;" onclick="window.location.href='master_quiz1.html'">31</button>
+            <button class="level-btn" style="position:absolute; left:613px; top:150px;" onclick="window.location.href='master_quiz2.html'">32</button>
+            <button class="level-btn" style="position:absolute; left:470px; top:240px;" onclick="window.location.href='master_quiz3.html'">33</button>
+            <button class="level-btn" style="position:absolute; left:320px; top:320px;" onclick="window.location.href='master_quiz4.html'">34</button>
+            <button class="level-btn" style="position:absolute; left:520px; top:400px;" onclick="window.location.href='master_quiz5.html'">35</button>
+            <button class="level-btn" style="position:absolute; left:310px; top:550px;" onclick="window.location.href='master_quiz6.html'">36</button>
+            <button class="level-btn" style="position:absolute; left:380px; top:650px;" onclick="window.location.href='master_quiz7.html'">37</button>
+            <button class="level-btn" style="position:absolute; left:590px; top:650px;" onclick="window.location.href='master_quiz8.html'">38</button>
+            <button class="level-btn" style="position:absolute; left:850px; top:500px;" onclick="window.location.href='master_quiz9.html'">39</button>
+            <button class="level-btn" style="position:absolute; left:750px; top:700px;" onclick="alert('Level 40!')">40</button>
+        </div>
+        <style>
+            .level-btn {
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 60% 40%, #4caf50 70%, #1b5e20 100%);
+                color: #fff;
+                font-size: 1.35em;
+                font-weight: bold;
+                border: 3.5px solid #43a047;
+                box-shadow: 0 0 18px 4px #66bb6a99, 0 4px 24px #1b5e2055;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, background 0.22s, filter 0.18s;
+                z-index: 2;
+                position: absolute;
+                outline: none;
+                filter: drop-shadow(0 0 8px #43a047cc);
+                animation: pulse-green 2.2s infinite;
+            }
+            .level-btn:hover {
+                background: radial-gradient(circle at 60% 40%, #43a047 80%, #1b5e20 100%);
+                color: #fff;
+                transform: scale(1.18) rotate(-6deg);
+                box-shadow: 0 0 32px 8px #43a047cc, 0 8px 32px #1b5e2099;
+                filter: brightness(1.15) drop-shadow(0 0 16px #43a047cc);
+                animation: pulse-green-hover 1.1s infinite;
+            }
+            @keyframes pulse-green {
+                0% { box-shadow: 0 0 18px 4px #66bb6a99, 0 4px 24px #1b5e2055; }
+                50% { box-shadow: 0 0 32px 10px #43a047cc, 0 8px 32px #1b5e2099; }
+                100% { box-shadow: 0 0 18px 4px #66bb6a99, 0 4px 24px #1b5e2055; }
+            }
+            @keyframes pulse-green-hover {
+                0% { box-shadow: 0 0 32px 8px #43a047cc, 0 8px 32px #1b5e2099; }
+                50% { box-shadow: 0 0 48px 16px #43a047ee, 0 12px 40px #1b5e20bb; }
+                100% { box-shadow: 0 0 32px 8px #43a047cc, 0 8px 32px #1b5e2099; }
+            }
+        </style>
+    <script>
+        // Unlock all for demo
+        localStorage.setItem('explorerUnlockedLevel', '6');
+        function getUnlockedLevel() {
+            return parseInt(localStorage.getItem('explorerUnlockedLevel') || '1');
+        }
+        function setUnlockedLevel(level) {
+            localStorage.setItem('explorerUnlockedLevel', String(level));
+        }
+        function updateLevelLocks() {
+            const unlockedLevel = getUnlockedLevel();
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById('explorer' + i);
+                if (!btn) continue;
+                if (i <= unlockedLevel) {
+                    btn.classList.remove('locked');
+                    btn.style.background = 'rgba(30,60,114,0.85)';
+                    btn.style.color = '#fff';
+                    btn.style.border = '3px solid #fff';
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                    btn.onclick = function() {
+                        alert('Explorer Level ' + i + ' coming soon!');
+                    };
+                } else {
+                    btn.classList.add('locked');
+                    btn.style.background = '#bdbec8';
+                    btn.style.color = '#888';
+                    btn.style.border = '3px solid #aaa';
+                    btn.style.opacity = '0.6';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = null;
+                }
+            }
+        }
+        updateLevelLocks();
+        document.getElementById('back-btn').onclick = function() {
+            window.location.href = 'chinese.html';
+        };
+    </script>
+</body>
+</html>

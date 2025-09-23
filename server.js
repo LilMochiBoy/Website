@@ -40,7 +40,7 @@ app.post('/api/updateProgress', (req, res) => {
 app.use(cors());
 app.use(bodyParser.json());
 
-const USERS_FILE = 'users.json';
+const USERS_FILE = 'data/users.json';
 
 function loadUsers() {
     if (!fs.existsSync(USERS_FILE)) return [];
@@ -84,7 +84,7 @@ app.post('/api/contact', (req, res) => {
         return res.json({ success: false, message: 'All fields required.' });
     }
     // Save message to file (or send email, etc.)
-    const CONTACT_FILE = 'contact_messages.json';
+    const CONTACT_FILE = 'data/contact_messages.json';
     let messages = [];
     if (fs.existsSync(CONTACT_FILE)) {
         messages = JSON.parse(fs.readFileSync(CONTACT_FILE));

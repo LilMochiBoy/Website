@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Zendo Achievements</title>
+	<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<style>
+		body {
+			background: linear-gradient(120deg, #232946 0%, #ffd580 100%);
+			font-family: 'Montserrat', Arial, sans-serif;
+			margin: 0;
+			color: #232946;
+		}
+		.achievements-container {
+			max-width: 900px;
+			margin: 48px auto 0 auto;
+			padding: 36px 18px 48px 18px;
+			background: #f4f4fb;
+			border-radius: 24px;
+			box-shadow: 0 6px 32px #23294655;
+		}
+		.achievements-title {
+			font-size: 2.3rem;
+			font-weight: 800;
+			text-align: center;
+			margin-bottom: 18px;
+			font-family: 'Satisfy', cursive;
+			background: linear-gradient(90deg, #ffd580 0%, #ffb3ba 100%);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			letter-spacing: 2px;
+		}
+		.achievement-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 28px 24px;
+			justify-content: center;
+		}
+		.achievement-card {
+			background: linear-gradient(120deg, #fffbe6 0%, #ffd6e0 100%);
+			border-radius: 18px;
+			box-shadow: 0 2px 12px #ffd58033;
+			width: 220px;
+			padding: 28px 18px 22px 18px;
+			text-align: center;
+			position: relative;
+			transition: transform 0.18s;
+			opacity: 0.7;
+		}
+		.achievement-card.locked {
+			filter: grayscale(0.7);
+			opacity: 0.5;
+		}
+		.achievement-icon {
+			font-size: 2.3em;
+			margin-bottom: 12px;
+			color: #ffd580;
+			text-shadow: 0 2px 8px #ffd58055;
+		}
+		.achievement-title {
+			font-size: 1.18em;
+			font-weight: 700;
+			margin-bottom: 8px;
+			color: #d76d77;
+		}
+		.achievement-desc {
+			font-size: 1em;
+			color: #232946;
+			margin-bottom: 10px;
+		}
+		.achievement-locked {
+			font-size: 1.1em;
+			color: #bdbec8;
+			font-weight: 700;
+			margin-top: 8px;
+			letter-spacing: 1px;
+		}
+		@media (max-width: 600px) {
+			.achievements-container {
+				padding: 12px 2vw 24px 2vw;
+			}
+			.achievement-card {
+				width: 98vw;
+				max-width: 320px;
+				padding: 18px 8px 14px 8px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="achievements-container">
+		<div class="achievements-title">Achievements</div>
+		<div class="achievement-list">
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🏆</div>
+				<div class="achievement-title">First Steps</div>
+				<div class="achievement-desc">Complete your first lesson.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🎯</div>
+				<div class="achievement-title">Quiz Novice</div>
+				<div class="achievement-desc">Score 80%+ on any quiz.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">📚</div>
+				<div class="achievement-title">Bookworm</div>
+				<div class="achievement-desc">Read 10 learning materials.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">💬</div>
+				<div class="achievement-title">Conversation Starter</div>
+				<div class="achievement-desc">Finish your first speaking exercise.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🔥</div>
+				<div class="achievement-title">Streak Master</div>
+				<div class="achievement-desc">Study 7 days in a row.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🌏</div>
+				<div class="achievement-title">Globetrotter</div>
+				<div class="achievement-desc">Complete lessons in both Chinese and English.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🧠</div>
+				<div class="achievement-title">Memory Champ</div>
+				<div class="achievement-desc">Score 100% on a vocabulary test.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">👑</div>
+				<div class="achievement-title">Level Up!</div>
+				<div class="achievement-desc">Reach Explorer level.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">⚔️</div>
+				<div class="achievement-title">Boss Defeated</div>
+				<div class="achievement-desc">Win a boss level challenge.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🕹️</div>
+				<div class="achievement-title">Game On</div>
+				<div class="achievement-desc">Unlock the game mode.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🥇</div>
+				<div class="achievement-title">Leaderboard Top 10</div>
+				<div class="achievement-desc">Reach the top 10 in the leaderboard.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🧩</div>
+				<div class="achievement-title">Puzzle Solver</div>
+				<div class="achievement-desc">Complete a sentence arrangement puzzle.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🎓</div>
+				<div class="achievement-title">Master Learner</div>
+				<div class="achievement-desc">Reach Master level.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">💡</div>
+				<div class="achievement-title">Insightful</div>
+				<div class="achievement-desc">Leave feedback or a suggestion.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🤝</div>
+				<div class="achievement-title">Team Player</div>
+				<div class="achievement-desc">Participate in a group challenge.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+		</div>
+	<!-- Close button removed as requested -->
+	</div>
+</body>
+</html>

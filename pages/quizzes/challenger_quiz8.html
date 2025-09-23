@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rookie Quiz Level 8</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        /* Copy the same styles as previous quizzes for consistency */
+        .buzzer-effect {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 59, 59, 0.25);
+            pointer-events: none;
+            z-index: 9999;
+            animation: screenBuzz 0.4s linear 1;
+        }
+        @keyframes screenBuzz {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-16px); }
+            40% { transform: translateX(16px); }
+            60% { transform: translateX(-16px); }
+            80% { transform: translateX(16px); }
+            100% { transform: translateX(0); }
+        }
+        .duo-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 32px;
+            margin-bottom: 18px;
+        }
+        .duo-img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 2px 8px #1e3c72;
+        }
+        .duo-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4a90e2;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-shadow: 0 2px 8px #222;
+        }
+        .quiz-progress {
+            margin: 18px auto 0 auto;
+            width: 80%;
+            height: 18px;
+            background: #232946;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4a90e2, #7f9cf5);
+            width: 0%;
+            border-radius: 12px;
+            transition: width 0.3s;
+        }
+        .quiz-question {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 96px 0 32px 0;
+            margin-bottom: 130px;
+            color: #f7f7fa;
+            text-align: center;
+        }
+        .quiz-answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+            margin-top: 48px;
+            width: calc(100vw - 80px);
+            max-width: calc(100vw - 80px);
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .answer-btn-custom {
+            width: 100%;
+            min-width: 0;
+            border-radius: 0;
+            font-size: 1.5rem;
+            padding: 48px 0;
+            margin: 0;
+            box-sizing: border-box;
+            background: #232946;
+            color: #f7f7fa;
+            font-weight: 600;
+            border-width: 4px;
+            border-style: solid;
+            transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
+            box-shadow: 0 4px 16px #23294655;
+            min-height: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .answer-btn-custom:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 32px #23294699;
+            opacity: 0.97;
+        }
+        .answer-fill {
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%;
+            height: 0%;
+            z-index: 1;
+            transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
+        }
+        .answer-btn-custom .answer-fill {
+            border-radius: 0;
+        }
+        .answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
+        .answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
+        .answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
+        .answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
+        .border-c1 { border-color: #e57373; }
+        .border-c2 { border-color: #64b5f6; }
+        .border-c3 { border-color: #81c784; }
+        .border-c4 { border-color: #ffd54f; }
+        .quiz-feedback {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #ffeb3b;
+            margin-bottom: 12px;
+            min-height: 24px;
+            transition: color 0.2s;
+        }
+        .quiz-feedback.wrong {
+            color: #ff3b3b;
+            animation: buzz 0.3s linear 1;
+        }
+        @keyframes buzz {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+            100% { transform: translateX(0); }
+        }
+        .quiz-finish {
+            font-size: 1.5rem;
+            color: #4a90e2;
+            font-weight: 700;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
+    <button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+    <div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+            <h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
+            <button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+            <button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+            <button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+        </div>
+    </div>
+    <div class="duo-header">
+        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Rookie Quiz 8: Wisdom & Reflection</span>
+    </div>
+    <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+    </div>
+    <div class="quiz-question" id="quiz-question"></div>
+    <div class="quiz-feedback" id="quiz-feedback"></div>
+    <div class="quiz-answers" id="quiz-answers"></div>
+    <div id="buzzer-effect-root"></div>
+    <script>
+    // Pause modal logic
+    let paused = false;
+    const pauseBtn = document.getElementById('pause-btn');
+    const pauseModal = document.getElementById('pause-modal');
+    const resumeBtn = document.getElementById('resume-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    const exitBtn = document.getElementById('exit-btn');
+
+    pauseBtn.onclick = function() { paused = true; pauseModal.style.display = 'flex'; };
+    resumeBtn.onclick = function() { paused = false; pauseModal.style.display = 'none'; };
+    restartBtn.onclick = function() {
+        paused = false;
+        pauseModal.style.display = 'none';
+        current = 0;
+        score = 0;
+        shuffleArray(questions);
+        showQuestion();
+        document.getElementById('quiz-progress-bar').style.width = '0%';
+    };
+    exitBtn.onclick = function() { window.location.href = 'challenger.html'; };
+
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    const originalQuestions = [
+        {
+            q: 'Translate: 他被誉为“当代最有影响力的作家之一”�?,
+            options: [
+                'He is known as one of the most influential writers of our time.',
+                'He is the oldest writer.',
+                'He is not famous.',
+                'He is a scientist.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Fill in: 这篇文章的主要___是什么？ (topic)',
+            options: [
+                '主题',
+                '内容',
+                '作�?,
+                '结论'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate: 我同意你的看法，但我有不同的建议�?,
+            options: [
+                'I agree with your opinion, but I have a different suggestion.',
+                'I disagree with your opinion.',
+                'I have no suggestions.',
+                'I don\'t understand your opinion.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Which idiom means “half the effort, double the result�?',
+            options: [
+                '事半功�?,
+                '画蛇添足',
+                '一举两�?,
+                '亡羊补牢'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate: 他正在考虑是否接受这份工作�?,
+            options: [
+                'He is considering whether to accept the job.',
+                'He has accepted the job.',
+                'He refused the job.',
+                'He quit his job.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Fill in: 这个问题非常___，必须认真研究�?(serious)',
+            options: [
+                '严重',
+                '简�?,
+                '普�?,
+                '容易'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate: 他在科学领域取得了很大的成就�?,
+            options: [
+                'He has made great achievements in the field of science.',
+                'He is not interested in science.',
+                'He failed in science.',
+                'He changed his field.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Rearrange: 需�?/ 才能 / 时间 / 成熟 / 一个人',
+            type: 'rearrange',
+            items: ['需�?, '才能', '时间', '成熟', '一个人'],
+            answer: ['一个人', '成熟', '需�?, '时间', '才能']
+        },
+        {
+            q: 'Fill in: 教育是国家发展的___�?(foundation)',
+            options: [
+                '基础',
+                '目标',
+                '原因',
+                '方法'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate: 互联网使人们之间的交流更加方便�?,
+            options: [
+                'The Internet has made communication between people more convenient.',
+                'The Internet is not useful.',
+                'The Internet is slow.',
+                'The Internet is expensive.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Choose: Which is closest to 创�?',
+            options: [
+                '发明',
+                '保护',
+                '发展',
+                '管理'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate: 他的讲话给了我很大的启发�?,
+            options: [
+                'His speech inspired me a lot.',
+                'His speech was boring.',
+                'His speech was short.',
+                'His speech was confusing.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Fill in: 保护传统文化是我们的___�?(duty)',
+            options: [
+                '责任',
+                '兴趣',
+                '能力',
+                '经验'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Translate into English: 他决定冒险创业�?,
+            options: [
+                'He decided to take a risk and start a business.',
+                'He decided to retire.',
+                'He decided to travel.',
+                'He decided to study.'
+            ],
+            answer: 0
+        },
+        {
+            q: 'Short Essay: Write about your favorite Chinese proverb, its meaning, and how it applies to life (8�?0 sentences).',
+            options: ['__OPEN_ENDED__'],
+            answer: 0
+        }
+    ];
+
+    const questions = shuffleArray([...originalQuestions]);
+    let current = 0;
+    let score = 0;
+
+    function showQuestion() {
+        const q = questions[current];
+        const questionDiv = document.getElementById('quiz-question');
+        const answersDiv = document.getElementById('quiz-answers');
+        questionDiv.innerHTML = q ? q.q : '';
+        answersDiv.innerHTML = '';
+
+        // Rearrange question support (click-to-select, like previous challenger_quiz4)
+        if (q && q.type === 'rearrange') {
+            document.getElementById('quiz-feedback').textContent = '';
+            let items = shuffleArray([...q.items]);
+            let selected = [];
+            let used = Array(items.length).fill(false);
+
+            // Labels
+            const selectedLabel = document.createElement('div');
+            selectedLabel.textContent = 'Your answer:';
+            selectedLabel.style.textAlign = 'center';
+            selectedLabel.style.color = '#ffe600';
+            selectedLabel.style.fontWeight = 'bold';
+            selectedLabel.style.marginBottom = '8px';
+
+            const selectedDiv = document.createElement('div');
+            selectedDiv.style.display = 'flex';
+            selectedDiv.style.flexWrap = 'wrap';
+            selectedDiv.style.justifyContent = 'center';
+            selectedDiv.style.gap = '12px';
+            selectedDiv.style.margin = '8px 0 18px 0';
+            selectedDiv.style.minHeight = '48px';
+            selectedDiv.style.background = 'rgba(255,255,255,0.13)';
+            selectedDiv.style.border = '2px dashed #90e0ef';
+            selectedDiv.style.borderRadius = '12px';
+            selectedDiv.style.padding = '10px 8px';
+
+            const bankLabel = document.createElement('div');
+            bankLabel.textContent = 'Word bank:';
+            bankLabel.style.textAlign = 'center';
+            bankLabel.style.color = '#7f9cf5';
+            bankLabel.style.fontWeight = 'bold';
+            bankLabel.style.margin = '18px 0 8px 0';
+
+            const container = document.createElement('div');
+            container.style.display = 'flex';
+            container.style.flexWrap = 'wrap';
+            container.style.justifyContent = 'center';
+            container.style.gap = '12px';
+            container.style.margin = '0 0 24px 0';
+
+            items.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = item;
+                btn.className = 'answer-btn-custom border-c1';
+                btn.style.width = 'auto';
+                btn.style.minWidth = '60px';
+                btn.style.padding = '18px 24px';
+                btn.style.fontSize = '1.2rem';
+                btn.onclick = function() {
+                    if (used[idx]) return;
+                    used[idx] = true;
+                    btn.style.opacity = 0.5;
+                    btn.style.pointerEvents = 'none';
+                    selected.push(item);
+                    updateSelected();
+                };
+                container.appendChild(btn);
+            });
+
+            function updateSelected() {
+                selectedDiv.innerHTML = '';
+                selected.forEach((word, i) => {
+                    const wordBtn = document.createElement('button');
+                    wordBtn.textContent = word;
+                    wordBtn.className = 'answer-btn-custom border-c2';
+                    wordBtn.style.width = 'auto';
+                    wordBtn.style.minWidth = '60px';
+                    wordBtn.style.padding = '12px 18px';
+                    wordBtn.style.fontSize = '1.1rem';
+                    wordBtn.onclick = function() {
+                        // Remove from selected and re-enable in pool
+                        selected.splice(i, 1);
+                        // Find index in items
+                        const poolIdx = items.indexOf(word);
+                        used[poolIdx] = false;
+                        container.children[poolIdx].style.opacity = 1;
+                        container.children[poolIdx].style.pointerEvents = '';
+                        updateSelected();
+                    };
+                    selectedDiv.appendChild(wordBtn);
+                });
+            }
+
+            answersDiv.appendChild(selectedLabel);
+            answersDiv.appendChild(selectedDiv);
+            answersDiv.appendChild(bankLabel);
+            answersDiv.appendChild(container);
+
+            const submitBtn = document.createElement('button');
+            submitBtn.textContent = 'Check';
+            submitBtn.className = 'answer-btn-custom border-c2';
+            submitBtn.style.width = '180px';
+            submitBtn.style.margin = '24px auto 0 auto';
+            submitBtn.onclick = () => {
+                if (selected.length !== q.answer.length) {
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please select all words.</span>';
+                    return;
+                }
+                if (JSON.stringify(selected) === JSON.stringify(q.answer)) {
+                    score++;
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Correct! 🎉</span>';
+                    setTimeout(() => {
+                        if (!paused) nextQuestion();
+                    }, 900);
+                } else {
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Try again!</span>';
+                }
+            };
+            answersDiv.appendChild(submitBtn);
+            updateProgress();
+            return;
+        }
+
+        // Open-ended question support
+        if (q && q.options.length === 1 && q.options[0] === '__OPEN_ENDED__') {
+            const textarea = document.createElement('textarea');
+            textarea.style.width = '100%';
+            textarea.style.height = '180px';
+            textarea.style.fontSize = '1.2rem';
+            textarea.style.marginBottom = '18px';
+            textarea.placeholder = 'Write about your favorite Chinese proverb, its meaning, and how it applies to life (8�?0 sentences)...';
+            answersDiv.appendChild(textarea);
+
+            const submitBtn = document.createElement('button');
+            submitBtn.textContent = 'Submit';
+            submitBtn.className = 'answer-btn-custom border-c1';
+            submitBtn.style.width = '220px';
+            submitBtn.style.margin = '0 auto';
+            submitBtn.onclick = () => {
+                if (textarea.value.trim().length < 50) {
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
+                    return;
+                }
+                score++;
+                document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Thank you for your answer!</span>';
+                setTimeout(() => {
+                    if (!paused) nextQuestion();
+                }, 900);
+            };
+            answersDiv.appendChild(submitBtn);
+            updateProgress();
+            return;
+        }
+
+        // Multiple choice and fill-in
+        if (q) {
+            const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+            const shuffledOptions = shuffleArray(optionObjs);
+            const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
+            q._shuffledOptions = shuffledOptions;
+            q._shuffledAnswerIdx = newAnswerIdx;
+
+            shuffledOptions.forEach((optObj, i) => {
+                const btn = document.createElement('button');
+                btn.className = `answer-btn-custom border-c${i + 1}`;
+                btn.textContent = optObj.text;
+                btn.onclick = () => checkAnswer(i);
+                const fill = document.createElement('div');
+                fill.className = `answer-fill c${i + 1}`;
+                btn.appendChild(fill);
+                answersDiv.appendChild(btn);
+            });
+        }
+        document.getElementById('quiz-feedback').textContent = '';
+        updateProgress();
+    }
+
+    function checkAnswer(idx) {
+        if (paused) return;
+        const q = questions[current];
+        if(idx === q._shuffledAnswerIdx) {
+            score++;
+            document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+            const answersDiv = document.getElementById('quiz-answers');
+            const btns = answersDiv.querySelectorAll('.answer-btn-custom');
+            const btn = btns[idx];
+            const fill = btn.querySelector('.answer-fill');
+            fill.style.height = '100%';
+            btns.forEach(b => b.disabled = true);
+            setTimeout(() => {
+                if (!paused) nextQuestion();
+            }, 850);
+        } else {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+            feedback.classList.add('wrong');
+            const buzzerRoot = document.getElementById('buzzer-effect-root');
+            const buzzerDiv = document.createElement('div');
+            buzzerDiv.className = 'buzzer-effect';
+            buzzerRoot.appendChild(buzzerDiv);
+            setTimeout(() => {
+                feedback.classList.remove('wrong');
+                feedback.textContent = '';
+                buzzerDiv.remove();
+            }, 700);
+        }
+    }
+
+    function nextQuestion() {
+        current++;
+        if(current < questions.length) {
+            showQuestion();
+        } else {
+            finishQuiz();
+        }
+    }
+
+    function updateProgress() {
+        const bar = document.getElementById('quiz-progress-bar');
+        bar.style.width = ((current / questions.length) * 100) + '%';
+    }
+
+    function setUnlockedLevel(level) {
+        localStorage.setItem('rookieUnlockedLevel', String(level));
+        var username = localStorage.getItem('rookieUserId');
+        if (username) {
+            fetch('http://localhost:3000/api/updateProgress', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ username, unlockedLevel: level })
+            });
+        }
+    }
+
+    function finishQuiz() {
+        document.getElementById('quiz-question').innerHTML = '';
+        document.getElementById('quiz-answers').innerHTML = '';
+        document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+        document.getElementById('quiz-progress-bar').style.width = '100%';
+        setUnlockedLevel(9);
+        setTimeout(function() {
+            var btn = document.getElementById('nextLevelBtn');
+            if (btn) {
+                btn.onclick = function() {
+                 window.location.href = 'challenger_quiz9.html';
+                };
+            }
+        }, 100);
+    }
+
+    showQuestion();
+    </script>
+</body>
+</html>

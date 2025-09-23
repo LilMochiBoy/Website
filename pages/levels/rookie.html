@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rookie Level - Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #181818;
+        }
+        .map-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            max-width: 90vw;
+            aspect-ratio: 1536 / 1024;
+            max-height: 90vh;
+            transform: translate(-50%, -50%);
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rookie-map-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            z-index: 0;
+        }
+        .map-btns-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .level-btn {
+            position: absolute;
+            width: 4.2%;
+            height: 7%;
+            min-width: 40px;
+            min-height: 40px;
+            max-width: 70px;
+            max-height: 70px;
+            border-radius: 50%;
+            background: rgba(74,144,226,0.85);
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: bold;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 16px #23294655;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: transform 0.15s, background 0.2s, opacity 0.2s;
+        }
+        .level-btn:hover:not(.locked) {
+            background: #357ab8;
+            transform: scale(1.12);
+        }
+        .level-btn.locked {
+            background: #bdbec8;
+            color: #888;
+            border: 3px solid #aaa;
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
+    <div class="map-wrapper">
+        <img src="../../assets/images/rookie map.png" alt="Rookie Map" class="rookie-map-bg">
+        <div class="map-btns-container">
+            <!-- Positions are % of map size based on 1536x1024 -->
+            <div class="level-btn" id="level1" style="left:3.2%; top:22.2%;">1</div> <!-- 30px left -->
+            <div class="level-btn locked" id="level2" style="left:18.6%; top:21.2%;">2</div> <!-- 30px left -->
+            <div class="level-btn locked" id="level3" style="left:39.3%; top:30.6%;">3</div>
+            <div class="level-btn locked" id="level4" style="left:29.5%; top:42.7%;">4</div> <!-- 30px left, 20px down -->
+            <div class="level-btn locked" id="level5" style="left:28.1%; top:63.0%;">5</div>
+            <div class="level-btn locked" id="level6" style="left:48.2%; top:60.8%;">6</div> <!-- 20px up -->
+            <div class="level-btn locked" id="level7" style="left:68.6%; top:54.4%;">7</div> <!-- 40px left -->
+            <div class="level-btn locked" id="level8" style="left:84.5%; top:70.6%;">8</div> <!-- 40px left, 20px up -->
+            <div class="level-btn locked" id="level9" style="left:69.8%; top:78.2%;">9</div> <!-- 20px up -->
+            <div class="level-btn locked" id="level10" style="left:53.3%; top:91.6%;">10</div> <!-- 20px left, 20px up -->
+        </div>
+    </div>
+    <script>
+// Force unlock level 10 for testing
+localStorage.setItem('rookieUnlockedLevel', '10');
+
+        // Check login status (replace with your actual login logic)
+        function isLoggedIn() {
+            // Example: check for a user ID in localStorage (customize as needed)
+            return !!localStorage.getItem('rookieUserId');
+        }
+
+    // Progress will NOT reset on every page load. Only reset when explicitly requested (e.g., logout or reset button).
+
+        function getUnlockedLevel() {
+            return parseInt(localStorage.getItem('rookieUnlockedLevel') || '1');
+        }
+        function setUnlockedLevel(level) {
+            localStorage.setItem('rookieUnlockedLevel', String(level));
+        }
+
+        function updateLevelLocks() {
+            const unlockedLevel = getUnlockedLevel();
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.getElementById('level' + i);
+                if (!btn) continue;
+                if (i <= unlockedLevel) {
+                    btn.classList.remove('locked');
+                    btn.style.background = 'rgba(74,144,226,0.85)';
+                    btn.style.color = '#fff';
+                    btn.style.border = '3px solid #fff';
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                    btn.onclick = function() {
+                        window.location.href = 'rookie_quiz' + i + '.html';
+                    };
+                } else {
+                    btn.classList.add('locked');
+                    btn.style.background = '#bdbec8';
+                    btn.style.color = '#888';
+                    btn.style.border = '3px solid #aaa';
+                    btn.style.opacity = '0.6';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = null;
+                }
+            }
+        }
+
+        // Call on page load
+        updateLevelLocks();
+
+        // Back button leads to Chinese proficiency selection (chinese.html)
+        document.getElementById('back-btn').onclick = function() {
+            window.location.href = 'chinese.html';
+        };
+
+        // After quiz completion, each quiz page should call:
+        // setUnlockedLevel(nextLevelNumber);
+        // For example, after finishing level 1, call setUnlockedLevel(2)
+        // You need to add this call to each quiz page after the player finishes the quiz.
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zendo - Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background: #181c23; margin: 0; font-family: 'Montserrat', Arial, sans-serif; }
+        .sidebar {
+            width: 250px;
+            background: #181818;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            box-shadow: 2px 0 16px #0008;
+        }
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 24px 18px 18px 18px;
+        }
+        .sidebar-logo img {
+            width: 38px; height: 38px; border-radius: 8px;
+        }
+        .sidebar-logo span {
+            font-family: Montserrat,sans-serif; font-size: 1.35em; font-weight: 800;
+        }
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 24px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 4px 12px 0 12px;
+            font-size: 1.1em;
+        }
+        .sidebar-link.active, .sidebar-link[data-page="profile"] {
+            background: #3ea6ff;
+            color: #fff;
+        }
+        .main-content {
+            margin-left: 250px;
+            min-height: 100vh;
+            background: #181c23;
+            padding: 0;
+        }
+        .top-nav {
+            width: 100vw;
+            background: #232a33;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0 0 0;
+            min-height: 64px;
+            box-shadow: 0 2px 8px #0002;
+            z-index: 100;
+            position: fixed;
+            left: 250px;
+            top: 0;
+        }
+        .top-nav .navbar {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .top-nav .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .top-nav .main-btn {
+            font-size: 1.1em;
+            padding: 8px 24px;
+            border-radius: 16px;
+            background: #3ea6ff;
+            color: #fff;
+            border: none;
+        }
+        .profile-container {
+            padding: 100px 32px 32px 32px;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src='../assets/images/Zendo.png' alt='Logo'>
+            <span>Zendo</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html#home-section" class="sidebar-link"><span>🏠</span> Home</a>
+            <a href="profile.html" class="sidebar-link active" data-page="profile"><span>👤</span> Profile</a>
+            <a href="#" class="sidebar-link"><span>🏅</span> Achievements</a>
+            <a href="#" class="sidebar-link"><span>📊</span> Leaderboard</a>
+            <a href="#" class="sidebar-link"><span>📚</span> Lessons</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="top-nav">
+            <div style="display:flex; align-items:center; gap:12px; padding:0 18px; height:64px;">
+                <img src='../assets/images/Zendo.png' alt='Logo' style='width:38px; height:38px; border-radius:8px;'>
+                <span style='font-family:Montserrat,sans-serif; font-size:1.35em; font-weight:800;'>Zendo</span>
+            </div>
+            <nav class="navbar">
+                <a href="index.html#home-section" class="nav-link">Home</a>
+                <a href="index.html#team-section" class="nav-link">Team</a>
+                <a href="index.html#about-section" class="nav-link">About</a>
+                <a href="index.html#contact-section" class="nav-link">Contact</a>
+            </nav>
+            <div style="padding:0 24px;">
+                <button class="main-btn" id="loginBtn">Log In</button>
+            </div>
+        </div>
+        <div class="profile-container">
+            <!-- Profile Card, Stats, Achievements, Friends/Followers Panel -->
+            <div style="flex:2; min-width:340px; max-width:520px;">
+                <div style="background:#202a36; border-radius:18px; padding:32px 28px 24px 28px; box-shadow:0 2px 16px #0003; display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:120px; height:120px; background:#232a33; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; position:relative;">
+                        <img src="../assets/images/chara.png" alt="Avatar" style="width:90px; height:90px; border-radius:50%; object-fit:cover;">
+                        <button style="position:absolute; top:8px; right:8px; background:#232a33; border:none; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; font-size:1.2em;">✎</button>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:1.5em; font-weight:700; color:#fff;">Valentino Jovan</div>
+                        <div style="color:#6fa3ff; font-size:1em; margin-bottom:2px;">ValentinoJ575991</div>
+                        <div style="color:#b0b8c1; font-size:0.98em; margin-bottom:6px;">Joined March 2023</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;">
+                            <span style="color:#6fa3ff; font-weight:600;">0 Following</span>
+                            <span style="color:#6fa3ff; font-weight:600;">0 Followers</span>
+                            <img src="../assets/images/China flag.png" alt="Country" style="width:22px; height:16px; border-radius:3px; margin-left:8px;">
+                        </div>
+                    </div>
+                    <div style="width:100%; height:1px; background:#263040; margin:18px 0 18px 0;"></div>
+                    <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
+                        <button style="background:#3ea6ff; color:#fff; border:none; border-radius:12px; padding:10px 0; font-size:1.1em; font-weight:600; margin-bottom:2px; cursor:pointer;">+ Add Friends</button>
+                        <button style="background:#232a33; color:#6fa3ff; border:1px solid #3ea6ff; border-radius:12px; padding:10px 0; font-size:1.1em; font-weight:600; cursor:pointer;">Share Profile</button>
+                    </div>
+                </div>
+                <!-- Statistics -->
+                <div style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.2em; font-weight:700; color:#fff; margin-bottom:18px;">Statistics</div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Day streak
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Total XP
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.1em; color:#fff; font-weight:700;">None</div>
+                            Current league
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Top 3 finishes
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievements -->
+                <div style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                        <div style="font-size:1.2em; font-weight:700; color:#fff;">Achievements</div>
+                        <a href="#" style="color:#6fa3ff; font-weight:600; font-size:1em; text-decoration:none;">VIEW ALL</a>
+                    </div>
+                    <div style="margin-top:16px; color:#b0b8c1;">No achievements yet.</div>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div style="flex:1.2; min-width:320px; max-width:420px; display:flex; flex-direction:column; gap:28px;">
+                <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+                        <img src="../assets/images/China flag.png" alt="Lang" style="width:22px; height:16px; border-radius:3px;">
+                        <span style="color:#fff; font-weight:700; font-size:1.1em;">Following</span>
+                        <span style="color:#b0b8c1; font-weight:600; font-size:1.1em;">Followers</span>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:center; margin-bottom:12px;">
+                        <img src="../assets/images/Panda.png" alt="Friends" style="width:120px; height:80px;">
+                    </div>
+                    <div style="color:#b0b8c1; text-align:center; font-size:1.05em;">Learning is more fun and effective when you connect with others.</div>
+                </div>
+                <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.1em; font-weight:700; color:#fff; margin-bottom:12px;">Add friends</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <button style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                            <span style="font-size:1.2em;">🔍</span> Find friends
+                        </button>
+                        <button style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                            <span style="font-size:1.2em;">🐼</span> Invite friends
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
