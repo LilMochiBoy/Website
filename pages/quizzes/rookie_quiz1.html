@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -160,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 1: Complete Assessment</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -201,6 +203,7 @@
 	exitBtn.onclick = function() {
 		window.location.href = '../levels/rookie.html';
 	};
+
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -211,79 +214,163 @@
 	}
 
 	const originalQuestions = [
+		// Part A: Vocabulary Match (1-10)
 		{
-			q: 'How do you say "Hello" in Mandarin?',
-			options: ['谢谢', '你好', '再见', '对不�?],
+			q: 'Part A: Vocabulary Match<br><br>Match: 你好',
+			options: ['hello', 'goodbye', 'thank you', 'sorry'],
+			answer: 0
+		},
+		{
+			q: 'Match: 再见',
+			options: ['hello', 'goodbye', 'thank you', 'sorry'],
 			answer: 1
 		},
 		{
-			q: '"谢谢" means:',
-			options: ['Hello', 'Thank you', 'Goodbye', 'Sorry'],
+			q: 'Match: 谢谢',
+			options: ['hello', 'goodbye', 'thank you', 'sorry'],
+			answer: 2
+		},
+		{
+			q: 'Match: 对不起',
+			options: ['hello', 'goodbye', 'thank you', 'sorry'],
+			answer: 3
+		},
+		{
+			q: 'Match: 没关系',
+			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
+			answer: 2
+		},
+		{
+			q: 'Match: 请',
+			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
+			answer: 0
+		},
+		{
+			q: 'Match: 不客气',
+			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
 			answer: 1
 		},
 		{
-			q: 'Translate: 再见 (zàijiàn).',
-			options: ['Goodbye', 'Hello', 'Thank you', 'Sorry'],
+			q: 'Match: 早上好',
+			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
+			answer: 3
+		},
+		{
+			q: 'Match: 晚上好',
+			options: ['good evening', 'good morning', 'hello (polite)', 'goodbye'],
 			answer: 0
 		},
 		{
-			q: 'Which tone is mā (�?�?mother)?',
-			options: ['First tone', 'Second tone', 'Third tone', 'Fourth tone'],
-			answer: 0
+			q: 'Match: 您好',
+			options: ['good evening', 'good morning', 'hello (polite)', 'goodbye'],
+			answer: 2
 		},
+		
+		// Part B: Fill in the Blank (11-15)
 		{
-			q: 'Which one is the rising tone?',
-			options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-			answer: 1
-		},
-        {
-            q: 'Which one is the falling tone?',
-            options: ['ˉ', 'ˊ', 'ˇ', 'ˋ'],
-            answer: 3
-        },
-		{
-			q: 'Fill in: To greet your teacher, say: ___ �?',
-			options: ['老师', '谢谢', '你好', '再见'],
-			answer: 0
-		},
-		{
-			q: 'True or False: "老师" means student.',
-			options: ['True', 'False'],
+			q: 'Part B: Fill in the Blank<br><br>A: ______！(Hello, teacher – polite)',
+			options: ['你好', '您好', '谢谢', '再见'],
 			answer: 1
 		},
 		{
-			q: 'Translate into English: 你好吗？',
-			options: ['How are you?', 'Hello!', 'Goodbye!', 'Thank you!'],
+			q: 'A: 谢谢！ B: ______！',
+			options: ['没关系', '不客气', '对不起', '您好'],
+			answer: 1
+		},
+		{
+			q: 'A: 对不起。 B: ______！',
+			options: ['没关系', '不客气', '对不起', '您好'],
 			answer: 0
 		},
 		{
-			q: 'Fill in: Q: 你好吗？ A: 我___好�?,
-			options: ['�?, '�?, '�?, '�?],
+			q: 'A: 早上____！(Good morning)',
+			options: ['见', '好', '谢', '气'],
+			answer: 1
+		},
+		{
+			q: 'A: ______见！(Goodbye)',
+			options: ['早', '再', '没', '不'],
+			answer: 1
+		},
+		
+		// Part C: Translation (16-20)
+		{
+			q: 'Part C: Translation<br><br>Translate: "Hello, how are you?"',
+			options: ['你好，你好吗？', '我叫什么？', '很高兴认识你', '我不是老师'],
 			answer: 0
 		},
 		{
-			q: 'Which pinyin is correct for "中国"?',
-			options: ['Zhōngguó', 'Zhángguó', 'Zhingguo', 'Zhonggua'],
+			q: 'Translate: "My name is David."',
+			options: ['你好，你好吗？', '我叫 David', '很高兴认识你', '我不是老师'],
+			answer: 1
+		},
+		{
+			q: 'Translate: "Nice to meet you."',
+			options: ['你好，你好吗？', '我叫 David', '很高兴认识你', '我不是老师'],
+			answer: 2
+		},
+		{
+			q: 'Translate: "I am not a teacher."',
+			options: ['你好，你好吗？', '我叫 David', '很高兴认识你', '我不是老师'],
+			answer: 3
+		},
+		{
+			q: 'Translate: "Sorry, it\'s okay."',
+			options: ['对不起，没关系', '我是学生', '你叫什么名字', '早上好'],
+			answer: 0
+		},
+		
+		// Part D: Multiple Choice (21-25)
+		{
+			q: 'Part D: Multiple Choice<br><br>Which is polite "hello"?',
+			options: ['你好', '您好', '再见', '谢谢'],
+			answer: 1
+		},
+		{
+			q: 'How to say "thank you"?',
+			options: ['请', '对不起', '谢谢', '没关系'],
+			answer: 2
+		},
+		{
+			q: 'If someone says "谢谢", you reply:',
+			options: ['没关系', '不客气', '再见', '您好'],
+			answer: 1
+		},
+		{
+			q: '"I am not a student." → correct choice:',
+			options: ['我是学生', '我不是学生', '我不学生', '我学生不'],
+			answer: 1
+		},
+		{
+			q: '"Good evening" is:',
+			options: ['晚上好', '早上好', '您好', '你好'],
+			answer: 0
+		},
+		
+		// Part E: Short Dialogue Practice (26-30)
+		{
+			q: 'Part E: Dialogue Practice<br><br>A: 你好！ B: ______！',
+			options: ['你好', '再见', '谢谢', '对不起'],
 			answer: 0
 		},
 		{
-			q: 'What does �?mean?',
-			options: ['You (polite)', 'We', 'He', 'She'],
+			q: 'A: 你叫什么名字？ B: ______',
+			options: ['我叫...', '你好', '再见', '谢谢'],
 			answer: 0
 		},
 		{
-			q: 'Translate: 不客�?,
-			options: ['You’re welcome', 'Sorry', 'Hello', 'Goodbye'],
+			q: 'A: 我是学生。你呢？ B: ______',
+			options: ['我是老师/我也是学生', '你好', '再见', '对不起'],
 			answer: 0
 		},
 		{
-			q: 'Fill in: 对不�?�?___关系',
-			options: ['�?, '�?, '�?, '�?],
+			q: 'A: 谢谢！ B: ______！',
+			options: ['不客气', '你好', '再见', '对不起'],
 			answer: 0
 		},
 		{
-			q: 'Write the pinyin for 谢谢.',
-			options: ['xièxie', 'xiexia', 'xiéxié', 'xìexìe'],
+			q: 'A: 对不起。 B: ______！',
+			options: ['没关系', '你好', '再见', '谢谢'],
 			answer: 0
 		}
 	];

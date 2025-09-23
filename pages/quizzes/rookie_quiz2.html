@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 2: Numbers & Days</title>
+	<title>Rookie Quiz Level 2: Numbers & Counting</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -37,6 +37,13 @@
 			background: #fff;
 			box-shadow: 0 2px 8px #1e3c72;
 		}
+		.duo-title {
+			font-size: 2.2rem;
+			font-weight: 700;
+			color: #4a90e2;
+			font-family: 'Segoe UI', Arial, sans-serif;
+			text-shadow: 0 2px 8px #222;
+		}
 		.quiz-progress {
 			margin: 18px auto 0 auto;
 			width: 80%;
@@ -53,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -74,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -143,10 +152,6 @@
 	</style>
 </head>
 <body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
-	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title" style="font-size:2.2rem;font-weight:700;color:#4a90e2;font-family:'Segoe UI',Arial,sans-serif;text-shadow:0 2px 8px #222;">Rookie Quiz 2: Numbers & Days</span>
-	</div>
 	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
 	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
 		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
@@ -155,6 +160,10 @@
 			<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
 			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
 		</div>
+	</div>
+	<div class="duo-header">
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 2: Numbers & Counting</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -173,21 +182,165 @@
 	}
 
 	const originalQuestions = [
-		{ q: 'What is “一�?in numbers?', options: ['1', '2', '3', '4'], answer: 0 },
-		{ q: 'Write pinyin: �?, options: ['ba', 'bā', 'bā', 'bà'], answer: 1 },
-		{ q: '�?+ 一 = ___', options: ['�?, '十一', '�?, '�?], answer: 0 },
-		{ q: 'Which means “seven�?', options: ['�?, '�?, '�?, '�?], answer: 1 },
-		{ q: 'Match the numbers: �?, options: ['6', '2', '10', '9'], answer: 3 },
-		{ q: 'Translate: 今天', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 1 },
-		{ q: 'Fill in: 星期一 = ____.', options: ['Monday', 'Sunday', 'Friday', 'Saturday'], answer: 0 },
-		{ q: '"明天" means:', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 2 },
-		{ q: 'Write in characters: shíyī', options: ['十一', '十二', '�?, '一'], answer: 0 },
-		{ q: 'Translate: 昨天', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 0 },
-		{ q: 'Which is correct word order for dates in Mandarin?', options: ['Month �?Day �?Year', 'Year �?Month �?Day', 'Day �?Month �?Year', 'Day �?Year �?Month'], answer: 1 },
-		{ q: 'Translate into Mandarin: Friday', options: ['星期�?, '星期�?, '星期一', '星期�?], answer: 0 },
-		{ q: 'Write pinyin: 十二', options: ['shíèr', 'shíyī', 'shíliù', 'shíjiǔ'], answer: 0 },
-		{ q: 'Fill in: 今天星期___.', options: ['一', '�?, '�?, '�?], answer: 0 },
-		{ q: 'True or False: 星期�?= Sunday.', options: ['True', 'False'], answer: 0 }
+		// Part A: Match Numbers (1-10)
+		{
+			q: 'Part A: Match Numbers<br><br>Match: 一',
+			options: ['one', 'two', 'three', 'four'],
+			answer: 0
+		},
+		{
+			q: 'Match: 五',
+			options: ['three', 'four', 'five', 'six'],
+			answer: 2
+		},
+		{
+			q: 'Match: 十',
+			options: ['eight', 'nine', 'ten', 'eleven'],
+			answer: 2
+		},
+		{
+			q: 'Match: 九',
+			options: ['seven', 'eight', 'nine', 'ten'],
+			answer: 2
+		},
+		{
+			q: 'Match: 二十',
+			options: ['twelve', 'fifteen', 'eighteen', 'twenty'],
+			answer: 3
+		},
+		{
+			q: 'Match: 七',
+			options: ['five', 'six', 'seven', 'eight'],
+			answer: 2
+		},
+		{
+			q: 'Match: 十三',
+			options: ['eleven', 'twelve', 'thirteen', 'fourteen'],
+			answer: 2
+		},
+		{
+			q: 'Match: 四',
+			options: ['two', 'three', 'four', 'five'],
+			answer: 2
+		},
+		{
+			q: 'Match: 十六',
+			options: ['fourteen', 'fifteen', 'sixteen', 'seventeen'],
+			answer: 2
+		},
+		{
+			q: 'Match: 零',
+			options: ['zero', 'one', 'two', 'three'],
+			answer: 0
+		},
+		
+		// Part B: Fill in the Blank (11-15)
+		{
+			q: 'Part B: Fill in the Blank<br><br>12 = 十 ___',
+			options: ['一', '二', '三', '四'],
+			answer: 1
+		},
+		{
+			q: '17 = 十 ___',
+			options: ['五', '六', '七', '八'],
+			answer: 2
+		},
+		{
+			q: '3 apples = 三 ___ 苹果',
+			options: ['个', '只', '本', '张'],
+			answer: 0
+		},
+		{
+			q: '2 people = ___ 个 人',
+			options: ['一', '两', '三', '四'],
+			answer: 1
+		},
+		{
+			q: 'I am 15 years old = 我 ___ 岁',
+			options: ['十四', '十五', '十六', '十七'],
+			answer: 1
+		},
+		
+		// Part C: Translation (16-20)
+		{
+			q: 'Part C: Translation<br><br>Translate: 8',
+			options: ['七 (qī)', '八 (bā)', '九 (jiǔ)', '十 (shí)'],
+			answer: 1
+		},
+		{
+			q: 'Translate: 14',
+			options: ['十三 (shí sān)', '十四 (shí sì)', '十五 (shí wǔ)', '十六 (shí liù)'],
+			answer: 1
+		},
+		{
+			q: 'Translate: 20',
+			options: ['十九 (shí jiǔ)', '二十 (èr shí)', '二十一 (èr shí yī)', '三十 (sān shí)'],
+			answer: 1
+		},
+		{
+			q: 'Translate: "How many students?"',
+			options: ['多少学生？/几个学生？', '你好吗？', '多少钱？', '几岁？'],
+			answer: 0
+		},
+		{
+			q: 'Translate: "How much is it?"',
+			options: ['多少学生？', '你好吗？', '多少钱？', '几岁？'],
+			answer: 2
+		},
+		
+		// Part D: Multiple Choice (21-25)
+		{
+			q: 'Part D: Multiple Choice<br><br>"十八" means:',
+			options: ['8', '18', '28', '38'],
+			answer: 1
+		},
+		{
+			q: 'How to say "zero"?',
+			options: ['二', '十', '零', '一'],
+			answer: 2
+		},
+		{
+			q: 'Which is correct for "two people"?',
+			options: ['二个人', '两个人', '二人个', '两人个'],
+			answer: 1
+		},
+		{
+			q: '"你几岁？" is asking:',
+			options: ['How are you?', 'How old are you?', 'How much is this?', 'How many?'],
+			answer: 1
+		},
+		{
+			q: '"多少" is used for:',
+			options: ['Small numbers', 'Big numbers/money', 'Only ages', 'Only time'],
+			answer: 1
+		},
+		
+		// Part E: Short Answers (26-30)
+		{
+			q: 'Part E: Short Answers<br><br>Write "11" in Chinese:',
+			options: ['十 (shí)', '十一 (shí yī)', '十二 (shí èr)', '二十 (èr shí)'],
+			answer: 1
+		},
+		{
+			q: 'Write "19" in Chinese:',
+			options: ['十八 (shí bā)', '十九 (shí jiǔ)', '二十 (èr shí)', '九十 (jiǔ shí)'],
+			answer: 1
+		},
+		{
+			q: 'Say: "I have one friend."',
+			options: ['我有一个朋友', '我是一个朋友', '我有一个老师', '我有两个朋友'],
+			answer: 0
+		},
+		{
+			q: 'Say: "She is 7 years old."',
+			options: ['她八岁', '她七岁', '她六岁', '她九岁'],
+			answer: 1
+		},
+		{
+			q: 'Ask: "How many apples?"',
+			options: ['几个苹果？', '多少苹果？', '什么苹果？', '谁的苹果？'],
+			answer: 0
+		}
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
