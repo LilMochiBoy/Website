@@ -130,7 +130,7 @@ localStorage.setItem('rookieUnlockedLevel', '10');
                     btn.style.opacity = '1';
                     btn.style.cursor = 'pointer';
                     btn.onclick = function() {
-                        window.location.href = 'rookie_quiz' + i + '.html';
+                        window.location.href = '../quizzes/rookie_quiz' + i + '.html';
                     };
                 } else {
                     btn.classList.add('locked');
@@ -149,7 +149,7 @@ localStorage.setItem('rookieUnlockedLevel', '10');
 
         // Back button leads to Chinese proficiency selection (chinese.html)
         document.getElementById('back-btn').onclick = function() {
-            window.location.href = 'chinese.html';
+            window.location.href = '../chinese.html';
         };
 
         // After quiz completion, each quiz page should call:
