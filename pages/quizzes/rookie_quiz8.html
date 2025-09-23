@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 8: Time & Weather</title>
+	<title>Rookie Quiz Level 8: Family Members</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -128,7 +130,6 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
-			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 8: Time & Weather</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 8: Family Members</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -171,6 +172,7 @@
 	<div class="quiz-feedback" id="quiz-feedback"></div>
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
+
 	<script>
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -181,21 +183,45 @@
 	}
 
 	const originalQuestions = [
-		{ q: 'Translate: 现在', options: ['Now', 'Yesterday', 'Tomorrow', 'Morning'], answer: 0 },
-		{ q: 'Fill in: 现在是___点�?, options: ['�?, '�?, '一', '�?], answer: 0 },
-		{ q: 'Translate: 今天星期几？', options: ['What day is it today?', 'What time is it?', 'What is the weather?', 'What is your name?'], answer: 0 },
-		{ q: 'Write characters: wǒ xiǎng chī miàntiáo', options: ['我想吃面�?, '我想喝水', '我想吃米�?, '我想去学�?], answer: 0 },
-		{ q: 'Translate: 昨天', options: ['Yesterday', 'Today', 'Tomorrow', 'Morning'], answer: 0 },
-		{ q: 'Fill in: 我___去学校�?, options: ['昨天', '今天', '明天', '早上'], answer: 0 },
-		{ q: 'Translate: 明天', options: ['Tomorrow', 'Yesterday', 'Today', 'Morning'], answer: 0 },
-		{ q: 'Fill in: 今天___冷�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate: 下雨', options: ['Rain', 'Snow', 'Wind', 'Sun'], answer: 0 },
-		{ q: 'True or False: �?= cold.', options: ['False', 'True'], answer: 0 },
-		{ q: 'Translate into Mandarin: It is windy today.', options: ['今天刮风�?, '今天下雨�?, '今天很冷�?, '今天有太阳�?], answer: 0 },
-		{ q: 'Write pinyin: �?, options: ['xuě', 'yǔ', 'fēng', 'rì'], answer: 0 },
-		{ q: 'Fill in: 明天___太阳�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate: 现在几点�?, options: ['What time is it now?', 'What day is it?', 'What is the weather?', 'What is your name?'], answer: 0 },
-		{ q: 'Fill in: 早上�?= ___ morning.', options: ['Good', 'Bad', 'Cold', 'Rainy'], answer: 0 }
+		// Part A: Vocabulary Match
+		{ q: 'Match: 爸爸', options: ['father', 'mother', 'brother', 'sister'], answer: 0 },
+		{ q: 'Match: 妈妈', options: ['father', 'mother', 'son', 'daughter'], answer: 1 },
+		{ q: 'Match: 哥哥', options: ['younger brother', 'older brother', 'older sister', 'younger sister'], answer: 1 },
+		{ q: 'Match: 弟弟', options: ['older brother', 'younger brother', 'cousin', 'friend'], answer: 1 },
+		{ q: 'Match: 姐姐', options: ['younger sister', 'mother', 'older sister', 'aunt'], answer: 2 },
+		{ q: 'Match: 妹妹', options: ['older sister', 'younger sister', 'cousin', 'friend'], answer: 1 },
+		{ q: 'Match: 儿子', options: ['daughter', 'son', 'nephew', 'grandson'], answer: 1 },
+		{ q: 'Match: 女儿', options: ['son', 'daughter', 'niece', 'granddaughter'], answer: 1 },
+		{ q: 'Match: 朋友', options: ['classmate', 'friend', 'colleague', 'neighbor'], answer: 1 },
+		{ q: 'Match: 同学', options: ['friend', 'classmate', 'colleague', 'teacher'], answer: 1 },
+		
+		// Part B: Fill in the Blank
+		{ q: 'This is my mom = 这是我的____。', options: ['妈妈', '爸爸', '姐姐', '奶奶'], answer: 0 },
+		{ q: 'He is my brother = 他是我的____。', options: ['朋友', '哥哥/弟弟', '同学', '儿子'], answer: 1 },
+		{ q: 'She is my daughter = 她是我的____。', options: ['妹妹', '姐姐', '女儿', '妈妈'], answer: 2 },
+		{ q: 'My family has 4 people = 我家有____口人。', options: ['三', '四', '五', '六'], answer: 1 },
+		{ q: 'His friend = 他的____。', options: ['家人', '朋友', '同学', '老师'], answer: 1 },
+		
+		// Part C: Translation
+		{ q: 'Translate: This is my dad.', options: ['这是我的妈妈。', '这是我的爸爸。', '这是我的哥哥。', '这是我的朋友。'], answer: 1 },
+		{ q: 'Translate: She is my older sister.', options: ['她是我的妹妹。', '她是我的姐姐。', '她是我的妈妈。', '她是我的朋友。'], answer: 1 },
+		{ q: 'Translate: He is my classmate.', options: ['他是我的朋友。', '他是我的老师。', '他是我的同学。', '他是我的哥哥。'], answer: 2 },
+		{ q: 'Translate: My family has six people.', options: ['我家有四口人。', '我家有五口人。', '我家有六口人。', '我家有七口人。'], answer: 2 },
+		{ q: 'Translate: That is my grandfather.', options: ['那是我的奶奶。', '那是我的爷爷。', '那是我的外公。', '那是我的爸爸。'], answer: 1 },
+		
+		// Part D: Multiple Choice
+		{ q: '"奶奶" means:', options: ['grandmother (father\'s side)', 'grandmother (mother\'s side)', 'grandfather (mother\'s side)', 'grandfather (father\'s side)'], answer: 0 },
+		{ q: 'How do you say "This is my friend"?', options: ['这是我朋友的。', '这是我家。', '这是我的朋友。', '这是我的同学。'], answer: 2 },
+		{ q: '"外婆" is:', options: ['mother\'s mother', 'father\'s mother', 'father\'s father', 'mother\'s father'], answer: 0 },
+		{ q: 'Which is correct for "My family has 5 people"?', options: ['我有五个人。', '我家五个人。', '我家有五口人。', '我们有五口人。'], answer: 2 },
+		{ q: '"丈夫" refers to:', options: ['wife', 'husband (formal)', 'father', 'son'], answer: 1 },
+		
+		// Part E: Short Dialogue Practice
+		{ q: 'A: 你家有几口人？ B: ____', options: ['我家有三口人。', '我家有四口人。', '我家有五口人。', '我家有六口人。'], answer: 1 },
+		{ q: 'A: 这是你的妈妈吗？ B: ____', options: ['不是，这是我的姐姐。', '是，这是我的妈妈。', '不是，这是我的奶奶。', '是，这是我的朋友。'], answer: 1 },
+		{ q: 'A: 他是谁？ B: ____', options: ['他是我的朋友。', '他是我的哥哥。', '他是我的同学。', '他是我的爸爸。'], answer: 1 },
+		{ q: 'A: 她是你朋友吗？ B: ____', options: ['不是，她是我的姐姐。', '是，她是我的朋友。', '不是，她是我的同学。', '是，她是我的妹妹。'], answer: 1 },
+		{ q: 'A: 那是你的爷爷吗？ B: ____', options: ['是，那是我的爷爷。', '不是，那是我的外公。', '不是，那是我的爸爸。', '是，那是我的外公。'], answer: 1 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -278,7 +304,7 @@
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
@@ -307,18 +333,15 @@
 	}
 
 	function setUnlockedLevel(level) {
-		const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
-		if (level > unlocked) {
-			localStorage.setItem('rookieUnlockedLevel', String(level));
-			// If logged in, update backend
-			var username = localStorage.getItem('rookieUserId');
-			if (username) {
-				fetch('http://localhost:3000/api/updateProgress', {
-					method: 'POST',
-					headers: {'Content-Type': 'application/json'},
-					body: JSON.stringify({ username, unlockedLevel: level })
-				});
-			}
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
 		}
 	}
 
@@ -340,5 +363,7 @@
 
 	showQuestion();
 	</script>
+</body>
+</html>
 </body>
 </html>

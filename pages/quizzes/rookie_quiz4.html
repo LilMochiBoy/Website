@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 4: Family & People</title>
+	<title>Rookie Quiz Level 4: Countries & Nationalities</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -128,7 +130,6 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
-			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 4: Family & People</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 4: Countries & Nationalities</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -181,33 +182,45 @@
 	}
 
 	const originalQuestions = [
-		// 46. Translate: 爸爸
-		{ q: 'Translate: 爸爸', options: ['Father', 'Mother', 'Brother', 'Grandfather'], answer: 0 },
-		// 47. 妈妈 = ___
-		{ q: '妈妈 = ___', options: ['Mother', 'Father', 'Sister', 'Grandmother'], answer: 0 },
-		// 48. Fill in: 她是我的___�?(She is my mother.)
-		{ q: 'Fill in: 她是我的___�?(She is my mother.)', options: ['妈妈', '姐姐', '妹妹', '朋友'], answer: 0 },
-		// 49-53. Match family (grouped)
-		{ q: 'Match family: 哥哥', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 2 },
-		{ q: 'Match family: 妹妹', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 0 },
-		{ q: 'Match family: 姐姐', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 3 },
-		{ q: 'Match family: 弟弟', options: ['Younger sister', 'Younger brother', 'Older brother', 'Older sister'], answer: 1 },
-		// 54. Translate: �?
-		{ q: 'Translate: �?, options: ['Home/Family', 'Mother', 'Father', 'Friend'], answer: 0 },
-		// 57. Fill in: 她不是我的姐姐，她是我的___.
-		{ q: 'Fill in: 她不是我的姐姐，她是我的___.', options: ['妹妹', '妈妈', '朋友', '爷爷'], answer: 0 },
-		// 58. 爷爷 = ___
-		{ q: '爷爷 = ___', options: ['Grandfather', 'Grandmother', 'Father', 'Uncle'], answer: 0 },
-		// 59. True or False: 孩子 = child.
-		{ q: 'True or False: 孩子 = child.', options: ['True', 'False'], answer: 0 },
-		// 60. Translate: 她有一个弟弟�?
-		{ q: 'Translate: 她有一个弟弟�?, options: ['She has a younger brother.', 'She has a younger sister.', 'She has a friend.', 'She has a mother.'], answer: 0 },
-		// 61. Write pinyin: 父母
-		{ q: 'Write pinyin: 父母', options: ['fùmǔ', 'māmā', 'jiā', 'gēge'], answer: 0 },
-		// 62. Translate: 我爱我的家�?
-		{ q: 'Translate: 我爱我的家�?, options: ['I love my family.', 'I love my mother.', 'I love my friend.', 'I love my sister.'], answer: 0 },
-		// 63. Fill in: 他是我妈妈的爸爸，他是我的___.
-		{ q: 'Fill in: 他是我妈妈的爸爸，他是我的___.', options: ['爷爷', '爸爸', '弟弟', '哥哥'], answer: 0 }
+		// Part A: Vocabulary Match
+		{ q: 'Match: 中国', options: ['China', 'Japan', 'Korea', 'USA'], answer: 0 },
+		{ q: 'Match: 美国', options: ['China', 'USA', 'UK', 'Canada'], answer: 1 },
+		{ q: 'Match: 日本', options: ['Korea', 'Japan', 'China', 'Germany'], answer: 1 },
+		{ q: 'Match: 德国', options: ['France', 'UK', 'Germany', 'Australia'], answer: 2 },
+		{ q: 'Match: 韩国', options: ['Japan', 'China', 'Korea', 'USA'], answer: 2 },
+		{ q: 'Match: 英国', options: ['USA', 'Canada', 'Australia', 'UK'], answer: 3 },
+		{ q: 'Match: 加拿大', options: ['USA', 'Canada', 'Australia', 'UK'], answer: 1 },
+		{ q: 'Match: 澳大利亚', options: ['Canada', 'UK', 'Australia', 'Germany'], answer: 2 },
+		{ q: 'Match: 法国', options: ['Germany', 'France', 'UK', 'Australia'], answer: 1 },
+		{ q: 'Match: 国家', options: ['person', 'country', 'city', 'language'], answer: 1 },
+		
+		// Part B: Fill in the Blank
+		{ q: 'I am Chinese = 我是____人。', options: ['中国', '美国', '日本', '英国'], answer: 0 },
+		{ q: 'She is American = 她是____人。', options: ['中国', '美国', '日本', '英国'], answer: 1 },
+		{ q: 'He is Japanese = 他是____人。', options: ['中国', '美国', '日本', '英国'], answer: 2 },
+		{ q: 'Which nationality are you? = 你是____人？', options: ['什么', '哪国', '那个', '这个'], answer: 1 },
+		{ q: 'This is my friend, he is French = 这是我的朋友，他是____人。', options: ['德国', '英国', '法国', '美国'], answer: 2 },
+		
+		// Part C: Translation
+		{ q: 'Translate: I am British.', options: ['我是英国人。', '我是美国人。', '我是德国人。', '我是法国人。'], answer: 0 },
+		{ q: 'Translate: He is German.', options: ['他是英国人。', '他是德国人。', '他是法国人。', '他是美国人。'], answer: 1 },
+		{ q: 'Translate: She is Korean.', options: ['她是日本人。', '她是中国人。', '她是韩国人。', '她是美国人。'], answer: 2 },
+		{ q: 'Translate: Are you Indian?', options: ['你是印度人吗？', '你是中国人吗？', '你是美国人吗？', '你是英国人吗？'], answer: 0 },
+		{ q: 'Translate: This is my teacher, she is Canadian.', options: ['这是我的老师，她是美国人。', '这是我的老师，她是英国人。', '这是我的老师，她是加拿大人。', '这是我的老师，她是澳大利亚人。'], answer: 2 },
+		
+		// Part D: Multiple Choice
+		{ q: '"法国" means:', options: ['Germany', 'France', 'Australia', 'Canada'], answer: 1 },
+		{ q: '"他是美国人" means:', options: ['He is American', 'He is Chinese', 'He is English', 'He is German'], answer: 0 },
+		{ q: 'How do you ask "What nationality are you?"', options: ['你是谁？', '你是哪国人？', '你是人吗？', '你是什么？'], answer: 1 },
+		{ q: '"澳大利亚人" is:', options: ['Canadian', 'Australian', 'American', 'German'], answer: 1 },
+		{ q: 'Which is correct?', options: ['我是学生人。', '我是中国人。', '我中国是人。', '我人是中国。'], answer: 1 },
+		
+		// Part E: Short Dialogue Practice
+		{ q: 'A: 你是哪国人？ B: ____', options: ['我是中国人。', '我是学生。', '我是老师。', '我是朋友。'], answer: 0 },
+		{ q: 'A: 他是哪国人？ B: ____', options: ['他是中国人。', '他是日本人。', '他是学生。', '他是老师。'], answer: 1 },
+		{ q: 'A: 这是我的朋友。 B: ____', options: ['他是学生吗？', '他是美国人吗？', '他是老师吗？', '他是朋友吗？'], answer: 1 },
+		{ q: 'A: 她是法国人吗？ B: ____', options: ['是，她是法国人。', '不是，她是德国人。', '不是，她是学生。', '是，她是老师。'], answer: 1 },
+		{ q: 'A: 你是学生吗？ B: ____', options: ['不是，我是老师。', '是，我是学生。', '不是，我是中国人。', '是，我是美国人。'], answer: 1 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -290,7 +303,7 @@
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
@@ -334,7 +347,7 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: 15 / 15<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(5);
 		setTimeout(function() {

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 9: Simple Conversations</title>
+	<title>Rookie Quiz Level 9: Food & Drinks</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -128,7 +130,6 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
-			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 9: Simple Conversations</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 9: Food & Drinks</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -171,6 +172,7 @@
 	<div class="quiz-feedback" id="quiz-feedback"></div>
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
+
 	<script>
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -181,21 +183,45 @@
 	}
 
 	const originalQuestions = [
-		{ q: 'Translate: 你叫什么名字？', options: ['What is your name?', 'Where are you from?', 'How old are you?', 'What do you do?'], answer: 0 },
-		{ q: 'Fill in: 我叫___.', options: ['Lily', 'China', 'English', 'Beijing'], answer: 0 },
-		{ q: 'Translate: 你是哪国人？', options: ['Which country are you from?', 'What is your name?', 'How old are you?', 'Where do you live?'], answer: 0 },
-		{ q: 'Translate: 我是美国人�?, options: ['I am American.', 'I am Chinese.', 'I am English.', 'I am Canadian.'], answer: 0 },
-		{ q: 'Fill in: 我会说___语�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate: 你会说汉语吗�?, options: ['Can you speak Chinese?', 'Can you speak English?', 'Can you speak French?', 'Can you speak Japanese?'], answer: 0 },
-		{ q: 'Translate: 我会说中文�?, options: ['I can speak Chinese.', 'I can speak English.', 'I can speak French.', 'I can speak Japanese.'], answer: 0 },
-		{ q: 'Fill in: 你去___吗？', options: ['学校', '商店', '图书�?, '饭店'], answer: 0 },
-		{ q: 'Translate: 我不去图书馆�?, options: ['I am not going to the library.', 'I am not going to the shop.', 'I am not going to the restaurant.', 'I am not going to the school.'], answer: 0 },
-		{ q: 'Translate: 我想喝水�?, options: ['I want to drink water.', 'I want to eat rice.', 'I want to go home.', 'I want to sleep.'], answer: 0 },
-		{ q: 'Fill in: 这本书___大�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate: 你家在哪里？', options: ['Where is your home?', 'Where is your school?', 'Where is your shop?', 'Where is your library?'], answer: 0 },
-		{ q: 'Translate: 我住在北京�?, options: ['I live in Beijing.', 'I live in Shanghai.', 'I live in New York.', 'I live in London.'], answer: 0 },
-		{ q: 'Fill in: 这件衣服太___了�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate: 我们一起去看电影，好吗�?, options: ['Shall we go to the movies together?', 'Shall we go to the park together?', 'Shall we go to the shop together?', 'Shall we go to the restaurant together?'], answer: 0 }
+		// Part A: Vocabulary Match
+		{ q: 'Match: 水', options: ['water', 'tea', 'coffee', 'milk'], answer: 0 },
+		{ q: 'Match: 茶', options: ['water', 'tea', 'coffee', 'juice'], answer: 1 },
+		{ q: 'Match: 咖啡', options: ['tea', 'milk', 'coffee', 'water'], answer: 2 },
+		{ q: 'Match: 牛奶', options: ['juice', 'milk', 'coffee', 'tea'], answer: 1 },
+		{ q: 'Match: 果汁', options: ['water', 'juice', 'milk', 'tea'], answer: 1 },
+		{ q: 'Match: 饺子', options: ['noodles', 'dumplings', 'steamed bun', 'rice'], answer: 1 },
+		{ q: 'Match: 包子', options: ['dumplings', 'steamed bun', 'noodles', 'bread'], answer: 1 },
+		{ q: 'Match: 面条', options: ['rice', 'bread', 'noodles', 'dumplings'], answer: 2 },
+		{ q: 'Match: 苹果', options: ['orange', 'apple', 'banana', 'grape'], answer: 1 },
+		{ q: 'Match: 蔬菜', options: ['fruit', 'meat', 'vegetables', 'rice'], answer: 2 },
+		
+		// Part B: Fill in the Blank
+		{ q: 'I want water = 我____水。', options: ['要', '喜欢', '是', '有'], answer: 0 },
+		{ q: 'He wants coffee = 他____咖啡。', options: ['喜欢', '要', '是', '不'], answer: 1 },
+		{ q: 'She likes noodles = 她____面条。', options: ['要', '喜欢', '吃', '是'], answer: 1 },
+		{ q: 'I don\'t like milk = 我____喜欢牛奶。', options: ['很', '不', '也', '都'], answer: 1 },
+		{ q: 'Do you want tea? = 你____茶吗？', options: ['要', '喜欢', '是', '有'], answer: 0 },
+		
+		// Part C: Translation
+		{ q: 'Translate: I want rice.', options: ['我喜欢米饭。', '我要米饭。', '我吃米饭。', '我有米饭。'], answer: 1 },
+		{ q: 'Translate: He likes apples.', options: ['他要苹果。', '他有苹果。', '他喜欢苹果。', '他吃苹果。'], answer: 2 },
+		{ q: 'Translate: She doesn\'t like fish.', options: ['她喜欢鱼。', '她不喜欢鱼。', '她不要鱼。', '她不吃鱼。'], answer: 1 },
+		{ q: 'Translate: Do you want juice?', options: ['你喜欢果汁吗？', '你要果汁吗？', '你有果汁吗？', '你喝果汁吗？'], answer: 1 },
+		{ q: 'Translate: We like dumplings.', options: ['我们要饺子。', '我们吃饺子。', '我们喜欢饺子。', '我们有饺子。'], answer: 2 },
+		
+		// Part D: Multiple Choice
+		{ q: '"面包" means:', options: ['noodles', 'rice', 'bread', 'dumplings'], answer: 2 },
+		{ q: 'How do you say "I want coffee"?', options: ['我喜欢咖啡', '我要咖啡', '我是咖啡', '我有咖啡'], answer: 1 },
+		{ q: '"水果" is:', options: ['vegetables', 'fruit', 'meat', 'rice'], answer: 1 },
+		{ q: 'Which is correct for "He doesn\'t like tea"?', options: ['他喜欢茶。', '他不喜欢茶。', '他要茶。', '他不要茶。'], answer: 1 },
+		{ q: '"啤酒" refers to:', options: ['wine', 'juice', 'beer', 'water'], answer: 2 },
+		
+		// Part E: Short Dialogue Practice
+		{ q: 'A: 你要水吗？ B: ____', options: ['不要，谢谢。', '要，谢谢。', '我不喜欢水。', '我有水。'], answer: 1 },
+		{ q: 'A: 他喜欢什么？ B: ____', options: ['他要面条。', '他喜欢面条。', '他吃面条。', '他有面条。'], answer: 1 },
+		{ q: 'A: 你喝咖啡吗？ B: ____', options: ['是，我喝咖啡。', '不，我喝茶。', '我喜欢咖啡。', '我要咖啡。'], answer: 1 },
+		{ q: 'A: 她要什么？ B: ____', options: ['她喜欢果汁。', '她要果汁。', '她有果汁。', '她喝果汁。'], answer: 1 },
+		{ q: 'A: 你喜欢吃饺子吗？ B: ____', options: ['不喜欢，我不吃饺子。', '喜欢，我喜欢吃饺子。', '我要饺子。', '我有饺子。'], answer: 1 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -278,7 +304,7 @@
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
@@ -307,18 +333,15 @@
 	}
 
 	function setUnlockedLevel(level) {
-		const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
-		if (level > unlocked) {
-			localStorage.setItem('rookieUnlockedLevel', String(level));
-			// If logged in, update backend
-			var username = localStorage.getItem('rookieUserId');
-			if (username) {
-				fetch('http://localhost:3000/api/updateProgress', {
-					method: 'POST',
-					headers: {'Content-Type': 'application/json'},
-					body: JSON.stringify({ username, unlockedLevel: level })
-				});
-			}
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
 		}
 	}
 
@@ -340,5 +363,7 @@
 
 	showQuestion();
 	</script>
+</body>
+</html>
 </body>
 </html>

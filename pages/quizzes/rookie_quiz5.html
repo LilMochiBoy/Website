@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 5: Daily Objects & Places</title>
+	<title>Rookie Quiz Level 5: Jobs & Occupations</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -128,7 +130,6 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
-			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 5: Daily Objects & Places</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 5: Jobs & Occupations</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -181,33 +182,45 @@
 	}
 
 	const originalQuestions = [
-		// 61. Translate: 学校
-		{ q: 'Translate: 学校', options: ['School', 'Book', 'Desk', 'Teacher'], answer: 0 },
-		// 62. "�? = ___
-		{ q: '"�? = ___', options: ['Book', 'School', 'Chair', 'Computer'], answer: 0 },
-		// 64-68. Match objects (grouped)
-		{ q: 'Match objects: 桌子', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 3 },
-		{ q: 'Match objects: 椅子', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 0 },
-		{ q: 'Match objects: 手机', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 1 },
-		{ q: 'Match objects: 电脑', options: ['Chair', 'Cellphone', 'Computer', 'Desk'], answer: 2 },
-		// 69. Translate: 老师在教室里�?
-		{ q: 'Translate: 老师在教室里�?, options: ['The teacher is in the classroom.', 'The teacher is at home.', 'The teacher is at the park.', 'The teacher is in the shop.'], answer: 0 },
-		// 70. Which is “water�?
-		{ q: 'Which is “water�?', options: ['�?, '�?, '�?, '�?], answer: 1 },
-		// 71. Write pinyin: �?
-		{ q: 'Write pinyin: �?, options: ['huǒ', 'shuǐ', 'mù', 'tǔ'], answer: 0 },
-		// 72. Translate: 苹果
-		{ q: 'Translate: 苹果', options: ['Apple', 'Rice', 'Bread', 'Milk'], answer: 0 },
-		// 73. 米饭 = ___
-		{ q: '米饭 = ___', options: ['Rice', 'Bread', 'Apple', 'Milk'], answer: 0 },
-		// 74. Choose the odd one:
-		{ q: 'Choose the odd one:', options: ['苹果', '�?, '米饭', '面包'], answer: 1 },
-		// 75. Translate: �?
-		{ q: 'Translate: �?, options: ['Tea', 'Coffee', 'Milk', 'Juice'], answer: 0 },
-		// 76. Fill in: 我喜欢喝___�?
-		{ q: 'Fill in: 我喜欢喝___�?, options: ['tea', 'table', 'passport', 'jacket'], answer: 0 },
-		// 78. Fill in: 他在喝___�?
-		{ q: 'Fill in: 他在喝___�?, options: ['milk', 'book', 'desk', 'computer'], answer: 0 }
+		// Part A: Vocabulary Match
+		{ q: 'Match: 老师', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 0 },
+		{ q: 'Match: 医生', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 1 },
+		{ q: 'Match: 学生', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 2 },
+		{ q: 'Match: 警察', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 3 },
+		{ q: 'Match: 农民', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 0 },
+		{ q: 'Match: 司机', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 1 },
+		{ q: 'Match: 服务员', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 2 },
+		{ q: 'Match: 老板', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 3 },
+		{ q: 'Match: 经理', options: ['manager', 'company', 'worker', 'nurse'], answer: 0 },
+		{ q: 'Match: 公司', options: ['manager', 'company', 'worker', 'nurse'], answer: 1 },
+		
+		// Part B: Fill in the Blank
+		{ q: 'I am a doctor = 我是____。', options: ['医生', '老师', '学生', '警察'], answer: 0 },
+		{ q: 'She is a teacher = 她是____。', options: ['医生', '老师', '学生', '警察'], answer: 1 },
+		{ q: 'He is a student = 他是____。', options: ['医生', '老师', '学生', '警察'], answer: 2 },
+		{ q: 'What job do you do? = 你做什么____？', options: ['工作', '学习', '事情', '问题'], answer: 0 },
+		{ q: 'I work at a hospital = 我在____工作。', options: ['学校', '医院', '公司', '商店'], answer: 1 },
+		
+		// Part C: Translation
+		{ q: 'Translate: I am a nurse.', options: ['我是护士。', '我是医生。', '我是老师。', '我是学生。'], answer: 0 },
+		{ q: 'Translate: He is a farmer.', options: ['他是司机。', '他是农民。', '他是警察。', '他是老板。'], answer: 1 },
+		{ q: 'Translate: She is a manager.', options: ['她是服务员。', '她是老师。', '她是经理。', '她是护士。'], answer: 2 },
+		{ q: 'Translate: I work at a shop.', options: ['我在医院工作。', '我在学校工作。', '我在商店工作。', '我在公司工作。'], answer: 2 },
+		{ q: 'Translate: What is his job?', options: ['他在哪里工作？', '他做什么工作？', '他是谁？', '他怎么样？'], answer: 1 },
+		
+		// Part D: Multiple Choice
+		{ q: '"学生" means:', options: ['teacher', 'student', 'doctor', 'nurse'], answer: 1 },
+		{ q: 'How to say "I am a teacher"?', options: ['我做老师', '我是老师', '我工作老师', '我学老师'], answer: 1 },
+		{ q: '"司机" refers to:', options: ['farmer', 'driver', 'police officer', 'manager'], answer: 1 },
+		{ q: 'Which is correct for "She works at a hospital"?', options: ['她在公司工作。', '她是医生。', '她在医院工作。', '她在学校工作。'], answer: 2 },
+		{ q: '"老板" means:', options: ['manager', 'boss', 'worker', 'driver'], answer: 1 },
+		
+		// Part E: Short Dialogue Practice
+		{ q: 'A: 你做什么工作？ B: ____', options: ['我是老师。', '我在学校。', '我很好。', '我是中国人。'], answer: 0 },
+		{ q: 'A: 他在哪儿工作？ B: ____', options: ['他是老师。', '他在学校工作。', '他很忙。', '他是好人。'], answer: 1 },
+		{ q: 'A: 她是护士吗？ B: ____', options: ['不是，她是医生。', '是，她是护士。', '她在医院。', '她很好。'], answer: 1 },
+		{ q: 'A: 你是学生吗？ B: ____', options: ['是，我是学生。', '不是，我是职员。', '我在学校。', '我学习中文。'], answer: 1 },
+		{ q: 'A: 他做什么工作？ B: ____', options: ['他在公司。', '他是司机。', '他很忙。', '他是好人。'], answer: 1 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -290,7 +303,7 @@
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
@@ -319,18 +332,15 @@
 	}
 
 	function setUnlockedLevel(level) {
-		const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
-		if (level > unlocked) {
-			localStorage.setItem('rookieUnlockedLevel', String(level));
-			// If logged in, update backend
-			var username = localStorage.getItem('rookieUserId');
-			if (username) {
-				fetch('http://localhost:3000/api/updateProgress', {
-					method: 'POST',
-					headers: {'Content-Type': 'application/json'},
-					body: JSON.stringify({ username, unlockedLevel: level })
-				});
-			}
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
 		}
 	}
 

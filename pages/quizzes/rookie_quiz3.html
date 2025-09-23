@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 3: Pronouns & Simple Sentences</title>
+	<title>Rookie Quiz Level 3: Family & Relationships</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -128,7 +130,6 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
-			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 3: Pronouns & Simple Sentences</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 3: Family & Relationships</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -181,21 +182,45 @@
 	}
 
 	const originalQuestions = [
-		{ q: '�?= ___', options: ['he', 'she', 'it', 'they'], answer: 0 },
-		{ q: '她们 = ___', options: ['they (female)', 'we', 'you', 'he'], answer: 0 },
-		{ q: 'Fill in: 我是学生 �?I am a ___.', options: ['teacher', 'student', 'friend', 'girl'], answer: 1 },
-		{ q: 'Translate: 我们是朋友�?, options: ['We are friends.', 'You are friends.', 'They are friends.', 'I am a friend.'], answer: 0 },
-		{ q: 'Which pronoun is polite “you�?', options: ['�?, '�?, '你们', '�?], answer: 1 },
-		{ q: 'What is the word for "you (plural)"?', options: ['�?, '你们', '我们', '他们'], answer: 1 },
-		{ q: 'Fill in: 他是___老师�?, options: ['我的', '水的', '朋友', '它的'], answer: 0 },
-		{ q: 'Translate: 她是我的姐姐�?, options: ['She is my sister.', 'He is my sister.', 'She is my teacher.', 'He is my teacher.'], answer: 0 },
-		{ q: 'Write pinyin: 我们', options: ['wǒmen', 'wǒmén', 'wǒmēn', 'wǒmèn'], answer: 0 },
-		{ q: 'Translate into Mandarin: They are American.', options: ['他们是美国人�?, '我们是美国人�?, '你们是美国人�?, '她们是美国人�?], answer: 0 },
-		{ q: 'Fill in: 我___中国人�?(I am Chinese.)', options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'True or False: �?= “it.�?, options: ['True', 'False'], answer: 0 },
-		{ q: 'Translate: 你是谁？', options: ['Who are you?', 'How are you?', 'Where are you?', 'What are you?'], answer: 0 },
-		{ q: 'Fill in: 我不是老师，我是___.', options: ['学生', '朋友', '姐姐', '妈妈'], answer: 0 },
-		{ q: 'Translate: 他们是学生吗�?, options: ['Are they students?', 'Are you students?', 'Are we students?', 'Are you teachers?'], answer: 0 }
+		// Part A: Vocabulary Match
+		{ q: 'Match: 爸爸', options: ['father', 'mother', 'brother', 'sister'], answer: 0 },
+		{ q: 'Match: 妈妈', options: ['father', 'mother', 'brother', 'sister'], answer: 1 },
+		{ q: 'Match: 哥哥', options: ['younger brother', 'older brother', 'father', 'son'], answer: 1 },
+		{ q: 'Match: 妹妹', options: ['older sister', 'younger sister', 'daughter', 'mother'], answer: 1 },
+		{ q: 'Match: 儿子', options: ['daughter', 'son', 'child', 'friend'], answer: 1 },
+		{ q: 'Match: 女儿', options: ['daughter', 'son', 'child', 'friend'], answer: 0 },
+		{ q: 'Match: 老师', options: ['student', 'teacher', 'friend', 'child'], answer: 1 },
+		{ q: 'Match: 学生', options: ['student', 'teacher', 'friend', 'child'], answer: 0 },
+		{ q: 'Match: 朋友', options: ['teacher', 'student', 'friend', 'child'], answer: 2 },
+		{ q: 'Match: 孩子', options: ['teacher', 'student', 'friend', 'child'], answer: 3 },
+		
+		// Part B: Fill in the Blank
+		{ q: 'This is my mom = 这是我____。', options: ['妈妈', '爸爸', '哥哥', '朋友'], answer: 0 },
+		{ q: 'That is my dad = 那是我____。', options: ['妈妈', '爸爸', '哥哥', '朋友'], answer: 1 },
+		{ q: 'Who is she? = 她是____？', options: ['什么', '谁', '哪里', '怎么'], answer: 1 },
+		{ q: 'My older brother = 我____哥哥。', options: ['的', '是', '有', '在'], answer: 0 },
+		{ q: 'His friend = 他____朋友。', options: ['的', '是', '有', '在'], answer: 0 },
+		
+		// Part C: Translation
+		{ q: 'Translate: My father', options: ['我的爸爸', '我的妈妈', '我的哥哥', '我的朋友'], answer: 0 },
+		{ q: 'Translate: Her friend', options: ['他的朋友', '她的朋友', '我的朋友', '你的朋友'], answer: 1 },
+		{ q: 'Translate: This is my sister.', options: ['这是我的姐姐。', '那是我的妹妹。', '她是我的朋友。', '这是我的妈妈。'], answer: 0 },
+		{ q: 'Translate: Who is that man?', options: ['这个男人是谁？', '那个男人是谁？', '那个女人是谁？', '这个女人是谁？'], answer: 1 },
+		{ q: 'Translate: That is my teacher.', options: ['这是我的老师。', '那是我的老师。', '他是我的老师。', '她是我的老师。'], answer: 1 },
+		
+		// Part D: Multiple Choice
+		{ q: '"哥哥" means:', options: ['younger brother', 'older brother', 'father', 'son'], answer: 1 },
+		{ q: '"她的妈妈" means:', options: ['my mother', 'her mother', 'his mother', 'your mother'], answer: 1 },
+		{ q: 'Which is correct for "Who is he?"', options: ['他是吗？', '他是人？', '他是谁？', '他是什么？'], answer: 2 },
+		{ q: '"爷爷" refers to:', options: ['maternal grandfather', 'paternal grandfather', 'uncle', 'father'], answer: 1 },
+		{ q: '"朋友" means:', options: ['teacher', 'friend', 'student', 'child'], answer: 1 },
+		
+		// Part E: Short Dialogue Practice
+		{ q: 'A: 这是谁？ B: ____', options: ['这是我的妈妈。', '那是我的爸爸。', '她是我的朋友。', '他是我的老师。'], answer: 0 },
+		{ q: 'A: 那是谁？ B: ____', options: ['这是我的妈妈。', '那是我的朋友。', '她是我的姐姐。', '他是我的哥哥。'], answer: 1 },
+		{ q: 'A: 他是你哥哥吗？ B: ____', options: ['是的，他是我哥哥。', '不是，他是我弟弟。', '不是，他是我爸爸。', '是的，她是我姐姐。'], answer: 1 },
+		{ q: 'A: 她是谁？ B: ____', options: ['他是我的朋友。', '她是我的姐姐。', '这是我的妈妈。', '那是我的老师。'], answer: 1 },
+		{ q: 'A: 你有几个孩子？ B: ____', options: ['我有一个孩子。', '我有两个孩子。', '我有三个孩子。', '我没有孩子。'], answer: 1 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -278,7 +303,7 @@
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');

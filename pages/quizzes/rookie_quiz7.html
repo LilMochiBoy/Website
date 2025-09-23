@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 7: Measure Words</title>
+	<title>Rookie Quiz Level 7: Time & Clock Expressions</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -60,12 +60,13 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 2rem;
+			font-size: 1.8rem;
 			font-weight: 700;
 			margin: 96px 0 32px 0;
             margin-bottom: 130px;
 			color: #f7f7fa;
 			text-align: center;
+			line-height: 1.4;
 		}
 		.quiz-answers {
 			display: grid;
@@ -81,21 +82,22 @@
 		.answer-btn-custom {
 			width: 100%;
 			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
 			margin: 0;
 			box-sizing: border-box;
 			background: #232946;
 			color: #f7f7fa;
 			font-weight: 600;
-			border-width: 4px;
+			border-width: 3px;
 			border-style: solid;
 			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
 			box-shadow: 0 4px 16px #23294655;
 			min-height: 64px;
 			position: relative;
 			overflow: hidden;
+			text-align: left;
 		}
 		.answer-btn-custom:hover {
 			transform: scale(1.04);
@@ -128,7 +130,6 @@
 			margin-bottom: 12px;
 			min-height: 24px;
 			transition: color 0.2s;
-			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -161,8 +162,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 7: Measure Words</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 7: Time & Clock Expressions</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -171,6 +172,7 @@
 	<div class="quiz-feedback" id="quiz-feedback"></div>
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
+
 	<script>
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -181,21 +183,45 @@
 	}
 
 	const originalQuestions = [
-		{ q: 'What is the measure word for books?', options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Fill in: 一___�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'True or False: �?is the most common measure word.', options: ['True', 'False'], answer: 0 },
-		{ q: 'Fill in: 我有两___苹果�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate: 一本书', options: ['A book', 'A car', 'A cat', 'A cup'], answer: 0 },
-		{ q: 'Match measure words: �?, options: ['Vehicle', 'Cup/glass', 'Animal', 'Long things'], answer: 2 },
-		{ q: 'Match measure words: �?, options: ['Vehicle', 'Cup/glass', 'Animal', 'Long things'], answer: 3 },
-		{ q: 'Match measure words: �?, options: ['Vehicle', 'Cup/glass', 'Animal', 'Long things'], answer: 0 },
-		{ q: 'Match measure words: �?, options: ['Vehicle', 'Cup/glass', 'Animal', 'Long things'], answer: 1 },
-		{ q: 'Translate: 一杯茶', options: ['A cup of tea', 'A car', 'A book', 'A cat'], answer: 0 },
-		{ q: 'Fill in: 他有三___狗�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Write in characters: yī zhī māo', options: ['一只猫', '一本猫', '一辆猫', '一条猫'], answer: 0 },
-		{ q: 'Translate: 我有一个弟弟�?, options: ['I have a younger brother.', 'I have a younger sister.', 'I have a cat.', 'I have a car.'], answer: 0 },
-		{ q: 'Fill in: 他有一___手机�?, options: ['�?, '�?, '�?, '�?], answer: 0 },
-		{ q: 'Translate into Mandarin: two cars', options: ['两辆�?, '两个�?, '两本�?, '两只�?], answer: 0 }
+		// Part A: Vocabulary Match
+		{ q: 'Match: 半', options: ['half (30 minutes)', 'quarter (15 minutes)', 'minute', 'o\'clock'], answer: 0 },
+		{ q: 'Match: 刻', options: ['half (30 minutes)', 'quarter (15 minutes)', 'minute', 'o\'clock'], answer: 1 },
+		{ q: 'Match: 差', options: ['minute', 'lack / to (time)', 'o\'clock', 'morning'], answer: 1 },
+		{ q: 'Match: 分', options: ['minute', 'lack / to (time)', 'o\'clock', 'morning'], answer: 0 },
+		{ q: 'Match: 点', options: ['minute', 'lack / to (time)', 'o\'clock', 'morning'], answer: 2 },
+		{ q: 'Match: 早上', options: ['morning', 'noon', 'evening', 'early morning'], answer: 0 },
+		{ q: 'Match: 中午', options: ['morning', 'noon', 'evening', 'early morning'], answer: 1 },
+		{ q: 'Match: 晚上', options: ['morning', 'noon', 'evening', 'early morning'], answer: 2 },
+		{ q: 'Match: 凌晨', options: ['morning', 'noon', 'evening', 'early morning'], answer: 3 },
+		{ q: 'Match: 什么时候', options: ['what time', 'when', 'where', 'how'], answer: 1 },
+		
+		// Part B: Fill in the Blank
+		{ q: '现在六点三十 = 现在六点____。', options: ['半', '刻', '整', '分'], answer: 0 },
+		{ q: '6:15 = 六点____刻。', options: ['一', '二', '三', '四'], answer: 0 },
+		{ q: '9:45 = 九点____刻。', options: ['一', '二', '三', '四'], answer: 2 },
+		{ q: '7:50 = 八点____十分。', options: ['过', '差', '到', '半'], answer: 1 },
+		{ q: '8:00 sharp = 八点____。', options: ['半', '刻', '整', '分'], answer: 2 },
+		
+		// Part C: Translation
+		{ q: 'Translate: What time is it now?', options: ['现在几点？', '现在什么时候？', '现在哪里？', '现在怎么样？'], answer: 0 },
+		{ q: 'Translate: It\'s 7:30.', options: ['现在七点刻。', '现在七点半。', '现在七点整。', '现在七点分。'], answer: 1 },
+		{ q: 'Translate: It\'s 8:15 in the morning.', options: ['早上八点半。', '早上八点一刻。', '早上八点整。', '早上八点三刻。'], answer: 1 },
+		{ q: 'Translate: It\'s 6:50 in the evening.', options: ['晚上六点差十分。', '晚上七点差十分。', '晚上六点十分。', '晚上七点十分。'], answer: 1 },
+		{ q: 'Translate: She wakes up at 6:05.', options: ['她六点零五起床。', '她六点五分起床。', '她六点半起床。', '她六点一刻起床。'], answer: 0 },
+		
+		// Part D: Multiple Choice
+		{ q: '"十点三刻" means:', options: ['10:15', '10:45', '9:45', '10:30'], answer: 1 },
+		{ q: 'How do you say "It\'s 9:30"?', options: ['九点一刻', '九点半', '九点整', '九点三刻'], answer: 1 },
+		{ q: '"七点差十分" means:', options: ['7:10', '7:50', '6:50', '6:10'], answer: 2 },
+		{ q: 'Which is correct for 8:00 sharp?', options: ['八点半', '八点差十分钟', '八点整', '八点一刻'], answer: 2 },
+		{ q: 'If now is 早上七点, it is:', options: ['morning', 'noon', 'evening', 'night'], answer: 0 },
+		
+		// Part E: Short Dialogue Practice
+		{ q: 'A: 现在几点？ B: ____', options: ['现在六点半。', '现在在家。', '现在很好。', '现在是我。'], answer: 0 },
+		{ q: 'A: 你几点上学？ B: ____', options: ['我在学校上学。', '我七点半上学。', '我上学很好。', '我喜欢上学。'], answer: 1 },
+		{ q: 'A: 他几点睡觉？ B: ____', options: ['他在床上睡觉。', '他睡觉很早。', '他晚上十点睡觉。', '他喜欢睡觉。'], answer: 2 },
+		{ q: 'A: 火车什么时候来？ B: ____', options: ['火车很快。', '火车八点整来。', '火车在车站。', '火车是红色的。'], answer: 1 },
+		{ q: 'A: 我们几点见面？ B: ____', options: ['我们在学校见面。', '我们明天见面。', '我们九点一刻见面。', '我们很高兴见面。'], answer: 2 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -278,7 +304,7 @@
 			}, 850);
 		} else {
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
 			feedback.classList.add('wrong');
 			const buzzerRoot = document.getElementById('buzzer-effect-root');
 			const buzzerDiv = document.createElement('div');
@@ -307,18 +333,15 @@
 	}
 
 	function setUnlockedLevel(level) {
-		const unlocked = parseInt(localStorage.getItem('rookieUnlockedLevel') || '1', 10);
-		if (level > unlocked) {
-			localStorage.setItem('rookieUnlockedLevel', String(level));
-			// If logged in, update backend
-			var username = localStorage.getItem('rookieUserId');
-			if (username) {
-				fetch('http://localhost:3000/api/updateProgress', {
-					method: 'POST',
-					headers: {'Content-Type': 'application/json'},
-					body: JSON.stringify({ username, unlockedLevel: level })
-				});
-			}
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
 		}
 	}
 
