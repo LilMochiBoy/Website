@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Rookie Quiz Level 1 - Complete Assessment</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: Complete Assessment</span>
+		<span class="duo-title">Rookie Quiz 1: Complete Assessment (30 Questions)</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -194,9 +194,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		// Re-shuffle questions for a fresh start
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -214,169 +212,173 @@
 	}
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match (1-10)
+		// Q1–Q10 — Vocabulary (choose or fill)
 		{
-			q: 'Part A: Vocabulary Match<br><br>Match: 你好',
-			options: ['hello', 'goodbye', 'thank you', 'sorry'],
-			answer: 0
-		},
-		{
-			q: 'Match: 再见',
-			options: ['hello', 'goodbye', 'thank you', 'sorry'],
+			q: 'Q1–Q10 — Vocabulary<br><br>Q1: Match the Chinese to the English: 你好 means:',
+			options: ['Goodbye', 'Hello', 'Thank you', 'Sorry'],
 			answer: 1
 		},
 		{
-			q: 'Match: 谢谢',
-			options: ['hello', 'goodbye', 'thank you', 'sorry'],
+			q: 'Q2: Fill in the blank (Choose the Chinese character)<br>___ (nǐ) = you',
+			options: ['你', '我', '他', '她'],
+			answer: 0,
+			instruction: 'Choose the Chinese character for "you"'
+		},
+		{
+			q: 'Q3: Which one is "goodbye"?',
+			options: ['早上好', '晚上好', '再见', '你好'],
 			answer: 2
 		},
 		{
-			q: 'Match: 对不起',
-			options: ['hello', 'goodbye', 'thank you', 'sorry'],
+			q: 'Q4: What is the pinyin for 我?',
+			options: ['nǐ', 'wǒ', 'tā', 'jiào'],
+			answer: 1
+		},
+		{
+			q: 'Q5: Multiple choice: 他 and 她 are pronounced the same. How do you say "she" in characters?',
+			options: ['他', '她', '它', '伊'],
+			answer: 1
+		},
+		{
+			q: 'Q6: Fill: 我 ___ Lifen。 <br>Choose the missing Chinese character(s)',
+			options: ['叫', '是', '很', '好'],
+			answer: 0,
+			instruction: 'Choose the missing character to complete "My name is Lifen"'
+		},
+		{
+			q: 'Q7: What does 很好 (hěn hǎo) mean?',
+			options: ['Not good', 'Very good / fine', 'Good morning', 'Hello'],
+			answer: 1
+		},
+		{
+			q: 'Q8: Choose the question particle (used to make yes/no questions):',
+			options: ['的', '吗', '了', '在'],
+			answer: 1
+		},
+		{
+			q: 'Q9: What is the Chinese for "not / no" used for negation?',
+			options: ['没 (méi)', '吗 (ma)', '不 (bù)', '会 (huì)'],
+			answer: 2
+		},
+		{
+			q: 'Q10: Fill: 早上好 is used at ____.',
+			options: ['Night', 'Morning', 'Afternoon', 'Anytime'],
+			answer: 1
+		},
+		
+		// Q11–Q20 — Grammar (multiple choice, reorder, fill)
+		{
+			q: 'Q11–Q20 — Grammar<br><br>Q11: To ask "Are you a student?", choose the correct sentence:',
+			options: ['你是学生。', '你是学生吗？', '是你学生吗？', '学生你是吗？'],
+			answer: 1
+		},
+		{
+			q: 'Q12: Choose the correct negative for "I am not a student."',
+			options: ['我不学生。', '我不 是 学生。', '我不是学生。', '我没是学生。'],
+			answer: 2
+		},
+		{
+			q: 'Q13: Reorder these words into a correct sentence: (你 / 好 / 吗)<br>Create a question asking "Are you okay/fine?"',
+			options: ['你好吗？', '好你吗？', '吗你好？', '你吗好？'],
+			answer: 0,
+			instruction: 'Arrange the words to form a proper question'
+		},
+		{
+			q: 'Q14: "My name is Anna." correct Chinese:',
+			options: ['我叫安娜。', '我是安娜叫。', '叫我安娜。', '我安娜叫。'],
+			answer: 0
+		},
+		{
+			q: 'Q15: Which is the correct use of 很? Choose the natural sentence:',
+			options: ['我很叫。', '我很好。', '很我好。', '我好很。'],
+			answer: 1
+		},
+		{
+			q: 'Q16: Fill in the blank: Convert to a yes/no question <br>你叫李明。 → 你叫李明__？',
+			options: ['吗', '的', '了', '呢'],
+			answer: 0,
+			instruction: 'Add the question particle to make it a yes/no question'
+		},
+		{
+			q: 'Q17: Choose the correct pronoun for "he":',
+			options: ['我', '你', '他', '她'],
+			answer: 2
+		},
+		{
+			q: 'Q18: Which sentence is a proper introduction reply?',
+			options: ['很高兴认识你。', '很高兴你认识。', '高兴很认识你。', '认识你很高兴吗。'],
+			answer: 0
+		},
+		{
+			q: 'Q19: Rewrite as negative: 我很好。 → (I am not fine / not very good) Choose the best:',
+			options: ['我不好。', '我不很好。', '我不太好。', 'Both A and C are acceptable'],
 			answer: 3
 		},
 		{
-			q: 'Match: 没关系',
-			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
-			answer: 2
-		},
-		{
-			q: 'Match: 请',
-			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
-			answer: 0
-		},
-		{
-			q: 'Match: 不客气',
-			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
-			answer: 1
-		},
-		{
-			q: 'Match: 早上好',
-			options: ['please', 'you\'re welcome', 'it\'s okay/no problem', 'good morning'],
-			answer: 3
-		},
-		{
-			q: 'Match: 晚上好',
-			options: ['good evening', 'good morning', 'hello (polite)', 'goodbye'],
-			answer: 0
-		},
-		{
-			q: 'Match: 您好',
-			options: ['good evening', 'good morning', 'hello (polite)', 'goodbye'],
-			answer: 2
+			q: 'Q20: Form a basic "What is your name?" in Chinese (short form)<br>Hint: 你 + 叫 + ____？',
+			options: ['你叫什么？', '你叫什么名字？', '你是什么？', '你好什么？'],
+			answer: 0,
+			instruction: 'Choose the resulting sentence in Chinese'
 		},
 		
-		// Part B: Fill in the Blank (11-15)
+		// Q21–Q25 — Short translations
 		{
-			q: 'Part B: Fill in the Blank<br><br>A: ______！(Hello, teacher – polite)',
-			options: ['你好', '您好', '谢谢', '再见'],
-			answer: 1
+			q: 'Q21–Q25 — Short Translations<br><br>Q21: Translate into Chinese: "Hello, my name is Lifen."',
+			options: ['你好，我叫李芬。', '你好，我是李芬。', '我叫李芬，你好。', '李芬你好我叫。'],
+			answer: 0,
+			instruction: 'Choose the correct translation using characters (pinyin optional)'
 		},
 		{
-			q: 'A: 谢谢！ B: ______！',
-			options: ['没关系', '不客气', '对不起', '您好'],
-			answer: 1
-		},
-		{
-			q: 'A: 对不起。 B: ______！',
-			options: ['没关系', '不客气', '对不起', '您好'],
+			q: 'Q22: Translate into English: 你好吗？',
+			options: ['How are you?', 'What is your name?', 'Nice to meet you', 'Are you a student?'],
 			answer: 0
 		},
 		{
-			q: 'A: 早上____！(Good morning)',
-			options: ['见', '好', '谢', '气'],
-			answer: 1
-		},
-		{
-			q: 'A: ______见！(Goodbye)',
-			options: ['早', '再', '没', '不'],
-			answer: 1
-		},
-		
-		// Part C: Translation (16-20)
-		{
-			q: 'Part C: Translation<br><br>Translate: "Hello, how are you?"',
-			options: ['你好，你好吗？', '我叫什么？', '很高兴认识你', '我不是老师'],
+			q: 'Q23: Translate into Chinese: "Are you from China?" (simple form)',
+			options: ['你是中国人吗？', '你来自中国吗？', '你中国人是吗？', '中国你是吗？'],
 			answer: 0
 		},
 		{
-			q: 'Translate: "My name is David."',
-			options: ['你好，你好吗？', '我叫 David', '很高兴认识你', '我不是老师'],
-			answer: 1
+			q: 'Q24: Translate into Chinese: "I am not a student." (use correct negation)',
+			options: ['我不是学生。', '我没是学生。', '我不学生。', '我学生不是。'],
+			answer: 0
 		},
 		{
-			q: 'Translate: "Nice to meet you."',
-			options: ['你好，你好吗？', '我叫 David', '很高兴认识你', '我不是老师'],
-			answer: 2
-		},
-		{
-			q: 'Translate: "I am not a teacher."',
-			options: ['你好，你好吗？', '我叫 David', '很高兴认识你', '我不是老师'],
-			answer: 3
-		},
-		{
-			q: 'Translate: "Sorry, it\'s okay."',
-			options: ['对不起，没关系', '我是学生', '你叫什么名字', '早上好'],
+			q: 'Q25: Translate into English: 我叫李明。很高兴认识你。',
+			options: ['My name is Li Ming. Nice to meet you.', 'I am Li Ming. How are you?', 'Li Ming is my name. Hello.', 'I called Li Ming. Very happy.'],
 			answer: 0
 		},
 		
-		// Part D: Multiple Choice (21-25)
+		// Q26–Q30 — Comprehension (short dialogues)
 		{
-			q: 'Part D: Multiple Choice<br><br>Which is polite "hello"?',
-			options: ['你好', '您好', '再见', '谢谢'],
+			q: 'Q26–Q30 — Comprehension<br><br>Dialogue A:<br>A: 你好！<br>B: 你好！我叫王芳。你叫什么名字？<br>A: 我叫Tom。很高兴认识你。<br><br>Q26: Who is 王芳?',
+			options: ['Tom', 'Person B', 'Person A', 'Not mentioned'],
 			answer: 1
 		},
 		{
-			q: 'How to say "thank you"?',
-			options: ['请', '对不起', '谢谢', '没关系'],
-			answer: 2
-		},
-		{
-			q: 'If someone says "谢谢", you reply:',
-			options: ['没关系', '不客气', '再见', '您好'],
+			q: 'Q27: What does A say after introducing himself?',
+			options: ['Goodbye', 'Nice to meet you', 'I\'m a student', 'I\'m not fine'],
 			answer: 1
 		},
 		{
-			q: '"I am not a student." → correct choice:',
-			options: ['我是学生', '我不是学生', '我不学生', '我学生不'],
+			q: 'Q28: Dialogue B:<br>A: 你是学生吗？<br>B: 不是。我是老师。<br><br>Is B a student?',
+			options: ['Yes', 'No'],
 			answer: 1
 		},
 		{
-			q: '"Good evening" is:',
-			options: ['晚上好', '早上好', '您好', '你好'],
-			answer: 0
-		},
-		
-		// Part E: Short Dialogue Practice (26-30)
-		{
-			q: 'Part E: Dialogue Practice<br><br>A: 你好！ B: ______！',
-			options: ['你好', '再见', '谢谢', '对不起'],
+			q: 'Q29: Translate B\'s reply into English: 不是。我是老师。',
+			options: ['No. I am a teacher.', 'Yes. I am a teacher.', 'Maybe. I am a teacher.', 'Not sure. I am a teacher.'],
 			answer: 0
 		},
 		{
-			q: 'A: 你叫什么名字？ B: ______',
-			options: ['我叫...', '你好', '再见', '谢谢'],
-			answer: 0
-		},
-		{
-			q: 'A: 我是学生。你呢？ B: ______',
-			options: ['我是老师/我也是学生', '你好', '再见', '对不起'],
-			answer: 0
-		},
-		{
-			q: 'A: 谢谢！ B: ______！',
-			options: ['不客气', '你好', '再见', '对不起'],
-			answer: 0
-		},
-		{
-			q: 'A: 对不起。 B: ______！',
-			options: ['没关系', '你好', '再见', '谢谢'],
-			answer: 0
+			q: 'Q30: Dialogue C:<br>A: 早上好！你好吗？<br>B: 我很好，谢谢。你呢？<br><br>How does B feel?',
+			options: ['B is tired', 'B is very good / fine', 'B is hungry', 'B is a teacher'],
+			answer: 1
 		}
 	];
 
 	// Shuffle questions at the start
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions]; // No shuffling, keep original order
 
 	let current = 0;
 	let score = 0;
@@ -388,19 +390,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		// Shuffle options and track correct answer
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		// Find new correct answer index
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		// Store for checkAnswer
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			// Add fill div
 			const fill = document.createElement('div');
@@ -416,7 +410,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) { // Use original answer index since we're not shuffling
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
