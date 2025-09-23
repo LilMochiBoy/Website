@@ -730,13 +730,13 @@ if (window.location.pathname.endsWith('profile.html')) {
             <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
                 <div style="font-size:2.1em; font-weight:800; color:#ffd580; margin-bottom:12px;">Lessons</div>
                 <div style="display:flex; gap:16px; margin-bottom:18px;">
-                    <button onclick="document.getElementById('lessonsFrame').src='lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">All Lessons</button>
-                    <button onclick="document.getElementById('lessonsFrame').src='rookie_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bae1ff; color:#232946; font-weight:700; cursor:pointer;">Rookie</button>
-                    <button onclick="document.getElementById('lessonsFrame').src='explorer_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bdbec8; color:#232946; font-weight:700; cursor:pointer;">Explorer</button>
-                    <button onclick="document.getElementById('lessonsFrame').src='challenger_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">Challenger</button>
-                    <button onclick="document.getElementById('lessonsFrame').src='master_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#cd7f32; color:#fffbe6; font-weight:700; cursor:pointer;">Master</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">All Lessons</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/rookie_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bae1ff; color:#232946; font-weight:700; cursor:pointer;">Rookie</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/explorer_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bdbec8; color:#232946; font-weight:700; cursor:pointer;">Explorer</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/challenger_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">Challenger</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/master_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#cd7f32; color:#fffbe6; font-weight:700; cursor:pointer;">Master</button>
                 </div>
-                <iframe id="lessonsFrame" src="lessons.html" style="width:100%; min-height:700px; border-radius:18px; border:none; box-shadow:0 4px 24px #23294633; background:#fff;" loading="lazy"></iframe>
+                <iframe id="lessonsFrame" src="pages/lessons.html" style="width:100%; min-height:700px; border-radius:18px; border:none; box-shadow:0 4px 24px #23294633; background:#fff;" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -779,7 +779,7 @@ if (window.location.pathname.endsWith('profile.html')) {
                             <a href="#" id="sidebarLeaderboardLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
                                 <span style="font-size:1.3em;">📊</span> Leaderboard
                             </a>
-                            <a href="lessons.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px 8px 12px; cursor:pointer;">
+                            <a href="pages/lessons.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px 8px 12px; cursor:pointer;">
                                 <span style="font-size:1.3em;">📚</span> Lessons
                             </a>
                         </div>
@@ -891,7 +891,7 @@ if (window.location.pathname.endsWith('profile.html')) {
         document.addEventListener('DOMContentLoaded', function() {
             var chineseBtn = document.getElementById('chineseBtn');
             if (chineseBtn) chineseBtn.onclick = function() {
-                window.location.href = 'chinese.html';
+                window.location.href = 'pages/chinese.html';
             };
             var englishBtn = document.getElementById('englishBtn');
             if (englishBtn) englishBtn.onclick = function() {
