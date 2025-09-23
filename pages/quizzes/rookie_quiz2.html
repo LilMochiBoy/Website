@@ -173,21 +173,21 @@
 	}
 
 	const originalQuestions = [
-		{ q: 'What is “一�?in numbers?', options: ['1', '2', '3', '4'], answer: 0 },
-		{ q: 'Write pinyin: �?, options: ['ba', 'bā', 'bā', 'bà'], answer: 1 },
-		{ q: '�?+ 一 = ___', options: ['�?, '十一', '�?, '�?], answer: 0 },
-		{ q: 'Which means “seven�?', options: ['�?, '�?, '�?, '�?], answer: 1 },
-		{ q: 'Match the numbers: �?, options: ['6', '2', '10', '9'], answer: 3 },
+		{ q: 'What is “一�?in numbers?', options: ['1', '2', '3', '4'], answer: 0 },
+		{ q: 'Write pinyin: �?, options: ['ba', 'bā', 'bā', 'bà'], answer: 1 },
+		{ q: '�?+ 一 = ___', options: ['�?, '十一', '�?, '�?], answer: 0 },
+		{ q: 'Which means “seven�?', options: ['�?, '�?, '�?, '�?], answer: 1 },
+		{ q: 'Match the numbers: �?, options: ['6', '2', '10', '9'], answer: 3 },
 		{ q: 'Translate: 今天', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 1 },
 		{ q: 'Fill in: 星期一 = ____.', options: ['Monday', 'Sunday', 'Friday', 'Saturday'], answer: 0 },
 		{ q: '"明天" means:', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 2 },
-		{ q: 'Write in characters: shíyī', options: ['十一', '十二', '�?, '一'], answer: 0 },
+		{ q: 'Write in characters: shíyī', options: ['十一', '十二', '�?, '一'], answer: 0 },
 		{ q: 'Translate: 昨天', options: ['Yesterday', 'Today', 'Tomorrow', 'Monday'], answer: 0 },
-		{ q: 'Which is correct word order for dates in Mandarin?', options: ['Month �?Day �?Year', 'Year �?Month �?Day', 'Day �?Month �?Year', 'Day �?Year �?Month'], answer: 1 },
-		{ q: 'Translate into Mandarin: Friday', options: ['星期�?, '星期�?, '星期一', '星期�?], answer: 0 },
+		{ q: 'Which is correct word order for dates in Mandarin?', options: ['Month �?Day �?Year', 'Year �?Month �?Day', 'Day �?Month �?Year', 'Day �?Year �?Month'], answer: 1 },
+		{ q: 'Translate into Mandarin: Friday', options: ['星期�?, '星期�?, '星期一', '星期�?], answer: 0 },
 		{ q: 'Write pinyin: 十二', options: ['shíèr', 'shíyī', 'shíliù', 'shíjiǔ'], answer: 0 },
-		{ q: 'Fill in: 今天星期___.', options: ['一', '�?, '�?, '�?], answer: 0 },
-		{ q: 'True or False: 星期�?= Sunday.', options: ['True', 'False'], answer: 0 }
+		{ q: 'Fill in: 今天星期___.', options: ['一', '�?, '�?, '�?], answer: 0 },
+		{ q: 'True or False: 星期�?= Sunday.', options: ['True', 'False'], answer: 0 }
 	];
 
 	const questions = shuffleArray([...originalQuestions]);
@@ -221,7 +221,7 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'rookie.html';
+		window.location.href = '../levels/rookie.html';
 	};
 
 	function showQuestion() {
