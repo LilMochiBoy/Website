@@ -160,7 +160,7 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
 		<span class="duo-title">Master Quiz 4: Pro Masters</span>
 	</div>
 	<div class="quiz-progress">
@@ -199,8 +199,9 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		   window.location.href = 'master.html';
-	   };
+		window.location.href = '../levels/master.html';
+	};
+	
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
 		for (let i = arr.length - 1; i > 0; i--) {
@@ -212,17 +213,17 @@
 
 	const originalQuestions = [
 		{
-			q: 'Translate: 他把这件事看得很严重�?,
+			q: 'Translate: 他把这件事看得很严重。',
 			options: [
 				'He takes this matter very seriously.',
 				'He thinks this matter is funny.',
 				'He ignores this matter.',
-				'He doesn’t care about this matter.'
+				'He doesn\'t care about this matter.'
 			],
 			answer: 0
 		},
 		{
-			q: 'Which idiom means “well-prepared�?',
+			q: 'Which idiom means "well-prepared"?',
 			options: [
 				'胸有成竹',
 				'草木皆兵',
@@ -232,7 +233,7 @@
 			answer: 0
 		},
 		{
-			q: 'Fill in: 我们要学会在困难中找到___�?,
+			q: 'Fill in: 我们要学会在困难中找到___。',
 			options: [
 				'力量',
 				'热闹',
@@ -242,27 +243,27 @@
 			answer: 0
 		},
 		{
-			q: 'Translate: “No matter how busy you are, you should exercise regularly.�?,
+			q: 'Translate: "No matter how busy you are, you should exercise regularly."',
 			options: [
-				'无论多忙，你都应该经常锻炼�?,
-				'你很忙就不用锻炼�?,
-				'只有有空才锻炼�?,
-				'锻炼不重要�?
+				'无论多忙，你都应该经常锻炼。',
+				'你很忙就不用锻炼。',
+				'只有有空才锻炼。',
+				'锻炼不重要。'
 			],
 			answer: 0
 		},
 		{
-			q: 'Translate into English:<br>他宁愿少赚钱，也不愿意做违法的事�?,
+			q: 'Translate into English:<br>他宁愿少赚钱，也不愿意做违法的事。',
 			options: [
 				'He would rather earn less money than do something illegal.',
 				'He wants to earn more money by breaking the law.',
-				'He doesn’t care about the law.',
+				'He doesn\'t care about the law.',
 				'He prefers to do illegal things.'
 			],
 			answer: 0
 		},
 		{
-			q: 'Rearrange:<br>�?/ �?/ �?/ 责任�?,
+			q: 'Rearrange:<br>他 / 很 / 有 / 责任感',
 			options: [
 				'他很有责任感',
 				'有他很责任感',
@@ -272,7 +273,7 @@
 			answer: 0
 		},
 		{
-			q: 'Translate: 我们必须采取措施来解决这个问题�?,
+			q: 'Translate: 我们必须采取措施来解决这个问题。',
 			options: [
 				'We must take measures to solve this problem.',
 				'We must ignore this problem.',
@@ -282,7 +283,7 @@
 			answer: 0
 		},
 		{
-			q: 'Fill in: 他的话很有___，值得我们思考�?,
+			q: 'Fill in: 他的话很有___，值得我们思考。',
 			options: [
 				'道理',
 				'意见',
@@ -292,7 +293,7 @@
 			answer: 0
 		},
 		{
-			q: 'Which idiom means “in one’s own world, ignoring others�?',
+			q: 'Which idiom means "talking to oneself, ignoring others"?',
 			options: [
 				'自得其乐',
 				'自以为是',
@@ -302,12 +303,12 @@
 			answer: 3
 		},
 		{
-			q: 'Translate into Chinese:<br>“Education is the foundation of a country’s development。�?,
+			q: 'Translate into Chinese:<br>"Education is the foundation of a country\'s development."',
 			options: [
-				'教育是国家发展的基础�?,
-				'教育是国家的问题�?,
-				'教育不重要�?,
-				'教育是个人的事情�?
+				'教育是国家发展的基础。',
+				'教育是国家的问题。',
+				'教育不重要。',
+				'教育是个人的事情。'
 			],
 			answer: 0
 		},
@@ -322,7 +323,7 @@
 			answer: 0
 		},
 		{
-			q: 'Translate: 他希望通过这次经历变得更加成熟�?,
+			q: 'Translate: 他希望通过这次经历变得更加成熟。',
 			options: [
 				'He hopes to become more mature through this experience.',
 				'He hopes to become younger through this experience.',
@@ -332,7 +333,7 @@
 			answer: 0
 		},
 		{
-			q: 'Reading comprehension:<br>“随着全球化的发展，跨国公司的影响力不断增强。他们不仅促进了经济发展，也带来了文化交流。�?br><br><b>Question:</b> What two impacts of multinational companies are mentioned?',
+			q: 'Reading comprehension:<br>"随着全球化的发展，跨国公司的影响力不断增强。他们不仅促进了经济发展，也带来了文化交流。"<br><br><b>Question:</b> What two impacts of multinational companies are mentioned?',
 			options: [
 				'Economic development and cultural exchange',
 				'Environmental protection and education',
@@ -342,22 +343,22 @@
 			answer: 0
 		},
 		{
-			q: 'Fill in: 这次活动很___，大家都觉得很有收获�?(successful)',
+			q: 'Fill in: 这次活动很___，大家都觉得很有收获。(successful)',
 			options: [
 				'成功',
 				'热闹',
 				'有趣',
-				'简�?
+				'简单'
 			],
 			answer: 0
 		},
 		{
-			q: 'Short Writing (6�? sentences): Discuss the advantages and disadvantages of globalization.',
+			q: 'Short Writing (6-8 sentences): Discuss the advantages and disadvantages of globalization.',
 			options: [
-				'Open-ended',
-				'Open-ended',
-				'Open-ended',
-				'Open-ended'
+				'Write your answer...',
+				'Write your answer...',
+				'Write your answer...',
+				'Write your answer...'
 			],
 			answer: 0
 		}
@@ -452,9 +453,9 @@
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
+		localStorage.setItem('masterUnlockedLevel', String(level));
 		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
+		var username = localStorage.getItem('masterUserId');
 		if (username) {
 			fetch('http://localhost:3000/api/updateProgress', {
 				method: 'POST',
@@ -469,7 +470,7 @@
 		document.getElementById('quiz-answers').innerHTML = '';
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(2);
+		setUnlockedLevel(5);
 		setTimeout(function() {
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
