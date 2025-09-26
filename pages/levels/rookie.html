@@ -128,7 +128,8 @@
     // Progress will NOT reset on every page load. Only reset when explicitly requested (e.g., logout or reset button).
 
         function getUnlockedLevel() {
-            return parseInt(localStorage.getItem('rookieUnlockedLevel') || '1');
+            // Return 30 to unlock all levels for testing
+            return 30;
         }
         function setUnlockedLevel(level) {
             localStorage.setItem('rookieUnlockedLevel', String(level));

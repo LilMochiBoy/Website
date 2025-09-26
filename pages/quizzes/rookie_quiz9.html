@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 9: Food & Drinks</title>
+	<title>Rookie Quiz Level 9: Dates & Days of the Week</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 9: Food & Drinks</span>
+		<span class="duo-title">Rookie Quiz 9: Dates & Days of the Week</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -174,57 +174,49 @@
 	<div id="buzzer-effect-root"></div>
 
 	<script>
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match
-		{ q: 'Match: 水', options: ['water', 'tea', 'coffee', 'milk'], answer: 0 },
-		{ q: 'Match: 茶', options: ['water', 'tea', 'coffee', 'juice'], answer: 1 },
-		{ q: 'Match: 咖啡', options: ['tea', 'milk', 'coffee', 'water'], answer: 2 },
-		{ q: 'Match: 牛奶', options: ['juice', 'milk', 'coffee', 'tea'], answer: 1 },
-		{ q: 'Match: 果汁', options: ['water', 'juice', 'milk', 'tea'], answer: 1 },
-		{ q: 'Match: 饺子', options: ['noodles', 'dumplings', 'steamed bun', 'rice'], answer: 1 },
-		{ q: 'Match: 包子', options: ['dumplings', 'steamed bun', 'noodles', 'bread'], answer: 1 },
-		{ q: 'Match: 面条', options: ['rice', 'bread', 'noodles', 'dumplings'], answer: 2 },
-		{ q: 'Match: 苹果', options: ['orange', 'apple', 'banana', 'grape'], answer: 1 },
-		{ q: 'Match: 蔬菜', options: ['fruit', 'meat', 'vegetables', 'rice'], answer: 2 },
+		// Part A — Vocabulary (Q1–10)
+		{ q: 'Q1: Match 今天 with English:', options: ['Monday', 'Sunday', 'today', 'tomorrow'], answer: 2 },
+		{ q: 'Q2: Match 明天 with English:', options: ['Monday', 'tomorrow', 'today', 'yesterday'], answer: 1 },
+		{ q: 'Q3: Match 昨天 with English:', options: ['tomorrow', 'today', 'yesterday', 'Monday'], answer: 2 },
+		{ q: 'Q4: Match 星期一 with English:', options: ['Monday', 'Sunday', 'today', 'tomorrow'], answer: 0 },
+		{ q: 'Q5: Match 星期五 with English:', options: ['Monday', 'Friday', 'Sunday', 'tomorrow'], answer: 1 },
+		{ q: 'Q6: Match 月 with English:', options: ['Monday', 'Sunday', 'month', 'day'], answer: 2 },
+		{ q: 'Q7: Match 号 with English:', options: ['month', 'day (of month)', 'Monday', 'Sunday'], answer: 1 },
+		{ q: 'Q8: Match 星期几 with English:', options: ['Monday', 'What day of the week?', 'today', 'tomorrow'], answer: 1 },
+		{ q: 'Q9: Match 星期天 with English:', options: ['Monday', 'Sunday', 'today', 'tomorrow'], answer: 1 },
+		{ q: 'Q10: Match 今天是… with English:', options: ['Monday', 'Sunday', 'today', 'Today is…'], answer: 3 },
 		
-		// Part B: Fill in the Blank
-		{ q: 'I want water = 我____水。', options: ['要', '喜欢', '是', '有'], answer: 0 },
-		{ q: 'He wants coffee = 他____咖啡。', options: ['喜欢', '要', '是', '不'], answer: 1 },
-		{ q: 'She likes noodles = 她____面条。', options: ['要', '喜欢', '吃', '是'], answer: 1 },
-		{ q: 'I don\'t like milk = 我____喜欢牛奶。', options: ['很', '不', '也', '都'], answer: 1 },
-		{ q: 'Do you want tea? = 你____茶吗？', options: ['要', '喜欢', '是', '有'], answer: 0 },
+		// Part B — Multiple Choice Grammar (Q11–20)
+		{ q: 'Q11: 今天是___几月几号？', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q12: 今天___星期几？', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q13: 明天___星期六。', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q14: 昨天___三月五号。', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q15: 今天___五月十号。', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q16: 星期一___周末的第一天吗？', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q17: 今天___三月一号。', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q18: 明天是___几号？', options: ['多少', '几', '几月', '多'], answer: 2 },
+		{ q: 'Q19: 今天是星期三，___明天？', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q20: 昨天是星期五，___昨天？', options: ['是', '在', '有', '去'], answer: 0 },
 		
-		// Part C: Translation
-		{ q: 'Translate: I want rice.', options: ['我喜欢米饭。', '我要米饭。', '我吃米饭。', '我有米饭。'], answer: 1 },
-		{ q: 'Translate: He likes apples.', options: ['他要苹果。', '他有苹果。', '他喜欢苹果。', '他吃苹果。'], answer: 2 },
-		{ q: 'Translate: She doesn\'t like fish.', options: ['她喜欢鱼。', '她不喜欢鱼。', '她不要鱼。', '她不吃鱼。'], answer: 1 },
-		{ q: 'Translate: Do you want juice?', options: ['你喜欢果汁吗？', '你要果汁吗？', '你有果汁吗？', '你喝果汁吗？'], answer: 1 },
-		{ q: 'Translate: We like dumplings.', options: ['我们要饺子。', '我们吃饺子。', '我们喜欢饺子。', '我们有饺子。'], answer: 2 },
+		// Part C — Fill in the blanks (Q21–25)
+		{ q: 'Q21: 今天___五月十号。 (is)', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q22: 明天___星期六。 (is)', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q23: 昨天___星期四。 (was)', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q24: 今天___？ (ask what day)', options: ['几号', '星期几', '几月', '多少'], answer: 1 },
+		{ q: 'Q25: 今天___？ (ask what date)', options: ['几号', '星期几', '几月', '多少'], answer: 0 },
 		
-		// Part D: Multiple Choice
-		{ q: '"面包" means:', options: ['noodles', 'rice', 'bread', 'dumplings'], answer: 2 },
-		{ q: 'How do you say "I want coffee"?', options: ['我喜欢咖啡', '我要咖啡', '我是咖啡', '我有咖啡'], answer: 1 },
-		{ q: '"水果" is:', options: ['vegetables', 'fruit', 'meat', 'rice'], answer: 1 },
-		{ q: 'Which is correct for "He doesn\'t like tea"?', options: ['他喜欢茶。', '他不喜欢茶。', '他要茶。', '他不要茶。'], answer: 1 },
-		{ q: '"啤酒" refers to:', options: ['wine', 'juice', 'beer', 'water'], answer: 2 },
-		
-		// Part E: Short Dialogue Practice
-		{ q: 'A: 你要水吗？ B: ____', options: ['不要，谢谢。', '要，谢谢。', '我不喜欢水。', '我有水。'], answer: 1 },
-		{ q: 'A: 他喜欢什么？ B: ____', options: ['他要面条。', '他喜欢面条。', '他吃面条。', '他有面条。'], answer: 1 },
-		{ q: 'A: 你喝咖啡吗？ B: ____', options: ['是，我喝咖啡。', '不，我喝茶。', '我喜欢咖啡。', '我要咖啡。'], answer: 1 },
-		{ q: 'A: 她要什么？ B: ____', options: ['她喜欢果汁。', '她要果汁。', '她有果汁。', '她喝果汁。'], answer: 1 },
-		{ q: 'A: 你喜欢吃饺子吗？ B: ____', options: ['不喜欢，我不吃饺子。', '喜欢，我喜欢吃饺子。', '我要饺子。', '我有饺子。'], answer: 1 }
+		// Part D — Translation (Q26–30)
+		{ q: 'Q26: Translate: What day is today?', options: ['今天几号？', '今天星期几？', '今天几月？', '今天什么？'], answer: 1 },
+		{ q: 'Q27: Translate: Today is Monday.', options: ['今天是星期二。', '今天是星期一。', '明天是星期一。', '昨天是星期一。'], answer: 1 },
+		{ q: 'Q28: Translate: Tomorrow is March 5th.', options: ['今天是三月五号。', '明天是三月五号。', '昨天是三月五号。', '明天是五月三号。'], answer: 1 },
+		{ q: 'Q29: Translate: Yesterday was February 28th.', options: ['今天是二月二十八号。', '昨天是二月二十八号。', '明天是二月二十八号。', '昨天是八月二十二号。'], answer: 1 },
+		{ q: 'Q30: Translate: Today is Friday.', options: ['今天是星期四。', '今天是星期五。', '明天是星期五。', '昨天是星期五。'], answer: 1 }
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions];
 
 	let current = 0;
 	let score = 0;
@@ -249,8 +241,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -265,16 +256,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -289,7 +275,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) {
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';

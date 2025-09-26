@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 5: Jobs & Occupations</title>
+	<title>Rookie Quiz Level 5: Colors & Descriptions</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 5: Jobs & Occupations</span>
+		<span class="duo-title">Rookie Quiz 5: Colors & Descriptions</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -173,57 +173,47 @@
 	<div class="quiz-answers" id="quiz-answers"></div>
 	<div id="buzzer-effect-root"></div>
 	<script>
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match
-		{ q: 'Match: 老师', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 0 },
-		{ q: 'Match: 医生', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 1 },
-		{ q: 'Match: 学生', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 2 },
-		{ q: 'Match: 警察', options: ['teacher', 'doctor', 'student', 'police officer'], answer: 3 },
-		{ q: 'Match: 农民', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 0 },
-		{ q: 'Match: 司机', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 1 },
-		{ q: 'Match: 服务员', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 2 },
-		{ q: 'Match: 老板', options: ['farmer', 'driver', 'waiter', 'boss'], answer: 3 },
-		{ q: 'Match: 经理', options: ['manager', 'company', 'worker', 'nurse'], answer: 0 },
-		{ q: 'Match: 公司', options: ['manager', 'company', 'worker', 'nurse'], answer: 1 },
+		// Part A – Vocabulary (Q1–10)
+		{ q: 'Q1: Translate: "红色" → ?', options: ['Red', 'Blue', 'White', 'Black'], answer: 0 },
+		{ q: 'Q2: Translate: "蓝色" → ?', options: ['Red', 'Blue', 'White', 'Black'], answer: 1 },
+		{ q: 'Q3: Which means "white"?', options: ['白色', '黑色', '红色', '蓝色'], answer: 0 },
+		{ q: 'Q4: 黑色 is…', options: ['Red', 'Blue', 'White', 'Black'], answer: 3 },
+		{ q: 'Q5: Translate: "大" → ?', options: ['Small', 'Big', 'Tall', 'Short'], answer: 1 },
+		{ q: 'Q6: Translate: "小" → ?', options: ['Small', 'Big', 'Tall', 'Short'], answer: 0 },
+		{ q: 'Q7: 高 means…', options: ['Tall', 'Short', 'Big', 'Small'], answer: 0 },
+		{ q: 'Q8: Translate: "矮" → ?', options: ['Tall', 'Short', 'Big', 'Small'], answer: 1 },
+		{ q: 'Q9: Translate: "漂亮" → ?', options: ['Ugly', 'Pretty', 'Old', 'New'], answer: 1 },
+		{ q: 'Q10: 的 is used for…', options: ['Questions', 'Negation', 'Modifying nouns', 'Time'], answer: 2 },
 		
-		// Part B: Fill in the Blank
-		{ q: 'I am a doctor = 我是____。', options: ['医生', '老师', '学生', '警察'], answer: 0 },
-		{ q: 'She is a teacher = 她是____。', options: ['医生', '老师', '学生', '警察'], answer: 1 },
-		{ q: 'He is a student = 他是____。', options: ['医生', '老师', '学生', '警察'], answer: 2 },
-		{ q: 'What job do you do? = 你做什么____？', options: ['工作', '学习', '事情', '问题'], answer: 0 },
-		{ q: 'I work at a hospital = 我在____工作。', options: ['学校', '医院', '公司', '商店'], answer: 1 },
+		// Part B – Grammar (Q11–20)
+		{ q: 'Q11: Fill in: 这是 ___ 书。 (red)', options: ['红色', '红色的', '红', '的红色'], answer: 1 },
+		{ q: 'Q12: Translate: "That is a white chair."', options: ['这是白色的椅子。', '那是白色的椅子。', '那是白色椅子。', '这是白椅子。'], answer: 1 },
+		{ q: 'Q13: Translate: "He is very tall."', options: ['他高。', '他很高。', '他是高。', '他的高。'], answer: 1 },
+		{ q: 'Q14: Translate: "This phone is very small."', options: ['这手机很小。', '这个手机很小。', '手机这很小。', '很小这手机。'], answer: 1 },
+		{ q: 'Q15: Which is correct?', options: ['蓝色书。', '蓝色的书。', '书蓝色。', '的蓝色书。'], answer: 1 },
+		{ q: 'Q16: True or False: 很 is always needed before adjectives in simple sentences.', options: ['True', 'False'], answer: 0 },
+		{ q: 'Q17: Rearrange: (漂亮的 / 她是 / 女孩) →', options: ['漂亮的她是女孩。', '她是漂亮的女孩。', '女孩她是漂亮的。', '她漂亮的是女孩。'], answer: 1 },
+		{ q: 'Q18: Fill in: 这是 ___ 包。(blue)', options: ['蓝色', '蓝色的', '蓝', '的蓝色'], answer: 1 },
+		{ q: 'Q19: Translate: "The bag is very big."', options: ['包大。', '包很大。', '很大包。', '大的包。'], answer: 1 },
+		{ q: 'Q20: Translate: "That is a black computer."', options: ['这是黑色的电脑。', '那是黑色的电脑。', '那是黑电脑。', '黑色电脑那是。'], answer: 1 },
 		
-		// Part C: Translation
-		{ q: 'Translate: I am a nurse.', options: ['我是护士。', '我是医生。', '我是老师。', '我是学生。'], answer: 0 },
-		{ q: 'Translate: He is a farmer.', options: ['他是司机。', '他是农民。', '他是警察。', '他是老板。'], answer: 1 },
-		{ q: 'Translate: She is a manager.', options: ['她是服务员。', '她是老师。', '她是经理。', '她是护士。'], answer: 2 },
-		{ q: 'Translate: I work at a shop.', options: ['我在医院工作。', '我在学校工作。', '我在商店工作。', '我在公司工作。'], answer: 2 },
-		{ q: 'Translate: What is his job?', options: ['他在哪里工作？', '他做什么工作？', '他是谁？', '他怎么样？'], answer: 1 },
-		
-		// Part D: Multiple Choice
-		{ q: '"学生" means:', options: ['teacher', 'student', 'doctor', 'nurse'], answer: 1 },
-		{ q: 'How to say "I am a teacher"?', options: ['我做老师', '我是老师', '我工作老师', '我学老师'], answer: 1 },
-		{ q: '"司机" refers to:', options: ['farmer', 'driver', 'police officer', 'manager'], answer: 1 },
-		{ q: 'Which is correct for "She works at a hospital"?', options: ['她在公司工作。', '她是医生。', '她在医院工作。', '她在学校工作。'], answer: 2 },
-		{ q: '"老板" means:', options: ['manager', 'boss', 'worker', 'driver'], answer: 1 },
-		
-		// Part E: Short Dialogue Practice
-		{ q: 'A: 你做什么工作？ B: ____', options: ['我是老师。', '我在学校。', '我很好。', '我是中国人。'], answer: 0 },
-		{ q: 'A: 他在哪儿工作？ B: ____', options: ['他是老师。', '他在学校工作。', '他很忙。', '他是好人。'], answer: 1 },
-		{ q: 'A: 她是护士吗？ B: ____', options: ['不是，她是医生。', '是，她是护士。', '她在医院。', '她很好。'], answer: 1 },
-		{ q: 'A: 你是学生吗？ B: ____', options: ['是，我是学生。', '不是，我是职员。', '我在学校。', '我学习中文。'], answer: 1 },
-		{ q: 'A: 他做什么工作？ B: ____', options: ['他在公司。', '他是司机。', '他很忙。', '他是好人。'], answer: 1 }
+		// Part C – Sentence Practice (Q21–30)
+		{ q: 'Q21: Write in Chinese: "This is a pretty dress."', options: ['那是漂亮的衣服。', '这是漂亮的衣服。', '这是衣服漂亮。', '漂亮衣服这是。'], answer: 1 },
+		{ q: 'Q22: Write in Chinese: "That is a tall person."', options: ['这是高的人。', '那是高的人。', '人那是高。', '高人那是。'], answer: 1 },
+		{ q: 'Q23: Write in Chinese: "The book is very small."', options: ['书小。', '书很小。', '很小书。', '小的书。'], answer: 1 },
+		{ q: 'Q24: Write in Chinese: "The table is very big."', options: ['桌子大。', '桌子很大。', '很大桌子。', '大的桌子。'], answer: 1 },
+		{ q: 'Q25: Translate: 他很高。', options: ['He is short.', 'He is tall.', 'He is big.', 'He is small.'], answer: 1 },
+		{ q: 'Q26: Translate: 她很漂亮。', options: ['She is ugly.', 'She is pretty.', 'She is tall.', 'She is short.'], answer: 1 },
+		{ q: 'Q27: Translate: 这是红色的手机。', options: ['This is a blue cellphone.', 'This is a red cellphone.', 'That is a red cellphone.', 'This is red phone.'], answer: 1 },
+		{ q: 'Q28: Translate: 那是白色的椅子。', options: ['This is a white chair.', 'That is a white chair.', 'That is a black chair.', 'This is white chair.'], answer: 1 },
+		{ q: 'Q29: Write in Chinese: "This is a black bag."', options: ['那是黑色的包。', '这是黑色的包。', '这是黑包。', '黑色包这是。'], answer: 1 },
+		{ q: 'Q30: Write in Chinese: "That is a blue pen."', options: ['这是蓝色的笔。', '那是蓝色的笔。', '那是蓝笔。', '蓝色笔那是。'], answer: 1 }
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions];
 
 	let current = 0;
 	let score = 0;
@@ -248,8 +238,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -264,16 +253,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -288,7 +272,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) {
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';

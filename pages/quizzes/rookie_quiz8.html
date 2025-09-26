@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 8: Family Members</title>
+	<title>Rookie Quiz Level 8: School & Classroom</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 8: Family Members</span>
+		<span class="duo-title">Rookie Quiz 8: School & Classroom</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -174,57 +174,49 @@
 	<div id="buzzer-effect-root"></div>
 
 	<script>
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match
-		{ q: 'Match: 爸爸', options: ['father', 'mother', 'brother', 'sister'], answer: 0 },
-		{ q: 'Match: 妈妈', options: ['father', 'mother', 'son', 'daughter'], answer: 1 },
-		{ q: 'Match: 哥哥', options: ['younger brother', 'older brother', 'older sister', 'younger sister'], answer: 1 },
-		{ q: 'Match: 弟弟', options: ['older brother', 'younger brother', 'cousin', 'friend'], answer: 1 },
-		{ q: 'Match: 姐姐', options: ['younger sister', 'mother', 'older sister', 'aunt'], answer: 2 },
-		{ q: 'Match: 妹妹', options: ['older sister', 'younger sister', 'cousin', 'friend'], answer: 1 },
-		{ q: 'Match: 儿子', options: ['daughter', 'son', 'nephew', 'grandson'], answer: 1 },
-		{ q: 'Match: 女儿', options: ['son', 'daughter', 'niece', 'granddaughter'], answer: 1 },
-		{ q: 'Match: 朋友', options: ['classmate', 'friend', 'colleague', 'neighbor'], answer: 1 },
-		{ q: 'Match: 同学', options: ['friend', 'classmate', 'colleague', 'teacher'], answer: 1 },
+		// Part A — Vocabulary (Q1–10)
+		{ q: 'Q1: Match 老师 with English:', options: ['notebook', 'student', 'blackboard', 'teacher'], answer: 3 },
+		{ q: 'Q2: Match 学生 with English:', options: ['notebook', 'student', 'blackboard', 'computer'], answer: 1 },
+		{ q: 'Q3: Match 教室 with English:', options: ['classroom', 'student', 'blackboard', 'computer'], answer: 0 },
+		{ q: 'Q4: Match 书包 with English:', options: ['notebook', 'student', 'schoolbag', 'computer'], answer: 2 },
+		{ q: 'Q5: Match 黑板 with English:', options: ['notebook', 'student', 'blackboard', 'computer'], answer: 2 },
+		{ q: 'Q6: Match 桌子 with English:', options: ['desk', 'chair', 'blackboard', 'computer'], answer: 0 },
+		{ q: 'Q7: Match 椅子 with English:', options: ['notebook', 'chair', 'blackboard', 'computer'], answer: 1 },
+		{ q: 'Q8: Match 本子 with English:', options: ['notebook', 'student', 'blackboard', 'computer'], answer: 0 },
+		{ q: 'Q9: Match 笔 with English:', options: ['notebook', 'pen', 'blackboard', 'computer'], answer: 1 },
+		{ q: 'Q10: Match 电脑 with English:', options: ['notebook', 'student', 'blackboard', 'computer'], answer: 3 },
 		
-		// Part B: Fill in the Blank
-		{ q: 'This is my mom = 这是我的____。', options: ['妈妈', '爸爸', '姐姐', '奶奶'], answer: 0 },
-		{ q: 'He is my brother = 他是我的____。', options: ['朋友', '哥哥/弟弟', '同学', '儿子'], answer: 1 },
-		{ q: 'She is my daughter = 她是我的____。', options: ['妹妹', '姐姐', '女儿', '妈妈'], answer: 2 },
-		{ q: 'My family has 4 people = 我家有____口人。', options: ['三', '四', '五', '六'], answer: 1 },
-		{ q: 'His friend = 他的____。', options: ['家人', '朋友', '同学', '老师'], answer: 1 },
+		// Part B — Multiple Choice Grammar (Q11–20)
+		{ q: 'Q11: 老师___教室。', options: ['在', '有', '去', '是'], answer: 0 },
+		{ q: 'Q12: 教室里___桌子和椅子。', options: ['在', '有', '是', '去'], answer: 1 },
+		{ q: 'Q13: 我的书包___椅子上。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q14: 学生___上课。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q15: 问题___哪里？', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q16: 教室里___学生。', options: ['有', '在', '是', '去'], answer: 0 },
+		{ q: 'Q17: 桌子___教室里。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q18: 老师___学校。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q19: 我的本子___桌子上。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q20: 电脑___桌子上。', options: ['在', '有', '是', '去'], answer: 0 },
 		
-		// Part C: Translation
-		{ q: 'Translate: This is my dad.', options: ['这是我的妈妈。', '这是我的爸爸。', '这是我的哥哥。', '这是我的朋友。'], answer: 1 },
-		{ q: 'Translate: She is my older sister.', options: ['她是我的妹妹。', '她是我的姐姐。', '她是我的妈妈。', '她是我的朋友。'], answer: 1 },
-		{ q: 'Translate: He is my classmate.', options: ['他是我的朋友。', '他是我的老师。', '他是我的同学。', '他是我的哥哥。'], answer: 2 },
-		{ q: 'Translate: My family has six people.', options: ['我家有四口人。', '我家有五口人。', '我家有六口人。', '我家有七口人。'], answer: 2 },
-		{ q: 'Translate: That is my grandfather.', options: ['那是我的奶奶。', '那是我的爷爷。', '那是我的外公。', '那是我的爸爸。'], answer: 1 },
+		// Part C — Fill in the blanks (Q21–25)
+		{ q: 'Q21: 教室里___很多学生。 (have/there are)', options: ['在', '有', '是', '去'], answer: 1 },
+		{ q: 'Q22: 老师___办公室。 (at)', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q23: 我的书包___椅子上。 (at/on)', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q24: 桌子___教室里。 (at/in)', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q25: 学生___上课。 (attending class)', options: ['在', '有', '是', '去'], answer: 0 },
 		
-		// Part D: Multiple Choice
-		{ q: '"奶奶" means:', options: ['grandmother (father\'s side)', 'grandmother (mother\'s side)', 'grandfather (mother\'s side)', 'grandfather (father\'s side)'], answer: 0 },
-		{ q: 'How do you say "This is my friend"?', options: ['这是我朋友的。', '这是我家。', '这是我的朋友。', '这是我的同学。'], answer: 2 },
-		{ q: '"外婆" is:', options: ['mother\'s mother', 'father\'s mother', 'father\'s father', 'mother\'s father'], answer: 0 },
-		{ q: 'Which is correct for "My family has 5 people"?', options: ['我有五个人。', '我家五个人。', '我家有五口人。', '我们有五口人。'], answer: 2 },
-		{ q: '"丈夫" refers to:', options: ['wife', 'husband (formal)', 'father', 'son'], answer: 1 },
-		
-		// Part E: Short Dialogue Practice
-		{ q: 'A: 你家有几口人？ B: ____', options: ['我家有三口人。', '我家有四口人。', '我家有五口人。', '我家有六口人。'], answer: 1 },
-		{ q: 'A: 这是你的妈妈吗？ B: ____', options: ['不是，这是我的姐姐。', '是，这是我的妈妈。', '不是，这是我的奶奶。', '是，这是我的朋友。'], answer: 1 },
-		{ q: 'A: 他是谁？ B: ____', options: ['他是我的朋友。', '他是我的哥哥。', '他是我的同学。', '他是我的爸爸。'], answer: 1 },
-		{ q: 'A: 她是你朋友吗？ B: ____', options: ['不是，她是我的姐姐。', '是，她是我的朋友。', '不是，她是我的同学。', '是，她是我的妹妹。'], answer: 1 },
-		{ q: 'A: 那是你的爷爷吗？ B: ____', options: ['是，那是我的爷爷。', '不是，那是我的外公。', '不是，那是我的爸爸。', '是，那是我的外公。'], answer: 1 }
+		// Part D — Translation (Q26–30)
+		{ q: 'Q26: Translate: Where is the teacher?', options: ['老师是谁？', '老师在哪里？', '老师怎么样？', '老师做什么？'], answer: 1 },
+		{ q: 'Q27: Translate: There are desks and chairs in the classroom.', options: ['教室里有桌子和椅子。', '教室里是桌子和椅子。', '桌子和椅子在教室里。', '教室有桌子和椅子在。'], answer: 0 },
+		{ q: 'Q28: Translate: The notebook is on the desk.', options: ['本子在椅子上。', '本子在桌子上。', '桌子在本子上。', '本子有桌子上。'], answer: 1 },
+		{ q: 'Q29: Translate: The students are attending class.', options: ['学生在学校。', '学生在上课。', '学生有上课。', '学生是上课。'], answer: 1 },
+		{ q: 'Q30: Translate: My schoolbag is in the classroom.', options: ['我的书包在学校里。', '我的书包在教室里。', '书包在我的教室里。', '教室里有我的书包。'], answer: 1 }
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions];
 
 	let current = 0;
 	let score = 0;
@@ -249,8 +241,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -265,16 +256,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -289,7 +275,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) {
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';

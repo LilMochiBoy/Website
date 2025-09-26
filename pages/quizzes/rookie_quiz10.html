@@ -1,97 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 10</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rookie Quiz Level 10: Time Expressions</title>
+	<link rel="stylesheet" href="../../assets/css/style.css">
+	<style>
+		.buzzer-effect {
+			position: fixed;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba(255, 59, 59, 0.25);
+			pointer-events: none;
+			z-index: 9999;
+			animation: screenBuzz 0.4s linear 1;
+		}
+		@keyframes screenBuzz {
+			0% { transform: translateX(0); }
+			20% { transform: translateX(-16px); }
+			40% { transform: translateX(16px); }
+			60% { transform: translateX(-16px); }
+			80% { transform: translateX(16px); }
+			100% { transform: translateX(0); }
+		}
+		.duo-header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 18px;
+			margin-top: 32px;
+			margin-bottom: 18px;
+		}
+		.duo-img {
+			width: 64px;
+			height: 64px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 0 2px 8px #1e3c72;
+		}
+		.duo-title {
+			font-size: 2.2rem;
+			font-weight: 700;
+			color: #4a90e2;
+			font-family: 'Segoe UI', Arial, sans-serif;
+			text-shadow: 0 2px 8px #222;
+		}
+		.quiz-progress {
+			margin: 18px auto 0 auto;
+			width: 80%;
+			height: 18px;
+			background: #232946;
+			border-radius: 12px;
+			overflow: hidden;
+		}
+		.quiz-progress-bar {
+			height: 100%;
+			background: linear-gradient(90deg, #4a90e2, #7f9cf5);
+			width: 0%;
+			border-radius: 12px;
+			transition: width 0.3s;
+		}
+		.quiz-question {
+			font-size: 1.8rem;
+			font-weight: 700;
+			margin: 96px 0 32px 0;
+            margin-bottom: 130px;
+			color: #f7f7fa;
+			text-align: center;
+			line-height: 1.4;
+		}
+		.quiz-answers {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 32px;
+			margin-bottom: 32px;
+			margin-top: 48px;
+			width: calc(100vw - 80px);
+			max-width: calc(100vw - 80px);
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+		.answer-btn-custom {
+			width: 100%;
+			min-width: 0;
+			border-radius: 8px;
+			font-size: 1.3rem;
+			padding: 20px 16px;
+			margin: 0;
+			box-sizing: border-box;
+			background: #232946;
+			color: #f7f7fa;
+			font-weight: 600;
+			border-width: 3px;
+			border-style: solid;
+			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
+			box-shadow: 0 4px 16px #23294655;
+			min-height: 64px;
+			position: relative;
+			overflow: hidden;
+			text-align: left;
+		}
+		.answer-btn-custom:hover {
+			transform: scale(1.04);
+			box-shadow: 0 8px 32px #23294699;
+			opacity: 0.97;
+		}
+		.answer-fill {
+			position: absolute;
+			left: 0; bottom: 0;
+			width: 100%;
+			height: 0%;
+			z-index: 1;
+			transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
+		}
+		.answer-btn-custom .answer-fill {
+			border-radius: 0;
+		}
+		.answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
+		.answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
+		.answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
+		.answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
+		.border-c1 { border-color: #e57373; }
+		.border-c2 { border-color: #64b5f6; }
+		.border-c3 { border-color: #81c784; }
+		.border-c4 { border-color: #ffd54f; }
+		.quiz-feedback {
+			font-size: 1.1rem;
+			font-weight: 500;
+			color: #ffeb3b;
+			margin-bottom: 12px;
+			min-height: 24px;
+			transition: color 0.2s;
+		}
+		.quiz-feedback.wrong {
+			color: #ff3b3b;
+			animation: buzz 0.3s linear 1;
+		}
+		@keyframes buzz {
+			0% { transform: translateX(0); }
+			20% { transform: translateX(-8px); }
+			40% { transform: translateX(8px); }
+			60% { transform: translateX(-8px); }
+			80% { transform: translateX(8px); }
+			100% { transform: translateX(0); }
+		}
+		.quiz-finish {
+			font-size: 1.5rem;
+			color: #4a90e2;
+			font-weight: 700;
+			margin-top: 24px;
+		}
+	</style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Rookie Quiz Level 10</h1>
-        </header>
-        
-        <main class="quiz-container">
-            <div id="quiz-question" class="question">
-                <p>Question will appear here...</p>
-            </div>
-            
-            <div id="quiz-answers" class="answers">
-                <!-- Answer options will be generated here -->
-            </div>
-            
-            <div id="quiz-feedback" class="feedback">
-                <!-- Feedback will appear here -->
-            </div>
-            
-            <div class="quiz-controls">
-                <button id="next-btn" class="btn">Next</button>
-                <button id="back-btn" class="btn" onclick="window.location.href='../levels/rookie.html'">Back to Rookie Level</button>
-            </div>
-        </main>
-    </div>
+<body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
+	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+			<h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
+			<button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+			<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+		</div>
+	</div>
+	<div class="duo-header">
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Rookie Quiz 10: Time Expressions</span>
+	</div>
+	<div class="quiz-progress">
+		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+	</div>
+	<div class="quiz-question" id="quiz-question"></div>
+	<div class="quiz-feedback" id="quiz-feedback"></div>
+	<div class="quiz-answers" id="quiz-answers"></div>
+	<div id="buzzer-effect-root"></div>
+	<script>
+	// Duolingo-style quiz logic (no shuffling)
 
-    <script>
-        // Quiz questions will be added here later
-        const questions = [
-            // Questions to be added
-        ];
+	const originalQuestions = [
+		// Part A — Vocabulary (Q1–10)
+		{ q: 'Q1: Match 点 with English:', options: ['hour / o\'clock', 'now', 'afternoon', 'morning'], answer: 0 },
+		{ q: 'Q2: Match 分 with English:', options: ['hour / o\'clock', 'minute', 'afternoon', 'morning'], answer: 1 },
+		{ q: 'Q3: Match 半 with English:', options: ['hour / o\'clock', 'now', 'half (30 min)', 'morning'], answer: 2 },
+		{ q: 'Q4: Match 现在 with English:', options: ['hour / o\'clock', 'now', 'afternoon', 'morning'], answer: 1 },
+		{ q: 'Q5: Match 上午 with English:', options: ['evening/night', 'now', 'afternoon', 'morning'], answer: 3 },
+		{ q: 'Q6: Match 下午 with English:', options: ['hour / o\'clock', 'now', 'afternoon', 'morning'], answer: 2 },
+		{ q: 'Q7: Match 晚上 with English:', options: ['evening/night', 'now', 'afternoon', 'morning'], answer: 0 },
+		{ q: 'Q8: Match 分钟 with English:', options: ['hour', 'minute (duration)', 'afternoon', 'morning'], answer: 1 },
+		{ q: 'Q9: Match 小时 with English:', options: ['hour', 'now', 'afternoon', 'morning'], answer: 0 },
+		{ q: 'Q10: Match 什么时候 with English:', options: ['hour / o\'clock', 'now', 'afternoon', 'when'], answer: 3 },
+		
+		// Part B — Multiple Choice Grammar (Q11–20)
+		{ q: 'Q11: 现在___几点？', options: ['是', '有', '在', '去'], answer: 0 },
+		{ q: 'Q12: 现在三点___。', options: ['分', '半', '点', '小时'], answer: 1 },
+		{ q: 'Q13: 十点一刻 = ___', options: ['10:15', '10:30', '11:15', '9:15'], answer: 0 },
+		{ q: 'Q14: 三点半 = ___', options: ['3:15', '3:30', '3:45', '4:30'], answer: 1 },
+		{ q: 'Q15: 下午两点 = ___', options: ['2 AM', '2 PM', '14:00', 'b & c'], answer: 3 },
+		{ q: 'Q16: 上午八点 = ___', options: ['8 PM', '8 AM', '20:00', '18:00'], answer: 1 },
+		{ q: 'Q17: 我___去上课。 (when)', options: ['什么时候', '点', '分', '半'], answer: 0 },
+		{ q: 'Q18: 现在五点___。', options: ['分', '半', '点', '小时'], answer: 0 },
+		{ q: 'Q19: 晚上七点半 = ___', options: ['19:30', '7:30 AM', '7:15 PM', '18:30'], answer: 0 },
+		{ q: 'Q20: 现在___十二点一刻。', options: ['是', '在', '有', '去'], answer: 0 },
+		
+		// Part C — Fill in the blanks (Q21–25)
+		{ q: 'Q21: 现在___几点？ (ask)', options: ['在', '是', '有', '去'], answer: 1 },
+		{ q: 'Q22: 现在三点___。 (half)', options: ['分', '半', '点', '小时'], answer: 1 },
+		{ q: 'Q23: 上午八点 = ___ AM (translate)', options: ['上午八点', '下午八点', '晚上八点', '八点'], answer: 0 },
+		{ q: 'Q24: 十点一刻 = ___ (time)', options: ['10:30', '10:15', '10:45', '11:15'], answer: 1 },
+		{ q: 'Q25: 晚上七点半 = ___ PM (translate)', options: ['下午七点三十分', '晚上七点三十分', '上午七点三十分', '七点三十分'], answer: 1 },
+		
+		// Part D — Translation (Q26–30)
+		{ q: 'Q26: Translate: What time is it now?', options: ['现在几号？', '现在几点？', '现在几月？', '现在什么？'], answer: 1 },
+		{ q: 'Q27: Translate: It\'s 8 o\'clock now.', options: ['现在七点。', '现在八点。', '现在九点。', '现在十点。'], answer: 1 },
+		{ q: 'Q28: Translate: It\'s 3:30 now.', options: ['现在三点十五。', '现在三点半。', '现在三点四十五。', '现在四点。'], answer: 1 },
+		{ q: 'Q29: Translate: It\'s 10:15 in the morning.', options: ['下午十点一刻。', '上午十点一刻。', '晚上十点一刻。', '十点一刻。'], answer: 1 },
+		{ q: 'Q30: Translate: It\'s 7:30 in the evening.', options: ['上午七点半。', '晚上七点半。', '下午七点半。', '七点半。'], answer: 1 }
+	];
 
-        let currentQuestion = 0;
-        let score = 0;
+	const questions = [...originalQuestions];
 
-        function loadQuestion() {
-            if (currentQuestion < questions.length) {
-                const q = questions[currentQuestion];
-                document.getElementById('quiz-question').innerHTML = `<p>${q.question}</p>`;
-                
-                const answersDiv = document.getElementById('quiz-answers');
-                answersDiv.innerHTML = '';
-                
-                q.answers.forEach((answer, index) => {
-                    const button = document.createElement('button');
-                    button.className = 'answer-btn';
-                    button.textContent = answer;
-                    button.onclick = () => checkAnswer(index);
-                    answersDiv.appendChild(button);
-                });
-                
-                document.getElementById('quiz-feedback').innerHTML = '';
-            } else {
-                finishQuiz();
-            }
-        }
+	let current = 0;
+	let score = 0;
+	let paused = false;
 
-        function checkAnswer(selectedIndex) {
-            const correct = questions[currentQuestion].correct;
-            const feedback = document.getElementById('quiz-feedback');
-            
-            if (selectedIndex === correct) {
-                score++;
-                feedback.innerHTML = '<p class="correct">Correct!</p>';
-            } else {
-                feedback.innerHTML = '<p class="incorrect">Incorrect. Try again!</p>';
-            }
-            
-            setTimeout(() => {
-                currentQuestion++;
-                loadQuestion();
-            }, 1500);
-        }
+	// Pause modal logic
+	const pauseBtn = document.getElementById('pause-btn');
+	const pauseModal = document.getElementById('pause-modal');
+	const resumeBtn = document.getElementById('resume-btn');
+	const restartBtn = document.getElementById('restart-btn');
+	const exitBtn = document.getElementById('exit-btn');
 
-        function finishQuiz() {
-            document.getElementById('quiz-question').innerHTML = `<h2>Quiz Complete!</h2>`;
-            document.getElementById('quiz-answers').innerHTML = '';
-            document.getElementById('quiz-feedback').innerHTML = `
-                <p>Your score: ${score}/${questions.length}</p>
-                <button class="btn" onclick="window.location.href='../levels/explorer.html'">Next Level: Explorer</button>
-                <button class="btn" onclick="window.location.href='../levels/rookie.html'">Back to Level</button>
-            `;
-        }
+	pauseBtn.onclick = function() {
+		paused = true;
+		pauseModal.style.display = 'flex';
+	};
+	resumeBtn.onclick = function() {
+		paused = false;
+		pauseModal.style.display = 'none';
+	};
+	restartBtn.onclick = function() {
+		paused = false;
+		pauseModal.style.display = 'none';
+		current = 0;
+		score = 0;
+		// Reset to original questions without shuffling
+		showQuestion();
+		document.getElementById('quiz-progress-bar').style.width = '0%';
+	};
+	exitBtn.onclick = function() {
+		window.location.href = '../levels/rookie.html';
+	};
 
-        // Initialize quiz when questions are added
-        // loadQuestion();
-    </script>
+	function showQuestion() {
+		const q = questions[current];
+		const questionDiv = document.getElementById('quiz-question');
+		const answersDiv = document.getElementById('quiz-answers');
+		questionDiv.innerHTML = q.q;
+		answersDiv.innerHTML = '';
+
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
+			const btn = document.createElement('button');
+			btn.className = `answer-btn-custom border-c${i + 1}`;
+			btn.textContent = opt;
+			btn.onclick = () => checkAnswer(i);
+			const fill = document.createElement('div');
+			fill.className = `answer-fill c${i + 1}`;
+			btn.appendChild(fill);
+			answersDiv.appendChild(btn);
+		});
+		document.getElementById('quiz-feedback').textContent = '';
+		updateProgress();
+	}
+
+	function checkAnswer(idx) {
+		if (paused) return;
+		const q = questions[current];
+		let correct = false;
+		if(idx === q.answer) {
+			correct = true;
+			score++;
+			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+			const answersDiv = document.getElementById('quiz-answers');
+			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
+			const btn = btns[idx];
+			const fill = btn.querySelector('.answer-fill');
+			fill.style.height = '100%';
+			btns.forEach(b => b.disabled = true);
+			setTimeout(() => {
+				if (!paused) nextQuestion();
+			}, 850);
+		} else {
+			const feedback = document.getElementById('quiz-feedback');
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.classList.add('wrong');
+			const buzzerRoot = document.getElementById('buzzer-effect-root');
+			const buzzerDiv = document.createElement('div');
+			buzzerDiv.className = 'buzzer-effect';
+			buzzerRoot.appendChild(buzzerDiv);
+			setTimeout(() => {
+				feedback.classList.remove('wrong');
+				feedback.textContent = '';
+				buzzerDiv.remove();
+			}, 700);
+		}
+	}
+
+	function nextQuestion() {
+		current++;
+		if(current < questions.length) {
+			showQuestion();
+		} else {
+			finishQuiz();
+		}
+	}
+
+	function updateProgress() {
+		const bar = document.getElementById('quiz-progress-bar');
+		bar.style.width = ((current / questions.length) * 100) + '%';
+	}
+
+	function setUnlockedLevel(level) {
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
+		}
+	}
+
+	function finishQuiz() {
+		document.getElementById('quiz-question').innerHTML = '';
+		document.getElementById('quiz-answers').innerHTML = '';
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br>You have completed all Rookie quizzes!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Continue to Explorer Level</button></div>`;
+		document.getElementById('quiz-progress-bar').style.width = '100%';
+		setUnlockedLevel(11);
+		setTimeout(function() {
+			var btn = document.getElementById('nextLevelBtn');
+			if (btn) {
+				btn.onclick = function() {
+					window.location.href = '../levels/explorer.html';
+				};
+			}
+		}, 100);
+	}
+
+	showQuestion();
+	</script>
 </body>
 </html>

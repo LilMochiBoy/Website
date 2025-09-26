@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 6: Daily Activities & Routines</title>
+	<title>Rookie Quiz Level 6: Food & Beverages</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 6: Daily Activities & Routines</span>
+		<span class="duo-title">Rookie Quiz 6: Food & Beverages</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -174,57 +174,49 @@
 	<div id="buzzer-effect-root"></div>
 
 	<script>
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match
-		{ q: 'Match: 起床', options: ['get up', 'sleep', 'eat', 'watch TV'], answer: 0 },
-		{ q: 'Match: 睡觉', options: ['get up', 'sleep', 'eat', 'watch TV'], answer: 1 },
-		{ q: 'Match: 吃饭', options: ['get up', 'sleep', 'eat (a meal)', 'watch TV'], answer: 2 },
-		{ q: 'Match: 看电视', options: ['get up', 'sleep', 'eat', 'watch TV'], answer: 3 },
-		{ q: 'Match: 写作业', options: ['run', 'do homework', 'go to work', 'exercise'], answer: 1 },
-		{ q: 'Match: 跑步', options: ['run', 'do homework', 'go to work', 'exercise'], answer: 0 },
-		{ q: 'Match: 上班', options: ['run', 'do homework', 'go to work', 'get off work'], answer: 2 },
-		{ q: 'Match: 下班', options: ['go to work', 'get off work', 'exercise', 'go shopping'], answer: 1 },
-		{ q: 'Match: 运动', options: ['go to work', 'get off work', 'exercise', 'go shopping'], answer: 2 },
-		{ q: 'Match: 买东西', options: ['go to work', 'get off work', 'exercise', 'go shopping'], answer: 3 },
+		// Part A — Vocabulary (Q1–10)
+		{ q: 'Q1: Match 面条 with English:', options: ['dumpling', 'water', 'noodles', 'banana'], answer: 2 },
+		{ q: 'Q2: Match 苹果 with English:', options: ['dumpling', 'apple', 'noodles', 'banana'], answer: 1 },
+		{ q: 'Q3: Match 鸡肉 with English:', options: ['tea', 'vegetables', 'chicken', 'milk'], answer: 2 },
+		{ q: 'Q4: Match 茶 with English:', options: ['tea', 'vegetables', 'chicken', 'milk'], answer: 0 },
+		{ q: 'Q5: Match 蔬菜 with English:', options: ['tea', 'vegetables', 'chicken', 'milk'], answer: 1 },
+		{ q: 'Q6: Match 饺子 with English:', options: ['dumpling', 'water', 'noodles', 'banana'], answer: 0 },
+		{ q: 'Q7: Match 牛奶 with English:', options: ['tea', 'vegetables', 'chicken', 'milk'], answer: 3 },
+		{ q: 'Q8: Match 水 with English:', options: ['dumpling', 'water', 'noodles', 'banana'], answer: 1 },
+		{ q: 'Q9: Match 咖啡 with English:', options: ['coffee', 'apple', 'noodles', 'banana'], answer: 0 },
+		{ q: 'Q10: Match 香蕉 with English:', options: ['dumpling', 'water', 'noodles', 'banana'], answer: 3 },
 		
-		// Part B: Fill in the Blank
-		{ q: 'I eat breakfast = 我吃____。', options: ['早餐', '午餐', '晚餐', '水果'], answer: 0 },
-		{ q: 'He reads a book = 他____书。', options: ['写', '看', '买', '做'], answer: 1 },
-		{ q: 'She does homework = 她____作业。', options: ['看', '写', '做', '买'], answer: 1 },
-		{ q: 'I go to school at 8 a.m. = 我八点____。', options: ['起床', '上学', '吃饭', '睡觉'], answer: 1 },
-		{ q: 'He finishes work at 6 p.m. = 他六点____。', options: ['上班', '下班', '吃饭', '睡觉'], answer: 1 },
+		// Part B — Multiple Choice Grammar (Q11–20)
+		{ q: 'Q11: 我___米饭。', options: ['是', '要', '有', '去'], answer: 1 },
+		{ q: 'Q12: 他___喝咖啡。', options: ['喜欢', '是', '有', '在'], answer: 0 },
+		{ q: 'Q13: 你要___茶吗？', options: ['吗', '在', '喝', '去'], answer: 2 },
+		{ q: 'Q14: 一___苹果', options: ['杯', '个', '瓶', '张'], answer: 1 },
+		{ q: 'Q15: 一___牛奶', options: ['杯', '个', '本', '条'], answer: 0 },
+		{ q: 'Q16: 他不___喝牛奶。', options: ['要', '在', '是', '喜欢'], answer: 3 },
+		{ q: 'Q17: 请给我一___水。', options: ['杯', '个', '条', '张'], answer: 0 },
+		{ q: 'Q18: 他们要两个___。', options: ['茶', '饺子', '水', '咖啡'], answer: 1 },
+		{ q: 'Q19: 我___吃包子。', options: ['去', '是', '喜欢', '在'], answer: 2 },
+		{ q: 'Q20: 你___喝果汁吗？', options: ['要', '是', '有', '在'], answer: 0 },
 		
-		// Part C: Translation
-		{ q: 'Translate: I go to bed at 11 p.m.', options: ['我晚上十一点起床。', '我晚上十一点睡觉。', '我晚上十一点吃饭。', '我晚上十一点看电视。'], answer: 1 },
-		{ q: 'Translate: She eats lunch at school.', options: ['她在学校吃早餐。', '她在学校吃午饭。', '她在学校吃晚饭。', '她在学校看书。'], answer: 1 },
-		{ q: 'Translate: He exercises every morning.', options: ['他每天晚上运动。', '他每天下午运动。', '他每天早上运动。', '他每天中午运动。'], answer: 2 },
-		{ q: 'Translate: I play games at home.', options: ['我在学校玩游戏。', '我在家看电视。', '我在家玩游戏。', '我在家吃饭。'], answer: 2 },
-		{ q: 'Translate: What do you do every day?', options: ['你每天在哪里？', '你每天做什么？', '你每天几点？', '你每天怎么样？'], answer: 1 },
+		// Part C — Fill in the Blanks (Q21–25)
+		{ q: 'Q21: 我 ___ 吃面条。 (like)', options: ['要', '喜欢', '是', '在'], answer: 1 },
+		{ q: 'Q22: 他 ___ 一杯咖啡。 (wants)', options: ['喜欢', '要', '是', '在'], answer: 1 },
+		{ q: 'Q23: 请给我两 ___ 饺子。 (measure word)', options: ['杯', '个', '瓶', '张'], answer: 1 },
+		{ q: 'Q24: 她不 ___ 喝牛奶。 (like)', options: ['要', '喜欢', '是', '在'], answer: 1 },
+		{ q: 'Q25: 我们要一 ___ 果汁。 (measure word)', options: ['杯', '个', '本', '条'], answer: 0 },
 		
-		// Part D: Multiple Choice
-		{ q: '"洗澡" means:', options: ['sleep', 'take a shower/bath', 'run', 'eat'], answer: 1 },
-		{ q: 'How do you say "He is watching TV"?', options: ['他在看电视。', '他看作业。', '他写电视。', '他做电视。'], answer: 0 },
-		{ q: '"我晚上十点睡觉" means:', options: ['I eat dinner at 10 p.m.', 'I sleep at 10 p.m.', 'I work at 10 p.m.', 'I study at 10 p.m.'], answer: 1 },
-		{ q: 'Which is correct?', options: ['她在写作业。', '她在睡书。', '她在运动饭。', '她在看作业。'], answer: 0 },
-		{ q: '"买东西" refers to:', options: ['studying', 'shopping', 'eating', 'sleeping'], answer: 1 },
-		
-		// Part E: Short Dialogue Practice
-		{ q: 'A: 你早上几点起床？ B: ____', options: ['我早上七点起床。', '我早上七点睡觉。', '我早上七点吃饭。', '我早上七点上班。'], answer: 0 },
-		{ q: 'A: 他在做什么？ B: ____', options: ['他在睡觉。', '他在看书。', '他在跑步。', '他在吃饭。'], answer: 1 },
-		{ q: 'A: 她每天运动吗？ B: ____', options: ['不是，她不运动。', '是，她每天运动。', '她每天吃饭。', '她每天睡觉。'], answer: 1 },
-		{ q: 'A: 你晚上做什么？ B: ____', options: ['我晚上起床。', '我晚上上班。', '我晚上看电视。', '我晚上跑步。'], answer: 2 },
-		{ q: 'A: 你周末做什么？ B: ____', options: ['我周末上班。', '我周末买东西。', '我周末上学。', '我周末写作业。'], answer: 1 }
+		// Part D — Translation (Q26–30)
+		{ q: 'Q26: Translate: I want rice.', options: ['我喜欢米饭。', '我要米饭。', '我是米饭。', '我有米饭。'], answer: 1 },
+		{ q: 'Q27: Translate: Do you like to eat dumplings?', options: ['你要吃饺子吗？', '你喜欢吃饺子吗？', '你是吃饺子吗？', '你有吃饺子吗？'], answer: 1 },
+		{ q: 'Q28: Translate: He doesn\'t want coffee.', options: ['他不喜欢咖啡。', '他不要咖啡。', '他不是咖啡。', '他不有咖啡。'], answer: 1 },
+		{ q: 'Q29: Translate: Please give me one bottle of milk.', options: ['请给我一杯牛奶。', '请给我一瓶牛奶。', '请给我一个牛奶。', '请给我一条牛奶。'], answer: 1 },
+		{ q: 'Q30: Translate: She likes bananas.', options: ['她要香蕉。', '她喜欢香蕉。', '她是香蕉。', '她有香蕉。'], answer: 1 }
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions];
 
 	let current = 0;
 	let score = 0;
@@ -249,8 +241,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -265,16 +256,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -289,7 +275,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) {
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';

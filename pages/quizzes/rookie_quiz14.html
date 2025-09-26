@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 4: Countries & Nationalities</title>
+	<title>Rookie Quiz Level 14: [Topic to be added]</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 4: Countries & Nationalities</span>
+		<span class="duo-title">Rookie Quiz 14: [Topic to be added]</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,41 +176,11 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Part A – Vocabulary (Q1–10)
-		{ q: 'Q1: Translate: "书" → ?', options: ['Book', 'Pen', 'Chair', 'Table'], answer: 0 },
-		{ q: 'Q2: Translate: "笔" → ?', options: ['Book', 'Pen', 'Chair', 'Table'], answer: 1 },
-		{ q: 'Q3: Which is "bag"?', options: ['包', '书', '椅子', '桌子'], answer: 0 },
-		{ q: 'Q4: 桌子 means…', options: ['Bag', 'Table', 'Chair', 'Book'], answer: 1 },
-		{ q: 'Q5: Translate: "椅子" → ?', options: ['Table', 'Bag', 'Chair', 'Pen'], answer: 2 },
-		{ q: 'Q6: 手机 is…', options: ['Computer', 'Cellphone', 'Pen', 'Book'], answer: 1 },
-		{ q: 'Q7: 电脑 means…', options: ['Computer', 'Cellphone', 'Television', 'Radio'], answer: 0 },
-		{ q: 'Q8: Translate: "这" → ?', options: ['That', 'This', 'What', 'Which'], answer: 1 },
-		{ q: 'Q9: Translate: "那" → ?', options: ['This', 'That', 'What', 'Which'], answer: 1 },
-		{ q: 'Q10: "什么" means…', options: ['This', 'That', 'What', 'Which'], answer: 2 },
-		
-		// Part B – Grammar (Q11–20)
-		{ q: 'Q11: Fill in the blank: ___ 是书。 (This)', options: ['这', '那', '什么', '哪'], answer: 0 },
-		{ q: 'Q12: Translate: "What is that?"', options: ['这是什么？', '那是什么？', '什么是那？', '那什么是？'], answer: 1 },
-		{ q: 'Q13: Translate: "This is a chair."', options: ['那是椅子。', '这是椅子。', '椅子是这。', '这椅子是。'], answer: 1 },
-		{ q: 'Q14: Translate: "That is not a bag."', options: ['这不是包。', '那不是包。', '包不是那。', '不是那包。'], answer: 1 },
-		{ q: 'Q15: Which is correct?', options: ['那是手机。', '手机是那。', '是那手机。', '那手机是。'], answer: 0 },
-		{ q: 'Q16: True or False: 不是 is used for negation.', options: ['True', 'False'], answer: 0 },
-		{ q: 'Q17: Rearrange: (电脑 / 是 / 这) →', options: ['电脑这是', '这是电脑', '是这电脑', '这电脑是'], answer: 1 },
-		{ q: 'Q18: Fill in: 那 ___ 笔吗？(is)', options: ['是', '不', '了', '的'], answer: 0 },
-		{ q: 'Q19: Answer: 这是书吗？ → Yes, it is.', options: ['是的。', '不是。', '什么？', '那个。'], answer: 0 },
-		{ q: 'Q20: Answer: 那是电脑吗？ → No, it is not.', options: ['是的。', '不是。', '什么？', '那个。'], answer: 1 },
-		
-		// Part C – Sentence Practice (Q21–30)
-		{ q: 'Q21: Write in Chinese: "This is a pen."', options: ['那是笔。', '这是笔。', '笔是这。', '这笔是。'], answer: 1 },
-		{ q: 'Q22: Write in Chinese: "That is a book."', options: ['这是书。', '那是书。', '书是那。', '那书是。'], answer: 1 },
-		{ q: 'Q23: Write in Chinese: "This is not a cellphone."', options: ['那不是手机。', '这不是手机。', '手机不是这。', '这手机不是。'], answer: 1 },
-		{ q: 'Q24: Write in Chinese: "That is a computer."', options: ['这是电脑。', '那是电脑。', '电脑是那。', '那电脑是。'], answer: 1 },
-		{ q: 'Q25: Translate: 这是桌子。', options: ['That is a table.', 'This is a table.', 'This is a chair.', 'That is a chair.'], answer: 1 },
-		{ q: 'Q26: Translate: 那不是椅子。', options: ['This is not a chair.', 'That is not a chair.', 'This is not a table.', 'That is not a table.'], answer: 1 },
-		{ q: 'Q27: Translate: 这是什么？', options: ['What is that?', 'What is this?', 'This is what?', 'That is what?'], answer: 1 },
-		{ q: 'Q28: Translate: 那是什么？', options: ['What is this?', 'What is that?', 'This is what?', 'That is what?'], answer: 1 },
-		{ q: 'Q29: Write in Chinese: "This is not a bag."', options: ['那不是包。', '这不是包。', '包不是这。', '这包不是。'], answer: 1 },
-		{ q: 'Q30: Write in Chinese: "That is a chair."', options: ['这是椅子。', '那是椅子。', '椅子是那。', '那椅子是。'], answer: 1 }
+		// Questions to be added here
+		// Example format:
+		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
+		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
+		// Add 30 questions following this pattern
 	];
 
 	const questions = [...originalQuestions];
@@ -219,6 +189,7 @@
 	let score = 0;
 	let paused = false;
 
+	// Pause modal logic
 	const pauseBtn = document.getElementById('pause-btn');
 	const pauseModal = document.getElementById('pause-modal');
 	const resumeBtn = document.getElementById('resume-btn');
@@ -247,6 +218,13 @@
 	};
 
 	function showQuestion() {
+		if (originalQuestions.length === 0) {
+			document.getElementById('quiz-question').innerHTML = 'Questions not yet added to this quiz.';
+			document.getElementById('quiz-answers').innerHTML = '';
+			document.getElementById('quiz-feedback').innerHTML = '<button onclick="window.location.href=\'../levels/rookie.html\'" style="padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back to Level</button>';
+			return;
+		}
+
 		const q = questions[current];
 		const questionDiv = document.getElementById('quiz-question');
 		const answersDiv = document.getElementById('quiz-answers');
@@ -333,17 +311,18 @@
 		document.getElementById('quiz-answers').innerHTML = '';
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(5);
+		setUnlockedLevel(15); // Unlock next level
 		setTimeout(function() {
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-					window.location.href = 'rookie_quiz5.html';
+					window.location.href = 'rookie_quiz15.html';
 				};
 			}
 		}, 100);
 	}
 
+	// Initialize quiz
 	showQuestion();
 	</script>
 </body>

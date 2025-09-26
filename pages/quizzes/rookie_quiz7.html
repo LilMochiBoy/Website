@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 7: Time & Clock Expressions</title>
+	<title>Rookie Quiz Level 7: Restaurant & Ordering Food</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 7: Time & Clock Expressions</span>
+		<span class="duo-title">Rookie Quiz 7: Restaurant & Ordering Food</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -174,57 +174,49 @@
 	<div id="buzzer-effect-root"></div>
 
 	<script>
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match
-		{ q: 'Match: 半', options: ['half (30 minutes)', 'quarter (15 minutes)', 'minute', 'o\'clock'], answer: 0 },
-		{ q: 'Match: 刻', options: ['half (30 minutes)', 'quarter (15 minutes)', 'minute', 'o\'clock'], answer: 1 },
-		{ q: 'Match: 差', options: ['minute', 'lack / to (time)', 'o\'clock', 'morning'], answer: 1 },
-		{ q: 'Match: 分', options: ['minute', 'lack / to (time)', 'o\'clock', 'morning'], answer: 0 },
-		{ q: 'Match: 点', options: ['minute', 'lack / to (time)', 'o\'clock', 'morning'], answer: 2 },
-		{ q: 'Match: 早上', options: ['morning', 'noon', 'evening', 'early morning'], answer: 0 },
-		{ q: 'Match: 中午', options: ['morning', 'noon', 'evening', 'early morning'], answer: 1 },
-		{ q: 'Match: 晚上', options: ['morning', 'noon', 'evening', 'early morning'], answer: 2 },
-		{ q: 'Match: 凌晨', options: ['morning', 'noon', 'evening', 'early morning'], answer: 3 },
-		{ q: 'Match: 什么时候', options: ['what time', 'when', 'where', 'how'], answer: 1 },
+		// Part A — Vocabulary (Q1–10)
+		{ q: 'Q1: Match 菜单 with English:', options: ['tea', 'chicken', 'beef', 'menu'], answer: 3 },
+		{ q: 'Q2: Match 服务员 with English:', options: ['tea', 'waiter', 'beef', 'menu'], answer: 1 },
+		{ q: 'Q3: Match 鸡肉 with English:', options: ['tea', 'chicken', 'beef', 'waiter'], answer: 1 },
+		{ q: 'Q4: Match 牛肉 with English:', options: ['chicken', 'beef', 'waiter', 'menu'], answer: 1 },
+		{ q: 'Q5: Match 鱼 with English:', options: ['chicken', 'beef', 'fish', 'rice'], answer: 2 },
+		{ q: 'Q6: Match 米饭 with English:', options: ['vegetables', 'noodles', 'rice', 'fish'], answer: 2 },
+		{ q: 'Q7: Match 面条 with English:', options: ['vegetables', 'noodles', 'rice', 'fish'], answer: 1 },
+		{ q: 'Q8: Match 蔬菜 with English:', options: ['vegetables', 'noodles', 'rice', 'fish'], answer: 0 },
+		{ q: 'Q9: Match 茶 with English:', options: ['tea', 'coffee', 'noodles', 'rice'], answer: 0 },
+		{ q: 'Q10: Match 咖啡 with English:', options: ['tea', 'coffee', 'noodles', 'rice'], answer: 1 },
 		
-		// Part B: Fill in the Blank
-		{ q: '现在六点三十 = 现在六点____。', options: ['半', '刻', '整', '分'], answer: 0 },
-		{ q: '6:15 = 六点____刻。', options: ['一', '二', '三', '四'], answer: 0 },
-		{ q: '9:45 = 九点____刻。', options: ['一', '二', '三', '四'], answer: 2 },
-		{ q: '7:50 = 八点____十分。', options: ['过', '差', '到', '半'], answer: 1 },
-		{ q: '8:00 sharp = 八点____。', options: ['半', '刻', '整', '分'], answer: 2 },
+		// Part B — Multiple Choice Grammar (Q11–20)
+		{ q: 'Q11: 我要___鸡肉。', options: ['吃', '喝', '买', '是'], answer: 0 },
+		{ q: 'Q12: 服务员，请___菜单。', options: ['给我', '我要', '有', '去'], answer: 0 },
+		{ q: 'Q13: 这个菜___多少钱？', options: ['是', '有', '多少', '多'], answer: 2 },
+		{ q: 'Q14: 请给我一___茶。', options: ['碗', '杯', '盘', '个'], answer: 1 },
+		{ q: 'Q15: 我想要一___蔬菜。', options: ['碗', '杯', '盘', '个'], answer: 2 },
+		{ q: 'Q16: 他不想___鱼。', options: ['吃', '喝', '买', '去'], answer: 0 },
+		{ q: 'Q17: 我要两___米饭。', options: ['碗', '杯', '个', '盘'], answer: 0 },
+		{ q: 'Q18: 我___一盘牛肉。', options: ['要', '是', '有', '去'], answer: 0 },
+		{ q: 'Q19: 服务员，请___咖啡。', options: ['给我', '去', '要', '是'], answer: 0 },
+		{ q: 'Q20: 这个菜很___。', options: ['贵', '便宜', '好吃', '多'], answer: 2 },
 		
-		// Part C: Translation
-		{ q: 'Translate: What time is it now?', options: ['现在几点？', '现在什么时候？', '现在哪里？', '现在怎么样？'], answer: 0 },
-		{ q: 'Translate: It\'s 7:30.', options: ['现在七点刻。', '现在七点半。', '现在七点整。', '现在七点分。'], answer: 1 },
-		{ q: 'Translate: It\'s 8:15 in the morning.', options: ['早上八点半。', '早上八点一刻。', '早上八点整。', '早上八点三刻。'], answer: 1 },
-		{ q: 'Translate: It\'s 6:50 in the evening.', options: ['晚上六点差十分。', '晚上七点差十分。', '晚上六点十分。', '晚上七点十分。'], answer: 1 },
-		{ q: 'Translate: She wakes up at 6:05.', options: ['她六点零五起床。', '她六点五分起床。', '她六点半起床。', '她六点一刻起床。'], answer: 0 },
+		// Part C — Fill in the blanks (Q21–25)
+		{ q: 'Q21: ___一碗面条。 (I want)', options: ['我是', '我要', '我有', '我去'], answer: 1 },
+		{ q: 'Q22: 服务员，请___菜单。 (give)', options: ['要我', '给我', '有我', '去我'], answer: 1 },
+		{ q: 'Q23: 这个菜___？ (how much)', options: ['多少', '多少钱', '什么', '哪里'], answer: 1 },
+		{ q: 'Q24: 我想要一___蔬菜。 (measure word)', options: ['碗', '杯', '盘', '个'], answer: 2 },
+		{ q: 'Q25: 请给我一___茶。 (measure word)', options: ['碗', '杯', '盘', '个'], answer: 1 },
 		
-		// Part D: Multiple Choice
-		{ q: '"十点三刻" means:', options: ['10:15', '10:45', '9:45', '10:30'], answer: 1 },
-		{ q: 'How do you say "It\'s 9:30"?', options: ['九点一刻', '九点半', '九点整', '九点三刻'], answer: 1 },
-		{ q: '"七点差十分" means:', options: ['7:10', '7:50', '6:50', '6:10'], answer: 2 },
-		{ q: 'Which is correct for 8:00 sharp?', options: ['八点半', '八点差十分钟', '八点整', '八点一刻'], answer: 2 },
-		{ q: 'If now is 早上七点, it is:', options: ['morning', 'noon', 'evening', 'night'], answer: 0 },
-		
-		// Part E: Short Dialogue Practice
-		{ q: 'A: 现在几点？ B: ____', options: ['现在六点半。', '现在在家。', '现在很好。', '现在是我。'], answer: 0 },
-		{ q: 'A: 你几点上学？ B: ____', options: ['我在学校上学。', '我七点半上学。', '我上学很好。', '我喜欢上学。'], answer: 1 },
-		{ q: 'A: 他几点睡觉？ B: ____', options: ['他在床上睡觉。', '他睡觉很早。', '他晚上十点睡觉。', '他喜欢睡觉。'], answer: 2 },
-		{ q: 'A: 火车什么时候来？ B: ____', options: ['火车很快。', '火车八点整来。', '火车在车站。', '火车是红色的。'], answer: 1 },
-		{ q: 'A: 我们几点见面？ B: ____', options: ['我们在学校见面。', '我们明天见面。', '我们九点一刻见面。', '我们很高兴见面。'], answer: 2 }
+		// Part D — Translation (Q26–30)
+		{ q: 'Q26: Translate: I want chicken.', options: ['我喜欢鸡肉。', '我要鸡肉。', '我是鸡肉。', '我有鸡肉。'], answer: 1 },
+		{ q: 'Q27: Translate: How much is this dish?', options: ['这个菜怎么样？', '这个菜多少钱？', '这个菜什么？', '这个菜哪里？'], answer: 1 },
+		{ q: 'Q28: Translate: Please give me a cup of tea.', options: ['请给我一碗茶。', '请给我一杯茶。', '请给我一盘茶。', '请给我一个茶。'], answer: 1 },
+		{ q: 'Q29: Translate: I would like a plate of vegetables.', options: ['我要一碗蔬菜。', '我想要一盘蔬菜。', '我喜欢一盘蔬菜。', '我有一盘蔬菜。'], answer: 1 },
+		{ q: 'Q30: Translate: Waiter, please give me the menu.', options: ['服务员，请给我菜单。', '服务员，我要菜单。', '服务员，我喜欢菜单。', '服务员，我有菜单。'], answer: 0 }
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions];
 
 	let current = 0;
 	let score = 0;
@@ -249,8 +241,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -265,16 +256,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -289,7 +275,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) {
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
