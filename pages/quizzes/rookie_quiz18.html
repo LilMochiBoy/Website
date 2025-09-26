@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 18: [Topic to be added]</title>
+	<title>Rookie Quiz Level 18: Directions</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 18: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 18: Directions</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 往', options: ['walk / go', 'street', 'right', 'towards'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 左', options: ['walk / go', 'street', 'left', 'towards'], answer: 2 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 右', options: ['walk / go', 'right', 'left', 'towards'], answer: 1 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 前', options: ['forward / front', 'street', 'right', 'towards'], answer: 0 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 后', options: ['walk / go', 'backward / back', 'right', 'towards'], answer: 1 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 走', options: ['walk / go', 'street', 'right', 'towards'], answer: 0 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 直走', options: ['walk / go', 'go straight', 'right', 'towards'], answer: 1 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 红绿灯', options: ['walk / go', 'street', 'traffic light', 'towards'], answer: 2 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 路口', options: ['walk / go', 'street', 'turn', 'towards'], answer: 2 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 街', options: ['walk / go', 'street', 'right', 'towards'], answer: 1 },
+
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 请___左走。', options: ['往', '在', '是', '有'], answer: 0 },
+		{ q: 'Q12: 往___走。 (turn right)', options: ['左', '右', '前', '后'], answer: 1 },
+		{ q: 'Q13: 往前___。 (go straight)', options: ['走', '去', '是', '有'], answer: 0 },
+		{ q: 'Q14: 往后___。 (go back)', options: ['走', '在', '有', '是'], answer: 0 },
+		{ q: 'Q15: 往前走___红绿灯。 (until / reach)', options: ['到', '在', '是', '有'], answer: 0 },
+		{ q: 'Q16: 往右走___商店。', options: ['到', '在', '是', '有'], answer: 0 },
+		{ q: 'Q17: 请直___走。', options: ['走', '上', '下', '前'], answer: 0 },
+		{ q: 'Q18: 往左___到路口。', options: ['走', '上', '下', '前'], answer: 0 },
+		{ q: 'Q19: 往前走到___。 (traffic light)', options: ['红绿灯', '商店', '学校', '街'], answer: 0 },
+		{ q: 'Q20: 他往右走___商店。', options: ['到', '在', '是', '有'], answer: 0 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 往___走。 (left)', options: ['右', '左', '前', '后'], answer: 1 },
+		{ q: 'Q22: 往___走。 (right)', options: ['左', '右', '前', '后'], answer: 1 },
+		{ q: 'Q23: 往___走。 (forward)', options: ['左', '右', '前', '后'], answer: 2 },
+		{ q: 'Q24: 往___走。 (back)', options: ['左', '右', '前', '后'], answer: 3 },
+		{ q: 'Q25: 往前走___学校。 (reach / until)', options: ['在', '到', '是', '有'], answer: 1 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: Go left. → ______', options: ['往左走。', '往右走。', '往前走。', '往后走。'], answer: 0 },
+		{ q: 'Q27: Go right. → ______', options: ['往左走。', '往右走。', '往前走。', '往后走。'], answer: 1 },
+		{ q: 'Q28: Go straight. → ______', options: ['往右走。', '往前走。', '往后走。', '往前走到学校。'], answer: 1 },
+		{ q: 'Q29: Go back. → ______', options: ['往前走。', '往后走。', '往前走到学校。', '往左走。'], answer: 1 },
+		{ q: 'Q30: Go straight to the school. → ______', options: ['往后走。', '往前走到学校。', '往左走。', '往右走。'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

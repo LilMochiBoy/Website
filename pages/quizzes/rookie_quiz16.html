@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 16: [Topic to be added]</title>
+	<title>Rookie Quiz Level 16: Positions and Locations</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 16: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 16: Positions and Locations</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 上', options: ['right', 'classroom', 'table', 'on / above'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 下', options: ['under / below', 'classroom', 'table', 'on / above'], answer: 0 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 里', options: ['right', 'classroom', 'inside', 'on / above'], answer: 2 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 外', options: ['right', 'classroom', 'outside', 'on / above'], answer: 2 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 前', options: ['right', 'front', 'table', 'on / above'], answer: 1 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 后', options: ['right', 'classroom', 'back / behind', 'on / above'], answer: 2 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 左', options: ['left', 'classroom', 'table', 'on / above'], answer: 0 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 右', options: ['right', 'classroom', 'table', 'on / above'], answer: 0 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 桌子', options: ['right', 'classroom', 'table', 'on / above'], answer: 2 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 教室', options: ['right', 'classroom', 'table', 'on / above'], answer: 1 },
+
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 书___桌子上。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q12: 猫___椅子下。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q13: 我___教室里。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q14: 门___房间外。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q15: 桌子___房间前。', options: ['在', '有', '是', '去'], answer: 0 },
+		{ q: 'Q16: 猫在椅子___。', options: ['上', '下', '前', '后'], answer: 1 },
+		{ q: 'Q17: 书在桌子___。', options: ['上', '下', '左', '右'], answer: 0 },
+		{ q: 'Q18: 房子在学校___。', options: ['上', '下', '外', '里'], answer: 2 },
+		{ q: 'Q19: 门在房间___。', options: ['前', '后', '左', '右'], answer: 1 },
+		{ q: 'Q20: 教室在楼的___。', options: ['上', '下', '左', '右'], answer: 0 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 书在桌子___。 (on)', options: ['下', '上', '里', '外'], answer: 1 },
+		{ q: 'Q22: 猫在椅子___。 (under)', options: ['上', '下', '里', '外'], answer: 1 },
+		{ q: 'Q23: 我在房间___。 (inside)', options: ['上', '下', '里', '外'], answer: 2 },
+		{ q: 'Q24: 门在房间___。 (outside)', options: ['上', '下', '里', '外'], answer: 3 },
+		{ q: 'Q25: 桌子在房间___。 (front)', options: ['后', '前', '左', '右'], answer: 1 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: The book is on the table. → ______', options: ['书在桌子上。', '猫在椅子下。', '我在教室里。', '门在房间外。'], answer: 0 },
+		{ q: 'Q27: The cat is under the chair. → ______', options: ['书在桌子上。', '猫在椅子下。', '我在教室里。', '门在房间外。'], answer: 1 },
+		{ q: 'Q28: I am in the classroom. → ______', options: ['猫在椅子下。', '我在教室里。', '门在房间外。', '桌子在房间前。'], answer: 1 },
+		{ q: 'Q29: The door is outside the room. → ______', options: ['我在教室里。', '门在房间外。', '桌子在房间前。', '书在桌子上。'], answer: 1 },
+		{ q: 'Q30: The table is in front of the room. → ______', options: ['门在房间外。', '桌子在房间前。', '书在桌子上。', '猫在椅子下。'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

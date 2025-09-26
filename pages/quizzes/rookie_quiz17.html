@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 17: [Topic to be added]</title>
+	<title>Rookie Quiz Level 17: Transportation</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 17: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 17: Transportation</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 坐', options: ['airplane', 'bus', 'ship / boat', 'take / ride'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 骑', options: ['airplane', 'bus', 'ride', 'take / ride'], answer: 2 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 车', options: ['airplane', 'bus', 'car / vehicle', 'take / ride'], answer: 2 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 自行车', options: ['airplane', 'bicycle', 'ship / boat', 'take / ride'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 地铁', options: ['airplane', 'bus', 'subway', 'take / ride'], answer: 2 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 公共汽车', options: ['airplane', 'bus', 'ship / boat', 'take / ride'], answer: 1 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 出租车', options: ['airplane', 'bus', 'taxi', 'take / ride'], answer: 2 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 飞机', options: ['airplane', 'bus', 'ship / boat', 'take / ride'], answer: 0 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 火车', options: ['airplane', 'bus', 'train', 'take / ride'], answer: 2 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 轮船', options: ['airplane', 'bus', 'ship / boat', 'take / ride'], answer: 2 },
+
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 我___地铁去学校。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q12: 我___自行车去公园。', options: ['坐', '骑', '是', '有'], answer: 1 },
+		{ q: 'Q13: 他___飞机去北京。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q14: 我每天___公交车上班。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q15: 我喜欢___车去上学。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q16: 我___火车去上海。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q17: 他___出租车去商店。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q18: 我___轮船去海边。', options: ['坐', '骑', '是', '有'], answer: 0 },
+		{ q: 'Q19: 我骑___去学校。', options: ['车', '自行车', '飞机', '地铁'], answer: 1 },
+		{ q: 'Q20: 他坐___去公司。', options: ['公共汽车', '自行车', '骑', '去'], answer: 0 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 我___地铁去学校。 (take)', options: ['骑', '坐', '是', '有'], answer: 1 },
+		{ q: 'Q22: 我___自行车去公园。 (ride)', options: ['坐', '骑', '是', '有'], answer: 1 },
+		{ q: 'Q23: 他___飞机去北京。 (take)', options: ['骑', '坐', '是', '有'], answer: 1 },
+		{ q: 'Q24: 我每天___公交车上班。 (take)', options: ['骑', '坐', '是', '有'], answer: 1 },
+		{ q: 'Q25: 我喜欢___车去上学。 (take)', options: ['骑', '坐', '是', '有'], answer: 1 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: I take the subway to school. → ______', options: ['我坐地铁去学校。', '我骑自行车去公园。', '他坐飞机去北京。', '我每天坐公交车上班。'], answer: 0 },
+		{ q: 'Q27: I ride a bicycle to the park. → ______', options: ['我坐地铁去学校。', '我骑自行车去公园。', '他坐飞机去北京。', '我每天坐公交车上班。'], answer: 1 },
+		{ q: 'Q28: He takes a plane to Beijing. → ______', options: ['我骑自行车去公园。', '他坐飞机去北京。', '我每天坐公交车上班。', '我喜欢坐车去上学。'], answer: 1 },
+		{ q: 'Q29: I take the bus to work every day. → ______', options: ['他坐飞机去北京。', '我每天坐公交车上班。', '我喜欢坐车去上学。', '我坐地铁去学校。'], answer: 1 },
+		{ q: 'Q30: I like taking a car to school. → ______', options: ['我每天坐公交车上班。', '我喜欢坐车去上学。', '我坐地铁去学校。', '我骑自行车去公园。'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

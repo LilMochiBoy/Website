@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 19: [Topic to be added]</title>
+	<title>Rookie Quiz Level 19: House & Rooms</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 19: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 19: House & Rooms</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with its English meaning: 房子', options: ['table', 'kitchen', 'house', 'bedroom'], answer: 2 },
+		{ q: 'Q2: Match the Chinese word with its English meaning: 房间', options: ['living room', 'room', 'study room', 'sofa'], answer: 1 },
+		{ q: 'Q3: Match the Chinese word with its English meaning: 客厅', options: ['living room', 'bathroom', 'kitchen', 'bedroom'], answer: 0 },
+		{ q: 'Q4: Match the Chinese word with its English meaning: 厨房', options: ['table', 'kitchen', 'house', 'bedroom'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with its English meaning: 卧室', options: ['house', 'kitchen', 'living room', 'bedroom'], answer: 3 },
+		{ q: 'Q6: Match the Chinese word with its English meaning: 浴室', options: ['study room', 'sofa', 'bathroom', 'room'], answer: 2 },
+		{ q: 'Q7: Match the Chinese word with its English meaning: 书房', options: ['living room', 'study room', 'bathroom', 'kitchen'], answer: 1 },
+		{ q: 'Q8: Match the Chinese word with its English meaning: 沙发', options: ['table', 'bed', 'sofa', 'kitchen'], answer: 2 },
+		{ q: 'Q9: Match the Chinese word with its English meaning: 床', options: ['sofa', 'bathroom', 'room', 'bed'], answer: 3 },
+		{ q: 'Q10: Match the Chinese word with its English meaning: 桌子', options: ['table', 'kitchen', 'house', 'bedroom'], answer: 0 },
+		
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 卧室里___床。', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q12: 厨房里___桌子和椅子。', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q13: 书房里___沙发。', options: ['有', '没有', '在', '是'], answer: 1 },
+		{ q: 'Q14: 浴室里___床。', options: ['有', '没有', '在', '是'], answer: 1 },
+		{ q: 'Q15: 客厅里___沙发。', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q16: 房间里___桌子。', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q17: 卧室里___椅子。', options: ['没有', '有', '在', '是'], answer: 0 },
+		{ q: 'Q18: 厨房里___床。', options: ['没有', '有', '在', '是'], answer: 0 },
+		{ q: 'Q19: 书房里___书桌。', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q20: 浴室里___洗手台。', options: ['有', '没有', '在', '是'], answer: 0 },
+		
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 客厅里___沙发。 (have)', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q22: 卧室里___床。 (have)', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q23: 厨房里___桌子和椅子。 (have)', options: ['有', '没有', '在', '是'], answer: 0 },
+		{ q: 'Q24: 书房里___沙发。 (not have)', options: ['有', '没有', '在', '是'], answer: 1 },
+		{ q: 'Q25: 浴室里___洗手台。 (have)', options: ['有', '没有', '在', '是'], answer: 0 },
+		
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: There is a sofa in the living room. → ______', options: ['客厅里有沙发。', '卧室里有沙发。', '厨房里有沙发。', '浴室里有沙发。'], answer: 0 },
+		{ q: 'Q27: There is a bed in the bedroom. → ______', options: ['客厅里有床。', '卧室里有床。', '厨房里有床。', '浴室里有床。'], answer: 1 },
+		{ q: 'Q28: There isn\'t a bed in the study room. → ______', options: ['书房里有床。', '书房里没有床。', '客厅里没有床。', '厨房里没有床。'], answer: 1 },
+		{ q: 'Q29: There is a table and chairs in the kitchen. → ______', options: ['客厅里有桌子和椅子。', '卧室里有桌子和椅子。', '厨房里有桌子和椅子。', '浴室里有桌子和椅子。'], answer: 2 },
+		{ q: 'Q30: There is a sink in the bathroom. → ______', options: ['客厅里有洗手台。', '卧室里有洗手台。', '厨房里有洗手台。', '浴室里有洗手台。'], answer: 3 }
 	];
 
 	const questions = [...originalQuestions];
