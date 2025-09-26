@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 30: [Topic to be added]</title>
+	<title>Rookie Quiz Level 30: Comprehensive Review</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 30: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 30: Comprehensive Review</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with its English meaning: 你好', options: ['hello', 'age (how old)', 'father', 'book'], answer: 0 },
+		{ q: 'Q2: Match the Chinese word with its English meaning: 几岁', options: ['hello', 'age (how old)', 'father', 'book'], answer: 1 },
+		{ q: 'Q3: Match the Chinese word with its English meaning: 爸爸', options: ['hello', 'age (how old)', 'father', 'book'], answer: 2 },
+		{ q: 'Q4: Match the Chinese word with its English meaning: 书', options: ['hello', 'age (how old)', 'father', 'book'], answer: 3 },
+		{ q: 'Q5: Match the Chinese word with its English meaning: 红色', options: ['red', 'water', 'menu / dish', 'teacher'], answer: 0 },
+		{ q: 'Q6: Match the Chinese word with its English meaning: 水', options: ['red', 'water', 'menu / dish', 'teacher'], answer: 1 },
+		{ q: 'Q7: Match the Chinese word with its English meaning: 菜单', options: ['red', 'water', 'menu / dish', 'teacher'], answer: 2 },
+		{ q: 'Q8: Match the Chinese word with its English meaning: 老师', options: ['red', 'water', 'menu / dish', 'teacher'], answer: 3 },
+		{ q: 'Q9: Match the Chinese word with its English meaning: 今天', options: ['today', 'o\'clock / time', 'water', 'book'], answer: 0 },
+		{ q: 'Q10: Match the Chinese word with its English meaning: 点', options: ['today', 'o\'clock / time', 'water', 'book'], answer: 1 },
+		
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 我___苹果。 (like)', options: ['喜欢', '不喜欢', '要', '看'], answer: 0 },
+		{ q: 'Q12: 他比我___。 (tall)', options: ['高', '矮', '大', '小'], answer: 0 },
+		{ q: 'Q13: 明天我___去看电影。 (will / plan)', options: ['要', '了', '看', '玩'], answer: 0 },
+		{ q: 'Q14: 你___去学校吗？ (do you want / intend)', options: ['想', '喜欢', '是', '有'], answer: 0 },
+		{ q: 'Q15: 我们一起___，好吗？ (play)', options: ['玩', '去', '吃', '学习'], answer: 0 },
+		{ q: 'Q16: 我昨天___苹果。 (ate)', options: ['吃了', '吃', '要', '玩'], answer: 0 },
+		{ q: 'Q17: 这是___书？ (this / that)', options: ['什么', '哪', '谁', '怎么'], answer: 0 },
+		{ q: 'Q18: 我有一个___。 (family member)', options: ['妈妈', '水', '书', '桌子'], answer: 0 },
+		{ q: 'Q19: 我不___喝咖啡。 (like)', options: ['喜欢', '是', '要', '玩'], answer: 0 },
+		{ q: 'Q20: 今天___天气怎么样？', options: ['的', '很', '今', '今天天'], answer: 2 },
+		
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 我叫___。 (introduce self)', options: ['小明', '岁', '妈妈', '这'], answer: 0 },
+		{ q: 'Q22: 你几___？ (age)', options: ['小明', '岁', '妈妈', '这'], answer: 1 },
+		{ q: 'Q23: 这是我的___。 (family member)', options: ['小明', '岁', '妈妈', '这'], answer: 2 },
+		{ q: 'Q24: 这是什么？___是书。 (answer)', options: ['小明', '岁', '妈妈', '这'], answer: 3 },
+		{ q: 'Q25: 我想喝___。 (water / tea / coffee)', options: ['水', '茶', '咖啡', '所有选项都对'], answer: 3 },
+		
+		// Part D — Translation / Sentence Rearrangement (5 Qs)
+		{ q: 'Q26: I want to eat apples with friends. → ______', options: ['我想和朋友一起吃苹果。', '他比我高。', '我们明天要去看电影。', '这本书没有那本书好。'], answer: 0 },
+		{ q: 'Q27: He is taller than me. → ______', options: ['我想和朋友一起吃苹果。', '他比我高。', '我们明天要去看电影。', '这本书没有那本书好。'], answer: 1 },
+		{ q: 'Q28: We will go watch a movie tomorrow. → ______', options: ['我想和朋友一起吃苹果。', '他比我高。', '我们明天要去看电影。', '这本书没有那本书好。'], answer: 2 },
+		{ q: 'Q29: This book is not as good as that book. → ______', options: ['我想和朋友一起吃苹果。', '他比我高。', '我们明天要去看电影。', '这本书没有那本书好。'], answer: 3 },
+		{ q: 'Q30: I plan to go shopping the day after tomorrow. → ______', options: ['我后天打算去买东西。', '他比我高。', '我们明天要去看电影。', '这本书没有那本书好。'], answer: 0 }
 	];
 
 	const questions = [...originalQuestions];
