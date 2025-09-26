@@ -85,9 +85,80 @@
                 padding: 12px 6px;
             }
         }
+        
+        /* Page Scroller Styles */
+        .page-scroller {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 15px 10px;
+            box-shadow: 0 4px 20px rgba(25, 118, 210, 0.4);
+            z-index: 9999;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(25, 118, 210, 0.2);
+            min-height: 300px;
+            opacity: 1;
+        }
+        
+
+        
+
+        
+        .lesson-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .lesson-nav-btn {
+            min-width: 35px;
+            height: 25px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(25, 118, 210, 0.1);
+            color: #1976d2;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+        
+        .lesson-nav-btn:hover {
+            background: rgba(25, 118, 210, 0.2);
+            transform: translateX(-2px);
+        }
+        
+        .lesson-nav-btn.active {
+            background: linear-gradient(135deg, #1976d2 0%, #3b8dd4 100%);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .page-scroller {
+                right: 10px;
+                padding: 10px 8px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Page Scroller -->
+    <div class="page-scroller" id="pageScroller">
+        <div class="lesson-nav" id="lessonNav">
+            <!-- Lesson navigation buttons will be generated here -->
+        </div>
+    </div>
+
     <div class="lessons-container">
         <div class="lesson-title">📘 Rookie (Beginner) — 30 Levels Syllabus</div>
         
@@ -1949,5 +2020,80 @@
         
     <button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="window.location.href='../index.html'">Back to Home</button>
     </div>
+
+    <script>
+        // Scroll function for lesson navigation
+        function scrollToLesson(index) {
+            const lessonSections = document.querySelectorAll('.lesson-section');
+            if (lessonSections[index]) {
+                lessonSections[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // Page Scroller Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing page scroller...');
+            const lessonNav = document.getElementById('lessonNav');
+            const lessonSections = document.querySelectorAll('.lesson-section');
+            const pageScroller = document.getElementById('pageScroller');
+            
+            console.log('Found elements:', {
+                lessonNav: !!lessonNav,
+                lessonSections: lessonSections.length,
+                pageScroller: !!pageScroller
+            });
+            
+            // Generate lesson navigation buttons
+            lessonSections.forEach((section, index) => {
+                const levelElement = section.querySelector('.lesson-level');
+                if (levelElement) {
+                    const levelText = levelElement.textContent;
+                    const displayText = `L${index + 1}`;
+                    
+                    const navBtn = document.createElement('button');
+                    navBtn.className = 'lesson-nav-btn';
+                    navBtn.textContent = displayText;
+                    navBtn.title = levelText;
+                    navBtn.onclick = () => scrollToLesson(index);
+                    lessonNav.appendChild(navBtn);
+                }
+            });
+            
+            // Update active lesson button
+            function updateActiveLesson() {
+                const navButtons = document.querySelectorAll('.lesson-nav-btn');
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                lessonSections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                        navButtons[index]?.classList.add('active');
+                    }
+                });
+            }
+            
+            // Scroll event listener
+            window.addEventListener('scroll', updateActiveLesson);
+            
+            // Initial update
+            updateActiveLesson();
+        });
+        
+        // Scroll function for lesson navigation
+        function scrollToLesson(index) {
+            const lessonSections = document.querySelectorAll('.lesson-section');
+            if (lessonSections[index]) {
+                lessonSections[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+
+    </script>
 </body>
 </html>
