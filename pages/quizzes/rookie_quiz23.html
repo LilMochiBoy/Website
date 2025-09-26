@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 23: [Topic to be added]</title>
+	<title>Rookie Quiz Level 23: Health & Medical</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 23: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 23: Health & Medical</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with its English meaning: 医生', options: ['take medicine', 'cough', 'not feeling well', 'doctor'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with its English meaning: 医院', options: ['doctor', 'hospital', 'sore throat', 'fever'], answer: 1 },
+		{ q: 'Q3: Match the Chinese word with its English meaning: 生病', options: ['injection', 'be sick', 'cold / flu', 'cough'], answer: 1 },
+		{ q: 'Q4: Match the Chinese word with its English meaning: 感冒', options: ['hospital', 'fever', 'cold / flu', 'injection'], answer: 2 },
+		{ q: 'Q5: Match the Chinese word with its English meaning: 发烧', options: ['sore throat', 'fever', 'take medicine', 'cough'], answer: 1 },
+		{ q: 'Q6: Match the Chinese word with its English meaning: 咳嗽', options: ['not feeling well', 'cough', 'doctor', 'hospital'], answer: 1 },
+		{ q: 'Q7: Match the Chinese word with its English meaning: 喉咙痛', options: ['be sick', 'cold / flu', 'sore throat', 'injection'], answer: 2 },
+		{ q: 'Q8: Match the Chinese word with its English meaning: 打针', options: ['take medicine', 'injection', 'fever', 'cough'], answer: 1 },
+		{ q: 'Q9: Match the Chinese word with its English meaning: 吃药', options: ['take medicine', 'not feeling well', 'doctor', 'hospital'], answer: 0 },
+		{ q: 'Q10: Match the Chinese word with its English meaning: 不舒服', options: ['sore throat', 'be sick', 'not feeling well', 'cold / flu'], answer: 2 },
+		
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 我___。 (not feeling well)', options: ['不舒服', '生病', '发烧', '咳嗽'], answer: 0 },
+		{ q: 'Q12: 我___了。 (be sick)', options: ['生病', '打针', '吃药', '看医生'], answer: 0 },
+		{ q: 'Q13: 他___头疼。 (have a headache)', options: ['发烧', '头', '头疼', '咳嗽'], answer: 2 },
+		{ q: 'Q14: 她喉咙___。 (sore throat)', options: ['疼', '发烧', '打针', '吃'], answer: 0 },
+		{ q: 'Q15: 我___去看医生。 (want)', options: ['要', '有', '在', '是'], answer: 0 },
+		{ q: 'Q16: 我需要___。 (take medicine)', options: ['吃药', '打针', '上课', '起床'], answer: 0 },
+		{ q: 'Q17: 他___感冒了。 (have a cold)', options: ['得', '去', '看', '有'], answer: 0 },
+		{ q: 'Q18: 我___打针。 (need)', options: ['要', '有', '是', '在'], answer: 0 },
+		{ q: 'Q19: 他在___。 (hospital)', options: ['医院', '医生', '家', '学校'], answer: 0 },
+		{ q: 'Q20: 她去___看医生。', options: ['医院', '家', '商店', '学校'], answer: 0 },
+		
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 我不___。 (feeling well)', options: ['舒服', '生病', '发烧', '咳嗽'], answer: 0 },
+		{ q: 'Q22: 我___了。 (be sick)', options: ['生病', '打针', '吃药', '看医生'], answer: 0 },
+		{ q: 'Q23: 我___头疼。 (my)', options: ['头', '发烧', '咳嗽', '喉咙'], answer: 0 },
+		{ q: 'Q24: 我要去___。 (see doctor)', options: ['看医生', '打针', '吃药', '上课'], answer: 0 },
+		{ q: 'Q25: 我需要___。 (take medicine)', options: ['吃药', '打针', '看医生', '上课'], answer: 0 },
+		
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: I don\'t feel well. → ______', options: ['我不舒服。', '我生病了。', '我头疼。', '我发烧。'], answer: 0 },
+		{ q: 'Q27: I am sick. → ______', options: ['我不舒服。', '我生病了。', '我头疼。', '我发烧。'], answer: 1 },
+		{ q: 'Q28: I have a headache. → ______', options: ['我不舒服。', '我生病了。', '我头疼。', '我发烧。'], answer: 2 },
+		{ q: 'Q29: I want to see a doctor. → ______', options: ['我要去看医生。', '我需要吃药。', '我要打针。', '我要去医院。'], answer: 0 },
+		{ q: 'Q30: I need to take medicine. → ______', options: ['我要去看医生。', '我需要吃药。', '我要打针。', '我要去医院。'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 21: [Topic to be added]</title>
+	<title>Rookie Quiz Level 21: Clothing & Accessories</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 21: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 21: Clothing & Accessories</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with its English meaning: 衣服', options: ['glasses', 'coat / jacket', 'tie', 'clothes'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with its English meaning: 裤子', options: ['pants', 'socks', 'hat', 'gloves'], answer: 0 },
+		{ q: 'Q3: Match the Chinese word with its English meaning: 裙子', options: ['coat / jacket', 'skirt', 'shoes', 'glasses'], answer: 1 },
+		{ q: 'Q4: Match the Chinese word with its English meaning: 外套', options: ['tie', 'coat / jacket', 'pants', 'socks'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with its English meaning: 鞋子', options: ['hat', 'gloves', 'shoes', 'glasses'], answer: 2 },
+		{ q: 'Q6: Match the Chinese word with its English meaning: 帽子', options: ['socks', 'hat', 'tie', 'pants'], answer: 1 },
+		{ q: 'Q7: Match the Chinese word with its English meaning: 手套', options: ['gloves', 'skirt', 'shoes', 'glasses'], answer: 0 },
+		{ q: 'Q8: Match the Chinese word with its English meaning: 袜子', options: ['tie', 'clothes', 'socks', 'coat / jacket'], answer: 2 },
+		{ q: 'Q9: Match the Chinese word with its English meaning: 眼镜', options: ['glasses', 'pants', 'hat', 'gloves'], answer: 0 },
+		{ q: 'Q10: Match the Chinese word with its English meaning: 领带', options: ['skirt', 'shoes', 'tie', 'socks'], answer: 2 },
+		
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 我___衣服。', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q12: 他___帽子。', options: ['穿', '戴', '有', '是'], answer: 1 },
+		{ q: 'Q13: 我___裤子去学校。', options: ['穿', '戴', '是', '有'], answer: 0 },
+		{ q: 'Q14: 她___手套。', options: ['戴', '穿', '有', '是'], answer: 0 },
+		{ q: 'Q15: 我___袜子。', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q16: 他___眼镜去上班。', options: ['戴', '穿', '有', '是'], answer: 0 },
+		{ q: 'Q17: 我___运动鞋。', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q18: 她___裙子去商店。', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q19: 我___帽子。', options: ['戴', '穿', '有', '是'], answer: 0 },
+		{ q: 'Q20: 他___衬衫去学校。', options: ['穿', '戴', '有', '是'], answer: 0 },
+		
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 我___红色的衣服。 (wear clothes)', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q22: 他___帽子。 (wear accessory)', options: ['戴', '穿', '有', '是'], answer: 0 },
+		{ q: 'Q23: 她___裙子去上班。 (wear clothes)', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q24: 我___运动鞋去学校。 (wear clothes)', options: ['穿', '戴', '有', '是'], answer: 0 },
+		{ q: 'Q25: 他___眼镜。 (wear accessory)', options: ['戴', '穿', '有', '是'], answer: 0 },
+		
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: I wear clothes. → ______', options: ['我穿衣服。', '我戴衣服。', '我有衣服。', '我是衣服。'], answer: 0 },
+		{ q: 'Q27: He wears a hat. → ______', options: ['他穿帽子。', '他戴帽子。', '他有帽子。', '他是帽子。'], answer: 1 },
+		{ q: 'Q28: She wears a skirt to work. → ______', options: ['她穿裙子去上班。', '她戴裙子去上班。', '她有裙子去上班。', '她是裙子去上班。'], answer: 0 },
+		{ q: 'Q29: I wear sneakers to school. → ______', options: ['我穿运动鞋去学校。', '我戴运动鞋去学校。', '我有运动鞋去学校。', '我是运动鞋去学校。'], answer: 0 },
+		{ q: 'Q30: He wears glasses. → ______', options: ['他穿眼镜。', '他戴眼镜。', '他有眼镜。', '他是眼镜。'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];
