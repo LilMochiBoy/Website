@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 12: [Topic to be added]</title>
+	<title>Rookie Quiz Level 12: Weather</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 12: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 12: Weather</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 天气', options: ['hot', 'cold', 'sunny', 'weather'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 热', options: ['hot', 'cold', 'sunny', 'cloudy'], answer: 0 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 冷', options: ['hot', 'cold', 'sunny', 'cloudy'], answer: 1 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 下雨', options: ['hot', 'cold', 'raining', 'snowing'], answer: 2 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 下雪', options: ['wind', 'raining', 'snowing', 'sunny'], answer: 2 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 风', options: ['wind', 'raining', 'snowing', 'sunny'], answer: 0 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 晴', options: ['wind', 'cloudy', 'sunny', 'partly cloudy'], answer: 2 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 阴', options: ['sunny', 'cloudy', 'partly cloudy', 'windy'], answer: 1 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 多云', options: ['sunny', 'cloudy', 'partly cloudy', 'windy'], answer: 2 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 刮风', options: ['sunny', 'cloudy', 'partly cloudy', 'windy'], answer: 3 },
+
+		// Part B — Multiple Choice Grammar (10 Qs)
+		{ q: 'Q11: 今天天气___怎么样？', options: ['很', '是', '不太', '在'], answer: 1 },
+		{ q: 'Q12: 今天___热。', options: ['很', '不太', '是', '在'], answer: 0 },
+		{ q: 'Q13: 今天___冷。', options: ['很', '不太', '是', '在'], answer: 1 },
+		{ q: 'Q14: 今天___下雨。', options: ['很', '不太', '是', '在'], answer: 2 },
+		{ q: 'Q15: 今天天气___晴。', options: ['很', '不太', '是', '在'], answer: 2 },
+		{ q: 'Q16: 今天___刮风。', options: ['很', '不太', '是', '在'], answer: 2 },
+		{ q: 'Q17: 天气___怎么样？', options: ['很', '是', '怎么样', '在'], answer: 2 },
+		{ q: 'Q18: 今天___下雪吗？', options: ['很', '不太', '是', '会'], answer: 3 },
+		{ q: 'Q19: 明天天气___？', options: ['怎么样', '很', '不太', '在'], answer: 0 },
+		{ q: 'Q20: 今天___多云。', options: ['很', '不太', '是', '在'], answer: 2 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 今天天气___怎么样？ (ask)', options: ['很', '不太', '怎么样', '在'], answer: 2 },
+		{ q: 'Q22: 今天___很热。 (is)', options: ['很', '不太', '是', '在'], answer: 2 },
+		{ q: 'Q23: 今天___下雪。 (raining / snowing)', options: ['很', '下雪', '是', '在'], answer: 1 },
+		{ q: 'Q24: 今天___不太冷。 (is)', options: ['很', '不太', '是', '在'], answer: 2 },
+		{ q: 'Q25: 今天___刮风。 (verb)', options: ['很', '刮风', '是', '在'], answer: 1 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: How is the weather today? → ______', options: ['明天天气怎么样？', '今天天气怎么样？', '今天天气很热。', '今天下雨。'], answer: 1 },
+		{ q: 'Q27: Today is very hot. → ______', options: ['今天天气怎么样？', '今天天气很热。', '今天下雨。', '今天不太冷。'], answer: 1 },
+		{ q: 'Q28: It\'s raining today. → ______', options: ['今天天气很热。', '今天下雨。', '今天不太冷。', '今天刮风。'], answer: 1 },
+		{ q: 'Q29: It\'s not very cold today. → ______', options: ['今天天气很热。', '今天下雨。', '今天不太冷。', '今天刮风。'], answer: 2 },
+		{ q: 'Q30: It\'s windy today. → ______', options: ['今天下雨。', '今天不太冷。', '今天刮风。', '今天天气怎么样？'], answer: 2 }
 	];
 
 	const questions = [...originalQuestions];

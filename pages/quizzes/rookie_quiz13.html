@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 13: [Topic to be added]</title>
+	<title>Rookie Quiz Level 13: Animals</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 13: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 13: Animals</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 猫', options: ['dog', 'horse', 'cat', 'rabbit'], answer: 2 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 狗', options: ['dog', 'horse', 'cat', 'rabbit'], answer: 0 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 鸟', options: ['dog', 'horse', 'bird', 'rabbit'], answer: 2 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 鱼', options: ['bird', 'fish', 'chicken', 'pet'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 马', options: ['dog', 'horse', 'cat', 'rabbit'], answer: 1 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 牛', options: ['bird', 'fish', 'chicken', 'cow'], answer: 3 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 兔子', options: ['dog', 'horse', 'cat', 'rabbit'], answer: 3 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 鸡', options: ['bird', 'fish', 'chicken', 'pet'], answer: 2 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 宠物', options: ['bird', 'fish', 'chicken', 'pet'], answer: 3 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 动物', options: ['pet', 'cow', 'chicken', 'animal'], answer: 3 },
+
+		// Part B — Multiple Choice Grammar (10 Qs)
+		{ q: 'Q11: 这___什么？', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q12: 这是___。', options: ['猫', '狗', '鸟', '牛'], answer: 0 },
+		{ q: 'Q13: 那___什么？', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q14: 那是___。', options: ['猫', '狗', '鸟', '牛'], answer: 1 },
+		{ q: 'Q15: 我有一只___。', options: ['猫', '狗', '鸟', '马'], answer: 0 },
+		{ q: 'Q16: 我喜欢___。', options: ['猫', '狗', '动物', '鱼'], answer: 2 },
+		{ q: 'Q17: 这是一只___。', options: ['猫', '狗', '鸡', '鸟'], answer: 0 },
+		{ q: 'Q18: 那是一条___。', options: ['狗', '鱼', '猫', '鸟'], answer: 1 },
+		{ q: 'Q19: 这些都是___。', options: ['动物', '宠物', '鸟', '鱼'], answer: 0 },
+		{ q: 'Q20: 我家有___。', options: ['狗', '鸡', '猫', '兔子'], answer: 2 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 这是什么？ → ___猫。', options: ['那是', '这是', '我有', '我喜欢'], answer: 1 },
+		{ q: 'Q22: 那是什么？ → ___狗。', options: ['那是', '这是', '我有', '我喜欢'], answer: 0 },
+		{ q: 'Q23: 我喜欢___。 (animals)', options: ['猫', '狗', '动物', '鱼'], answer: 2 },
+		{ q: 'Q24: 我有一只___。 (pet)', options: ['动物', '宠物', '鸟', '鱼'], answer: 1 },
+		{ q: 'Q25: 这是一只___。 (bird)', options: ['猫', '狗', '鸟', '鱼'], answer: 2 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: What is this? → ______', options: ['这是什么？', '那是什么？', '这是猫。', '那是狗。'], answer: 0 },
+		{ q: 'Q27: This is a cat. → ______', options: ['这是什么？', '这是猫。', '那是什么？', '那是狗。'], answer: 1 },
+		{ q: 'Q28: What is that? → ______', options: ['这是什么？', '这是猫。', '那是什么？', '那是狗。'], answer: 2 },
+		{ q: 'Q29: That is a dog. → ______', options: ['这是猫。', '那是什么？', '那是狗。', '我喜欢动物。'], answer: 2 },
+		{ q: 'Q30: I like animals. → ______', options: ['那是狗。', '我喜欢动物。', '这是什么？', '那是什么？'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

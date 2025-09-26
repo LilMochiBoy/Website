@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 15: [Topic to be added]</title>
+	<title>Rookie Quiz Level 15: Review</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 15: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 15: Review</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary / Matching (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 你好', options: ['father', 'classroom', 'cat', 'hello'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 爸爸', options: ['father', 'classroom', 'cat', 'menu'], answer: 0 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 书', options: ['today', 'hello', 'book', 'red'], answer: 2 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 红色', options: ['book', 'red', 'water', 'how much'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 水', options: ['red', 'water', 'how much', 'menu'], answer: 1 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 菜单', options: ['water', 'how much', 'menu', 'today'], answer: 2 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 教室', options: ['menu', 'classroom', 'today', 'cat'], answer: 1 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 今天', options: ['classroom', 'today', 'cat', 'how much'], answer: 1 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 猫', options: ['today', 'cat', 'how much', 'father'], answer: 1 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 多少钱', options: ['cat', 'how much', 'father', 'classroom'], answer: 1 },
+
+		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
+		{ q: 'Q11: 我___李明。 (introduce yourself)', options: ['是', '叫', '有', '在'], answer: 1 },
+		{ q: 'Q12: 你___几岁？', options: ['是', '叫', '多大', '有'], answer: 2 },
+		{ q: 'Q13: 这是___妈妈。 (my…)', options: ['我', '的', '你', '了'], answer: 1 },
+		{ q: 'Q14: 这___是什么？', options: ['是', '有', '在', '的'], answer: 0 },
+		{ q: 'Q15: 我想___水。', options: ['喝', '吃', '买', '喜欢'], answer: 0 },
+		{ q: 'Q16: 请___我鸡肉。', options: ['给', '吃', '喝', '是'], answer: 0 },
+		{ q: 'Q17: 我在___里。', options: ['学校', '教室', '家', '商店'], answer: 1 },
+		{ q: 'Q18: 今天___几号？', options: ['是', '在', '有', '的'], answer: 0 },
+		{ q: 'Q19: 现在___？', options: ['什么', '几点', '怎么', '怎么样'], answer: 1 },
+		{ q: 'Q20: 你喜欢___？', options: ['什么', '谁', '哪', '几'], answer: 0 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 我___丽翡。 (introduce yourself)', options: ['是', '叫', '有', '在'], answer: 1 },
+		{ q: 'Q22: 我___十岁。 (age)', options: ['是', '有', '叫', '在'], answer: 0 },
+		{ q: 'Q23: 这是___书。 (possessive)', options: ['我', '的', '你', '了'], answer: 1 },
+		{ q: 'Q24: 今天___星期一。 (day)', options: ['是', '在', '有', '的'], answer: 0 },
+		{ q: 'Q25: 今天___很热。 (weather)', options: ['是', '天气', '在', '有'], answer: 1 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: Hello, my name is Wu Lifen. → ______', options: ['你好，我叫吴丽翡。', '你几岁？', '这是我的爸爸。', '现在几点？'], answer: 0 },
+		{ q: 'Q27: How old are you? → ______', options: ['你好，我叫吴丽翡。', '你几岁？', '这是我的爸爸。', '现在几点？'], answer: 1 },
+		{ q: 'Q28: This is my father. → ______', options: ['你几岁？', '这是我的爸爸。', '现在几点？', '这个多少钱？'], answer: 1 },
+		{ q: 'Q29: What time is it now? → ______', options: ['这是我的爸爸。', '现在几点？', '这个多少钱？', '你好，我叫吴丽翡。'], answer: 1 },
+		{ q: 'Q30: How much is this? → ______', options: ['现在几点？', '这个多少钱？', '你好，我叫吴丽翡。', '你几岁？'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

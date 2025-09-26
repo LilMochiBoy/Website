@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 14: [Topic to be added]</title>
+	<title>Rookie Quiz Level 14: Shopping</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 14: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 14: Shopping</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 商店', options: ['buy', 'store / shop', 'cheap', 'money'], answer: 1 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 钱', options: ['buy', 'store / shop', 'cheap', 'money'], answer: 3 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 多少', options: ['money', 'how much', 'expensive', 'this one'], answer: 1 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 贵', options: ['how much', 'expensive', 'this one', 'that one'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 便宜', options: ['buy', 'store / shop', 'cheap', 'money'], answer: 2 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 这个', options: ['expensive', 'this one', 'that one', 'sell'], answer: 1 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 那个', options: ['this one', 'that one', 'sell', 'thing / item'], answer: 1 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 买', options: ['buy', 'store / shop', 'cheap', 'money'], answer: 0 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 卖', options: ['that one', 'sell', 'thing / item', 'buy'], answer: 1 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 东西', options: ['sell', 'thing / item', 'buy', 'store / shop'], answer: 1 },
+
+		// Part B — Multiple Choice Grammar (10 Qs)
+		{ q: 'Q11: 这个___多少钱？', options: ['是', '在', '有', '去'], answer: 0 },
+		{ q: 'Q12: 那个___十块钱。', options: ['是', '有', '在', '去'], answer: 0 },
+		{ q: 'Q13: 太___了！ (too expensive)', options: ['贵', '便宜', '钱', '买'], answer: 0 },
+		{ q: 'Q14: 太___了！ (too cheap)', options: ['贵', '便宜', '钱', '卖'], answer: 1 },
+		{ q: 'Q15: 我想___这个。', options: ['买', '卖', '是', '在'], answer: 0 },
+		{ q: 'Q16: 请___我那个。', options: ['给', '买', '卖', '在'], answer: 0 },
+		{ q: 'Q17: 便宜___可以吗？', options: ['一点', '很', '太', '多'], answer: 0 },
+		{ q: 'Q18: 这个多少钱___？', options: ['吗', '是', '在', '有'], answer: 0 },
+		{ q: 'Q19: 我想买___。', options: ['东西', '钱', '贵', '太'], answer: 0 },
+		{ q: 'Q20: 请给我___。', options: ['这个', '那个', '钱', '东西'], answer: 0 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: ___多少钱？ (ask)', options: ['那个', '这个', '我想', '请给'], answer: 1 },
+		{ q: 'Q22: 那个十块___。 (yuan / money)', options: ['贵', '便宜', '钱', '买'], answer: 2 },
+		{ q: 'Q23: 太___了！ (expensive)', options: ['贵', '便宜', '钱', '买'], answer: 0 },
+		{ q: 'Q24: 我想___这个。 (buy)', options: ['给', '买', '卖', '在'], answer: 1 },
+		{ q: 'Q25: 请___我那个。 (give)', options: ['给', '买', '卖', '在'], answer: 0 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: How much is this? → ______', options: ['这个多少钱？', '这个五块钱。', '太贵了！', '我想买这个。'], answer: 0 },
+		{ q: 'Q27: This is 5 yuan. → ______', options: ['这个多少钱？', '这个五块钱。', '太贵了！', '我想买这个。'], answer: 1 },
+		{ q: 'Q28: Too expensive! → ______', options: ['这个五块钱。', '太贵了！', '我想买这个。', '请给我那个。'], answer: 1 },
+		{ q: 'Q29: I want to buy this. → ______', options: ['太贵了！', '我想买这个。', '请给我那个。', '这个多少钱？'], answer: 1 },
+		{ q: 'Q30: Please give me that one. → ______', options: ['我想买这个。', '请给我那个。', '这个多少钱？', '这个五块钱。'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];

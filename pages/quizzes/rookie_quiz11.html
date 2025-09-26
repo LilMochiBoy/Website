@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 11: [Topic to be added]</title>
+	<title>Rookie Quiz Level 11: Hobbies and Preferences</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -163,7 +163,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 11: [Topic to be added]</span>
+		<span class="duo-title">Rookie Quiz 11: Hobbies and Preferences</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -176,11 +176,43 @@
 	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
-		// Questions to be added here
-		// Example format:
-		// { q: 'Q1: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 0 },
-		// { q: 'Q2: Sample question', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'], answer: 1 },
-		// Add 30 questions following this pattern
+		// Part A — Vocabulary (10 Qs)
+		{ q: 'Q1: Match the Chinese word with English meaning: 喜欢', options: ['swim', 'sing', 'dance', 'like'], answer: 3 },
+		{ q: 'Q2: Match the Chinese word with English meaning: 不喜欢', options: ['dislike', 'like', 'favorite', 'dance'], answer: 0 },
+		{ q: 'Q3: Match the Chinese word with English meaning: 最喜欢', options: ['like', 'dislike', 'favorite / like the most', 'swim'], answer: 2 },
+		{ q: 'Q4: Match the Chinese word with English meaning: 看书', options: ['listen to music', 'read books', 'sing', 'dance'], answer: 1 },
+		{ q: 'Q5: Match the Chinese word with English meaning: 听音乐', options: ['read books', 'listen to music', 'play basketball', 'swim'], answer: 1 },
+		{ q: 'Q6: Match the Chinese word with English meaning: 打篮球', options: ['sing', 'dance', 'swim', 'play basketball'], answer: 3 },
+		{ q: 'Q7: Match the Chinese word with English meaning: 唱歌', options: ['dance', 'sing', 'swim', 'drawing'], answer: 1 },
+		{ q: 'Q8: Match the Chinese word with English meaning: 跳舞', options: ['sing', 'dance', 'swim', 'like'], answer: 1 },
+		{ q: 'Q9: Match the Chinese word with English meaning: 游泳', options: ['swim', 'sing', 'dance', 'drawing'], answer: 0 },
+		{ q: 'Q10: Match the Chinese word with English meaning: 画画', options: ['swim', 'sing', 'dance', 'drawing / painting'], answer: 3 },
+
+		// Part B — Multiple Choice Grammar (10 Qs)
+		{ q: 'Q11: 我___看书。', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
+		{ q: 'Q12: 你___什么？', options: ['喜欢', '不喜欢', '做', '是'], answer: 0 },
+		{ q: 'Q13: 我___打篮球。 (like the most)', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 2 },
+		{ q: 'Q14: 我不___唱歌。', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
+		{ q: 'Q15: 你___做什么？', options: ['最喜欢', '喜欢', '不喜欢', '是'], answer: 0 },
+		{ q: 'Q16: 他___听音乐。', options: ['喜欢', '不喜欢', '最喜欢', '在'], answer: 0 },
+		{ q: 'Q17: 我___有时候跳舞。', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
+		{ q: 'Q18: 我最___玩游戏。', options: ['喜欢', '不喜欢', '最喜欢', '在'], answer: 0 },
+		{ q: 'Q19: 你___运动吗？', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
+		{ q: 'Q20: 她___画画。', options: ['喜欢', '不喜欢', '最喜欢', '在'], answer: 0 },
+
+		// Part C — Fill in the blanks (5 Qs)
+		{ q: 'Q21: 我___听音乐。 (like)', options: ['不喜欢', '喜欢', '最喜欢', '是'], answer: 1 },
+		{ q: 'Q22: 我不___游泳。 (dislike)', options: ['最喜欢', '喜欢', '不喜欢', '是'], answer: 1 },
+		{ q: 'Q23: 我___唱歌。 (like the most)', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 2 },
+		{ q: 'Q24: 你喜欢___？ (ask what)', options: ['做什么', '什么', '最喜欢', '不喜欢'], answer: 1 },
+		{ q: 'Q25: 你最喜欢___？ (ask most)', options: ['什么', '做什么', '喜欢', '不喜欢'], answer: 1 },
+
+		// Part D — Translation (5 Qs)
+		{ q: 'Q26: I like reading books. → ______', options: ['我不喜欢看书。', '我喜欢看书。', '我最喜欢看书。', '你喜欢看书。'], answer: 1 },
+		{ q: 'Q27: I don\'t like basketball. → ______', options: ['我喜欢打篮球。', '我不喜欢打篮球。', '我最喜欢打篮球。', '你不喜欢打篮球。'], answer: 1 },
+		{ q: 'Q28: I like singing the most. → ______', options: ['我喜欢唱歌。', '我不喜欢唱歌。', '我最喜欢唱歌。', '你最喜欢唱歌。'], answer: 2 },
+		{ q: 'Q29: What do you like? → ______', options: ['我喜欢什么？', '你喜欢什么？', '你最喜欢什么？', '我最喜欢什么？'], answer: 1 },
+		{ q: 'Q30: What do you like doing the most? → ______', options: ['你喜欢做什么？', '你最喜欢做什么？', '我最喜欢做什么？', '你不喜欢做什么？'], answer: 1 }
 	];
 
 	const questions = [...originalQuestions];
