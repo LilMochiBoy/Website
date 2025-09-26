@@ -85,15 +85,1609 @@
 				padding: 12px 6px;
 			}
 		}
+		
+		/* Page Scroller Styles */
+		.page-scroller {
+			position: fixed;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(255, 255, 255, 0.95);
+			border-radius: 15px;
+			padding: 15px 10px;
+			box-shadow: 0 4px 20px rgba(35, 41, 70, 0.3);
+			z-index: 1000;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+			backdrop-filter: blur(10px);
+			border: 2px solid rgba(255, 213, 128, 0.3);
+		}
+		
+		.lesson-nav {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			max-height: 200px;
+			overflow-y: auto;
+		}
+		
+		.lesson-nav-btn {
+			min-width: 35px;
+			height: 25px;
+			border: none;
+			border-radius: 12px;
+			background: rgba(255, 213, 128, 0.2);
+			color: #232946;
+			font-size: 10px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			padding: 0 8px;
+		}
+		
+		.lesson-nav-btn:hover {
+			background: rgba(255, 213, 128, 0.4);
+			transform: translateX(-2px);
+		}
+		
+		.lesson-nav-btn.active {
+			background: linear-gradient(135deg, #ffd580 0%, #ffb3ba 100%);
+			color: white;
+		}
+		
+		@media (max-width: 768px) {
+			.page-scroller {
+				right: 10px;
+				padding: 10px 8px;
+			}
+		}
 	</style>
 </head>
 <body>
+	<!-- Page Scroller -->
+	<div class="page-scroller" id="pageScroller">
+		<div class="lesson-nav" id="lessonNav">
+			<!-- Lesson navigation buttons will be generated here -->
+		</div>
+	</div>
 	<div class="lessons-container">
 		<div class="lesson-title">Master Level Lessons</div>
 		
-		<!-- Lessons will be added here -->
+		<!-- Master Level 1 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 1 — Abstract Topics (自由, 成功)</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss abstract concepts like freedom (自由), success (成功), happiness (幸福)</li>
+				<li>Use advanced adjectives and verbs for opinions and personal reflection</li>
+				<li>Form sentences expressing ideas, beliefs, and attitudes</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">自由</td><td style="padding:6px;">zìyóu</td><td style="padding:6px;">freedom</td></tr>
+				<tr><td style="padding:6px;">成功</td><td style="padding:6px;">chénggōng</td><td style="padding:6px;">success</td></tr>
+				<tr><td style="padding:6px;">幸福</td><td style="padding:6px;">xìngfú</td><td style="padding:6px;">happiness</td></tr>
+				<tr><td style="padding:6px;">努力</td><td style="padding:6px;">nǔlì</td><td style="padding:6px;">hard-working / effort</td></tr>
+				<tr><td style="padding:6px;">梦想</td><td style="padding:6px;">mèngxiǎng</td><td style="padding:6px;">dream</td></tr>
+				<tr><td style="padding:6px;">目标</td><td style="padding:6px;">mùbiāo</td><td style="padding:6px;">goal</td></tr>
+				<tr><td style="padding:6px;">责任</td><td style="padding:6px;">zérèn</td><td style="padding:6px;">responsibility</td></tr>
+				<tr><td style="padding:6px;">权利</td><td style="padding:6px;">quánlì</td><td style="padding:6px;">right</td></tr>
+				<tr><td style="padding:6px;">价值</td><td style="padding:6px;">jiàzhí</td><td style="padding:6px;">value</td></tr>
+				<tr><td style="padding:6px;">尊重</td><td style="padding:6px;">zūnzhòng</td><td style="padding:6px;">respect</td></tr>
+				<tr><td style="padding:6px;">选择</td><td style="padding:6px;">xuǎnzé</td><td style="padding:6px;">choice</td></tr>
+				<tr><td style="padding:6px;">重要</td><td style="padding:6px;">zhòngyào</td><td style="padding:6px;">important</td></tr>
+				<tr><td style="padding:6px;">机会</td><td style="padding:6px;">jīhuì</td><td style="padding:6px;">opportunity</td></tr>
+				<tr><td style="padding:6px;">改变</td><td style="padding:6px;">gǎibiàn</td><td style="padding:6px;">change</td></tr>
+				<tr><td style="padding:6px;">决定</td><td style="padding:6px;">juédìng</td><td style="padding:6px;">decision</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing opinions<br>
+			我觉得… (I think…)<br>
+			我认为… (I believe…)<br>
+			对我来说… (For me…)<br>
+			我觉得自由非常重要。 (I think freedom is very important.)</div>
+			
+			<div class="lesson-example">2. Expressing purpose or goals<br>
+			为了… (in order to…)<br>
+			…的目标是… (…'s goal is…)<br>
+			我的目标是成功。 (My goal is success.)<br>
+			为了实现梦想，我每天努力学习。 (In order to achieve my dream, I work hard every day.)</div>
+			
+			<div class="lesson-example">3. Using abstract nouns in complex sentences<br>
+			Subject + 对 + object + 很重要 / 有意义<br>
+			自由对每个人都很重要。 (Freedom is important to everyone.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我觉得幸福比成功更重要。 (I think happiness is more important than success.)</li>
+				<li>自由是每个人的权利。 (Freedom is everyone's right.)</li>
+				<li>为了实现目标，他每天努力工作。 (In order to achieve his goal, he works hard every day.)</li>
+				<li>尊重别人是很重要的。 (Respecting others is very important.)</li>
+				<li>我的梦想是有自己的事业。 (My dream is to have my own career.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 2 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 2 — Advanced Travel</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Talk about international travel, including passports, visas, tickets, and destinations.</li>
+				<li>Use advanced verbs and nouns related to travel.</li>
+				<li>Form sentences about travel plans, experiences, and requirements.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">国际</td><td style="padding:6px;">guójì</td><td style="padding:6px;">international</td></tr>
+				<tr><td style="padding:6px;">护照</td><td style="padding:6px;">hùzhào</td><td style="padding:6px;">passport</td></tr>
+				<tr><td style="padding:6px;">签证</td><td style="padding:6px;">qiānzhèng</td><td style="padding:6px;">visa</td></tr>
+				<tr><td style="padding:6px;">订票</td><td style="padding:6px;">dìngpiào</td><td style="padding:6px;">book tickets</td></tr>
+				<tr><td style="padding:6px;">航班</td><td style="padding:6px;">hángbān</td><td style="padding:6px;">flight</td></tr>
+				<tr><td style="padding:6px;">行李</td><td style="padding:6px;">xínglǐ</td><td style="padding:6px;">luggage</td></tr>
+				<tr><td style="padding:6px;">旅行</td><td style="padding:6px;">lǚxíng</td><td style="padding:6px;">travel / trip</td></tr>
+				<tr><td style="padding:6px;">目的地</td><td style="padding:6px;">mùdìdì</td><td style="padding:6px;">destination</td></tr>
+				<tr><td style="padding:6px;">出发</td><td style="padding:6px;">chūfā</td><td style="padding:6px;">depart</td></tr>
+				<tr><td style="padding:6px;">到达</td><td style="padding:6px;">dàodá</td><td style="padding:6px;">arrive</td></tr>
+				<tr><td style="padding:6px;">安检</td><td style="padding:6px;">ānjiǎn</td><td style="padding:6px;">security check</td></tr>
+				<tr><td style="padding:6px;">海关</td><td style="padding:6px;">hǎiguān</td><td style="padding:6px;">customs</td></tr>
+				<tr><td style="padding:6px;">机场</td><td style="padding:6px;">jīchǎng</td><td style="padding:6px;">airport</td></tr>
+				<tr><td style="padding:6px;">入境</td><td style="padding:6px;">rùjìng</td><td style="padding:6px;">immigration / entry</td></tr>
+				<tr><td style="padding:6px;">出境</td><td style="padding:6px;">chūjìng</td><td style="padding:6px;">exit / departure</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Talking about plans<br>
+			我要去… (I want to go to…)<br>
+			我打算… (I plan to…)<br>
+			我订了… (I booked…)<br>
+			我打算去北京旅行。 (I plan to travel to Beijing.)<br>
+			我订了明天的航班。 (I booked tomorrow's flight.)</div>
+			
+			<div class="lesson-example">2. Asking / explaining requirements<br>
+			需要 + noun / verb (need…)<br>
+			必须 + verb (must…)<br>
+			出国旅行需要护照和签证。 (Traveling abroad requires a passport and visa.)<br>
+			入境时必须经过海关检查。 (You must go through customs when entering.)</div>
+			
+			<div class="lesson-example">3. Using destination and actions<br>
+			从…出发，到…到达 (depart from… arrive at…)<br>
+			我从上海出发，到北京到达。 (I depart from Shanghai and arrive in Beijing.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我打算下个月去法国旅行。 (I plan to travel to France next month.)</li>
+				<li>出国旅行需要护照和签证。 (Traveling abroad requires a passport and visa.)</li>
+				<li>我订了明天的航班，到下午三点到达北京。 (I booked tomorrow's flight and will arrive in Beijing at 3 PM.)</li>
+				<li>入境时必须经过海关检查。 (You must go through customs when entering.)</li>
+				<li>我的行李很重，需要帮助搬运。 (My luggage is heavy and I need help carrying it.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 3 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 3 — University Life (大学生活)</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Talk about university life, including courses, professors, classmates, campus activities, and schedules.</li>
+				<li>Use advanced verbs and nouns related to study and social life.</li>
+				<li>Form sentences expressing opinions, schedules, and experiences in university.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">大学</td><td style="padding:6px;">dàxué</td><td style="padding:6px;">university</td></tr>
+				<tr><td style="padding:6px;">专业</td><td style="padding:6px;">zhuānyè</td><td style="padding:6px;">major / field of study</td></tr>
+				<tr><td style="padding:6px;">课程</td><td style="padding:6px;">kèchéng</td><td style="padding:6px;">course</td></tr>
+				<tr><td style="padding:6px;">教授</td><td style="padding:6px;">jiàoshòu</td><td style="padding:6px;">professor</td></tr>
+				<tr><td style="padding:6px;">同学</td><td style="padding:6px;">tóngxué</td><td style="padding:6px;">classmate</td></tr>
+				<tr><td style="padding:6px;">图书馆</td><td style="padding:6px;">túshūguǎn</td><td style="padding:6px;">library</td></tr>
+				<tr><td style="padding:6px;">讲座</td><td style="padding:6px;">jiǎngzuò</td><td style="padding:6px;">lecture</td></tr>
+				<tr><td style="padding:6px;">作业</td><td style="padding:6px;">zuòyè</td><td style="padding:6px;">homework / assignment</td></tr>
+				<tr><td style="padding:6px;">考试</td><td style="padding:6px;">kǎoshì</td><td style="padding:6px;">exam</td></tr>
+				<tr><td style="padding:6px;">选课</td><td style="padding:6px;">xuǎnkè</td><td style="padding:6px;">choose courses</td></tr>
+				<tr><td style="padding:6px;">社团</td><td style="padding:6px;">shètuán</td><td style="padding:6px;">club / student organization</td></tr>
+				<tr><td style="padding:6px;">活动</td><td style="padding:6px;">huódòng</td><td style="padding:6px;">activity</td></tr>
+				<tr><td style="padding:6px;">毕业</td><td style="padding:6px;">bìyè</td><td style="padding:6px;">graduate</td></tr>
+				<tr><td style="padding:6px;">校园</td><td style="padding:6px;">xiàoyuán</td><td style="padding:6px;">campus</td></tr>
+				<tr><td style="padding:6px;">实习</td><td style="padding:6px;">shíxí</td><td style="padding:6px;">internship</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing schedules and plans<br>
+			我上…课程。 (I take…course)<br>
+			今天我有…课。 (Today I have…class)<br>
+			我打算选…课程。 (I plan to choose…course)</div>
+			
+			<div class="lesson-example">2. Expressing experiences<br>
+			我参加过… (I have participated in…)<br>
+			我去过… (I have been to…)</div>
+			
+			<div class="lesson-example">3. Opinions and suggestions<br>
+			我觉得…很有意思。 (I think…is interesting)<br>
+			我建议你… (I suggest you…)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我在大学上中文课程。 (I take Chinese courses at university.)</li>
+				<li>今天我有三节课。 (Today I have three classes.)</li>
+				<li>我参加过校运动会。 (I have participated in the university sports meet.)</li>
+				<li>图书馆的讲座很有意思。 (The lecture in the library is very interesting.)</li>
+				<li>我打算下学期选经济学课程。 (I plan to choose Economics next semester.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 4 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 4 — News & Politics</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss current events, news articles, and political topics in Chinese.</li>
+				<li>Use formal language, reporting verbs, and expressions of opinion.</li>
+				<li>Understand vocabulary and grammar structures used in journalism and discussions.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">新闻</td><td style="padding:6px;">xīnwén</td><td style="padding:6px;">news</td></tr>
+				<tr><td style="padding:6px;">政治</td><td style="padding:6px;">zhèngzhì</td><td style="padding:6px;">politics</td></tr>
+				<tr><td style="padding:6px;">报道</td><td style="padding:6px;">bàodào</td><td style="padding:6px;">report / coverage</td></tr>
+				<tr><td style="padding:6px;">记者</td><td style="padding:6px;">jìzhě</td><td style="padding:6px;">reporter / journalist</td></tr>
+				<tr><td style="padding:6px;">政府</td><td style="padding:6px;">zhèngfǔ</td><td style="padding:6px;">government</td></tr>
+				<tr><td style="padding:6px;">选举</td><td style="padding:6px;">xuǎnjǔ</td><td style="padding:6px;">election</td></tr>
+				<tr><td style="padding:6px;">民主</td><td style="padding:6px;">mínzhǔ</td><td style="padding:6px;">democracy</td></tr>
+				<tr><td style="padding:6px;">法律</td><td style="padding:6px;">fǎlǜ</td><td style="padding:6px;">law</td></tr>
+				<tr><td style="padding:6px;">社会</td><td style="padding:6px;">shèhuì</td><td style="padding:6px;">society</td></tr>
+				<tr><td style="padding:6px;">经济</td><td style="padding:6px;">jīngjì</td><td style="padding:6px;">economy</td></tr>
+				<tr><td style="padding:6px;">政策</td><td style="padding:6px;">zhèngcè</td><td style="padding:6px;">policy</td></tr>
+				<tr><td style="padding:6px;">发表</td><td style="padding:6px;">fābiǎo</td><td style="padding:6px;">publish / issue</td></tr>
+				<tr><td style="padding:6px;">评论</td><td style="padding:6px;">pínglùn</td><td style="padding:6px;">comment / review</td></tr>
+				<tr><td style="padding:6px;">事件</td><td style="padding:6px;">shìjiàn</td><td style="padding:6px;">event / incident</td></tr>
+				<tr><td style="padding:6px;">舆论</td><td style="padding:6px;">yúlùn</td><td style="padding:6px;">public opinion</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Reporting news<br>
+			记者报道… (The reporter reports…)<br>
+			据报道… (According to reports…)<br>
+			…被… (…was …) → passive voice in news reporting</div>
+			
+			<div class="lesson-example">2. Expressing opinions and analysis<br>
+			我认为… (I think…)<br>
+			对…来说…很重要 / 有影响 (…is important / influential to…)<br>
+			…引起了…的关注 (…has attracted …'s attention)</div>
+			
+			<div class="lesson-example">3. Using formal structures<br>
+			发表声明 (issue a statement)<br>
+			通过法律 / 政策 (pass a law / policy)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>记者报道了最新的经济政策。 (The reporter reported the latest economic policy.)</li>
+				<li>据报道，这次选举吸引了很多关注。 (According to reports, this election attracted a lot of attention.)</li>
+				<li>我认为民主对社会很重要。 (I think democracy is very important to society.)</li>
+				<li>政府发表了新的法律。 (The government issued a new law.)</li>
+				<li>这件事件引起了舆论的讨论。 (This event has sparked public opinion discussions.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 5 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 5 — Environment & Global Issues</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss environmental issues, pollution, climate change, and global challenges in Chinese.</li>
+				<li>Use vocabulary related to ecology, sustainability, and societal impact.</li>
+				<li>Express opinions, solutions, and consequences about environmental problems.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">环境</td><td style="padding:6px;">huánjìng</td><td style="padding:6px;">environment</td></tr>
+				<tr><td style="padding:6px;">污染</td><td style="padding:6px;">wūrǎn</td><td style="padding:6px;">pollution</td></tr>
+				<tr><td style="padding:6px;">气候变化</td><td style="padding:6px;">qìhòu biànhuà</td><td style="padding:6px;">climate change</td></tr>
+				<tr><td style="padding:6px;">全球</td><td style="padding:6px;">quánqiú</td><td style="padding:6px;">global / worldwide</td></tr>
+				<tr><td style="padding:6px;">自然资源</td><td style="padding:6px;">zìrán zīyuán</td><td style="padding:6px;">natural resources</td></tr>
+				<tr><td style="padding:6px;">可持续发展</td><td style="padding:6px;">kěchíxù fāzhǎn</td><td style="padding:6px;">sustainable development</td></tr>
+				<tr><td style="padding:6px;">能源</td><td style="padding:6px;">néngyuán</td><td style="padding:6px;">energy</td></tr>
+				<tr><td style="padding:6px;">垃圾分类</td><td style="padding:6px;">lājī fēnlèi</td><td style="padding:6px;">garbage classification / recycling</td></tr>
+				<tr><td style="padding:6px;">生态</td><td style="padding:6px;">shēngtài</td><td style="padding:6px;">ecology</td></tr>
+				<tr><td style="padding:6px;">保护</td><td style="padding:6px;">bǎohù</td><td style="padding:6px;">protect / conservation</td></tr>
+				<tr><td style="padding:6px;">森林</td><td style="padding:6px;">sēnlín</td><td style="padding:6px;">forest</td></tr>
+				<tr><td style="padding:6px;">水资源</td><td style="padding:6px;">shuǐ zīyuán</td><td style="padding:6px;">water resources</td></tr>
+				<tr><td style="padding:6px;">再生能源</td><td style="padding:6px;">zàishēng néngyuán</td><td style="padding:6px;">renewable energy</td></tr>
+				<tr><td style="padding:6px;">空气质量</td><td style="padding:6px;">kōngqì zhìliàng</td><td style="padding:6px;">air quality</td></tr>
+				<tr><td style="padding:6px;">环保</td><td style="padding:6px;">huánbǎo</td><td style="padding:6px;">environmental protection</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing causes and consequences<br>
+			…导致… (…leads to…)<br>
+			…会造成… (…can cause…)<br>
+			污染会造成空气质量下降。 (Pollution can cause a decline in air quality.)</div>
+			
+			<div class="lesson-example">2. Expressing opinions and suggestions<br>
+			我认为…很重要。 (I think … is important)<br>
+			我建议大家… (I suggest everyone …)<br>
+			我建议大家减少使用塑料袋。 (I suggest everyone reduce the use of plastic bags.)</div>
+			
+			<div class="lesson-example">3. Expressing probability or possibility<br>
+			可能… (might / possibly)<br>
+			有可能… (there is a possibility that…)<br>
+			气候变化可能导致海平面上升。 (Climate change might cause sea levels to rise.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>污染会造成空气质量下降。 (Pollution can cause a decline in air quality.)</li>
+				<li>我认为环保很重要。 (I think environmental protection is very important.)</li>
+				<li>气候变化可能导致自然灾害增加。 (Climate change might increase natural disasters.)</li>
+				<li>我建议大家多使用再生能源。 (I suggest everyone use renewable energy more.)</li>
+				<li>森林和水资源需要保护。 (Forests and water resources need protection.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 6 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 6 — Technology & AI</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss technology, AI, and innovation in Chinese.</li>
+				<li>Use vocabulary and grammar related to computers, software, and AI concepts.</li>
+				<li>Express opinions on technological impacts, advantages, and potential risks.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">科技</td><td style="padding:6px;">kējì</td><td style="padding:6px;">technology / science and tech</td></tr>
+				<tr><td style="padding:6px;">人工智能</td><td style="padding:6px;">réngōng zhìnéng</td><td style="padding:6px;">artificial intelligence (AI)</td></tr>
+				<tr><td style="padding:6px;">机器人</td><td style="padding:6px;">jīqìrén</td><td style="padding:6px;">robot</td></tr>
+				<tr><td style="padding:6px;">软件</td><td style="padding:6px;">ruǎnjiàn</td><td style="padding:6px;">software</td></tr>
+				<tr><td style="padding:6px;">硬件</td><td style="padding:6px;">yìngjiàn</td><td style="padding:6px;">hardware</td></tr>
+				<tr><td style="padding:6px;">网络</td><td style="padding:6px;">wǎngluò</td><td style="padding:6px;">network / internet</td></tr>
+				<tr><td style="padding:6px;">数据</td><td style="padding:6px;">shùjù</td><td style="padding:6px;">data</td></tr>
+				<tr><td style="padding:6px;">编程</td><td style="padding:6px;">biānchéng</td><td style="padding:6px;">programming</td></tr>
+				<tr><td style="padding:6px;">自动化</td><td style="padding:6px;">zìdònghuà</td><td style="padding:6px;">automation</td></tr>
+				<tr><td style="padding:6px;">创新</td><td style="padding:6px;">chuàngxīn</td><td style="padding:6px;">innovation</td></tr>
+				<tr><td style="padding:6px;">系统</td><td style="padding:6px;">xìtǒng</td><td style="padding:6px;">system</td></tr>
+				<tr><td style="padding:6px;">云计算</td><td style="padding:6px;">yún jìsuàn</td><td style="padding:6px;">cloud computing</td></tr>
+				<tr><td style="padding:6px;">算法</td><td style="padding:6px;">suànfǎ</td><td style="padding:6px;">algorithm</td></tr>
+				<tr><td style="padding:6px;">信息安全</td><td style="padding:6px;">xìnxī ānquán</td><td style="padding:6px;">information security</td></tr>
+				<tr><td style="padding:6px;">智能助手</td><td style="padding:6px;">zhìnéng zhùshǒu</td><td style="padding:6px;">smart assistant (AI assistant)</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Talking about capabilities<br>
+			…可以… (…can …)<br>
+			…能够… (…is able to …)<br>
+			人工智能可以帮助人类完成任务。 (AI can help humans complete tasks.)</div>
+			
+			<div class="lesson-example">2. Expressing purpose<br>
+			…用于… (…is used for…)<br>
+			…用来… (…is used to …)<br>
+			云计算用于存储和处理大量数据。 (Cloud computing is used to store and process large amounts of data.)</div>
+			
+			<div class="lesson-example">3. Expressing advantages / disadvantages<br>
+			…的优点是… (the advantage of … is …)<br>
+			…的缺点是… (the disadvantage of … is …)<br>
+			机器人的优点是效率高，缺点是成本高。 (The advantage of robots is high efficiency; the disadvantage is high cost.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>人工智能可以帮助人类完成任务。 (AI can help humans complete tasks.)</li>
+				<li>云计算用于存储和处理大量数据。 (Cloud computing is used to store and process large amounts of data.)</li>
+				<li>机器人的优点是效率高，缺点是成本高。 (The advantage of robots is high efficiency; the disadvantage is high cost.)</li>
+				<li>智能助手可以回答问题和提醒日程。 (Smart assistants can answer questions and remind about schedules.)</li>
+				<li>编程和算法是科技发展的基础。 (Programming and algorithms are the foundation of technology development.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 7 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 7 — Social Media & Influence</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss social media platforms, online trends, and digital influence in Chinese.</li>
+				<li>Use vocabulary related to social media, communication, and online behavior.</li>
+				<li>Express opinions, give suggestions, and describe online interactions.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">社交媒体</td><td style="padding:6px;">shèjiāo méitǐ</td><td style="padding:6px;">social media</td></tr>
+				<tr><td style="padding:6px;">影响力</td><td style="padding:6px;">yǐngxiǎnglì</td><td style="padding:6px;">influence</td></tr>
+				<tr><td style="padding:6px;">平台</td><td style="padding:6px;">píngtái</td><td style="padding:6px;">platform</td></tr>
+				<tr><td style="padding:6px;">粉丝</td><td style="padding:6px;">fěnsī</td><td style="padding:6px;">follower / fan</td></tr>
+				<tr><td style="padding:6px;">发布</td><td style="padding:6px;">fābù</td><td style="padding:6px;">publish / post</td></tr>
+				<tr><td style="padding:6px;">评论</td><td style="padding:6px;">pínglùn</td><td style="padding:6px;">comment / review</td></tr>
+				<tr><td style="padding:6px;">点赞</td><td style="padding:6px;">diǎnzàn</td><td style="padding:6px;">like / thumbs up</td></tr>
+				<tr><td style="padding:6px;">转发</td><td style="padding:6px;">zhuǎnfā</td><td style="padding:6px;">repost / share</td></tr>
+				<tr><td style="padding:6px;">帖子</td><td style="padding:6px;">tiězi</td><td style="padding:6px;">post / thread</td></tr>
+				<tr><td style="padding:6px;">网红</td><td style="padding:6px;">wǎnghóng</td><td style="padding:6px;">internet celebrity / influencer</td></tr>
+				<tr><td style="padding:6px;">账号</td><td style="padding:6px;">zhànghào</td><td style="padding:6px;">account</td></tr>
+				<tr><td style="padding:6px;">私信</td><td style="padding:6px;">sīxìn</td><td style="padding:6px;">private message / DM</td></tr>
+				<tr><td style="padding:6px;">热门</td><td style="padding:6px;">rèmén</td><td style="padding:6px;">trending / popular</td></tr>
+				<tr><td style="padding:6px;">内容</td><td style="padding:6px;">nèiróng</td><td style="padding:6px;">content</td></tr>
+				<tr><td style="padding:6px;">互动</td><td style="padding:6px;">hùdòng</td><td style="padding:6px;">interaction / engagement</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing actions on social media<br>
+			我在社交媒体上___。 (I … on social media)<br>
+			我在社交媒体上发布了一个帖子。 (I posted a post on social media.)<br>
+			他收到很多___。 (He received many …)<br>
+			他收到很多点赞和评论。 (He received many likes and comments.)</div>
+			
+			<div class="lesson-example">2. Expressing opinions and influence<br>
+			我觉得…很重要。 (I think … is important)<br>
+			…对…有影响力。 (…has influence on …)<br>
+			网红对年轻人有很大的影响力。 (Influencers have a big influence on young people.)</div>
+			
+			<div class="lesson-example">3. Expressing suggestions or recommendations<br>
+			我建议你… (I suggest you …)<br>
+			最好… (It's best to …)<br>
+			我建议你认真管理你的账号。 (I suggest you carefully manage your account.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我在社交媒体上发布了一条新帖子。 (I posted a new post on social media.)</li>
+				<li>他收到很多点赞和评论。 (He received many likes and comments.)</li>
+				<li>网红对年轻人有很大的影响力。 (Influencers have a big influence on young people.)</li>
+				<li>我建议你关注一些优质内容。 (I suggest you follow some high-quality content.)</li>
+				<li>平台的互动能增加内容的曝光率。 (Interactions on the platform can increase content exposure.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 8 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 8 — Literature & Art</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss literature, art forms, and cultural expressions in Chinese.</li>
+				<li>Use vocabulary and grammar related to reading, analyzing, and appreciating art.</li>
+				<li>Express opinions, comparisons, and recommendations regarding literary works and art.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">文学</td><td style="padding:6px;">wénxué</td><td style="padding:6px;">literature</td></tr>
+				<tr><td style="padding:6px;">艺术</td><td style="padding:6px;">yìshù</td><td style="padding:6px;">art</td></tr>
+				<tr><td style="padding:6px;">小说</td><td style="padding:6px;">xiǎoshuō</td><td style="padding:6px;">novel</td></tr>
+				<tr><td style="padding:6px;">诗歌</td><td style="padding:6px;">shīgē</td><td style="padding:6px;">poetry</td></tr>
+				<tr><td style="padding:6px;">戏剧</td><td style="padding:6px;">xìjù</td><td style="padding:6px;">drama / play</td></tr>
+				<tr><td style="padding:6px;">绘画</td><td style="padding:6px;">huìhuà</td><td style="padding:6px;">painting / drawing</td></tr>
+				<tr><td style="padding:6px;">雕塑</td><td style="padding:6px;">diāosù</td><td style="padding:6px;">sculpture</td></tr>
+				<tr><td style="padding:6px;">音乐</td><td style="padding:6px;">yīnyuè</td><td style="padding:6px;">music</td></tr>
+				<tr><td style="padding:6px;">表演</td><td style="padding:6px;">biǎoyǎn</td><td style="padding:6px;">performance</td></tr>
+				<tr><td style="padding:6px;">作家</td><td style="padding:6px;">zuòjiā</td><td style="padding:6px;">writer / author</td></tr>
+				<tr><td style="padding:6px;">艺术家</td><td style="padding:6px;">yìshùjiā</td><td style="padding:6px;">artist</td></tr>
+				<tr><td style="padding:6px;">作品</td><td style="padding:6px;">zuòpǐn</td><td style="padding:6px;">work / piece</td></tr>
+				<tr><td style="padding:6px;">创作</td><td style="padding:6px;">chuàngzuò</td><td style="padding:6px;">create / creation</td></tr>
+				<tr><td style="padding:6px;">风格</td><td style="padding:6px;">fēnggé</td><td style="padding:6px;">style</td></tr>
+				<tr><td style="padding:6px;">评论</td><td style="padding:6px;">pínglùn</td><td style="padding:6px;">critique / comment</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing opinions and appreciation<br>
+			我觉得…很… (I think … is …)<br>
+			…给我留下深刻的印象。 (…left a deep impression on me)<br>
+			这本小说给我留下深刻的印象。 (This novel left a deep impression on me.)</div>
+			
+			<div class="lesson-example">2. Expressing comparison and preference<br>
+			…比…更… (…is more … than …)<br>
+			我最喜欢… (I like … the most)<br>
+			我觉得绘画比雕塑更吸引人。 (I think painting is more attractive than sculpture.)</div>
+			
+			<div class="lesson-example">3. Expressing purpose and creation<br>
+			…是用来…的 (…is used for …)<br>
+			…由…创作 (…was created by …)<br>
+			这幅画是用水彩创作的。 (This painting was created using watercolor.)<br>
+			这部小说由著名作家创作。 (This novel was created by a famous writer.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>这本小说给我留下深刻的印象。 (This novel left a deep impression on me.)</li>
+				<li>我觉得绘画比雕塑更吸引人。 (I think painting is more attractive than sculpture.)</li>
+				<li>我最喜欢古典音乐。 (I like classical music the most.)</li>
+				<li>这幅画是用水彩创作的。 (This painting was created using watercolor.)</li>
+				<li>这部戏剧由著名作家创作。 (This play was created by a famous author.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 9 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 9 — Idioms (成语入门)</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Understand and use basic Chinese idioms (成语) in context.</li>
+				<li>Explain meanings and apply idioms in sentences.</li>
+				<li>Recognize cultural and literary references behind idioms.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 Idioms)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English / Meaning</td>
+				</tr>
+				<tr><td style="padding:6px;">一石二鸟</td><td style="padding:6px;">yì shí èr niǎo</td><td style="padding:6px;">kill two birds with one stone</td></tr>
+				<tr><td style="padding:6px;">画蛇添足</td><td style="padding:6px;">huà shé tiān zú</td><td style="padding:6px;">ruin something by adding unnecessary details</td></tr>
+				<tr><td style="padding:6px;">对牛弹琴</td><td style="padding:6px;">duì niú tán qín</td><td style="padding:6px;">speak to the wrong audience</td></tr>
+				<tr><td style="padding:6px;">亡羊补牢</td><td style="padding:6px;">wáng yáng bǔ láo</td><td style="padding:6px;">better late than never</td></tr>
+				<tr><td style="padding:6px;">自相矛盾</td><td style="padding:6px;">zì xiāng máo dùn</td><td style="padding:6px;">self-contradictory</td></tr>
+				<tr><td style="padding:6px;">井底之蛙</td><td style="padding:6px;">jǐng dǐ zhī wā</td><td style="padding:6px;">a narrow-minded person</td></tr>
+				<tr><td style="padding:6px;">刻舟求剑</td><td style="padding:6px;">kè zhōu qiú jiàn</td><td style="padding:6px;">act foolishly without considering the situation</td></tr>
+				<tr><td style="padding:6px;">破釜沉舟</td><td style="padding:6px;">pò fǔ chén zhōu</td><td style="padding:6px;">burn one's bridges / determination</td></tr>
+				<tr><td style="padding:6px;">青出于蓝</td><td style="padding:6px;">qīng chū yú lán</td><td style="padding:6px;">the student surpasses the teacher</td></tr>
+				<tr><td style="padding:6px;">守株待兔</td><td style="padding:6px;">shǒu zhū dài tù</td><td style="padding:6px;">wait idly for opportunities</td></tr>
+				<tr><td style="padding:6px;">掩耳盗铃</td><td style="padding:6px;">yǎn ěr dào líng</td><td style="padding:6px;">deceive oneself</td></tr>
+				<tr><td style="padding:6px;">杞人忧天</td><td style="padding:6px;">qǐ rén yōu tiān</td><td style="padding:6px;">unnecessary worry</td></tr>
+				<tr><td style="padding:6px;">百发百中</td><td style="padding:6px;">bǎi fā bǎi zhòng</td><td style="padding:6px;">hit the target every time / accuracy</td></tr>
+				<tr><td style="padding:6px;">守口如瓶</td><td style="padding:6px;">shǒu kǒu rú píng</td><td style="padding:6px;">keep a secret</td></tr>
+				<tr><td style="padding:6px;">锲而不舍</td><td style="padding:6px;">qiè ér bù shě</td><td style="padding:6px;">persevere / never give up</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Using idioms in sentences<br>
+			Subject + 成语 + Verb / Complement<br>
+			他做事非常锲而不舍。 (He does things with perseverance.)</div>
+			
+			<div class="lesson-example">2. Explaining causes or effects<br>
+			…因为…，所以… (Because …, therefore …)<br>
+			因为他守株待兔，所以没有成功。 (Because he waited idly for opportunities, he did not succeed.)</div>
+			
+			<div class="lesson-example">3. Expressing comparisons or outcomes<br>
+			…比…更… (…is more … than …)<br>
+			青出于蓝，比老师更有才华。 (The student surpasses the teacher in talent.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>他做事非常锲而不舍。 (He does things with perseverance.)</li>
+				<li>因为他守株待兔，所以没有成功。 (Because he waited idly for opportunities, he did not succeed.)</li>
+				<li>青出于蓝，比老师更有才华。 (The student surpasses the teacher in talent.)</li>
+				<li>画蛇添足会破坏本来的效果。 (Adding unnecessary details can ruin the original effect.)</li>
+				<li>我们不要杞人忧天，事情没那么糟。 (Don't worry unnecessarily; things are not that bad.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 10 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 10 — Business Chinese Basics</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Understand and use basic business vocabulary in Chinese.</li>
+				<li>Communicate in simple work-related situations, including meetings, emails, and negotiations.</li>
+				<li>Express requests, proposals, and opinions in a professional context.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">商务</td><td style="padding:6px;">shāngwù</td><td style="padding:6px;">business</td></tr>
+				<tr><td style="padding:6px;">公司</td><td style="padding:6px;">gōngsī</td><td style="padding:6px;">company</td></tr>
+				<tr><td style="padding:6px;">会议</td><td style="padding:6px;">huìyì</td><td style="padding:6px;">meeting</td></tr>
+				<tr><td style="padding:6px;">合同</td><td style="padding:6px;">hétóng</td><td style="padding:6px;">contract</td></tr>
+				<tr><td style="padding:6px;">报告</td><td style="padding:6px;">bàogào</td><td style="padding:6px;">report</td></tr>
+				<tr><td style="padding:6px;">客户</td><td style="padding:6px;">kèhù</td><td style="padding:6px;">client</td></tr>
+				<tr><td style="padding:6px;">价格</td><td style="padding:6px;">jiàgé</td><td style="padding:6px;">price</td></tr>
+				<tr><td style="padding:6px;">市场</td><td style="padding:6px;">shìchǎng</td><td style="padding:6px;">market</td></tr>
+				<tr><td style="padding:6px;">订单</td><td style="padding:6px;">dìngdān</td><td style="padding:6px;">order</td></tr>
+				<tr><td style="padding:6px;">讨论</td><td style="padding:6px;">tǎolùn</td><td style="padding:6px;">discuss / discussion</td></tr>
+				<tr><td style="padding:6px;">提案</td><td style="padding:6px;">tí'àn</td><td style="padding:6px;">proposal</td></tr>
+				<tr><td style="padding:6px;">签署</td><td style="padding:6px;">qiānshǔ</td><td style="padding:6px;">sign (contract)</td></tr>
+				<tr><td style="padding:6px;">预算</td><td style="padding:6px;">yùsuàn</td><td style="padding:6px;">budget</td></tr>
+				<tr><td style="padding:6px;">项目</td><td style="padding:6px;">xiàngmù</td><td style="padding:6px;">project</td></tr>
+				<tr><td style="padding:6px;">目标</td><td style="padding:6px;">mùbiāo</td><td style="padding:6px;">target / goal</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing intentions or requests<br>
+			我们需要… (We need …)<br>
+			请你… (Please …)<br>
+			我们需要准备会议资料。 (We need to prepare meeting materials.)<br>
+			请你签署这份合同。 (Please sign this contract.)</div>
+			
+			<div class="lesson-example">2. Making suggestions or proposals<br>
+			我建议… (I suggest …)<br>
+			可以考虑… (We can consider …)<br>
+			我建议增加预算。 (I suggest increasing the budget.)<br>
+			我们可以考虑拓展市场。 (We can consider expanding the market.)</div>
+			
+			<div class="lesson-example">3. Expressing goals or outcomes<br>
+			…的目标是… (The goal of … is …)<br>
+			项目的目标是提高销售额。 (The goal of the project is to increase sales.)<br>
+			…对…有帮助 (…is helpful for …)<br>
+			这份报告对客户沟通有帮助。 (This report is helpful for communicating with clients.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我们需要准备会议资料。 (We need to prepare meeting materials.)</li>
+				<li>请你签署这份合同。 (Please sign this contract.)</li>
+				<li>我建议增加预算。 (I suggest increasing the budget.)</li>
+				<li>项目的目标是提高销售额。 (The goal of the project is to increase sales.)</li>
+				<li>这份报告对客户沟通有帮助。 (This report is helpful for communicating with clients.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 11 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 11 — Formal Writing (邮件, 公告)</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Write formal emails and announcements in Chinese.</li>
+				<li>Use polite and professional expressions for work and academic contexts.</li>
+				<li>Understand sentence structures and vocabulary for formal written communication.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words/phrases)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">邮件</td><td style="padding:6px;">yóujiàn</td><td style="padding:6px;">email</td></tr>
+				<tr><td style="padding:6px;">公告</td><td style="padding:6px;">gōnggào</td><td style="padding:6px;">announcement</td></tr>
+				<tr><td style="padding:6px;">尊敬的</td><td style="padding:6px;">zūnjìng de</td><td style="padding:6px;">Dear / Respectful</td></tr>
+				<tr><td style="padding:6px;">收件人</td><td style="padding:6px;">shōujiànrén</td><td style="padding:6px;">recipient</td></tr>
+				<tr><td style="padding:6px;">发件人</td><td style="padding:6px;">fājiànrén</td><td style="padding:6px;">sender</td></tr>
+				<tr><td style="padding:6px;">主题</td><td style="padding:6px;">zhǔtí</td><td style="padding:6px;">subject / topic</td></tr>
+				<tr><td style="padding:6px;">内容</td><td style="padding:6px;">nèiróng</td><td style="padding:6px;">content</td></tr>
+				<tr><td style="padding:6px;">附件</td><td style="padding:6px;">fùjiàn</td><td style="padding:6px;">attachment</td></tr>
+				<tr><td style="padding:6px;">回复</td><td style="padding:6px;">huífù</td><td style="padding:6px;">reply</td></tr>
+				<tr><td style="padding:6px;">发送</td><td style="padding:6px;">fāsòng</td><td style="padding:6px;">send</td></tr>
+				<tr><td style="padding:6px;">注意事项</td><td style="padding:6px;">zhùyì shìxiàng</td><td style="padding:6px;">notes / instructions</td></tr>
+				<tr><td style="padding:6px;">截止日期</td><td style="padding:6px;">jiézhǐ rìqī</td><td style="padding:6px;">deadline</td></tr>
+				<tr><td style="padding:6px;">感谢</td><td style="padding:6px;">gǎnxiè</td><td style="padding:6px;">thanks / appreciate</td></tr>
+				<tr><td style="padding:6px;">请查收</td><td style="padding:6px;">qǐng cháshōu</td><td style="padding:6px;">please check / see attached</td></tr>
+				<tr><td style="padding:6px;">正式</td><td style="padding:6px;">zhèngshì</td><td style="padding:6px;">formal / official</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Opening and closing in formal emails<br>
+			尊敬的 + 收件人 (Dear …)<br>
+			此致 / 敬礼 (Sincerely / Best regards)</div>
+			
+			<div class="lesson-example">2. Polite requests<br>
+			请您… (Please …)<br>
+			麻烦您… (Kindly …)</div>
+			
+			<div class="lesson-example">3. Referring to attachments or deadlines<br>
+			附件中有… (In the attachment there is …)<br>
+			截止日期是… (The deadline is …)</div>
+			
+			<div class="lesson-example">4. Expressing gratitude<br>
+			感谢您的关注/回复 (Thank you for your attention/reply)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>尊敬的李老师： (Dear Teacher Li,)</li>
+				<li>请您查收附件中的会议资料。 (Please check the attached meeting materials.)</li>
+				<li>截止日期是下周五。 (The deadline is next Friday.)</li>
+				<li>麻烦您回复邮件。 (Kindly reply to this email.)</li>
+				<li>此致 敬礼！ (Sincerely / Best regards!)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 12 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 12 — Presentations & Debates</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Deliver a short presentation in Chinese.</li>
+				<li>Participate in debates using persuasive language.</li>
+				<li>Use formal connectors, opinion phrases, and logical structures.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words/phrases)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">演讲</td><td style="padding:6px;">yǎnjiǎng</td><td style="padding:6px;">presentation / speech</td></tr>
+				<tr><td style="padding:6px;">辩论</td><td style="padding:6px;">biànlùn</td><td style="padding:6px;">debate</td></tr>
+				<tr><td style="padding:6px;">观点</td><td style="padding:6px;">guāndiǎn</td><td style="padding:6px;">viewpoint / opinion</td></tr>
+				<tr><td style="padding:6px;">支持</td><td style="padding:6px;">zhīchí</td><td style="padding:6px;">support</td></tr>
+				<tr><td style="padding:6px;">反对</td><td style="padding:6px;">fǎnduì</td><td style="padding:6px;">oppose</td></tr>
+				<tr><td style="padding:6px;">理由</td><td style="padding:6px;">lǐyóu</td><td style="padding:6px;">reason / rationale</td></tr>
+				<tr><td style="padding:6px;">证据</td><td style="padding:6px;">zhèngjù</td><td style="padding:6px;">evidence</td></tr>
+				<tr><td style="padding:6px;">结论</td><td style="padding:6px;">jiélùn</td><td style="padding:6px;">conclusion</td></tr>
+				<tr><td style="padding:6px;">逻辑</td><td style="padding:6px;">luójí</td><td style="padding:6px;">logic</td></tr>
+				<tr><td style="padding:6px;">听众</td><td style="padding:6px;">tīngzhòng</td><td style="padding:6px;">audience</td></tr>
+				<tr><td style="padding:6px;">表达</td><td style="padding:6px;">biǎodá</td><td style="padding:6px;">express</td></tr>
+				<tr><td style="padding:6px;">说服</td><td style="padding:6px;">shuōfú</td><td style="padding:6px;">persuade</td></tr>
+				<tr><td style="padding:6px;">讨论</td><td style="padding:6px;">tǎolùn</td><td style="padding:6px;">discuss</td></tr>
+				<tr><td style="padding:6px;">优缺点</td><td style="padding:6px;">yōu quēdiǎn</td><td style="padding:6px;">pros and cons</td></tr>
+				<tr><td style="padding:6px;">同意</td><td style="padding:6px;">tóngyì</td><td style="padding:6px;">agree</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Expressing opinions<br>
+			我认为… (I think …)<br>
+			我的观点是… (My viewpoint is …)<br>
+			我认为环保非常重要。 (I think environmental protection is very important.)</div>
+			
+			<div class="lesson-example">2. Supporting arguments<br>
+			因为…所以… (Because …, therefore …)<br>
+			首先…其次…最后… (First …, then …, finally …)</div>
+			
+			<div class="lesson-example">3. Agreeing or disagreeing politely<br>
+			我同意你的观点，但是… (I agree with your opinion, but …)<br>
+			我支持…，但是我反对… (I support …, but I oppose …)</div>
+			
+			<div class="lesson-example">4. Concluding a presentation or debate<br>
+			总的来说… (In summary / overall …)<br>
+			由此可以得出结论… (From this, we can conclude …)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我的观点是，教育改革非常重要。 (My viewpoint is that education reform is very important.)</li>
+				<li>因为环保很重要，所以我们要减少塑料使用。 (Because environmental protection is important, we should reduce plastic use.)</li>
+				<li>首先，我们要了解问题，其次提出解决方案，最后总结。 (First, we understand the problem, then propose solutions, finally summarize.)</li>
+				<li>我同意你的观点，但是我认为还有其他因素。 (I agree with your opinion, but I think there are other factors.)</li>
+				<li>总的来说，这个项目值得投资。 (Overall, this project is worth investing in.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 13 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 13 — Advanced Health & Science Terms</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Understand and use advanced vocabulary related to health, medicine, and science.</li>
+				<li>Describe symptoms, medical procedures, and scientific phenomena in Chinese.</li>
+				<li>Communicate in professional or academic contexts regarding health and science.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words/phrases)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">健康</td><td style="padding:6px;">jiànkāng</td><td style="padding:6px;">health</td></tr>
+				<tr><td style="padding:6px;">疾病</td><td style="padding:6px;">jíbìng</td><td style="padding:6px;">disease / illness</td></tr>
+				<tr><td style="padding:6px;">症状</td><td style="padding:6px;">zhèngzhuàng</td><td style="padding:6px;">symptom</td></tr>
+				<tr><td style="padding:6px;">治疗</td><td style="padding:6px;">zhìliáo</td><td style="padding:6px;">treatment</td></tr>
+				<tr><td style="padding:6px;">手术</td><td style="padding:6px;">shǒushù</td><td style="padding:6px;">surgery</td></tr>
+				<tr><td style="padding:6px;">药物</td><td style="padding:6px;">yàowù</td><td style="padding:6px;">medication</td></tr>
+				<tr><td style="padding:6px;">医院</td><td style="padding:6px;">yīyuàn</td><td style="padding:6px;">hospital</td></tr>
+				<tr><td style="padding:6px;">医生</td><td style="padding:6px;">yīshēng</td><td style="padding:6px;">doctor</td></tr>
+				<tr><td style="padding:6px;">科学</td><td style="padding:6px;">kēxué</td><td style="padding:6px;">science</td></tr>
+				<tr><td style="padding:6px;">实验</td><td style="padding:6px;">shíyàn</td><td style="padding:6px;">experiment</td></tr>
+				<tr><td style="padding:6px;">研究</td><td style="padding:6px;">yánjiū</td><td style="padding:6px;">research</td></tr>
+				<tr><td style="padding:6px;">疫苗</td><td style="padding:6px;">yìmiáo</td><td style="padding:6px;">vaccine</td></tr>
+				<tr><td style="padding:6px;">健身</td><td style="padding:6px;">jiànshēn</td><td style="padding:6px;">fitness / exercise</td></tr>
+				<tr><td style="padding:6px;">心理健康</td><td style="padding:6px;">xīnlǐ jiànkāng</td><td style="padding:6px;">mental health</td></tr>
+				<tr><td style="padding:6px;">护理</td><td style="padding:6px;">hùlǐ</td><td style="padding:6px;">nursing / care</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Describing symptoms and conditions<br>
+			我感到… (I feel …)<br>
+			…有…症状 (…has … symptoms)<br>
+			我感到头痛。 (I feel a headache.)<br>
+			他有发烧和咳嗽的症状。 (He has symptoms of fever and cough.)</div>
+			
+			<div class="lesson-example">2. Talking about treatments and procedures<br>
+			…需要接受… (…needs to receive …)<br>
+			…正在接受… (…is undergoing …)<br>
+			他需要接受手术。 (He needs to undergo surgery.)<br>
+			病人正在接受治疗。 (The patient is receiving treatment.)</div>
+			
+			<div class="lesson-example">3. Expressing research and experiments<br>
+			…正在进行研究。 (…is conducting research.)<br>
+			…通过实验发现… (…found … through experiments)<br>
+			科学家正在进行疫苗研究。 (Scientists are conducting vaccine research.)<br>
+			通过实验发现这种药物有效。 (Through experiments, they found this medication effective.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>我感到头痛和喉咙痛。 (I feel a headache and sore throat.)</li>
+				<li>病人正在接受手术。 (The patient is undergoing surgery.)</li>
+				<li>科学家正在进行疫苗研究。 (Scientists are conducting vaccine research.)</li>
+				<li>他有发烧和咳嗽的症状。 (He has symptoms of fever and cough.)</li>
+				<li>健身有助于心理健康。 (Fitness helps mental health.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 14 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">🏫 Master Level 14 — History (朝代, 文化)</div>
+			
+			<div class="lesson-subtitle">🎯 Goals</div>
+			<div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+			<ul class="lesson-list">
+				<li>Discuss Chinese history, dynasties, and cultural developments.</li>
+				<li>Use chronological expressions and historical vocabulary.</li>
+				<li>Describe cultural practices and historical events in Chinese.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Vocabulary (15 words/phrases)</div>
+			<div class="lesson-example">
+			<table style="width:100%; border-collapse:collapse;">
+				<tr style="background:#f4f4fb; border-bottom:1px solid #ddd;">
+					<td style="padding:8px; font-weight:bold;">Chinese</td>
+					<td style="padding:8px; font-weight:bold;">Pinyin</td>
+					<td style="padding:8px; font-weight:bold;">English</td>
+				</tr>
+				<tr><td style="padding:6px;">朝代</td><td style="padding:6px;">cháodài</td><td style="padding:6px;">dynasty</td></tr>
+				<tr><td style="padding:6px;">历史</td><td style="padding:6px;">lìshǐ</td><td style="padding:6px;">history</td></tr>
+				<tr><td style="padding:6px;">文化</td><td style="padding:6px;">wénhuà</td><td style="padding:6px;">culture</td></tr>
+				<tr><td style="padding:6px;">皇帝</td><td style="padding:6px;">huángdì</td><td style="padding:6px;">emperor</td></tr>
+				<tr><td style="padding:6px;">王朝</td><td style="padding:6px;">wángcháo</td><td style="padding:6px;">royal dynasty</td></tr>
+				<tr><td style="padding:6px;">战争</td><td style="padding:6px;">zhànzhēng</td><td style="padding:6px;">war</td></tr>
+				<tr><td style="padding:6px;">统一</td><td style="padding:6px;">tǒngyī</td><td style="padding:6px;">unify / unified</td></tr>
+				<tr><td style="padding:6px;">政治</td><td style="padding:6px;">zhèngzhì</td><td style="padding:6px;">politics</td></tr>
+				<tr><td style="padding:6px;">经济</td><td style="padding:6px;">jīngjì</td><td style="padding:6px;">economy</td></tr>
+				<tr><td style="padding:6px;">农业</td><td style="padding:6px;">nóngyè</td><td style="padding:6px;">agriculture</td></tr>
+				<tr><td style="padding:6px;">手工艺</td><td style="padding:6px;">shǒugōngyì</td><td style="padding:6px;">handicraft</td></tr>
+				<tr><td style="padding:6px;">科技</td><td style="padding:6px;">kējì</td><td style="padding:6px;">technology / science</td></tr>
+				<tr><td style="padding:6px;">遗产</td><td style="padding:6px;">yíchǎn</td><td style="padding:6px;">heritage</td></tr>
+				<tr><td style="padding:6px;">名胜古迹</td><td style="padding:6px;">míngshèng gǔjì</td><td style="padding:6px;">historical sites / landmarks</td></tr>
+				<tr><td style="padding:6px;">传统节日</td><td style="padding:6px;">chuántǒng jiérì</td><td style="padding:6px;">traditional festival</td></tr>
+			</table>
+			</div>
+			
+			<div class="lesson-subtitle">📘 Grammar Focus</div>
+			
+			<div class="lesson-example">1. Talking about dynasties and historical periods<br>
+			…朝时期 (During the … dynasty)<br>
+			…在…年建立 / 统一 / 消失 (…was established / unified / ended in …)<br>
+			秦朝在公元前221年统一中国。 (The Qin dynasty unified China in 221 BC.)</div>
+			
+			<div class="lesson-example">2. Expressing cause and effect<br>
+			因为…所以… (Because …, therefore …)<br>
+			因为战争频繁，所以很多朝代更替。 (Because wars were frequent, many dynasties changed.)</div>
+			
+			<div class="lesson-example">3. Describing culture and achievements<br>
+			…以…著名 (…is famous for …)<br>
+			…的发展促进了… (The development of … promoted …)<br>
+			唐朝以诗歌和书法著名。 (The Tang dynasty is famous for poetry and calligraphy.)<br>
+			农业的发展促进了经济繁荣。 (The development of agriculture promoted economic prosperity.)</div>
+			
+			<div class="lesson-subtitle">📘 Example Sentences</div>
+			<ul class="lesson-list">
+				<li>秦朝在公元前221年统一中国。 (The Qin dynasty unified China in 221 BC.)</li>
+				<li>唐朝以诗歌和书法著名。 (The Tang dynasty is famous for poetry and calligraphy.)</li>
+				<li>因为战争频繁，所以很多朝代更替。 (Because wars were frequent, many dynasties changed.)</li>
+				<li>农业的发展促进了经济繁荣。 (The development of agriculture promoted economic prosperity.)</li>
+				<li>北京有很多名胜古迹，比如故宫和长城。 (Beijing has many historical landmarks, such as the Forbidden City and the Great Wall.)</li>
+			</ul>
+		</div>
+		
+		<!-- Master Level 16 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 16 – Philosophy (道, 儒家, 佛)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Understand key philosophical schools: Daoism, Confucianism, Buddhism.</li>
+				<li>Learn core terms & how to use them in discussion.</li>
+				<li>Be able to compare/contrast philosophies in Chinese.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>道 (Dao / The Way)</li>
+				<li>儒家 (Confucianism)</li>
+				<li>佛 (Buddha / Buddhism)</li>
+				<li>和谐 (harmony)</li>
+				<li>道德 (morality)</li>
+				<li>修身 (self-cultivation)</li>
+				<li>慈悲 (compassion)</li>
+				<li>智慧 (wisdom)</li>
+				<li>中庸 (the Doctrine of the Mean)</li>
+				<li>自然 (nature, naturalness)</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Structures</div>
+			
+			<div class="lesson-example">以…为… → "regard … as …"<br>
+			儒家以道德为中心。 (Confucianism regards morality as central.)</div>
+			
+			<div class="lesson-example">注重… → "emphasize …"<br>
+			佛教注重慈悲。 (Buddhism emphasizes compassion.)</div>
+			
+			<div class="lesson-example">既…又… → "both…and"<br>
+			道家既强调自然，又强调和谐。</div>
+			
+			<div class="lesson-example">认为… → "believe/think that …"<br>
+			他认为修身很重要。</div>
+		</div>
+		
+		<!-- Master Level 17 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 17 – Society & Culture Issues (社会与文化问题)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn how to discuss modern society & cultural issues in Chinese.</li>
+				<li>Practice expressing opinions, agreements, disagreements.</li>
+				<li>Connect cultural vocabulary with daily conversations.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>社会 (society)</li>
+				<li>文化 (culture)</li>
+				<li>问题 (issue/problem)</li>
+				<li>发展 (development)</li>
+				<li>传统 (tradition)</li>
+				<li>现代化 (modernization)</li>
+				<li>教育 (education)</li>
+				<li>平等 (equality)</li>
+				<li>环境 (environment)</li>
+				<li>全球化 (globalization)</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Structures</div>
+			
+			<div class="lesson-example">对…的看法 → opinion about …<br>
+			你对教育的看法是什么？</div>
+			
+			<div class="lesson-example">一方面…另一方面… → on one hand… on the other hand…<br>
+			现代化一方面带来便利，另一方面带来问题。</div>
+			
+			<div class="lesson-example">导致… → lead to…<br>
+			全球化导致文化交流。</div>
+			
+			<div class="lesson-example">值得… → worth (doing) …<br>
+			这个问题值得讨论。</div>
+		</div>
+		
+		<!-- Master Level 18 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 18 – Proverbs & Quotes (成语与名言)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn common Chinese proverbs & famous quotes.</li>
+				<li>Understand their meanings & cultural background.</li>
+				<li>Practice using them in sentences.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary & Proverbs</div>
+			<ul class="lesson-list">
+				<li>成语 (chéngyǔ) — idiom</li>
+				<li>名言 (míngyán) — famous quote</li>
+				<li>学而不思则罔 (Learning without thinking is useless — Confucius)</li>
+				<li>知足常乐 (Contentment brings happiness)</li>
+				<li>失败是成功之母 (Failure is the mother of success)</li>
+				<li>活到老，学到老 (Live and learn)</li>
+				<li>光阴似箭 (Time flies like an arrow)</li>
+				<li>百闻不如一见 (Seeing is believing)</li>
+				<li>言必行，行必果 (Keep your word, take responsibility)</li>
+				<li>有志者事竟成 (Where there's a will, there's a way)</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">…说明… → indicates…<br>
+			成语"光阴似箭"说明时间过得很快。</div>
+			
+			<div class="lesson-example">…告诉我们… → tells us…<br>
+			名言"失败是成功之母"告诉我们不要害怕失败。</div>
+			
+			<div class="lesson-example">…的意思是… → means…<br>
+			成语"百闻不如一见"的意思是看到比听到更可靠。</div>
+		</div>
+		
+		<!-- Master Level 19 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 19 – Media & Journalism (媒体与新闻)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn vocabulary about media, news, and journalism.</li>
+				<li>Practice reading, reporting, and expressing opinions on news.</li>
+				<li>Understand sentence patterns for discussing current events.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>新闻 (xīnwén) — news</li>
+				<li>报纸 (bàozhǐ) — newspaper</li>
+				<li>记者 (jìzhě) — journalist, reporter</li>
+				<li>媒体 (méitǐ) — media</li>
+				<li>网络新闻 (wǎngluò xīnwén) — online news</li>
+				<li>政治新闻 (zhèngzhì xīnwén) — political news</li>
+				<li>社会新闻 (shèhuì xīnwén) — social news</li>
+				<li>国际新闻 (guójì xīnwén) — international news</li>
+				<li>报道 (bàodào) — report</li>
+				<li>采访 (cǎifǎng) — interview</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">A 报道了 B → A reported B<br>
+			报纸报道了昨天的国际新闻。</div>
+			
+			<div class="lesson-example">根据…(source), … → According to …<br>
+			根据记者的报道，这个消息是真的。</div>
+			
+			<div class="lesson-example">…引起了…的关注 → attracted …'s attention<br>
+			这条新闻引起了社会的关注。</div>
+		</div>
+		
+		<!-- Master Level 20 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 20 – Poetry (唐诗, 宋词)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn key vocabulary for classical Chinese poetry.</li>
+				<li>Understand the cultural importance of 唐诗 (Tang poetry) and 宋词 (Song poetry).</li>
+				<li>Practice simple appreciation and analysis of poetry.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>唐诗 (tángshī) — Tang poetry</li>
+				<li>宋词 (sòngcí) — Song poetry</li>
+				<li>诗人 (shīrén) — poet</li>
+				<li>李白 (Lǐ Bái) — famous Tang dynasty poet</li>
+				<li>杜甫 (Dù Fǔ) — famous Tang dynasty poet</li>
+				<li>词牌 (cípái) — tune pattern of Song ci poetry</li>
+				<li>诗句 (shījù) — verse, poetic line</li>
+				<li>意境 (yìjìng) — artistic conception, imagery</li>
+				<li>押韵 (yāyùn) — rhyme</li>
+				<li>名句 (míngjù) — famous line</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">…以…著名 → famous for …<br>
+			李白以浪漫的诗歌著名。</div>
+			
+			<div class="lesson-example">…表达了… → expresses …<br>
+			这首诗表达了诗人的思乡之情。</div>
+			
+			<div class="lesson-example">在…中 → in/within …<br>
+			在宋词中，爱情主题很常见。</div>
+		</div>
+		
+		<!-- Master Level 21 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 21 – Chinese Idioms Deeper (成语故事)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn deeper idioms (成语) and their stories/origins.</li>
+				<li>Understand how to use idioms in sentences.</li>
+				<li>Improve reading comprehension and cultural awareness.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>成语 (chéngyǔ) — idiom</li>
+				<li>典故 (diǎngù) — historical allusion</li>
+				<li>画蛇添足 (huàshétiānzú) — overdo something unnecessary</li>
+				<li>守株待兔 (shǒuzhūdàitù) — wait idly for luck</li>
+				<li>自相矛盾 (zìxiāngmáodùn) — self-contradictory</li>
+				<li>井底之蛙 (jǐngdǐzhīwā) — person with limited view</li>
+				<li>掩耳盗铃 (yǎn'ěr-dàolíng) — deceive oneself</li>
+				<li>狐假虎威 (hújiǎhǔwēi) — bully by borrowing power</li>
+				<li>纸上谈兵 (zhǐshàngtánbīng) — empty talk without practice</li>
+				<li>塞翁失马 (sàiwēngshīmǎ) — blessing in disguise</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">成语的意思是… → the idiom means …<br>
+			成语"画蛇添足"的意思是做多余的事。</div>
+			
+			<div class="lesson-example">成语来自…的故事 → comes from the story of …<br>
+			守株待兔来自一个古代农民的故事。</div>
+			
+			<div class="lesson-example">可以用来形容… → can be used to describe …<br>
+			"自相矛盾"可以用来形容一个人说话前后不一致。</div>
+		</div>
+		
+		<!-- Master Level 22 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 22 – Negotiation Skills (谈判技巧)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn vocabulary and expressions for negotiation.</li>
+				<li>Practice polite persuasion, compromise, and formal communication.</li>
+				<li>Understand sentence structures for proposals, agreements, and objections.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>谈判 (tánpàn) — negotiation</li>
+				<li>协商 (xiéshāng) — to consult, discuss</li>
+				<li>条件 (tiáojiàn) — conditions</li>
+				<li>提议 (tíyì) — proposal, suggestion</li>
+				<li>折中 (zhézhōng) — compromise</li>
+				<li>同意 (tóngyì) — agree</li>
+				<li>反对 (fǎnduì) — oppose</li>
+				<li>优势 (yōushì) — advantage</li>
+				<li>劣势 (lièshì) — disadvantage</li>
+				<li>合同 (hétóng) — contract</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">…提出… → … put forward / propose …<br>
+			他提出一个新的合作方案。</div>
+			
+			<div class="lesson-example">…同意/反对… → agree / disagree with …<br>
+			我们同意你的建议。</div>
+			
+			<div class="lesson-example">…的优势是…，劣势是… → …'s advantage is …, disadvantage is …<br>
+			这个方案的优势是成本低，劣势是时间长。</div>
+			
+			<div class="lesson-example">…可以折中… → … can compromise …<br>
+			我们可以折中在价格上。</div>
+		</div>
+		
+		<!-- Master Level 23 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 23 – Argumentation (Persuasive Structures)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn vocabulary and structures for making persuasive arguments in Chinese.</li>
+				<li>Practice giving reasons, supporting opinions, and persuading others.</li>
+				<li>Understand sentence connectors like 因为…所以…, 虽然…但是…, 既…又…</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>观点 (guāndiǎn) — viewpoint, opinion</li>
+				<li>论据 (lùnjù) — argument, evidence</li>
+				<li>说服 (shuōfú) — persuade</li>
+				<li>理由 (lǐyóu) — reason</li>
+				<li>支持 (zhīchí) — support</li>
+				<li>反对 (fǎnduì) — oppose</li>
+				<li>因为…所以… — because… therefore…</li>
+				<li>虽然…但是… — although… but…</li>
+				<li>既…又… — both… and…</li>
+				<li>总结 (zǒngjié) — summarize</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">因为…所以… → shows cause and effect<br>
+			因为天气不好，所以比赛取消了。</div>
+			
+			<div class="lesson-example">虽然…但是… → shows contrast<br>
+			虽然很累，但是我还是完成了作业。</div>
+			
+			<div class="lesson-example">既…又… → shows two qualities simultaneously<br>
+			这本书既有趣，又有教育意义。</div>
+			
+			<div class="lesson-example">我的观点是… → introducing your opinion<br>
+			我的观点是教育很重要。</div>
+			
+			<div class="lesson-example">我支持/反对… → express support or opposition<br>
+			我支持这个提议，因为它有利于大家。</div>
+		</div>
+		
+		<!-- Master Level 24 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 24 – Advanced Narratives (高级叙述)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn vocabulary and structures for telling stories and advanced narratives.</li>
+				<li>Practice sequence, cause-effect, and elaboration in storytelling.</li>
+				<li>Use connectors like 从前, 然后, 后来, 最终 to improve fluency.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>从前 (cóngqián) — once upon a time / in the past</li>
+				<li>然后 (ránhòu) — then / afterwards</li>
+				<li>后来 (hòulái) — later</li>
+				<li>最终 (zuìzhōng) — finally</li>
+				<li>故事 (gùshì) — story</li>
+				<li>角色 (juésè) — role / character</li>
+				<li>情节 (qíngjié) — plot</li>
+				<li>描述 (miáoshù) — describe</li>
+				<li>发展 (fāzhǎn) — development / unfold</li>
+				<li>转折 (zhuǎnzhé) — plot twist / turning point</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">从前…然后…后来…最终… → narrative sequence<br>
+			从前有一个小村庄，然后发生了一场大雨，后来村民们合作修路，最终村庄更加繁荣。</div>
+			
+			<div class="lesson-example">角色 + 描述 → describe characters<br>
+			主角是一个勇敢的少年。</div>
+			
+			<div class="lesson-example">情节的发展 → describe plot development<br>
+			情节发展得非常紧凑。</div>
+			
+			<div class="lesson-example">转折句 → turning points<br>
+			本来一切顺利，但是突然出现了问题。</div>
+		</div>
+		
+		<!-- Master Level 25 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 25 – Chinese Classics (《论语》, 《孙子兵法》)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn key vocabulary and expressions from Chinese classics.</li>
+				<li>Understand important concepts in Confucianism (《论语》) and military strategy (《孙子兵法》).</li>
+				<li>Practice using classical terms in modern sentences.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>仁 (rén) — benevolence, kindness</li>
+				<li>礼 (lǐ) — ritual, propriety</li>
+				<li>智 (zhì) — wisdom</li>
+				<li>勇 (yǒng) — courage</li>
+				<li>孙子 (Sūnzi) — Sun Tzu</li>
+				<li>兵法 (bīngfǎ) — military strategy</li>
+				<li>谋略 (móulüè) — strategy / tactics</li>
+				<li>上将 (shàngjiàng) — general</li>
+				<li>攻守 (gōngshǒu) — offense and defense</li>
+				<li>知己知彼 (zhījǐ zhībǐ) — know yourself and the enemy</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">知己知彼，百战不殆 → classic idiom meaning "know yourself and your enemy, and you will never be defeated."</div>
+			
+			<div class="lesson-example">仁者爱人 → the benevolent person loves others.</div>
+			
+			<div class="lesson-example">用…来… → use … to …<br>
+			用谋略来战胜敌人。</div>
+			
+			<div class="lesson-example">如果…就… → conditional statements<br>
+			如果敌人强大，就采取防守策略。</div>
+			
+			<div class="lesson-example">…是…的重要原则 → … is an important principle of …<br>
+			仁是儒家思想的重要原则。</div>
+		</div>
+		
+		<!-- Master Level 26 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 26 – Humor & Slang (网络用语 / 网路用语)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn popular internet slang, emojis, and humorous expressions used in modern Chinese online communication.</li>
+				<li>Practice understanding context, tone, and meaning in casual conversation.</li>
+				<li>Learn how to use slang appropriately in sentences.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>666 — awesome, great (used for praising)</li>
+				<li>尬聊 (gàliáo) — awkward chat</li>
+				<li>佛系 (fóxì) — "Buddha-like," laid-back attitude</li>
+				<li>萌 (méng) — cute</li>
+				<li>皮 (pí) — playful, mischievous</li>
+				<li>吃瓜 (chī guā) — to watch the drama / gossip</li>
+				<li>打 call (dǎ call) — to show support / cheer</li>
+				<li>硬核 (yìnghé) — hardcore, intense</li>
+				<li>表情包 (biǎoqíng bāo) — meme / emoji pack</li>
+				<li>上头 (shàngtóu) — obsessed / excited about something</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">A + 666 → praise someone or something<br>
+			你的舞跳得真棒，666！</div>
+			
+			<div class="lesson-example">A + 吃瓜 → watching drama or gossip<br>
+			我们去网上吃瓜吧。</div>
+			
+			<div class="lesson-example">A + 佛系 → describe a laid-back attitude<br>
+			他对工作很佛系。</div>
+			
+			<div class="lesson-example">打 call + A → cheer for or support someone<br>
+			我为偶像打 call！</div>
+			
+			<div class="lesson-example">既…又… → something has two qualities at once<br>
+			这个视频既搞笑，又有创意。</div>
+		</div>
+		
+		<!-- Master Level 27 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 27 – Advanced Conditional (即使…也…)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn advanced conditional structures in Chinese.</li>
+				<li>Understand how to express concessions, hypotheticals, and contrasts.</li>
+				<li>Practice using 即使…也…, 哪怕…也…, and other conditional forms in sentences.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>即使 (jíshǐ) — even if / even though</li>
+				<li>也 (yě) — still / also</li>
+				<li>哪怕 (nǎpà) — even if / no matter</li>
+				<li>虽然 (suīrán) — although</li>
+				<li>但是 (dànshì) — but / however</li>
+				<li>尽管 (jǐnguǎn) — despite / even though</li>
+				<li>依然 (yīrán) — still / nevertheless</li>
+				<li>条件 (tiáojiàn) — condition</li>
+				<li>结果 (jiéguǒ) — result / outcome</li>
+				<li>决定 (juédìng) — decision / decide</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">即使…也… → "even if…, still…"<br>
+			即使下雨，我也要去跑步。</div>
+			
+			<div class="lesson-example">哪怕…也… → "even if…, still…" (stronger emphasis)<br>
+			哪怕再累，他也会坚持学习。</div>
+			
+			<div class="lesson-example">虽然…但是… → although…but…<br>
+			虽然天气很冷，但是我们还是去爬山了。</div>
+			
+			<div class="lesson-example">尽管…依然… → although…still…<br>
+			尽管遇到困难，他依然坚持完成任务。</div>
+			
+			<div class="lesson-example">Result clauses with conditionals<br>
+			如果你努力学习，就会取得好成绩。</div>
+		</div>
+		
+		<!-- Master Level 28 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 28 – Advanced Passive & Causative (让, 使)</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn advanced usage of passive and causative constructions in Chinese.</li>
+				<li>Understand how 让 (ràng) and 使 (shǐ) function in sentences.</li>
+				<li>Practice expressing cause, permission, influence, and making someone do something.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>让 (ràng) — let / allow / make</li>
+				<li>使 (shǐ) — cause / make / enable</li>
+				<li>被 (bèi) — passive marker</li>
+				<li>影响 (yǐngxiǎng) — influence / affect</li>
+				<li>结果 (jiéguǒ) — result / outcome</li>
+				<li>决定 (juédìng) — decision / decide</li>
+				<li>高兴 (gāoxìng) — happy / pleased</li>
+				<li>生气 (shēngqì) — angry</li>
+				<li>必须 (bìxū) — must / have to</li>
+				<li>事情 (shìqíng) — matter / thing</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">让 + someone + verb → "let/make someone do something"<br>
+			老师让我做作业。 (The teacher made me do homework.)</div>
+			
+			<div class="lesson-example">使 + someone + verb / adjective → "cause/make someone do / feel something"<br>
+			这件事使他很生气。 (This thing made him very angry.)</div>
+			
+			<div class="lesson-example">被 + verb → passive voice<br>
+			作业被老师批评了。 (The homework was criticized by the teacher.)</div>
+			
+			<div class="lesson-example">…影响了… → "…affected/influenced …"<br>
+			天气影响了比赛的结果。 (The weather affected the game's outcome.)</div>
+			
+			<div class="lesson-example">Result clauses<br>
+			这件事让他决定离开公司。 (This made him decide to leave the company.)</div>
+		</div>
+		
+		<!-- Master Level 29 Lesson -->
+		<div class="lesson-section">
+			<div class="lesson-level">📕 Level 29 – Abstract Comparative Structures</div>
+			
+			<div class="lesson-subtitle">🎯 Learning Goals</div>
+			<ul class="lesson-list">
+				<li>Learn advanced ways to make comparisons in Chinese, including abstract concepts.</li>
+				<li>Understand 比, 没有, 更, 最, and abstract comparative expressions.</li>
+				<li>Practice evaluating qualities, ideas, and abstract nouns.</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📖 Vocabulary</div>
+			<ul class="lesson-list">
+				<li>比 (bǐ) — compare, than</li>
+				<li>没有 (méiyǒu) — not as… as</li>
+				<li>更 (gèng) — even more</li>
+				<li>最 (zuì) — most / -est</li>
+				<li>重要 (zhòngyào) — important</li>
+				<li>难 (nán) — difficult</li>
+				<li>简单 (jiǎndān) — simple</li>
+				<li>快乐 (kuàilè) — happy</li>
+				<li>有趣 (yǒuqù) — interesting</li>
+				<li>复杂 (fùzá) — complicated</li>
+			</ul>
+			
+			<div class="lesson-subtitle">📘 Grammar / Usage Structures</div>
+			
+			<div class="lesson-example">A 比 B + adj → A is … than B<br>
+			学中文比学日文难。 (Learning Chinese is harder than learning Japanese.)</div>
+			
+			<div class="lesson-example">A 没有 B + adj → A is not as … as B<br>
+			中文没有英文简单。 (Chinese is not as simple as English.)</div>
+			
+			<div class="lesson-example">更 + adj → even more …<br>
+			今天更冷了。 (It is even colder today.)</div>
+			
+			<div class="lesson-example">最 + adj → the most … / -est<br>
+			他是最聪明的学生。 (He is the smartest student.)</div>
+			
+			<div class="lesson-example">Comparing abstract concepts<br>
+			爱比钱重要。 (Love is more important than money.)<br>
+			自由没有权力容易。 (Freedom is not as easy as power.)</div>
+		</div>
 		
 		<button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="window.location.href='../index.html'">Back to Home</button>
 	</div>
+
+	<script>
+		// Page Scroller Functionality
+		document.addEventListener('DOMContentLoaded', function() {
+			const lessonSections = document.querySelectorAll('.lesson-section');
+			const lessonNav = document.getElementById('lessonNav');
+			
+			// Create navigation buttons for each lesson (1-14, then 16-29)
+			lessonSections.forEach((section, index) => {
+				const button = document.createElement('button');
+				button.className = 'lesson-nav-btn';
+				// Calculate correct lesson number (1-14, then 16-29)
+				const lessonNumber = index < 14 ? index + 1 : index + 2;
+				button.textContent = `L${lessonNumber}`;
+				button.onclick = () => scrollToLesson(index);
+				lessonNav.appendChild(button);
+			});
+			
+			// Update active lesson based on scroll position
+			function updateActiveLesson() {
+				const scrollPosition = window.scrollY + window.innerHeight / 2;
+				const navButtons = document.querySelectorAll('.lesson-nav-btn');
+				
+				lessonSections.forEach((section, index) => {
+					const sectionTop = section.offsetTop;
+					const sectionBottom = sectionTop + section.offsetHeight;
+					
+					if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+						navButtons.forEach(btn => btn.classList.remove('active'));
+						navButtons[index].classList.add('active');
+					}
+				});
+			}
+			
+			// Listen for scroll events
+			window.addEventListener('scroll', updateActiveLesson);
+			updateActiveLesson();
+		});
+		
+		// Scroll function for lesson navigation
+		function scrollToLesson(index) {
+			const lessonSections = document.querySelectorAll('.lesson-section');
+			if (lessonSections[index]) {
+				lessonSections[index].scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			}
+		}
+	</script>
 </body>
 </html>

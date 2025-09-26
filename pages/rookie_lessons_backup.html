@@ -2051,7 +2051,21 @@
                 const levelElement = section.querySelector('.lesson-level');
                 if (levelElement) {
                     const levelText = levelElement.textContent;
-                    const displayText = `L${index + 1}`;
+                    let displayText;
+                    
+                    // First 6 sections are Units (U1-U6)
+                    if (index < 6) {
+                        displayText = `U${index + 1}`;
+                    } 
+                    // Next sections are lessons: L1-L14, then L16-L30
+                    else {
+                        const lessonIndex = index - 6; // Subtract 6 for the units
+                        if (lessonIndex < 14) {
+                            displayText = `L${lessonIndex + 1}`; // L1-L14
+                        } else {
+                            displayText = `L${lessonIndex + 2}`; // L16-L30 (skip L15)
+                        }
+                    }
                     
                     const navBtn = document.createElement('button');
                     navBtn.className = 'lesson-nav-btn';
