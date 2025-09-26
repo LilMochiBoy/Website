@@ -182,168 +182,166 @@
 	}
 
 	const originalQuestions = [
-		// Part A: Match Numbers (1-10)
+		// Q1–Q10 — Vocabulary / Numbers
 		{
-			q: 'Part A: Match Numbers<br><br>Match: 一',
-			options: ['one', 'two', 'three', 'four'],
+			q: 'Q1–Q10 — Vocabulary / Numbers<br><br>Q1: What is the Chinese character for number "3"?',
+			options: ['三', '五', '四', '六'],
 			answer: 0
 		},
 		{
-			q: 'Match: 五',
-			options: ['three', 'four', 'five', 'six'],
-			answer: 2
+			q: 'Q2: Which one means eight (8)?',
+			options: ['九', '八', '七', '六'],
+			answer: 1
 		},
 		{
-			q: 'Match: 十',
-			options: ['eight', 'nine', 'ten', 'eleven'],
-			answer: 2
+			q: 'Q3: Fill in the blank: The pinyin for 四 is ___.',
+			options: ['sì', 'wǔ', 'liù', 'qī'],
+			answer: 0
 		},
 		{
-			q: 'Match: 九',
-			options: ['seven', 'eight', 'nine', 'ten'],
-			answer: 2
+			q: 'Q4: Which one means "years old"?',
+			options: ['岁', '几', '大', '天'],
+			answer: 0
 		},
 		{
-			q: 'Match: 二十',
-			options: ['twelve', 'fifteen', 'eighteen', 'twenty'],
+			q: 'Q5: Translate into English: 十.',
+			options: ['Nine', 'Ten', 'Eleven', 'Twelve'],
+			answer: 1
+		},
+		{
+			q: 'Q6: What is the Chinese for "zero"?',
+			options: ['零', '十', '一', '百'],
+			answer: 0
+		},
+		{
+			q: 'Q7: Write the Chinese for the number "7" (character only).',
+			options: ['六', '七', '八', '九'],
+			answer: 1
+		},
+		{
+			q: 'Q8: Which phrase is used to ask "How old (any age)?"',
+			options: ['几岁', '多大', '多少', '谁'],
+			answer: 1
+		},
+		{
+			q: 'Q9: Fill: 我 ___ 岁。 (I am … years old.)',
+			options: ['十八', '二十', '十五', 'Any number'],
 			answer: 3
 		},
 		{
-			q: 'Match: 七',
-			options: ['five', 'six', 'seven', 'eight'],
-			answer: 2
-		},
-		{
-			q: 'Match: 十三',
-			options: ['eleven', 'twelve', 'thirteen', 'fourteen'],
-			answer: 2
-		},
-		{
-			q: 'Match: 四',
-			options: ['two', 'three', 'four', 'five'],
-			answer: 2
-		},
-		{
-			q: 'Match: 十六',
-			options: ['fourteen', 'fifteen', 'sixteen', 'seventeen'],
-			answer: 2
-		},
-		{
-			q: 'Match: 零',
-			options: ['zero', 'one', 'two', 'three'],
-			answer: 0
-		},
-		
-		// Part B: Fill in the Blank (11-15)
-		{
-			q: 'Part B: Fill in the Blank<br><br>12 = 十 ___',
-			options: ['一', '二', '三', '四'],
-			answer: 1
-		},
-		{
-			q: '17 = 十 ___',
-			options: ['五', '六', '七', '八'],
-			answer: 2
-		},
-		{
-			q: '3 apples = 三 ___ 苹果',
-			options: ['个', '只', '本', '张'],
-			answer: 0
-		},
-		{
-			q: '2 people = ___ 个 人',
-			options: ['一', '两', '三', '四'],
-			answer: 1
-		},
-		{
-			q: 'I am 15 years old = 我 ___ 岁',
-			options: ['十四', '十五', '十六', '十七'],
+			q: 'Q10: Translate into Chinese: "nine" = ___.',
+			options: ['八', '九', '十', '七'],
 			answer: 1
 		},
 		
-		// Part C: Translation (16-20)
+		// Q11–Q20 — Grammar / Sentences
 		{
-			q: 'Part C: Translation<br><br>Translate: 8',
-			options: ['七 (qī)', '八 (bā)', '九 (jiǔ)', '十 (shí)'],
-			answer: 1
-		},
-		{
-			q: 'Translate: 14',
-			options: ['十三 (shí sān)', '十四 (shí sì)', '十五 (shí wǔ)', '十六 (shí liù)'],
-			answer: 1
-		},
-		{
-			q: 'Translate: 20',
-			options: ['十九 (shí jiǔ)', '二十 (èr shí)', '二十一 (èr shí yī)', '三十 (sān shí)'],
-			answer: 1
-		},
-		{
-			q: 'Translate: "How many students?"',
-			options: ['多少学生？/几个学生？', '你好吗？', '多少钱？', '几岁？'],
+			q: 'Q11–Q20 — Grammar / Sentences<br><br>Q11: Which is correct for "I am 15 years old"?',
+			options: ['我十五岁。', '我十五大。', '我十五。', '我岁十五。'],
 			answer: 0
 		},
 		{
-			q: 'Translate: "How much is it?"',
-			options: ['多少学生？', '你好吗？', '多少钱？', '几岁？'],
-			answer: 2
-		},
-		
-		// Part D: Multiple Choice (21-25)
-		{
-			q: 'Part D: Multiple Choice<br><br>"十八" means:',
-			options: ['8', '18', '28', '38'],
-			answer: 1
-		},
-		{
-			q: 'How to say "zero"?',
-			options: ['二', '十', '零', '一'],
+			q: 'Q12: Multiple choice: "How old are you?" (formal/general way)',
+			options: ['你多少？', '你几岁？', '你多大？', '你几大？'],
 			answer: 2
 		},
 		{
-			q: 'Which is correct for "two people"?',
-			options: ['二个人', '两个人', '二人个', '两人个'],
+			q: 'Q13: Which sentence is correct?',
+			options: ['你几岁？', '你岁几？', '几岁你？', '岁你几？'],
+			answer: 0
+		},
+		{
+			q: 'Q14: Fill the blank: "I am 20 years old" = 我___岁。 (use 二十).',
+			options: ['十九', '二十', '二十一', '三十'],
 			answer: 1
 		},
 		{
-			q: '"你几岁？" is asking:',
-			options: ['How are you?', 'How old are you?', 'How much is this?', 'How many?'],
+			q: 'Q15: Which is a natural short reply to "你多大？"',
+			options: ['十', '我十八岁。', '岁', '我好。'],
 			answer: 1
 		},
 		{
-			q: '"多少" is used for:',
-			options: ['Small numbers', 'Big numbers/money', 'Only ages', 'Only time'],
+			q: 'Q16: Reorder into correct sentence: (岁 / 我 / 十五).',
+			options: ['岁我十五', '我十五岁', '十五我岁', '我岁十五'],
+			answer: 1
+		},
+		{
+			q: 'Q17: Multiple choice: How do you say "And you?" politely after an age answer?',
+			options: ['你呢？', '你吗？', '你不？', '你也？'],
+			answer: 0
+		},
+		{
+			q: 'Q18: Translate into Chinese: "He is 25 years old." (options given)',
+			options: ['他二十五岁。', '他二十岁。', '他五岁。', '他十五岁。'],
+			answer: 0
+		},
+		{
+			q: 'Q19: Which is the correct way to ask a child\'s age (under 10)?',
+			options: ['你多大？', '你几岁？', '你多少？', '你岁几？'],
+			answer: 1
+		},
+		{
+			q: 'Q20: Fill: 我二十三岁。 means "I am ___ years old."',
+			options: ['21', '22', '23', '24'],
+			answer: 2
+		},
+		
+		// Q21–Q25 — Translation
+		{
+			q: 'Q21–Q25 — Translation<br><br>Q21: Translate into Chinese: "I am 18 years old."',
+			options: ['我十七岁。', '我十八岁。', '我十九岁。', '我二十岁。'],
+			answer: 1
+		},
+		{
+			q: 'Q22: Translate into English: 你几岁？',
+			options: ['How are you?', 'How old are you? (for child)', 'What is your name?', 'Where are you from?'],
+			answer: 1
+		},
+		{
+			q: 'Q23: Translate into Chinese: "She is 9 years old."',
+			options: ['她八岁。', '她九岁。', '她十岁。', '她七岁。'],
+			answer: 1
+		},
+		{
+			q: 'Q24: Translate into English: 我二十岁。',
+			options: ['I am 12 years old.', 'I am 20 years old.', 'I am 22 years old.', 'I am 30 years old.'],
+			answer: 1
+		},
+		{
+			q: 'Q25: Translate into Chinese: "How old is he?" (general form).',
+			options: ['他几岁？', '他多大？', '他多少？', '他叫什么？'],
 			answer: 1
 		},
 		
-		// Part E: Short Answers (26-30)
+		// Q26–Q30 — Comprehension
 		{
-			q: 'Part E: Short Answers<br><br>Write "11" in Chinese:',
-			options: ['十 (shí)', '十一 (shí yī)', '十二 (shí èr)', '二十 (èr shí)'],
-			answer: 1
-		},
-		{
-			q: 'Write "19" in Chinese:',
-			options: ['十八 (shí bā)', '十九 (shí jiǔ)', '二十 (èr shí)', '九十 (jiǔ shí)'],
-			answer: 1
-		},
-		{
-			q: 'Say: "I have one friend."',
-			options: ['我有一个朋友', '我是一个朋友', '我有一个老师', '我有两个朋友'],
+			q: 'Q26–Q30 — Comprehension<br><br>Dialogue A:<br>A: 你几岁？<br>B: 我七岁。<br><br>Q26: How old is B?',
+			options: ['7', '17', '70', 'Not mentioned'],
 			answer: 0
 		},
 		{
-			q: 'Say: "She is 7 years old."',
-			options: ['她八岁', '她七岁', '她六岁', '她九岁'],
+			q: 'Q27: Dialogue B:<br>A: 你多大？<br>B: 我二十一岁。你呢？<br>A: 我二十岁。<br><br>How old is B?',
+			options: ['21', '20', '12', '22'],
+			answer: 0
+		},
+		{
+			q: 'Q28: How old is A?',
+			options: ['12', '22', '20', '21'],
+			answer: 2
+		},
+		{
+			q: 'Q29: Dialogue C:<br>A: 他多大？<br>B: 他三十岁。<br><br>What is his age?',
+			options: ['13', '30', '31', 'Not sure'],
 			answer: 1
 		},
 		{
-			q: 'Ask: "How many apples?"',
-			options: ['几个苹果？', '多少苹果？', '什么苹果？', '谁的苹果？'],
-			answer: 0
+			q: 'Q30: Dialogue D:<br>A: 你多大？<br>B: 我十八岁。<br><br>Translate B\'s reply into English.',
+			options: ['I am 17 years old.', 'I am 18 years old.', 'I am 19 years old.', 'I am 20 years old.'],
+			answer: 1
 		}
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions]; // Keep original order, no shuffling
 
 	let current = 0;
 	let score = 0;
@@ -368,8 +366,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -384,16 +381,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -408,7 +400,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) { // Use original answer index since we're not shuffling
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';

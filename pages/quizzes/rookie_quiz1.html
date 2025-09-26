@@ -202,14 +202,7 @@
 		window.location.href = '../levels/rookie.html';
 	};
 
-	// Duolingo-style quiz logic
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+	// Duolingo-style quiz logic (no shuffling)
 
 	const originalQuestions = [
 		// Q1–Q10 — Vocabulary (choose or fill)
@@ -377,8 +370,8 @@
 		}
 	];
 
-	// Shuffle questions at the start
-	const questions = [...originalQuestions]; // No shuffling, keep original order
+	// Keep questions in original order
+	const questions = [...originalQuestions];
 
 	let current = 0;
 	let score = 0;

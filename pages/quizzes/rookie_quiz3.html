@@ -182,48 +182,164 @@
 	}
 
 	const originalQuestions = [
-		// Part A: Vocabulary Match
-		{ q: 'Match: 爸爸', options: ['father', 'mother', 'brother', 'sister'], answer: 0 },
-		{ q: 'Match: 妈妈', options: ['father', 'mother', 'brother', 'sister'], answer: 1 },
-		{ q: 'Match: 哥哥', options: ['younger brother', 'older brother', 'father', 'son'], answer: 1 },
-		{ q: 'Match: 妹妹', options: ['older sister', 'younger sister', 'daughter', 'mother'], answer: 1 },
-		{ q: 'Match: 儿子', options: ['daughter', 'son', 'child', 'friend'], answer: 1 },
-		{ q: 'Match: 女儿', options: ['daughter', 'son', 'child', 'friend'], answer: 0 },
-		{ q: 'Match: 老师', options: ['student', 'teacher', 'friend', 'child'], answer: 1 },
-		{ q: 'Match: 学生', options: ['student', 'teacher', 'friend', 'child'], answer: 0 },
-		{ q: 'Match: 朋友', options: ['teacher', 'student', 'friend', 'child'], answer: 2 },
-		{ q: 'Match: 孩子', options: ['teacher', 'student', 'friend', 'child'], answer: 3 },
+		// Part A: Vocabulary (Q1–10)
+		{
+			q: 'Q1: Match: 爸爸 → ?',
+			options: ['Mom', 'Dad', 'Sister', 'Brother'],
+			answer: 1
+		},
+		{
+			q: 'Q2: 妹妹 means…',
+			options: ['Younger sister', 'Elder sister', 'Brother', 'Father'],
+			answer: 0
+		},
+		{
+			q: 'Q3: Translate: "elder brother" → ?',
+			options: ['弟弟', '哥哥', '妹妹', '姐姐'],
+			answer: 1
+		},
+		{
+			q: 'Q4: Translate: "妈妈" → ?',
+			options: ['Dad', 'Mom', 'Sister', 'Brother'],
+			answer: 1
+		},
+		{
+			q: 'Q5: Which is "family/home"?',
+			options: ['家', '爸爸', '朋友', '学生'],
+			answer: 0
+		},
+		{
+			q: 'Q6: 哥哥 is…',
+			options: ['Older brother', 'Younger brother', 'Sister', 'Father'],
+			answer: 0
+		},
+		{
+			q: 'Q7: Translate: "younger brother" → ?',
+			options: ['妹妹', '弟弟', '哥哥', '姐姐'],
+			answer: 1
+		},
+		{
+			q: 'Q8: Translate: "姐姐" → ?',
+			options: ['Younger sister', 'Elder sister', 'Brother', 'Mother'],
+			answer: 1
+		},
+		{
+			q: 'Q9: Which is "this is…"?',
+			options: ['那是…', '这是…', '的', '他是…'],
+			answer: 1
+		},
+		{
+			q: 'Q10: Which character means "possessive marker (\'s\')"?',
+			options: ['是', '的', '这', '那'],
+			answer: 1
+		},
 		
-		// Part B: Fill in the Blank
-		{ q: 'This is my mom = 这是我____。', options: ['妈妈', '爸爸', '哥哥', '朋友'], answer: 0 },
-		{ q: 'That is my dad = 那是我____。', options: ['妈妈', '爸爸', '哥哥', '朋友'], answer: 1 },
-		{ q: 'Who is she? = 她是____？', options: ['什么', '谁', '哪里', '怎么'], answer: 1 },
-		{ q: 'My older brother = 我____哥哥。', options: ['的', '是', '有', '在'], answer: 0 },
-		{ q: 'His friend = 他____朋友。', options: ['的', '是', '有', '在'], answer: 0 },
+		// Part B: Grammar (Q11–20)
+		{
+			q: 'Q11: Fill in the blank: 这是 ___ 妈妈。(my)',
+			options: ['我', '我的', '他的', '她的'],
+			answer: 1
+		},
+		{
+			q: 'Q12: Translate: "That is my elder brother."',
+			options: ['这是我的哥哥。', '那是我的哥哥。', '那是我的弟弟。', '这是我的弟弟。'],
+			answer: 1
+		},
+		{
+			q: 'Q13: Write in Chinese: "This is my family."',
+			options: ['那是我的家。', '这是我的家。', '这是他的家。', '那是他的家。'],
+			answer: 1
+		},
+		{
+			q: 'Q14: Which is correct?',
+			options: ['我的爸爸是这是。', '这是我的爸爸。', '爸爸我的这是。', '是这我的爸爸。'],
+			answer: 1
+		},
+		{
+			q: 'Q15: Translate: "她的弟弟" → ?',
+			options: ['His younger brother', 'Her younger brother', 'My younger brother', 'Your younger brother'],
+			answer: 1
+		},
+		{
+			q: 'Q16: True or False: 的 is used for possession.',
+			options: ['True', 'False'],
+			answer: 0
+		},
+		{
+			q: 'Q17: Fill in: 那是 ___ 哥哥。(her)',
+			options: ['我的', '他的', '她的', '你的'],
+			answer: 2
+		},
+		{
+			q: 'Q18: Choose: "This is her younger sister."',
+			options: ['这是她的妹妹。', '那是她的弟弟。', '这是他的妹妹。', '那是她的妹妹。'],
+			answer: 0
+		},
+		{
+			q: 'Q19: Translate: "That is his mom."',
+			options: ['这是他的妈妈。', '那是他的妈妈。', '那是她的妈妈。', '这是她的妈妈。'],
+			answer: 1
+		},
+		{
+			q: 'Q20: Rearrange: (爸爸 / 是 / 的 / 他 / 那) →',
+			options: ['爸爸那是他的。', '那是他的爸爸。', '他的那是爸爸。', '是那他的爸爸。'],
+			answer: 1
+		},
 		
-		// Part C: Translation
-		{ q: 'Translate: My father', options: ['我的爸爸', '我的妈妈', '我的哥哥', '我的朋友'], answer: 0 },
-		{ q: 'Translate: Her friend', options: ['他的朋友', '她的朋友', '我的朋友', '你的朋友'], answer: 1 },
-		{ q: 'Translate: This is my sister.', options: ['这是我的姐姐。', '那是我的妹妹。', '她是我的朋友。', '这是我的妈妈。'], answer: 0 },
-		{ q: 'Translate: Who is that man?', options: ['这个男人是谁？', '那个男人是谁？', '那个女人是谁？', '这个女人是谁？'], answer: 1 },
-		{ q: 'Translate: That is my teacher.', options: ['这是我的老师。', '那是我的老师。', '他是我的老师。', '她是我的老师。'], answer: 1 },
-		
-		// Part D: Multiple Choice
-		{ q: '"哥哥" means:', options: ['younger brother', 'older brother', 'father', 'son'], answer: 1 },
-		{ q: '"她的妈妈" means:', options: ['my mother', 'her mother', 'his mother', 'your mother'], answer: 1 },
-		{ q: 'Which is correct for "Who is he?"', options: ['他是吗？', '他是人？', '他是谁？', '他是什么？'], answer: 2 },
-		{ q: '"爷爷" refers to:', options: ['maternal grandfather', 'paternal grandfather', 'uncle', 'father'], answer: 1 },
-		{ q: '"朋友" means:', options: ['teacher', 'friend', 'student', 'child'], answer: 1 },
-		
-		// Part E: Short Dialogue Practice
-		{ q: 'A: 这是谁？ B: ____', options: ['这是我的妈妈。', '那是我的爸爸。', '她是我的朋友。', '他是我的老师。'], answer: 0 },
-		{ q: 'A: 那是谁？ B: ____', options: ['这是我的妈妈。', '那是我的朋友。', '她是我的姐姐。', '他是我的哥哥。'], answer: 1 },
-		{ q: 'A: 他是你哥哥吗？ B: ____', options: ['是的，他是我哥哥。', '不是，他是我弟弟。', '不是，他是我爸爸。', '是的，她是我姐姐。'], answer: 1 },
-		{ q: 'A: 她是谁？ B: ____', options: ['他是我的朋友。', '她是我的姐姐。', '这是我的妈妈。', '那是我的老师。'], answer: 1 },
-		{ q: 'A: 你有几个孩子？ B: ____', options: ['我有一个孩子。', '我有两个孩子。', '我有三个孩子。', '我没有孩子。'], answer: 1 }
+		// Part C: Sentence Practice (Q21–30)
+		{
+			q: 'Part C: Sentence Practice (Q21–30)<br><br>Q21: Translate: "This is my dad and mom."',
+			options: ['这是我的爸爸和妈妈。', '那是我的爸爸和妈妈。', '这是他的爸爸和妈妈。', '那是他的爸爸和妈妈。'],
+			answer: 0
+		},
+		{
+			q: 'Q22: Translate: "That is my elder sister."',
+			options: ['这是我的姐姐。', '那是我的姐姐。', '那是我的妹妹。', '这是我的妹妹。'],
+			answer: 1
+		},
+		{
+			q: 'Q23: Translate: "He is my younger brother."',
+			options: ['他是我的哥哥。', '他是我的弟弟。', '她是我的弟弟。', '他是他的弟弟。'],
+			answer: 1
+		},
+		{
+			q: 'Q24: Translate: "She is my mom."',
+			options: ['他是我的妈妈。', '她是我的妈妈。', '她是他的妈妈。', '他是他的妈妈。'],
+			answer: 1
+		},
+		{
+			q: 'Q25: Write in Chinese: "This is his family."',
+			options: ['这是我的家。', '这是他的家。', '那是他的家。', '这是她的家。'],
+			answer: 1
+		},
+		{
+			q: 'Q26: Write in Chinese: "That is my elder brother."',
+			options: ['这是我的哥哥。', '那是我的哥哥。', '那是我的弟弟。', '这是我的弟弟。'],
+			answer: 1
+		},
+		{
+			q: 'Q27: Write in Chinese: "This is her dad."',
+			options: ['这是他的爸爸。', '这是她的爸爸。', '那是她的爸爸。', '这是我的爸爸。'],
+			answer: 1
+		},
+		{
+			q: 'Q28: Write in Chinese: "That is my younger sister."',
+			options: ['这是我的妹妹。', '那是我的妹妹。', '那是我的姐姐。', '这是我的姐姐。'],
+			answer: 1
+		},
+		{
+			q: 'Q29: Write in Chinese: "This is my home."',
+			options: ['那是我的家。', '这是我的家。', '这是他的家。', '那是他的家。'],
+			answer: 1
+		},
+		{
+			q: 'Q30: Write in Chinese: "That is my family."',
+			options: ['这是我的家。', '那是我的家。', '这是他的家。', '那是他的家。'],
+			answer: 1
+		}
 	];
 
-	const questions = shuffleArray([...originalQuestions]);
+	const questions = [...originalQuestions]; // Keep original order, no shuffling
 
 	let current = 0;
 	let score = 0;
@@ -248,8 +364,7 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
+		// Reset to original questions without shuffling
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -264,16 +379,11 @@
 		questionDiv.innerHTML = q.q;
 		answersDiv.innerHTML = '';
 
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
-
-		shuffledOptions.forEach((optObj, i) => {
+		// Don't shuffle options, keep original order
+		q.options.forEach((opt, i) => {
 			const btn = document.createElement('button');
 			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
+			btn.textContent = opt;
 			btn.onclick = () => checkAnswer(i);
 			const fill = document.createElement('div');
 			fill.className = `answer-fill c${i + 1}`;
@@ -288,7 +398,7 @@
 		if (paused) return;
 		const q = questions[current];
 		let correct = false;
-		if(idx === q._shuffledAnswerIdx) {
+		if(idx === q.answer) { // Use original answer index since we're not shuffling
 			correct = true;
 			score++;
 			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
