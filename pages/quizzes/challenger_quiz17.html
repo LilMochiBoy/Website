@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Challenger Quiz Level 17</title>
+<title>Challenger Quiz 17</title>
 <link rel="stylesheet" href="../../assets/css/style.css">
 <style>
 .buzzer-effect {
@@ -192,12 +192,11 @@ pauseModal.style.display = 'none';
 current = 0;
 score = 0;
 for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
 function shuffleArray(arr) {
@@ -209,19 +208,171 @@ return arr;
 }
 
 const originalQuestions = [
-// Questions will be added later
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>医生</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>医院</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>生病</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 8
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>看病</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>感冒</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>发烧</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 5
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>咳嗽</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 6
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>喉咙痛</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 7
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>吃药</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 9
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打针</strong>',
+options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
+answer: 1
+},
+// Part B - Multiple Choice Grammar / Sentences (10 Questions)
+{
+q: '我___了，要去医院。 (sick)',
+options: ['生病', '吃药', '打针', '发烧'],
+answer: 0
+},
+{
+q: '他头疼，要___。 (take medicine)',
+options: ['吃药', '休息', '打针', '看病'],
+answer: 0
+},
+{
+q: '你哪里___？ (unwell)',
+options: ['不舒服', '生病', '吃药', '发烧'],
+answer: 0
+},
+{
+q: '我发烧了，要___。 (rest)',
+options: ['休息', '吃药', '看病', '打针'],
+answer: 0
+},
+{
+q: '她喉咙痛，所以不能说话太多。',
+options: ['正确', '错误'],
+answer: 0
+},
+{
+q: '你应该___。 (drink more water)',
+options: ['多喝水', '打针', '看病', '发烧'],
+answer: 0
+},
+{
+q: '他去医院___了。 (get an injection)',
+options: ['打针', '吃药', '休息', '看病'],
+answer: 0
+},
+{
+q: '我感冒了，鼻子不___。 (blocked)',
+options: ['通气', '疼', '发烧', '打针'],
+answer: 0
+},
+{
+q: '你生病了吗？',
+options: ['Are you sick?', 'Do you have a fever?', 'Where do you feel unwell?', 'Take medicine'],
+answer: 0
+},
+{
+q: '不要___太多药。 (take)',
+options: ['吃', '打', '看', '休息'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: 'Fill in the blank:<br>我___了，需要去医院。 (sick)',
+options: ['生病', '吃药', '发烧', '咳嗽'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>他头疼，要___。 (take medicine)',
+options: ['吃药', '休息', '打针', '看病'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>你哪里___？ (unwell)',
+options: ['不舒服', '生病', '疼痛', '发烧'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>我发烧了，要___。 (rest)',
+options: ['休息', '吃药', '看病', '打针'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>他去医院___了。 (get an injection)',
+options: ['打针', '吃药', '休息', '看病'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I am sick and need to go to the hospital.</strong>',
+options: ['我生病了，需要去医院。', '我发烧了，需要吃药。', '我头疼了，需要休息。', '我感冒了，需要打针。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He has a headache and needs to take medicine.</strong>',
+options: ['他头疼，要吃药。', '他感冒，要休息。', '他发烧，要打针。', '他咳嗽，要看病。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Where do you feel unwell?</strong>',
+options: ['你哪里不舒服？', '你什么时候生病？', '你为什么发烧？', '你怎么吃药？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>You should drink more water.</strong>',
+options: ['你应该多喝水。', '你应该多吃药。', '你应该多休息。', '你应该多打针。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Don\'t take too much medicine.</strong>',
+options: ['不要吃太多药。', '不要喝太多水。', '不要打太多针。', '不要休息太多。'],
+answer: 0
+}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +380,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
+const btn = document.createElement('button');
 btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +399,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! 💪';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +436,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +445,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(18);
 setTimeout(function() {
@@ -314,6 +465,7 @@ showQuestion();
 </script>
 </body>
 </html>
+
 
 
 

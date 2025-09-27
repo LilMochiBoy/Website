@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Challenger Quiz Level 18</title>
+<title>Challenger Quiz 18</title>
 <link rel="stylesheet" href="../../assets/css/style.css">
 <style>
 .buzzer-effect {
@@ -192,12 +192,11 @@ pauseModal.style.display = 'none';
 current = 0;
 score = 0;
 for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
 function shuffleArray(arr) {
@@ -209,19 +208,171 @@ return arr;
 }
 
 const originalQuestions = [
-// Questions will be added later
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>比</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>更</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>最</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>高</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>矮</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 7
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>漂亮</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 9
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>可爱</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>聪明</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 8
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>有趣</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 6
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>好吃</strong>',
+options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+answer: 5
+},
+// Part B - Multiple Choice Grammar / Sentences (10 Questions)
+{
+q: '我___他高。 (taller than)',
+options: ['比', '更', '最', '有'],
+answer: 0
+},
+{
+q: '今天比昨天___。 (colder)',
+options: ['冷', '高', '快', '热'],
+answer: 0
+},
+{
+q: '她___漂亮。 (even more)',
+options: ['更', '比', '最', '很'],
+answer: 0
+},
+{
+q: '这道菜___好吃。 (most delicious)',
+options: ['最', '比', '更', '很'],
+answer: 0
+},
+{
+q: '他比我聪明，但妹妹___聪明。 (even more)',
+options: ['更', '比', '最', '很'],
+answer: 0
+},
+{
+q: '我的狗比你的狗___。 (cuter)',
+options: ['可爱', '漂亮', '聪明', '高'],
+answer: 0
+},
+{
+q: '这个电影比那个电影___。 (more interesting)',
+options: ['有趣', '难吃', '快', '高'],
+answer: 0
+},
+{
+q: '北京比上海冷，但哈尔滨___。 (coldest)',
+options: ['最冷', '更冷', '比冷', '很冷'],
+answer: 0
+},
+{
+q: '这本书___有趣。 (most interesting)',
+options: ['最', '比', '更', '很'],
+answer: 0
+},
+{
+q: '今天我觉得___热。 (even hotter)',
+options: ['更', '比', '最', '很'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: 'Fill in the blank:<br>我比他___。 (tall)',
+options: ['高', '矮', '快', '慢'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>今天比昨天___。 (cold)',
+options: ['冷', '热', '快', '慢'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>她___漂亮。 (even more)',
+options: ['更', '比', '最', '很'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>这道菜___好吃。 (most delicious)',
+options: ['最', '比', '更', '很'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>他比我聪明，但妹妹___聪明。 (even more)',
+options: ['更', '比', '最', '很'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I am taller than him.</strong>',
+options: ['我比他高。', '我比他矮。', '他比我高。', '我们一样高。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Today is colder than yesterday.</strong>',
+options: ['今天比昨天冷。', '今天比昨天热。', '昨天比今天冷。', '今天和昨天一样冷。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>She is even more beautiful.</strong>',
+options: ['她更漂亮。', '她最漂亮。', '她比较漂亮。', '她很漂亮。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>This dish is the most delicious.</strong>',
+options: ['这道菜最好吃。', '这道菜更好吃。', '这道菜比较好吃。', '这道菜很好吃。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Beijing is colder than Shanghai, but Harbin is the coldest.</strong>',
+options: ['北京比上海冷，但哈尔滨最冷。', '上海比北京冷，但哈尔滨最冷。', '北京比上海热，但哈尔滨最冷。', '北京和上海一样冷，但哈尔滨最冷。'],
+answer: 0
+}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +380,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
+const btn = document.createElement('button');
 btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +399,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! 💪';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +436,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +445,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(19);
 setTimeout(function() {
@@ -314,6 +465,7 @@ showQuestion();
 </script>
 </body>
 </html>
+
 
 
 
