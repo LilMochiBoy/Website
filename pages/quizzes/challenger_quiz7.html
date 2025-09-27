@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 7</title>
+    <title>Challenger Quiz Level 7</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         /* Copy the same styles as previous quizzes for consistency */
@@ -161,8 +161,8 @@
         </div>
     </div>
     <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 7: Globalization & Growth</span>
+        <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Challenger Quiz 7: Experience</span>
     </div>
     <div class="quiz-progress">
         <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,7 +191,7 @@
         showQuestion();
         document.getElementById('quiz-progress-bar').style.width = '0%';
     };
-    exitBtn.onclick = function() { window.location.href = 'challenger.html'; };
+    exitBtn.onclick = function() { window.location.href = '../levels/challenger.html'; };
 
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -202,148 +202,161 @@
     }
 
     const originalQuestions = [
-        {
-            q: 'Translate into English: 他正在适应新的环境�?,
-            options: [
-                'He is adapting to the new environment.',
-                'He is leaving the new environment.',
-                'He dislikes the new environment.',
-                'He is building a new environment.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 学习语言需要很多___�?(patience)',
-            options: [
-                '耐心',
-                '信心',
-                '决心',
-                '小心'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 我们应该尊重别人的选择�?,
-            options: [
-                'We should respect other people\'s choices.',
-                'We should ignore other people\'s choices.',
-                'We should change other people\'s choices.',
-                'We should criticize other people\'s choices.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Which idiom means “break the boat and sink it�?(fight with determination)?',
-            options: [
-                '破釜沉舟',
-                '画蛇添足',
-                '一举两�?,
-                '亡羊补牢'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 他是一个很有___的人，总是关心别人�?(compassion)',
-            options: [
-                '同情�?,
-                '信心',
-                '耐心',
-                '责任�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 这次会议将讨论经济发展的问题�?,
-            options: [
-                'This meeting will discuss issues of economic development.',
-                'This meeting is about sports.',
-                'This meeting is about travel.',
-                'This meeting is about health.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Rearrange: 我们 / 成功 / 努力 / 通过 / �?/ 获得',
-            type: 'rearrange',
-            items: ['我们', '成功', '努力', '通过', '�?, '获得'],
-            answer: ['我们', '通过', '努力', '获得', '�?, '成功']
-        },
-        {
-            q: 'Translate into Chinese: “Education is the key to changing one’s destiny.�?,
-            options: [
-                '教育是改变一个人命运的钥匙�?,
-                '教育让人变懒�?,
-                '教育没有用�?,
-                '教育让人紧张�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 互联网在现代生活中起着重要的___�?(role)',
-            options: [
-                '作用',
-                '影响',
-                '关系',
-                '变化'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into English: 他的想法非常独特�?,
-            options: [
-                'His ideas are very unique.',
-                'His ideas are very common.',
-                'His ideas are very old.',
-                'His ideas are very simple.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose: Which is the synonym of “全球化�?',
-            options: [
-                '国际�?,
-                '现代�?,
-                '本地�?,
-                '自动�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 我们必须不断学习，才能跟上社会的进步�?,
-            options: [
-                'We must keep learning to keep up with the progress of society.',
-                'We don\'t need to learn anymore.',
-                'Society never changes.',
-                'Learning is not important.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 这个故事让我很___�?(touched)',
-            options: [
-                '感动',
-                '紧张',
-                '生气',
-                '无聊'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “Freedom of speech is a basic human right。�?,
-            options: [
-                '言论自由是基本人权�?,
-                '言论自由不重要�?,
-                '人权和言论无关�?,
-                '言论自由让人紧张�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Short Writing: Write 10 sentences about the challenges and opportunities of globalization.',
-            options: ['__OPEN_ENDED__'],
-            answer: 0
-        }
-    ];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>去过</strong>',
+options: ['have been to', 'have played / done', 'have eaten', 'have seen / watched', 'have studied / learned'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>玩过</strong>',
+options: ['have been to', 'have played / done', 'have eaten', 'have seen / watched', 'have studied / learned'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>吃过</strong>',
+options: ['have been to', 'have played / done', 'have eaten', 'have seen / watched', 'have studied / learned'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>看过</strong>',
+options: ['have been to', 'have played / done', 'have eaten', 'have seen / watched', 'have studied / learned'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>学过</strong>',
+options: ['have been to', 'have played / done', 'have eaten', 'have seen / watched', 'have studied / learned'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>中国</strong>',
+options: ['China', 'Japan', 'France', 'movie', 'concert'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>日本</strong>',
+options: ['China', 'Japan', 'France', 'movie', 'concert'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>法国</strong>',
+options: ['China', 'Japan', 'France', 'movie', 'concert'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>电影</strong>',
+options: ['China', 'Japan', 'France', 'movie', 'concert'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>音乐会</strong>',
+options: ['China', 'Japan', 'France', 'movie', 'concert'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___中国。',
+options: ['去过', '玩过', '看过', '吃过'],
+answer: 0
+},
+{
+q: '你___日本吗？',
+options: ['去过', '学过', '看过', '吃过'],
+answer: 0
+},
+{
+q: '他没___法国。',
+options: ['去过', '玩过', '看过', '吃过'],
+answer: 0
+},
+{
+q: '我___饺子。',
+options: ['吃过', '去过', '玩过', '学过'],
+answer: 0
+},
+{
+q: '你___那部电影吗？',
+options: ['看过', '去过', '玩过', '吃过'],
+answer: 0
+},
+{
+q: '我___汉字。',
+options: ['学过', '看过', '去过', '玩过'],
+answer: 0
+},
+{
+q: '她___这个游戏。',
+options: ['玩过', '吃过', '去过', '看过'],
+answer: 0
+},
+{
+q: '我没___火锅。',
+options: ['吃过', '去过', '看过', '学过'],
+answer: 0
+},
+{
+q: '他___音乐会。',
+options: ['看过', '玩过', '吃过', '去过'],
+answer: 0
+},
+{
+q: '我___法国。',
+options: ['去过', '玩过', '看过', '学过'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___中国。 (have been to)',
+options: ['去过', '玩过', '看过', '吃过'],
+answer: 0
+},
+{
+q: '你___日本吗？ (have been to)',
+options: ['去过', '玩过', '看过', '吃过'],
+answer: 0
+},
+{
+q: '我___饺子。 (have eaten)',
+options: ['吃过', '去过', '玩过', '学过'],
+answer: 0
+},
+{
+q: '她___汉字。 (have studied)',
+options: ['学过', '去过', '玩过', '看过'],
+answer: 0
+},
+{
+q: '我没___火锅。 (have eaten)',
+options: ['吃过', '去过', '看过', '学过'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I have been to China.</strong>',
+options: ['我去过中国。', '我玩过中国。', '我看过中国。', '我吃过中国。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Have you been to Japan?</strong>',
+options: ['你去过日本吗？', '你玩过日本吗？', '你看过日本吗？', '你吃过日本吗？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He hasn\'t been to France.</strong>',
+options: ['他没去过法国。', '他没玩过法国。', '他没看过法国。', '他没吃过法国。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I have eaten dumplings.</strong>',
+options: ['我吃过饺子。', '我去过饺子。', '我玩过饺子。', '我看过饺子。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>She has studied Chinese characters.</strong>',
+options: ['她学过汉字。', '她去过汉字。', '她玩过汉字。', '她看过汉字。'],
+answer: 0
+}
+];
 
     const questions = shuffleArray([...originalQuestions]);
     let current = 0;
@@ -570,8 +583,8 @@
     }
 
     function setUnlockedLevel(level) {
-        localStorage.setItem('rookieUnlockedLevel', String(level));
-        var username = localStorage.getItem('rookieUserId');
+        localStorage.setItem('challengerUnlockedLevel', String(level));
+        var username = localStorage.getItem('challengerUserId');
         if (username) {
             fetch('http://localhost:3000/api/updateProgress', {
                 method: 'POST',
@@ -601,5 +614,6 @@
     </script>
 </body>
 </html>
+
 
 

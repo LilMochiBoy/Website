@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 9</title>
+    <title>Challenger Quiz Level 9</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         /* Copy the same styles as previous quizzes for consistency */
@@ -161,8 +161,8 @@
         </div>
     </div>
     <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 9: Innovation & Justice</span>
+        <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Challenger Quiz 9: Requests & Politeness</span>
     </div>
     <div class="quiz-progress">
         <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,7 +191,7 @@
         showQuestion();
         document.getElementById('quiz-progress-bar').style.width = '0%';
     };
-    exitBtn.onclick = function() { window.location.href = 'challenger.html'; };
+    exitBtn.onclick = function() { window.location.href = '../levels/challenger.html'; };
 
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -202,148 +202,161 @@
     }
 
     const originalQuestions = [
-        {
-            q: 'Translate: 他在研究方面做出了重要贡献�?,
-            options: [
-                'He has made important contributions in research.',
-                'He has made no contributions.',
-                'He is not interested in research.',
-                'He left the research field.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 在困难面前，他从不___�?(retreat)',
-            options: [
-                '退�?,
-                '放弃',
-                '犹豫',
-                '生气'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “Justice is the cornerstone of society.�?,
-            options: [
-                '正义是社会的基石�?,
-                '社会需要公平�?,
-                '社会很复杂�?,
-                '正义很重要�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Which idiom means “no pain, no gain�?',
-            options: [
-                '一分耕耘，一分收�?,
-                '画蛇添足',
-                '一举两�?,
-                '亡羊补牢'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 他在公司里担任很重要的___�?(position)',
-            options: [
-                '职位',
-                '任务',
-                '兴趣',
-                '能力'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into English: 他的演讲内容十分精彩�?,
-            options: [
-                'The content of his speech was wonderful.',
-                'His speech was boring.',
-                'He did not give a speech.',
-                'His speech was short.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 我们必须采取___措施来解决这个问题�?(effective)',
-            options: [
-                '有效',
-                '简�?,
-                '普�?,
-                '暂时'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 这个问题需要通过合作来解决�?,
-            options: [
-                'This problem needs to be solved through cooperation.',
-                'This problem is easy to solve.',
-                'This problem cannot be solved.',
-                'This problem is not important.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Rearrange: 创新 / 经济 / 推动 / �?/ 发展',
-            type: 'rearrange',
-            items: ['创新', '经济', '推动', '�?, '发展'],
-            answer: ['创新', '推动', '经济', '发展', '�?]
-        },
-        {
-            q: 'Translate: 我坚信努力会带来成功�?,
-            options: [
-                'I firmly believe that hard work brings success.',
-                'I don\'t believe in hard work.',
-                'Success is not important.',
-                'Hard work is useless.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose: Which is closest to 公平?',
-            options: [
-                '公正',
-                '自由',
-                '安全',
-                '幸福'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 保护环境不仅是政府的责任，也是___的责任�?(everyone’s)',
-            options: [
-                '每个�?,
-                '老师',
-                '学生',
-                '家长'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 他在国际会议上发表了重要演讲�?,
-            options: [
-                'He gave an important speech at the international conference.',
-                'He missed the conference.',
-                'He was not invited to the conference.',
-                'He listened to a speech at the conference.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “History teaches us valuable lessons。�?,
-            options: [
-                '历史教会了我们宝贵的经验�?,
-                '历史很无聊�?,
-                '我们不需要历史�?,
-                '历史让人困惑�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Short Essay: Write 10�?2 sentences about the role of innovation in the modern economy.',
-            options: ['__OPEN_ENDED__'],
-            answer: 0
-        }
-    ];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>帮忙</strong>',
+options: ['help / assist', 'can you / may I?', 'trouble / bother', 'please', 'bring'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>可以吗</strong>',
+options: ['help / assist', 'can you / may I?', 'trouble / bother', 'please', 'bring'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>麻烦</strong>',
+options: ['help / assist', 'can you / may I?', 'trouble / bother', 'please', 'bring'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>请</strong>',
+options: ['help / assist', 'can you / may I?', 'trouble / bother', 'please', 'bring'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>带</strong>',
+options: ['help / assist', 'can you / may I?', 'trouble / bother', 'please', 'bring'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>拿</strong>',
+options: ['take / hold', 'write', 'make a phone call', 'open', 'close / turn off'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打电话</strong>',
+options: ['take / hold', 'write', 'make a phone call', 'open', 'close / turn off'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打开</strong>',
+options: ['take / hold', 'write', 'make a phone call', 'open', 'close / turn off'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>关</strong>',
+options: ['take / hold', 'write', 'make a phone call', 'open', 'close / turn off'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>写</strong>',
+options: ['take / hold', 'write', 'make a phone call', 'open', 'close / turn off'],
+answer: 1
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '请___拿一下书。',
+options: ['帮忙', '写', '打开', '关'],
+answer: 0
+},
+{
+q: '你___帮忙吗？',
+options: ['可以', '写', '打', '带'],
+answer: 0
+},
+{
+q: '我可以___窗户吗？',
+options: ['打开', '拿', '写', '带'],
+answer: 0
+},
+{
+q: '对不起，我没___。',
+options: ['时间', '帮忙', '写', '打'],
+answer: 0
+},
+{
+q: '没问题，我可以___。',
+options: ['帮忙', '写', '打', '拿'],
+answer: 0
+},
+{
+q: '请___我那支笔。',
+options: ['给', '拿', '打开', '写'],
+answer: 0
+},
+{
+q: '你能___我汉字吗？',
+options: ['教', '拿', '写', '打'],
+answer: 0
+},
+{
+q: '请___我一下。',
+options: ['等', '打', '拿', '教'],
+answer: 0
+},
+{
+q: '我需要你帮忙___作业。',
+options: ['做', '打', '写', '教'],
+answer: 0
+},
+{
+q: '你可以___一下吗？ (turn off)',
+options: ['关', '打开', '拿', '教'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '请___拿一下书。 (help)',
+options: ['帮忙', '写', '打开', '关'],
+answer: 0
+},
+{
+q: '你___帮忙吗？ (can)',
+options: ['可以', '写', '打', '带'],
+answer: 0
+},
+{
+q: '对不起，我没___。 (time)',
+options: ['时间', '帮忙', '写', '打'],
+answer: 0
+},
+{
+q: '请___我那支笔。 (give)',
+options: ['给', '拿', '打开', '写'],
+answer: 0
+},
+{
+q: '请___我一下。 (wait)',
+options: ['等', '打', '拿', '教'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>Please help me get the book.</strong>',
+options: ['请帮忙拿一下书。', '请写一下书。', '请打开一下书。', '请关一下书。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Can you help me?</strong>',
+options: ['你可以帮忙吗？', '你可以写吗？', '你可以打吗？', '你可以带吗？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Sorry, I don\'t have time.</strong>',
+options: ['对不起，我没时间。', '对不起，我没帮忙。', '对不起，我没写。', '对不起，我没打。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Please give me that pen.</strong>',
+options: ['请给我那支笔。', '请拿我那支笔。', '请打开我那支笔。', '请写我那支笔。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Please wait for me.</strong>',
+options: ['请等我一下。', '请打我一下。', '请拿我一下。', '请教我一下。'],
+answer: 0
+}
+];
 
     const questions = shuffleArray([...originalQuestions]);
     let current = 0;
@@ -570,8 +583,8 @@
     }
 
     function setUnlockedLevel(level) {
-        localStorage.setItem('rookieUnlockedLevel', String(level));
-        var username = localStorage.getItem('rookieUserId');
+        localStorage.setItem('challengerUnlockedLevel', String(level));
+        var username = localStorage.getItem('challengerUserId');
         if (username) {
             fetch('http://localhost:3000/api/updateProgress', {
                 method: 'POST',
@@ -601,5 +614,6 @@
     </script>
 </body>
 </html>
+
 
 

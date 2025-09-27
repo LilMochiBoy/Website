@@ -161,7 +161,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Challenger Quiz 10</span>
+		<span class="duo-title">Challenger Quiz 10: Academic Vocabulary</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -192,9 +192,8 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
-		// Re-shuffle questions for a fresh start
+		// Reset questions in original order
 		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -211,11 +210,164 @@
 	}
 
 	const originalQuestions = [
-		// Questions will be added later
-	];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>考试</strong>',
+options: ['exam / test', 'review / revise', 'prepare', 'study', 'notes'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>复习</strong>',
+options: ['exam / test', 'review / revise', 'prepare', 'study', 'notes'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>准备</strong>',
+options: ['exam / test', 'review / revise', 'prepare', 'study', 'notes'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>学习</strong>',
+options: ['exam / test', 'review / revise', 'prepare', 'study', 'notes'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>笔记</strong>',
+options: ['exam / test', 'review / revise', 'prepare', 'study', 'notes'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>题目</strong>',
+options: ['do exercises / questions', 'grade / score', 'pass', 'fail', 'test paper'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>成绩</strong>',
+options: ['do exercises / questions', 'grade / score', 'pass', 'fail', 'test paper'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>及格</strong>',
+options: ['do exercises / questions', 'grade / score', 'pass', 'fail', 'test paper'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>不及格</strong>',
+options: ['do exercises / questions', 'grade / score', 'pass', 'fail', 'test paper'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>试卷</strong>',
+options: ['do exercises / questions', 'grade / score', 'pass', 'fail', 'test paper'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我每天___汉字。',
+options: ['复习', '考试', '准备', '听力'],
+answer: 0
+},
+{
+q: '明天有___中文考试。',
+options: ['考试', '做题', '阅读', '口语'],
+answer: 0
+},
+{
+q: '我的___很好。',
+options: ['成绩', '试卷', '笔记', '听力'],
+answer: 0
+},
+{
+q: '他考试___。',
+options: ['及格', '不及格', '准备', '学习'],
+answer: 0
+},
+{
+q: '你___好了吗？',
+options: ['准备', '复习', '做题', '阅读'],
+answer: 0
+},
+{
+q: '请把题目___下来。',
+options: ['抄', '听', '写', '打'],
+answer: 0
+},
+{
+q: '我每天做___。',
+options: ['题', '笔记', '试卷', '阅读'],
+answer: 0
+},
+{
+q: '他考试___。 (fail)',
+options: ['不及格', '及格', '准备', '复习'],
+answer: 0
+},
+{
+q: '我学习___。 (study math)',
+options: ['数学', '汉字', '英语', '音乐'],
+answer: 0
+},
+{
+q: '明天有___听力考试。',
+options: ['一场', '很', '都', '没'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我每天___汉字。 (review)',
+options: ['复习', '考试', '准备', '听力'],
+answer: 0
+},
+{
+q: '明天有数学___。 (exam)',
+options: ['考试', '做题', '阅读', '口语'],
+answer: 0
+},
+{
+q: '我的___很好。 (grade)',
+options: ['成绩', '试卷', '笔记', '听力'],
+answer: 0
+},
+{
+q: '他考试___。 (fail)',
+options: ['不及格', '及格', '准备', '复习'],
+answer: 0
+},
+{
+q: '请把题目___下来。 (copy)',
+options: ['抄', '听', '写', '打'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I study Chinese every day.</strong>',
+options: ['我每天学习中文。', '我每天复习中文。', '我每天考试中文。', '我每天准备中文。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>There is a math exam tomorrow.</strong>',
+options: ['明天有数学考试。', '明天有数学做题。', '明天有数学阅读。', '明天有数学口语。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>My grade is very good.</strong>',
+options: ['我的成绩很好。', '我的试卷很好。', '我的笔记很好。', '我的听力很好。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He failed the exam.</strong>',
+options: ['他考试不及格。', '他考试及格。', '他考试准备。', '他考试复习。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Please copy the questions down.</strong>',
+options: ['请把题目抄下来。', '请把题目听下来。', '请把题目写下来。', '请把题目打下来。'],
+answer: 0
+}
+];
 
 	let questions = [...originalQuestions];
-	shuffleArray(questions);
+	// No shuffling - questions maintain specified sequence
 	let current = 0;
 	let score = 0;
 
@@ -325,6 +477,7 @@
 	</script>
 </body>
 </html>
+
 
 
 

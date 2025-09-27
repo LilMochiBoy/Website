@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 6</title>
+    <title>Challenger Quiz Level 6</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         /* Copy the same styles as previous quizzes for consistency */
@@ -161,8 +161,8 @@
         </div>
     </div>
     <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 6: Teamwork & Growth</span>
+        <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Challenger Quiz 6: Obligations</span>
     </div>
     <div class="quiz-progress">
         <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,7 +191,7 @@
         showQuestion();
         document.getElementById('quiz-progress-bar').style.width = '0%';
     };
-    exitBtn.onclick = function() { window.location.href = 'challenger.html'; };
+    exitBtn.onclick = function() { window.location.href = '../levels/challenger.html'; };
 
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -202,148 +202,161 @@
     }
 
     const originalQuestions = [
-        {
-            q: 'Translate: 他为社会做出了很多贡献�?,
-            options: [
-                'He has made many contributions to society.',
-                'He left society.',
-                'He criticized society.',
-                'He ignored society.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 这家公司在国内很有___�?(influence)',
-            options: [
-                '影响',
-                '经验',
-                '能力',
-                '兴趣'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose correct idiom: “to add fuel to the fire.�?,
-            options: [
-                '火上加油',
-                '画蛇添足',
-                '一举两�?,
-                '亡羊补牢'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into English: 这次比赛对他来说是一个很大的挑战�?,
-            options: [
-                'This competition is a big challenge for him.',
-                'He is not interested in the competition.',
-                'He won the competition easily.',
-                'The competition is not important to him.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 他的建议很有___，大家都采纳了�?(creativity)',
-            options: [
-                '创造力',
-                '压力',
-                '能力',
-                '动力'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 我们应该学会控制自己的情绪�?,
-            options: [
-                'We should learn to control our emotions.',
-                'We should ignore our emotions.',
-                'We should express our emotions freely.',
-                'We should avoid emotions.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Rearrange: 互联�?/ 改变 / �?/ 生活 / 我们�?,
-            type: 'rearrange',
-            items: ['互联�?, '改变', '�?, '生活', '我们�?],
-            answer: ['互联�?, '改变', '�?, '我们�?, '生活']
-        },
-        {
-            q: 'Translate: 她的表演给大家留下了深刻的印象�?,
-            options: [
-                'Her performance left a deep impression on everyone.',
-                'Her performance was boring.',
-                'No one watched her performance.',
-                'Her performance was short.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose: Which is a synonym of 交流?',
-            options: [
-                '沟�?,
-                '问题',
-                '经验',
-                '能力'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 如果遇到困难，我们应该互相___�?(help)',
-            options: [
-                '帮助',
-                '批评',
-                '拒绝',
-                '影响'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 他在国外留学期间认识了很多朋友�?,
-            options: [
-                'He made many friends while studying abroad.',
-                'He didn\'t make any friends.',
-                'He studied alone.',
-                'He didn\'t like studying abroad.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 他的态度非常___，大家都很喜欢他�?(friendly)',
-            options: [
-                '友好',
-                '冷淡',
-                '严肃',
-                '紧张'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 政府正在采取措施减少污染�?,
-            options: [
-                'The government is taking measures to reduce pollution.',
-                'The government is increasing pollution.',
-                'The government ignores pollution.',
-                'The government is not taking action.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Multiple choice: Which is more formal?',
-            options: [
-                '您能帮我一下吗�?,
-                '你能帮我一下吗�?,
-                '你帮我一下�?,
-                '帮我一下�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Short Essay: Write about the importance of teamwork in 8�?0 sentences.',
-            options: ['__OPEN_ENDED__'],
-            answer: 0
-        }
-    ];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>需要</strong>',
+options: ['need', 'must / have to', 'should', 'help', 'prepare'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>得</strong>',
+options: ['need', 'must / have to', 'should', 'help', 'prepare'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>应该</strong>',
+options: ['need', 'must / have to', 'should', 'help', 'prepare'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>帮助</strong>',
+options: ['need', 'must / have to', 'should', 'help', 'prepare'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>准备</strong>',
+options: ['need', 'must / have to', 'should', 'help', 'prepare'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>早睡</strong>',
+options: ['sleep early', 'take medicine', 'do homework', 'practice', 'rest'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>吃药</strong>',
+options: ['sleep early', 'take medicine', 'do homework', 'practice', 'rest'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>做作业</strong>',
+options: ['sleep early', 'take medicine', 'do homework', 'practice', 'rest'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>练习</strong>',
+options: ['sleep early', 'take medicine', 'do homework', 'practice', 'rest'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>休息</strong>',
+options: ['sleep early', 'take medicine', 'do homework', 'practice', 'rest'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___帮助。',
+options: ['需要', '得', '应该', '带'],
+answer: 0
+},
+{
+q: '你___早睡。',
+options: ['需要', '得', '准备', '练习'],
+answer: 1
+},
+{
+q: '我们___多复习。',
+options: ['需要', '得', '应该', '打扫'],
+answer: 2
+},
+{
+q: '他明天___带书去学校。',
+options: ['需要', '得', '应该', '吃药'],
+answer: 0
+},
+{
+q: '我___做作业。',
+options: ['需要', '得', '应该', '帮助'],
+answer: 1
+},
+{
+q: '你___多休息。',
+options: ['应该', '得', '需要', '准备'],
+answer: 0
+},
+{
+q: '今天我___练习汉字。',
+options: ['需要', '得', '应该', '带'],
+answer: 0
+},
+{
+q: '我们周末___打扫房间。',
+options: ['得', '需要', '应该', '带'],
+answer: 0
+},
+{
+q: '他每天早上___吃药。',
+options: ['需要', '得', '应该', '带'],
+answer: 0
+},
+{
+q: '我___准备明天的考试。',
+options: ['需要', '得', '应该', '带'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___帮助。 (need)',
+options: ['需要', '得', '应该', '带'],
+answer: 0
+},
+{
+q: '你___早睡。 (must)',
+options: ['需要', '得', '应该', '带'],
+answer: 1
+},
+{
+q: '我___复习中文。 (should)',
+options: ['需要', '得', '应该', '带'],
+answer: 2
+},
+{
+q: '他___带书去学校。 (need)',
+options: ['需要', '得', '应该', '练习'],
+answer: 0
+},
+{
+q: '我们周末___打扫房间。 (must)',
+options: ['需要', '得', '应该', '带'],
+answer: 1
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I need help.</strong>',
+options: ['我需要帮助。', '我得帮助。', '我应该帮助。', '我准备帮助。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>You must sleep early.</strong>',
+options: ['你需要早睡。', '你得早睡。', '你应该早睡。', '你准备早睡。'],
+answer: 1
+},
+{
+q: 'Translate to Chinese:<br><strong>I should review Chinese.</strong>',
+options: ['我需要复习中文。', '我得复习中文。', '我应该复习中文。', '我准备复习中文。'],
+answer: 2
+},
+{
+q: 'Translate to Chinese:<br><strong>He needs to bring books to school.</strong>',
+options: ['他需要带书去学校。', '他得带书去学校。', '他应该带书去学校。', '他准备带书去学校。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>We must clean the room on the weekend.</strong>',
+options: ['我们周末需要打扫房间。', '我们周末得打扫房间。', '我们周末应该打扫房间。', '我们周末准备打扫房间。'],
+answer: 1
+}
+];
 
     const questions = shuffleArray([...originalQuestions]);
     let current = 0;
@@ -570,8 +583,8 @@
     }
 
     function setUnlockedLevel(level) {
-        localStorage.setItem('rookieUnlockedLevel', String(level));
-        var username = localStorage.getItem('rookieUserId');
+        localStorage.setItem('challengerUnlockedLevel', String(level));
+        var username = localStorage.getItem('challengerUserId');
         if (username) {
             fetch('http://localhost:3000/api/updateProgress', {
                 method: 'POST',
@@ -601,5 +614,6 @@
     </script>
 </body>
 </html>
+
 
 
