@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Challenger Quiz Level 1</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -160,8 +160,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Challenger Quiz 1</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -199,7 +199,7 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
+		window.location.href = '../levels/challenger.html';
 	};
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
@@ -211,152 +211,161 @@
 	}
 
 	const originalQuestions = [
-    {
-        q: 'Translate into English:<br>他坚持每天跑步，不管天气怎么样�?,
-        options: [
-            'He insists on running every day, no matter what the weather is like.',
-            'He runs only when the weather is good.',
-            'He likes running in the rain.',
-            'He never runs when it rains.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which sentence correctly uses the word “尽管�?',
-        options: [
-            'a) 尽管他很忙，他还是来参加了会议�?,
-            'b) 他尽管很累，所以睡觉了�?,
-            'c) 他尽管不喜欢运动，因为他不健康�?,
-            'd) 尽管他迟到了，所以老师生气�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in the blank:<br>老师要求我们在下周五之前把作业___�?,
-        options: [
-            '完成',
-            '完了',
-            '结束',
-            '完结'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct measure word:<br>一___知识 (a piece of knowledge)',
-        options: [
-            '�?,
-            '�?,
-            '�?,
-            '�?
-        ],
-        answer: 2
-    },
-    {
-        q: 'Translate into Chinese:<br>“Although it was raining, we still went to the library.�?,
-        options: [
-            '尽管下雨了，我们还是去了图书馆�?,
-            '因为下雨了，我们没有去图书馆�?,
-            '我们去图书馆是因为下雨了�?,
-            '下雨了，所以我们去了图书馆�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best synonym of “复杂�?',
-        options: [
-            '困难',
-            '简�?,
-            '复杂',
-            '繁琐'
-        ],
-        answer: 3
-    },
-    {
-        q: 'Rearrange into a proper sentence:<br>成功 / 需�?/ 努力 / �?/ 耐心',
-        options: [
-            '成功需要努力和耐心�?,
-            '努力和耐心需要成功�?,
-            '需要成功和耐心努力�?,
-            '耐心和努力成功需要�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>他的话让我很感动�?,
-        options: [
-            'His words moved me.',
-            'He was touched by my words.',
-            'His words made me angry.',
-            'He made me laugh.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in with the right word:<br>我们必须保护环境，减少空气___�?,
-        options: [
-            '污染',
-            '新鲜',
-            '清洁',
-            '流动'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “to kill two birds with one stone�?',
-        options: [
-            '一举两�?,
-            '画蛇添足',
-            '亡羊补牢',
-            '井底之蛙'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into English:<br>他来中国是为了提高汉语水平�?,
-        options: [
-            'He came to China to improve his Chinese.',
-            'He came to China to travel.',
-            'He came to China for business.',
-            'He came to China to visit friends.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct usage of “不仅…而且…�?,
-        options: [
-            '他不仅会说英语，而且会说汉语�?,
-            '他不仅会说英语，因为他会说汉语�?,
-            '他不仅会说英语，所以会说汉语�?,
-            '他不仅会说英语，但是会说汉语�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in: 这件事很___，我们必须认真对待�?,
-        options: [
-            '重要',
-            '容易',
-            '轻松',
-            '简�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“Global warming is a big challenge for humanity.�?,
-        options: [
-            '全球变暖是人类面临的重大挑战�?,
-            '人类喜欢全球变暖�?,
-            '全球变暖对人类没有影响�?,
-            '人类解决了全球变暖的问题�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Short Writing (5�? sentences):<br>Write about an environmental problem in your country and give one possible solution in Chinese.',
-        options: ['__OPEN_ENDED__'],
-        answer: 0
-    }
-	];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>喜欢</strong>',
+options: ['often', 'dance', 'love', 'sometimes', 'like'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>爱</strong>',
+options: ['often', 'dance', 'love', 'sometimes', 'like'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>常常</strong>',
+options: ['often', 'dance', 'love', 'sometimes', 'like'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>有时候</strong>',
+options: ['often', 'dance', 'love', 'sometimes', 'like'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>玩游戏</strong>',
+options: ['play basketball', 'play games', 'read books', 'sing', 'listen to music'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>看书</strong>',
+options: ['play basketball', 'play games', 'read books', 'sing', 'listen to music'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>听音乐</strong>',
+options: ['play basketball', 'play games', 'read books', 'sing', 'listen to music'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>唱歌</strong>',
+options: ['play basketball', 'play games', 'read books', 'sing', 'listen to music'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>跳舞</strong>',
+options: ['often', 'dance', 'love', 'sometimes', 'like'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打篮球</strong>',
+options: ['play basketball', 'play games', 'read books', 'sing', 'listen to music'],
+answer: 0
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___听音乐。',
+options: ['常常', '有时候', '爱', '跳舞'],
+answer: 0
+},
+{
+q: '她___打篮球。',
+options: ['爱', '常常', '有时候', '听音乐'],
+answer: 0
+},
+{
+q: '他有时候___游戏。',
+options: ['玩', '看', '跳', '听'],
+answer: 0
+},
+{
+q: '你___做什么？',
+options: ['喜欢', '爱', '有时候', '常常'],
+answer: 0
+},
+{
+q: '我们常常___一起运动。',
+options: ['玩', '爱', '看', '听'],
+answer: 0
+},
+{
+q: '我___游泳。',
+options: ['爱', '常常', '有时候', '喜欢'],
+answer: 0
+},
+{
+q: '她___唱歌。',
+options: ['有时候', '爱', '喜欢', '常常'],
+answer: 2
+},
+{
+q: '他___听科幻音乐。',
+options: ['常常', '有时候', '爱', '喜欢'],
+answer: 0
+},
+{
+q: '我喜欢看___电影。',
+options: ['喜剧', '篮球', '音乐', '游戏'],
+answer: 0
+},
+{
+q: '她爱___。',
+options: ['游泳', '写字', '画画', '吃饭'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___打篮球。 (love)',
+options: ['爱', '喜欢', '常常', '有时候'],
+answer: 0
+},
+{
+q: '我常常___游戏。 (play)',
+options: ['玩', '看', '听', '唱'],
+answer: 0
+},
+{
+q: '她有时候___音乐。 (listen to)',
+options: ['听', '看', '玩', '唱'],
+answer: 0
+},
+{
+q: '你___做什么？ (like)',
+options: ['喜欢', '爱', '常常', '有时候'],
+answer: 0
+},
+{
+q: '我喜欢看___电影。 (comedy / sci-fi)',
+options: ['喜剧', '科幻', '恐怖', '动作'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I often read books.</strong>',
+options: ['我常常看书。', '我有时候看书。', '我爱看书。', '我喜欢看书。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>She sometimes sings.</strong>',
+options: ['她有时候唱歌。', '她常常唱歌。', '她爱唱歌。', '她喜欢唱歌。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He loves swimming.</strong>',
+options: ['他爱游泳。', '他喜欢游泳。', '他常常游泳。', '他有时候游泳。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>What do you like to do?</strong>',
+options: ['你喜欢做什么？', '你爱做什么？', '你常常做什么？', '你有时候做什么？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I like watching comedy movies.</strong>',
+options: ['我喜欢看喜剧电影。', '我爱看喜剧电影。', '我常常看喜剧电影。', '我有时候看喜剧电影。'],
+answer: 0
+}
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -378,7 +387,7 @@
 			textarea.style.height = '120px';
 			textarea.style.fontSize = '1.2rem';
 			textarea.style.marginBottom = '18px';
-			textarea.placeholder = '请用中文�?-6句话...';
+			textarea.placeholder = '请用中文�?-6句话...';
 			answersDiv.appendChild(textarea);
 
 			const submitBtn = document.createElement('button');
@@ -388,7 +397,7 @@
 			submitBtn.style.margin = '0 auto';
 			submitBtn.onclick = () => {
 				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5�? sentences.</span>';
+					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5�? sentences.</span>';
 					return;
 				}
 				score++;
@@ -478,9 +487,9 @@
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
+		localStorage.setItem('challengerUnlockedLevel', String(level));
 		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
+		var username = localStorage.getItem('challengerUserId');
 		if (username) {
 			fetch('http://localhost:3000/api/updateProgress', {
 				method: 'POST',
@@ -510,3 +519,5 @@
 	</script>
 </body>
 </html>
+
+

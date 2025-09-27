@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -203,7 +203,7 @@
 
     const originalQuestions = [
         {
-            q: 'Translate: 他被选为学生会主席�?,
+            q: 'Translate: 他被选为学生会主席�?,
             options: [
                 'He was elected as the president of the student union.',
                 'He joined the student union.',
@@ -213,7 +213,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 她在工作中非常___，所以老板很信任她�?(responsible)',
+            q: 'Fill in: 她在工作中非常___，所以老板很信任她�?(responsible)',
             options: [
                 '负责',
                 '粗心',
@@ -223,17 +223,17 @@
             answer: 0
         },
         {
-            q: 'Choose correct idiom: “Rome wasn’t built in a day.�?,
+            q: 'Choose correct idiom: “Rome wasn’t built in a day.�?,
             options: [
                 '罗马不是一天建成的',
                 '画蛇添足',
-                '一举两�?,
+                '一举两�?,
                 '亡羊补牢'
             ],
             answer: 0
         },
         {
-            q: 'Translate into English: 这件事对我们来说意义重大�?,
+            q: 'Translate into English: 这件事对我们来说意义重大�?,
             options: [
                 'This matter is of great significance to us.',
                 'This matter is not important.',
@@ -243,17 +243,17 @@
             answer: 0
         },
         {
-            q: 'Fill in: 他的意见很___，值得我们参考�?(valuable)',
+            q: 'Fill in: 他的意见很___，值得我们参考�?(valuable)',
             options: [
-                '有价�?,
-                '普�?,
+                '有价�?,
+                '普�?,
                 '便宜',
-                '简�?
+                '简�?
             ],
             answer: 0
         },
         {
-            q: 'Translate: 请你把文件打印出来�?,
+            q: 'Translate: 请你把文件打印出来�?,
             options: [
                 'Please print out the document.',
                 'Please copy the document.',
@@ -265,23 +265,23 @@
         {
             q: 'Multiple choice: Which expresses concession?',
             options: [
-                '虽然他很累，但他还是坚持工作�?,
-                '他很高兴�?,
-                '他去上班了�?,
-                '他喜欢运动�?
+                '虽然他很累，但他还是坚持工作�?,
+                '他很高兴�?,
+                '他去上班了�?,
+                '他喜欢运动�?
             ],
             answer: 0
         },
         {
-            q: 'Rearrange: 不仅 / 而且 / �?/ 会说英语 / 会说汉语',
+            q: 'Rearrange: 不仅 / 而且 / �?/ 会说英语 / 会说汉语',
             type: 'rearrange',
-            items: ['不仅', '而且', '�?, '会说英语', '会说汉语'],
-            answer: ['�?, '不仅', '会说英语', '而且', '会说汉语']
+            items: ['不仅', '而且', '�?, '会说英语', '会说汉语'],
+            answer: ['�?, '不仅', '会说英语', '而且', '会说汉语']
         },
         {
-            q: 'Fill in: 经过长时间的讨论，他们终于达成了___�?(agreement)',
+            q: 'Fill in: 经过长时间的讨论，他们终于达成了___�?(agreement)',
             options: [
-                '一�?,
+                '一�?,
                 '决定',
                 '分歧',
                 '矛盾'
@@ -289,17 +289,17 @@
             answer: 0
         },
         {
-            q: 'Translate into Chinese: “She is not only smart but also very hardworking.�?,
+            q: 'Translate into Chinese: “She is not only smart but also very hardworking.�?,
             options: [
-                '她不仅聪明，而且很努力�?,
-                '她很懒�?,
-                '她不聪明�?,
-                '她不喜欢努力�?
+                '她不仅聪明，而且很努力�?,
+                '她很懒�?,
+                '她不聪明�?,
+                '她不喜欢努力�?
             ],
             answer: 0
         },
         {
-            q: 'Translate: 科学发展带来了很多好处，也带来了很多问题�?,
+            q: 'Translate: 科学发展带来了很多好处，也带来了很多问题�?,
             options: [
                 'Scientific development has brought many benefits and also many problems.',
                 'Scientific development has brought only benefits.',
@@ -309,7 +309,7 @@
             answer: 0
         },
         {
-            q: 'Choose: Which is a synonym of “能力�?',
+            q: 'Choose: Which is a synonym of “能力�?',
             options: [
                 '本领',
                 '问题',
@@ -319,7 +319,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 这个计划需要政府的___�?(support)',
+            q: 'Fill in: 这个计划需要政府的___�?(support)',
             options: [
                 '支持',
                 '反对',
@@ -329,7 +329,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 他在公司担任经理�?,
+            q: 'Translate: 他在公司担任经理�?,
             options: [
                 'He works as a manager in the company.',
                 'He left the company.',
@@ -339,7 +339,7 @@
             answer: 0
         },
         {
-            q: 'Short Writing: Write a formal letter applying for an internship in Chinese (8�?0 sentences).',
+            q: 'Short Writing: Write a formal letter applying for an internship in Chinese (8�?0 sentences).',
             options: ['__OPEN_ENDED__'],
             answer: 0
         }
@@ -466,7 +466,7 @@
             submitBtn.style.margin = '0 auto';
             submitBtn.onclick = () => {
                 if (textarea.value.trim().length < 50) {
-                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
                     return;
                 }
                 score++;
@@ -580,3 +580,5 @@
     </script>
 </body>
 </html>
+
+

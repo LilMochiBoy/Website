@@ -172,29 +172,29 @@ margin-top: 24px;
 <div id="buzzer-effect-root"></div>
 <script>
 let paused = false;
-const pauseBtn = document.getElementById(''pause-btn'');
-const pauseModal = document.getElementById(''pause-modal'');
-const resumeBtn = document.getElementById(''resume-btn'');
-const restartBtn = document.getElementById(''restart-btn'');
-const exitBtn = document.getElementById(''exit-btn'');
+const pauseBtn = document.getElementById('pause-btn');
+const pauseModal = document.getElementById('pause-modal');
+const resumeBtn = document.getElementById('resume-btn');
+const restartBtn = document.getElementById('restart-btn');
+const exitBtn = document.getElementById('exit-btn');
 
 pauseBtn.onclick = function() {
 paused = true;
-pauseModal.style.display = ''flex'';
+pauseModal.style.display = 'flex';
 };
 resumeBtn.onclick = function() {
 paused = false;
-pauseModal.style.display = ''none'';
+pauseModal.style.display = 'none';
 };
 restartBtn.onclick = function() {
 paused = false;
-pauseModal.style.display = ''none'';
+pauseModal.style.display = 'none';
 current = 0;
 score = 0;
 for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
 shuffleArray(questions);
 showQuestion();
-document.getElementById(''quiz-progress-bar'').style.width = ''0%'';
+document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
 window.location.href = ''../levels/challenger.html'';
@@ -220,26 +220,26 @@ let score = 0;
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById(''quiz-question'').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById(''quiz-answers'').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
+document.getElementById('quiz-answers').innerHTML = '''';
 return;
 }
 
 if (paused) return;
 const q = questions[current];
-document.getElementById(''quiz-question'').innerHTML = q.q;
-const answersDiv = document.getElementById(''quiz-answers'');
+document.getElementById('quiz-question').innerHTML = q.q;
+const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '''';
 
-const colorClasses = [''c1'', ''c2'', ''c3'', ''c4''];
+const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button'');
+const btn = document.createElement(''button');
 btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style=''position:relative;z-index:2;''>${opt}</span>`;
+btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById(''quiz-feedback'').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '''';
 }
 
 function checkAnswer(selected, btn) {
@@ -247,26 +247,26 @@ if (paused) return;
 if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
-const feedback = document.getElementById(''quiz-feedback'');
-const fill = btn.querySelector(''.answer-fill'');
+const feedback = document.getElementById('quiz-feedback');
+const fill = btn.querySelector(''.answer-fill');
 
 if (selected === correctIdx) {
 score++;
 feedback.textContent = ''Correct! '';
-feedback.className = ''quiz-feedback'';
-fill.style.height = ''100%'';
+feedback.className = 'quiz-feedback'';
+fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
 feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = ''quiz-feedback wrong'';
-fill.style.height = ''100%'';
+feedback.className = 'quiz-feedback wrong'';
+fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div'');
-buzzerDiv.className = ''buzzer-effect'';
-document.getElementById(''buzzer-effect-root'').appendChild(buzzerDiv);
+const buzzerDiv = document.createElement(''div');
+buzzerDiv.className = 'buzzer-effect';
+document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
-fill.style.height = ''0%'';
+fill.style.height = '0%';
 feedback.textContent = '''';
 buzzerDiv.remove();
 }, 700);
@@ -283,25 +283,25 @@ finishQuiz();
 }
 
 function updateProgress() {
-const bar = document.getElementById(''quiz-progress-bar'');
+const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
 bar.style.width = ((current / questions.length) * 100) + ''%'';
 }
 }
 
 function setUnlockedLevel(level) {
-localStorage.setItem(''challengerUnlockedLevel'', String(level));
+localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById(''quiz-question'').innerHTML = '''';
-document.getElementById(''quiz-answers'').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '''';
+document.getElementById('quiz-answers').innerHTML = '''';
 const totalQuestions = questions.length || 1;
-document.getElementById(''quiz-feedback'').innerHTML = `<div class=''quiz-finish''>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id=''nextLevelBtn'' style=''margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;''>Next Level</button></div>`;
-document.getElementById(''quiz-progress-bar'').style.width = ''100%'';
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(22);
 setTimeout(function() {
-var btn = document.getElementById(''nextLevelBtn'');
+var btn = document.getElementById('nextLevelBtn');
 if (btn) {
 btn.onclick = function() {
  window.location.href = 'challenger_quiz22.html';
@@ -314,3 +314,7 @@ showQuestion();
 </script>
 </body>
 </html>
+
+
+
+

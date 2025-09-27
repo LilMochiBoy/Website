@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -203,7 +203,7 @@
 
     const originalQuestions = [
         {
-            q: 'Translate: 他在研究方面做出了重要贡献�?,
+            q: 'Translate: 他在研究方面做出了重要贡献�?,
             options: [
                 'He has made important contributions in research.',
                 'He has made no contributions.',
@@ -213,9 +213,9 @@
             answer: 0
         },
         {
-            q: 'Fill in: 在困难面前，他从不___�?(retreat)',
+            q: 'Fill in: 在困难面前，他从不___�?(retreat)',
             options: [
-                '退�?,
+                '退�?,
                 '放弃',
                 '犹豫',
                 '生气'
@@ -223,27 +223,27 @@
             answer: 0
         },
         {
-            q: 'Translate into Chinese: “Justice is the cornerstone of society.�?,
+            q: 'Translate into Chinese: “Justice is the cornerstone of society.�?,
             options: [
-                '正义是社会的基石�?,
-                '社会需要公平�?,
-                '社会很复杂�?,
-                '正义很重要�?
+                '正义是社会的基石�?,
+                '社会需要公平�?,
+                '社会很复杂�?,
+                '正义很重要�?
             ],
             answer: 0
         },
         {
-            q: 'Which idiom means “no pain, no gain�?',
+            q: 'Which idiom means “no pain, no gain�?',
             options: [
-                '一分耕耘，一分收�?,
+                '一分耕耘，一分收�?,
                 '画蛇添足',
-                '一举两�?,
+                '一举两�?,
                 '亡羊补牢'
             ],
             answer: 0
         },
         {
-            q: 'Fill in: 他在公司里担任很重要的___�?(position)',
+            q: 'Fill in: 他在公司里担任很重要的___�?(position)',
             options: [
                 '职位',
                 '任务',
@@ -253,7 +253,7 @@
             answer: 0
         },
         {
-            q: 'Translate into English: 他的演讲内容十分精彩�?,
+            q: 'Translate into English: 他的演讲内容十分精彩�?,
             options: [
                 'The content of his speech was wonderful.',
                 'His speech was boring.',
@@ -263,17 +263,17 @@
             answer: 0
         },
         {
-            q: 'Fill in: 我们必须采取___措施来解决这个问题�?(effective)',
+            q: 'Fill in: 我们必须采取___措施来解决这个问题�?(effective)',
             options: [
                 '有效',
-                '简�?,
-                '普�?,
+                '简�?,
+                '普�?,
                 '暂时'
             ],
             answer: 0
         },
         {
-            q: 'Translate: 这个问题需要通过合作来解决�?,
+            q: 'Translate: 这个问题需要通过合作来解决�?,
             options: [
                 'This problem needs to be solved through cooperation.',
                 'This problem is easy to solve.',
@@ -283,13 +283,13 @@
             answer: 0
         },
         {
-            q: 'Rearrange: 创新 / 经济 / 推动 / �?/ 发展',
+            q: 'Rearrange: 创新 / 经济 / 推动 / �?/ 发展',
             type: 'rearrange',
-            items: ['创新', '经济', '推动', '�?, '发展'],
-            answer: ['创新', '推动', '经济', '发展', '�?]
+            items: ['创新', '经济', '推动', '�?, '发展'],
+            answer: ['创新', '推动', '经济', '发展', '�?]
         },
         {
-            q: 'Translate: 我坚信努力会带来成功�?,
+            q: 'Translate: 我坚信努力会带来成功�?,
             options: [
                 'I firmly believe that hard work brings success.',
                 'I don\'t believe in hard work.',
@@ -309,9 +309,9 @@
             answer: 0
         },
         {
-            q: 'Fill in: 保护环境不仅是政府的责任，也是___的责任�?(everyone’s)',
+            q: 'Fill in: 保护环境不仅是政府的责任，也是___的责任�?(everyone’s)',
             options: [
-                '每个�?,
+                '每个�?,
                 '老师',
                 '学生',
                 '家长'
@@ -319,7 +319,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 他在国际会议上发表了重要演讲�?,
+            q: 'Translate: 他在国际会议上发表了重要演讲�?,
             options: [
                 'He gave an important speech at the international conference.',
                 'He missed the conference.',
@@ -329,17 +329,17 @@
             answer: 0
         },
         {
-            q: 'Translate into Chinese: “History teaches us valuable lessons。�?,
+            q: 'Translate into Chinese: “History teaches us valuable lessons。�?,
             options: [
-                '历史教会了我们宝贵的经验�?,
-                '历史很无聊�?,
-                '我们不需要历史�?,
-                '历史让人困惑�?
+                '历史教会了我们宝贵的经验�?,
+                '历史很无聊�?,
+                '我们不需要历史�?,
+                '历史让人困惑�?
             ],
             answer: 0
         },
         {
-            q: 'Short Essay: Write 10�?2 sentences about the role of innovation in the modern economy.',
+            q: 'Short Essay: Write 10�?2 sentences about the role of innovation in the modern economy.',
             options: ['__OPEN_ENDED__'],
             answer: 0
         }
@@ -477,7 +477,7 @@
             textarea.style.height = '200px';
             textarea.style.fontSize = '1.2rem';
             textarea.style.marginBottom = '18px';
-            textarea.placeholder = 'Write 10�?2 sentences about the role of innovation in the modern economy...';
+            textarea.placeholder = 'Write 10�?2 sentences about the role of innovation in the modern economy...';
             answersDiv.appendChild(textarea);
 
             const submitBtn = document.createElement('button');
@@ -487,7 +487,7 @@
             submitBtn.style.margin = '0 auto';
             submitBtn.onclick = () => {
                 if (textarea.value.trim().length < 70) {
-                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 10�?2 sentences.</span>';
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 10�?2 sentences.</span>';
                     return;
                 }
                 score++;
@@ -601,3 +601,5 @@
     </script>
 </body>
 </html>
+
+

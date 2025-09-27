@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -212,7 +212,7 @@
 
 	const originalQuestions = [
         {
-            q: 'Translate: 我希望以后能出国留学�?,
+            q: 'Translate: 我希望以后能出国留学�?,
             options: [
                 'I hope to study abroad in the future.',
                 'I want to work abroad.',
@@ -225,14 +225,14 @@
             q: 'Which is the antonym of 乐观?',
             options: [
                 '悲观',
-                '开�?,
+                '开�?,
                 '积极',
                 '热情'
             ],
             answer: 0
         },
         {
-            q: 'Fill in: 他很___，努力，所以成绩很好�?,
+            q: 'Fill in: 他很___，努力，所以成绩很好�?,
             options: [
                 '聪明',
                 '懒惰',
@@ -242,27 +242,27 @@
             answer: 0
         },
         {
-            q: 'Translate into Chinese: “The teacher encouraged us to ask questions bravely.�?,
+            q: 'Translate into Chinese: “The teacher encouraged us to ask questions bravely.�?,
             options: [
-                '老师鼓励我们勇敢地提问�?,
-                '老师让我们不要提问�?,
-                '老师不喜欢我们提问�?,
-                '老师要求我们安静�?
+                '老师鼓励我们勇敢地提问�?,
+                '老师让我们不要提问�?,
+                '老师不喜欢我们提问�?,
+                '老师要求我们安静�?
             ],
             answer: 0
         },
         {
-            q: 'Which is the correct word for “efficient�?',
+            q: 'Which is the correct word for “efficient�?',
             options: [
                 '有效',
-                '有效�?,
+                '有效�?,
                 '高效',
                 '效力'
             ],
             answer: 2
         },
         {
-            q: 'Translate: 经过几年的努力，他终于实现了梦想�?,
+            q: 'Translate: 经过几年的努力，他终于实现了梦想�?,
             options: [
                 'After years of hard work, he finally achieved his dream.',
                 'He worked hard for a few days.',
@@ -272,27 +272,27 @@
             answer: 0
         },
         {
-            q: 'Rearrange: 经验 / �?/ 知识 / �?/ 重要',
+            q: 'Rearrange: 经验 / �?/ 知识 / �?/ 重要',
             options: [
-                '经验比知识更重要�?,
-                '知识比经验更重要�?,
-                '更重要比经验知识�?,
-                '经验更重要比知识�?
+                '经验比知识更重要�?,
+                '知识比经验更重要�?,
+                '更重要比经验知识�?,
+                '经验更重要比知识�?
             ],
             answer: 0
         },
         {
-            q: 'Choose the correct idiom for “a drop in the ocean�?',
+            q: 'Choose the correct idiom for “a drop in the ocean�?',
             options: [
-                '沧海一�?,
+                '沧海一�?,
                 '画蛇添足',
                 '亡羊补牢',
-                '一举两�?
+                '一举两�?
             ],
             answer: 0
         },
         {
-            q: 'Fill in: 这项___需要很多人一起合作�?(task)',
+            q: 'Fill in: 这项___需要很多人一起合作�?(task)',
             options: [
                 '任务',
                 '活动',
@@ -302,7 +302,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 我们要尊重不同的文化�?,
+            q: 'Translate: 我们要尊重不同的文化�?,
             options: [
                 'We should respect different cultures.',
                 'We should change different cultures.',
@@ -314,15 +314,15 @@
         {
             q: 'Multiple choice: Which is formal?',
             options: [
-                '我想吃饭了�?,
-                '我饿了�?,
-                '我需要用餐�?,
-                '吃点东西吧�?
+                '我想吃饭了�?,
+                '我饿了�?,
+                '我需要用餐�?,
+                '吃点东西吧�?
             ],
             answer: 2
         },
         {
-            q: 'Translate into English: 他性格开朗，很容易交朋友�?,
+            q: 'Translate into English: 他性格开朗，很容易交朋友�?,
             options: [
                 'He is outgoing and makes friends easily.',
                 'He is shy and doesn’t like friends.',
@@ -332,7 +332,7 @@
             answer: 0
         },
         {
-            q: 'Which word means “challenge�?',
+            q: 'Which word means “challenge�?',
             options: [
                 '挑战',
                 '挑衅',
@@ -342,7 +342,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 科学技术发展很快，给人们的生活带来了很多___�?(convenience)',
+            q: 'Fill in: 科学技术发展很快，给人们的生活带来了很多___�?(convenience)',
             options: [
                 '便利',
                 '困难',
@@ -352,7 +352,7 @@
             answer: 0
         },
         {
-            q: 'Short Writing: Write a 5�? sentence email to a professor asking for advice about studying abroad.',
+            q: 'Short Writing: Write a 5�? sentence email to a professor asking for advice about studying abroad.',
             options: ['__OPEN_ENDED__'],
             answer: 0
         }
@@ -378,7 +378,7 @@
 			textarea.style.height = '120px';
 			textarea.style.fontSize = '1.2rem';
 			textarea.style.marginBottom = '18px';
-			textarea.placeholder = 'Write your answer here (5�? sentences)...';
+			textarea.placeholder = 'Write your answer here (5�? sentences)...';
 			answersDiv.appendChild(textarea);
 
 			const submitBtn = document.createElement('button');
@@ -388,7 +388,7 @@
 			submitBtn.style.margin = '0 auto';
 			submitBtn.onclick = () => {
 				if (textarea.value.trim().length < 15) {
-					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5�? sentences.</span>';
+					document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 5�? sentences.</span>';
 					return;
 				}
 				score++;
@@ -507,3 +507,5 @@
 	</script>
 </body>
 </html>
+
+

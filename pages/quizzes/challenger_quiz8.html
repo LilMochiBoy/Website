@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -203,7 +203,7 @@
 
     const originalQuestions = [
         {
-            q: 'Translate: 他被誉为“当代最有影响力的作家之一”�?,
+            q: 'Translate: 他被誉为“当代最有影响力的作家之一”�?,
             options: [
                 'He is known as one of the most influential writers of our time.',
                 'He is the oldest writer.',
@@ -217,13 +217,13 @@
             options: [
                 '主题',
                 '内容',
-                '作�?,
+                '作�?,
                 '结论'
             ],
             answer: 0
         },
         {
-            q: 'Translate: 我同意你的看法，但我有不同的建议�?,
+            q: 'Translate: 我同意你的看法，但我有不同的建议�?,
             options: [
                 'I agree with your opinion, but I have a different suggestion.',
                 'I disagree with your opinion.',
@@ -233,17 +233,17 @@
             answer: 0
         },
         {
-            q: 'Which idiom means “half the effort, double the result�?',
+            q: 'Which idiom means “half the effort, double the result�?',
             options: [
-                '事半功�?,
+                '事半功�?,
                 '画蛇添足',
-                '一举两�?,
+                '一举两�?,
                 '亡羊补牢'
             ],
             answer: 0
         },
         {
-            q: 'Translate: 他正在考虑是否接受这份工作�?,
+            q: 'Translate: 他正在考虑是否接受这份工作�?,
             options: [
                 'He is considering whether to accept the job.',
                 'He has accepted the job.',
@@ -253,17 +253,17 @@
             answer: 0
         },
         {
-            q: 'Fill in: 这个问题非常___，必须认真研究�?(serious)',
+            q: 'Fill in: 这个问题非常___，必须认真研究�?(serious)',
             options: [
                 '严重',
-                '简�?,
-                '普�?,
+                '简�?,
+                '普�?,
                 '容易'
             ],
             answer: 0
         },
         {
-            q: 'Translate: 他在科学领域取得了很大的成就�?,
+            q: 'Translate: 他在科学领域取得了很大的成就�?,
             options: [
                 'He has made great achievements in the field of science.',
                 'He is not interested in science.',
@@ -273,13 +273,13 @@
             answer: 0
         },
         {
-            q: 'Rearrange: 需�?/ 才能 / 时间 / 成熟 / 一个人',
+            q: 'Rearrange: 需�?/ 才能 / 时间 / 成熟 / 一个人',
             type: 'rearrange',
-            items: ['需�?, '才能', '时间', '成熟', '一个人'],
-            answer: ['一个人', '成熟', '需�?, '时间', '才能']
+            items: ['需�?, '才能', '时间', '成熟', '一个人'],
+            answer: ['一个人', '成熟', '需�?, '时间', '才能']
         },
         {
-            q: 'Fill in: 教育是国家发展的___�?(foundation)',
+            q: 'Fill in: 教育是国家发展的___�?(foundation)',
             options: [
                 '基础',
                 '目标',
@@ -289,7 +289,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 互联网使人们之间的交流更加方便�?,
+            q: 'Translate: 互联网使人们之间的交流更加方便�?,
             options: [
                 'The Internet has made communication between people more convenient.',
                 'The Internet is not useful.',
@@ -299,7 +299,7 @@
             answer: 0
         },
         {
-            q: 'Choose: Which is closest to 创�?',
+            q: 'Choose: Which is closest to 创�?',
             options: [
                 '发明',
                 '保护',
@@ -309,7 +309,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 他的讲话给了我很大的启发�?,
+            q: 'Translate: 他的讲话给了我很大的启发�?,
             options: [
                 'His speech inspired me a lot.',
                 'His speech was boring.',
@@ -319,7 +319,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 保护传统文化是我们的___�?(duty)',
+            q: 'Fill in: 保护传统文化是我们的___�?(duty)',
             options: [
                 '责任',
                 '兴趣',
@@ -329,7 +329,7 @@
             answer: 0
         },
         {
-            q: 'Translate into English: 他决定冒险创业�?,
+            q: 'Translate into English: 他决定冒险创业�?,
             options: [
                 'He decided to take a risk and start a business.',
                 'He decided to retire.',
@@ -339,7 +339,7 @@
             answer: 0
         },
         {
-            q: 'Short Essay: Write about your favorite Chinese proverb, its meaning, and how it applies to life (8�?0 sentences).',
+            q: 'Short Essay: Write about your favorite Chinese proverb, its meaning, and how it applies to life (8�?0 sentences).',
             options: ['__OPEN_ENDED__'],
             answer: 0
         }
@@ -477,7 +477,7 @@
             textarea.style.height = '180px';
             textarea.style.fontSize = '1.2rem';
             textarea.style.marginBottom = '18px';
-            textarea.placeholder = 'Write about your favorite Chinese proverb, its meaning, and how it applies to life (8�?0 sentences)...';
+            textarea.placeholder = 'Write about your favorite Chinese proverb, its meaning, and how it applies to life (8�?0 sentences)...';
             answersDiv.appendChild(textarea);
 
             const submitBtn = document.createElement('button');
@@ -487,7 +487,7 @@
             submitBtn.style.margin = '0 auto';
             submitBtn.onclick = () => {
                 if (textarea.value.trim().length < 50) {
-                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
                     return;
                 }
                 score++;
@@ -601,3 +601,5 @@
     </script>
 </body>
 </html>
+
+

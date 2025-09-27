@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -211,7 +211,7 @@
 
     const originalQuestions = [
     {
-        q: 'Translate: 尽管失败了，他还是不放弃�?,
+        q: 'Translate: 尽管失败了，他还是不放弃�?,
         options: [
             'Although he failed, he still does not give up.',
             'He gave up after failing.',
@@ -231,37 +231,37 @@
         answer: 2
     },
     {
-        q: 'Fill in: 他看起来很___，其实心里很紧张�?(calm)',
+        q: 'Fill in: 他看起来很___，其实心里很紧张�?(calm)',
         options: [
             '冷静',
-            '激�?,
-            '害�?,
+            '激�?,
+            '害�?,
             '生气'
         ],
         answer: 0
     },
     {
-        q: 'Translate into Chinese: “This book is worth reading several times.�?,
+        q: 'Translate into Chinese: “This book is worth reading several times.�?,
         options: [
-            '这本书值得读好几遍�?,
-            '这本书很难读�?,
-            '这本书不值得看�?,
-            '这本书只能读一次�?
+            '这本书值得读好几遍�?,
+            '这本书很难读�?,
+            '这本书不值得看�?,
+            '这本书只能读一次�?
         ],
         answer: 0
     },
     {
-        q: 'Which idiom means “burning the midnight oil�?',
+        q: 'Which idiom means “burning the midnight oil�?',
         options: [
             '开夜车',
             '画蛇添足',
-            '一举两�?,
+            '一举两�?,
             '亡羊补牢'
         ],
         answer: 0
     },
     {
-        q: 'Translate: 他在会上提出了一个重要的建议�?,
+        q: 'Translate: 他在会上提出了一个重要的建议�?,
         options: [
             'He made an important suggestion at the meeting.',
             'He refused to attend the meeting.',
@@ -271,7 +271,7 @@
         answer: 0
     },
     {
-        q: 'Choose the correct usage: 她___学习汉语，已经有五年了�?(from, since)',
+        q: 'Choose the correct usage: 她___学习汉语，已经有五年了�?(from, since)',
         options: [
             '自从',
             '以后',
@@ -281,17 +281,17 @@
         answer: 0
     },
     {
-        q: 'Fill in: 解决这个问题的方法不止___一个�?(only)',
+        q: 'Fill in: 解决这个问题的方法不止___一个�?(only)',
         options: [
-            '�?,
-            '�?,
-            '�?,
-            '�?
+            '�?,
+            '�?,
+            '�?,
+            '�?
         ],
         answer: 0
     },
     {
-        q: 'Translate into English: 他不仅是我的老师，也是我的朋友�?,
+        q: 'Translate into English: 他不仅是我的老师，也是我的朋友�?,
         options: [
             'He is not only my teacher, but also my friend.',
             'He is only my teacher.',
@@ -301,7 +301,7 @@
         answer: 0
     },
     {
-        q: 'Choose: Which is the proper word for “environmental protection�?',
+        q: 'Choose: Which is the proper word for “environmental protection�?',
         options: [
             '环保',
             '保护',
@@ -311,7 +311,7 @@
         answer: 0
     },
     {
-        q: 'Translate: 我完全同意你的观点�?,
+        q: 'Translate: 我完全同意你的观点�?,
         options: [
             'I completely agree with your opinion.',
             'I don’t agree with you.',
@@ -321,33 +321,33 @@
         answer: 0
     },
     {
-        q: 'Rearrange: 经济 / 发展 / �?/ 国家 / �?/ 重要',
+        q: 'Rearrange: 经济 / 发展 / �?/ 国家 / �?/ 重要',
         type: 'rearrange',
-        items: ['经济', '发展', '�?, '国家', '�?, '重要'],
-        answer: ['�?, '国家', '经济', '发展', '�?, '重要']
+        items: ['经济', '发展', '�?, '国家', '�?, '重要'],
+        answer: ['�?, '国家', '经济', '发展', '�?, '重要']
     },
     {
-        q: 'Fill in: 我想申请奖学金，但是条件很___�?(strict)',
+        q: 'Fill in: 我想申请奖学金，但是条件很___�?(strict)',
         options: [
             '严格',
             '容易',
             '宽松',
-            '简�?
+            '简�?
         ],
         answer: 0
     },
     {
-        q: 'Translate into Chinese: “Nowadays young people face a lot of pressure。�?,
+        q: 'Translate into Chinese: “Nowadays young people face a lot of pressure。�?,
         options: [
-            '现在的年轻人面临很多压力�?,
-            '年轻人没有压力�?,
-            '年轻人很轻松�?,
-            '现在的年轻人不努力�?
+            '现在的年轻人面临很多压力�?,
+            '年轻人没有压力�?,
+            '年轻人很轻松�?,
+            '现在的年轻人不努力�?
         ],
         answer: 0
     },
     {
-        q: 'Short Essay (6�? sentences): Discuss the role of technology in modern education.',
+        q: 'Short Essay (6�? sentences): Discuss the role of technology in modern education.',
         options: ['__OPEN_ENDED__'],
         answer: 0
     }
@@ -440,7 +440,7 @@ function showQuestion() {
         textarea.style.height = '140px';
         textarea.style.fontSize = '1.2rem';
         textarea.style.marginBottom = '18px';
-        textarea.placeholder = 'Write your answer here (6�? sentences)...';
+        textarea.placeholder = 'Write your answer here (6�? sentences)...';
         answersDiv.appendChild(textarea);
 
         const submitBtn = document.createElement('button');
@@ -450,7 +450,7 @@ function showQuestion() {
         submitBtn.style.margin = '0 auto';
         submitBtn.onclick = () => {
             if (textarea.value.trim().length < 30) {
-                document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 6�? sentences.</span>';
+                document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 6�? sentences.</span>';
                 return;
             }
             score++;
@@ -566,3 +566,5 @@ function checkAnswer(idx) {
     </script>
 </body>
 </html>
+
+

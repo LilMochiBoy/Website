@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -203,7 +203,7 @@
 
     const originalQuestions = [
         {
-            q: 'Translate: 他为社会做出了很多贡献�?,
+            q: 'Translate: 他为社会做出了很多贡献�?,
             options: [
                 'He has made many contributions to society.',
                 'He left society.',
@@ -213,7 +213,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 这家公司在国内很有___�?(influence)',
+            q: 'Fill in: 这家公司在国内很有___�?(influence)',
             options: [
                 '影响',
                 '经验',
@@ -223,17 +223,17 @@
             answer: 0
         },
         {
-            q: 'Choose correct idiom: “to add fuel to the fire.�?,
+            q: 'Choose correct idiom: “to add fuel to the fire.�?,
             options: [
                 '火上加油',
                 '画蛇添足',
-                '一举两�?,
+                '一举两�?,
                 '亡羊补牢'
             ],
             answer: 0
         },
         {
-            q: 'Translate into English: 这次比赛对他来说是一个很大的挑战�?,
+            q: 'Translate into English: 这次比赛对他来说是一个很大的挑战�?,
             options: [
                 'This competition is a big challenge for him.',
                 'He is not interested in the competition.',
@@ -243,7 +243,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 他的建议很有___，大家都采纳了�?(creativity)',
+            q: 'Fill in: 他的建议很有___，大家都采纳了�?(creativity)',
             options: [
                 '创造力',
                 '压力',
@@ -253,7 +253,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 我们应该学会控制自己的情绪�?,
+            q: 'Translate: 我们应该学会控制自己的情绪�?,
             options: [
                 'We should learn to control our emotions.',
                 'We should ignore our emotions.',
@@ -263,13 +263,13 @@
             answer: 0
         },
         {
-            q: 'Rearrange: 互联�?/ 改变 / �?/ 生活 / 我们�?,
+            q: 'Rearrange: 互联�?/ 改变 / �?/ 生活 / 我们�?,
             type: 'rearrange',
-            items: ['互联�?, '改变', '�?, '生活', '我们�?],
-            answer: ['互联�?, '改变', '�?, '我们�?, '生活']
+            items: ['互联�?, '改变', '�?, '生活', '我们�?],
+            answer: ['互联�?, '改变', '�?, '我们�?, '生活']
         },
         {
-            q: 'Translate: 她的表演给大家留下了深刻的印象�?,
+            q: 'Translate: 她的表演给大家留下了深刻的印象�?,
             options: [
                 'Her performance left a deep impression on everyone.',
                 'Her performance was boring.',
@@ -281,7 +281,7 @@
         {
             q: 'Choose: Which is a synonym of 交流?',
             options: [
-                '沟�?,
+                '沟�?,
                 '问题',
                 '经验',
                 '能力'
@@ -289,7 +289,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 如果遇到困难，我们应该互相___�?(help)',
+            q: 'Fill in: 如果遇到困难，我们应该互相___�?(help)',
             options: [
                 '帮助',
                 '批评',
@@ -299,7 +299,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 他在国外留学期间认识了很多朋友�?,
+            q: 'Translate: 他在国外留学期间认识了很多朋友�?,
             options: [
                 'He made many friends while studying abroad.',
                 'He didn\'t make any friends.',
@@ -309,7 +309,7 @@
             answer: 0
         },
         {
-            q: 'Fill in: 他的态度非常___，大家都很喜欢他�?(friendly)',
+            q: 'Fill in: 他的态度非常___，大家都很喜欢他�?(friendly)',
             options: [
                 '友好',
                 '冷淡',
@@ -319,7 +319,7 @@
             answer: 0
         },
         {
-            q: 'Translate: 政府正在采取措施减少污染�?,
+            q: 'Translate: 政府正在采取措施减少污染�?,
             options: [
                 'The government is taking measures to reduce pollution.',
                 'The government is increasing pollution.',
@@ -331,15 +331,15 @@
         {
             q: 'Multiple choice: Which is more formal?',
             options: [
-                '您能帮我一下吗�?,
-                '你能帮我一下吗�?,
-                '你帮我一下�?,
-                '帮我一下�?
+                '您能帮我一下吗�?,
+                '你能帮我一下吗�?,
+                '你帮我一下�?,
+                '帮我一下�?
             ],
             answer: 0
         },
         {
-            q: 'Short Essay: Write about the importance of teamwork in 8�?0 sentences.',
+            q: 'Short Essay: Write about the importance of teamwork in 8�?0 sentences.',
             options: ['__OPEN_ENDED__'],
             answer: 0
         }
@@ -477,7 +477,7 @@
             textarea.style.height = '180px';
             textarea.style.fontSize = '1.2rem';
             textarea.style.marginBottom = '18px';
-            textarea.placeholder = 'Write about the importance of teamwork in 8�?0 sentences...';
+            textarea.placeholder = 'Write about the importance of teamwork in 8�?0 sentences...';
             answersDiv.appendChild(textarea);
 
             const submitBtn = document.createElement('button');
@@ -487,7 +487,7 @@
             submitBtn.style.margin = '0 auto';
             submitBtn.onclick = () => {
                 if (textarea.value.trim().length < 50) {
-                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
+                    document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.2rem;">Please write at least 8�?0 sentences.</span>';
                     return;
                 }
                 score++;
@@ -601,3 +601,5 @@
     </script>
 </body>
 </html>
+
+
