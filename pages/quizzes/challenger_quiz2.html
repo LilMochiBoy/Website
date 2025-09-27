@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
+	<title>Challenger Quiz Level 2</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
@@ -160,8 +160,8 @@
 		</div>
 	</div>
 	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+		<span class="duo-title">Challenger Quiz 2: Travel & Booking</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -199,7 +199,7 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'challenger.html';
+		window.location.href = '../levels/challenger.html';
 	};
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
@@ -211,152 +211,161 @@
 	}
 
 	const originalQuestions = [
-        {
-            q: 'Translate: 我希望以后能出国留学�?,
-            options: [
-                'I hope to study abroad in the future.',
-                'I want to work abroad.',
-                'I studied abroad before.',
-                'I am studying abroad now.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Which is the antonym of 乐观?',
-            options: [
-                '悲观',
-                '开�?,
-                '积极',
-                '热情'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 他很___，努力，所以成绩很好�?,
-            options: [
-                '聪明',
-                '懒惰',
-                '马虎',
-                '粗心'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “The teacher encouraged us to ask questions bravely.�?,
-            options: [
-                '老师鼓励我们勇敢地提问�?,
-                '老师让我们不要提问�?,
-                '老师不喜欢我们提问�?,
-                '老师要求我们安静�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Which is the correct word for “efficient�?',
-            options: [
-                '有效',
-                '有效�?,
-                '高效',
-                '效力'
-            ],
-            answer: 2
-        },
-        {
-            q: 'Translate: 经过几年的努力，他终于实现了梦想�?,
-            options: [
-                'After years of hard work, he finally achieved his dream.',
-                'He worked hard for a few days.',
-                'He gave up his dream.',
-                'He is still working hard.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Rearrange: 经验 / �?/ 知识 / �?/ 重要',
-            options: [
-                '经验比知识更重要�?,
-                '知识比经验更重要�?,
-                '更重要比经验知识�?,
-                '经验更重要比知识�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose the correct idiom for “a drop in the ocean�?',
-            options: [
-                '沧海一�?,
-                '画蛇添足',
-                '亡羊补牢',
-                '一举两�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 这项___需要很多人一起合作�?(task)',
-            options: [
-                '任务',
-                '活动',
-                '比赛',
-                '作业'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 我们要尊重不同的文化�?,
-            options: [
-                'We should respect different cultures.',
-                'We should change different cultures.',
-                'We should ignore different cultures.',
-                'We should learn only our own culture.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Multiple choice: Which is formal?',
-            options: [
-                '我想吃饭了�?,
-                '我饿了�?,
-                '我需要用餐�?,
-                '吃点东西吧�?
-            ],
-            answer: 2
-        },
-        {
-            q: 'Translate into English: 他性格开朗，很容易交朋友�?,
-            options: [
-                'He is outgoing and makes friends easily.',
-                'He is shy and doesn’t like friends.',
-                'He is very serious.',
-                'He is not friendly.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Which word means “challenge�?',
-            options: [
-                '挑战',
-                '挑衅',
-                '质问',
-                '考验'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 科学技术发展很快，给人们的生活带来了很多___�?(convenience)',
-            options: [
-                '便利',
-                '困难',
-                '问题',
-                '危险'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Short Writing: Write a 5�? sentence email to a professor asking for advice about studying abroad.',
-            options: ['__OPEN_ENDED__'],
-            answer: 0
-        }
-    ];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>买票</strong>',
+options: ['buy ticket', 'hotel / inn', 'airplane ticket', 'double room', 'single room'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>火车票</strong>',
+options: ['buy ticket', 'train ticket', 'airplane ticket', 'double room', 'single room'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>飞机票</strong>',
+options: ['buy ticket', 'hotel / inn', 'airplane ticket', 'double room', 'single room'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>订酒店</strong>',
+options: ['buy ticket', 'book hotel', 'airplane ticket', 'double room', 'single room'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>旅馆</strong>',
+options: ['buy ticket', 'hotel / inn', 'airplane ticket', 'double room', 'single room'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>房间</strong>',
+options: ['buy ticket', 'hotel / inn', 'room', 'double room', 'single room'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>单人间</strong>',
+options: ['buy ticket', 'hotel / inn', 'airplane ticket', 'double room', 'single room'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>双人间</strong>',
+options: ['buy ticket', 'hotel / inn', 'airplane ticket', 'double room', 'single room'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>多少钱</strong>',
+options: ['buy ticket', 'how much', 'airplane ticket', 'double room', 'excuse me / may I ask'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>请问</strong>',
+options: ['buy ticket', 'how much', 'airplane ticket', 'double room', 'excuse me / may I ask'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我要___一张火车票。',
+options: ['买', '订', '去', '可以'],
+answer: 0
+},
+{
+q: '我要从北京___上海的火车票。',
+options: ['到', '从', '买', '请问'],
+answer: 0
+},
+{
+q: '我要___一个单人间。',
+options: ['买', '订', '去', '可以'],
+answer: 1
+},
+{
+q: '___，去车站怎么走？',
+options: ['请问', '可以', '买', '要'],
+answer: 0
+},
+{
+q: '这个房间___？',
+options: ['怎么', '可以', '多少钱', '是'],
+answer: 2
+},
+{
+q: '我___订旅馆吗？',
+options: ['可以', '要', '喜欢', '有'],
+answer: 0
+},
+{
+q: '我要___票。 (two)',
+options: ['两张', '一张', '三个', '四'],
+answer: 0
+},
+{
+q: '旅馆离车站___吗？',
+options: ['远', '近', '贵', '快'],
+answer: 0
+},
+{
+q: '我想___广州。',
+options: ['去', '买', '订', '有'],
+answer: 0
+},
+{
+q: '我要一张___票。',
+options: ['飞机', '火车', '单人间', '双人间'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我要___买票。 (want / 我要)',
+options: ['买票', '去买', '可以买', '订票'],
+answer: 0
+},
+{
+q: '我想从___到___。 (from to)',
+options: ['北京 / 上海', '上海 / 北京', '广州 / 深圳', '天津 / 南京'],
+answer: 0
+},
+{
+q: '我要订一个___。 (single / double room)',
+options: ['单人间', '双人间', '房间', '旅馆'],
+answer: 0
+},
+{
+q: '___，这个房间多少钱？ (polite question)',
+options: ['请问', '可以', '要', '买'],
+answer: 0
+},
+{
+q: '我可以___旅馆吗？ (book hotel)',
+options: ['订', '买', '去', '有'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I want to buy a train ticket.</strong>',
+options: ['我要买一张火车票。', '我想买飞机票。', '我要订旅馆。', '我去买票。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Excuse me, how much is this room?</strong>',
+options: ['请问，这个房间多少钱？', '可以，房间很贵。', '这个旅馆怎么样？', '房间在哪里？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I want to go to Beijing.</strong>',
+options: ['我想去北京。', '我要买北京票。', '我从北京来。', '我在北京住。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Can I book a hotel?</strong>',
+options: ['我可以订旅馆吗？', '我要买旅馆吗？', '旅馆在哪里？', '旅馆多少钱？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I want two airplane tickets.</strong>',
+options: ['我要两张飞机票。', '我要一张火车票。', '我买两个房间。', '我订两个旅馆。'],
+answer: 0
+}
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -475,9 +484,9 @@
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
+		localStorage.setItem('challengerUnlockedLevel', String(level));
 		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
+		var username = localStorage.getItem('challengerUserId');
 		if (username) {
 			fetch('http://localhost:3000/api/updateProgress', {
 				method: 'POST',
@@ -492,12 +501,12 @@
 		document.getElementById('quiz-answers').innerHTML = '';
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(2);
+		setUnlockedLevel(3);
 		setTimeout(function() {
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'challenger_quiz2.html';
+				 window.location.href = 'challenger_quiz3.html';
 				};
 			}
 		}, 100);
@@ -507,5 +516,6 @@
 	</script>
 </body>
 </html>
+
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 3</title>
+    <title>Challenger Quiz Level 3</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         /* Copy the same styles as previous quizzes for consistency */
@@ -161,8 +161,8 @@
         </div>
     </div>
     <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 3: Next Steps</span>
+        <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Challenger Quiz 3: Workplace</span>
     </div>
     <div class="quiz-progress">
         <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -199,7 +199,7 @@
         document.getElementById('quiz-progress-bar').style.width = '0%';
     };
     exitBtn.onclick = function() {
-        window.location.href = 'challenger.html';
+        window.location.href = '../levels/challenger.html';
     };
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -210,147 +210,160 @@
     }
 
     const originalQuestions = [
-    {
-        q: 'Translate: 尽管失败了，他还是不放弃�?,
-        options: [
-            'Although he failed, he still does not give up.',
-            'He gave up after failing.',
-            'He succeeded and did not give up.',
-            'He failed because he gave up.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which is a synonym of 坚持?',
-        options: [
-            '坚持',
-            '放弃',
-            '继续',
-            '停止'
-        ],
-        answer: 2
-    },
-    {
-        q: 'Fill in: 他看起来很___，其实心里很紧张�?(calm)',
-        options: [
-            '冷静',
-            '激�?,
-            '害�?,
-            '生气'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese: “This book is worth reading several times.�?,
-        options: [
-            '这本书值得读好几遍�?,
-            '这本书很难读�?,
-            '这本书不值得看�?,
-            '这本书只能读一次�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “burning the midnight oil�?',
-        options: [
-            '开夜车',
-            '画蛇添足',
-            '一举两�?,
-            '亡羊补牢'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate: 他在会上提出了一个重要的建议�?,
-        options: [
-            'He made an important suggestion at the meeting.',
-            'He refused to attend the meeting.',
-            'He made a mistake at the meeting.',
-            'He was late for the meeting.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct usage: 她___学习汉语，已经有五年了�?(from, since)',
-        options: [
-            '自从',
-            '以后',
-            '为了',
-            '因为'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in: 解决这个问题的方法不止___一个�?(only)',
-        options: [
-            '�?,
-            '�?,
-            '�?,
-            '�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into English: 他不仅是我的老师，也是我的朋友�?,
-        options: [
-            'He is not only my teacher, but also my friend.',
-            'He is only my teacher.',
-            'He is my teacher’s friend.',
-            'He is not my friend.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose: Which is the proper word for “environmental protection�?',
-        options: [
-            '环保',
-            '保护',
-            '环境',
-            '卫生'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate: 我完全同意你的观点�?,
-        options: [
-            'I completely agree with your opinion.',
-            'I don’t agree with you.',
-            'I don’t understand your opinion.',
-            'I want to change your opinion.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Rearrange: 经济 / 发展 / �?/ 国家 / �?/ 重要',
-        type: 'rearrange',
-        items: ['经济', '发展', '�?, '国家', '�?, '重要'],
-        answer: ['�?, '国家', '经济', '发展', '�?, '重要']
-    },
-    {
-        q: 'Fill in: 我想申请奖学金，但是条件很___�?(strict)',
-        options: [
-            '严格',
-            '容易',
-            '宽松',
-            '简�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese: “Nowadays young people face a lot of pressure。�?,
-        options: [
-            '现在的年轻人面临很多压力�?,
-            '年轻人没有压力�?,
-            '年轻人很轻松�?,
-            '现在的年轻人不努力�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Short Essay (6�? sentences): Discuss the role of technology in modern education.',
-        options: ['__OPEN_ENDED__'],
-        answer: 0
-    }
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>工作</strong>',
+options: ['work / job', 'meeting', 'office', 'finish work', 'go to work'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>上班</strong>',
+options: ['work / job', 'go to work', 'office', 'finish work', 'meeting'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>下班</strong>',
+options: ['work / job', 'meeting', 'office', 'finish work', 'go to work'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>公司</strong>',
+options: ['work / job', 'company', 'office', 'finish work', 'go to work'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>老板</strong>',
+options: ['boss', 'meeting', 'office', 'finish work', 'go to work'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>同事</strong>',
+options: ['work / job', 'colleague', 'office', 'finish work', 'go to work'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>职业</strong>',
+options: ['work / job', 'meeting', 'profession', 'finish work', 'go to work'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>会议</strong>',
+options: ['work / job', 'meeting', 'office', 'finish work', 'go to work'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>报告</strong>',
+options: ['work / job', 'report', 'office', 'finish work', 'go to work'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>办公室</strong>',
+options: ['work / job', 'meeting', 'office', 'finish work', 'go to work'],
+answer: 2
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我每天早上八点___。',
+options: ['上班', '下班', '工作', '开会'],
+answer: 0
+},
+{
+q: '下午五点我___。',
+options: ['上班', '下班', '工作', '写报告'],
+answer: 1
+},
+{
+q: '你做什么___？',
+options: ['职业', '工作', '公司', '办公室'],
+answer: 0
+},
+{
+q: '他在___工作。',
+options: ['公司', '家', '学校', '商店'],
+answer: 0
+},
+{
+q: '老板要我写___。',
+options: ['报告', '会议', '工作', '上班'],
+answer: 0
+},
+{
+q: '我和___开会。',
+options: ['同事', '老板', '学生', '朋友'],
+answer: 0
+},
+{
+q: '我昨天___到晚上十点。',
+options: ['加班', '下班', '上班', '工作'],
+answer: 0
+},
+{
+q: '我周末___。',
+options: ['放假', '上班', '下班', '工作'],
+answer: 0
+},
+{
+q: '我是老师，这是我的___。',
+options: ['职业', '公司', '办公室', '同事'],
+answer: 0
+},
+{
+q: '我在办公室___。',
+options: ['工作', '玩', '听', '写'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我每天早上八点___。 (go to work)',
+options: ['上班', '下班', '工作', '开会'],
+answer: 0
+},
+{
+q: '我下午五点___。 (finish work)',
+options: ['上班', '下班', '工作', '开会'],
+answer: 1
+},
+{
+q: '他在___工作。 (company)',
+options: ['公司', '家', '学校', '办公室'],
+answer: 0
+},
+{
+q: '老板要我写___。 (report)',
+options: ['报告', '会议', '信', '书'],
+answer: 0
+},
+{
+q: '我和___开会。 (colleagues)',
+options: ['同事', '朋友', '老师', '学生'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I am a doctor.</strong>',
+options: ['我是医生。', '我是老师。', '我是学生。', '我是老板。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I go to work at 8 am every day.</strong>',
+options: ['我每天早上八点上班。', '我每天晚上八点下班。', '我八点开会。', '我八点工作。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I have a meeting with my colleagues.</strong>',
+options: ['我和同事开会。', '我和老板开会。', '我和朋友开会。', '我开会了。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>The boss wants me to write a report.</strong>',
+options: ['老板要我写报告。', '老板要我开会。', '老板要我工作。', '老板要我上班。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I worked overtime until 10 pm yesterday.</strong>',
+options: ['昨天我加班到晚上十点。', '昨天我十点下班。', '昨天我十点上班。', '昨天我工作十小时。'],
+answer: 0
+}
 ];
 
 const questions = shuffleArray([...originalQuestions]);
@@ -535,8 +548,8 @@ function checkAnswer(idx) {
     }
 
     function setUnlockedLevel(level) {
-        localStorage.setItem('rookieUnlockedLevel', String(level));
-        var username = localStorage.getItem('rookieUserId');
+        localStorage.setItem('challengerUnlockedLevel', String(level));
+        var username = localStorage.getItem('challengerUserId');
         if (username) {
             fetch('http://localhost:3000/api/updateProgress', {
                 method: 'POST',
@@ -566,5 +579,6 @@ function checkAnswer(idx) {
     </script>
 </body>
 </html>
+
 
 

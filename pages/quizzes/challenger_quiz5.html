@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 5</title>
+    <title>Challenger Quiz Level 5</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         /* Copy the same styles as previous quizzes for consistency */
@@ -161,8 +161,8 @@
         </div>
     </div>
     <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 5: Dream Big</span>
+        <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Challenger Quiz 5: Social Plans</span>
     </div>
     <div class="quiz-progress">
         <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,7 +191,7 @@
         showQuestion();
         document.getElementById('quiz-progress-bar').style.width = '0%';
     };
-    exitBtn.onclick = function() { window.location.href = 'challenger.html'; };
+    exitBtn.onclick = function() { window.location.href = '../levels/challenger.html'; };
 
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -202,148 +202,161 @@
     }
 
     const originalQuestions = [
-        {
-            q: 'Translate into English: 他从来没有迟到过�?,
-            options: [
-                'He has never been late.',
-                'He is always late.',
-                'He was late yesterday.',
-                'He will be late tomorrow.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 这个问题很___，我们需要请专家来解决�?(complicated)',
-            options: [
-                '复杂',
-                '简�?,
-                '容易',
-                '清楚'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “I admire people who never give up.�?,
-            options: [
-                '我敬佩那些从不放弃的人�?,
-                '我喜欢放弃的人�?,
-                '我不喜欢努力的人�?,
-                '我害怕失败的人�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Which idiom means “in a hurry�?',
-            options: [
-                '匆匆忙忙',
-                '画蛇添足',
-                '一举两�?,
-                '亡羊补牢'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 他提醒我要注意安全�?,
-            options: [
-                'He reminded me to pay attention to safety.',
-                'He asked me to leave.',
-                'He told me to be quiet.',
-                'He reminded me to study.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose correct usage of “无论…都…�?,
-            options: [
-                '无论天气怎么样，他都去跑步�?,
-                '他去跑步，因为天气好�?,
-                '天气好，他才去跑步�?,
-                '他不喜欢跑步�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 在中国，春节是一个很重要的___�?(festival)',
-            options: [
-                '节日',
-                '活动',
-                '假期',
-                '时间'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 他们的意见完全相反�?,
-            options: [
-                'Their opinions are completely opposite.',
-                'Their opinions are the same.',
-                'They have no opinions.',
-                'They agree with each other.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Rearrange: 经验 / �?/ 工作 / 重要 / �?/ �?,
-            type: 'rearrange',
-            items: ['经验', '�?, '工作', '重要', '�?, '�?],
-            answer: ['�?, '工作', '�?, '重要', '�?, '经验']
-        },
-        {
-            q: 'Fill in: 这次考试太___了，我没考好�?(difficult)',
-            options: [
-                '�?,
-                '容易',
-                '简�?,
-                '轻松'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 我希望将来能成为一名医生�?,
-            options: [
-                'I hope to become a doctor in the future.',
-                'I am a doctor now.',
-                'I don’t want to be a doctor.',
-                'I want to be a teacher.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose: Which word means “development�?',
-            options: [
-                '发展',
-                '环境',
-                '保护',
-                '责任'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 保护环境是每个人的___�?(responsibility)',
-            options: [
-                '责任',
-                '兴趣',
-                '任务',
-                '能力'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “Communication is the bridge between people.�?,
-            options: [
-                '沟通是人与人之间的桥梁�?,
-                '沟通很麻烦�?,
-                '沟通不重要�?,
-                '沟通让人紧张�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Short Essay: Write 8�?0 sentences about your dream job and why you chose it.',
-            options: ['__OPEN_ENDED__'],
-            answer: 0
-        }
-    ];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>有空</strong>',
+options: ['be free / have time', 'not free / busy', 'together', 'go', 'play / hang out'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>没空</strong>',
+options: ['be free / have time', 'not free / busy', 'together', 'go', 'play / hang out'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>一起</strong>',
+options: ['be free / have time', 'not free / busy', 'together', 'go', 'play / hang out'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>去</strong>',
+options: ['be free / have time', 'not free / busy', 'together', 'go', 'play / hang out'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>玩</strong>',
+options: ['be free / have time', 'not free / busy', 'together', 'go', 'play / hang out'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>吃饭</strong>',
+options: ['eat / have a meal', 'watch a movie', 'together', 'go', 'play / hang out'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>看电影</strong>',
+options: ['eat / have a meal', 'watch a movie', 'together', 'go', 'play / hang out'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>明天</strong>',
+options: ['tomorrow', 'the day after tomorrow', 'weekend', 'go', 'play / hang out'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>后天</strong>',
+options: ['tomorrow', 'the day after tomorrow', 'weekend', 'go', 'play / hang out'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>周末</strong>',
+options: ['tomorrow', 'the day after tomorrow', 'weekend', 'go', 'play / hang out'],
+answer: 2
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '你___吗？ (Are you free?)',
+options: ['有空', '没空', '玩', '去'],
+answer: 0
+},
+{
+q: '我周末___。 (I\'m busy on the weekend.)',
+options: ['有空', '没空', '吃饭', '去'],
+answer: 1
+},
+{
+q: '我们___去看电影吧。 (Let\'s )',
+options: ['一起', '明天', '后天', '不行'],
+answer: 0
+},
+{
+q: '好啊，我们去喝___吧！',
+options: ['咖啡', '玩', '明天', '时间'],
+answer: 0
+},
+{
+q: '对不起，我___。 (I can\'t)',
+options: ['不行', '有空', '一起', '明天'],
+answer: 0
+},
+{
+q: '你什么时候有___？',
+options: ['时间', '咖啡', '吃饭', '看电影'],
+answer: 0
+},
+{
+q: '我们后天一起去___吧。',
+options: ['看电影', '咖啡', '明天', '周末'],
+answer: 0
+},
+{
+q: '我明天___去。 (I can go tomorrow)',
+options: ['可以', '不行', '一起', '时间'],
+answer: 0
+},
+{
+q: '我们一起去___吧。',
+options: ['玩', '明天', '后天', '时间'],
+answer: 0
+},
+{
+q: '你明天有___吗？',
+options: ['空', '玩', '咖啡', '周末'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '你明天___吗？ (free)',
+options: ['有空', '没空', '玩', '去'],
+answer: 0
+},
+{
+q: '我周末___。 (busy)',
+options: ['有空', '没空', '玩', '去'],
+answer: 1
+},
+{
+q: '我们一起去___吧。 (eat)',
+options: ['吃饭', '看电影', '玩', '喝咖啡'],
+answer: 0
+},
+{
+q: '好啊，我们去喝___吧！ (coffee)',
+options: ['咖啡', '茶', '水', '饭'],
+answer: 0
+},
+{
+q: '对不起，我___。 (cannot / no)',
+options: ['不行', '有空', '可以', '去'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>Are you free tomorrow?</strong>',
+options: ['你明天有空吗？', '你今天有空吗？', '你明天去哪里？', '你明天做什么？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I\'m busy on the weekend.</strong>',
+options: ['我周末有空。', '我周末没空。', '我周末去玩。', '我喜欢周末。'],
+answer: 1
+},
+{
+q: 'Translate to Chinese:<br><strong>Let\'s go watch a movie together.</strong>',
+options: ['我们一起去看电影吧。', '我们一起去吃饭吧。', '我们明天看电影。', '我喜欢看电影。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Okay, let\'s go have coffee!</strong>',
+options: ['好啊，我们去喝咖啡吧！', '好啊，我们去吃饭吧！', '我喜欢喝咖啡。', '咖啡很好喝。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Sorry, I can\'t.</strong>',
+options: ['对不起，我不行。', '对不起，我有空。', '对不起，我去。', '对不起，我可以。'],
+answer: 0
+}
+];
 
     const questions = shuffleArray([...originalQuestions]);
     let current = 0;
@@ -570,8 +583,8 @@
     }
 
     function setUnlockedLevel(level) {
-        localStorage.setItem('rookieUnlockedLevel', String(level));
-        var username = localStorage.getItem('rookieUserId');
+        localStorage.setItem('challengerUnlockedLevel', String(level));
+        var username = localStorage.getItem('challengerUserId');
         if (username) {
             fetch('http://localhost:3000/api/updateProgress', {
                 method: 'POST',
@@ -601,5 +614,6 @@
     </script>
 </body>
 </html>
+
 
 

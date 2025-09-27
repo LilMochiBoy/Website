@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rookie Quiz Level 4</title>
+    <title>Challenger Quiz Level 4</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <style>
         /* Copy the same styles as previous quizzes for consistency */
@@ -161,8 +161,8 @@
         </div>
     </div>
     <div class="duo-header">
-        <img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-        <span class="duo-title">Rookie Quiz 4: Challenge Yourself</span>
+        <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+        <span class="duo-title">Challenger Quiz 4: Chinese Food</span>
     </div>
     <div class="quiz-progress">
         <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,7 +191,7 @@
         showQuestion();
         document.getElementById('quiz-progress-bar').style.width = '0%';
     };
-    exitBtn.onclick = function() { window.location.href = 'challenger.html'; };
+    exitBtn.onclick = function() { window.location.href = '../levels/challenger.html'; };
 
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -202,148 +202,161 @@
     }
 
     const originalQuestions = [
-        {
-            q: 'Translate: 他被选为学生会主席�?,
-            options: [
-                'He was elected as the president of the student union.',
-                'He joined the student union.',
-                'He left the student union.',
-                'He was not elected.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 她在工作中非常___，所以老板很信任她�?(responsible)',
-            options: [
-                '负责',
-                '粗心',
-                '马虎',
-                '懒惰'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose correct idiom: “Rome wasn’t built in a day.�?,
-            options: [
-                '罗马不是一天建成的',
-                '画蛇添足',
-                '一举两�?,
-                '亡羊补牢'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into English: 这件事对我们来说意义重大�?,
-            options: [
-                'This matter is of great significance to us.',
-                'This matter is not important.',
-                'We don’t care about this matter.',
-                'This matter is easy to solve.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 他的意见很___，值得我们参考�?(valuable)',
-            options: [
-                '有价�?,
-                '普�?,
-                '便宜',
-                '简�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 请你把文件打印出来�?,
-            options: [
-                'Please print out the document.',
-                'Please copy the document.',
-                'Please read the document.',
-                'Please send the document.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Multiple choice: Which expresses concession?',
-            options: [
-                '虽然他很累，但他还是坚持工作�?,
-                '他很高兴�?,
-                '他去上班了�?,
-                '他喜欢运动�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Rearrange: 不仅 / 而且 / �?/ 会说英语 / 会说汉语',
-            type: 'rearrange',
-            items: ['不仅', '而且', '�?, '会说英语', '会说汉语'],
-            answer: ['�?, '不仅', '会说英语', '而且', '会说汉语']
-        },
-        {
-            q: 'Fill in: 经过长时间的讨论，他们终于达成了___�?(agreement)',
-            options: [
-                '一�?,
-                '决定',
-                '分歧',
-                '矛盾'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate into Chinese: “She is not only smart but also very hardworking.�?,
-            options: [
-                '她不仅聪明，而且很努力�?,
-                '她很懒�?,
-                '她不聪明�?,
-                '她不喜欢努力�?
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 科学发展带来了很多好处，也带来了很多问题�?,
-            options: [
-                'Scientific development has brought many benefits and also many problems.',
-                'Scientific development has brought only benefits.',
-                'Scientific development has brought only problems.',
-                'Scientific development is not important.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Choose: Which is a synonym of “能力�?',
-            options: [
-                '本领',
-                '问题',
-                '兴趣',
-                '经验'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Fill in: 这个计划需要政府的___�?(support)',
-            options: [
-                '支持',
-                '反对',
-                '批评',
-                '建议'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Translate: 他在公司担任经理�?,
-            options: [
-                'He works as a manager in the company.',
-                'He left the company.',
-                'He is a new employee.',
-                'He is a customer.'
-            ],
-            answer: 0
-        },
-        {
-            q: 'Short Writing: Write a formal letter applying for an internship in Chinese (8�?0 sentences).',
-            options: ['__OPEN_ENDED__'],
-            answer: 0
-        }
-    ];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>地方菜</strong>',
+options: ['local cuisine', 'hot pot', 'Peking duck', 'spicy', 'dumplings'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>辣</strong>',
+options: ['local cuisine', 'spicy', 'Peking duck', 'sweet', 'dumplings'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>甜</strong>',
+options: ['local cuisine', 'hot pot', 'sweet', 'spicy', 'dumplings'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>酸</strong>',
+options: ['sour', 'hot pot', 'Peking duck', 'spicy', 'dumplings'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>咸</strong>',
+options: ['local cuisine', 'salty', 'Peking duck', 'spicy', 'dumplings'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>北京烤鸭</strong>',
+options: ['local cuisine', 'hot pot', 'Peking duck', 'spicy', 'dumplings'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>麻婆豆腐</strong>',
+options: ['Mapo tofu', 'hot pot', 'Peking duck', 'spicy', 'dumplings'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>火锅</strong>',
+options: ['local cuisine', 'hot pot', 'Peking duck', 'spicy', 'dumplings'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>饺子</strong>',
+options: ['local cuisine', 'hot pot', 'dumplings', 'spicy', 'menu'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>菜单</strong>',
+options: ['menu', 'hot pot', 'Peking duck', 'spicy', 'dumplings'],
+answer: 0
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___辣的菜。',
+options: ['喜欢', '不喜欢', '推荐', '看'],
+answer: 0
+},
+{
+q: '他___甜的菜。',
+options: ['喜欢', '不喜欢', '看', '推荐'],
+answer: 1
+},
+{
+q: '你___什么？',
+options: ['喜欢', '推荐', '看', '想'],
+answer: 1
+},
+{
+q: '我___北京烤鸭。',
+options: ['喜欢', '不喜欢', '推荐', '看'],
+answer: 2
+},
+{
+q: '四川有很多___地方菜。',
+options: ['辣', '甜', '酸', '咸'],
+answer: 0
+},
+{
+q: '服务员，请给我___。',
+options: ['菜单', '饺子', '火锅', '麻婆豆腐'],
+answer: 0
+},
+{
+q: '我想吃___和米饭。',
+options: ['饺子', '火锅', '麻婆豆腐', '北京烤鸭'],
+answer: 2
+},
+{
+q: '火锅很___，但很好吃。',
+options: ['辣', '甜', '酸', '咸'],
+answer: 0
+},
+{
+q: '我不___甜的菜。',
+options: ['喜欢', '看', '推荐', '想'],
+answer: 0
+},
+{
+q: '你推荐___？',
+options: ['麻婆豆腐', '菜单', '饺子', '米饭'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___辣的地方菜。 (like)',
+options: ['喜欢', '不喜欢', '推荐', '看'],
+answer: 0
+},
+{
+q: '他___甜的菜。 (dislike)',
+options: ['喜欢', '不喜欢', '推荐', '看'],
+answer: 1
+},
+{
+q: '我想吃___和米饭。 (dumplings)',
+options: ['饺子', '火锅', '麻婆豆腐', '北京烤鸭'],
+answer: 0
+},
+{
+q: '服务员，请给我___。 (menu)',
+options: ['菜单', '饺子', '火锅', '麻婆豆腐'],
+answer: 0
+},
+{
+q: '你___什么？ (recommend)',
+options: ['推荐', '喜欢', '看', '想'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I like spicy food.</strong>',
+options: ['我喜欢辣的菜。', '我不喜欢辣的菜。', '我推荐辣的菜。', '辣的菜很好吃。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He doesn\'t like sweet food.</strong>',
+options: ['他喜欢甜的菜。', '他不喜欢甜的菜。', '他推荐甜的菜。', '甜的菜很好吃。'],
+answer: 1
+},
+{
+q: 'Translate to Chinese:<br><strong>What do you recommend?</strong>',
+options: ['你喜欢什么？', '你推荐什么？', '你想吃什么？', '你看什么？'],
+answer: 1
+},
+{
+q: 'Translate to Chinese:<br><strong>I recommend Mapo tofu.</strong>',
+options: ['我喜欢麻婆豆腐。', '我推荐麻婆豆腐。', '我想吃麻婆豆腐。', '麻婆豆腐很辣。'],
+answer: 1
+},
+{
+q: 'Translate to Chinese:<br><strong>Hot pot is spicy but delicious.</strong>',
+options: ['火锅很辣，但很好吃。', '火锅不辣，很好吃。', '火锅很甜，很好吃。', '火锅很咸，不好吃。'],
+answer: 0
+}
+];
 
     const questions = shuffleArray([...originalQuestions]);
     let current = 0;
@@ -549,8 +562,8 @@
     }
 
     function setUnlockedLevel(level) {
-        localStorage.setItem('rookieUnlockedLevel', String(level));
-        var username = localStorage.getItem('rookieUserId');
+        localStorage.setItem('challengerUnlockedLevel', String(level));
+        var username = localStorage.getItem('challengerUserId');
         if (username) {
             fetch('http://localhost:3000/api/updateProgress', {
                 method: 'POST',
@@ -580,5 +593,6 @@
     </script>
 </body>
 </html>
+
 
 
