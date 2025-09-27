@@ -59,10 +59,10 @@
         }
         .level-btn {
             position: absolute;
-            width: 3.5vw;
-            min-width: 36px;
-            height: 3.5vw;
-            min-height: 36px;
+            width: 3.0%;
+            height: 5.0%;
+            min-width: 30px;
+            min-height: 30px;
             max-width: 50px;
             max-height: 50px;
             border-radius: 50%;
@@ -86,55 +86,52 @@
     <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#1976d2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
     <div class="map-wrapper">
     <img src="../../assets/images/Lastbg.png" alt="Challenger Map" class="challenger-map-bg">
-    <!-- Level buttons placed over black dots (adjusted to match new image) -->
-    <button class="level-btn" id="challenger-level-21" style="left:32px;top:193px;">21</button>
-    <button class="level-btn" id="challenger-level-22" style="left:256px;top:156px;">22</button>
-    <button class="level-btn" id="challenger-level-23" style="left:526px;top:213px;">23</button>
-    <button class="level-btn" id="challenger-level-24" style="left:499px;top:395px;">24</button>
-    <button class="level-btn" id="challenger-level-25" style="left:700px;top:470px;">25</button>
-    <button class="level-btn" id="challenger-level-26" style="left:920px;top:430px;">26</button>
-    <button class="level-btn" id="challenger-level-27" style="left:1130px;top:511px;">27</button>
-    <button class="level-btn" id="challenger-level-28" style="left:1100px;top:639px;">28</button>
-    <button class="level-btn" id="challenger-level-29" style="left:940px;top:670px;">29</button>
-    <button class="level-btn" id="challenger-level-30" style="left:740px;top:767px;">30</button>
+    <!-- Level buttons positioned at specified coordinates -->
+    <button class="level-btn" id="challenger-level-1" style="left:10px;top:180px;">1</button>
+    <button class="level-btn" id="challenger-level-2" style="left:73px;top:170px;">2</button>
+    <button class="level-btn" id="challenger-level-3" style="left:140px;top:165px;">3</button>
+    <button class="level-btn" id="challenger-level-4" style="left:215px;top:165px;">4</button>
+    <button class="level-btn" id="challenger-level-5" style="left:290px;top:170px;">5</button>
+    <button class="level-btn" id="challenger-level-6" style="left:360px;top:180px;">6</button>
+    <button class="level-btn" id="challenger-level-7" style="left:425px;top:195px;">7</button>
+    <button class="level-btn" id="challenger-level-8" style="left:470px;top:235px;">8</button>
+    <button class="level-btn" id="challenger-level-9" style="left:450px;top:290px;">9</button>
+    <button class="level-btn" id="challenger-level-10" style="left:430px;top:350px;">10</button>
+    <button class="level-btn" id="challenger-level-11" style="left:475px;top:390px;">11</button>
+    <button class="level-btn" id="challenger-level-12" style="left:535px;top:415px;">12</button>
+    <button class="level-btn" id="challenger-level-13" style="left:605px;top:425px;">13</button>
+    <button class="level-btn" id="challenger-level-14" style="left:670px;top:420px;">14</button>
+    <button class="level-btn" id="challenger-level-15" style="left:730px;top:400px;">15</button>
+    <button class="level-btn" id="challenger-level-16" style="left:780px;top:380px;">16</button>
+    <button class="level-btn" id="challenger-level-17" style="left:840px;top:375px;">17</button>
+    <button class="level-btn" id="challenger-level-18" style="left:895px;top:390px;">18</button>
+    <button class="level-btn" id="challenger-level-19" style="left:940px;top:430px;">19</button>
+    <button class="level-btn" id="challenger-level-20" style="left:990px;top:455px;">20</button>
+    <button class="level-btn" id="challenger-level-21" style="left:1030px;top:490px;">21</button>
+    <button class="level-btn" id="challenger-level-22" style="left:1035px;top:545px;">22</button>
+    <button class="level-btn" id="challenger-level-23" style="left:990px;top:575px;">23</button>
+    <button class="level-btn" id="challenger-level-24" style="left:930px;top:590px;">24</button>
+    <button class="level-btn" id="challenger-level-25" style="left:870px;top:600px;">25</button>
+    <button class="level-btn" id="challenger-level-26" style="left:810px;top:610px;">26</button>
+    <button class="level-btn" id="challenger-level-27" style="left:750px;top:620px;">27</button>
+    <button class="level-btn" id="challenger-level-28" style="left:700px;top:630px;">28</button>
+    <button class="level-btn" id="challenger-level-29" style="left:655px;top:660px;">29</button>
+    <button class="level-btn" id="challenger-level-30" style="left:640px;top:710px;">30</button>
     </div>
     <script>
         document.getElementById('back-btn').onclick = function() {
             window.location.href = '../chinese.html';
         };
-        document.getElementById('challenger-level-21').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz1.html';
-        };
-        document.getElementById('challenger-level-22').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz2.html';
-        };
-        document.getElementById('challenger-level-23').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz3.html';
-        };
-        document.getElementById('challenger-level-24').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz4.html';
-        };
-        document.getElementById('challenger-level-25').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz5.html';
-        };
-        document.getElementById('challenger-level-26').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz6.html';
-        };
-        document.getElementById('challenger-level-27').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz7.html';
-        };
-        document.getElementById('challenger-level-28').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz8.html';
-        };
-        document.getElementById('challenger-level-29').onclick = function() {
-            window.location.href = '../quizzes/challenger_quiz9.html';
-        };
-        document.getElementById('challenger-level-30').onclick = function() {
-            alert('Level 30 coming soon!');
-        };
-        document.getElementById('challenger-level-30').onclick = function() {
-            window.location.href = 'challenger_quiz30.html';
-        };
+        
+        // Event handlers for all 30 levels
+        for (let i = 1; i <= 30; i++) {
+            const levelBtn = document.getElementById(`challenger-level-${i}`);
+            if (levelBtn) {
+                levelBtn.onclick = function() {
+                    window.location.href = `../quizzes/challenger_quiz${i}.html`;
+                };
+            }
+        }
     </script>
 </body>
 </html>
