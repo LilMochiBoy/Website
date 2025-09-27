@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Challenger Quiz Level 14</title>
+<title>Challenger Quiz 14</title>
 <link rel="stylesheet" href="../../assets/css/style.css">
 <style>
 .buzzer-effect {
@@ -192,12 +192,11 @@ pauseModal.style.display = 'none';
 current = 0;
 score = 0;
 for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
 function shuffleArray(arr) {
@@ -209,19 +208,171 @@ return arr;
 }
 
 const originalQuestions = [
-// Questions will be added later
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>天气</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 5
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>下雨</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 7
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>下雪</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>风</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 6
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>热</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>冷</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 8
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>暖和</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>凉快</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>污染</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>空气</strong>',
+options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+answer: 9
+},
+// Part B - Multiple Choice Grammar / Sentences (10 Questions)
+{
+q: '今天天气___。 (hot)',
+options: ['很热', '下雨', '下雪', '风'],
+answer: 0
+},
+{
+q: '明天___吗？ (will it rain)',
+options: ['下雨', '热', '冷', '风'],
+answer: 0
+},
+{
+q: '今天有___。 (wind)',
+options: ['风', '雨伞', '空气', '污染'],
+answer: 0
+},
+{
+q: '外面___了。 (snowing)',
+options: ['下雪', '下雨', '风', '天气'],
+answer: 0
+},
+{
+q: '空气很___。 (polluted)',
+options: ['污染', '凉快', '暖和', '热'],
+answer: 0
+},
+{
+q: '我们要保护___。 (environment)',
+options: ['环境', '天气', '空气', '风'],
+answer: 0
+},
+{
+q: '天气很___，我要穿衣服。 (cold)',
+options: ['冷', '热', '暖和', '凉快'],
+answer: 0
+},
+{
+q: '我带了___。 (umbrella)',
+options: ['雨伞', '风', '天气', '污染'],
+answer: 0
+},
+{
+q: '今天___。 (warm)',
+options: ['暖和', '凉快', '下雨', '风'],
+answer: 0
+},
+{
+q: '外面很___，可以开窗。 (cool)',
+options: ['凉快', '热', '下雪', '污染'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: 'Fill in the blank:<br>今天天气很___。 (hot)',
+options: ['热', '冷', '暖和', '凉快'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>明天___吗？ (rain)',
+options: ['下雨', '下雪', '刮风', '天晴'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>外面___了。 (snowing)',
+options: ['下雪', '下雨', '刮风', '天晴'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>空气很___。 (polluted)',
+options: ['污染', '干净', '清新', '好'],
+answer: 0
+},
+{
+q: 'Fill in the blank:<br>我们要保护___。 (environment)',
+options: ['环境', '天气', '空气', '地球'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>The weather is hot today.</strong>',
+options: ['今天天气很热。', '今天很冷。', '明天很热。', '今天下雨。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Will it rain tomorrow?</strong>',
+options: ['明天下雨吗？', '今天下雨吗？', '明天下雪吗？', '今天刮风吗？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>It is snowing outside.</strong>',
+options: ['外面下雪了。', '外面下雨了。', '外面刮风了。', '外面很热。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>The air is polluted.</strong>',
+options: ['空气很污染。', '空气很好。', '空气很干净。', '空气很清新。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>We need to protect the environment.</strong>',
+options: ['我们要保护环境。', '我们要保护天气。', '我们要保护空气。', '我们要保护地球。'],
+answer: 0
+}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +380,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +399,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! 💪';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +436,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +445,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(15);
 setTimeout(function() {
@@ -314,6 +465,7 @@ showQuestion();
 </script>
 </body>
 </html>
+
 
 
 

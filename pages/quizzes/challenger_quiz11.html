@@ -161,7 +161,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Challenger Quiz 11</span>
+		<span class="duo-title">Challenger Quiz 11: Technology & Internet</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -192,8 +192,8 @@
 		pauseModal.style.display = 'none';
 		current = 0;
 		score = 0;
+		// Reset questions in original order
 		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
 		showQuestion();
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
@@ -210,11 +210,164 @@
 	}
 
 	const originalQuestions = [
-		// Questions will be added later
-	];
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>电脑</strong>',
+options: ['computer', 'mobile phone', 'go online', 'download', 'upload'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>手机</strong>',
+options: ['computer', 'mobile phone', 'go online', 'download', 'upload'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>上网</strong>',
+options: ['computer', 'mobile phone', 'go online', 'download', 'upload'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>下载</strong>',
+options: ['computer', 'mobile phone', 'go online', 'download', 'upload'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>上传</strong>',
+options: ['computer', 'mobile phone', 'go online', 'download', 'upload'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>发送</strong>',
+options: ['send', 'receive', 'email', 'browse', 'website'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>收到</strong>',
+options: ['send', 'receive', 'email', 'browse', 'website'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>邮件</strong>',
+options: ['send', 'receive', 'email', 'browse', 'website'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>浏览</strong>',
+options: ['send', 'receive', 'email', 'browse', 'website'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>网站</strong>',
+options: ['send', 'receive', 'email', 'browse', 'website'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___。 (go online)',
+options: ['上网', '下载', '上传', '浏览'],
+answer: 0
+},
+{
+q: '他___了一个软件。 (download)',
+options: ['下载', '发送', '登录', '收到'],
+answer: 0
+},
+{
+q: '你___邮件了吗？ (send)',
+options: ['发送', '下载', '浏览', '登录'],
+answer: 0
+},
+{
+q: '我___短信。 (receive)',
+options: ['收到', '上传', '下载', '发送'],
+answer: 0
+},
+{
+q: '请___网站。 (log in)',
+options: ['登录', '下载', '上网', '浏览'],
+answer: 0
+},
+{
+q: '你可以___文件吗？ (upload)',
+options: ['上传', '下载', '发送', '登录'],
+answer: 0
+},
+{
+q: '我在___社交媒体。 (browse)',
+options: ['浏览', '下载', '上传', '登录'],
+answer: 0
+},
+{
+q: '请告诉我你的___。 (password)',
+options: ['密码', '帐号', '邮件', '短信'],
+answer: 0
+},
+{
+q: '他用___上网。 (computer)',
+options: ['电脑', '手机', '网站', '帐号'],
+answer: 0
+},
+{
+q: '我收到了一封___。 (email)',
+options: ['邮件', '短信', '网站', '帐号'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___。 (go online)',
+options: ['上网', '下载', '上传', '浏览'],
+answer: 0
+},
+{
+q: '他___了一个软件。 (download)',
+options: ['下载', '发送', '登录', '收到'],
+answer: 0
+},
+{
+q: '我___了短信。 (receive)',
+options: ['收到', '上传', '下载', '发送'],
+answer: 0
+},
+{
+q: '请___网站。 (log in)',
+options: ['登录', '下载', '上网', '浏览'],
+answer: 0
+},
+{
+q: '你可以___文件吗？ (upload)',
+options: ['上传', '下载', '发送', '登录'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I go online.</strong>',
+options: ['我上网。', '我下载。', '我上传。', '我浏览。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He downloaded a software.</strong>',
+options: ['他下载了一个软件。', '他发送了一个软件。', '他登录了一个软件。', '他收到了一个软件。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Did you send the email?</strong>',
+options: ['你发送邮件了吗？', '你下载邮件了吗？', '你浏览邮件了吗？', '你登录邮件了吗？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I received a text message.</strong>',
+options: ['我收到了短信。', '我上传了短信。', '我下载了短信。', '我发送了短信。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Can you upload the file?</strong>',
+options: ['你可以上传文件吗？', '你可以下载文件吗？', '你可以发送文件吗？', '你可以登录文件吗？'],
+answer: 0
+}
+];
 
 	let questions = [...originalQuestions];
-	shuffleArray(questions);
+	// No shuffling - questions maintain specified sequence
 	let current = 0;
 	let score = 0;
 
@@ -315,6 +468,7 @@
 	</script>
 </body>
 </html>
+
 
 
 

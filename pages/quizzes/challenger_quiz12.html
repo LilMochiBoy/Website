@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 12</span>
+<span class="duo-title">Challenger Quiz 12: Online Shopping</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,13 +191,13 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
+// Reset questions in original order
 for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
 function shuffleArray(arr) {
@@ -209,19 +209,172 @@ return arr;
 }
 
 const originalQuestions = [
-// Questions will be added later
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>网购</strong>',
+options: ['online shopping', 'product / goods', 'price', 'compare', 'cheap'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>商品</strong>',
+options: ['online shopping', 'product / goods', 'price', 'compare', 'cheap'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>价格</strong>',
+options: ['online shopping', 'product / goods', 'price', 'compare', 'cheap'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>比较</strong>',
+options: ['online shopping', 'product / goods', 'price', 'compare', 'cheap'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>便宜</strong>',
+options: ['online shopping', 'product / goods', 'price', 'compare', 'cheap'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>贵</strong>',
+options: ['expensive', 'place an order', 'pay / payment', 'delivery', 'receive goods'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>下单</strong>',
+options: ['expensive', 'place an order', 'pay / payment', 'delivery', 'receive goods'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>付款</strong>',
+options: ['expensive', 'place an order', 'pay / payment', 'delivery', 'receive goods'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>快递</strong>',
+options: ['expensive', 'place an order', 'pay / payment', 'delivery', 'receive goods'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>收货</strong>',
+options: ['expensive', 'place an order', 'pay / payment', 'delivery', 'receive goods'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___了一件衣服。 (buy online)',
+options: ['网购', '下单', '付款', '收货'],
+answer: 0
+},
+{
+q: '这个商品___便宜。 (compare)',
+options: ['比较', '退货', '优惠', '活动'],
+answer: 0
+},
+{
+q: '我已经___了。 (place order)',
+options: ['下单', '付款', '收货', '评价'],
+answer: 0
+},
+{
+q: '快递到了，我___了。 (receive goods)',
+options: ['收货', '下单', '网购', '比较'],
+answer: 0
+},
+{
+q: '我已经___了。 (pay)',
+options: ['付款', '下单', '收货', '网购'],
+answer: 0
+},
+{
+q: '你觉得这个商品___？ (how about / opinion)',
+options: ['怎么样', '可以', '下单', '收货'],
+answer: 0
+},
+{
+q: '可以___吗？ (return goods)',
+options: ['退货', '网购', '下单', '比较'],
+answer: 0
+},
+{
+q: '购物车里有很多___。',
+options: ['商品', '优惠', '活动', '快递'],
+answer: 0
+},
+{
+q: '这个商品比那个___。 (expensive)',
+options: ['贵', '便宜', '优惠', '活动'],
+answer: 0
+},
+{
+q: '我用了一个___。 (discount)',
+options: ['优惠', '活动', '商品', '购物车'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___了一件衣服。 (buy online)',
+options: ['网购', '下单', '付款', '收货'],
+answer: 0
+},
+{
+q: '我已经___了。 (pay)',
+options: ['付款', '下单', '收货', '网购'],
+answer: 0
+},
+{
+q: '快递到了，我___了。 (receive goods)',
+options: ['收货', '下单', '网购', '比较'],
+answer: 0
+},
+{
+q: '可以___吗？ (return goods)',
+options: ['退货', '网购', '下单', '比较'],
+answer: 0
+},
+{
+q: '购物车里有很多___。 (products)',
+options: ['商品', '优惠', '活动', '快递'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I bought a piece of clothing online.</strong>',
+options: ['我网购了一件衣服。', '我下单了一件衣服。', '我付款了一件衣服。', '我收货了一件衣服。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>This product is cheaper.</strong>',
+options: ['这个商品比较便宜。', '这个商品比较贵。', '这个商品比较优惠。', '这个商品比较活动。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I placed an order for a phone.</strong>',
+options: ['我下单了手机。', '我网购了手机。', '我付款了手机。', '我收货了手机。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>Can I return it?</strong>',
+options: ['可以退货吗？', '可以网购吗？', '可以下单吗？', '可以比较吗？'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>There are many items in the shopping cart.</strong>',
+options: ['购物车里有很多商品。', '购物车里有很多优惠。', '购物车里有很多活动。', '购物车里有很多快递。'],
+answer: 0
+}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
+// No shuffling - questions maintain specified sequence
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +382,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +401,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! 🎉';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! 💪';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +438,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +447,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(13);
 setTimeout(function() {
@@ -314,6 +467,7 @@ showQuestion();
 </script>
 </body>
 </html>
+
 
 
 

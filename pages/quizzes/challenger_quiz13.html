@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 13</span>
+<span class="duo-title">Challenger Quiz 13: Sports & Exercise</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,13 +191,13 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
+// Reset questions in original order
 for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
 function shuffleArray(arr) {
@@ -209,19 +209,172 @@ return arr;
 }
 
 const originalQuestions = [
-// Questions will be added later
+// Part A - Vocabulary Matching (10 Questions)
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>运动</strong>',
+options: ['sports / exercise', 'play basketball', 'play soccer', 'swim', 'run / jogging'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打篮球</strong>',
+options: ['sports / exercise', 'play basketball', 'play soccer', 'swim', 'run / jogging'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>踢足球</strong>',
+options: ['sports / exercise', 'play basketball', 'play soccer', 'swim', 'run / jogging'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>游泳</strong>',
+options: ['sports / exercise', 'play basketball', 'play soccer', 'swim', 'run / jogging'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>跑步</strong>',
+options: ['sports / exercise', 'play basketball', 'play soccer', 'swim', 'run / jogging'],
+answer: 4
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打网球</strong>',
+options: ['play tennis', 'play badminton', 'exercise / work out', 'gym', 'ball'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>打羽毛球</strong>',
+options: ['play tennis', 'play badminton', 'exercise / work out', 'gym', 'ball'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>锻炼</strong>',
+options: ['play tennis', 'play badminton', 'exercise / work out', 'gym', 'ball'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>健身房</strong>',
+options: ['play tennis', 'play badminton', 'exercise / work out', 'gym', 'ball'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>球</strong>',
+options: ['play tennis', 'play badminton', 'exercise / work out', 'gym', 'ball'],
+answer: 4
+},
+// Part B - Multiple Choice Grammar (10 Questions)
+{
+q: '我___。 (play basketball)',
+options: ['打篮球', '踢足球', '游泳', '跑步'],
+answer: 0
+},
+{
+q: '他喜欢___。 (swimming)',
+options: ['游泳', '打网球', '打篮球', '跑步'],
+answer: 0
+},
+{
+q: '我不喜欢___。 (running)',
+options: ['跑步', '游泳', '打羽毛球', '踢足球'],
+answer: 0
+},
+{
+q: '我每天___。 (exercise)',
+options: ['锻炼', '打篮球', '游泳', '跑步'],
+answer: 0
+},
+{
+q: '我们___比赛。 (win)',
+options: ['赢', '输', '跑', '打'],
+answer: 0
+},
+{
+q: '他___比赛。 (lose)',
+options: ['输', '赢', '打', '跑'],
+answer: 0
+},
+{
+q: '我去___锻炼。 (gym)',
+options: ['健身房', '球', '运动', '比赛'],
+answer: 0
+},
+{
+q: '我喜欢___羽毛球。 (play badminton)',
+options: ['打', '游泳', '踢', '跑'],
+answer: 0
+},
+{
+q: '他喜欢___足球。 (play soccer)',
+options: ['踢', '打篮球', '打', '游泳'],
+answer: 0
+},
+{
+q: '我们打___。 (ball)',
+options: ['球', '羽毛球', '网球', '足球'],
+answer: 0
+},
+// Part C - Fill in the blanks (5 Questions)
+{
+q: '我___。 (play basketball)',
+options: ['打篮球', '踢足球', '游泳', '跑步'],
+answer: 0
+},
+{
+q: '他喜欢___。 (swimming)',
+options: ['游泳', '打网球', '打篮球', '跑步'],
+answer: 0
+},
+{
+q: '我不喜欢___。 (running)',
+options: ['跑步', '游泳', '打羽毛球', '踢足球'],
+answer: 0
+},
+{
+q: '我每天___。 (exercise)',
+options: ['锻炼', '打篮球', '游泳', '跑步'],
+answer: 0
+},
+{
+q: '我们___比赛。 (win)',
+options: ['赢', '输', '跑', '打'],
+answer: 0
+},
+// Part D - Translation (5 Questions)
+{
+q: 'Translate to Chinese:<br><strong>I play basketball.</strong>',
+options: ['我打篮球。', '我踢足球。', '我游泳。', '我跑步。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>He likes swimming.</strong>',
+options: ['他喜欢游泳。', '他喜欢打网球。', '他喜欢打篮球。', '他喜欢跑步。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I don\'t like running.</strong>',
+options: ['我不喜欢跑步。', '我不喜欢游泳。', '我不喜欢打羽毛球。', '我不喜欢踢足球。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>I exercise every day.</strong>',
+options: ['我每天锻炼。', '我每天打篮球。', '我每天游泳。', '我每天跑步。'],
+answer: 0
+},
+{
+q: 'Translate to Chinese:<br><strong>We won the match.</strong>',
+options: ['我们赢了比赛。', '我们输了比赛。', '我们跑了比赛。', '我们打了比赛。'],
+answer: 0
+}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
+// No shuffling - questions maintain specified sequence
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +382,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +401,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! 🎉';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! 💪';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +438,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +447,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(14);
 setTimeout(function() {
@@ -314,6 +467,7 @@ showQuestion();
 </script>
 </body>
 </html>
+
 
 
 
