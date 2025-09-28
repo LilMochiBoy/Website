@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -212,157 +212,8 @@
 	}
 
 	const originalQuestions = [
-		{
-			q: 'Translate into English:<br>无论结果如何，他都不会放弃。',
-			options: [
-				'No matter the result, he will not give up.',
-				'He will give up if he fails.',
-				'He only cares about the result.',
-				'He is not interested in the result.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Which sentence uses "以免" correctly?',
-			options: [
-				'他带了雨伞，以免下雨的时候淋湿。',
-				'他带了雨伞，以免天气很好。',
-				'他带了雨伞，以免他喜欢散步。',
-				'他带了雨伞，以免去旅游。'
-			],
-			answer: 0
-		},
-		{
-			q: 'Fill in with the correct connector:<br>他不仅聪明，___很勤奋。',
-			options: [
-				'而且',
-				'但是',
-				'所以',
-				'如果'
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate into Chinese:<br>"She studies hard in order to achieve her dream."',
-			options: [
-				'她努力学习，为了实现她的梦想。',
-				'她努力学习，因为她喜欢玩。',
-				'她不喜欢学习。',
-				'她已经实现了梦想。'
-			],
-			answer: 0
-		},
-		{
-			q: 'Which word best fits?<br>他的讲话很有___，大家都认真听。',
-			options: [
-				'感情',
-				'魅力',
-				'表情',
-				'表演'
-			],
-			answer: 1
-		},
-		{
-			q: 'Write the pinyin:<br>艰难',
-			options: [
-				'jiānnán',
-				'jiāngnán',
-				'jiānnān',
-				'jiāngnān'
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate into English:<br>他抱怨说生活太辛苦了。',
-			options: [
-				'He complained that life was too hard.',
-				'He said life was very happy.',
-				'He enjoys a comfortable life.',
-				'He never complains about life.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Choose the correct synonym for "逐渐"',
-			options: [
-				'突然',
-				'渐渐',
-				'马上',
-				'立刻'
-			],
-			answer: 1
-		},
-		{
-			q: 'Fill in:<br>他___了很大的努力，终于考上了大学。',
-			options: [
-				'做',
-				'进行',
-				'付出',
-				'出现'
-			],
-			answer: 2
-		},
-		{
-			q: 'Translate into Chinese:<br>"Cultural exchange helps us understand each other better."',
-			options: [
-				'文化交流有助于我们更好地相互理解。',
-				'文化交流让我们变得富有。',
-				'文化交流让我们学习外语。',
-				'文化交流让我们喜欢旅游。'
-			],
-			answer: 0
-		},
-		{
-			q: 'Which idiom means "don\'t give up halfway"?',
-			options: [
-				'半途而废',
-				'一见钟情',
-				'自相矛盾',
-				'井底之蛙'
-			],
-			answer: 0
-		},
-		{
-			q: 'Rearrange into a correct sentence:<br>我们 / 尊重 / 应该 / 不同 / 的 / 文化',
-			options: [
-				'我们应该尊重不同的文化',
-				'我们尊重应该不同的文化',
-				'不同的文化我们应该尊重',
-				'应该我们尊重不同的文化'
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate into English:<br>科学技术的发展改变了我们的生活方式。',
-			options: [
-				'The development of science and technology has changed our way of life.',
-				'Science and technology have no effect on our lives.',
-				'Our way of life has not changed.',
-				'Science and technology make life more difficult.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Fill in:<br>他在演讲中表现得很___。(confident)',
-			options: [
-				'自信',
-				'紧张',
-				'害羞',
-				'激动'
-			],
-			answer: 0
-		},
-		{
-			q: 'Short Writing (6-8 sentences):<br>Write about a time when you faced a difficult challenge and how you overcame it, in Chinese.',
-			options: [
-				'Write your answer...',
-				'Write your answer...',
-				'Write your answer...',
-				'Write your answer...'
-			],
-			answer: 0
-		}
-	];
+// Questions will be added later
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -371,7 +222,15 @@
 	let score = 0;
 
 	function showQuestion() {
-		const q = questions[current];
+updateProgress();
+if (questions.length === 0) {
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
+return;
+}
+
+if (paused) return;
+const q = questions[current];
 		const questionDiv = document.getElementById('quiz-question');
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
@@ -408,7 +267,7 @@
 		if(idx === q._shuffledAnswerIdx) {
 			correct = true;
 			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">馃帀</span></span>';
 			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
@@ -468,7 +327,7 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>馃惣 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(8);
 		setTimeout(function() {
@@ -485,3 +344,4 @@
 	</script>
 </body>
 </html>
+

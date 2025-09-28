@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -210,157 +210,8 @@
 	}
 
 	const originalQuestions = [
-		{
-			q: 'Translate: 他不但聪明，而且非常勤奋�?,
-			options: [
-				'He is not only smart but also very diligent.',
-				'He is not only tall but also strong.',
-				'He is not only rich but also generous.',
-				'He is not only happy but also lucky.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Which idiom means “not worth seeing�?',
-			options: [
-				'不值一�?,
-				'不堪入目',
-				'不可思议',
-				'不容忽视'
-			],
-			answer: 1
-		},
-		{
-			q: 'Fill in: 如果明天下雨，我们就___计划�?,
-			options: [
-				'取消',
-				'删除',
-				'丢弃',
-				'放弃'
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate: “He achieved success through hard work rather than luck.�?,
-			options: [
-				'他是通过努力工作而不是靠运气取得成功的�?,
-				'他靠运气取得了成功�?,
-				'他没有取得成功�?,
-				'他不喜欢努力工作�?
-			],
-			answer: 0
-		},
-		{
-			q: 'Reading:<br>“近年来，环境问题日益严重，特别是空气污染和水污染，已经影响到人们的生活质量�?br>为了改善环境，各国政府采取了许多措施。�?br><br><b>Question:</b> Which problems are mentioned?',
-			options: [
-				'Deforestation',
-				'Air and water pollution',
-				'Climate change',
-				'Noise pollution'
-			],
-			answer: 1
-		},
-		{
-			q: 'Translate: 我差点儿忘了告诉你一个重要的消息�?,
-			options: [
-				'I almost forgot to tell you an important message.',
-				'I forgot your name.',
-				'I remembered everything.',
-				'I told you everything.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Rearrange:<br>需�?/ 我们 / 共同 / 解决 / 这个问题',
-			options: [
-				'我们需要共同解决这个问�?,
-				'共同需要我们解决这个问�?,
-				'我们共同需要解决这个问�?,
-				'这个问题我们需要共同解�?
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate into Chinese:<br>“Cultural exchange helps promote mutual understanding among people.�?,
-			options: [
-				'文化交流有助于促进人们之间的相互理解�?,
-				'文化交流让人们变得富有�?,
-				'文化交流让人们学习外语�?,
-				'文化交流让人们喜欢旅游�?
-			],
-			answer: 0
-		},
-		{
-			q: 'Fill in: 他很___，总是关心别人�?kind)',
-			options: [
-				'善良',
-				'美丽',
-				'快乐',
-				'干净'
-			],
-			answer: 0
-		},
-		{
-			q: 'Which idiom means “a blessing in disguise�?',
-			options: [
-				'塞翁失马',
-				'画蛇添足',
-				'胸有成竹',
-				'草木皆兵'
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate: 他一直努力工作，希望能得到升职�?,
-			options: [
-				'He has been working hard, hoping to get a promotion.',
-				'He has been working hard, hoping to get a vacation.',
-				'He has been working hard, hoping to get a car.',
-				'He has been working hard, hoping to get a house.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Write pinyin: 挑战',
-			options: [
-				'tiǎozhàn',
-				'tiáozhàn',
-				'tiǎozhān',
-				'tiáozhān'
-			],
-			answer: 0
-		},
-		{
-			q: 'Translate into English:<br>我们必须遵守规则，不然会受到惩罚�?,
-			options: [
-				'We must follow the rules, otherwise we will be punished.',
-				'We must break the rules, otherwise we will be punished.',
-				'We must ignore the rules, otherwise we will be rewarded.',
-				'We must write the rules, otherwise we will be punished.'
-			],
-			answer: 0
-		},
-		{
-			q: 'Fill in: 他讲话很___，大家都听得懂�?(clear)',
-			options: [
-				'清楚',
-				'流利',
-				'热闹',
-				'干净'
-			],
-			answer: 0
-		},
-		{
-			q: 'Short Writing: Write 5�? sentences about an important tradition in your culture.',
-			options: [
-				'Open-ended',
-				'Open-ended',
-				'Open-ended',
-				'Open-ended'
-			],
-			answer: 0
-		}
-	];
+// Questions will be added later
+];
 
 	// Shuffle questions at the start
 	const questions = shuffleArray([...originalQuestions]);
@@ -369,7 +220,15 @@
 	let score = 0;
 
 	function showQuestion() {
-		const q = questions[current];
+updateProgress();
+if (questions.length === 0) {
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
+return;
+}
+
+if (paused) return;
+const q = questions[current];
 		const questionDiv = document.getElementById('quiz-question');
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
@@ -443,7 +302,7 @@
 		if(idx === q._shuffledAnswerIdx) {
 			correct = true;
 			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">馃帀</span></span>';
 			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
@@ -503,7 +362,7 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>馃惣 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(2);
 		setTimeout(function() {
@@ -520,3 +379,5 @@
 	</script>
 </body>
 </html>
+
+

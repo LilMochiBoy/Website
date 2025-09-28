@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -211,156 +211,7 @@
 	}
 
 	const originalQuestions = [
-    {
-        q: 'Translate:<br>无论遇到什么困难，他都坚持下来了�?,
-        options: [
-            'No matter what difficulties he encountered, he persevered.',
-            'He gave up when he met difficulties.',
-            'He never faced any difficulties.',
-            'He avoided all difficulties.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which sentence correctly uses “既然…就…�?',
-        options: [
-            '既然你来了，就一起吃饭吧�?,
-            '就你来了，既然一起吃饭吧�?,
-            '你来了既然，就吃饭吧�?,
-            '一起吃饭吧，既然你来了�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in:<br>他总是帮助别人，所以大家都很___他�?(respect)',
-        options: [
-            '尊重',
-            '喜欢',
-            '关心',
-            '佩服'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“Education is the foundation of a strong nation。�?,
-        options: [
-            '教育是强国之本�?,
-            '教育让人快乐�?,
-            '教育是个人的事情�?,
-            '教育不重要�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best antonym of “积极�?',
-        options: [
-            '消极',
-            '热情',
-            '勤奋',
-            '认真'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Write the pinyin:<br>贡献',
-        options: [
-            'gòngxiàn',
-            'gōngxiàn',
-            'gòngxiān',
-            'gōngxiān'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>我对未来充满了希望�?,
-        options: [
-            'I am full of hope for the future.',
-            'I am afraid of the future.',
-            'I don’t care about the future.',
-            'I am disappointed in the future.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “great ambition�?',
-        options: [
-            '胸有成竹',
-            '志向远大',
-            '挑灯夜读',
-            '亡羊补牢'
-        ],
-        answer: 1
-    },
-    {
-        q: 'Fill in:<br>在这次比赛中，他___了第一名�?,
-        options: [
-            '�?,
-            '�?,
-            '�?,
-            '�?
-        ],
-        answer: 1
-    },
-    {
-        q: 'Translate into English:<br>他决定出国留学，以便开阔眼界�?,
-        options: [
-            'He decided to study abroad in order to broaden his horizons.',
-            'He decided to stay at home.',
-            'He decided to work instead of studying.',
-            'He decided to travel for fun.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the correct synonym for “经验�?',
-        options: [
-            '经历',
-            '历史',
-            '经验丰富',
-            '过去'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Rearrange into correct sentence:<br>新的 / 科技 / 社会 / 推动�?/ 发展',
-        options: [
-            '新的科技推动了社会发�?,
-            '社会推动了新的科技发展',
-            '科技新的推动了社会发�?,
-            '推动了社会新的科技发展'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in:<br>这本书对我的学习很有___�?(helpful)',
-        options: [
-            '帮助',
-            '兴趣',
-            '影响',
-            '作用'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“The government is taking measures to improve the environment。�?,
-        options: [
-            '政府正在采取措施改善环境�?,
-            '政府忽视了环境问题�?,
-            '政府没有采取措施�?,
-            '政府鼓励污染�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Short Essay (6�? sentences):<br>Discuss the importance of technology in education, in Chinese.',
-        options: [
-            'Open-ended',
-            'Open-ended',
-            'Open-ended',
-            'Open-ended'
-        ],
-        answer: 0
-    }
+// Questions will be added later
 ];
 
 	// Shuffle questions at the start
@@ -370,7 +221,15 @@
 	let score = 0;
 
 	function showQuestion() {
-		const q = questions[current];
+updateProgress();
+if (questions.length === 0) {
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
+return;
+}
+
+if (paused) return;
+const q = questions[current];
 		const questionDiv = document.getElementById('quiz-question');
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
@@ -407,7 +266,7 @@
 		if(idx === q._shuffledAnswerIdx) {
 			correct = true;
 			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">馃帀</span></span>';
 			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
@@ -467,7 +326,7 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>馃惣 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(2);
 		setTimeout(function() {
@@ -484,3 +343,5 @@
 	</script>
 </body>
 </html>
+
+

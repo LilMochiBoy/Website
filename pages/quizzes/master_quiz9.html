@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -211,156 +211,7 @@
 	}
 
 	const originalQuestions = [
-    {
-        q: 'Translate:<br>他认为诚信比金钱更重要�?,
-        options: [
-            'He thinks honesty is more important than money.',
-            'He thinks money is more important than honesty.',
-            'He thinks honesty is not important.',
-            'He thinks money is not important.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which sentence uses “宁可…也不…�?correctly?',
-        options: [
-            '我宁可自己辛苦，也不麻烦别人�?,
-            '我也不辛苦宁可自己，麻烦别人�?,
-            '我宁可麻烦别人，也不自己辛苦�?,
-            '宁可自己辛苦，我也不麻烦别人�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in:<br>为了保护环境，我们应该减少___塑料袋�?(use)',
-        options: [
-            '使用',
-            '�?,
-            '�?,
-            '�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“Freedom of speech is an important human right。�?,
-        options: [
-            '言论自由是一项重要的人权�?,
-            '自由是没有用的�?,
-            '人权不重要�?,
-            '言论自由是法律�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the best synonym for “巨大�?',
-        options: [
-            '庞大',
-            '�?,
-            '微小',
-            '细小'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Write the pinyin:<br>勇敢',
-        options: [
-            'yǒnggǎn',
-            'yōnggǎn',
-            'yǒnggān',
-            'yōnggān'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate:<br>他后悔没有抓住那个机会�?,
-        options: [
-            'He regrets not seizing that opportunity.',
-            'He is happy he missed the opportunity.',
-            'He forgot about the opportunity.',
-            'He didn’t know about the opportunity.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Which idiom means “well-prepared, confident in success�?',
-        options: [
-            '胸有成竹',
-            '画蛇添足',
-            '对牛弹琴',
-            '不可思议'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in:<br>他的话很有___，让我深思�?(meaningful)',
-        options: [
-            '意义',
-            '意见',
-            '意外',
-            '意图'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into English:<br>他们正在研究如何解决能源问题�?,
-        options: [
-            'They are studying how to solve the energy problem.',
-            'They are ignoring the energy problem.',
-            'They have solved the energy problem.',
-            'They are not interested in energy.'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Choose the antonym of “复杂�?',
-        options: [
-            '简�?,
-            '困难',
-            '严重',
-            '混乱'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Rearrange into proper sentence:<br>经济 / 我国 / 快�?/ �?/ 发展',
-        options: [
-            '我国经济在快速发�?,
-            '经济快速在我国发展',
-            '在我国经济快速发�?,
-            '快速发展在我国经济'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Fill in:<br>他是一个很有___的人，经常关心社会问题�?(responsibility)',
-        options: [
-            '责任�?,
-            '信心',
-            '能力',
-            '兴趣'
-        ],
-        answer: 0
-    },
-    {
-        q: 'Translate into Chinese:<br>“Globalization has both advantages and disadvantages。�?,
-        options: [
-            '全球化既有优点也有缺点�?,
-            '全球化只有优点�?,
-            '全球化没有缺点�?,
-            '全球化没有影响�?
-        ],
-        answer: 0
-    },
-    {
-        q: 'Short Writing (6�? sentences):<br>Write your opinion on the role of young people in shaping the future of society, in Chinese.',
-        options: [
-            'Open-ended',
-            'Open-ended',
-            'Open-ended',
-            'Open-ended'
-        ],
-        answer: 0
-    }
+// Questions will be added later
 ];
 
 	// Shuffle questions at the start
@@ -370,7 +221,15 @@
 	let score = 0;
 
 	function showQuestion() {
-		const q = questions[current];
+updateProgress();
+if (questions.length === 0) {
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
+return;
+}
+
+if (paused) return;
+const q = questions[current];
 		const questionDiv = document.getElementById('quiz-question');
 		const answersDiv = document.getElementById('quiz-answers');
 		questionDiv.innerHTML = q.q;
@@ -407,7 +266,7 @@
 		if(idx === q._shuffledAnswerIdx) {
 			correct = true;
 			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">馃帀</span></span>';
 			// Water fill animation
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
@@ -467,7 +326,7 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>馃惣 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(2);
 		setTimeout(function() {
@@ -484,3 +343,5 @@
 	</script>
 </body>
 </html>
+
+

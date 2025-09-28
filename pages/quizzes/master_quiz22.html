@@ -3,10 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1</title>
-	<link rel="stylesheet" href="../.	const originalQuestions = [
-// Questions will be added later
-];s/style.css">
+	<title>Master Quiz Level 22</title>
+	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
 		.buzzer-effect {
 			position: fixed;
@@ -64,8 +62,7 @@
 		.quiz-question {
 			font-size: 2rem;
 			font-weight: 700;
-			margin: 96px 0 32px 0;
-            margin-bottom: 130px;
+			margin: 96px 0 16px 0;   /* Reduced bottom margin for closer spacing */
 			color: #f7f7fa;
 			text-align: center;
 		}
@@ -74,7 +71,7 @@
 			grid-template-columns: 1fr 1fr;
 			gap: 32px;
 			margin-bottom: 32px;
-			margin-top: 48px;
+			margin-top: 50px;         /* Reduced top margin for closer spacing */
 			width: calc(100vw - 80px);
 			max-width: calc(100vw - 80px);
 			padding-left: 40px;
@@ -163,7 +160,7 @@
 	</div>
 	<div class="duo-header">
 		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: First Steps</span>
+		<span class="duo-title">Master Quiz 22: First Steps</span>
 	</div>
 	<div class="quiz-progress">
 		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -201,7 +198,7 @@
 		document.getElementById('quiz-progress-bar').style.width = '0%';
 	};
 	exitBtn.onclick = function() {
-		window.location.href = 'master.html';
+		window.location.href = '../levels/master.html';
 	};
 	// Duolingo-style quiz logic
 	function shuffleArray(arr) {
@@ -250,8 +247,8 @@ const q = questions[current];
 			const submitBtn = document.createElement('button');
 			submitBtn.textContent = 'Submit';
 			submitBtn.style.marginTop = '18px';
-			submitBtn.style.padding = '12px 32px';
-			submitBtn.style.fontSize = '1.1rem';
+			submitBtn.style.padding = '10px 32px'; 
+			submitBtn.style.fontSize = '1rem';     
 			submitBtn.style.borderRadius = '8px';
 			submitBtn.style.background = '#4a90e2';
 			submitBtn.style.color = '#fff';
@@ -350,9 +347,9 @@ const q = questions[current];
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
+		localStorage.setItem('masterUnlockedLevel', String(level));
 		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
+		var username = localStorage.getItem('masterUserId');
 		if (username) {
 			fetch('http://localhost:3000/api/updateProgress', {
 				method: 'POST',
@@ -367,12 +364,12 @@ const q = questions[current];
 		document.getElementById('quiz-answers').innerHTML = '';
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>馃惣 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(2);
+		setUnlockedLevel(23);
 		setTimeout(function() {
 			var btn = document.getElementById('nextLevelBtn');
 			if (btn) {
 				btn.onclick = function() {
-				 window.location.href = 'master_quiz2.html';
+				 window.location.href = 'master_quiz23.html';
 				};
 			}
 		}, 100);
@@ -382,5 +379,7 @@ const q = questions[current];
 	</script>
 </body>
 </html>
+
+
 
 
