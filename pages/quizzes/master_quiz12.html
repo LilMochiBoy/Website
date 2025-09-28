@@ -1,385 +1,346 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Master Quiz Level 12</title>
-	<link rel="stylesheet" href="../../assets/css/style.css">
-	<style>
-		.buzzer-effect {
-			position: fixed;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: rgba(255, 59, 59, 0.25);
-			pointer-events: none;
-			z-index: 9999;
-			animation: screenBuzz 0.4s linear 1;
-		}
-		@keyframes screenBuzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-16px); }
-			40% { transform: translateX(16px); }
-			60% { transform: translateX(-16px); }
-			80% { transform: translateX(16px); }
-			100% { transform: translateX(0); }
-		}
-		.duo-header {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 18px;
-			margin-top: 32px;
-			margin-bottom: 18px;
-		}
-		.duo-img {
-			width: 64px;
-			height: 64px;
-			border-radius: 50%;
-			background: #fff;
-			box-shadow: 0 2px 8px #1e3c72;
-		}
-		.duo-title {
-			font-size: 2.2rem;
-			font-weight: 700;
-			color: #4a90e2;
-			font-family: 'Segoe UI', Arial, sans-serif;
-			text-shadow: 0 2px 8px #222;
-		}
-		.quiz-progress {
-			margin: 18px auto 0 auto;
-			width: 80%;
-			height: 18px;
-			background: #232946;
-			border-radius: 12px;
-			overflow: hidden;
-		}
-		.quiz-progress-bar {
-			height: 100%;
-			background: linear-gradient(90deg, #4a90e2, #7f9cf5);
-			width: 0%;
-			border-radius: 12px;
-			transition: width 0.3s;
-		}
-		.quiz-question {
-			font-size: 2rem;
-			font-weight: 700;
-			margin: 96px 0 16px 0;   /* Reduced bottom margin for closer spacing */
-			color: #f7f7fa;
-			text-align: center;
-		}
-		.quiz-answers {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 32px;
-			margin-bottom: 32px;
-			margin-top: 50px;         /* Reduced top margin for closer spacing */
-			width: calc(100vw - 80px);
-			max-width: calc(100vw - 80px);
-			padding-left: 40px;
-			padding-right: 40px;
-		}
-		.answer-btn-custom {
-			width: 100%;
-			min-width: 0;
-			border-radius: 0;
-			font-size: 1.5rem;
-			padding: 48px 0;
-			margin: 0;
-			box-sizing: border-box;
-			background: #232946;
-			color: #f7f7fa;
-			font-weight: 600;
-			border-width: 4px;
-			border-style: solid;
-			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
-			box-shadow: 0 4px 16px #23294655;
-			min-height: 64px;
-			position: relative;
-			overflow: hidden;
-		}
-		.answer-btn-custom:hover {
-			transform: scale(1.04);
-			box-shadow: 0 8px 32px #23294699;
-			opacity: 0.97;
-		}
-		.answer-fill {
-			position: absolute;
-			left: 0; bottom: 0;
-			width: 100%;
-			height: 0%;
-			z-index: 1;
-			transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
-		}
-		.answer-btn-custom .answer-fill {
-			border-radius: 0;
-		}
-		.answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
-		.answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
-		.answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
-		.answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
-		.border-c1 { border-color: #e57373; }
-		.border-c2 { border-color: #64b5f6; }
-		.border-c3 { border-color: #81c784; }
-		.border-c4 { border-color: #ffd54f; }
-		.quiz-feedback {
-			font-size: 1.1rem;
-			font-weight: 500;
-			color: #ffeb3b;
-			margin-bottom: 12px;
-			min-height: 24px;
-			transition: color 0.2s;
-		}
-		.quiz-feedback.wrong {
-			color: #ff3b3b;
-			animation: buzz 0.3s linear 1;
-		}
-		@keyframes buzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-8px); }
-			40% { transform: translateX(8px); }
-			60% { transform: translateX(-8px); }
-			80% { transform: translateX(8px); }
-			100% { transform: translateX(0); }
-		}
-		.quiz-finish {
-			font-size: 1.5rem;
-			color: #4a90e2;
-			font-weight: 700;
-			margin-top: 24px;
-		}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Quiz Level 12</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+.buzzer-effect {
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background: rgba(255, 59, 59, 0.25);
+pointer-events: none;
+z-index: 9999;
+animation: screenBuzz 0.4s linear 1;
+}
+@keyframes screenBuzz {
+0% { transform: translateX(0); }
+20% { transform: translateX(-16px); }
+40% { transform: translateX(16px); }
+60% { transform: translateX(-16px); }
+80% { transform: translateX(16px); }
+100% { transform: translateX(0); }
+}
+.duo-header {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 18px;
+margin-top: 32px;
+margin-bottom: 18px;
+}
+.duo-img {
+width: 64px;
+height: 64px;
+border-radius: 50%;
+background: #fff;
+box-shadow: 0 2px 8px #1e3c72;
+}
+.duo-title {
+font-size: 2.2rem;
+font-weight: 700;
+color: #4a90e2;
+font-family: 'Segoe UI', Arial, sans-serif;
+text-shadow: 0 2px 8px #222;
+}
+.quiz-progress {
+margin: 18px auto 0 auto;
+width: 80%;
+height: 18px;
+background: #232946;
+border-radius: 12px;
+overflow: hidden;
+}
+.quiz-progress-bar {
+height: 100%;
+background: linear-gradient(90deg, #4a90e2, #7f9cf5);
+width: 0%;
+border-radius: 12px;
+transition: width 0.3s;
+}
+.quiz-question {
+font-size: 2rem;
+font-weight: 700;
+margin: 96px 0 16px 0;   /* Reduced bottom margin for closer spacing */
+color: #f7f7fa;
+text-align: center;
+}
+.quiz-answers {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 32px;
+margin-bottom: 32px;
+margin-top: 50px;         /* Reduced top margin for closer spacing */
+width: calc(100vw - 80px);
+max-width: calc(100vw - 80px);
+padding-left: 40px;
+padding-right: 40px;
+}
+.answer-btn-custom {
+width: 100%;
+min-width: 0;
+border-radius: 0;
+font-size: 1.5rem;
+padding: 48px 0;
+margin: 0;
+box-sizing: border-box;
+background: #232946;
+color: #f7f7fa;
+font-weight: 600;
+border-width: 4px;
+border-style: solid;
+transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
+box-shadow: 0 4px 16px #23294655;
+min-height: 64px;
+position: relative;
+overflow: hidden;
+}
+.answer-btn-custom:hover {
+transform: scale(1.04);
+box-shadow: 0 8px 32px #23294699;
+opacity: 0.97;
+}
+.answer-fill {
+position: absolute;
+left: 0; bottom: 0;
+width: 100%;
+height: 0%;
+z-index: 1;
+transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
+}
+.answer-btn-custom .answer-fill {
+border-radius: 0;
+}
+.answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
+.answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
+.answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
+.answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
+.border-c1 { border-color: #e57373; }
+.border-c2 { border-color: #64b5f6; }
+.border-c3 { border-color: #81c784; }
+.border-c4 { border-color: #ffd54f; }
+.quiz-feedback {
+font-size: 1.1rem;
+font-weight: 500;
+color: #ffeb3b;
+margin-bottom: 12px;
+min-height: 24px;
+transition: color 0.2s;
+}
+.quiz-feedback.wrong {
+color: #ff3b3b;
+animation: buzz 0.3s linear 1;
+}
+@keyframes buzz {
+0% { transform: translateX(0); }
+20% { transform: translateX(-8px); }
+40% { transform: translateX(8px); }
+60% { transform: translateX(-8px); }
+80% { transform: translateX(8px); }
+100% { transform: translateX(0); }
+}
+.quiz-finish {
+font-size: 1.5rem;
+color: #4a90e2;
+font-weight: 700;
+margin-top: 24px;
+}
+</style>
 </head>
 <body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
-	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
-	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
-		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
-			<h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
-			<button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
-			<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
-			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
-		</div>
-	</div>
-	<div class="duo-header">
-		<img src="Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Master Quiz 12: First Steps</span>
-	</div>
-	<div class="quiz-progress">
-		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
-	</div>
-	<div class="quiz-question" id="quiz-question"></div>
-	<div class="quiz-feedback" id="quiz-feedback"></div>
-	<div class="quiz-answers" id="quiz-answers"></div>
-	<div id="buzzer-effect-root"></div>
-	<script>
-	// Pause modal logic
-	let paused = false;
-	const pauseBtn = document.getElementById('pause-btn');
-	const pauseModal = document.getElementById('pause-modal');
-	const resumeBtn = document.getElementById('resume-btn');
-	const restartBtn = document.getElementById('restart-btn');
-	const exitBtn = document.getElementById('exit-btn');
+<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+<h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
+<button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+</div>
+</div>
+<div class="duo-header">
+<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
+<span class="duo-title">Master Quiz 12: Presentations & Debates</span>
+</div>
+<div class="quiz-progress">
+<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+</div>
+<div class="quiz-question" id="quiz-question"></div>
+<div class="quiz-feedback" id="quiz-feedback"></div>
+<div class="quiz-answers" id="quiz-answers"></div>
+<div id="buzzer-effect-root"></div>
+<script>
+// Pause modal logic
+let paused = false;
+const pauseBtn = document.getElementById('pause-btn');
+const pauseModal = document.getElementById('pause-modal');
+const resumeBtn = document.getElementById('resume-btn');
+const restartBtn = document.getElementById('restart-btn');
+const exitBtn = document.getElementById('exit-btn');
 
-	pauseBtn.onclick = function() {
-		paused = true;
-		pauseModal.style.display = 'flex';
-	};
-	resumeBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-	};
-	restartBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-		current = 0;
-		score = 0;
-		// Re-shuffle questions for a fresh start
-		for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-		shuffleArray(questions);
-		showQuestion();
-		document.getElementById('quiz-progress-bar').style.width = '0%';
-	};
-	exitBtn.onclick = function() {
-		window.location.href = '../levels/master.html';
-	};
-	// Duolingo-style quiz logic
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
+pauseBtn.onclick = function() {
+paused = true;
+pauseModal.style.display = 'flex';
+};
+resumeBtn.onclick = function() {
+paused = false;
+pauseModal.style.display = 'none';
+};
+restartBtn.onclick = function() {
+paused = false;
+pauseModal.style.display = 'none';
+current = 0;
+score = 0;
+showQuestion();
+document.getElementById('quiz-progress-bar').style.width = '0%';
+};
+exitBtn.onclick = function() {
+window.location.href = '../levels/master.html';
+};
 
-	const originalQuestions = [
-// Questions will be added later
+const questions = [
+{ q: "Match the Chinese word: 演讲", options: ["debate", "audience", "presentation / speech", "support"], answer: 2 },
+{ q: "Match the Chinese word: 辩论", options: ["debate", "opinion / viewpoint", "conclusion", "logic"], answer: 0 },
+{ q: "Match the Chinese word: 观点", options: ["support", "opinion / viewpoint", "oppose", "reason"], answer: 1 },
+{ q: "Match the Chinese word: 支持", options: ["support", "evidence", "conclusion", "audience"], answer: 0 },
+{ q: "Match the Chinese word: 反对", options: ["reason", "oppose", "logic", "presentation / speech"], answer: 1 },
+{ q: "Match the Chinese word: 理由", options: ["evidence", "reason", "conclusion", "debate"], answer: 1 },
+{ q: "Match the Chinese word: 证据", options: ["logic", "evidence", "audience", "opinion / viewpoint"], answer: 1 },
+{ q: "Match the Chinese word: 结论", options: ["conclusion", "support", "oppose", "reason"], answer: 0 },
+{ q: "Match the Chinese word: 逻辑", options: ["presentation / speech", "logic", "debate", "evidence"], answer: 1 },
+{ q: "Match the Chinese word: 听众", options: ["conclusion", "audience", "support", "opinion / viewpoint"], answer: 1 },
+{ q: "我的___是教育改革非常重要。 (viewpoint)", options: ["观点", "理由", "支持", "证据"], answer: 0 },
+{ q: "因为环保很重要，所以我们要减少塑料使用。  structure used?", options: ["因为所以", "首先其次", "总的来说", "由此可以得出结论"], answer: 0 },
+{ q: "首先了解问题，其次提出解决方案，最后总结。  structure used?", options: ["首先其次最后", "因为所以", "我认为", "我支持"], answer: 0 },
+{ q: "我同意你的观点，但是我认为还有其他因素。  meaning?", options: ["Agree politely", "Oppose directly", "Express conclusion", "Introduce evidence"], answer: 0 },
+{ q: "总的来说，这个项目值得投资。  meaning?", options: ["Overall / conclusion", "First argument", "Support", "Oppose"], answer: 0 },
+{ q: "我支持你的想法，但我___另一种方法。 (oppose)", options: ["反对", "支持", "同意", "证据"], answer: 0 },
+{ q: "做演讲前要考虑___。 (audience)", options: ["听众", "观点", "逻辑", "理由"], answer: 0 },
+{ q: "我们要提供充分的___来支持观点。 (evidence)", options: ["证据", "理由", "结论", "听众"], answer: 0 },
+{ q: "辩论时要分析问题的___。 (pros and cons)", options: ["优缺点", "逻辑", "观点", "证据"], answer: 0 },
+{ q: "最后，我们可以得出___。 (conclusion)", options: ["结论", "理由", "证据", "听众"], answer: 0 },
+{ q: "我的观点是___。 (I think )", options: ["教育改革非常重要", "我支持", "我反对", "总的来说"], answer: 0 },
+{ q: "因为环保很重要，所以我们要___。 (reduce plastic)", options: ["减少塑料使用", "增加投资", "提出观点", "分析证据"], answer: 0 },
+{ q: "首先了解问题，其次提出解决方案，最后___。 (summarize)", options: ["总结", "分析", "支持", "反对"], answer: 0 },
+{ q: "我同意你的观点，但是我认为___。 (other factors)", options: ["还有其他因素", "需要更多证据", "逻辑不够", "结论错误"], answer: 0 },
+{ q: "总的来说，这个项目___。 (is worth investing in)", options: ["值得投资", "需要改进", "存在问题", "缺乏逻辑"], answer: 0 },
+{ q: "My viewpoint is that education reform is very important.  ______", options: ["我的观点是，教育改革非常重要。", "我认为教育改革很重要。", "教育改革是我的观点。", "我支持教育改革，因为很重要。"], answer: 0 },
+{ q: "Because environmental protection is important, we should reduce plastic use.  ______", options: ["因为环保很重要，所以我们要减少塑料使用。", "环保很重要，我们减少塑料使用。", "我们要减少塑料使用，因为环保重要。", "环保和减少塑料使用都很重要。"], answer: 0 },
+{ q: "First, we understand the problem, then propose solutions, finally summarize.  ______", options: ["首先了解问题，其次提出解决方案，最后总结。", "先了解问题，再提出方案，然后总结。", "了解问题，提出方案，最后总结。", "首先是问题，其次是方案，最后总结。"], answer: 0 },
+{ q: "I agree with your opinion, but I think there are other factors.  ______", options: ["我同意你的观点，但是我认为还有其他因素。", "我同意你，但是有其他因素。", "我赞成你的意见，不过还有别的因素。", "我支持你的观点，但还有其他考虑。"], answer: 0 },
+{ q: "Overall, this project is worth investing in.  ______", options: ["总的来说，这个项目值得投资。", "总体而言，这个项目值得投资。", "综合来看，这个项目值得投资。", "整体上，这个项目值得投资。"], answer: 0 }
 ];
 
-	// Shuffle questions at the start
-	const questions = shuffleArray([...originalQuestions]);
+let current = 0;
+let score = 0;
 
-	let current = 0;
-	let score = 0;
-
-	function showQuestion() {
+function showQuestion() {
 updateProgress();
-if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
-document.getElementById('quiz-answers').innerHTML = '';
-return;
+if (paused) return;
+
+const q = questions[current];
+const questionDiv = document.getElementById('quiz-question');
+const answersDiv = document.getElementById('quiz-answers');
+
+questionDiv.innerHTML = q.q;
+answersDiv.innerHTML = '';
+
+q.options.forEach((option, i) => {
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-c${i + 1}`;
+btn.textContent = option;
+btn.onclick = () => checkAnswer(i);
+
+const fill = document.createElement('div');
+fill.className = `answer-fill c${i + 1}`;
+btn.appendChild(fill);
+answersDiv.appendChild(btn);
+});
+
+document.getElementById('quiz-feedback').textContent = '';
+updateProgress();
 }
 
+function checkAnswer(idx) {
 if (paused) return;
 const q = questions[current];
-		const questionDiv = document.getElementById('quiz-question');
-		const answersDiv = document.getElementById('quiz-answers');
-		questionDiv.innerHTML = q.q;
-		answersDiv.innerHTML = '';
 
-		// If open-ended, show a textarea
-		if (q.options[0] === 'Open-ended') {
-			const textarea = document.createElement('textarea');
-			textarea.style.width = '100%';
-			textarea.style.height = '120px';
-			textarea.style.fontSize = '1.2rem';
-			textarea.style.margin = '24px 0';
-			textarea.placeholder = 'Type your answer here...';
-			answersDiv.appendChild(textarea);
+if(idx === q.answer) {
+score++;
+document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;"></span></span>';
 
-			const submitBtn = document.createElement('button');
-			submitBtn.textContent = 'Submit';
-			submitBtn.style.marginTop = '18px';
-			submitBtn.style.padding = '10px 32px'; 
-			submitBtn.style.fontSize = '1rem';     
-			submitBtn.style.borderRadius = '8px';
-			submitBtn.style.background = '#4a90e2';
-			submitBtn.style.color = '#fff';
-			submitBtn.style.border = 'none';
-			submitBtn.style.boxShadow = '0 2px 8px #222';
-			submitBtn.style.cursor = 'pointer';
-			submitBtn.onclick = () => {
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;">Answer submitted!</span>';
-				setTimeout(() => {
-					nextQuestion();
-				}, 900);
-			};
-			answersDiv.appendChild(submitBtn);
-			document.getElementById('quiz-feedback').textContent = '';
-			updateProgress();
-			return;
-		}
+const answersDiv = document.getElementById('quiz-answers');
+const btns = answersDiv.querySelectorAll('.answer-btn-custom');
+const btn = btns[idx];
+const fill = btn.querySelector('.answer-fill');
+fill.style.height = '100%';
 
-		// Shuffle options and track correct answer
-		const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-		const shuffledOptions = shuffleArray(optionObjs);
-		// Find new correct answer index
-		const newAnswerIdx = shuffledOptions.findIndex(optObj => optObj.origIdx === q.answer);
-		// Store for checkAnswer
-		q._shuffledOptions = shuffledOptions;
-		q._shuffledAnswerIdx = newAnswerIdx;
+btns.forEach(b => b.disabled = true);
 
-		shuffledOptions.forEach((optObj, i) => {
-			const btn = document.createElement('button');
-			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = optObj.text;
-			btn.onclick = () => checkAnswer(i);
-			// Add fill div
-			const fill = document.createElement('div');
-			fill.className = `answer-fill c${i + 1}`;
-			btn.appendChild(fill);
-			answersDiv.appendChild(btn);
-		});
-		document.getElementById('quiz-feedback').textContent = '';
-		updateProgress();
-	}
+setTimeout(() => {
+if (!paused) nextQuestion();
+}, 850);
+} else {
+const feedback = document.getElementById('quiz-feedback');
+feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+feedback.classList.add('wrong');
 
-	function checkAnswer(idx) {
-		if (paused) return;
-		const q = questions[current];
-		let correct = false;
-		if(q.options[0] === 'Open-ended') {
-			nextQuestion();
-			return;
-		}
-		if(idx === q._shuffledAnswerIdx) {
-			correct = true;
-			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">馃帀</span></span>';
-			// Water fill animation
-			const answersDiv = document.getElementById('quiz-answers');
-			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
-			const btn = btns[idx];
-			const fill = btn.querySelector('.answer-fill');
-			fill.style.height = '100%';
-			// Disable all buttons during animation
-			btns.forEach(b => b.disabled = true);
-			// Wait for animation to finish, then next question
-			setTimeout(() => {
-				if (!paused) nextQuestion();
-			}, 850);
-		} else {
-			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
-			feedback.classList.add('wrong');
-			// Show full-screen buzzer effect
-			const buzzerRoot = document.getElementById('buzzer-effect-root');
-			const buzzerDiv = document.createElement('div');
-			buzzerDiv.className = 'buzzer-effect';
-			buzzerRoot.appendChild(buzzerDiv);
-			setTimeout(() => {
-				feedback.classList.remove('wrong');
-				feedback.textContent = '';
-				buzzerDiv.remove();
-			}, 700);
-		}
-	}
+const buzzerRoot = document.getElementById('buzzer-effect-root');
+const buzzerDiv = document.createElement('div');
+buzzerDiv.className = 'buzzer-effect';
+buzzerRoot.appendChild(buzzerDiv);
 
-	function nextQuestion() {
-		current++;
-		if(current < questions.length) {
-			showQuestion();
-		} else {
-			finishQuiz();
-		}
-	}
+setTimeout(() => {
+feedback.classList.remove('wrong');
+feedback.textContent = '';
+buzzerDiv.remove();
+}, 700);
+}
+}
 
-	function updateProgress() {
-		const bar = document.getElementById('quiz-progress-bar');
-		bar.style.width = ((current / questions.length) * 100) + '%';
-	}
+function nextQuestion() {
+current++;
+if(current < questions.length) {
+showQuestion();
+} else {
+finishQuiz();
+}
+}
 
-	function setUnlockedLevel(level) {
-		localStorage.setItem('masterUnlockedLevel', String(level));
-		// If logged in, update backend
-		var username = localStorage.getItem('masterUserId');
-		if (username) {
-			fetch('http://localhost:3000/api/updateProgress', {
-				method: 'POST',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify({ username, unlockedLevel: level })
-			});
-		}
-	}
+function updateProgress() {
+const bar = document.getElementById('quiz-progress-bar');
+bar.style.width = ((current / questions.length) * 100) + '%';
+}
 
-	function finishQuiz() {
-		document.getElementById('quiz-question').innerHTML = '';
-		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>馃惣 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
-		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(13);
-		setTimeout(function() {
-			var btn = document.getElementById('nextLevelBtn');
-			if (btn) {
-				btn.onclick = function() {
-				 window.location.href = 'master_quiz13.html';
-				};
-			}
-		}, 100);
-	}
+function setUnlockedLevel(level) {
+localStorage.setItem('masterUnlockedLevel', String(level));
+var username = localStorage.getItem('masterUserId');
+if (username) {
+fetch('http://localhost:3000/api/updateProgress', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({ username, unlockedLevel: level })
+});
+}
+}
 
-	showQuestion();
-	</script>
+function finishQuiz() {
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-progress-bar').style.width = '100%';
+setUnlockedLevel(13);
+setTimeout(function() {
+var btn = document.getElementById('nextLevelBtn');
+if (btn) {
+btn.onclick = function() {
+window.location.href = 'master_quiz13.html';
+};
+}
+}, 100);
+}
+
+showQuestion();
+</script>
 </body>
 </html>
-
-
-
-
