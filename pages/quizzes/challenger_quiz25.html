@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 问题", options: ["help / assist", "report", "repair", "problem / issue"], answer: 3},
+{q: "Match: 解决", options: ["solution", "delay", "appear / occur", "suggestion / advice"], answer: 0},
+{q: "Match: 帮忙", options: ["help / assist", "difficulty", "system", "problem / issue"], answer: 0},
+{q: "Match: 困难", options: ["solution", "difficulty", "delay", "appear / occur"], answer: 1},
+{q: "Match: 建议", options: ["suggestion / advice", "system", "report", "repair"], answer: 0},
+{q: "Match: 修理", options: ["help / assist", "repair", "problem / issue", "solution"], answer: 1},
+{q: "Match: 报告", options: ["delay", "report", "appear / occur", "difficulty"], answer: 1},
+{q: "Match: 出现", options: ["system", "suggestion / advice", "appear / occur", "repair"], answer: 2},
+{q: "Match: 延误", options: ["report", "delay", "help / assist", "problem / issue"], answer: 1},
+{q: "Match: 系统", options: ["solution", "difficulty", "system", "suggestion / advice"], answer: 2},
+{q: "我的电脑有___。 (problem)", options: ["问题", "建议", "修理", "联系"], answer: 0},
+{q: "系统出现___。 (malfunction)", options: ["故障", "问题", "电话", "邮件"], answer: 0},
+{q: "你可以打电话给___。 (customer service)", options: ["客服", "系统", "邮件", "建议"], answer: 0},
+{q: "你应该发送___给技术支持。 (email)", options: ["邮件", "电话", "报告", "建议"], answer: 0},
+{q: "请帮忙___打印机。 (repair)", options: ["修理", "联系", "解决", "出现"], answer: 0},
+{q: "我的电脑很慢，可能有___。 (problem)", options: ["问题", "建议", "帮忙", "系统"], answer: 0},
+{q: "解决办法很简单，只要___系统。 (restart)", options: ["重启", "修理", "联系", "出现"], answer: 0},
+{q: "邮件没有收到，我需要___对方。 (contact)", options: ["联系", "修理", "建议", "帮忙"], answer: 0},
+{q: "出现困难时，你可以寻求别人的___。 (help)", options: ["帮忙", "问题", "邮件", "延误"], answer: 0},
+{q: "他给了我一个很好的___。 (suggestion)", options: ["建议", "电话", "系统", "故障"], answer: 0},
+{q: "Fill in: 我的手机有___。 (problem)", options: ["问题", "故障", "修理", "联系"], answer: 0},
+{q: "Fill in: 系统出现___。 (malfunction)", options: ["故障", "问题", "修理", "联系"], answer: 0},
+{q: "Fill in: 请帮忙___电脑。 (repair)", options: ["修理", "问题", "故障", "联系"], answer: 0},
+{q: "Fill in: 邮件没有收到，我需要___对方。 (contact)", options: ["联系", "问题", "故障", "修理"], answer: 0},
+{q: "Fill in: 解决办法很简单，只要___系统。 (restart)", options: ["重启", "问题", "故障", "修理"], answer: 0},
+{q: "Translate: My computer has a problem.", options: ["我的电脑有问题。", "系统出现故障。", "你可以打电话给客服。", "请帮忙修理打印机。"], answer: 0},
+{q: "Translate: The system malfunctioned; I don't know what to do.", options: ["系统出现故障，我不知道怎么办。", "我的电脑有问题。", "你可以打电话给客服。", "请帮忙修理打印机。"], answer: 0},
+{q: "Translate: You can call customer service.", options: ["你可以打电话给客服。", "我的电脑有问题。", "系统出现故障。", "请帮忙修理打印机。"], answer: 0},
+{q: "Translate: Please help repair the printer.", options: ["请帮忙修理打印机。", "我的电脑有问题。", "系统出现故障。", "你可以打电话给客服。"], answer: 0},
+{q: "Translate: You should send an email to tech support.", options: ["你应该发送邮件给技术支持。", "我的电脑有问题。", "系统出现故障。", "你可以打电话给客服。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(26);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

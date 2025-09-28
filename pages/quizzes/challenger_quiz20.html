@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 20</span>
+<span class="duo-title">Challenger Quiz 20 - Future Plans</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 打算", options: ["plan / intend to", "hope / wish", "future", "travel"], answer: 0},
+{q: "Match: 将来", options: ["plan / intend to", "future", "work / job", "hope / wish"], answer: 1},
+{q: "Match: 计划", options: ["travel", "plan / project", "buy a house", "start a business"], answer: 1},
+{q: "Match: 希望", options: ["want / would like to", "hope / wish", "go to university", "future"], answer: 1},
+{q: "Match: 想", options: ["plan / intend to", "future", "want / would like to", "work / job"], answer: 2},
+{q: "Match: 旅行", options: ["work / job", "travel", "buy a house", "start a business"], answer: 1},
+{q: "Match: 工作", options: ["go to university", "work / job", "travel", "future"], answer: 1},
+{q: "Match: 上大学", options: ["buy a house", "start a business", "go to university", "travel"], answer: 2},
+{q: "Match: 买房", options: ["start a business", "buy a house", "go to university", "work / job"], answer: 1},
+{q: "Match: 创业", options: ["travel", "buy a house", "go to university", "start a business"], answer: 3},
+{q: "我___明年去北京旅行。 (plan / intend to)", options: ["打算", "将来", "希望", "想"], answer: 0},
+{q: "___我想成为医生。 (In the future)", options: ["将来", "打算", "希望", "计划"], answer: 0},
+{q: "你___做什么工作？ (plan / intend to)", options: ["打算", "希望", "想", "将来"], answer: 0},
+{q: "我希望明年能___。 (go to university)", options: ["上大学", "买房", "旅行", "创业"], answer: 0},
+{q: "他打算___。 (buy a house)", options: ["买房", "上大学", "旅行", "创业"], answer: 0},
+{q: "将来我想___，有一个幸福的家庭。 (get married)", options: ["结婚", "打算", "希望", "创业"], answer: 0},
+{q: "我打算___中文，提高我的汉语水平。 (study)", options: ["学习", "上大学", "旅行", "买房"], answer: 0},
+{q: "你将来想___吗？ (immigrate)", options: ["移民", "创业", "打算", "学习"], answer: 0},
+{q: "我希望将来能有自己的___。 (company)", options: ["公司", "房子", "学校", "工作"], answer: 0},
+{q: "我打算___自己的公司。 (start)", options: ["创业", "旅行", "上大学", "买房"], answer: 0},
+{q: "Fill in: 我___下个月去北京旅行。 (plan / intend to)", options: ["打算", "希望", "想", "将来"], answer: 0},
+{q: "Fill in: 将来我想___老师。 (become)", options: ["成为", "打算", "希望", "想"], answer: 0},
+{q: "Fill in: 你___做什么工作？ (plan / intend to)", options: ["打算", "希望", "想", "将来"], answer: 0},
+{q: "Fill in: 我希望明年能___大学。 (go to)", options: ["上", "买", "做", "学"], answer: 0},
+{q: "Fill in: 他打算___房子。 (buy)", options: ["买", "上", "做", "学"], answer: 0},
+{q: "Translate: I plan to travel to Beijing next month.", options: ["我打算下个月去北京旅行。", "我希望下个月去北京旅行。", "我想下个月去北京旅行。", "我将来下个月去北京旅行。"], answer: 0},
+{q: "Translate: In the future I want to become a teacher.", options: ["将来我想成为老师。", "现在我想成为老师。", "以前我想成为老师。", "打算我想成为老师。"], answer: 0},
+{q: "Translate: What job do you plan to do?", options: ["你打算做什么工作？", "你希望做什么工作？", "你想做什么工作？", "你将来做什么工作？"], answer: 0},
+{q: "Translate: I hope to go to university next year.", options: ["我希望明年能上大学。", "我打算明年能上大学。", "我想明年能上大学。", "我将来明年能上大学。"], answer: 0},
+{q: "Translate: He plans to buy a house.", options: ["他打算买房。", "他希望买房。", "他想买房。", "他将来买房。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + opt + '</span>';
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = '<div class="quiz-finish">Quiz Complete!<br>Your score: ' + score + ' / ' + totalQuestions + '<br><br> Panda is proud of you!<br><button id="nextLevelBtn" style="margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Next Level</button></div>';
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(21);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

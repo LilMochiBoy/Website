@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 被", options: ["see / watch", "do / make", "discover / find", "passive marker"], answer: 3},
+{q: "Match: 打", options: ["hit / beat", "call / shout", "hear / listen", "criticize"], answer: 0},
+{q: "Match: 叫", options: ["hit / beat", "call / shout", "hear / listen", "criticize"], answer: 1},
+{q: "Match: 听", options: ["see / watch", "do / make", "hear / listen", "criticize"], answer: 2},
+{q: "Match: 看", options: ["see / watch", "do / make", "discover / find", "criticize"], answer: 0},
+{q: "Match: 做", options: ["see / watch", "do / make", "discover / find", "criticize"], answer: 1},
+{q: "Match: 发现", options: ["see / watch", "do / make", "discover / find", "help"], answer: 2},
+{q: "Match: 帮助", options: ["discover / find", "help", "criticize", "steal"], answer: 1},
+{q: "Match: 批评", options: ["help", "criticize", "steal", "passive marker"], answer: 1},
+{q: "Match: 偷", options: ["criticize", "steal", "passive marker", "hit / beat"], answer: 1},
+{q: "我的书___他拿走了。 (was taken)", options: ["被", "叫", "听", "做"], answer: 0},
+{q: "我的手机___了。 (was stolen)", options: ["被偷", "被打", "被发现", "被叫"], answer: 0},
+{q: "他___老师批评。 (was)", options: ["被", "叫", "听", "做"], answer: 0},
+{q: "我___狗吓了一跳。 (was startled)", options: ["被", "听", "看", "做"], answer: 0},
+{q: "她的作业___同学发现了。 (was discovered)", options: ["被", "做", "听", "看"], answer: 0},
+{q: "他___帮助了。 (was)", options: ["被", "叫", "听", "做"], answer: 0},
+{q: "我的计划___影响了。 (was affected)", options: ["被", "听", "做", "叫"], answer: 0},
+{q: "他的意见___采纳了。 (was adopted)", options: ["被", "做", "听", "叫"], answer: 0},
+{q: "我___惊讶了。 (was)", options: ["被", "做", "看", "听"], answer: 0},
+{q: "他___罚了。 (was punished)", options: ["被", "做", "听", "叫"], answer: 0},
+{q: "Fill in: 我的书___他拿走了。 (was taken)", options: ["被", "叫", "听", "做"], answer: 0},
+{q: "Fill in: 我的手机___了。 (was stolen)", options: ["被偷", "被打", "被发现", "被叫"], answer: 0},
+{q: "Fill in: 他___老师批评。 (was)", options: ["被", "叫", "听", "做"], answer: 0},
+{q: "Fill in: 我___狗吓了一跳。 (was startled)", options: ["被", "听", "看", "做"], answer: 0},
+{q: "Fill in: 她的作业___同学发现了。 (was discovered)", options: ["被", "做", "听", "看"], answer: 0},
+{q: "Translate: My book was taken away by him.", options: ["我的书被他拿走了。", "我的手机被偷了。", "他被老师批评。", "我被狗吓了一跳。"], answer: 0},
+{q: "Translate: My phone was stolen.", options: ["我的手机被偷了。", "我的书被他拿走了。", "他被老师批评。", "我被狗吓了一跳。"], answer: 0},
+{q: "Translate: He was criticized by the teacher.", options: ["他被老师批评。", "我的书被他拿走了。", "我的手机被偷了。", "我被狗吓了一跳。"], answer: 0},
+{q: "Translate: I was startled by the dog.", options: ["我被狗吓了一跳。", "我的书被他拿走了。", "我的手机被偷了。", "他被老师批评。"], answer: 0},
+{q: "Translate: Her homework was discovered by a classmate.", options: ["她的作业被同学发现了。", "我的书被他拿走了。", "我的手机被偷了。", "他被老师批评。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(28);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

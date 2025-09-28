@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 22</span>
+<span class="duo-title">Challenger Quiz 22 - Directions</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 附近", options: ["nearby", "turn a corner", "in front", "go straight"], answer: 0},
+{q: "Match: 远", options: ["near", "far", "behind", "that side"], answer: 1},
+{q: "Match: 近", options: ["far", "near", "nearby", "behind"], answer: 1},
+{q: "Match: 这边", options: ["that side", "this side", "nearby", "in front"], answer: 1},
+{q: "Match: 那边", options: ["this side", "that side", "nearby", "behind"], answer: 1},
+{q: "Match: 前面", options: ["behind", "in front", "nearby", "far"], answer: 1},
+{q: "Match: 后面", options: ["in front", "behind", "nearby", "turn a corner"], answer: 1},
+{q: "Match: 对面", options: ["nearby", "opposite", "behind", "in front"], answer: 1},
+{q: "Match: 转弯", options: ["go straight", "turn a corner", "nearby", "far"], answer: 1},
+{q: "Match: 直走", options: ["turn a corner", "go straight", "nearby", "behind"], answer: 1},
+{q: "学校在超市___。 (nearby)", options: ["附近", "对面", "远", "近"], answer: 0},
+{q: "我家离学校很___。 (near)", options: ["近", "远", "对面", "附近"], answer: 0},
+{q: "商店离这里很___。 (far)", options: ["远", "近", "对面", "这边"], answer: 0},
+{q: "你往前走，然后___转。 (turn left)", options: ["左", "右", "直", "后"], answer: 0},
+{q: "银行在学校___。 (opposite)", options: ["对面", "旁边", "前面", "后面"], answer: 0},
+{q: "教室在楼___。 (upstairs)", options: ["上", "下", "前", "后"], answer: 0},
+{q: "医院在左边，邮局在___。 (right)", options: ["右", "左", "前", "后"], answer: 0},
+{q: "街道很宽，建筑很多。", options: ["street & building", "school & house", "bank & post office", "classroom & teacher"], answer: 0},
+{q: "请你往前走，然后右转，再___。 (go straight)", options: ["直走", "左转", "对面", "后面"], answer: 0},
+{q: "学校在这边，商店在___。 (that side)", options: ["那边", "这边", "左边", "右边"], answer: 0},
+{q: "Fill in: 学校在超市___。 (nearby)", options: ["附近", "对面", "远", "近"], answer: 0},
+{q: "Fill in: 我家离学校很___。 (near)", options: ["近", "远", "对面", "附近"], answer: 0},
+{q: "Fill in: 商店离这里很___。 (far)", options: ["远", "近", "对面", "这边"], answer: 0},
+{q: "Fill in: 银行在学校___。 (opposite)", options: ["对面", "旁边", "前面", "后面"], answer: 0},
+{q: "Fill in: 你往前走，然后___转。 (left)", options: ["左", "右", "直", "后"], answer: 0},
+{q: "Translate: The school is near the supermarket.", options: ["学校在超市附近。", "学校在超市对面。", "学校离超市很远。", "学校在超市旁边。"], answer: 0},
+{q: "Translate: My house is very near the school.", options: ["我家离学校很近。", "我家离学校很远。", "我家在学校对面。", "我家在学校附近。"], answer: 0},
+{q: "Translate: The shop is far from here.", options: ["商店离这里很远。", "商店离这里很近。", "商店在这里附近。", "商店在这里对面。"], answer: 0},
+{q: "Translate: Go straight, then turn left.", options: ["你往前走，然后左转。", "你往前走，然后右转。", "你往后走，然后左转。", "你直走，然后转弯。"], answer: 0},
+{q: "Translate: The bank is opposite the school.", options: ["银行在学校对面。", "银行在学校附近。", "银行离学校很近。", "银行在学校旁边。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + opt + '</span>';
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = '<div class="quiz-finish">Quiz Complete!<br>Your score: ' + score + ' / ' + totalQuestions + '<br><br> Panda is proud of you!<br><button id="nextLevelBtn" style="margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Next Level</button></div>';
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(23);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 21</span>
+<span class="duo-title">Challenger Quiz 21 - Past Experiences</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 从前", options: ["once / in the past", "story", "happen / occur", "later / afterwards"], answer: 0},
+{q: "Match: 后来", options: ["once / in the past", "later / afterwards", "birthday", "family"], answer: 1},
+{q: "Match: 发生", options: ["story", "happen / occur", "childhood", "classmate"], answer: 1},
+{q: "Match: 故事", options: ["story", "game", "experience", "family"], answer: 0},
+{q: "Match: 小时候", options: ["birthday", "childhood", "classmate", "game"], answer: 1},
+{q: "Match: 同学", options: ["story", "happen / occur", "classmate", "experience"], answer: 2},
+{q: "Match: 游戏", options: ["childhood", "family", "game", "birthday"], answer: 2},
+{q: "Match: 生日", options: ["birthday", "experience", "story", "happen / occur"], answer: 0},
+{q: "Match: 家庭", options: ["classmate", "family", "game", "childhood"], answer: 1},
+{q: "Match: 经验", options: ["story", "happen / occur", "birthday", "experience"], answer: 3},
+{q: "___，我住在一个小村子。 (once / in the past)", options: ["从前", "后来", "然后", "过去"], answer: 0},
+{q: "___，我搬到城市上学。 (later)", options: ["后来", "从前", "先", "现在"], answer: 0},
+{q: "我去过北京。  This sentence shows:", options: ["past experience", "future plan", "suggestion", "opinion"], answer: 0},
+{q: "我小时候喜欢玩游戏。", options: ["Childhood experience", "Future plan", "Opinion", "Comparison"], answer: 0},
+{q: "然后，我做作业。  然后 means:", options: ["then", "before", "after", "because"], answer: 0},
+{q: "她生日那天很快乐。", options: ["Birthday happiness", "Opinion", "Comparison", "Advice"], answer: 0},
+{q: "我和同学们一起做游戏，很开心。", options: ["Past event", "Future plan", "Suggestion", "Opinion"], answer: 0},
+{q: "我吃过火锅。  This sentence uses:", options: ["过", "比", "最", "更"], answer: 0},
+{q: "从前，我家很小，但是很温暖。", options: ["Once / in the past", "Later", "Opinion", "Suggestion"], answer: 0},
+{q: "后来，我学会了骑自行车。", options: ["Later", "Then", "Before", "Most"], answer: 0},
+{q: "Fill in: ___，我有一个好朋友。 (once / in the past)", options: ["从前", "后来", "然后", "现在"], answer: 0},
+{q: "Fill in: ___，我们去了同一所学校。 (later)", options: ["后来", "从前", "然后", "现在"], answer: 0},
+{q: "Fill in: 我去___上海旅行。 (past experience)", options: ["过", "了", "着", "在"], answer: 0},
+{q: "Fill in: 我和同学们一起玩___。 (game)", options: ["游戏", "故事", "经验", "家庭"], answer: 0},
+{q: "Fill in: 她___那天很快乐。 (birthday)", options: ["生日", "故事", "游戏", "经验"], answer: 0},
+{q: "Translate: Once, I had a good friend.", options: ["从前，我有一个好朋友。", "后来，我有一个好朋友。", "然后，我有一个好朋友。", "现在，我有一个好朋友。"], answer: 0},
+{q: "Translate: Later, we went to the same school.", options: ["后来，我们去了同一所学校。", "从前，我们去了同一所学校。", "然后，我们去了同一所学校。", "现在，我们去了同一所学校。"], answer: 0},
+{q: "Translate: I liked playing games in my childhood.", options: ["我小时候喜欢玩游戏。", "我现在喜欢玩游戏。", "我将来喜欢玩游戏。", "我过去喜欢玩游戏。"], answer: 0},
+{q: "Translate: She was very happy on her birthday.", options: ["她生日那天很快乐。", "她昨天很快乐。", "她今天很快乐。", "她明天很快乐。"], answer: 0},
+{q: "Translate: I have traveled to Shanghai.", options: ["我去过上海旅行。", "我去了上海旅行。", "我要去上海旅行。", "我在上海旅行。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + opt + '</span>';
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = '<div class="quiz-finish">Quiz Complete!<br>Your score: ' + score + ' / ' + totalQuestions + '<br><br> Panda is proud of you!<br><button id="nextLevelBtn" style="margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Next Level</button></div>';
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(22);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

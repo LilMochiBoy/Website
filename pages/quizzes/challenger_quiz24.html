@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 24</span>
+<span class="duo-title">Challenger Quiz 24 - Entertainment</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 电影", options: ["movie", "band", "actor / actress", "TV"], answer: 0},
+{q: "Match: 电视", options: ["movie", "TV", "singer", "music"], answer: 1},
+{q: "Match: 音乐", options: ["program / show", "plot", "music", "performance"], answer: 2},
+{q: "Match: 演员", options: ["genre / type", "actor / actress", "band", "TV"], answer: 1},
+{q: "Match: 歌手", options: ["movie", "singer", "program / show", "plot"], answer: 1},
+{q: "Match: 节目", options: ["music", "performance", "program / show", "genre / type"], answer: 2},
+{q: "Match: 剧情", options: ["actor / actress", "plot", "band", "movie"], answer: 1},
+{q: "Match: 演出", options: ["TV", "singer", "performance", "music"], answer: 2},
+{q: "Match: 类型", options: ["program / show", "genre / type", "plot", "performance"], answer: 1},
+{q: "Match: 乐队", options: ["band", "actor / actress", "singer", "genre / type"], answer: 0},
+{q: "我___看电影。 (like)", options: ["喜欢", "不喜欢", "听", "觉得"], answer: 0},
+{q: "我___听流行音乐。 (don't like)", options: ["不喜欢", "喜欢", "看", "演出"], answer: 0},
+{q: "你喜欢什么___的电影？ (genre / type)", options: ["类型", "节目", "乐队", "演员"], answer: 0},
+{q: "昨天我看了一部很精彩的___。 (TV series)", options: ["电视剧", "电影", "音乐", "节目"], answer: 0},
+{q: "他是我的最喜欢的___。 (singer)", options: ["歌手", "演员", "乐队", "节目"], answer: 0},
+{q: "剧情很精彩，我___给你。 (recommend)", options: ["推荐", "看", "听", "喜欢"], answer: 0},
+{q: "我去___听了乐队的音乐。 (performance)", options: ["演出", "电视", "节目", "电影"], answer: 0},
+{q: "我觉得这部电影很好看，但是___表演一般。 (actor / actress)", options: ["演员", "歌手", "乐队", "剧情"], answer: 0},
+{q: "我喜欢___音乐。 (listen to)", options: ["听", "看", "喜欢", "演出"], answer: 0},
+{q: "我不喜欢___电影。 (horror)", options: ["恐怖", "喜剧", "动作", "爱情"], answer: 0},
+{q: "Fill in: 我喜欢看___。 (movie)", options: ["电影", "电视", "音乐", "节目"], answer: 0},
+{q: "Fill in: 我不喜欢听___。 (pop music)", options: ["流行音乐", "电影", "电视", "演出"], answer: 0},
+{q: "Fill in: 昨天我看了一部___的电视剧。 (exciting)", options: ["精彩", "好看", "有意思", "不错"], answer: 0},
+{q: "Fill in: 他是我的最喜欢的___。 (singer)", options: ["歌手", "演员", "乐队", "节目"], answer: 0},
+{q: "Fill in: 我去___听了乐队的音乐。 (performance)", options: ["演出", "电视", "节目", "电影"], answer: 0},
+{q: "Translate: I like watching movies.", options: ["我喜欢看电影。", "我喜欢听音乐。", "我喜欢看电视。", "我喜欢看节目。"], answer: 0},
+{q: "Translate: I don't like listening to pop music.", options: ["我不喜欢听流行音乐。", "我不喜欢看电影。", "我不喜欢看电视。", "我不喜欢听音乐。"], answer: 0},
+{q: "Translate: What type of movies do you like?", options: ["你喜欢什么类型的电影？", "你喜欢什么节目？", "你喜欢什么音乐？", "你喜欢什么演员？"], answer: 0},
+{q: "Translate: Yesterday I watched a very exciting TV series.", options: ["昨天我看了一部很精彩的电视剧。", "昨天我看了一部很好看的电影。", "昨天我听了一个很精彩的节目。", "昨天我看了一个很有意思的演出。"], answer: 0},
+{q: "Translate: The plot is interesting; I recommend it to you.", options: ["剧情很有意思，我推荐给你。", "演员很好看，我推荐给你。", "音乐很好听，我推荐给你。", "节目很精彩，我推荐给你。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + opt + '</span>';
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = '<div class="quiz-finish">Quiz Complete!<br>Your score: ' + score + ' / ' + totalQuestions + '<br><br> Panda is proud of you!<br><button id="nextLevelBtn" style="margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Next Level</button></div>';
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(25);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

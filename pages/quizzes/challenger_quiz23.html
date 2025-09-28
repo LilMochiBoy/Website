@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -161,7 +161,7 @@ margin-top: 24px;
 </div>
 <div class="duo-header">
 <img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-<span class="duo-title">Challenger Quiz 23</span>
+<span class="duo-title">Challenger Quiz 23 - Chinese Culture</span>
 </div>
 <div class="quiz-progress">
 <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 书法", options: ["calligraphy", "festival", "culture", "tradition"], answer: 0},
+{q: "Match: 茶", options: ["festival", "tea", "art", "history"], answer: 1},
+{q: "Match: 文化", options: ["tradition", "culture", "calligraphy", "ancient times"], answer: 1},
+{q: "Match: 传统", options: ["culture", "tradition", "festival", "tea"], answer: 1},
+{q: "Match: 节日", options: ["art", "festival", "history", "teahouse"], answer: 1},
+{q: "Match: 历史", options: ["calligraphy", "tea", "history", "Peking opera"], answer: 2},
+{q: "Match: 艺术", options: ["ancient times", "festival", "art", "tradition"], answer: 2},
+{q: "Match: 京剧", options: ["tea", "culture", "Peking opera", "teahouse"], answer: 2},
+{q: "Match: 茶馆", options: ["history", "art", "teahouse", "ancient times"], answer: 2},
+{q: "Match: 古代", options: ["calligraphy", "festival", "culture", "ancient times"], answer: 3},
+{q: "我___茶馆的环境。 (like)", options: ["喜欢", "参观", "体验", "学习"], answer: 0},
+{q: "我想___书法。 (learn)", options: ["学习", "喜欢", "参观", "体验"], answer: 0},
+{q: "古代人很重视___。 (festival / tradition)", options: ["节日", "书法", "茶", "艺术"], answer: 0},
+{q: "我去茶馆___。 (visit)", options: ["参观", "喜欢", "学习", "体验"], answer: 0},
+{q: "我去博物馆___中国文化。 (experience)", options: ["体验", "喜欢", "学习", "参观"], answer: 0},
+{q: "他喜欢___。 (Peking opera)", options: ["京剧", "茶", "书法", "历史"], answer: 0},
+{q: "名人对中国文化有___。 (contribution)", options: ["贡献", "喜欢", "学习", "体验"], answer: 0},
+{q: "我觉得中国___很有意思。 (traditional festival)", options: ["传统节日", "博物馆", "书法", "茶馆"], answer: 0},
+{q: "我想去博物馆___中国文化。 (experience)", options: ["体验", "喜欢", "学习", "参观"], answer: 0},
+{q: "古代人喜欢喝___。 (tea)", options: ["茶", "水", "咖啡", "牛奶"], answer: 0},
+{q: "Fill in: 我喜欢___。 (calligraphy)", options: ["书法", "茶", "节日", "艺术"], answer: 0},
+{q: "Fill in: 我想学习___。 (tea culture)", options: ["茶文化", "书法", "京剧", "历史"], answer: 0},
+{q: "Fill in: 古代人很重视___。 (festival)", options: ["节日", "茶", "艺术", "文化"], answer: 0},
+{q: "Fill in: 我去___参观。 (teahouse)", options: ["茶馆", "博物馆", "学校", "公园"], answer: 0},
+{q: "Fill in: 他喜欢___。 (Peking opera)", options: ["京剧", "书法", "茶", "历史"], answer: 0},
+{q: "Translate: I like calligraphy.", options: ["我喜欢书法。", "我喜欢茶。", "我喜欢艺术。", "我喜欢文化。"], answer: 0},
+{q: "Translate: I want to learn tea culture.", options: ["我想学习茶文化。", "我想学习书法。", "我想学习京剧。", "我想学习历史。"], answer: 0},
+{q: "Translate: People in ancient times valued festivals.", options: ["古代人很重视节日。", "古代人很重视茶。", "古代人很重视艺术。", "古代人很重视文化。"], answer: 0},
+{q: "Translate: I went to visit a teahouse.", options: ["我去茶馆参观。", "我去博物馆参观。", "我去学校参观。", "我去公园参观。"], answer: 0},
+{q: "Translate: He likes Peking opera.", options: ["他喜欢京剧。", "他喜欢书法。", "他喜欢茶。", "他喜欢历史。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + opt + '</span>';
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = '<div class="quiz-finish">Quiz Complete!<br>Your score: ' + score + ' / ' + totalQuestions + '<br><br> Panda is proud of you!<br><button id="nextLevelBtn" style="margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Next Level</button></div>';
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(24);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

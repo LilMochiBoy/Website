@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 如果", options: ["if", "then", "alternative if", "can / may"], answer: 0},
+{q: "Match: 就", options: ["if", "then", "alternative if", "can / may"], answer: 1},
+{q: "Match: 要是", options: ["alternative if", "will", "should", "possible / might"], answer: 0},
+{q: "Match: 可以", options: ["will", "can / may", "should", "possible / might"], answer: 1},
+{q: "Match: 会", options: ["can / may", "will", "should", "possible / might"], answer: 1},
+{q: "Match: 应该", options: ["will", "should", "possible / might", "pay attention"], answer: 1},
+{q: "Match: 可能", options: ["should", "possible / might", "pay attention", "get sick"], answer: 1},
+{q: "Match: 注意", options: ["possible / might", "pay attention", "get sick", "complete / finish"], answer: 1},
+{q: "Match: 生病", options: ["pay attention", "get sick", "complete / finish", "if"], answer: 1},
+{q: "Match: 完成", options: ["get sick", "complete / finish", "if", "then"], answer: 1},
+{q: "如果下雨，我们___去公园。 (won't)", options: ["就不", "可以", "会", "应该"], answer: 0},
+{q: "要是你迟到，老师___生气。 (will)", options: ["就", "会", "可以", "应该"], answer: 1},
+{q: "如果你生病，就___休息。 (should)", options: ["应该", "可以", "会", "就"], answer: 0},
+{q: "如果天气好，我们___去公园玩。 (will)", options: ["就", "会", "可以", "应该"], answer: 1},
+{q: "如果你完成作业，就___出去玩。 (can)", options: ["可以", "会", "应该", "就"], answer: 0},
+{q: "要是你早起，就___赶上公交车。 (can)", options: ["可以", "会", "应该", "就"], answer: 0},
+{q: "如果他忙，他___不来。 (might)", options: ["可能", "会", "应该", "可以"], answer: 0},
+{q: "如果你注意安全，就___出事故。 (won't)", options: ["不会", "可以", "会", "应该"], answer: 0},
+{q: "如果你努力学习，你___考好。 (will)", options: ["会", "可以", "应该", "可能"], answer: 0},
+{q: "要是你不休息，你___累。 (will)", options: ["会", "可以", "应该", "就"], answer: 0},
+{q: "Fill in: 如果明天下雨，我___不去跑步。 (won't)", options: ["就不", "会", "应该", "可以"], answer: 0},
+{q: "Fill in: 要是你迟到，老师___生气。 (will)", options: ["会", "就不", "应该", "可以"], answer: 0},
+{q: "Fill in: 如果你生病，就___休息。 (should)", options: ["应该", "会", "就不", "可以"], answer: 0},
+{q: "Fill in: 如果你完成作业，就___出去玩。 (can)", options: ["可以", "会", "应该", "就不"], answer: 0},
+{q: "Fill in: 如果他忙，他___不来。 (might)", options: ["可能", "会", "应该", "可以"], answer: 0},
+{q: "Translate: If it rains tomorrow, I won't go running.", options: ["如果明天下雨，我就不去跑步。", "要是你迟到，老师就生气。", "如果你生病，就应该休息。", "如果你完成作业，就可以出去玩。"], answer: 0},
+{q: "Translate: If you are late, the teacher will get angry.", options: ["要是你迟到，老师就生气。", "如果明天下雨，我就不去跑步。", "如果你生病，就应该休息。", "如果你完成作业，就可以出去玩。"], answer: 0},
+{q: "Translate: If you are sick, you should rest.", options: ["如果你生病，就应该休息。", "如果明天下雨，我就不去跑步。", "要是你迟到，老师就生气。", "如果你完成作业，就可以出去玩。"], answer: 0},
+{q: "Translate: If you finish your homework, you can go out.", options: ["如果你完成作业，就可以出去玩。", "如果明天下雨，我就不去跑步。", "要是你迟到，老师就生气。", "如果你生病，就应该休息。"], answer: 0},
+{q: "Translate: If the weather is bad, we might cancel the trip.", options: ["如果天气不好，我们可能取消旅行。", "如果明天下雨，我就不去跑步。", "要是你迟到，老师就生气。", "如果你生病，就应该休息。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(27);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-

@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 过", options: ["call for help / assist", "past experience marker", "happy", "angry"], answer: 1},
+{q: "Match: 打篮球", options: ["work / job", "travel", "online shopping", "basketball"], answer: 3},
+{q: "Match: 帮忙", options: ["call for help / assist", "past experience marker", "happy", "angry"], answer: 0},
+{q: "Match: 书法", options: ["work / job", "travel", "online shopping", "Chinese calligraphy"], answer: 3},
+{q: "Match: 网购", options: ["work / job", "travel", "online shopping", "Chinese calligraphy"], answer: 2},
+{q: "Match: 高兴", options: ["call for help / assist", "past experience marker", "happy", "angry"], answer: 2},
+{q: "Match: 生气", options: ["call for help / assist", "past experience marker", "happy", "angry"], answer: 3},
+{q: "Match: 旅行", options: ["work / job", "travel", "online shopping", "need"], answer: 1},
+{q: "Match: 工作", options: ["work / job", "travel", "online shopping", "need"], answer: 0},
+{q: "Match: 需要", options: ["work / job", "travel", "online shopping", "need"], answer: 3},
+{q: "我___过中国。 (have been to)", options: ["打", "过", "听", "做"], answer: 1},
+{q: "他___很认真。 (studies / works hard)", options: ["工作", "学", "喜欢", "玩"], answer: 0},
+{q: "___天气不好，我们还是去爬山了。 (although but)", options: ["虽然但是", "因为所以", "如果就", "被"], answer: 0},
+{q: "___你努力学习，___会考得很好。 (if then)", options: ["如果就", "虽然但是", "因为所以", "被"], answer: 0},
+{q: "我的手机___偷了。 (was)", options: ["被", "听", "做", "打"], answer: 0},
+{q: "他买的东西很贵。 (choose correct grammar type)", options: ["的 relative clause", "被 passive", "因为所以", "如果就"], answer: 0},
+{q: "___你生病了，___应该休息。 (because therefore)", options: ["因为所以", "虽然但是", "如果就", "被"], answer: 0},
+{q: "我喜欢的电影很有趣。 (correct structure)", options: ["的 relative clause", "被 passive", "因为所以", "如果就"], answer: 0},
+{q: "___你忙，也要吃饭。 (although but)", options: ["虽然但是", "因为所以", "如果就", "被"], answer: 0},
+{q: "我___帮忙了。 (was helped)", options: ["被", "听", "做", "打"], answer: 0},
+{q: "Fill in: 他___中国旅游了。 (went / past experience)", options: ["过", "打", "听", "做"], answer: 0},
+{q: "Fill in: 我___了作业才去玩。 (finished)", options: ["完成", "打", "听", "做"], answer: 0},
+{q: "Fill in: 因为下雨，___我们没去公园。 (so)", options: ["所以", "但是", "虽然", "如果"], answer: 0},
+{q: "Fill in: 虽然很累，___我完成了工作。 (still)", options: ["还是", "所以", "如果", "被"], answer: 0},
+{q: "Fill in: 我喜欢___的音乐。 (relative clause: I like)", options: ["我喜欢的", "他买的", "好听的", "漂亮的"], answer: 0},
+{q: "Translate: I have been to China.", options: ["我去过中国。", "虽然他很忙，但是他帮助了我。", "因为下雨，所以我们没去公园。", "我喜欢的电影很有趣。"], answer: 0},
+{q: "Translate: Although he is busy, he helps me.", options: ["虽然他很忙，但是他帮助了我。", "我去过中国。", "因为下雨，所以我们没去公园。", "我喜欢的电影很有趣。"], answer: 0},
+{q: "Translate: Because it is raining, we didn't go to the park.", options: ["因为下雨，所以我们没去公园。", "我去过中国。", "虽然他很忙，但是他帮助了我。", "我喜欢的电影很有趣。"], answer: 0},
+{q: "Translate: The movie I like is very interesting.", options: ["我喜欢的电影很有趣。", "我去过中国。", "虽然他很忙，但是他帮助了我。", "因为下雨，所以我们没去公园。"], answer: 0},
+{q: "Translate: If you study hard, you will do well on the exam.", options: ["如果你努力学习，你就会考得很好。", "我去过中国。", "虽然他很忙，但是他帮助了我。", "因为下雨，所以我们没去公园。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Back to Map</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Back to Map</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(31);
 setTimeout(function() {
@@ -314,8 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-
-

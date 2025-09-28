@@ -41,7 +41,7 @@ box-shadow: 0 2px 8px #1e3c72;
 font-size: 2.2rem;
 font-weight: 700;
 color: #4a90e2;
-font-family: ''Segoe UI'', Arial, sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 text-shadow: 0 2px 8px #222;
 }
 .quiz-progress {
@@ -191,37 +191,55 @@ paused = false;
 pauseModal.style.display = 'none';
 current = 0;
 score = 0;
-for (let i = 0; i < questions.length; i++) questions[i] = originalQuestions[i];
-shuffleArray(questions);
 showQuestion();
 document.getElementById('quiz-progress-bar').style.width = '0%';
 };
 exitBtn.onclick = function() {
-window.location.href = ''../levels/challenger.html'';
+window.location.href = '../levels/challenger.html';
 };
 
-function shuffleArray(arr) {
-for (let i = arr.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[arr[i], arr[j]] = [arr[j], arr[i]];
-}
-return arr;
-}
-
 const originalQuestions = [
-// Questions will be added later
+{q: "Match: 的", options: ["friend", "listen", "eat", "particle for relative clause"], answer: 3},
+{q: "Match: 喜欢", options: ["friend", "like", "eat", "things / object"], answer: 1},
+{q: "Match: 买", options: ["play", "do / make", "watch / see", "buy"], answer: 3},
+{q: "Match: 看", options: ["play", "do / make", "watch / see", "buy"], answer: 2},
+{q: "Match: 听", options: ["friend", "listen", "eat", "things / object"], answer: 1},
+{q: "Match: 做", options: ["play", "do / make", "watch / see", "buy"], answer: 1},
+{q: "Match: 吃", options: ["friend", "listen", "eat", "things / object"], answer: 2},
+{q: "Match: 玩", options: ["play", "do / make", "watch / see", "buy"], answer: 0},
+{q: "Match: 朋友", options: ["friend", "listen", "eat", "things / object"], answer: 0},
+{q: "Match: 东西", options: ["friend", "listen", "eat", "things / object"], answer: 3},
+{q: "我___的书在桌子上。 (that I like)", options: ["喜欢", "买", "看", "听"], answer: 0},
+{q: "他___的东西很贵。 (bought)", options: ["买", "喜欢", "玩", "听"], answer: 0},
+{q: "我___的电影很有趣。 (watched)", options: ["看", "听", "做", "买"], answer: 0},
+{q: "她___的音乐很好听。 (listens to)", options: ["听", "喜欢", "看", "做"], answer: 0},
+{q: "___的游戏很多。 (fun)", options: ["好玩", "漂亮", "难", "喜欢"], answer: 0},
+{q: "___的衣服在商店里。 (beautiful)", options: ["漂亮", "好玩", "难", "喜欢"], answer: 0},
+{q: "我___的菜很美味。 (cooked / made)", options: ["做", "买", "吃", "看"], answer: 0},
+{q: "他___的游戏很难。 (played)", options: ["玩", "做", "吃", "听"], answer: 0},
+{q: "我喜欢的___在桌子上。 (book)", options: ["书", "游戏", "音乐", "东西"], answer: 0},
+{q: "他买的___很贵。 (things)", options: ["东西", "书", "游戏", "音乐"], answer: 0},
+{q: "Fill in: 我___的书在桌子上。 (like)", options: ["喜欢", "买", "看", "听"], answer: 0},
+{q: "Fill in: 他___的东西很贵。 (bought)", options: ["买", "喜欢", "玩", "听"], answer: 0},
+{q: "Fill in: 我___的电影很有趣。 (watched)", options: ["看", "听", "做", "买"], answer: 0},
+{q: "Fill in: 她___的音乐很好听。 (listens to)", options: ["听", "喜欢", "看", "做"], answer: 0},
+{q: "Fill in: 好玩的___很多。 (games)", options: ["游戏", "书", "音乐", "东西"], answer: 0},
+{q: "Translate: The book that I like is on the table.", options: ["我喜欢的书在桌子上。", "他买的东西很贵。", "我看的电影很有趣。", "她听的音乐很好听。"], answer: 0},
+{q: "Translate: The things he bought are expensive.", options: ["他买的东西很贵。", "我喜欢的书在桌子上。", "我看的电影很有趣。", "她听的音乐很好听。"], answer: 0},
+{q: "Translate: The movie I watched is interesting.", options: ["我看的电影很有趣。", "我喜欢的书在桌子上。", "他买的东西很贵。", "她听的音乐很好听。"], answer: 0},
+{q: "Translate: The music she listens to is very good.", options: ["她听的音乐很好听。", "我喜欢的书在桌子上。", "他买的东西很贵。", "我看的电影很有趣。"], answer: 0},
+{q: "Translate: Fun games are many.", options: ["好玩的游戏很多。", "我喜欢的书在桌子上。", "他买的东西很贵。", "我看的电影很有趣。"], answer: 0}
 ];
 
 let questions = [...originalQuestions];
-shuffleArray(questions);
 let current = 0;
 let score = 0;
 
 function showQuestion() {
 updateProgress();
 if (questions.length === 0) {
-document.getElementById('quiz-question').innerHTML = ''No questions available yet. Questions will be added soon!'';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = 'No questions available yet. Questions will be added soon!';
+document.getElementById('quiz-answers').innerHTML = '';
 return;
 }
 
@@ -229,17 +247,17 @@ if (paused) return;
 const q = questions[current];
 document.getElementById('quiz-question').innerHTML = q.q;
 const answersDiv = document.getElementById('quiz-answers');
-answersDiv.innerHTML = '''';
+answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
 q.options.forEach((opt, idx) => {
-const btn = document.createElement(''button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class=''answer-fill $${colorClasses[idx]}''></div><span style='position:relative;z-index:2;''>${opt}</span>`;
+const btn = document.createElement('button');
+btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
 btn.onclick = () => checkAnswer(idx, btn);
 answersDiv.appendChild(btn);
 });
-document.getElementById('quiz-feedback').textContent = '''';
+document.getElementById('quiz-feedback').textContent = '';
 }
 
 function checkAnswer(selected, btn) {
@@ -248,26 +266,26 @@ if (questions.length === 0) return;
 
 const correctIdx = questions[current].answer;
 const feedback = document.getElementById('quiz-feedback');
-const fill = btn.querySelector(''.answer-fill');
+const fill = btn.querySelector('.answer-fill');
 
 if (selected === correctIdx) {
 score++;
-feedback.textContent = ''Correct! '';
-feedback.className = 'quiz-feedback'';
+feedback.textContent = 'Correct! ';
+feedback.className = 'quiz-feedback';
 fill.style.height = '100%';
 setTimeout(nextQuestion, 1200);
 } else {
-feedback.textContent = ''Wrong! Try again! 💪'';
-feedback.className = 'quiz-feedback wrong'';
+feedback.textContent = 'Wrong! Try again! ';
+feedback.className = 'quiz-feedback wrong';
 fill.style.height = '100%';
 
-const buzzerDiv = document.createElement(''div');
+const buzzerDiv = document.createElement('div');
 buzzerDiv.className = 'buzzer-effect';
 document.getElementById('buzzer-effect-root').appendChild(buzzerDiv);
 
 setTimeout(() => {
 fill.style.height = '0%';
-feedback.textContent = '''';
+feedback.textContent = '';
 buzzerDiv.remove();
 }, 700);
 }
@@ -285,7 +303,7 @@ finishQuiz();
 function updateProgress() {
 const bar = document.getElementById('quiz-progress-bar');
 if (questions.length > 0) {
-bar.style.width = ((current / questions.length) * 100) + ''%'';
+bar.style.width = ((current / questions.length) * 100) + '%';
 }
 }
 
@@ -294,10 +312,10 @@ localStorage.setItem('challengerUnlockedLevel', String(level));
 }
 
 function finishQuiz() {
-document.getElementById('quiz-question').innerHTML = '''';
-document.getElementById('quiz-answers').innerHTML = '''';
+document.getElementById('quiz-question').innerHTML = '';
+document.getElementById('quiz-answers').innerHTML = '';
 const totalQuestions = questions.length || 1;
-document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: $${score} / $${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalQuestions}<br><br> Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 document.getElementById('quiz-progress-bar').style.width = '100%';
 setUnlockedLevel(30);
 setTimeout(function() {
@@ -314,7 +332,3 @@ showQuestion();
 </script>
 </body>
 </html>
-
-
-
-
