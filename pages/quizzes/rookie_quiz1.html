@@ -1,450 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 1 - Complete Assessment</title>
-	<link rel="stylesheet" href="../../assets/css/style.css">
-	<style>
-		.buzzer-effect {
-			position: fixed;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: rgba(255, 59, 59, 0.25);
-			pointer-events: none;
-			z-index: 9999;
-			animation: screenBuzz 0.4s linear 1;
-		}
-		@keyframes screenBuzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-16px); }
-			40% { transform: translateX(16px); }
-			60% { transform: translateX(-16px); }
-			80% { transform: translateX(16px); }
-			100% { transform: translateX(0); }
-		}
-		.duo-header {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 18px;
-			margin-top: 32px;
-			margin-bottom: 18px;
-		}
-		.duo-img {
-			width: 64px;
-			height: 64px;
-			border-radius: 50%;
-			background: #fff;
-			box-shadow: 0 2px 8px #1e3c72;
-		}
-		.duo-title {
-			font-size: 2.2rem;
-			font-weight: 700;
-			color: #4a90e2;
-			font-family: 'Segoe UI', Arial, sans-serif;
-			text-shadow: 0 2px 8px #222;
-		}
-		.quiz-progress {
-			margin: 18px auto 0 auto;
-			width: 80%;
-			height: 18px;
-			background: #232946;
-			border-radius: 12px;
-			overflow: hidden;
-		}
-		.quiz-progress-bar {
-			height: 100%;
-			background: linear-gradient(90deg, #4a90e2, #7f9cf5);
-			width: 0%;
-			border-radius: 12px;
-			transition: width 0.3s;
-		}
-		.quiz-question {
-			font-size: 1.8rem;
-			font-weight: 700;
-			margin: 96px 0 32px 0;
-            margin-bottom: 130px;
-			color: #f7f7fa;
-			text-align: center;
-			line-height: 1.4;
-		}
-		.quiz-answers {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 32px;
-			margin-bottom: 32px;
-			margin-top: 48px;
-			width: calc(100vw - 80px);
-			max-width: calc(100vw - 80px);
-			padding-left: 40px;
-			padding-right: 40px;
-		}
-		.answer-btn-custom {
-			width: 100%;
-			min-width: 0;
-			border-radius: 8px;
-			font-size: 1.3rem;
-			padding: 20px 16px;
-			margin: 0;
-			box-sizing: border-box;
-			background: #232946;
-			color: #f7f7fa;
-			font-weight: 600;
-			border-width: 3px;
-			border-style: solid;
-			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
-			box-shadow: 0 4px 16px #23294655;
-			min-height: 64px;
-			position: relative;
-			overflow: hidden;
-			text-align: left;
-		}
-		.answer-btn-custom:hover {
-			transform: scale(1.04);
-			box-shadow: 0 8px 32px #23294699;
-			opacity: 0.97;
-		}
-		.answer-fill {
-			position: absolute;
-			left: 0; bottom: 0;
-			width: 100%;
-			height: 0%;
-			z-index: 1;
-			transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
-		}
-		.answer-btn-custom .answer-fill {
-			border-radius: 0;
-		}
-		.answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
-		.answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
-		.answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
-		.answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
-		.border-c1 { border-color: #e57373; }
-		.border-c2 { border-color: #64b5f6; }
-		.border-c3 { border-color: #81c784; }
-		.border-c4 { border-color: #ffd54f; }
-		.quiz-feedback {
-			font-size: 1.1rem;
-			font-weight: 500;
-			color: #ffeb3b;
-			margin-bottom: 12px;
-			min-height: 24px;
-			transition: color 0.2s;
-		}
-		.quiz-feedback.wrong {
-			color: #ff3b3b;
-			animation: buzz 0.3s linear 1;
-		}
-		@keyframes buzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-8px); }
-			40% { transform: translateX(8px); }
-			60% { transform: translateX(-8px); }
-			80% { transform: translateX(8px); }
-			100% { transform: translateX(0); }
-		}
-		.quiz-finish {
-			font-size: 1.5rem;
-			color: #4a90e2;
-			font-weight: 700;
-			margin-top: 24px;
-		}
-	</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rookie Quiz Level 1 — Fixed Matching Pagination</title>
+<style>
+:root{
+  --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
+}
+html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial,sans-serif;color:var(--white);-webkit-font-smoothing:antialiased}
+.duo-header{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px;margin-bottom:12px}
+.duo-img{width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:0 2px 8px #1e3c72}
+.duo-title{font-size:2.0rem;font-weight:700;color:var(--accent);text-shadow:0 2px 8px #000}
+
+/* progress */
+.quiz-progress{margin:12px auto;width:80%;height:18px;background:#111426;border-radius:12px;overflow:hidden}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;border-radius:12px;transition:width .28s}
+
+/* card */
+.container-wrap{display:flex;justify-content:center}
+.quiz-card{width:100%;max-width:1100px;margin:22px auto 60px;padding:28px 20px 48px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(0,0,0,0.45);position:relative}
+.quiz-question{font-size:1.6rem;font-weight:700;margin:18px 0 12px;text-align:center;color:var(--white);line-height:1.35}
+.quiz-feedback{font-size:1.05rem;font-weight:600;color:#ffeb3b;min-height:28px;text-align:center;margin-bottom:8px}
+.quiz-feedback.wrong{color:#ff3b3b;animation:buzz .3s linear 1}
+@keyframes buzz{0%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}100%{transform:translateX(0)}}
+
+/* answers area */
+.quiz-answers{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-left:20px;padding-right:20px;margin-top:12px}
+
+/* answer buttons (MCQ) */
+.answer-btn-custom{width:100%;border-radius:8px;font-size:1.15rem;padding:18px 14px;background:var(--panel);color:var(--white);font-weight:700;border:3px solid transparent;box-shadow:0 6px 22px rgba(0,0,0,0.35);min-height:64px;position:relative;overflow:hidden;text-align:left;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,outline-color .12s}
+.answer-btn-custom:disabled{opacity:.75;cursor:default}
+.answer-btn-custom.selected-option{transform:scale(1.06);box-shadow:0 12px 30px rgba(74,144,226,0.18);outline:3px solid rgba(74,144,226,0.12)}
+.answer-fill{position:absolute;left:0;bottom:0;width:100%;height:0%;z-index:1;transition:height .6s cubic-bezier(.4,1.4,.4,1)}
+.answer-fill.c1{background:linear-gradient(0deg,#e57373 80%,#ffb3b3 100%)}
+.answer-fill.c2{background:linear-gradient(0deg,#64b5f6 80%,#b3e0ff 100%)}
+.answer-fill.c3{background:linear-gradient(0deg,#81c784 80%,#c8e6c9 100%)}
+.answer-fill.c4{background:linear-gradient(0deg,#ffd54f 80%,#fff9c4 100%)}
+
+/* submit / next */
+.submit-btn{background:var(--accent);color:#fff;padding:12px 30px;border-radius:10px;border:none;cursor:pointer;font-weight:800;display:block;margin:18px auto 0;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.submit-btn:disabled{opacity:.6;cursor:default}
+.next-btn{background:#2d9a44;color:#fff;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-weight:800;display:block;margin:12px auto 0;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+
+/* ---------- Matching area adjustments (smaller boxes moved higher) ---------- */
+.match-area{width:100%;display:flex;justify-content:center;align-items:flex-start;gap:28px;margin-top:6px;position:relative}
+.match-column{display:flex;flex-direction:column;gap:10px;align-items:center}
+.match-box{width:150px;height:40px;border-radius:10px;background:#fff;color:#232946;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.25);cursor:pointer;user-select:none;transition:transform .14s ease,box-shadow .14s ease,background .14s ease,outline-color .12s;z-index:10}
+.match-box.small{width:130px;height:36px;font-size:.98rem}
+.match-box.matched{background:#81c784;color:#fff;cursor:default;box-shadow:0 6px 12px rgba(0,0,0,.12)}
+.match-box.selected{transform:scale(1.08);box-shadow:0 12px 30px rgba(74,144,226,.28);outline:3px solid rgba(74,144,226,.12);z-index:12}
+
+/* svg overlay wrap (absolute within card) */
+.svg-wrap{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:visible;z-index:5}
+
+/* buzzer effect */
+.buzzer-effect { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 59, 59, 0.25); pointer-events: none; z-index: 9999; animation: screenBuzz 0.4s linear 1; }
+@keyframes screenBuzz { 0% { transform: translateX(0); } 20% { transform: translateX(-16px); } 40% { transform: translateX(16px); } 60% { transform: translateX(-16px); } 80% { transform: translateX(16px); } 100% { transform: translateX(0); } }
+
+/* arrange */
+#selectedWords { margin: 5px 0; min-height: 40px; border: 1px dashed #aaa; padding: 8px; display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); box-sizing: border-box; max-height: none; overflow-y: auto; }
+.word-pool { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; }
+.word-pool button.selected { opacity: 0.3; pointer-events: none; }
+.answer-word { background: #3498db; color: white; padding: 8px 14px; border: none; border-radius: 8px; font-size: 16px; cursor: grab; box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.15s; user-select: none; }
+.answer-word.dragging { opacity: 0.7; transform: scale(1.03); }
+.placeholder-word { min-width: 60px; height: 36px; border: 2px dashed #aaa; border-radius: 8px; margin: 4px; }
+
+/* small note */
+.small-note{text-align:center;color:#cbd5e1;margin-top:8px;font-size:.95rem}
+
+/* responsive tweaks */
+@media(max-width:900px){ .match-box{width:120px;height:36px} .match-box.small{width:110px;height:32px} .quiz-card{padding:18px} .duo-title{font-size:1.6rem} .quiz-answers{gap:16px;padding-left:12px;padding-right:12px} }
+</style>
 </head>
-<body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
-	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
-	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
-		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
-			<h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
-			<button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
-			<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
-			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
-		</div>
-	</div>
-	<div class="duo-header">
-		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 1: Complete Assessment (30 Questions)</span>
-	</div>
-	<div class="quiz-progress">
-		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
-	</div>
-	<div class="quiz-question" id="quiz-question"></div>
-	<div class="quiz-feedback" id="quiz-feedback"></div>
-	<div class="quiz-answers" id="quiz-answers"></div>
-	<div id="buzzer-effect-root"></div>
-	<script>
-	// Pause modal logic
-	let paused = false;
-	const pauseBtn = document.getElementById('pause-btn');
-	const pauseModal = document.getElementById('pause-modal');
-	const resumeBtn = document.getElementById('resume-btn');
-	const restartBtn = document.getElementById('restart-btn');
-	const exitBtn = document.getElementById('exit-btn');
+<body>
+<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:var(--accent);color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+    <h2 style="color:var(--accent);margin-bottom:24px;">Game Paused</h2>
+    <button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:var(--accent);color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+    <button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+    <button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+  </div>
+</div>
 
-	pauseBtn.onclick = function() {
-		paused = true;
-		pauseModal.style.display = 'flex';
-	};
-	resumeBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-	};
-	restartBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-		current = 0;
-		score = 0;
-		// Reset to original questions without shuffling
-		showQuestion();
-		document.getElementById('quiz-progress-bar').style.width = '0%';
-	};
-	exitBtn.onclick = function() {
-		window.location.href = '../levels/rookie.html';
-	};
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 1: Complete Assessment</div></div>
+<div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
-	// Duolingo-style quiz logic (no shuffling)
+<div class="container-wrap">
+  <div class="quiz-card" role="main" aria-live="polite">
+    <div style="position:relative;">
+      <div id="quiz-question" class="quiz-question"></div>
+      <div class="svg-wrap" aria-hidden="true">
+        <svg id="connection-svg" width="100%" height="100%"></svg>
+      </div>
+    </div>
 
-	const originalQuestions = [
-		// Q1–Q10 — Vocabulary (choose or fill)
-		{
-			q: 'Q1–Q10 — Vocabulary<br><br>Q1: Match the Chinese to the English: 你好 means:',
-			options: ['Goodbye', 'Hello', 'Thank you', 'Sorry'],
-			answer: 1
-		},
-		{
-			q: 'Q2: Fill in the blank (Choose the Chinese character)<br>___ (nǐ) = you',
-			options: ['你', '我', '他', '她'],
-			answer: 0,
-			instruction: 'Choose the Chinese character for "you"'
-		},
-		{
-			q: 'Q3: Which one is "goodbye"?',
-			options: ['早上好', '晚上好', '再见', '你好'],
-			answer: 2
-		},
-		{
-			q: 'Q4: What is the pinyin for 我?',
-			options: ['nǐ', 'wǒ', 'tā', 'jiào'],
-			answer: 1
-		},
-		{
-			q: 'Q5: Multiple choice: 他 and 她 are pronounced the same. How do you say "she" in characters?',
-			options: ['他', '她', '它', '伊'],
-			answer: 1
-		},
-		{
-			q: 'Q6: Fill: 我 ___ Lifen。 <br>Choose the missing Chinese character(s)',
-			options: ['叫', '是', '很', '好'],
-			answer: 0,
-			instruction: 'Choose the missing character to complete "My name is Lifen"'
-		},
-		{
-			q: 'Q7: What does 很好 (hěn hǎo) mean?',
-			options: ['Not good', 'Very good / fine', 'Good morning', 'Hello'],
-			answer: 1
-		},
-		{
-			q: 'Q8: Choose the question particle (used to make yes/no questions):',
-			options: ['的', '吗', '了', '在'],
-			answer: 1
-		},
-		{
-			q: 'Q9: What is the Chinese for "not / no" used for negation?',
-			options: ['没 (méi)', '吗 (ma)', '不 (bù)', '会 (huì)'],
-			answer: 2
-		},
-		{
-			q: 'Q10: Fill: 早上好 is used at ____.',
-			options: ['Night', 'Morning', 'Afternoon', 'Anytime'],
-			answer: 1
-		},
-		
-		// Q11–Q20 — Grammar (multiple choice, reorder, fill)
-		{
-			q: 'Q11–Q20 — Grammar<br><br>Q11: To ask "Are you a student?", choose the correct sentence:',
-			options: ['你是学生。', '你是学生吗？', '是你学生吗？', '学生你是吗？'],
-			answer: 1
-		},
-		{
-			q: 'Q12: Choose the correct negative for "I am not a student."',
-			options: ['我不学生。', '我不 是 学生。', '我不是学生。', '我没是学生。'],
-			answer: 2
-		},
-		{
-			q: 'Q13: Reorder these words into a correct sentence: (你 / 好 / 吗)<br>Create a question asking "Are you okay/fine?"',
-			options: ['你好吗？', '好你吗？', '吗你好？', '你吗好？'],
-			answer: 0,
-			instruction: 'Arrange the words to form a proper question'
-		},
-		{
-			q: 'Q14: "My name is Anna." correct Chinese:',
-			options: ['我叫安娜。', '我是安娜叫。', '叫我安娜。', '我安娜叫。'],
-			answer: 0
-		},
-		{
-			q: 'Q15: Which is the correct use of 很? Choose the natural sentence:',
-			options: ['我很叫。', '我很好。', '很我好。', '我好很。'],
-			answer: 1
-		},
-		{
-			q: 'Q16: Fill in the blank: Convert to a yes/no question <br>你叫李明。 → 你叫李明__？',
-			options: ['吗', '的', '了', '呢'],
-			answer: 0,
-			instruction: 'Add the question particle to make it a yes/no question'
-		},
-		{
-			q: 'Q17: Choose the correct pronoun for "he":',
-			options: ['我', '你', '他', '她'],
-			answer: 2
-		},
-		{
-			q: 'Q18: Which sentence is a proper introduction reply?',
-			options: ['很高兴认识你。', '很高兴你认识。', '高兴很认识你。', '认识你很高兴吗。'],
-			answer: 0
-		},
-		{
-			q: 'Q19: Rewrite as negative: 我很好。 → (I am not fine / not very good) Choose the best:',
-			options: ['我不好。', '我不很好。', '我不太好。', 'Both A and C are acceptable'],
-			answer: 3
-		},
-		{
-			q: 'Q20: Form a basic "What is your name?" in Chinese (short form)<br>Hint: 你 + 叫 + ____？',
-			options: ['你叫什么？', '你叫什么名字？', '你是什么？', '你好什么？'],
-			answer: 0,
-			instruction: 'Choose the resulting sentence in Chinese'
-		},
-		
-		// Q21–Q25 — Short translations
-		{
-			q: 'Q21–Q25 — Short Translations<br><br>Q21: Translate into Chinese: "Hello, my name is Lifen."',
-			options: ['你好，我叫李芬。', '你好，我是李芬。', '我叫李芬，你好。', '李芬你好我叫。'],
-			answer: 0,
-			instruction: 'Choose the correct translation using characters (pinyin optional)'
-		},
-		{
-			q: 'Q22: Translate into English: 你好吗？',
-			options: ['How are you?', 'What is your name?', 'Nice to meet you', 'Are you a student?'],
-			answer: 0
-		},
-		{
-			q: 'Q23: Translate into Chinese: "Are you from China?" (simple form)',
-			options: ['你是中国人吗？', '你来自中国吗？', '你中国人是吗？', '中国你是吗？'],
-			answer: 0
-		},
-		{
-			q: 'Q24: Translate into Chinese: "I am not a student." (use correct negation)',
-			options: ['我不是学生。', '我没是学生。', '我不学生。', '我学生不是。'],
-			answer: 0
-		},
-		{
-			q: 'Q25: Translate into English: 我叫李明。很高兴认识你。',
-			options: ['My name is Li Ming. Nice to meet you.', 'I am Li Ming. How are you?', 'Li Ming is my name. Hello.', 'I called Li Ming. Very happy.'],
-			answer: 0
-		},
-		
-		// Q26–Q30 — Comprehension (short dialogues)
-		{
-			q: 'Q26–Q30 — Comprehension<br><br>Dialogue A:<br>A: 你好！<br>B: 你好！我叫王芳。你叫什么名字？<br>A: 我叫Tom。很高兴认识你。<br><br>Q26: Who is 王芳?',
-			options: ['Tom', 'Person B', 'Person A', 'Not mentioned'],
-			answer: 1
-		},
-		{
-			q: 'Q27: What does A say after introducing himself?',
-			options: ['Goodbye', 'Nice to meet you', 'I\'m a student', 'I\'m not fine'],
-			answer: 1
-		},
-		{
-			q: 'Q28: Dialogue B:<br>A: 你是学生吗？<br>B: 不是。我是老师。<br><br>Is B a student?',
-			options: ['Yes', 'No'],
-			answer: 1
-		},
-		{
-			q: 'Q29: Translate B\'s reply into English: 不是。我是老师。',
-			options: ['No. I am a teacher.', 'Yes. I am a teacher.', 'Maybe. I am a teacher.', 'Not sure. I am a teacher.'],
-			answer: 0
-		},
-		{
-			q: 'Q30: Dialogue C:<br>A: 早上好！你好吗？<br>B: 我很好，谢谢。你呢？<br><br>How does B feel?',
-			options: ['B is tired', 'B is very good / fine', 'B is hungry', 'B is a teacher'],
-			answer: 1
-		}
-	];
+    <div id="quiz-feedback" class="quiz-feedback"></div>
+    <div id="quiz-answers" class="quiz-answers"></div>
+    <div id="buzzer-effect-root"></div>
+  </div>
+</div>
 
-	// Keep questions in original order
-	const questions = [...originalQuestions];
+<script>
+/* ---------- Pause logic ---------- */
+let paused = false;
+const pauseBtn = document.getElementById('pause-btn');
+const pauseModal = document.getElementById('pause-modal');
+const resumeBtn = document.getElementById('resume-btn');
+const restartBtn = document.getElementById('restart-btn');
+const exitBtn = document.getElementById('exit-btn');
+pauseBtn.onclick = ()=>{ paused=true; pauseModal.style.display='flex'; }
+resumeBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; }
+restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; current=0; score=0; initMatchState(); showQuestion(); document.getElementById('quiz-progress-bar').style.width='0%'; }
+exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
-	let current = 0;
-	let score = 0;
+/* ---------- Questions ---------- */
+const questions = [
+  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
+    {id:'m1',cn:'你好',en:'hello'},
+    {id:'m2',cn:'再见',en:'goodbye'},
+    {id:'m3',cn:'谢谢',en:'thank you'},
+    {id:'m4',cn:'对不起',en:'sorry'},
+    {id:'m5',cn:'没关系',en:"it's okay/no problem"}
+  ]},
+  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
+    {id:'m6',cn:'请',en:'please'},
+    {id:'m7',cn:'不客气',en:"you're welcome"},
+    {id:'m8',cn:'早上好',en:'good morning'},
+    {id:'m9',cn:'晚上好',en:'good evening'},
+    {id:'m10',cn:'您好',en:'hello (polite)'}
+  ]},
+  { type:'mcq', q:'Q11: Hello, teacher (polite) — which is correct?', options:['你好','您好','再见','谢谢'], answer:1 },
+  { type:'mcq', q:'Q12: A: 谢谢！ B: ____！', options:['没关系','不客气','再见','请'], answer:1 },
+  { type:'mcq', q:'Q13: A: 对不起。 B: ____！', options:['没关系','不客气','再见','谢谢'], answer:0 },
+  { type:'mcq', q:'Q14: A: 早上____！ (Good morning)', options:['好','晚','中','天'], answer:0 },
+  { type:'mcq', q:'Q15: A: ______见！ (Goodbye)', options:['去','再','再见','晚'], answer:1 },
+  { type:'drag', q:'Q16: Hello, how are you?', words:['你','好','，','你','好吗','？'], correct:'你好 , 你好吗' },
+  { type:'drag', q:'Q17: My name is David.', words:['我','叫','David','。'], correct:'我 叫 David 。' },
+  { type:'drag', q:'Q18: Nice to meet you.', words:['很','高兴','认识','你','。'], correct:'很 高兴 认识 你 。' },
+  { type:'drag', q:'Q19: I am not a teacher.', words:['我','不是','老师','。'], correct:'我 不是 老师 。' },
+  { type:'drag', q:'Q20: Sorry, it’s okay.', words:['对不起','，','没关系','。'], correct:'对不起 ， 没关系 。' },
+  { type:'mcq', q:'Q21: Which is polite “hello”?', options:['你好','您好','再见','谢谢'], answer:1 },
+  { type:'mcq', q:'Q22: How to say “thank you”?', options:['请','对不起','谢谢','不客气'], answer:2 },
+  { type:'mcq', q:'Q23: If someone says “谢谢”, you reply:', options:['没关系','不客气','再见','请'], answer:1 },
+  { type:'mcq', q:'Q24: “I am not a student.” → choose the correct sentence:', options:['我是学生','我不是学生','我不学生','我没学生'], answer:1 },
+  { type:'mcq', q:'Q25: “Good evening” is:', options:['晚上好','早上好','您好','再见'], answer:0 },
+  { type:'mcq', q:'Q26: A: 你好！ B: ____！', options:['你好','再见','谢谢','没关系'], answer:0 },
+  { type:'mcq', q:'Q27: A: 你叫什么名字？ B: ____！', options:['你叫什么','我叫 David','我是老师','谢谢'], answer:1 },
+  { type:'mcq', q:'Q28: A: 我是学生。你呢？ B: ____！', options:['我也是学生','我不是学生','你呢','谢谢'], answer:0 },
+  { type:'mcq', q:'Q29: A: 谢谢！ B: ____！', options:['不客气','没关系','再见','你好'], answer:0 },
+  { type:'mcq', q:'Q30: A: 对不起。 B: ____！', options:['不客气','没关系','谢谢','你好'], answer:1 }
+];
 
-	function showQuestion() {
-		const q = questions[current];
-		const questionDiv = document.getElementById('quiz-question');
-		const answersDiv = document.getElementById('quiz-answers');
-		questionDiv.innerHTML = q.q;
-		answersDiv.innerHTML = '';
+let current = 0;
+let score = 0;
 
-		// Don't shuffle options, keep original order
-		q.options.forEach((opt, i) => {
-			const btn = document.createElement('button');
-			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = opt;
-			btn.onclick = () => checkAnswer(i);
-			// Add fill div
-			const fill = document.createElement('div');
-			fill.className = `answer-fill c${i + 1}`;
-			btn.appendChild(fill);
-			answersDiv.appendChild(btn);
-		});
-		document.getElementById('quiz-feedback').textContent = '';
-		updateProgress();
+/* match state */
+let matchState = { connections:{}, pathMap:{}, leftSelected:null, rightSelected:null };
+
+/* helpers */
+const byId = id => document.getElementById(id);
+const svg = byId('connection-svg');
+const Q_ANS = byId('quiz-answers');
+const Q_FB = byId('quiz-feedback');
+const Q_Q = byId('quiz-question');
+
+function clearSVG(){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+
+function drawAnimatedPath(elA, elB, color='#ffd54f'){
+  if(!elA || !elB) return null;
+  const svgRect = svg.getBoundingClientRect();
+  const aRect = elA.getBoundingClientRect();
+  const bRect = elB.getBoundingClientRect();
+  const ax = aRect.left + aRect.width/2 - svgRect.left;
+  const ay = aRect.top + aRect.height/2 - svgRect.top;
+  const bx = bRect.left + bRect.width/2 - svgRect.left;
+  const by = bRect.top + bRect.height/2 - svgRect.top;
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  const cx = Math.max(40, Math.abs(bx-ax)/2);
+  const d = `M ${ax} ${ay} C ${ax+cx} ${ay} ${bx-cx} ${by} ${bx} ${by}`;
+  path.setAttribute('d', d);
+  path.setAttribute('stroke', color);
+  path.setAttribute('stroke-width', 4);
+  path.setAttribute('fill','none');
+  path.setAttribute('stroke-linecap','round');
+  svg.appendChild(path);
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  requestAnimationFrame(()=>{ path.style.transition = 'stroke-dashoffset 480ms cubic-bezier(.2,.9,.2,1)'; path.style.strokeDashoffset = '0'; });
+  return path;
+}
+
+window.addEventListener('resize', ()=>{ redrawMatchPaths(); });
+
+function redrawMatchPaths(){
+  clearSVG();
+  for(const leftId in matchState.connections){
+    const rightId = matchState.connections[leftId];
+    const leftEl = byId('left-'+leftId);
+    const rightEl = byId('right-'+rightId);
+    if(leftEl && rightEl){
+      matchState.pathMap[leftId] = drawAnimatedPath(leftEl, rightEl);
+    }
+  }
+}
+
+function initMatchState(){
+  matchState.connections = {};
+  matchState.pathMap = {};
+  matchState.leftSelected = null;
+  matchState.rightSelected = null;
+  clearSVG();
+  Q_FB.innerHTML = '';
+}
+
+/* ---------- Render questions ---------- */
+function showQuestion(){
+  if(paused) return;
+  // if reached end -> finish
+  if(current >= questions.length){ finishQuiz(); return; }
+
+  const q = questions[current];
+  Q_Q.innerHTML=''; Q_ANS.innerHTML=''; Q_FB.innerHTML=''; Q_ANS.style.gridTemplateColumns='1fr 1fr';
+  updateProgress();
+
+  // ensure no leftover mcq-control
+  const oldControl = document.getElementById('mcq-control');
+  if(oldControl) oldControl.remove();
+
+  if(q.type === 'match'){
+    initMatchState();
+    Q_Q.innerHTML = q.pageTitle;
+
+    // build columns
+    const matchArea = document.createElement('div'); matchArea.className='match-area';
+    const leftCol = document.createElement('div'); leftCol.className='match-column';
+    const rightCol = document.createElement('div'); rightCol.className='match-column';
+    const rightPool = q.items.slice().sort(()=>Math.random()-0.5);
+
+    // left boxes (Chinese)
+    q.items.forEach(it=>{
+      const l = document.createElement('div');
+      l.className = 'match-box';
+      if(window.innerWidth < 900) l.classList.add('small');
+      l.textContent = it.cn;
+      l.id = 'left-'+it.id;
+      l.dataset.id = it.id;
+      l.dataset.side = 'left';
+      l.addEventListener('click', ()=> {
+        if(l.classList.contains('matched') || paused) return;
+        // clear any existing left selection
+        document.querySelectorAll('.match-box.selected').forEach(el => { if(el.dataset.side === 'left') el.classList.remove('selected'); });
+        l.classList.add('selected');
+        matchState.leftSelected = it.id;
+        // if a right is already selected, perform mapping
+        if(matchState.rightSelected){
+          createOrRemap(matchState.leftSelected, matchState.rightSelected);
+          // clear selected
+          document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
+          matchState.leftSelected = null;
+          matchState.rightSelected = null;
+        }
+      });
+      leftCol.appendChild(l);
+    });
+
+    // right boxes (English) (random order)
+    rightPool.forEach(it=>{
+      const r = document.createElement('div');
+      r.className = 'match-box';
+      if(window.innerWidth < 900) r.classList.add('small');
+      r.textContent = it.en;
+      r.id = 'right-'+it.id;
+      r.dataset.id = it.id;
+      r.dataset.side = 'right';
+      r.addEventListener('click', ()=> {
+        if(r.classList.contains('matched') || paused) return;
+        document.querySelectorAll('.match-box.selected').forEach(el => { if(el.dataset.side === 'right') el.classList.remove('selected'); });
+        r.classList.add('selected');
+        matchState.rightSelected = it.id;
+        if(matchState.leftSelected){
+          createOrRemap(matchState.leftSelected, matchState.rightSelected);
+          document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
+          matchState.leftSelected = null;
+          matchState.rightSelected = null;
+        }
+      });
+      rightCol.appendChild(r);
+    });
+
+    matchArea.appendChild(leftCol);
+    matchArea.appendChild(rightCol);
+
+    Q_ANS.style.gridTemplateColumns = '1fr';
+    Q_ANS.appendChild(matchArea);
+
+    const note = document.createElement('div');
+    note.className = 'small-note';
+    note.textContent = 'Click a Chinese box (left), then an English box (right) to connect. Remap by connecting again. Connect all 5 then press Submit.';
+    Q_ANS.appendChild(note);
+
+    // Create a fresh submit button for this match page
+    const submit = document.createElement('button');
+    submit.className = 'submit-btn';
+    submit.textContent = 'Submit';
+    submit.disabled = false;
+    submit.addEventListener('click', function onMatchSubmit(){
+      if(paused) return;
+      // grade
+      const total = q.items.length;
+      let correct = 0;
+      q.items.forEach(it => { if(matchState.connections[it.id] === it.id) correct++; });
+      Q_FB.innerHTML = `<div style="font-weight:700;color:#ffe600;text-align:center">You connected ${correct} / ${total}</div>`;
+      score += correct;
+      // switch to Next state
+      submit.textContent = 'Next';
+      // remove this click handler and attach an advancing handler
+      submit.removeEventListener('click', onMatchSubmit);
+      submit.addEventListener('click', function onNext(){
+        // clear visuals & paths
+        clearSVG();
+        document.querySelectorAll('.match-box').forEach(m => { m.classList.remove('matched','selected'); });
+        // advance
+        submit.removeEventListener('click', onNext);
+        current++;
+        showQuestion();
+      });
+    });
+    Q_ANS.appendChild(submit);
+    return;
+  }
+
+  // MCQ block (submit disabled until user selects an option)
+    if(q.type === 'mcq'){
+        Q_Q.innerHTML = q.q;
+        Q_ANS.style.gridTemplateColumns='1fr 1fr';
+        (q.options || []).forEach((opt,i)=>{
+        const btn = document.createElement('button'); btn.className='answer-btn-custom';
+        btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
+        const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
+        btn.addEventListener('click', ()=> {
+            if(paused) return;
+            if(btn.disabled) return;
+            document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
+            btn.classList.add('selected-option');
+            let control = document.getElementById('mcq-control');
+            if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
+            control.dataset.selected = String(i); // store as non-empty string
+        });
+        Q_ANS.appendChild(btn);
+        });
+        const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
+        const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
+        submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
+        controls.appendChild(submitBtn);
+        Q_ANS.appendChild(controls);
+        return;
+    }
+
+  // arrange/drag questions (part C)
+  if(q.type === 'drag'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns='1fr';
+    const selectedDiv = document.createElement('div'); selectedDiv.id = 'selectedWords';
+    const poolDiv = document.createElement('div'); poolDiv.className = 'word-pool';
+    const shuffled = q.words.slice().sort(()=>Math.random()-0.5);
+
+    shuffled.forEach((word, idx) => {
+      const btn = document.createElement('button');
+      btn.textContent = word;
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains('selected')) return;
+        const ansBtn = document.createElement('button');
+        ansBtn.textContent = word;
+        ansBtn.className = 'answer-word';
+        ansBtn.setAttribute('draggable', 'true');
+
+        ansBtn.addEventListener('click', () => {
+          selectedDiv.removeChild(ansBtn);
+          btn.classList.remove('selected');
+        });
+
+        ansBtn.addEventListener('dragstart', (e) => {
+          ansBtn.classList.add('dragging');
+          e.dataTransfer.setData('text/plain', 'dragging'); // marker
+          window._dragging = ansBtn;
+        });
+        ansBtn.addEventListener('dragend', (e) => {
+          ansBtn.classList.remove('dragging');
+          window._dragging = null;
+        });
+
+        selectedDiv.appendChild(ansBtn);
+        btn.classList.add('selected');
+      });
+      poolDiv.appendChild(btn);
+    });
+
+    selectedDiv.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const dragging = window._dragging;
+      if(!dragging) return;
+      const children = Array.from(selectedDiv.querySelectorAll('.answer-word'));
+      let insertBefore = null;
+      for(const child of children){
+        if(child === dragging) continue;
+        const rect = child.getBoundingClientRect();
+        const mid = rect.left + rect.width/2;
+        if(e.clientX < mid){ insertBefore = child; break; }
+      }
+      if(insertBefore) selectedDiv.insertBefore(dragging, insertBefore); else selectedDiv.appendChild(dragging);
+    });
+    selectedDiv.addEventListener('drop', e => e.preventDefault());
+
+    Q_ANS.appendChild(selectedDiv);
+    Q_ANS.appendChild(poolDiv);
+
+    const submit = document.createElement('button'); submit.className='submit-btn'; submit.textContent='Submit';
+    submit.addEventListener('click', ()=> {
+      if(paused) return;
+      if(submit.textContent === 'Submit'){
+        const arranged = Array.from(selectedDiv.querySelectorAll('.answer-word')).map(b => b.textContent.trim()).join(' ');
+        const normalize = s => s.replace(/，|。|,/g, '').replace(/\s+/g,' ').trim();
+        if(normalize(arranged) === normalize(q.correct)){
+          Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+          score++;
+        } else {
+          Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${q.correct}</span>`;
+          const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+          setTimeout(()=> buz.remove(),700);
+        }
+        submit.textContent = 'Next';
+        submit.onclick = ()=> { current++; showQuestion(); };
+      }
+    });
+    Q_ANS.appendChild(submit);
+    return;
+  }
+
+  Q_Q.innerHTML = 'Unknown question type';
+}
+
+	/* ---------- Matching helpers ---------- */
+	function createOrRemap(leftId,rightId){
+	// remove any existing connection for leftId or rightId (one-to-one)
+	if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
+	for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
+	matchState.connections[leftId] = rightId;
+	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
+	if(leftEl) leftEl.classList.add('matched');
+	if(rightEl) rightEl.classList.add('matched');
+	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
+	const p = drawAnimatedPath(leftEl, rightEl);
+	matchState.pathMap[leftId] = p;
+	}
+	function removeConnection(leftId,rightId){
+	delete matchState.connections[leftId];
+	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} delete matchState.pathMap[leftId]; }
+	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
+	if(leftEl) leftEl.classList.remove('matched'); if(rightEl) rightEl.classList.remove('matched');
 	}
 
-	function checkAnswer(idx) {
-		if (paused) return;
-		const q = questions[current];
-		let correct = false;
-		if(idx === q.answer) { // Use original answer index since we're not shuffling
-			correct = true;
-			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
-			// Water fill animation
-			const answersDiv = document.getElementById('quiz-answers');
-			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
-			const btn = btns[idx];
-			const fill = btn.querySelector('.answer-fill');
-			fill.style.height = '100%';
-			// Disable all buttons during animation
-			btns.forEach(b => b.disabled = true);
-			// Wait for animation to finish, then next question
-			setTimeout(() => {
-				if (!paused) nextQuestion();
-			}, 850);
-		} else {
-			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
-			feedback.classList.add('wrong');
-			// Show full-screen buzzer effect
-			const buzzerRoot = document.getElementById('buzzer-effect-root');
-			const buzzerDiv = document.createElement('div');
-			buzzerDiv.className = 'buzzer-effect';
-			buzzerRoot.appendChild(buzzerDiv);
-			setTimeout(() => {
-				feedback.classList.remove('wrong');
-				feedback.textContent = '';
-				buzzerDiv.remove();
-			}, 700);
-		}
+	/* ---------- MCQ handler with robust selection check ---------- */
+	function handleMcqSubmitToggle(submitBtn, qObj){
+	if(paused) return;
+	const control = document.getElementById('mcq-control');
+	const sel = control ? control.dataset.selected : undefined;
+	if(!control || sel === undefined || sel === ''){
+		Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+		setTimeout(()=> Q_FB.textContent='',900);
+		return;
 	}
-
-	function nextQuestion() {
+	const selectedIndex = parseInt(sel,10);
+	if(isNaN(selectedIndex)){
+		Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+		setTimeout(()=> Q_FB.textContent='',900);
+		return;
+	}
+	const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
+	allBtns.forEach((b, idx) => {
+		if(idx === qObj.answer) b.style.borderColor = '#4caf50';
+		if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
+		b.disabled = true;
+	});
+	if(selectedIndex === qObj.answer){
+		const fill = allBtns[selectedIndex].querySelector('.answer-fill');
+		if(fill) fill.style.height = '100%';
+		Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+		score++;
+	} else {
+		Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
+		const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+		setTimeout(()=> buz.remove(),700);
+	}
+	submitBtn.textContent = 'Next';
+	submitBtn.onclick = ()=> {
+		const control2 = document.getElementById('mcq-control');
+		if(control2) control2.remove();
 		current++;
-		if(current < questions.length) {
-			showQuestion();
-		} else {
-			finishQuiz();
-		}
+		showQuestion();
+	};
 	}
 
+/* ---------- Progress & finish ---------- */
 	function updateProgress() {
 		const bar = document.getElementById('quiz-progress-bar');
 		bar.style.width = ((current / questions.length) * 100) + '%';
@@ -480,6 +541,6 @@
 	}
 
 	showQuestion();
-	</script>
+</script>
 </body>
 </html>
