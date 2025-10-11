@@ -69,7 +69,19 @@ function loginSubmit() {
     .then(data => {
         if(data.success) {
             closeLoginModal();
+            // Persist logged-in user so quiz pages can send progress
+            try { localStorage.setItem('rookieUserId', user); localStorage.setItem('activeUser', user); } catch(e) {}
             setLoggedInUI(user);
+            // If user has local unlocked progress, sync it to server
+            try {
+                const localUnlocked = parseInt(localStorage.getItem('rookieUnlockedLevel')) || null;
+                if (localUnlocked) {
+                    fetch('http://localhost:3000/api/updateProgress', {
+                        method: 'POST', headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ username: user, unlockedLevel: localUnlocked })
+                    });
+                }
+            } catch(e) {}
             showModal('Login successful! Welcome, ' + user);
         } else {
             showModal('Login failed: ' + data.message);
@@ -101,7 +113,18 @@ function signupSubmit() {
     .then(data => {
         if(data.success) {
             closeSignUpModal();
+            try { localStorage.setItem('rookieUserId', user); localStorage.setItem('activeUser', user); } catch(e) {}
             setLoggedInUI(user);
+            // Sync local unlocked progress to backend if present
+            try {
+                const localUnlocked = parseInt(localStorage.getItem('rookieUnlockedLevel')) || null;
+                if (localUnlocked) {
+                    fetch('http://localhost:3000/api/updateProgress', {
+                        method: 'POST', headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ username: user, unlockedLevel: localUnlocked })
+                    });
+                }
+            } catch(e) {}
             showModal('Sign up successful! You are now logged in.');
         } else {
             showModal('Sign up failed: ' + data.message);

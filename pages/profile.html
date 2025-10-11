@@ -185,7 +185,7 @@
                         <div style="font-size:1.2em; font-weight:700; color:#fff;">Achievements</div>
                         <a href="#" style="color:#6fa3ff; font-weight:600; font-size:1em; text-decoration:none;">VIEW ALL</a>
                     </div>
-                    <div style="margin-top:16px; color:#b0b8c1;">No achievements yet.</div>
+                    <div id="achievementsContainer" style="margin-top:16px; color:#b0b8c1;">Loading achievements...</div>
                 </div>
             </div>
             <!-- Right Column -->
@@ -212,8 +212,98 @@
                         </button>
                     </div>
                 </div>
+                <div id="progressCard" style="background:#202a36; border-radius:18px; padding:18px 18px 18px 18px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.1em; font-weight:700; color:#fff; margin-bottom:8px;">Level Progress</div>
+                    <div id="completedLevelsContainer" style="color:#b0b8c1;">Loading...</div>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+    // Try known localStorage keys for logged-in user (site stores per-difficulty keys)
+    const possibleKeys = ['rookieUserId','masterUserId','challengerUserId'];
+    let username = null;
+    for (let k of possibleKeys) {
+        const v = localStorage.getItem(k);
+        if (v) { username = v; break; }
+    }
+
+    function renderCompletedLevels(levels) {
+        const el = document.getElementById('completedLevelsContainer');
+        if (!levels || levels.length === 0) {
+            el.innerHTML = '<div style="color:#b0b8c1;">No completed levels yet.</div>';
+            return;
+        }
+        // Render as small badges grouped by difficulty range (1-10 rookie, 11-20 challenger, 21-30 master)
+        const badges = levels.map(l => {
+            let label = `Level ${l}`;
+            let color = '#6fa3ff';
+            if (l >= 21) color = '#ff8a65';
+            else if (l >= 11) color = '#ffd54f';
+            return `<span style="display:inline-block;margin:6px 6px 6px 0;padding:6px 10px;border-radius:12px;background:${color};color:#000;font-weight:700;">${label}</span>`;
+        }).join('');
+        el.innerHTML = `<div style="display:flex;flex-wrap:wrap;">${badges}</div>`;
+    }
+
+    function renderAchievements(list) {
+        const el = document.getElementById('achievementsContainer');
+        if (!list || list.length === 0) {
+            el.innerHTML = '<div style="color:#b0b8c1;">No achievements yet.</div>'; return;
+        }
+        const html = list.map(a => {
+            if (a.earned) {
+                return `<div style="display:flex;align-items:center;gap:12px;margin:8px 0;padding:10px;border-radius:12px;background:linear-gradient(90deg,#6fa3ff,#7bdcff);color:#012;padding-left:12px;font-weight:700;"><span style="font-size:1.2em;">🏆</span><div><div>${a.title}</div><div style="font-size:0.9em;color:#012a;">${a.description}</div></div></div>`;
+            } else {
+                return `<div style="display:flex;align-items:center;gap:12px;margin:8px 0;padding:10px;border-radius:12px;background:#2a2f38;color:#9fb6d8;opacity:0.5;padding-left:12px;font-weight:700;"><span style="font-size:1.2em;">🔒</span><div><div>${a.title}</div><div style="font-size:0.9em;color:#9fb6d8;">${a.description}</div></div></div>`;
+            }
+        }).join('');
+        el.innerHTML = html;
+    }
+
+    function renderLocalFallback() {
+        const el = document.getElementById('completedLevelsContainer');
+        // Check localStorage for per-difficulty unlocked levels
+        const rookie = parseInt(localStorage.getItem('rookieUnlockedLevel')) || 0;
+        const challenger = parseInt(localStorage.getItem('challengerUnlockedLevel')) || 0;
+        const master = parseInt(localStorage.getItem('masterUnlockedLevel')) || 0;
+        const items = [];
+        if (rookie > 1) items.push(...Array.from({length: Math.max(0, rookie-1)}, (_,i)=>i+1));
+        if (challenger > 11) items.push(...Array.from({length: Math.max(0, challenger-11)}, (_,i)=>11+i));
+        if (master > 21) items.push(...Array.from({length: Math.max(0, master-21)}, (_,i)=>21+i));
+        if (items.length === 0) {
+            el.innerHTML = '<div style="color:#b0b8c1;">No completed levels yet (not logged in).</div>';
+            return;
+        }
+        renderCompletedLevels(items);
+    }
+
+    if (!username) {
+        // Show local progress if available as a helpful fallback
+        renderLocalFallback();
+    } else {
+        fetch('http://localhost:3000/api/getProgress', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ username })
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                const completed = data.completedLevels || [];
+                if (completed.length === 0) {
+                    renderLocalFallback();
+                } else {
+                    renderCompletedLevels(completed);
+                }
+                // render achievements if available
+                if (data.achievements) renderAchievements(data.achievements);
+            } else {
+                renderLocalFallback();
+            }
+        })
+        .catch(() => {
+            document.getElementById('completedLevelsContainer').textContent = 'Server error.';
+            document.getElementById('achievementsContainer').textContent = 'Unable to load achievements.';
+        });
+    }
+    </script>
 </body>
 </html>
