@@ -211,53 +211,53 @@ const originalQuestions = [
 // Part A - Vocabulary Matching (10 Questions)
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>高兴</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 4
+options: ['happy', 'sad', 'nervous', 'tired'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>生气</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 8
+options: ['angry', 'happy', 'sad', 'surprised'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>难过</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 5
+options: ['sad', 'happy', 'angry', 'tired'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>紧张</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
+options: ['nervous', 'relaxed', 'happy', 'tired'],
 answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>兴奋</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 3
+options: ['excited', 'nervous', 'happy', 'relaxed'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>放松</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 6
+options: ['relaxed', 'tired', 'sad', 'happy'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>害怕</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 2
+options: ['afraid', 'excited', 'happy', 'tired'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>累</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 9
+options: ['tired', 'relaxed', 'nervous', 'happy'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>无聊</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 1
+options: ['bored', 'tired', 'happy', 'angry'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>惊讶</strong>',
-options: ['nervous', 'bored', 'afraid', 'excited', 'happy', 'sad', 'relaxed', 'surprised', 'angry', 'tired'],
-answer: 7
+options: ['surprised', 'happy', 'afraid', 'tired'],
+answer: 0
 },
 // Part B - Multiple Choice Grammar / Sentences (10 Questions)
 {
@@ -383,13 +383,29 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
-});
+// Shuffle options so the correct answer doesn't always appear in the same position
+try {
+    const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+    const shuffled = shuffleArray(optionObjs.slice());
+    q._shuffledOptions = shuffled;
+    q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+    shuffled.forEach((optObj, i) => {
+        const btn = document.createElement('button');
+        btn.className = `answer-btn-custom border-${colorClasses[i]}`;
+        btn.innerHTML = `<div class='answer-fill ${colorClasses[i]}'></div><span style='position:relative;z-index:2;'>${optObj.text}</span>`;
+        btn.onclick = () => checkAnswer(i, btn);
+        answersDiv.appendChild(btn);
+    });
+} catch (e) {
+    // fallback to original order if shuffle fails
+    q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+        btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
+        btn.onclick = () => checkAnswer(idx, btn);
+        answersDiv.appendChild(btn);
+    });
+}
 document.getElementById('quiz-feedback').textContent = '';
 }
 
@@ -397,7 +413,8 @@ function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
 
-const correctIdx = questions[current].answer;
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

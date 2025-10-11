@@ -198,6 +198,14 @@ exitBtn.onclick = function() {
 window.location.href = '../levels/master.html';
 };
 
+function shuffleArray(arr) {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
+
 const questions = [
 { q: "Match the word: 画蛇添足", options: ["historical allusion", "idiom", "overdo unnecessary things", "wait idly for luck"], answer: 2 },
 { q: "Match the word: 守株待兔", options: ["self-contradictory", "wait idly for luck", "person with limited view", "deceive oneself"], answer: 1 },
@@ -209,21 +217,21 @@ const questions = [
 { q: "Match the word: 塞翁失马", options: ["self-contradictory", "person with limited view", "deceive oneself", "blessing in disguise"], answer: 3 },
 { q: "Match the word: 典故", options: ["historical allusion", "bully by borrowing power", "empty talk without practice", "blessing in disguise"], answer: 0 },
 { q: "Match the word: 成语", options: ["historical allusion", "idiom", "overdo unnecessary things", "wait idly for luck"], answer: 1 },
-{ q: ""画蛇添足"的意思是___。", options: ["做多余的事", "自相矛盾", "守株待兔", "塞翁失马"], answer: 0 },
-{ q: ""守株待兔"来自___的故事。", options: ["一个农民", "李白", "杜甫", "孔子"], answer: 0 },
-{ q: ""自相矛盾"可以用来形容___。", options: ["说话前后不一致", "时间过快", "做多余的事", "幸运"], answer: 0 },
-{ q: ""井底之蛙"指___。", options: ["眼光狭隘的人", "成语故事", "古代典故", "幸运"], answer: 0 },
-{ q: ""掩耳盗铃"说明___。", options: ["自欺欺人", "利用他人权势", "空谈", "幸运"], answer: 0 },
-{ q: ""狐假虎威"可以用来形容___。", options: ["借助他人势力欺负人", "幸运", "空谈", "狭隘眼光"], answer: 0 },
-{ q: ""纸上谈兵"意思是___。", options: ["空谈理论不实践", "做多余的事", "幸运", "成语故事"], answer: 0 },
-{ q: ""塞翁失马"的寓意是___。", options: ["因祸得福", "自相矛盾", "狭隘", "空谈"], answer: 0 },
-{ q: "成语的意思通常可以用来___。", options: ["形容事情或人", "做饭", "数字计算", "运动"], answer: 0 },
-{ q: "成语通常来自___。", options: ["典故", "新闻", "现代文章", "诗歌"], answer: 0 },
-{ q: ""画蛇添足"的意思是做___的事。 (unnecessary)", options: ["多余", "农民", "前后", "狭隘"], answer: 0 },
-{ q: ""守株待兔"来自一个古代___的故事。 (farmer)", options: ["多余", "农民", "前后", "狭隘"], answer: 1 },
-{ q: ""自相矛盾"可以用来形容一个人说话___不一致。 (inconsistent)", options: ["多余", "农民", "前后", "狭隘"], answer: 2 },
-{ q: ""井底之蛙"指眼光___的人。 (narrow)", options: ["多余", "农民", "前后", "狭隘"], answer: 3 },
-{ q: ""塞翁失马"的寓意是___。 (blessing in disguise)", options: ["因祸得福", "农民", "前后", "狭隘"], answer: 0 },
+{ q: "(画蛇添足) 的意思是___。", options: ["做多余的事", "自相矛盾", "守株待兔", "塞翁失马"], answer: 0 },
+{ q: "(守株待兔) 来自___的故事。", options: ["一个农民", "李白", "杜甫", "孔子"], answer: 0 },
+{ q: "(自相矛盾) 可以用来形容___。", options: ["说话前后不一致", "时间过快", "做多余的事", "幸运"], answer: 0 },
+{ q: "(井底之蛙) 指___。", options: ["眼光狭隘的人", "成语故事", "古代典故", "幸运"], answer: 0 },
+{ q: "(掩耳盗铃) 说明___。", options: ["自欺欺人", "利用他人权势", "空谈", "幸运"], answer: 0 },
+{ q: "(狐假虎威) 可以用来形容___。", options: ["借助他人势力欺负人", "幸运", "空谈", "狭隘眼光"], answer: 0 },
+{ q: "(纸上谈兵) 意思是___。", options: ["空谈理论不实践", "做多余的事", "幸运", "成语故事"], answer: 0 },
+{ q: "(塞翁失马) 的寓意是___。", options: ["因祸得福", "自相矛盾", "狭隘", "空谈"], answer: 0 },
+{ q: "(成语) 的意思通常可以用来___。", options: ["形容事情或人", "做饭", "数字计算", "运动"], answer: 0 },
+{ q: "(成语) 通常来自___。", options: ["典故", "新闻", "现代文章", "诗歌"], answer: 0 },
+{ q: "(画蛇添足) 的意思是做___的事。 (unnecessary)", options: ["多余", "农民", "前后", "狭隘"], answer: 0 },
+{ q: "(守株待兔) 来自一个古代___的故事。 (farmer)", options: ["多余", "农民", "前后", "狭隘"], answer: 1 },
+{ q: "(自相矛盾) 可以用来形容一个人说话___不一致。 (inconsistent)", options: ["多余", "农民", "前后", "狭隘"], answer: 2 },
+{ q: "(井底之蛙) 指眼光___的人。 (narrow)", options: ["多余", "农民", "前后", "狭隘"], answer: 3 },
+{ q: "(塞翁失马) 的寓意是___。 (blessing in disguise)", options: ["因祸得福", "农民", "前后", "狭隘"], answer: 0 },
 { q: "Overdoing something unnecessary.  ______", options: ["画蛇添足", "守株待兔", "自相矛盾", "井底之蛙"], answer: 0 },
 { q: "Waiting idly for luck.  ______", options: ["塞翁失马", "守株待兔", "自相矛盾", "井底之蛙"], answer: 1 },
 { q: "Self-contradictory.  ______", options: ["画蛇添足", "守株待兔", "自相矛盾", "井底之蛙"], answer: 2 },
@@ -245,17 +253,33 @@ const answersDiv = document.getElementById('quiz-answers');
 questionDiv.innerHTML = q.q;
 answersDiv.innerHTML = '';
 
-q.options.forEach((option, i) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-c${i + 1}`;
-btn.textContent = option;
-btn.onclick = () => checkAnswer(i);
-
-const fill = document.createElement('div');
-fill.className = `answer-fill c${i + 1}`;
-btn.appendChild(fill);
-answersDiv.appendChild(btn);
-});
+try {
+	const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+	const shuffled = shuffleArray(optionObjs.slice());
+	q._shuffledOptions = shuffled;
+	q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+	shuffled.forEach((optObj, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = optObj.text;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+} catch (e) {
+	q.options.forEach((option, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = option;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+}
 
 document.getElementById('quiz-feedback').textContent = '';
 updateProgress();

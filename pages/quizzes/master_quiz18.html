@@ -198,6 +198,14 @@ exitBtn.onclick = function() {
 window.location.href = '../levels/master.html';
 };
 
+function shuffleArray(arr) {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
+
 const questions = [
 { q: "Match the word: 成语", options: ["Live and learn", "Where there's a will, there's a way", "Contentment brings happiness", "Idiom"], answer: 3 },
 { q: "Match the word: 名言", options: ["Seeing is believing", "Keep your word, take responsibility", "Time flies like an arrow", "Famous quote"], answer: 3 },
@@ -209,21 +217,21 @@ const questions = [
 { q: "Match the word: 百闻不如一见", options: ["Learning without thinking is useless", "Seeing is believing", "Failure is the mother of success", "Live and learn"], answer: 1 },
 { q: "Match the word: 言必行，行必果", options: ["Where there's a will, there's a way", "Contentment brings happiness", "Keep your word, take responsibility", "Idiom"], answer: 2 },
 { q: "Match the word: 有志者事竟成", options: ["Seeing is believing", "Where there's a will, there's a way", "Time flies like an arrow", "Famous quote"], answer: 1 },
-{ q: ""光阴似箭"说明___。", options: ["时间过得很快", "失败是成功之母", "内容很复杂", "人要学习"], answer: 0 },
-{ q: ""失败是成功之母"告诉我们___。", options: ["不要害怕失败", "时间过得很快", "满足就快乐", "学习到老"], answer: 0 },
-{ q: ""百闻不如一见"的意思是___。", options: ["听到比看到更可靠", "看到比听到更可靠", "时间过得很快", "永远学习"], answer: 1 },
-{ q: ""知足常乐"告诉我们___。", options: ["满足就快乐", "看到比听到更可靠", "时间飞快", "要努力"], answer: 0 },
-{ q: ""活到老，学到老"说明___。", options: ["人生很长", "要坚持学习", "要守信用", "时间宝贵"], answer: 1 },
-{ q: ""有志者事竟成"的意思是___。", options: ["时间快", "有志向的人可以成功", "学习到老", "满足就快乐"], answer: 1 },
-{ q: "成语"言必行，行必果"强调___。", options: ["守信用", "不怕失败", "满足就快乐", "时间过快"], answer: 0 },
-{ q: ""学而不思则罔"的意思是___。", options: ["学习时要思考", "学到老", "看到比听到更可靠", "有志向才能成功"], answer: 0 },
-{ q: ""光阴似箭"告诉我们___。", options: ["要珍惜时间", "要满足", "要守信用", "要不怕失败"], answer: 0 },
-{ q: ""百闻不如一见"强调___。", options: ["实际体验", "时间快", "永远学习", "不怕失败"], answer: 0 },
-{ q: ""光阴似箭"说明___过得很快。 (time)", options: ["时间", "失败", "听到", "满足"], answer: 0 },
-{ q: ""失败是成功之母"告诉我们不要害怕___。 (failure)", options: ["志向", "时间", "失败", "听到"], answer: 2 },
-{ q: ""百闻不如一见"的意思是看到比___更可靠。 (hearing)", options: ["满足", "志向", "听到", "时间"], answer: 2 },
-{ q: ""知足常乐"的意思是___就快乐。 (contentment)", options: ["满足", "失败", "听到", "志向"], answer: 0 },
-{ q: ""有志者事竟成"的意思是有___的人可以成功。 (will/ambition)", options: ["时间", "失败", "听到", "志向"], answer: 3 },
+{ q: "(光阴似箭) 说明___。", options: ["时间过得很快", "失败是成功之母", "内容很复杂", "人要学习"], answer: 0 },
+{ q: "(失败是成功之母) 告诉我们___。", options: ["不要害怕失败", "时间过得很快", "满足就快乐", "学习到老"], answer: 0 },
+{ q: "(百闻不如一见) 的意思是___。", options: ["听到比看到更可靠", "看到比听到更可靠", "时间过得很快", "永远学习"], answer: 1 },
+{ q: "(知足常乐) 告诉我们___。", options: ["满足就快乐", "看到比听到更可靠", "时间飞快", "要努力"], answer: 0 },
+{ q: "(活到老，学到老) 说明___。", options: ["人生很长", "要坚持学习", "要守信用", "时间宝贵"], answer: 1 },
+{ q: "(有志者事竟成) 的意思是___。", options: ["时间快", "有志向的人可以成功", "学习到老", "满足就快乐"], answer: 1 },
+{ q: "(言必行，行必果) 强调___。", options: ["守信用", "不怕失败", "满足就快乐", "时间过快"], answer: 0 },
+{ q: "(学而不思则罔) 的意思是___。", options: ["学习时要思考", "学到老", "看到比听到更可靠", "有志向才能成功"], answer: 0 },
+{ q: "(光阴似箭) 告诉我们___。", options: ["要珍惜时间", "要满足", "要守信用", "要不怕失败"], answer: 0 },
+{ q: "(百闻不如一见) 强调___。", options: ["实际体验", "时间快", "永远学习", "不怕失败"], answer: 0 },
+{ q: "(光阴似箭) 说明___过得很快。 (time)", options: ["时间", "失败", "听到", "满足"], answer: 0 },
+{ q: "(失败是成功之母) 告诉我们不要害怕___。 (failure)", options: ["志向", "时间", "失败", "听到"], answer: 2 },
+{ q: "(百闻不如一见) 的意思是看到比___更可靠。 (hearing)", options: ["满足", "志向", "听到", "时间"], answer: 2 },
+{ q: "(知足常乐) 的意思是___就快乐。 (contentment)", options: ["满足", "失败", "听到", "志向"], answer: 0 },
+{ q: "(有志者事竟成) 的意思是有___的人可以成功。 (will/ambition)", options: ["时间", "失败", "听到", "志向"], answer: 3 },
 { q: "Time flies like an arrow.  ______", options: ["光阴似箭。", "时间过得很快。", "时光飞逝。", "岁月如梭。"], answer: 0 },
 { q: "Seeing is believing.  ______", options: ["眼见为实。", "百闻不如一见。", "亲眼所见。", "看到相信。"], answer: 1 },
 { q: "Contentment brings happiness.  ______", options: ["满足带来快乐。", "知足常乐。", "知足就快乐。", "满足就幸福。"], answer: 1 },
@@ -245,17 +253,33 @@ const answersDiv = document.getElementById('quiz-answers');
 questionDiv.innerHTML = q.q;
 answersDiv.innerHTML = '';
 
-q.options.forEach((option, i) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-c${i + 1}`;
-btn.textContent = option;
-btn.onclick = () => checkAnswer(i);
-
-const fill = document.createElement('div');
-fill.className = `answer-fill c${i + 1}`;
-btn.appendChild(fill);
-answersDiv.appendChild(btn);
-});
+try {
+	const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+	const shuffled = shuffleArray(optionObjs.slice());
+	q._shuffledOptions = shuffled;
+	q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+	shuffled.forEach((optObj, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = optObj.text;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+} catch (e) {
+	q.options.forEach((option, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = option;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+}
 
 document.getElementById('quiz-feedback').textContent = '';
 updateProgress();

@@ -177,7 +177,16 @@ const pauseModal = document.getElementById('pause-modal');
 const resumeBtn = document.getElementById('resume-btn');
 const restartBtn = document.getElementById('restart-btn');
 const exitBtn = document.getElementById('exit-btn');
-
+// Fisher-Yates shuffle helper
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+    return arr;
+}
 pauseBtn.onclick = function() {
 paused = true;
 pauseModal.style.display = 'flex';
@@ -250,12 +259,17 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
-btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
+const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+const shuffled = shuffleArray(optionObjs.slice());
+q._shuffledOptions = shuffled;
+q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+
+shuffled.forEach((o, idx) => {
+    const btn = document.createElement('button');
+    btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
+    btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${o.text}</span>`;
+    btn.onclick = () => checkAnswer(idx, btn);
+    answersDiv.appendChild(btn);
 });
 document.getElementById('quiz-feedback').textContent = '';
 }
@@ -264,7 +278,8 @@ function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
 
-const correctIdx = questions[current].answer;
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

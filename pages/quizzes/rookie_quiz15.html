@@ -6,6 +6,29 @@
 	<title>Rookie Quiz Level 15: Review</title>
 	<link rel="stylesheet" href="../../assets/css/style.css">
 	<style>
+	/* Make quiz page fit viewport and remove vertical scrolling */
+	html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+	body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+
+	/* Tighter header */
+	.duo-header { margin-top: 12px; margin-bottom: 8px; }
+	.duo-img { width: 48px; height: 48px; }
+	.duo-title { font-size: 1.6rem; }
+
+	/* Reduce large spacings so content fits without scroll */
+	.quiz-question { margin: 24px 0 16px 0; margin-bottom: 24px; font-size: 1.4rem; max-width: 92vw; }
+	.quiz-answers { gap: 12px; margin-top: 20px; margin-bottom: 8px; width: calc(100vw - 32px); padding-left: 16px; padding-right: 16px; max-width: 900px; }
+	.answer-btn-custom { padding: 12px 10px; font-size: 1.05rem; min-height: 52px; }
+
+	/* Progress and HUD spacing */
+	.quiz-progress { margin: 8px auto 0 auto; width: 90%; }
+	.quiz-progress-bar { height: 14px; }
+
+	/* Boss image: remove rounded box/box-shadow and make background transparent */
+	#bossImg { border-radius: 0 !important; box-shadow: none !important; background: transparent !important; width: 110px; height: 110px; }
+	/* Boss hearts smaller to preserve space */
+	#bossHearts img { width: 28px; height: 28px; margin: 0 3px; }
+
 		.buzzer-effect {
 			position: fixed;
 			top: 0; left: 0; right: 0; bottom: 0;
@@ -60,24 +83,25 @@
 			transition: width 0.3s;
 		}
 		.quiz-question {
-			font-size: 1.8rem;
+			font-size: 1.6rem;
 			font-weight: 700;
-			margin: 96px 0 32px 0;
-            margin-bottom: 130px;
+			/* tighter spacing so feedback appears just under the question */
+			margin: 28px 0 6px 0;
 			color: #f7f7fa;
 			text-align: center;
-			line-height: 1.4;
+			line-height: 1.3;
 		}
 		.quiz-answers {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: 32px;
-			margin-bottom: 32px;
-			margin-top: 48px;
+			gap: 20px;
+			/* keep answers closer to question and feedback */
+			margin-top: 8px;
+			margin-bottom: 36px;
 			width: calc(100vw - 80px);
 			max-width: calc(100vw - 80px);
-			padding-left: 40px;
-			padding-right: 40px;
+			padding-left: 20px;
+			padding-right: 20px;
 		}
 		.answer-btn-custom {
 			width: 100%;
@@ -127,9 +151,10 @@
 			font-size: 1.1rem;
 			font-weight: 500;
 			color: #ffeb3b;
-			margin-bottom: 12px;
+			margin: 6px 0 12px 0; /* small top margin so feedback sits just under the question */
 			min-height: 24px;
 			transition: color 0.2s;
+			text-align: center;
 		}
 		.quiz-feedback.wrong {
 			color: #ff3b3b;
@@ -149,6 +174,20 @@
 			font-weight: 700;
 			margin-top: 24px;
 		}
+
+		/* center block for vertically centering question area */
+		#quiz-center-block {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			/* slightly smaller min-height and a small upward nudge so the block sits higher */
+			min-height: calc(54vh);
+			transform: translateY(-3vh);
+			width: 100%;
+			box-sizing: border-box;
+			padding: 8px 16px;
+		}
 	</style>
 </head>
 <body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
@@ -165,15 +204,36 @@
 		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
 		<span class="duo-title">Rookie Quiz 15: Review</span>
 	</div>
-	<div class="quiz-progress">
-		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+	<!-- Boss fight HUD -->
+	<div style="display:flex;gap:28px;align-items:flex-end;justify-content:center;margin-top:12px;padding-bottom:1vh;">
+		<div style="text-align:center;color:#fff;">
+			<div style="font-weight:700;margin-bottom:6px;transform:translateY(12px);">You</div>
+			<img id="playerImg" src="../../assets/images/Panda/Idle.png" alt="Player" width="180" height="180" style="width:180px;height:180px;border-radius:0;background:transparent;box-shadow:none;transform:translateY(6px);">
+			<div id="playerHearts" style="display:flex;gap:6px;justify-content:center;margin-top:6px;align-items:center;">
+				<!-- hearts rendered by updatePlayerHealthBar() -->
+			</div>
+		</div>
+		<div style="text-align:center;color:#fff;">
+			<div style="font-weight:700;margin-bottom:6px;">Boss</div>
+			<img id="bossImg" src="../../assets/images/Rookie Boss/idle/idle_1.png" alt="Boss" width="180" height="180" style="width:180px;height:180px;border-radius:12px;box-shadow:0 8px 26px #0009;transform:translateY(10px);">
+			<div id="bossHealth" style="width:260px;margin:8px auto 0 auto;background:#333;border-radius:12px;padding:6px;box-sizing:border-box;">
+				<div id="bossHealthBar" style="width:100%;height:18px;background:linear-gradient(90deg,#4a90e2,#7f9cf5);border-radius:8px;transition:width 0.25s;"></div>
+			</div>
+		</div>
 	</div>
-	<div class="quiz-question" id="quiz-question"></div>
-	<div class="quiz-feedback" id="quiz-feedback"></div>
-	<div class="quiz-answers" id="quiz-answers"></div>
+	<!-- center block keeps question/feedback/answers vertically centered inside viewport -->
+	<div id="quiz-center-block">
+		<div class="quiz-progress">
+			<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+		</div>
+		<div class="quiz-question" id="quiz-question"></div>
+		<div class="quiz-feedback" id="quiz-feedback"></div>
+		<div class="quiz-answers" id="quiz-answers"></div>
+	</div>
 	<div id="buzzer-effect-root"></div>
+	<script src="../../assets/js/rookie_boss_anim.js"></script>
 	<script>
-	// Duolingo-style quiz logic (no shuffling)
+	// Duolingo-style quiz logic (no shuffling) 
 
 	const originalQuestions = [
 		// Part A — Vocabulary / Matching (10 Qs)
@@ -190,12 +250,12 @@
 
 		// Part B — Multiple Choice Grammar / Sentences (10 Qs)
 		{ q: 'Q11: 我___李明。 (introduce yourself)', options: ['是', '叫', '有', '在'], answer: 1 },
-		{ q: 'Q12: 你___几岁？', options: ['是', '叫', '多大', '有'], answer: 2 },
-		{ q: 'Q13: 这是___妈妈。 (my…)', options: ['我', '的', '你', '了'], answer: 1 },
-		{ q: 'Q14: 这___是什么？', options: ['是', '有', '在', '的'], answer: 0 },
+		{ q: 'Q12: 你___几岁？', options: ['是', '叫', '今年', '有'], answer: 2 },
+		{ q: 'Q13: 这是___妈妈。 (my…)', options: ['我', '的', '你', '了'], answer: 0 },
+		{ q: 'Q14: 这___什么？', options: ['是', '有', '在', '的'], answer: 0 },
 		{ q: 'Q15: 我想___水。', options: ['喝', '吃', '买', '喜欢'], answer: 0 },
 		{ q: 'Q16: 请___我鸡肉。', options: ['给', '吃', '喝', '是'], answer: 0 },
-		{ q: 'Q17: 我在___里。', options: ['学校', '教室', '家', '商店'], answer: 1 },
+		{ q: 'Q17: 我在___里。', options: ['手机', '教室', '谁', '妈妈'], answer: 1 },
 		{ q: 'Q18: 今天___几号？', options: ['是', '在', '有', '的'], answer: 0 },
 		{ q: 'Q19: 现在___？', options: ['什么', '几点', '怎么', '怎么样'], answer: 1 },
 		{ q: 'Q20: 你喜欢___？', options: ['什么', '谁', '哪', '几'], answer: 0 },
@@ -203,7 +263,7 @@
 		// Part C — Fill in the blanks (5 Qs)
 		{ q: 'Q21: 我___丽翡。 (introduce yourself)', options: ['是', '叫', '有', '在'], answer: 1 },
 		{ q: 'Q22: 我___十岁。 (age)', options: ['是', '有', '叫', '在'], answer: 0 },
-		{ q: 'Q23: 这是___书。 (possessive)', options: ['我', '的', '你', '了'], answer: 1 },
+		{ q: 'Q23: 这是___书。 ', options: ['我', '我的', '你', '了'], answer: 1 },
 		{ q: 'Q24: 今天___星期一。 (day)', options: ['是', '在', '有', '的'], answer: 0 },
 		{ q: 'Q25: 今天___很热。 (weather)', options: ['是', '天气', '在', '有'], answer: 1 },
 
@@ -237,14 +297,21 @@
 		pauseModal.style.display = 'none';
 	};
 	restartBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-		current = 0;
-		score = 0;
-		// Reset to original questions without shuffling
-		showQuestion();
-		document.getElementById('quiz-progress-bar').style.width = '0%';
-	};
+		// Restart the boss fight and resume the game (hide pause modal)
+		try {
+			restartBossFight();
+		} catch(e) {
+			// fallback: basic reset
+			playerHP = 100; bossHP = 100; current = 0; score = 0;
+			updatePlayerHealthBar(); renderBossHeartsLocal();
+			document.getElementById('quiz-feedback').textContent = '';
+			showQuestion();
+			document.getElementById('quiz-progress-bar').style.width = '0%';
+		}
+		// restore resume button and hide modal so game continues
+		try { resumeBtn.style.display = ''; } catch(e){}
+		try { paused = false; pauseModal.style.display = 'none'; } catch(e){}
+};
 	exitBtn.onclick = function() {
 		window.location.href = '../levels/rookie.html';
 	};
@@ -278,14 +345,65 @@
 		updateProgress();
 	}
 
+	// Boss fight state
+	let playerHP = 100;
+	// boss uses hit-count: 30 correct answers to defeat
+	let bossHP = 30; // 30 hits required
+
+	function renderBossHealthBar() {
+		const bar = document.getElementById('bossHealthBar');
+		if (!bar) return;
+		const total = 30;
+		const pct = Math.max(0, Math.min(100, (bossHP / total) * 100));
+		bar.style.width = pct + '%';
+		// change color as boss gets low
+		if (pct > 60) bar.style.background = 'linear-gradient(90deg,#4a90e2,#7f9cf5)';
+		else if (pct > 30) bar.style.background = 'linear-gradient(90deg,#ffd54f,#ffb74d)';
+		else bar.style.background = 'linear-gradient(90deg,#ff6b6b,#ff3b3b)';
+	}
+
+	function updatePlayerHealthBar() {
+		const container = document.getElementById('playerHearts');
+		if (!container) return;
+		container.innerHTML = '';
+		const hearts = 5;
+		const hpPerHeart = 100 / hearts; // 20
+		for (let i = 0; i < hearts; i++) {
+			const img = document.createElement('img');
+			const filled = playerHP > i * hpPerHeart;
+			img.src = filled ? '../../assets/images/Heart.png' : '../../assets/images/Emptyheart.png';
+			img.style.width = '34px'; img.style.height = '34px'; img.style.margin = '0 4px';
+			container.appendChild(img);
+		}
+	}
+
 	function checkAnswer(idx) {
 		if (paused) return;
 		const q = questions[current];
-		let correct = false;
 		if(idx === q.answer) {
-			correct = true;
+			// correct -> damage boss
 			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
+			// each correct hit counts as 1 toward the 30 required hits
+			bossHP = Math.max(0, bossHP - 1);
+				try {
+					if (window._rookieBossSprite) {
+						// interrupt any current boss animation and play take_hit immediately
+						try { if (typeof window._rookieBossSprite._stop === 'function') window._rookieBossSprite._stop(); } catch(e){}
+						try { window._rookieBossSprite.takeHit(); } catch(e){}
+					}
+				} catch(e){}
+				// player does attack animation (right hook)
+				try { if (window._rookiePlayerSprite) window._rookiePlayerSprite.attackRightHook(); } catch(e){}
+			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Hit! Boss takes damage. <span style="font-size:1.5rem;">⚔️</span></span>';
+			renderBossHealthBar();
+			if (bossHP <= 0) {
+				// boss defeated
+				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#4caf50;font-weight:800;font-size:1.6rem;display:inline-block;text-align:center;width:100%">Boss Defeated! 🏆</span>';
+				try { if (window._rookieBossSprite) window._rookieBossSprite.die(); } catch(e){}
+				// allow death animation to play then finish
+				setTimeout(finishBossFight, 1400);
+				return;
+			}
 			const answersDiv = document.getElementById('quiz-answers');
 			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
 			const btn = btns[idx];
@@ -296,19 +414,84 @@
 				if (!paused) nextQuestion();
 			}, 850);
 		} else {
+			// wrong -> damage player
+			playerHP = Math.max(0, playerHP - 20);
+			try { if (window._rookieBossSprite) window._rookieBossSprite.attack(); } catch(e){}
+			// If player still has HP after this hit, play get-hit animation.
+			// If playerHP reached 0 (last heart), play death spritesheet instead.
+			try {
+				if (playerHP > 0) {
+					if (window._rookiePlayerSprite && typeof window._rookiePlayerSprite.playGetHit === 'function') {
+						// small delay so the hit animation lines up with the boss attack animation
+						setTimeout(function(){
+							try { window._rookiePlayerSprite.playGetHit(600); } catch(e){}
+						}, 220);
+					}
+				} else {
+					// last heart -> play death spritesheet (delayed slightly to sync)
+					setTimeout(function(){
+						try {
+							if (window._rookiePlayerSprite && typeof window._rookiePlayerSprite.playOneShotImage === 'function') {
+								window._rookiePlayerSprite.playOneShotImage('../../assets/images/Panda/Death.png', 1200);
+							}
+						} catch(e) { console.warn('failed to play player death', e); }
+					}, 220);
+				}
+			} catch(e){}
+			updatePlayerHealthBar();
 			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
+			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Wrong! You take damage. <span style="font-size:1.5rem;">💥</span></span>';
 			feedback.classList.add('wrong');
-			const buzzerRoot = document.getElementById('buzzer-effect-root');
+			const buzzerRoot = document.getElementById('buzzer-effect-root') || document.body;
 			const buzzerDiv = document.createElement('div');
 			buzzerDiv.className = 'buzzer-effect';
+			// append to root that is outside the scaled wrapper so overlay covers the full viewport
 			buzzerRoot.appendChild(buzzerDiv);
 			setTimeout(() => {
 				feedback.classList.remove('wrong');
 				feedback.textContent = '';
-				buzzerDiv.remove();
+				try { buzzerDiv.remove(); } catch(e) { if (buzzerDiv.parentNode) buzzerDiv.parentNode.removeChild(buzzerDiv); }
 			}, 700);
+			if (playerHP <= 0) {
+				// player defeated
+				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:800;font-size:1.6rem;display:inline-block;text-align:center;width:100%">You were defeated! Try again.</span>';
+				// play panda death spritesheet (if available) then show modal with only Restart and Exit
+				try {
+					if (window._rookiePlayerSprite && typeof window._rookiePlayerSprite.playOneShotImage === 'function') {
+						// Death spritesheet path
+						window._rookiePlayerSprite.playOneShotImage('../../assets/images/Panda/Death.png', 1200);
+					}
+				} catch(e) { console.warn('failed to play player death', e); }
+				// show pause modal but hide Resume so player can only Restart or Exit
+				setTimeout(function(){
+					try { resumeBtn.style.display = 'none'; } catch(e){}
+					paused = true;
+					pauseModal.style.display = 'flex';
+				}, 600);
+				return;
+			}
 		}
+	}
+
+	function finishBossFight() {
+		// unlock next level and show finish screen
+		setUnlockedLevel(16); // unlock next level in rookie sequence
+		document.getElementById('quiz-question').innerHTML = '';
+		document.getElementById('quiz-answers').innerHTML = '';
+		document.getElementById('quiz-feedback').innerHTML += `<div class='quiz-finish' style='margin-top:12px;'>Boss beaten!<br>Your score: ${score} / ${questions.length}<br><br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;cursor:pointer;'>Next Level</button></div>`;
+		setTimeout(function() {
+			var btn = document.getElementById('nextLevelBtn');
+			if (btn) btn.onclick = function() { window.location.href = 'rookie_quiz16.html'; };
+		}, 100);
+	}
+
+	function restartBossFight() {
+	// reset HP and restart
+	playerHP = 100; bossHP = 30; score = 0; current = 0;
+	updatePlayerHealthBar(); renderBossHealthBar();
+		document.getElementById('quiz-feedback').textContent = '';
+		showQuestion();
+	try { if (window._rookieBossSprite) { window._rookieBossSprite.idleStart(); } } catch(e){}
 	}
 
 	function nextQuestion() {
@@ -341,6 +524,9 @@
 	function finishQuiz() {
 		document.getElementById('quiz-question').innerHTML = '';
 		document.getElementById('quiz-answers').innerHTML = '';
+		// Ensure boss is removed/defeated when quiz finishes
+		try { if (window._rookieBossSprite) { window._rookieBossSprite.die(); } } catch(e){}
+		try { var bhbar = document.getElementById('bossHealthBar'); if (bhbar) { bhbar.style.width = '0%'; bhbar.style.background = 'linear-gradient(90deg,#ff6b6b,#ff3b3b)'; } } catch(e) {}
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
 		setUnlockedLevel(16); // Unlock next level
@@ -354,8 +540,246 @@
 		}, 100);
 	}
 
-	// Initialize quiz
-	showQuestion();
+		// Initialize quiz
+		showQuestion();
+
+		// Initialize boss sprite controller
+		try {
+			window._rookieBossSprite = new RookieBossSprite('bossImg');
+			renderBossHealthBar();
+			updatePlayerHealthBar();
+			if (window._rookieBossSprite) window._rookieBossSprite.idleStart();
+
+			// Player sprite controller that supports single-image spritesheets (frames left-to-right)
+			(function(){
+				function PlayerSprite(imgId) {
+					this.origImg = document.getElementById(imgId);
+					if (!this.origImg) { console.warn('Player sprite img not found:', imgId); return; }
+					this.src = this.origImg.getAttribute('src') || '../../assets/images/Panda/Idle.png';
+					this.frames = 1;
+					this.currentFrame = 0;
+					this.interval = 120; // ms per frame
+					this._running = false;
+					this._timer = null;
+					this.canvas = null;
+					// one-shot animation state (for attacks/hits that are spritesheets)
+					this._oneShotTimer = null;
+					this._oneShotInterval = null;
+					this._oneShotRunning = false;
+					this.imgLoader = new Image();
+					var self = this;
+					this.imgLoader.onload = function(){
+						// detect spritesheet: if width > height and integer multiple, use frames = width/height
+						var nw = self.imgLoader.naturalWidth, nh = self.imgLoader.naturalHeight;
+						var approx = Math.round(nw / nh);
+						if (approx >= 2 && Math.abs((nw / approx) - nh) < 2) {
+							self.frames = approx;
+						} else {
+							self.frames = 1;
+						}
+						// create canvas to replace the original img for smoother frame cropping
+						self.canvas = document.createElement('canvas');
+						// preserve inline styles for size/transform
+						self.canvas.style.cssText = self.origImg.style.cssText;
+						// prefer computed style sizes so canvas matches visible size
+						try {
+							var cs = window.getComputedStyle(self.origImg);
+							var cw = parseFloat(cs.width);
+							var ch = parseFloat(cs.height);
+							if (cw && ch) {
+								self.canvas.width = Math.round(cw);
+								self.canvas.height = Math.round(ch);
+							} else {
+								self.canvas.width = self.origImg.width || Math.round(self.origImg.getBoundingClientRect().width) || nh;
+								self.canvas.height = self.origImg.height || Math.round(self.origImg.getBoundingClientRect().height) || nh;
+							}
+						} catch(e) {
+							self.canvas.width = self.origImg.width || Math.round(self.origImg.getBoundingClientRect().width) || nh;
+							self.canvas.height = self.origImg.height || Math.round(self.origImg.getBoundingClientRect().height) || nh;
+						}
+						self.ctx = self.canvas.getContext('2d');
+						// replace DOM node
+						try { self.origImg.parentNode.replaceChild(self.canvas, self.origImg); } catch(e){ console.warn('replaceChild failed', e); }
+						// draw first frame
+						self.drawFrame(0);
+					};
+					this.imgLoader.onerror = function(){ console.warn('Failed to load player sprite', self.src); };
+					this.imgLoader.src = this.src;
+				}
+
+				PlayerSprite.prototype.drawFrame = function(i){
+					if (!this.ctx || !this.imgLoader) return;
+					var sw = this.imgLoader.naturalWidth;
+					var sh = this.imgLoader.naturalHeight;
+					var frames = this.frames || 1;
+					var fw = Math.floor(sw / frames);
+					var fh = sh;
+					var sx = i * fw;
+					this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+					this.ctx.drawImage(this.imgLoader, sx, 0, fw, fh, 0, 0, this.canvas.width, this.canvas.height);
+				};
+
+				PlayerSprite.prototype._step = function(){
+					this.currentFrame = (this.currentFrame + 1) % this.frames;
+					this.drawFrame(this.currentFrame);
+				};
+
+				PlayerSprite.prototype.idleStart = function(){
+					var self = this;
+					if (this._running) return;
+					this._running = true;
+					// if frames == 1, keep single frame; otherwise animate
+					if (this.frames <= 1) return;
+					this._timer = setInterval(function(){ self._step(); }, this.interval);
+				};
+
+				PlayerSprite.prototype.idleStop = function(){
+					if (this._timer) { clearInterval(this._timer); this._timer = null; }
+					this._running = false;
+				};
+
+				// Play a single-image one-shot animation (draw image then revert to idle)
+				PlayerSprite.prototype.playOneShotImage = function(imgPath, ms) {
+					var self = this;
+					try {
+						// stop any idle animation and any running one-shot
+						this.idleStop();
+						if (this._oneShotTimer) { clearInterval(this._oneShotTimer); this._oneShotTimer = null; }
+						this._oneShotRunning = false;
+
+						var one = new Image();
+						one.onload = function(){
+							if (!self.ctx) return;
+							var nw = one.naturalWidth, nh = one.naturalHeight;
+							// detect horizontal spritesheet (frames left-to-right)
+							var approx = Math.round(nw / nh) || 1;
+							var isSheet = approx >= 2 && Math.abs((nw / approx) - nh) < 4;
+							if (!isSheet) {
+								// single image: draw and resume idle after ms
+								self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
+								self.ctx.drawImage(one, 0, 0, nw, nh, 0, 0, self.canvas.width, self.canvas.height);
+								setTimeout(function(){ try { self.idleStart(); } catch(e){} }, ms || 700);
+								return;
+							}
+
+							// spritesheet case: play frames once
+							var frames = approx;
+							var fw = Math.floor(nw / frames);
+							var fh = nh;
+							var totalMs = ms || Math.max(80 * frames, 400);
+							var frameMs = Math.max(40, Math.round(totalMs / frames));
+							var idx = 0;
+							self._oneShotRunning = true;
+							// draw first frame
+							self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
+							self.ctx.drawImage(one, 0, 0, fw, fh, 0, 0, self.canvas.width, self.canvas.height);
+							// step through remaining frames
+							self._oneShotTimer = setInterval(function(){
+								idx++;
+								if (idx >= frames) {
+									// finished
+									clearInterval(self._oneShotTimer);
+									self._oneShotTimer = null;
+									self._oneShotRunning = false;
+									try { self.idleStart(); } catch(e){}
+									return;
+								}
+								var sx = idx * fw;
+								self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
+								self.ctx.drawImage(one, sx, 0, fw, fh, 0, 0, self.canvas.width, self.canvas.height);
+							}, frameMs);
+						};
+						one.onerror = function(){ console.warn('failed to load one-shot', imgPath); try { self.idleStart(); } catch(e){} };
+						one.src = imgPath;
+					} catch (e) { console.warn('playOneShotImage failed', e); try { this.idleStart(); } catch(e){} }
+				};
+
+				// Attack: right hook (uses separate image file)
+				PlayerSprite.prototype.attackRightHook = function() {
+					// path to the right hook image
+					var path = '../../assets/images/Panda/RightHook.png';
+					this.playOneShotImage(path, 800);
+				};
+
+				// Play 'get hit' one-shot spritesheet
+				PlayerSprite.prototype.playGetHit = function(ms) {
+					var path = '../../assets/images/Panda/Hit.png';
+					this.playOneShotImage(path, ms || 500);
+				};
+
+				window.RookiePlayerSprite = PlayerSprite;
+			})();
+
+			// initialize player sprite on the small player img (first matching img in HUD)
+			try {
+				var pImg = document.querySelector('img[alt="Player"]');
+				// ensure the player element uses the Panda spritesheet (left-to-right frames)
+				if (pImg) {
+					if (!pImg.id) pImg.id = 'playerImg';
+					// set spritesheet source explicitly so the PlayerSprite can detect frames
+					pImg.src = '../../assets/images/Panda/Idle.png';
+				}
+				if (window.RookiePlayerSprite) {
+					window._rookiePlayerSprite = new window.RookiePlayerSprite('playerImg');
+					// wait briefly for loader to initialize canvas, then start idle loop
+					setTimeout(function(){ try { if (window._rookiePlayerSprite) window._rookiePlayerSprite.idleStart(); } catch(e){} }, 160);
+				}
+			} catch(e) { console.warn('Player sprite init failed', e); }
+		} catch (e) {
+			console.warn('Boss sprite init failed', e);
+		}
+
+// Fit-to-viewport scaler (taskbar-aware)
+(function(){
+	function getAvailableHeight(){
+		// Use screen.availHeight when available (excludes taskbar on many systems). Fallback to window.innerHeight.
+		try { if (window.screen && window.screen.availHeight) return window.screen.availHeight; } catch(e){}
+		return window.innerHeight;
+	}
+	function wrapAndScale(){
+		const root = document.body; // page roots differ; using body ensures we cover all content
+		if (!root) return;
+			if (!document.getElementById('quiz-wrap')) {
+				const wrap = document.createElement('div');
+				wrap.id = 'quiz-wrap';
+				wrap.style.width = '100%';
+				wrap.style.transformOrigin = 'top center';
+				wrap.style.willChange = 'transform';
+				// keep pause controls and the buzzer root outside the scaled wrapper so fixed overlays cover the viewport
+				const keepIds = ['pause-btn','pause-modal','buzzer-effect-root'];
+				const nodes = Array.from(root.childNodes);
+				nodes.forEach(n => {
+					if (n.id && keepIds.includes(n.id)) return;
+					wrap.appendChild(n);
+				});
+				root.appendChild(wrap);
+			}
+		const wrapEl = document.getElementById('quiz-wrap');
+		if (!wrapEl) return;
+		wrapEl.style.transform = 'none';
+		// measure content height
+		const contentH = wrapEl.scrollHeight || wrapEl.offsetHeight || wrapEl.getBoundingClientRect().height;
+		const viewH = getAvailableHeight();
+		let scale = 1;
+		const minScale = 0.85;
+		scale = Math.min(1, viewH / contentH);
+		if (scale < minScale) scale = minScale;
+		wrapEl.style.transform = 'scale(' + scale + ')';
+		wrapEl.style.marginTop = Math.max(0, (viewH - (contentH * scale)) / 2) + 'px';
+		// set debug overlay values if present
+		const dbgScale = document.getElementById('dbg-scale');
+		const q = document.querySelector('.quiz-question');
+		if (dbgScale) dbgScale.textContent = 'scale: ' + scale.toFixed(3);
+		const dbgQfs = document.getElementById('dbg-qfs');
+		if (dbgQfs && q) dbgQfs.textContent = 'q font: ' + window.getComputedStyle(q).fontSize;
+	}
+	window.wrapAndScale = wrapAndScale; // expose for debug button
+	window.addEventListener('load', wrapAndScale);
+	window.addEventListener('resize', function(){ setTimeout(wrapAndScale,40); });
+	setTimeout(wrapAndScale,80);
+})();
+
+// debug overlay removed
 	</script>
 </body>
 </html>

@@ -208,56 +208,56 @@ return arr;
 }
 
 const originalQuestions = [
-// Part A - Vocabulary Matching (10 Questions)
+// Part A - Vocabulary Matching (10 Questions) - trimmed to 4 options each
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>应该</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 4
+options: ['should / ought to', 'suggestion / recommend', 'think / feel', 'believe / consider'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>觉得</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 3
+options: ['think / feel', 'should / ought to', 'suggestion / recommend', 'belief / consider'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>认为</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 9
+options: ['believe / consider', 'think / feel', 'should / ought to', 'suggestion / recommend'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>同意</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 7
+options: ['agree', 'suggestion / recommend', 'think / feel', 'believe / consider'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>不同意</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 8
+options: ['disagree', 'agree', 'think / feel', 'suggestion / recommend'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>建议</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
+options: ['suggestion / recommend', 'think / feel', 'agree', 'disagree'],
 answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>问题</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 6
+options: ['problem / question', 'solve / resolve', 'think / feel', 'suggestion / recommend'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>解决</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 1
+options: ['solve / resolve', 'problem / question', 'suggestion / recommend', 'think / feel'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>注意</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 2
+options: ['pay attention to', 'think / feel', 'solve / resolve', 'suggestion / recommend'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>提高</strong>',
-options: ['suggestion / recommend', 'solve / resolve', 'pay attention to', 'think / feel', 'should / ought to', 'improve', 'problem / question', 'agree', 'disagree', 'believe / consider'],
-answer: 5
+options: ['improve', 'pay attention to', 'think / feel', 'suggestion / recommend'],
+answer: 0
 },
 // Part B - Multiple Choice Grammar / Sentences (10 Questions)
 {
@@ -383,12 +383,16 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
+const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+const shuffled = shuffleArray(optionObjs.slice());
+q._shuffledOptions = shuffled;
+q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+shuffled.forEach((o, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+    btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + o.text + '</span>';
+    btn.onclick = () => checkAnswer(idx, btn);
+    answersDiv.appendChild(btn);
 });
 document.getElementById('quiz-feedback').textContent = '';
 }
@@ -397,7 +401,8 @@ function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
 
-const correctIdx = questions[current].answer;
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

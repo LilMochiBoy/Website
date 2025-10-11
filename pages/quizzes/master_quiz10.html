@@ -198,6 +198,15 @@ exitBtn.onclick = function() {
 window.location.href = '../levels/master.html';
 };
 
+// Fisher-Yates shuffle helper (keeps correct answer mapping)
+function shuffleArray(arr) {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
+
 const questions = [
 { q: "Match the Chinese word: 商务", options: ["client", "report", "contract", "business"], answer: 3 },
 { q: "Match the Chinese word: 公司", options: ["company", "meeting", "market", "proposal"], answer: 0 },
@@ -245,17 +254,35 @@ const answersDiv = document.getElementById('quiz-answers');
 questionDiv.innerHTML = q.q;
 answersDiv.innerHTML = '';
 
-q.options.forEach((option, i) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-c${i + 1}`;
-btn.textContent = option;
-btn.onclick = () => checkAnswer(i);
-
-const fill = document.createElement('div');
-fill.className = `answer-fill c${i + 1}`;
-btn.appendChild(fill);
-answersDiv.appendChild(btn);
-});
+// Shuffle options so the correct answer doesn't always appear in the same position
+try {
+	const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+	const shuffled = shuffleArray(optionObjs.slice());
+	q._shuffledOptions = shuffled;
+	q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+	shuffled.forEach((optObj, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = optObj.text;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+} catch (e) {
+	// fallback to original rendering
+	q.options.forEach((option, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = option;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+}
 
 document.getElementById('quiz-feedback').textContent = '';
 updateProgress();

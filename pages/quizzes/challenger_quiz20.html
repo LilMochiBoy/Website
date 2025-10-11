@@ -198,6 +198,14 @@ exitBtn.onclick = function() {
 window.location.href = '../levels/challenger.html';
 };
 
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 const originalQuestions = [
 {q: "Match: 打算", options: ["plan / intend to", "hope / wish", "future", "travel"], answer: 0},
 {q: "Match: 将来", options: ["plan / intend to", "future", "work / job", "hope / wish"], answer: 1},
@@ -250,12 +258,16 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = 'answer-btn-custom border-' + colorClasses[idx];
-btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + opt + '</span>';
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
+const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+const shuffled = shuffleArray(optionObjs.slice());
+q._shuffledOptions = shuffled;
+q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+shuffled.forEach((o, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+    btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + o.text + '</span>';
+    btn.onclick = () => checkAnswer(idx, btn);
+    answersDiv.appendChild(btn);
 });
 document.getElementById('quiz-feedback').textContent = '';
 }
@@ -264,7 +276,8 @@ function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
 
-const correctIdx = questions[current].answer;
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

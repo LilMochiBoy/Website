@@ -198,6 +198,14 @@ exitBtn.onclick = function() {
 window.location.href = '../levels/master.html';
 };
 
+function shuffleArray(arr) {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
+
 const questions = [
 { q: "Match the word: 即使", options: ["still / nevertheless", "even if / even though", "although", "but / however"], answer: 1 },
 { q: "Match the word: 也", options: ["condition", "still / also", "decision", "result / outcome"], answer: 1 },
@@ -245,17 +253,33 @@ const answersDiv = document.getElementById('quiz-answers');
 questionDiv.innerHTML = q.q;
 answersDiv.innerHTML = '';
 
-q.options.forEach((option, i) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-c${i + 1}`;
-btn.textContent = option;
-btn.onclick = () => checkAnswer(i);
-
-const fill = document.createElement('div');
-fill.className = `answer-fill c${i + 1}`;
-btn.appendChild(fill);
-answersDiv.appendChild(btn);
-});
+try {
+	const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+	const shuffled = shuffleArray(optionObjs.slice());
+	q._shuffledOptions = shuffled;
+	q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+	shuffled.forEach((optObj, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = optObj.text;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+} catch (e) {
+	q.options.forEach((option, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = option;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+}
 
 document.getElementById('quiz-feedback').textContent = '';
 updateProgress();

@@ -208,56 +208,56 @@ return arr;
 }
 
 const originalQuestions = [
-// Part A - Vocabulary Matching (10 Questions)
+// Part A - Vocabulary Matching (10 Questions) - trimmed to 4 options each
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>比</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 2
+options: ['compare', 'taller / high', 'most / -est', 'even more / more'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>更</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 3
+options: ['even more / more', 'compare', 'taller / high', 'most / -est'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>最</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
+options: ['most / -est', 'compare', 'taller / high', 'even more / more'],
 answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>高</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 1
+options: ['taller / high', 'compare', 'most / -est', 'even more / more'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>矮</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 7
+options: ['short / low', 'compare', 'taller / high', 'most / -est'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>漂亮</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 9
+options: ['beautiful', 'compare', 'most / -est', 'taller / high'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>可爱</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 4
+options: ['cute', 'compare', 'most / -est', 'taller / high'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>聪明</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 8
+options: ['smart', 'compare', 'most / -est', 'taller / high'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>有趣</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 6
+options: ['interesting', 'compare', 'most / -est', 'taller / high'],
+answer: 0
 },
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>好吃</strong>',
-options: ['most / -est', 'taller / high', 'compare', 'even more / more', 'cute', 'delicious', 'interesting', 'short / low', 'smart', 'beautiful'],
-answer: 5
+options: ['delicious', 'compare', 'most / -est', 'taller / high'],
+answer: 0
 },
 // Part B - Multiple Choice Grammar / Sentences (10 Questions)
 {
@@ -383,12 +383,16 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
+const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+const shuffled = shuffleArray(optionObjs.slice());
+q._shuffledOptions = shuffled;
+q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+shuffled.forEach((o, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+    btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + o.text + '</span>';
+    btn.onclick = () => checkAnswer(idx, btn);
+    answersDiv.appendChild(btn);
 });
 document.getElementById('quiz-feedback').textContent = '';
 }
@@ -397,7 +401,8 @@ function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
 
-const correctIdx = questions[current].answer;
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

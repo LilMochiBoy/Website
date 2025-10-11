@@ -211,53 +211,53 @@ const originalQuestions = [
 // Part A - Vocabulary Matching (10 Questions)
 {
 q: 'Match the Chinese word with its English meaning:<br><strong>天气</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 5
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>下雨</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 7
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>下雪</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 1
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>风</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 6
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>热</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 4
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>冷</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 8
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>暖和</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 0
-},
-{
-q: 'Match the Chinese word with its English meaning:<br><strong>凉快</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+options: ['hot', 'cold', 'wind', 'weather'],
 answer: 3
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>污染</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
+q: 'Match the Chinese word with its English meaning:<br><strong>下雨</strong>',
+options: ['rain / raining', 'cold', 'wind', 'weather'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>下雪</strong>',
+options: ['rain / raining', 'cold', 'weather', 'snow / snowing'],
+answer: 3
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>风</strong>',
+options: ['hot', 'cold', 'wind', 'snow / snowing'],
 answer: 2
 },
 {
+q: 'Match the Chinese word with its English meaning:<br><strong>热</strong>',
+options: ['warm', 'hot', 'cold', 'weather'],
+answer: 1
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>冷</strong>',
+options: ['cold', 'wind', 'hot', 'snow / snowing'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>暖和</strong>',
+options: ['cold', 'hot', 'warm', 'weather'],
+answer: 2
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>凉快</strong>',
+options: ['cool', 'cold', 'wind', 'warm'],
+answer: 0
+},
+{
+q: 'Match the Chinese word with its English meaning:<br><strong>污染</strong>',
+options: ['pollution', 'air', 'weather', 'cold'],
+answer: 0
+},
+{
 q: 'Match the Chinese word with its English meaning:<br><strong>空气</strong>',
-options: ['warm', 'snow / snowing', 'pollution', 'cool', 'hot', 'weather', 'wind', 'rain / raining', 'cold', 'air'],
-answer: 9
+options: ['air', 'pollution', 'wind', 'weather'],
+answer: 0
 },
 // Part B - Multiple Choice Grammar / Sentences (10 Questions)
 {
@@ -383,12 +383,20 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-${colorClasses[idx]}`;
-btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
+// Shuffle display order of choices so the correct answer isn't always at the same position
+const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+const shuffled = shuffleArray(optionObjs.slice());
+// record where the correct answer landed after shuffle
+const shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+q._shuffledOptions = shuffled;
+q._shuffledAnswerIdx = shuffledAnswerIdx;
+
+shuffled.forEach((optObj, i) => {
+    const btn = document.createElement('button');
+    btn.className = `answer-btn-custom border-${colorClasses[i]}`;
+    btn.innerHTML = `<div class='answer-fill ${colorClasses[i]}'></div><span style='position:relative;z-index:2;'>${optObj.text}</span>`;
+    btn.onclick = () => checkAnswer(i, btn);
+    answersDiv.appendChild(btn);
 });
 document.getElementById('quiz-feedback').textContent = '';
 }
@@ -396,8 +404,9 @@ document.getElementById('quiz-feedback').textContent = '';
 function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
-
-const correctIdx = questions[current].answer;
+// prefer the shuffled answer index (set during showQuestion); fall back to the original answer
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

@@ -208,56 +208,56 @@ return arr;
 }
 
 const originalQuestions = [
-// Part A - Vocabulary Matching (10 Questions)
+// Part A - Vocabulary Matching (10 Questions) - trimmed to 4 options each
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>医生</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 2
+    q: 'Match the Chinese word with its English meaning:<br><strong>医生</strong>',
+    options: ['doctor', 'hospital', 'see a doctor', 'injection'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>医院</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 0
+    q: 'Match the Chinese word with its English meaning:<br><strong>医院</strong>',
+    options: ['hospital', 'see a doctor', 'doctor', 'injection'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>生病</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 8
+    q: 'Match the Chinese word with its English meaning:<br><strong>生病</strong>',
+    options: ['sick / ill', 'have a fever', 'cough', 'take medicine'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>看病</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 3
+    q: 'Match the Chinese word with its English meaning:<br><strong>看病</strong>',
+    options: ['see a doctor', 'doctor', 'hospital', 'take medicine'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>感冒</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 4
+    q: 'Match the Chinese word with its English meaning:<br><strong>感冒</strong>',
+    options: ['cold (illness)', 'cough', 'sore throat', 'have a fever'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>发烧</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 5
+    q: 'Match the Chinese word with its English meaning:<br><strong>发烧</strong>',
+    options: ['have a fever', 'take medicine', 'cold (illness)', 'sick / ill'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>咳嗽</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 6
+    q: 'Match the Chinese word with its English meaning:<br><strong>咳嗽</strong>',
+    options: ['cough', 'sore throat', 'cold (illness)', 'take medicine'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>喉咙痛</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 7
+    q: 'Match the Chinese word with its English meaning:<br><strong>喉咙痛</strong>',
+    options: ['sore throat', 'cough', 'take medicine', 'have a fever'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>吃药</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 9
+    q: 'Match the Chinese word with its English meaning:<br><strong>吃药</strong>',
+    options: ['take medicine', 'have a fever', 'sick / ill', 'see a doctor'],
+    answer: 0
 },
 {
-q: 'Match the Chinese word with its English meaning:<br><strong>打针</strong>',
-options: ['hospital', 'injection', 'doctor', 'see a doctor', 'cold (illness)', 'have a fever', 'cough', 'sore throat', 'sick / ill', 'take medicine'],
-answer: 1
+    q: 'Match the Chinese word with its English meaning:<br><strong>打针</strong>',
+    options: ['injection', 'take medicine', 'see a doctor', 'hospital'],
+    answer: 0
 },
 // Part B - Multiple Choice Grammar / Sentences (10 Questions)
 {
@@ -383,12 +383,17 @@ const answersDiv = document.getElementById('quiz-answers');
 answersDiv.innerHTML = '';
 
 const colorClasses = ['c1', 'c2', 'c3', 'c4'];
-q.options.forEach((opt, idx) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-$${colorClasses[idx]}`;
-btn.innerHTML = `<div class='answer-fill ${colorClasses[idx]}'></div><span style='position:relative;z-index:2;'>${opt}</span>`;
-btn.onclick = () => checkAnswer(idx, btn);
-answersDiv.appendChild(btn);
+// build option objects (keep original index), shuffle for randomized placement
+const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+const shuffled = shuffleArray(optionObjs.slice());
+q._shuffledOptions = shuffled;
+q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+shuffled.forEach((o, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn-custom border-' + colorClasses[idx];
+    btn.innerHTML = '<div class="answer-fill ' + colorClasses[idx] + '"></div><span style="position:relative;z-index:2;">' + o.text + '</span>';
+    btn.onclick = () => checkAnswer(idx, btn);
+    answersDiv.appendChild(btn);
 });
 document.getElementById('quiz-feedback').textContent = '';
 }
@@ -397,7 +402,8 @@ function checkAnswer(selected, btn) {
 if (paused) return;
 if (questions.length === 0) return;
 
-const correctIdx = questions[current].answer;
+const q = questions[current];
+const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
 const feedback = document.getElementById('quiz-feedback');
 const fill = btn.querySelector('.answer-fill');
 

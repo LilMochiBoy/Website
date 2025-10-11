@@ -198,6 +198,14 @@ exitBtn.onclick = function() {
 window.location.href = '../levels/master.html';
 };
 
+function shuffleArray(arr) {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
+
 const questions = [
 { q: "Match the word: 道", options: ["wisdom", "Confucianism", "Dao / The Way", "morality"], answer: 2 },
 { q: "Match the word: 儒家", options: ["compassion", "Confucianism", "harmony", "Buddha / Buddhism"], answer: 1 },
@@ -213,7 +221,7 @@ const questions = [
 { q: "佛教特别注重___。", options: ["慈悲", "政治", "财富", "战争"], answer: 0 },
 { q: "道家强调顺应___。", options: ["自然", "经济", "成功", "新闻"], answer: 0 },
 { q: "《中庸》是___思想的重要部分。", options: ["儒家", "佛教", "道家", "现代"], answer: 0 },
-{ q: ""修身齐家治国平天下"是___的核心思想。", options: ["儒家", "佛教", "道家", "科学"], answer: 0 },
+{ q: "(修身齐家治国平天下) 是___的核心思想。", options: ["儒家", "佛教", "道家", "科学"], answer: 0 },
 { q: "佛教主张人们要有___心。", options: ["慈悲", "战争", "金钱", "成语"], answer: 0 },
 { q: "道家认为最好的状态是___。", options: ["和谐", "战争", "政治", "新闻"], answer: 0 },
 { q: "儒家注重___与责任。", options: ["道德", "自然", "成功", "成语"], answer: 0 },
@@ -245,17 +253,33 @@ const answersDiv = document.getElementById('quiz-answers');
 questionDiv.innerHTML = q.q;
 answersDiv.innerHTML = '';
 
-q.options.forEach((option, i) => {
-const btn = document.createElement('button');
-btn.className = `answer-btn-custom border-c${i + 1}`;
-btn.textContent = option;
-btn.onclick = () => checkAnswer(i);
-
-const fill = document.createElement('div');
-fill.className = `answer-fill c${i + 1}`;
-btn.appendChild(fill);
-answersDiv.appendChild(btn);
-});
+try {
+	const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
+	const shuffled = shuffleArray(optionObjs.slice());
+	q._shuffledOptions = shuffled;
+	q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
+	shuffled.forEach((optObj, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = optObj.text;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+} catch (e) {
+	q.options.forEach((option, i) => {
+		const btn = document.createElement('button');
+		btn.className = `answer-btn-custom border-c${i + 1}`;
+		btn.textContent = option;
+		btn.onclick = () => checkAnswer(i);
+		const fill = document.createElement('div');
+		fill.className = `answer-fill c${i + 1}`;
+		btn.appendChild(fill);
+		answersDiv.appendChild(btn);
+	});
+}
 
 document.getElementById('quiz-feedback').textContent = '';
 updateProgress();
