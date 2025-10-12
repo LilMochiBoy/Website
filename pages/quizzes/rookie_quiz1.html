@@ -529,7 +529,24 @@ function showQuestion(){
 		document.getElementById('quiz-answers').innerHTML = '';
 		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
 		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(2);
+    setUnlockedLevel(2);
+
+    // Mark this level completed locally using the shared progress helper (if available).
+    try {
+      if (typeof Zendo_markLevelComplete === 'function') {
+        Zendo_markLevelComplete(1);
+      } else {
+        // fallback: update localStorage directly
+        try {
+          var _raw = localStorage.getItem('completedLevels');
+          var _arr = _raw ? JSON.parse(_raw) : [];
+          if (!Array.isArray(_arr)) {
+            _arr = Object.keys(_arr || {}).filter(k=>_arr[k]).map(Number);
+          }
+          if (!_arr.includes(1)) { _arr.push(1); localStorage.setItem('completedLevels', JSON.stringify(_arr)); }
+        } catch(e) { console.warn('Failed to mark local completedLevels fallback', e); }
+      }
+    } catch(e) { console.warn('Error marking level complete', e); }
 
     // If logged in, also mark this exact level as completed on the backend
     var username = localStorage.getItem('rookieUserId');

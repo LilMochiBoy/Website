@@ -224,6 +224,7 @@
     </div>
     </div>
         <script src="assets/js/script.js"></script>
+        <script src="assets/js/progress.js"></script>
             <!-- App Logo Sidebar Tab -->
             <div id="logoSidebarBg" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,40,60,0.35); z-index:9999;">
                 <div id="logoSidebar" style="position:fixed; top:0; left:0; height:100vh; width:270px; background:#181818; color:#fff; box-shadow:2px 0 16px #0008; display:flex; flex-direction:column; padding:18px 0 0 0; transition:transform 0.3s cubic-bezier(.4,0,.2,1); transform:translateX(0); z-index:10000;">
@@ -264,7 +265,7 @@
                     </div>
                     <div style="text-align:center;">
                         <div style="font-size:1.5em; font-weight:700; color:#fff;">Valentino Jovan</div>
-                        <div style="color:#6fa3ff; font-size:1em; margin-bottom:2px;">ValentinoJ575991</div>
+                        <div style="color:#6fa3ff; font-size:1em; margin-bottom:2px;">Valent</div>
                         <div style="color:#b0b8c1; font-size:0.98em; margin-bottom:6px;">Joined March 2023</div>
                         <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;">
                             <span style="color:#6fa3ff; font-weight:600;">0 Following</span>
@@ -287,6 +288,10 @@
                             Day streak
                         </div>
                         <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div id="levelsCompletedCount" style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Levels completed
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
                             <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
                             Total XP
                         </div>
@@ -300,14 +305,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Achievements -->
-                <div style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
-                    <div style="display:flex; align-items:center; justify-content:space-between;">
-                        <div style="font-size:1.2em; font-weight:700; color:#fff;">Achievements</div>
-                        <a href="#" style="color:#6fa3ff; font-weight:600; font-size:1em; text-decoration:none;">VIEW ALL</a>
-                    </div>
-                    <div style="margin-top:16px; color:#b0b8c1;">No achievements yet.</div>
-                </div>
+                <!-- Achievements (moved to right column) -->
             </div>
             <!-- Right Column -->
             <div style="flex:1.2; min-width:320px; max-width:420px; display:flex; flex-direction:column; gap:28px;">
@@ -332,6 +330,14 @@
                             <span style="font-size:1.2em;">🐼</span> Invite friends
                         </button>
                     </div>
+                </div>
+                <!-- Achievements (moved here to right column) -->
+                <div id="profileAchievements" style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                        <div style="font-size:1.2em; font-weight:700; color:#fff;">Achievements</div>
+                        <a href="#" style="color:#6fa3ff; font-weight:600; font-size:1em; text-decoration:none;">VIEW ALL</a>
+                    </div>
+                    <!-- badges will be injected here -->
                 </div>
             </div>
             <!-- Close button removed as requested -->
@@ -863,12 +869,6 @@ if (window.location.pathname.endsWith('profile.html')) {
                     <div class="achievement-desc">Leave feedback or a suggestion.</div>
                     <div class="achievement-locked">Locked</div>
                 </div>
-                <div class="achievement-card locked">
-                    <div class="achievement-icon">🤝</div>
-                    <div class="achievement-title">Team Player</div>
-                    <div class="achievement-desc">Participate in a group challenge.</div>
-                    <div class="achievement-locked">Locked</div>
-                </div>
             </div>
             <button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="document.getElementById('achievementsPanel').style.display='none'">Close</button>
         </div>
@@ -912,5 +912,272 @@ if (window.location.pathname.endsWith('profile.html')) {
             }
         });
     </script>
+    <style>
+    /* shining animation for earned badges */
+    @keyframes zendoShine {
+        0% { box-shadow: 0 0 0 rgba(255,255,255,0); transform: translateY(0); }
+        50% { box-shadow: 0 6px 20px rgba(255,255,255,0.08); transform: translateY(-3px); }
+        100% { box-shadow: 0 0 0 rgba(255,255,255,0); transform: translateY(0); }
+    }
+    .zendo-badge.shining { animation: zendoShine 1.8s ease-in-out infinite; }
+    /* Achievements panel — unlocked (glowing) state */
+    #achievementsPanel .achievement-card { transition: box-shadow 0.24s ease, transform 0.18s ease, opacity 0.18s ease, border 0.18s ease; }
+    #achievementsPanel .achievement-card.locked { opacity: 0.36; }
+    #achievementsPanel .achievement-card.unlocked { opacity: 1; transform: translateY(-3px); border: 1px solid rgba(255,215,0,0.06); box-shadow: 0 12px 36px rgba(255,215,0,0.08), 0 0 0 6px rgba(255,215,0,0.02); animation: zendoShine 2s ease-in-out infinite; }
+    #achievementsPanel .achievement-card.unlocked .achievement-title { color: #fffbe6; }
+    #achievementsPanel .achievement-card.unlocked .achievement-locked { color: #ffd580; font-weight:700; }
+    </style>
+    <script>
+    // Render earned achievement badges inside the small profile achievements card.
+    (function(){
+        const ACHIEVEMENTS = [
+            { id: 'first_steps', icon: '🏆', title: 'First Steps', rule: d => (d.completedLevels || []).includes(1) || (d.unlockedLevel || 0) > 1 },
+            { id: 'quiz_novice', icon: '🎯', title: 'Quiz Novice', rule: d => { try { const scores = JSON.parse(localStorage.getItem('quizScores')||'[]'); return scores.some(s=>s>=80); } catch(e){return false} } },
+            { id: 'bookworm', icon: '📚', title: 'Bookworm', rule: d => { const n = parseInt(localStorage.getItem('readMaterials')||'0'); return n>=10;} },
+            { id: 'conversation_starter', icon: '💬', title: 'Conversation Starter', rule: d => { const n = parseInt(localStorage.getItem('speakingExercises')||'0'); return n>=1;} },
+            { id: 'streak_master', icon: '🔥', title: 'Streak Master', rule: d => { const s = parseInt(localStorage.getItem('streakDays')||'0'); return s>=7;} },
+            { id: 'memory_champ', icon: '🧠', title: 'Memory Champ', rule: d => { const n = parseInt(localStorage.getItem('vocabPerfects')||'0'); return n>=1;} },
+            { id: 'level_up', icon: '👑', title: 'Level Up!', rule: d => (d.unlockedLevel || 0) >= 11 },
+            { id: 'boss_defeated', icon: '⚔️', title: 'Boss Defeated', rule: d => { const completed = d.completedLevels || []; return completed.some(l => [10,20,30].includes(l)); } },
+            { id: 'game_on', icon: '🕹️', title: 'Game On', rule: d => { return localStorage.getItem('gameUnlocked') === 'true' } },
+            { id: 'leaderboard_top10', icon: '🥇', title: 'Leaderboard Top 10', rule: d => { const r = parseInt(localStorage.getItem('leaderboardRank')||'9999'); return r>0 && r<=10;} },
+            { id: 'puzzle_solver', icon: '🧩', title: 'Puzzle Solver', rule: d => { const n = parseInt(localStorage.getItem('puzzlesSolved')||'0'); return n>=1;} },
+            { id: 'master_learner', icon: '🎓', title: 'Master Learner', rule: d => (d.unlockedLevel || 0) >= 21 },
+            { id: 'insightful', icon: '💡', title: 'Insightful', rule: d => localStorage.getItem('feedbackGiven') === 'true' },
+        ];
+
+        function loadLocalData(){
+            try {
+                return {
+                    completedLevels: JSON.parse(localStorage.getItem('completedLevels')||'[]'),
+                    unlockedLevel: parseInt(localStorage.getItem('rookieUnlockedLevel')||localStorage.getItem('unlockedLevel')||'0') || 0,
+                    achievements: JSON.parse(localStorage.getItem('achievements')||'[]')
+                };
+            } catch(e){ return { completedLevels: [], unlockedLevel: 0, achievements: [] }; }
+        }
+
+        function computeEarnedLocal(){
+            const data = loadLocalData();
+            const earned = ACHIEVEMENTS.filter(a => { try { return !!a.rule(data); } catch(e){ return false; } });
+            return earned;
+        }
+
+        function ensureBadgesContainer() {
+            const ach = document.getElementById('profileAchievements');
+            if (!ach) return null;
+            let badges = document.getElementById('profileAchievementBadges');
+            if (!badges) {
+                badges = document.createElement('div');
+                badges.id = 'profileAchievementBadges';
+                badges.style.display = 'flex';
+                badges.style.flexWrap = 'wrap';
+                badges.style.gap = '8px';
+                badges.style.marginTop = '12px';
+                // insert badges at top, before existing children (so controls remain visible)
+                ach.insertBefore(badges, ach.firstChild.nextSibling);
+            }
+            return badges;
+        }
+
+        function renderProfileBadges(){
+            const badges = ensureBadgesContainer();
+            if (!badges) return;
+            const earned = computeEarnedLocal();
+            if (!earned.length) {
+                badges.innerHTML = '<div style="color:#b0b8c1;">No achievements yet.</div>';
+                return;
+            }
+            badges.innerHTML = earned.map(a => {
+                return `<div class="zendo-badge shining" title="${a.title}" style="display:flex;flex-direction:column;align-items:center;padding:8px 10px;background:#232a33;border-radius:10px;color:#fff;min-width:72px;">
+                    <div style="font-size:1.4rem;margin-bottom:6px;">${a.icon}</div>
+                    <div style="font-size:0.8rem;color:#9fb7ff;text-align:center;">${a.title}</div>
+                </div>`;
+            }).join('');
+        }
+
+        // update when local progress changes or when refresh invoked
+        function updateProfileAchievements(){ renderProfileBadges(); }
+
+        // initial render
+        updateProfileAchievements();
+
+        // hook into refresh and storage events
+        if (window) {
+            const prev = window.Zendo_refreshCount;
+            window.Zendo_refreshCount = function(){ if (typeof prev === 'function') prev(); updateProfileAchievements(); };
+        }
+        window.addEventListener('storage', function(e){
+            const interesting = ['completedLevels','rookieUnlockedLevel','unlockedLevel','achievements','quizScores','readMaterials','speakingExercises','streakDays','completedLanguages','vocabPerfects','gameUnlocked','leaderboardRank','puzzlesSolved','feedbackGiven','groupChallenges'];
+            if (!e.key || interesting.includes(e.key)) updateProfileAchievements();
+        });
+    })();
+    </script>
+    <script>
+    // Sync the big Achievements panel cards with local progress — make completed cards glow/unlocked.
+    (function(){
+        // same rules used in the compact profile list (kept minimal but consistent)
+        const ACH_RULES = [
+            { title: 'First Steps', check: d => (d.completedLevels || []).includes(1) || (d.unlockedLevel || 0) > 1 },
+            { title: 'Quiz Novice', check: d => { try { const scores = JSON.parse(localStorage.getItem('quizScores')||'[]'); return scores.some(s=>s>=80); } catch(e){return false} } },
+            { title: 'Bookworm', check: d => { const n = parseInt(localStorage.getItem('readMaterials')||'0'); return n>=10;} },
+            { title: 'Conversation Starter', check: d => { const n = parseInt(localStorage.getItem('speakingExercises')||'0'); return n>=1;} },
+            { title: 'Streak Master', check: d => { const s = parseInt(localStorage.getItem('streakDays')||'0'); return s>=7;} },
+            { title: 'Memory Champ', check: d => { const n = parseInt(localStorage.getItem('vocabPerfects')||'0'); return n>=1;} },
+            { title: 'Level Up!', check: d => (d.unlockedLevel || 0) >= 11 },
+            { title: 'Boss Defeated', check: d => { const completed = d.completedLevels || []; return completed.some(l => [10,20,30].includes(l)); } },
+            { title: 'Game On', check: d => { return localStorage.getItem('gameUnlocked') === 'true' } },
+            { title: 'Leaderboard Top 10', check: d => { const r = parseInt(localStorage.getItem('leaderboardRank')||'9999'); return r>0 && r<=10;} },
+            { title: 'Puzzle Solver', check: d => { const n = parseInt(localStorage.getItem('puzzlesSolved')||'0'); return n>=1;} },
+            { title: 'Insightful', check: d => localStorage.getItem('feedbackGiven') === 'true' }
+        ];
+
+        function loadData() {
+            try {
+                return {
+                    completedLevels: JSON.parse(localStorage.getItem('completedLevels')||'[]'),
+                    unlockedLevel: parseInt(localStorage.getItem('rookieUnlockedLevel')||localStorage.getItem('unlockedLevel')||'0') || 0
+                };
+            } catch(e) { return { completedLevels: [], unlockedLevel: 0 }; }
+        }
+
+        function normalizeTitle(t){ return t && t.toString().trim().toLowerCase(); }
+
+        function refreshAchievementsPanel(){
+            var panel = document.getElementById('achievementsPanel');
+            if (!panel) return;
+            var cards = Array.from(panel.querySelectorAll('.achievement-card'));
+            if (!cards.length) return;
+            var data = loadData();
+            // build a map of title -> result
+            var results = {};
+            ACH_RULES.forEach(r => { try { results[normalizeTitle(r.title)] = !!r.check(data); } catch(e){ results[normalizeTitle(r.title)] = false; } });
+
+            cards.forEach(card => {
+                var titleEl = card.querySelector('.achievement-title');
+                if (!titleEl) return;
+                var key = normalizeTitle(titleEl.textContent || titleEl.innerText || '');
+                var unlocked = !!results[key];
+                if (unlocked) {
+                    card.classList.remove('locked');
+                    card.classList.add('unlocked');
+                    var lockedEl = card.querySelector('.achievement-locked');
+                    if (lockedEl) lockedEl.textContent = 'Unlocked';
+                } else {
+                    card.classList.remove('unlocked');
+                    card.classList.add('locked');
+                    var lockedEl = card.querySelector('.achievement-locked');
+                    if (lockedEl) lockedEl.textContent = 'Locked';
+                }
+            });
+        }
+
+        // initial run
+        refreshAchievementsPanel();
+
+        // re-run when storage changes or manual refresh invoked
+        window.addEventListener('storage', function(e){
+            const interesting = ['completedLevels','rookieUnlockedLevel','unlockedLevel','quizScores','readMaterials','speakingExercises','streakDays','vocabPerfects','gameUnlocked','leaderboardRank','puzzlesSolved','feedbackGiven'];
+            if (!e.key || interesting.includes(e.key)) refreshAchievementsPanel();
+        });
+        // also expose a manual refresh for other scripts
+        var prev = window.Zendo_refreshAchievementsPanel;
+        window.Zendo_refreshAchievementsPanel = function(){ if (typeof prev === 'function') prev(); refreshAchievementsPanel(); };
+        // poll occasionally in case some pages don't trigger storage (every 6s)
+        setInterval(refreshAchievementsPanel, 6000);
+    })();
+    </script>
+    <script>
+    // Levels completed counter for profile panel
+    (function() {
+        function getLoggedUsername() {
+            // existing keys used in this project for different role storages
+            return localStorage.getItem('activeUser') || localStorage.getItem('rookieUserId') || localStorage.getItem('masterUserId') || localStorage.getItem('challengerUserId') || null;
+        }
+
+        async function fetchProgressFromServer(username) {
+            try {
+                var res = await fetch('/api/getProgress', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ username: username })
+                });
+                if (!res.ok) throw new Error('Network response not ok');
+                var data = await res.json();
+                return data && data.completedLevels ? data.completedLevels : [];
+            } catch (e) {
+                console.warn('Failed to fetch progress from server:', e);
+                return null;
+            }
+        }
+
+        function readProgressFromLocal() {
+            try {
+                var raw = localStorage.getItem('completedLevels');
+                if (!raw) return [];
+                var parsed = JSON.parse(raw);
+                // If parsed is an array of level ids or an object mapping, support both
+                if (Array.isArray(parsed)) return parsed;
+                if (typeof parsed === 'object' && parsed !== null) return Object.keys(parsed).filter(k => parsed[k]);
+                return [];
+            } catch (e) {
+                console.warn('Failed to read completedLevels from localStorage', e);
+                return [];
+            }
+        }
+
+        function updateUI(count) {
+            var el = document.getElementById('levelsCompletedCount');
+            if (!el) return;
+            el.textContent = String(count);
+        }
+
+        var lastCount = -1;
+
+        async function refreshCount() {
+            var username = getLoggedUsername();
+            var levels = [];
+            if (username) {
+                var serverLevels = await fetchProgressFromServer(username);
+                if (serverLevels === null) {
+                    // server failed, fallback to local
+                    levels = readProgressFromLocal();
+                } else {
+                    levels = serverLevels;
+                }
+            } else {
+                levels = readProgressFromLocal();
+            }
+            var uniqueCount = 0;
+            try {
+                // support array or object
+                if (Array.isArray(levels)) uniqueCount = new Set(levels).size;
+                else if (typeof levels === 'object' && levels !== null) uniqueCount = Object.keys(levels).filter(k => levels[k]).length;
+                else uniqueCount = 0;
+            } catch (e) { uniqueCount = 0; }
+
+            if (uniqueCount !== lastCount) {
+                lastCount = uniqueCount;
+                updateUI(uniqueCount);
+            }
+        }
+
+    // initial load
+    refreshCount();
+
+    // expose for other scripts (so local-only setters can trigger an update)
+    window.Zendo_refreshCount = refreshCount;
+
+        // poll every 6 seconds
+        var pollTimer = setInterval(refreshCount, 6000);
+
+        // update when other tabs modify localStorage
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'completedLevels' || e.key === 'activeUser' || e.key === 'rookieUserId' || e.key === 'masterUserId' || e.key === 'challengerUserId') {
+                refreshCount();
+            }
+        });
+    })();
+    </script>
+    
 </body>
 </html>
