@@ -293,7 +293,7 @@
                             Levels completed
                         </div>
                         <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
-                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            <div id="totalXPCount" style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
                             Total XP
                         </div>
                         <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
@@ -350,6 +350,80 @@
 if (window.location.pathname.endsWith('profile.html')) {
     var profileLink = document.getElementById('sidebarProfileLink');
     if (profileLink) profileLink.style.display = 'none';
+}
+</script>
+<script>
+// Refresh the profile statistics (levels completed, total XP)
+function refreshProfileStats(){
+    try{
+        var lvlEl = document.getElementById('levelsCompletedCount');
+        var xpEl = document.getElementById('totalXPCount');
+        var levels = [];
+        if (window.Zendo_getCompletedLevels) levels = window.Zendo_getCompletedLevels();
+        else {
+            try{ levels = JSON.parse(localStorage.getItem('completedLevels')||'[]') }catch(e){ levels = []; }
+        }
+        if (lvlEl) lvlEl.textContent = String((levels && levels.length) || 0);
+        var totalXP = 0;
+        if (window.Zendo_getTotalXP) totalXP = window.Zendo_getTotalXP();
+        else totalXP = Number(localStorage.getItem('totalXP')||0);
+        if (xpEl) xpEl.textContent = String(totalXP || 0);
+    }catch(e){ /* ignore */ }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    refreshProfileStats();
+    // Try to subscribe to XP changes if API exists
+    if (window.Zendo_onXPChange){ try{ window.Zendo_onXPChange(refreshProfileStats); }catch(e){} }
+    if (window.Zendo_onChange){ try{ window.Zendo_onChange(refreshProfileStats); }catch(e){} }
+});
+
+// storage events from other tabs
+window.addEventListener('storage', function(e){
+    if (!e.key) return;
+    if (['completedLevels','lastCompletedLevelsUpdate','totalXP','xpByLevel','lastQuizResult'].includes(e.key)) refreshProfileStats();
+});
+</script>
+<script>
+// show transient +XP when awarded
+window.addEventListener('zendo-xp-awarded', function(ev){
+    try{
+        var detail = ev && ev.detail;
+        if (!detail) return;
+        var xp = detail.xp || 0;
+        var xpEl = document.getElementById('totalXPCount');
+        if (!xpEl) return;
+        // create floating badge
+        var badge = document.createElement('div');
+        badge.textContent = '+' + xp + ' XP';
+        badge.style.position = 'absolute';
+        badge.style.background = '#3ea6ff';
+        badge.style.color = '#fff';
+        badge.style.padding = '6px 10px';
+        badge.style.borderRadius = '8px';
+        badge.style.fontWeight = '800';
+        badge.style.fontSize = '0.95rem';
+        badge.style.zIndex = 12000;
+        badge.style.boxShadow = '0 6px 18px rgba(0,0,0,0.3)';
+        // position near xpEl
+        var rect = xpEl.getBoundingClientRect();
+        badge.style.left = (rect.left + rect.width/2) + 'px';
+        badge.style.top = (rect.top - 30) + 'px';
+        document.body.appendChild(badge);
+        // animate up and fade
+        badge.animate([
+            { transform: 'translateY(0)', opacity: 1 },
+            { transform: 'translateY(-32px)', opacity: 0 }
+        ], { duration: 1200, easing: 'cubic-bezier(.2,.9,.2,1)' });
+        setTimeout(()=> badge.remove(), 1300);
+        // then refresh stats to show new total
+        setTimeout(refreshProfileStats, 400);
+    }catch(e){}
+});
+
+// Also expose a manual recompute helper for same-tab completion
+if (window.Zendo_recomputeXPFromUnlocked) {
+    document.addEventListener('DOMContentLoaded', function(){ try{ window.Zendo_recomputeXPFromUnlocked(); }catch(e){} });
 }
 </script>
                             <a href="achievements.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
