@@ -49,7 +49,13 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
 .match-box{width:150px;height:40px;border-radius:10px;background:#fff;color:#232946;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.25);cursor:pointer;user-select:none;transition:transform .14s ease,box-shadow .14s ease,background .14s ease,outline-color .12s;z-index:10}
 .match-box.small{width:130px;height:36px;font-size:.98rem}
 .match-box.matched{background:#81c784;color:#fff;cursor:default;box-shadow:0 6px 12px rgba(0,0,0,.12)}
-.match-box.selected{transform:scale(1.08);box-shadow:0 12px 30px rgba(74,144,226,.28);outline:3px solid rgba(74,144,226,.12);z-index:12}
+.match-box.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(74, 144, 226, 0.55);
+  outline: 3px solid rgba(74, 144, 226, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, outline 0.3s ease;
+  z-index: 15;
+}
 
 /* svg overlay wrap (absolute within card) */
 .svg-wrap{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:visible;z-index:5}
@@ -122,7 +128,7 @@ const questions = [
     {id:'m2',cn:'再见',en:'goodbye'},
     {id:'m3',cn:'谢谢',en:'thank you'},
     {id:'m4',cn:'对不起',en:'sorry'},
-    {id:'m5',cn:'没关系',en:"it's okay/no problem"}
+    {id:'m5',cn:'没关系',en:"no problem"}
   ]},
   { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
     {id:'m6',cn:'请',en:'please'},
@@ -131,26 +137,26 @@ const questions = [
     {id:'m9',cn:'晚上好',en:'good evening'},
     {id:'m10',cn:'您好',en:'hello (polite)'}
   ]},
-  { type:'mcq', q:'Q11: Hello, teacher (polite) — which is correct?', options:['你好','您好','再见','谢谢'], answer:1 },
-  { type:'mcq', q:'Q12: A: 谢谢！ B: ____！', options:['没关系','不客气','再见','请'], answer:1 },
-  { type:'mcq', q:'Q13: A: 对不起。 B: ____！', options:['没关系','不客气','再见','谢谢'], answer:0 },
-  { type:'mcq', q:'Q14: A: 早上____！ (Good morning)', options:['好','晚','中','天'], answer:0 },
-  { type:'mcq', q:'Q15: A: ______见！ (Goodbye)', options:['去','再','再见','晚'], answer:1 },
-  { type:'drag', q:'Q16: Hello, how are you?', words:['你','好','，','你','好吗','？'], correct:'你好 , 你好吗' },
+  { type:'mcq', q:'Q11: Hello (polite) — which is correct?', options:['你好','您好','再见','谢谢'], answer:1 },
+  { type:'mcq', q:'Q12: A: 谢谢！ B: ____!', options:['没关系','不客气','再见','请'], answer:1 },
+  { type:'mcq', q:'Q13: A: 对不起。 B: ____!', options:['没关系','不客气','再见','谢谢'], answer:0 },
+  { type:'mcq', q:'Q14: A: 早上____! (Good morning)', options:['好','晚','中','天'], answer:0 },
+  { type:'mcq', q:'Q15: A: ______见! (Goodbye)', options:['去','再','再见','晚'], answer:1 },
+  { type:'drag', q:'Q16: Hello, how are you?', words:['你','好',',','你','好吗','?'], correct:'你 好 , 你 好吗 ?' },
   { type:'drag', q:'Q17: My name is David.', words:['我','叫','David','。'], correct:'我 叫 David 。' },
-  { type:'drag', q:'Q18: Nice to meet you.', words:['很','高兴','认识','你','。'], correct:'很 高兴 认识 你 。' },
+  { type:'drag', q:'Q18: Nice to meet you.', words:['很','高兴','认识','你','。'], correct:['很 高兴 认识 你 。','认识 你 很 高兴 。' ]},
   { type:'drag', q:'Q19: I am not a teacher.', words:['我','不是','老师','。'], correct:'我 不是 老师 。' },
-  { type:'drag', q:'Q20: Sorry, it’s okay.', words:['对不起','，','没关系','。'], correct:'对不起 ， 没关系 。' },
+  { type:'drag', q:"Q20: Sorry, it's okay.", words:['对不起',',','没关系','。'], correct:'对不起 , 没关系 。' },
   { type:'mcq', q:'Q21: Which is polite “hello”?', options:['你好','您好','再见','谢谢'], answer:1 },
   { type:'mcq', q:'Q22: How to say “thank you”?', options:['请','对不起','谢谢','不客气'], answer:2 },
   { type:'mcq', q:'Q23: If someone says “谢谢”, you reply:', options:['没关系','不客气','再见','请'], answer:1 },
   { type:'mcq', q:'Q24: “I am not a student.” → choose the correct sentence:', options:['我是学生','我不是学生','我不学生','我没学生'], answer:1 },
   { type:'mcq', q:'Q25: “Good evening” is:', options:['晚上好','早上好','您好','再见'], answer:0 },
-  { type:'mcq', q:'Q26: A: 你好！ B: ____！', options:['你好','再见','谢谢','没关系'], answer:0 },
-  { type:'mcq', q:'Q27: A: 你叫什么名字？ B: ____！', options:['你叫什么','我叫 David','我是老师','谢谢'], answer:1 },
-  { type:'mcq', q:'Q28: A: 我是学生。你呢？ B: ____！', options:['我也是学生','我不是学生','你呢','谢谢'], answer:0 },
-  { type:'mcq', q:'Q29: A: 谢谢！ B: ____！', options:['不客气','没关系','再见','你好'], answer:0 },
-  { type:'mcq', q:'Q30: A: 对不起。 B: ____！', options:['不客气','没关系','谢谢','你好'], answer:1 }
+  { type:'mcq', q:'Q26: A: 你好！ B: ____!', options:['你好','再见','谢谢','没关系'], answer:0 },
+  { type:'mcq', q:'Q27: A: 你叫什么名字？ B: ____!', options:['你叫什么','我叫 David','我是老师','谢谢'], answer:1 },
+  { type:'mcq', q:'Q28: A: 我是学生。你呢？ B: ____!', options:['我也是学生','你是学生','你呢','谢谢'], answer:0 },
+  { type:'mcq', q:'Q29: A: ————！ B: 不客气!', options:['谢谢','没关系','再见','你好'], answer:0 },
+  { type:'mcq', q:'Q30: A: ————。 B: 没关系!', options:['不客气','对不起','谢谢','你好'], answer:1 }
 ];
 
 let current = 0;
@@ -250,15 +256,28 @@ function showQuestion(){
       l.dataset.id = it.id;
       l.dataset.side = 'left';
       l.addEventListener('click', ()=> {
-        if(l.classList.contains('matched') || paused) return;
-        // clear any existing left selection
-        document.querySelectorAll('.match-box.selected').forEach(el => { if(el.dataset.side === 'left') el.classList.remove('selected'); });
+        if(paused) return;
+        // ✨ Visual pop animation
+        l.style.transform = 'scale(1.2)';
+        setTimeout(() => l.style.transform = '', 150);
+
+        // 🟡 If this left box is matched → cancel its connection (both sides)
+        if (l.classList.contains('matched')) {
+          const matchedRightId = matchState.connections[it.id];
+          if (matchedRightId) removeConnection(it.id, matchedRightId);
+          return;
+        }
+
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => { 
+          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
-        // if a right is already selected, perform mapping
+
+        // If right is already selected → create connection
         if(matchState.rightSelected){
           createOrRemap(matchState.leftSelected, matchState.rightSelected);
-          // clear selected
           document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
           matchState.leftSelected = null;
           matchState.rightSelected = null;
@@ -277,10 +296,27 @@ function showQuestion(){
       r.dataset.id = it.id;
       r.dataset.side = 'right';
       r.addEventListener('click', ()=> {
-        if(r.classList.contains('matched') || paused) return;
-        document.querySelectorAll('.match-box.selected').forEach(el => { if(el.dataset.side === 'right') el.classList.remove('selected'); });
+        if(paused) return;
+        // ✨ Visual pop animation
+        r.style.transform = 'scale(1.2)';
+        setTimeout(() => r.style.transform = '', 150);
+
+        // 🟡 If this right box is matched → cancel its connection (both sides)
+        const matchedLeftId = Object.keys(matchState.connections)
+          .find(lid => matchState.connections[lid] === it.id);
+        if (matchedLeftId) {
+          removeConnection(matchedLeftId, it.id);
+          return;
+        }
+
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => { 
+          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
+
+        // If left is already selected → create connection
         if(matchState.leftSelected){
           createOrRemap(matchState.leftSelected, matchState.rightSelected);
           document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
@@ -307,27 +343,36 @@ function showQuestion(){
     submit.className = 'submit-btn';
     submit.textContent = 'Submit';
     submit.disabled = false;
+
+    let matchScored = false; // Prevent double scoring
+
     submit.addEventListener('click', function onMatchSubmit(){
       if(paused) return;
-      // grade
-      const total = q.items.length;
-      let correct = 0;
-      q.items.forEach(it => { if(matchState.connections[it.id] === it.id) correct++; });
-      Q_FB.innerHTML = `<div style="font-weight:700;color:#ffe600;text-align:center">You connected ${correct} / ${total}</div>`;
-      score += correct;
-      // switch to Next state
-      submit.textContent = 'Next';
-      // remove this click handler and attach an advancing handler
-      submit.removeEventListener('click', onMatchSubmit);
-      submit.addEventListener('click', function onNext(){
+      if(!matchScored) {
+        // Only allow submit if all 5 are connected
+        const total = q.items.length;
+        const userConnections = Object.keys(matchState.connections).length;
+        if(userConnections < total) {
+          Q_FB.innerHTML = `<span class="wrong">❗ Connect all ${total} pairs before submitting.</span>`;
+          setTimeout(()=> Q_FB.textContent='', 1200);
+          return;
+        }
+        // grade
+        let correct = 0;
+        q.items.forEach(it => { if(matchState.connections[it.id] === it.id) correct++; });
+        Q_FB.innerHTML = `<div style="font-weight:700;color:#ffe600;text-align:center">You connected ${correct} / ${total}</div>`;
+        score += correct;
+        matchScored = true;
+        // switch to Next state
+        submit.textContent = 'Next';
+      } else {
         // clear visuals & paths
         clearSVG();
         document.querySelectorAll('.match-box').forEach(m => { m.classList.remove('matched','selected'); });
         // advance
-        submit.removeEventListener('click', onNext);
         current++;
         showQuestion();
-      });
+      }
     });
     Q_ANS.appendChild(submit);
     return;
@@ -372,11 +417,22 @@ function showQuestion(){
       const btn = document.createElement('button');
       btn.textContent = word;
       btn.type = 'button';
+      btn.className = 'answer-btn-custom border-c1'; // Use same box style as MCQ/match
+      btn.style.width = "110px";
+      btn.style.minHeight = "38px";
+      btn.style.fontSize = "1.1rem";
+      btn.style.margin = "0 4px 4px 0";
+      btn.style.textAlign = "center";
       btn.addEventListener('click', () => {
         if(btn.classList.contains('selected')) return;
         const ansBtn = document.createElement('button');
         ansBtn.textContent = word;
-        ansBtn.className = 'answer-word';
+        ansBtn.className = 'answer-btn-custom border-c1'; // Use same box style
+        ansBtn.style.width = "110px";
+        ansBtn.style.minHeight = "38px";
+        ansBtn.style.fontSize = "1.1rem";
+        ansBtn.style.margin = "0 4px 4px 0";
+        ansBtn.style.textAlign = "center";
         ansBtn.setAttribute('draggable', 'true');
 
         ansBtn.addEventListener('click', () => {
@@ -404,7 +460,7 @@ function showQuestion(){
       e.preventDefault();
       const dragging = window._dragging;
       if(!dragging) return;
-      const children = Array.from(selectedDiv.querySelectorAll('.answer-word'));
+      const children = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom'));
       let insertBefore = null;
       for(const child of children){
         if(child === dragging) continue;
@@ -423,14 +479,20 @@ function showQuestion(){
     submit.addEventListener('click', ()=> {
       if(paused) return;
       if(submit.textContent === 'Submit'){
-        const arranged = Array.from(selectedDiv.querySelectorAll('.answer-word')).map(b => b.textContent.trim()).join(' ');
+        const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
         const normalize = s => s.replace(/，|。|,/g, '').replace(/\s+/g,' ').trim();
-        if(normalize(arranged) === normalize(q.correct)){
+        // Support multiple correct answers
+        const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+
+        if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
-          Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${q.correct}</span>`;
-          const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+          Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
+          const buz = document.createElement('div'); 
+          buz.className='buzzer-effect'; 
+          byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
         submit.textContent = 'Next';
@@ -457,52 +519,80 @@ function showQuestion(){
 	const p = drawAnimatedPath(leftEl, rightEl);
 	matchState.pathMap[leftId] = p;
 	}
-	function removeConnection(leftId,rightId){
-	delete matchState.connections[leftId];
-	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} delete matchState.pathMap[leftId]; }
-	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
-	if(leftEl) leftEl.classList.remove('matched'); if(rightEl) rightEl.classList.remove('matched');
-	}
+  function removeConnection(leftId, rightId) {
+    // Remove stored link
+    delete matchState.connections[leftId];
+
+    // Get the line path and connected boxes
+    const leftEl = byId('left-' + leftId);
+    const rightEl = byId('right-' + rightId);
+    const path = matchState.pathMap[leftId];
+    delete matchState.pathMap[leftId];
+
+    // 🧊 Smooth line fade-out before removal
+    if (path) {
+      path.style.transition = 'opacity 0.25s ease-out';
+      path.style.opacity = '0';
+      setTimeout(() => {
+        try { path.remove(); } catch (e) {}
+      }, 250);
+    }
+
+    // 🟢 Smoothly un-highlight both boxes
+    [leftEl, rightEl].forEach(el => {
+      if (el) {
+        el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
+        el.classList.remove('matched', 'selected');
+        el.style.transform = 'scale(0.92)';
+        setTimeout(() => {
+          el.style.transform = 'scale(1)';
+        }, 150);
+      }
+    });
+  }
 
 	/* ---------- MCQ handler with robust selection check ---------- */
 	function handleMcqSubmitToggle(submitBtn, qObj){
-	if(paused) return;
-	const control = document.getElementById('mcq-control');
-	const sel = control ? control.dataset.selected : undefined;
-	if(!control || sel === undefined || sel === ''){
-		Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
-		setTimeout(()=> Q_FB.textContent='',900);
-		return;
-	}
-	const selectedIndex = parseInt(sel,10);
-	if(isNaN(selectedIndex)){
-		Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
-		setTimeout(()=> Q_FB.textContent='',900);
-		return;
-	}
-	const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
-	allBtns.forEach((b, idx) => {
-		if(idx === qObj.answer) b.style.borderColor = '#4caf50';
-		if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
-		b.disabled = true;
-	});
-	if(selectedIndex === qObj.answer){
-		const fill = allBtns[selectedIndex].querySelector('.answer-fill');
-		if(fill) fill.style.height = '100%';
-		Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
-		score++;
-	} else {
-		Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
-		const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
-		setTimeout(()=> buz.remove(),700);
-	}
-	submitBtn.textContent = 'Next';
-	submitBtn.onclick = ()=> {
-		const control2 = document.getElementById('mcq-control');
-		if(control2) control2.remove();
-		current++;
-		showQuestion();
-	};
+    if(paused) return;
+    if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+
+    const control = document.getElementById('mcq-control');
+    const sel = control ? control.dataset.selected : undefined;
+    if(!control || sel === undefined || sel === ''){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const selectedIndex = parseInt(sel,10);
+    if(isNaN(selectedIndex)){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
+    allBtns.forEach((b, idx) => {
+        if(idx === qObj.answer) b.style.borderColor = '#4caf50';
+        if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
+        b.disabled = true;
+    });
+    if(selectedIndex === qObj.answer){
+        const fill = allBtns[selectedIndex].querySelector('.answer-fill');
+        if(fill) fill.style.height = '100%';
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++; // Only increment once
+    } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
+        const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+    }
+    submitBtn.textContent = 'Next';
+    submitBtn.dataset.answered = "true"; // Mark as answered
+    submitBtn.onclick = ()=> {
+        const control2 = document.getElementById('mcq-control');
+        if(control2) control2.remove();
+        current++;
+        showQuestion();
+    };
 	}
 
 /* ---------- Progress & finish ---------- */
@@ -524,48 +614,24 @@ function showQuestion(){
 		}
 	}
 
+	// Calculate total possible score (1 point per item in match, 1 per other question)
+	const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
+
 	function finishQuiz() {
-		document.getElementById('quiz-question').innerHTML = '';
-		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
-		document.getElementById('quiz-progress-bar').style.width = '100%';
+    document.getElementById('quiz-question').innerHTML = '';
+    document.getElementById('quiz-answers').innerHTML = '';
+    document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+    document.getElementById('quiz-progress-bar').style.width = '100%';
     setUnlockedLevel(2);
-
-    // Mark this level completed locally using the shared progress helper (if available).
-    try {
-      if (typeof Zendo_markLevelComplete === 'function') {
-        Zendo_markLevelComplete(1);
-      } else {
-        // fallback: update localStorage directly
-        try {
-          var _raw = localStorage.getItem('completedLevels');
-          var _arr = _raw ? JSON.parse(_raw) : [];
-          if (!Array.isArray(_arr)) {
-            _arr = Object.keys(_arr || {}).filter(k=>_arr[k]).map(Number);
-          }
-          if (!_arr.includes(1)) { _arr.push(1); localStorage.setItem('completedLevels', JSON.stringify(_arr)); }
-        } catch(e) { console.warn('Failed to mark local completedLevels fallback', e); }
-      }
-    } catch(e) { console.warn('Error marking level complete', e); }
-
-    // If logged in, also mark this exact level as completed on the backend
-    var username = localStorage.getItem('rookieUserId');
-    if (username) {
-      fetch('http://localhost:3000/api/updateProgress', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ username, completedLevel: 1 })
-      });
-    }
-		setTimeout(function() {
-			var btn = document.getElementById('nextLevelBtn');
-			if (btn) {
-				btn.onclick = function() {
-					window.location.href = 'rookie_quiz2.html';
-				};
-			}
-		}, 100);
-	}
+    setTimeout(function() {
+        var btn = document.getElementById('nextLevelBtn');
+        if (btn) {
+            btn.onclick = function() {
+                window.location.href = 'rookie_quiz2.html';
+            };
+        }
+    }, 100);
+}
 
 	showQuestion();
 </script>
