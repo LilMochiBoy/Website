@@ -225,6 +225,7 @@
     </div>
         <script src="assets/js/script.js"></script>
         <script src="assets/js/progress.js"></script>
+            <script src="assets/js/friends.js"></script>
             <!-- App Logo Sidebar Tab -->
             <div id="logoSidebarBg" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,40,60,0.35); z-index:9999;">
                 <div id="logoSidebar" style="position:fixed; top:0; left:0; height:100vh; width:270px; background:#181818; color:#fff; box-shadow:2px 0 16px #0008; display:flex; flex-direction:column; padding:18px 0 0 0; transition:transform 0.3s cubic-bezier(.4,0,.2,1); transform:translateX(0); z-index:10000;">
@@ -323,10 +324,10 @@
                 <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
                     <div style="font-size:1.1em; font-weight:700; color:#fff; margin-bottom:12px;">Add friends</div>
                     <div style="display:flex; flex-direction:column; gap:12px;">
-                        <button style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                        <button id="findFriendsBtn" style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
                             <span style="font-size:1.2em;">🔍</span> Find friends
                         </button>
-                        <button style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                        <button id="inviteFriendsBtn" style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
                             <span style="font-size:1.2em;">🐼</span> Invite friends
                         </button>
                     </div>
@@ -342,8 +343,8 @@
             </div>
             <!-- Close button removed as requested -->
         </div>
-    </div
-</div>
+        </div>
+    </div>
 <script>
 // Hide Profile link in sidebar if on profile.html
 if (window.location.pathname.endsWith('profile.html')) {
@@ -878,6 +879,37 @@ if (window.location.pathname.endsWith('profile.html')) {
             <h2 id="levelModalTitle" style="color:#4f8cff;font-size:1.15rem;margin-bottom:12px;"></h2>
             <p id="levelModalDesc" style="font-size:0.98rem;color:#232946;margin-bottom:18px;line-height:1.5;"></p>
             <button onclick="closeLevelModal()" style="padding:8px 18px;font-size:0.98rem;border-radius:8px;background:#4f8cff;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Close</button>
+        </div>
+    </div>
+    <!-- Find Friends Modal -->
+    <div id="findFriendsModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,12,18,0.7);z-index:99999;align-items:center;justify-content:center;pointer-events:auto;">
+        <div style="background:#101217;border-radius:12px;padding:18px;min-width:320px;max-width:520px;color:#e6eefc;box-shadow:0 8px 30px #0008;z-index:100000;pointer-events:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="font-size:1.15rem;font-weight:700;">Find Friends</div>
+                <button onclick="document.getElementById('findFriendsModal').style.display='none'" style="background:none;border:none;color:#9fb7ff;font-weight:700;cursor:pointer;">Close</button>
+            </div>
+            <div style="margin-bottom:12px;"><input id="friendSearchInput" placeholder="Search friends by name..." style="width:100%;padding:10px;border-radius:8px;border:1px solid #263040;background:#0f1418;color:#e6eefc;font-size:1rem;" /></div>
+            <div id="friendResults" style="display:flex;flex-direction:column;gap:8px;max-height:320px;overflow:auto;padding-right:6px;"></div>
+            <div style="margin-top:12px;display:flex;justify-content:flex-end;gap:8px;">
+                <button id="friendAddClose" onclick="document.getElementById('findFriendsModal').style.display='none'" class="main-btn" style="background:#2b3948;padding:8px 14px;border-radius:8px;border:none;">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite Friends Modal -->
+    <div id="inviteFriendsModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,12,18,0.7);z-index:99999;align-items:center;justify-content:center;pointer-events:auto;">
+        <div style="background:#101217;border-radius:12px;padding:18px;min-width:320px;max-width:520px;color:#e6eefc;box-shadow:0 8px 30px #0008;z-index:100000;pointer-events:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="font-size:1.15rem;font-weight:700;">Invite Friend</div>
+                <button onclick="document.getElementById('inviteFriendsModal').style.display='none'" style="background:none;border:none;color:#9fb7ff;font-weight:700;cursor:pointer;">Close</button>
+            </div>
+            <div style="margin-bottom:8px;color:#bcd3ff;">Send an invite by entering the recipient's name or email:</div>
+            <input id="inviteInput" placeholder="Name or email" style="width:100%;padding:10px;border-radius:8px;border:1px solid #263040;background:#0f1418;color:#e6eefc;font-size:1rem;" />
+            <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end;">
+                <button id="sendInviteBtn" class="main-btn" style="background:#3ea6ff;color:#fff;padding:8px 14px;border-radius:8px;border:none;">Send Invite</button>
+                <button onclick="document.getElementById('inviteFriendsModal').style.display='none'" class="main-btn" style="background:#232a33;color:#9fb7ff;padding:8px 14px;border-radius:8px;border:none;">Cancel</button>
+            </div>
+            <div id="inviteFeedback" style="margin-top:10px;color:#9fb7ff;font-size:0.95rem;"></div>
         </div>
     </div>
     <style>
