@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 1 — Greetings & Self-introduction</title>
+<title>Rookie Quiz Level 1 — Greetings & Introductions</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 1: Greetings & Self-introduction</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 1: Greetings & Introductions</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -121,42 +121,85 @@ resumeBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; }
 restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; current=0; score=0; initMatchState(); showQuestion(); document.getElementById('quiz-progress-bar').style.width='0%'; }
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
-/* ---------- Questions ---------- */
 const questions = [
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1',cn:'你好',en:'hello'},
-    {id:'m2',cn:'再见',en:'goodbye'},
-    {id:'m3',cn:'谢谢',en:'thank you'},
-    {id:'m4',cn:'对不起',en:'sorry'},
-    {id:'m5',cn:'没关系',en:"no problem"}
-  ]},
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6',cn:'请',en:'please'},
-    {id:'m7',cn:'不客气',en:"you're welcome"},
-    {id:'m8',cn:'早上好',en:'good morning'},
-    {id:'m9',cn:'晚上好',en:'good evening'},
-    {id:'m10',cn:'您好',en:'hello (polite)'}
-  ]},
-  { type:'mcq', q:'Q11: Hello (polite) — which is correct?', options:['你好','您好','再见','谢谢'], answer:1 },
-  { type:'mcq', q:'Q12: A: 谢谢！ B: ____!', options:['没关系','不客气','再见','请'], answer:1 },
-  { type:'mcq', q:'Q13: A: 对不起。 B: ____!', options:['没关系','不客气','再见','谢谢'], answer:0 },
-  { type:'mcq', q:'Q14: A: 早上____! (Good morning)', options:['好','晚','中','天'], answer:0 },
-  { type:'mcq', q:'Q15: A: ______见! (Goodbye)', options:['去','再','再见','晚'], answer:1 },
-  { type:'drag', q:'Q16: Hello, how are you?', words:['你','好',',','你','好吗','?'], correct:'你 好 , 你 好吗 ?' },
-  { type:'drag', q:'Q17: My name is David.', words:['我','叫','David','。'], correct:'我 叫 David 。' },
-  { type:'drag', q:'Q18: Nice to meet you.', words:['很','高兴','认识','你','。'], correct:['很 高兴 认识 你 。','认识 你 很 高兴 。' ]},
-  { type:'drag', q:'Q19: I am not a teacher.', words:['我','不是','老师','。'], correct:'我 不是 老师 。' },
-  { type:'drag', q:"Q20: Sorry, it's okay.", words:['对不起',',','没关系','。'], correct:'对不起 , 没关系 。' },
-  { type:'mcq', q:'Q21: Which is polite “hello”?', options:['你好','您好','再见','谢谢'], answer:1 },
-  { type:'mcq', q:'Q22: How to say “thank you”?', options:['请','对不起','谢谢','不客气'], answer:2 },
-  { type:'mcq', q:'Q23: If someone says “谢谢”, you reply:', options:['没关系','不客气','再见','请'], answer:1 },
-  { type:'mcq', q:'Q24: “I am not a student.” → choose the correct sentence:', options:['我是学生','我不是学生','我不学生','我没学生'], answer:1 },
-  { type:'mcq', q:'Q25: “Good evening” is:', options:['晚上好','早上好','您好','再见'], answer:0 },
-  { type:'mcq', q:'Q26: A: 你好！ B: ____!', options:['你好','再见','谢谢','没关系'], answer:0 },
-  { type:'mcq', q:'Q27: A: 你叫什么名字？ B: ____!', options:['你叫什么','我叫 David','我是老师','谢谢'], answer:1 },
-  { type:'mcq', q:'Q28: A: 我是学生。你呢？ B: ____!', options:['我也是学生','你是学生','你呢','谢谢'], answer:0 },
-  { type:'mcq', q:'Q29: A: ————！ B: 不客气!', options:['谢谢','没关系','再见','你好'], answer:0 },
-  { type:'mcq', q:'Q30: A: ————。 B: 没关系!', options:['不客气','对不起','谢谢','你好'], answer:1 }
+  // ---------- Part A: Vocabulary Recall (1–10) ----------
+  { type:'mcq', q:'Q1: 你好 means:', options:['Goodbye','Hello','Thank you','Sorry'], answer:1 },
+  { type:'fill', q:'Q2: ___ (nǐ) = you. (Type the Chinese character)', answer:['你'] },
+  { type:'mcq', q:'Q3: Which one is “goodbye”?', options:['早上好','晚上好','再见','你好'], answer:2 },
+  { type:'mcq', q:'Q4: What is the pinyin for 我?', options:['nǐ','wǒ','tā','jiào'], answer:1 },
+  { type:'mcq', q:'Q5: 他 and 她 are pronounced the same. How do you say “she” in characters?', options:['他','她','它','伊'], answer:1 },
+  { type:'fill', q:'Q6: 我 ___ Lifen。 (use 叫)', answer:['叫'] },
+  { type:'mcq', q:'Q7: What does 很好 (hěn hǎo) mean?', options:['Not good','Very good / fine','Good morning','Hello'], answer:1 },
+  { type:'mcq', q:'Q8: Choose the question particle (used for yes/no questions):', options:['的','吗','了','在'], answer:1 },
+  { type:'mcq', q:'Q9: What is the Chinese for “not / no” used for negation?', options:['没 (méi)','吗 (ma)','不 (bù)','会 (huì)'], answer:2 },
+  { type:'mcq', q:'Q10: 早上好 is used at ____.', options:['Night','Morning','Afternoon','Anytime'], answer:1 },
+
+  // ---------- Part B: Grammar (11–20) ----------
+  { type:'mcq', q:'Q11: To ask “Are you a student?”, choose the correct sentence:', options:['你是学生。','你是学生吗？','是你学生吗？','学生你是吗？'], answer:1 },
+  { type:'mcq', q:'Q12: Choose the correct negative for “I am not a student.”', options:['我不学生。','我也是学生。','我不是学生。','我没是学生。'], answer:2 },
+  { type:'drag', q:'Q13: Reorder into a correct question: (你 / 好 / 吗 / ?)', words:['你','好','吗','?'], correct:['你 好 吗 ?'] },
+  { type:'mcq', q:'Q14: “My name is Anna.” correct Chinese:', options:['我叫安娜。','我是安娜叫。','叫我安娜。','我安娜叫。'], answer:0 },
+  { type:'mcq', q:'Q15: Which is the correct use of 很?', options:['我很叫。','我很好。','很我好。','我好很。'], answer:1 },
+  { type:'fill', q:'Q16: Convert to a yes/no question: 你叫李明。 → 你叫李明__？', answer:['吗'] },
+  { type:'mcq', q:'Q17: Choose the correct pronoun for “he”:', options:['我','你','他','她'], answer:2 },
+  { type:'mcq', q:'Q18: Which sentence is a proper introduction reply?', options:['很高兴认识你。','很高兴你认识。','高兴很认识你。','认识你很高兴吗。'], answer:0 },
+  { type:'mcq', q:'Q19: Rewrite as negative: 我很好。 → (I’m not fine)', options:['我不好。','我不很好。','我不太好。','A & C both okay'], answer:3 },
+  { type:'drag', q:'Q20: Form “What is your name?” in Chinese (short form).', words:['你','叫','什么','名字','?'], correct:['你 叫 什么 名字 ?'] },
+
+  // ---------- Part C: Short Translations (21–25) ----------
+  { type:'fill', q:'Q21: Translate into Chinese: “Hello, my name is Lifen.”', answer:['你好，我叫丽芬。','你好，我叫Lifen.'] },
+  { type:'fill', q:'Q22: Translate into English: 你好吗？', answer:['How are you？','Are you fine？'] },
+  { type:'fill', q:'Q23: Translate into Chinese: “Are you from China?”', answer:['你是中国人吗？','你来自中国吗？'] },
+  { type:'fill', q:'Q24: Translate into Chinese: “I am not a student.”', answer:['我不是学生。'] },
+  { type:'fill', q:'Q25: Translate into English: 我叫李明。很高兴认识你。', answer:['My name is Li Ming. Nice to meet you','I am Li Ming. Nice to meet you'] },
+
+  // ---------- Part D: Comprehension (26–30) ----------
+  {
+    type:'mcq',
+    q:`Q26: Dialogue A:<br>
+    A: 你好！<br>
+    B: 你好！我叫王芳。你叫什么名字？<br>
+    A: 我叫 Tom。很高兴认识你。<br><br>
+    Who is 王芳?`,
+    options:['Tom','Person B','Person A','Not mentioned'],
+    answer:1
+  },
+  {
+    type:'mcq',
+    q:`Q27: Dialogue A (continued):<br>
+    A: 你好！<br>
+    B: 你好！我叫王芳。你叫什么名字？<br>
+    A: 我叫 Tom。很高兴认识你。<br><br>
+    What does A say after introducing himself?`,
+    options:['Goodbye','Nice to meet you','I’m a student','I’m not fine'],
+    answer:1
+  },
+  {
+    type:'mcq',
+    q:`Q28: Dialogue B:<br>
+    A: 你是学生吗？<br>
+    B: 不是。我是老师。<br><br>
+    Is B a student?`,
+    options:['Yes','No'],
+    answer:1
+  },
+  {
+    type:'fill',
+    q:`Q29: Dialogue B:<br>
+    A: 你是学生吗？<br>
+    B: 不是。我是老师。<br><br>
+    Translate B’s reply into English.`,
+    answer:['No. I am a teacher']
+  },
+  {
+    type:'mcq',
+    q:`Q30: Dialogue C:<br>
+    A: 早上好！你好吗？<br>
+    B: 我很好，谢谢。你呢？<br><br>
+    How does B feel?`,
+    options:['B is tired','B is very good / fine','B is hungry','B is a teacher'],
+    answer:1
+  }
 ];
 
 let current = 0;
@@ -222,6 +265,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -269,8 +347,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -310,8 +388,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -480,18 +558,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/，|。|,/g, '').replace(/\s+/g,' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -500,6 +581,71 @@ function showQuestion(){
       }
     });
     Q_ANS.appendChild(submit);
+    return;
+  }
+
+    // ---------- FILL-IN-THE-BLANK QUESTION ----------
+  if(q.type === 'fill'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns = '1fr';
+
+    // Input box
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Type your answer here...';
+    input.style.width = '70%';
+    input.style.margin = '12px auto';
+    input.style.padding = '14px';
+    input.style.fontSize = '1.2rem';
+    input.style.textAlign = 'center';
+    input.style.borderRadius = '10px';
+    input.style.border = '2px solid var(--accent)';
+    input.style.background = '#fff';
+    input.style.color = '#000';
+    input.style.display = 'block';
+    Q_ANS.appendChild(input);
+
+    // Submit button
+    const submit = document.createElement('button');
+    submit.className = 'submit-btn';
+    submit.textContent = 'Submit';
+    Q_ANS.appendChild(submit);
+
+    submit.addEventListener('click', () => {
+      if(paused) return;
+
+      const userAns = input.value.trim();
+      if(!userAns){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please type your answer first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+      }
+
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
+      const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
+
+      if(isCorrect){
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++;
+        input.style.borderColor = '#4caf50';
+      } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
+        input.style.borderColor = '#ff3b3b';
+        const buz = document.createElement('div');
+        buz.className = 'buzzer-effect';
+        byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+      }
+
+      // Change to Next button
+      submit.textContent = 'Next';
+      submit.onclick = ()=> { current++; showQuestion(); };
+    });
+
     return;
   }
 
@@ -632,7 +778,8 @@ function showQuestion(){
         }
     }, 100);
 }
-
+	// Start the quiz
+	paused = false;
 	showQuestion();
 </script>
 </body>

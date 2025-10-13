@@ -1,325 +1,672 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rookie Quiz Level 11: Hobbies and Preferences</title>
-	<link rel="stylesheet" href="../../assets/css/style.css">
-	<style>
-		.buzzer-effect {
-			position: fixed;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: rgba(255, 59, 59, 0.25);
-			pointer-events: none;
-			z-index: 9999;
-			animation: screenBuzz 0.4s linear 1;
-		}
-		@keyframes screenBuzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-16px); }
-			40% { transform: translateX(16px); }
-			60% { transform: translateX(-16px); }
-			80% { transform: translateX(16px); }
-			100% { transform: translateX(0); }
-		}
-		.duo-header {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 18px;
-			margin-top: 32px;
-			margin-bottom: 18px;
-		}
-		.duo-img {
-			width: 64px;
-			height: 64px;
-			border-radius: 50%;
-			background: #fff;
-			box-shadow: 0 2px 8px #1e3c72;
-		}
-		.duo-title {
-			font-size: 2.2rem;
-			font-weight: 700;
-			color: #4a90e2;
-			font-family: 'Segoe UI', Arial, sans-serif;
-			text-shadow: 0 2px 8px #222;
-		}
-		.quiz-progress {
-			margin: 18px auto 0 auto;
-			width: 80%;
-			height: 18px;
-			background: #232946;
-			border-radius: 12px;
-			overflow: hidden;
-		}
-		.quiz-progress-bar {
-			height: 100%;
-			background: linear-gradient(90deg, #4a90e2, #7f9cf5);
-			width: 0%;
-			border-radius: 12px;
-			transition: width 0.3s;
-		}
-		.quiz-question {
-			font-size: 1.8rem;
-			font-weight: 700;
-			margin: 96px 0 32px 0;
-            margin-bottom: 130px;
-			color: #f7f7fa;
-			text-align: center;
-			line-height: 1.4;
-		}
-		.quiz-answers {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 32px;
-			margin-bottom: 32px;
-			margin-top: 48px;
-			width: calc(100vw - 80px);
-			max-width: calc(100vw - 80px);
-			padding-left: 40px;
-			padding-right: 40px;
-		}
-		.answer-btn-custom {
-			width: 100%;
-			min-width: 0;
-			border-radius: 8px;
-			font-size: 1.3rem;
-			padding: 20px 16px;
-			margin: 0;
-			box-sizing: border-box;
-			background: #232946;
-			color: #f7f7fa;
-			font-weight: 600;
-			border-width: 3px;
-			border-style: solid;
-			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
-			box-shadow: 0 4px 16px #23294655;
-			min-height: 64px;
-			position: relative;
-			overflow: hidden;
-			text-align: left;
-		}
-		.answer-btn-custom:hover {
-			transform: scale(1.04);
-			box-shadow: 0 8px 32px #23294699;
-			opacity: 0.97;
-		}
-		.answer-fill {
-			position: absolute;
-			left: 0; bottom: 0;
-			width: 100%;
-			height: 0%;
-			z-index: 1;
-			transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
-		}
-		.answer-btn-custom .answer-fill {
-			border-radius: 0;
-		}
-		.answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
-		.answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
-		.answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
-		.answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
-		.border-c1 { border-color: #e57373; }
-		.border-c2 { border-color: #64b5f6; }
-		.border-c3 { border-color: #81c784; }
-		.border-c4 { border-color: #ffd54f; }
-		.quiz-feedback {
-			font-size: 1.1rem;
-			font-weight: 500;
-			color: #ffeb3b;
-			margin-bottom: 12px;
-			min-height: 24px;
-			transition: color 0.2s;
-		}
-		.quiz-feedback.wrong {
-			color: #ff3b3b;
-			animation: buzz 0.3s linear 1;
-		}
-		@keyframes buzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-8px); }
-			40% { transform: translateX(8px); }
-			60% { transform: translateX(-8px); }
-			80% { transform: translateX(8px); }
-			100% { transform: translateX(0); }
-		}
-		.quiz-finish {
-			font-size: 1.5rem;
-			color: #4a90e2;
-			font-weight: 700;
-			margin-top: 24px;
-		}
-	</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rookie Quiz Level 11 — Colors & Clothing</title>
+<style>
+:root{
+  --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
+}
+html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial,sans-serif;color:var(--white);-webkit-font-smoothing:antialiased}
+.duo-header{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px;margin-bottom:12px}
+.duo-img{width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:0 2px 8px #1e3c72}
+.duo-title{font-size:2.0rem;font-weight:700;color:var(--accent);text-shadow:0 2px 8px #000}
+
+/* progress */
+.quiz-progress{margin:12px auto;width:80%;height:18px;background:#111426;border-radius:12px;overflow:hidden}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;border-radius:12px;transition:width .28s}
+
+/* card */
+.container-wrap{display:flex;justify-content:center}
+.quiz-card{width:100%;max-width:1100px;margin:22px auto 60px;padding:28px 20px 48px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(0,0,0,0.45);position:relative}
+.quiz-question{font-size:1.6rem;font-weight:700;margin:18px 0 12px;text-align:center;color:var(--white);line-height:1.35}
+.quiz-feedback{font-size:1.05rem;font-weight:600;color:#ffeb3b;min-height:28px;text-align:center;margin-bottom:8px}
+.quiz-feedback.wrong{color:#ff3b3b;animation:buzz .3s linear 1}
+@keyframes buzz{0%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}100%{transform:translateX(0)}}
+
+/* answers area */
+.quiz-answers{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-left:20px;padding-right:20px;margin-top:12px}
+
+/* answer buttons (MCQ) */
+.answer-btn-custom{width:100%;border-radius:8px;font-size:1.15rem;padding:18px 14px;background:var(--panel);color:var(--white);font-weight:700;border:3px solid transparent;box-shadow:0 6px 22px rgba(0,0,0,0.35);min-height:64px;position:relative;overflow:hidden;text-align:left;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,outline-color .12s}
+.answer-btn-custom:disabled{opacity:.75;cursor:default}
+.answer-btn-custom.selected-option{transform:scale(1.06);box-shadow:0 12px 30px rgba(74,144,226,0.18);outline:3px solid rgba(74,144,226,0.12)}
+.answer-fill{position:absolute;left:0;bottom:0;width:100%;height:0%;z-index:1;transition:height .6s cubic-bezier(.4,1.4,.4,1)}
+.answer-fill.c1{background:linear-gradient(0deg,#e57373 80%,#ffb3b3 100%)}
+.answer-fill.c2{background:linear-gradient(0deg,#64b5f6 80%,#b3e0ff 100%)}
+.answer-fill.c3{background:linear-gradient(0deg,#81c784 80%,#c8e6c9 100%)}
+.answer-fill.c4{background:linear-gradient(0deg,#ffd54f 80%,#fff9c4 100%)}
+
+/* submit / next */
+.submit-btn{background:var(--accent);color:#fff;padding:12px 30px;border-radius:10px;border:none;cursor:pointer;font-weight:800;display:block;margin:18px auto 0;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.submit-btn:disabled{opacity:.6;cursor:default}
+.next-btn{background:#2d9a44;color:#fff;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-weight:800;display:block;margin:12px auto 0;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+
+/* ---------- Matching area adjustments (smaller boxes moved higher) ---------- */
+.match-area{width:100%;display:flex;justify-content:center;align-items:flex-start;gap:28px;margin-top:6px;position:relative}
+.match-column{display:flex;flex-direction:column;gap:10px;align-items:center}
+.match-box{width:150px;height:40px;border-radius:10px;background:#fff;color:#232946;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.25);cursor:pointer;user-select:none;transition:transform .14s ease,box-shadow .14s ease,background .14s ease,outline-color .12s;z-index:10}
+.match-box.small{width:130px;height:36px;font-size:.98rem}
+.match-box.matched{background:#81c784;color:#fff;cursor:default;box-shadow:0 6px 12px rgba(0,0,0,.12)}
+.match-box.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(74, 144, 226, 0.55);
+  outline: 3px solid rgba(74, 144, 226, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, outline 0.3s ease;
+  z-index: 15;
+}
+
+/* svg overlay wrap (absolute within card) */
+.svg-wrap{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:visible;z-index:5}
+
+/* buzzer effect */
+.buzzer-effect { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 59, 59, 0.25); pointer-events: none; z-index: 9999; animation: screenBuzz 0.4s linear 1; }
+@keyframes screenBuzz { 0% { transform: translateX(0); } 20% { transform: translateX(-16px); } 40% { transform: translateX(16px); } 60% { transform: translateX(-16px); } 80% { transform: translateX(16px); } 100% { transform: translateX(0); } }
+
+/* arrange */
+#selectedWords { margin: 5px 0; min-height: 40px; border: 1px dashed #aaa; padding: 8px; display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); box-sizing: border-box; max-height: none; overflow-y: auto; }
+.word-pool { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; }
+.word-pool button.selected { opacity: 0.3; pointer-events: none; }
+.answer-word { background: #3498db; color: white; padding: 8px 14px; border: none; border-radius: 8px; font-size: 16px; cursor: grab; box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.15s; user-select: none; }
+.answer-word.dragging { opacity: 0.7; transform: scale(1.03); }
+.placeholder-word { min-width: 60px; height: 36px; border: 2px dashed #aaa; border-radius: 8px; margin: 4px; }
+
+/* small note */
+.small-note{text-align:center;color:#cbd5e1;margin-top:8px;font-size:.95rem}
+
+/* responsive tweaks */
+@media(max-width:900px){ .match-box{width:120px;height:36px} .match-box.small{width:110px;height:32px} .quiz-card{padding:18px} .duo-title{font-size:1.6rem} .quiz-answers{gap:16px;padding-left:12px;padding-right:12px} }
+</style>
 </head>
-<body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
-	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
-	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
-		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
-			<h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
-			<button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
-			<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
-			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
-		</div>
-	</div>
-	<div class="duo-header">
-		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Rookie Quiz 11: Hobbies and Preferences</span>
-	</div>
-	<div class="quiz-progress">
-		<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
-	</div>
-	<div class="quiz-question" id="quiz-question"></div>
-	<div class="quiz-feedback" id="quiz-feedback"></div>
-	<div class="quiz-answers" id="quiz-answers"></div>
-	<div id="buzzer-effect-root"></div>
-	<script>
-	// Duolingo-style quiz logic (no shuffling)
+<body>
+<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:var(--accent);color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+    <h2 style="color:var(--accent);margin-bottom:24px;">Game Paused</h2>
+    <button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:var(--accent);color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+    <button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+    <button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+  </div>
+</div>
 
-	const originalQuestions = [
-		// Part A — Vocabulary (10 Qs)
-		{ q: 'Q1: Match the Chinese word with English meaning: 喜欢', options: ['swim', 'sing', 'dance', 'like'], answer: 3 },
-		{ q: 'Q2: Match the Chinese word with English meaning: 不喜欢', options: ['dislike', 'like', 'favorite', 'dance'], answer: 0 },
-		{ q: 'Q3: Match the Chinese word with English meaning: 最喜欢', options: ['like', 'dislike', 'favorite / like the most', 'swim'], answer: 2 },
-		{ q: 'Q4: Match the Chinese word with English meaning: 看书', options: ['listen to music', 'read books', 'sing', 'dance'], answer: 1 },
-		{ q: 'Q5: Match the Chinese word with English meaning: 听音乐', options: ['read books', 'listen to music', 'play basketball', 'swim'], answer: 1 },
-		{ q: 'Q6: Match the Chinese word with English meaning: 打篮球', options: ['sing', 'dance', 'swim', 'play basketball'], answer: 3 },
-		{ q: 'Q7: Match the Chinese word with English meaning: 唱歌', options: ['dance', 'sing', 'swim', 'drawing'], answer: 1 },
-		{ q: 'Q8: Match the Chinese word with English meaning: 跳舞', options: ['sing', 'dance', 'swim', 'like'], answer: 1 },
-		{ q: 'Q9: Match the Chinese word with English meaning: 游泳', options: ['swim', 'sing', 'dance', 'drawing'], answer: 0 },
-		{ q: 'Q10: Match the Chinese word with English meaning: 画画', options: ['swim', 'sing', 'dance', 'drawing / painting'], answer: 3 },
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 11: Colors & Clothing</div></div>
+<div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
-		// Part B — Multiple Choice Grammar (10 Qs)
-		{ q: 'Q11: 我___看书。', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
-		{ q: 'Q12: 你___什么？', options: ['喜欢', '不喜欢', '做', '是'], answer: 0 },
-		{ q: 'Q13: 我___打篮球。 (like the most)', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 2 },
-		{ q: 'Q14: 我不___唱歌。', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
-		{ q: 'Q15: 你___做什么？', options: ['最喜欢', '喜欢', '不喜欢', '是'], answer: 0 },
-		{ q: 'Q16: 他___听音乐。', options: ['喜欢', '不喜欢', '最喜欢', '在'], answer: 0 },
-		{ q: 'Q17: 我___有时候跳舞。', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
-		{ q: 'Q18: 我最___玩游戏。', options: ['喜欢', '不喜欢', '最喜欢', '在'], answer: 0 },
-		{ q: 'Q19: 你___运动吗？', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 0 },
-		{ q: 'Q20: 她___画画。', options: ['喜欢', '不喜欢', '最喜欢', '在'], answer: 0 },
+<div class="container-wrap">
+  <div class="quiz-card" role="main" aria-live="polite">
+    <div style="position:relative;">
+      <div id="quiz-question" class="quiz-question"></div>
+      <div class="svg-wrap" aria-hidden="true">
+        <svg id="connection-svg" width="100%" height="100%"></svg>
+      </div>
+    </div>
 
-		// Part C — Fill in the blanks (5 Qs)
-		{ q: 'Q21: 我___听音乐。 (like)', options: ['不喜欢', '喜欢', '最喜欢', '是'], answer: 1 },
-		{ q: 'Q22: 我不___游泳。 (dislike)', options: ['最喜欢', '喜欢', '不喜欢', '是'], answer: 1 },
-		{ q: 'Q23: 我___唱歌。 (like the most)', options: ['喜欢', '不喜欢', '最喜欢', '是'], answer: 2 },
-		{ q: 'Q24: 你喜欢___？ (ask what)', options: ['做什么', '什么', '最喜欢', '不喜欢'], answer: 1 },
-		{ q: 'Q25: 你最喜欢___？ (ask most)', options: ['什么', '做什么', '喜欢', '不喜欢'], answer: 1 },
+    <div id="quiz-feedback" class="quiz-feedback"></div>
+    <div id="quiz-answers" class="quiz-answers"></div>
+    <div id="buzzer-effect-root"></div>
+  </div>
+</div>
 
-		// Part D — Translation (5 Qs)
-		{ q: 'Q26: I like reading books. → ______', options: ['我不喜欢看书。', '我喜欢看书。', '我最喜欢看书。', '你喜欢看书。'], answer: 1 },
-		{ q: 'Q27: I don\'t like basketball. → ______', options: ['我喜欢打篮球。', '我不喜欢打篮球。', '我最喜欢打篮球。', '你不喜欢打篮球。'], answer: 1 },
-		{ q: 'Q28: I like singing the most. → ______', options: ['我喜欢唱歌。', '我不喜欢唱歌。', '我最喜欢唱歌。', '你最喜欢唱歌。'], answer: 2 },
-		{ q: 'Q29: What do you like? → ______', options: ['我喜欢什么？', '你喜欢什么？', '你最喜欢什么？', '我最喜欢什么？'], answer: 1 },
-		{ q: 'Q30: What do you like doing the most? → ______', options: ['你喜欢做什么？', '你最喜欢做什么？', '我最喜欢做什么？', '你不喜欢做什么？'], answer: 1 }
-	];
+<script>
+/* ---------- Pause logic ---------- */
+let paused = false;
+const pauseBtn = document.getElementById('pause-btn');
+const pauseModal = document.getElementById('pause-modal');
+const resumeBtn = document.getElementById('resume-btn');
+const restartBtn = document.getElementById('restart-btn');
+const exitBtn = document.getElementById('exit-btn');
+pauseBtn.onclick = ()=>{ paused=true; pauseModal.style.display='flex'; }
+resumeBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; }
+restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; current=0; score=0; initMatchState(); showQuestion(); document.getElementById('quiz-progress-bar').style.width='0%'; }
+exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
-	const questions = [...originalQuestions];
+const questions = [
+  // ---------- Part A ----------
+  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
+    {id:'m1', cn:'红色', en:'red'},
+    {id:'m2', cn:'蓝色', en:'blue'},
+    {id:'m3', cn:'绿色', en:'green'},
+    {id:'m4', cn:'黑色', en:'black'},
+    {id:'m5', cn:'白色', en:'white'}
+  ]},
+  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
+    {id:'m6', cn:'衣服', en:'clothes'},
+    {id:'m7', cn:'裙子', en:'skirt'},
+    {id:'m8', cn:'鞋子', en:'shoes'},
+    {id:'m9', cn:'帽子', en:'hat'},
+    {id:'m10', cn:'外套', en:'coat/jacket'}
+  ]},
 
-	let current = 0;
-	let score = 0;
-	let paused = false;
+  // ---------- Part B ----------
+  { type:'fill', q:'Q11: He wears black shoes → 他穿____的鞋子。', answer:'黑色' },
+  { type:'fill', q:'Q12: Red skirt → ____色的裙子', answer:'红' },
+  { type:'fill', q:'Q13: White shirt → ____色的衬衫', answer:'白' },
+  { type:'fill', q:'Q14: These clothes look nice → 这件衣服很____。', answer:'好看' },
+  { type:'fill', q:'Q15: She wears blue pants → 她穿____的裤子。', answer:'蓝色' },
 
-	// Pause modal logic
-	const pauseBtn = document.getElementById('pause-btn');
-	const pauseModal = document.getElementById('pause-modal');
-	const resumeBtn = document.getElementById('resume-btn');
-	const restartBtn = document.getElementById('restart-btn');
-	const exitBtn = document.getElementById('exit-btn');
+  // ---------- Part C ----------
+  { type:'fill', q:'Q16: I wear a yellow T-shirt. →', answer:['我穿黄色的T恤','我穿黄色的T恤。'] },
+  { type:'fill', q:'Q17: He wears jeans. →', answer:['他穿牛仔裤','他穿牛仔裤。'] },
+  { type:'fill', q:'Q18: She has a red coat. →', answer:['她有红色的外套','她有红色的外套。'] },
+  { type:'fill', q:'Q19: The skirt is green. →', answer:['裙子是绿色的','裙子是绿色的。'] },
+  { type:'fill', q:'Q20: This hat looks nice. →', answer:['这个帽子很好看','这个帽子很好看。'] },
 
-	pauseBtn.onclick = function() {
-		paused = true;
-		pauseModal.style.display = 'flex';
-	};
-	resumeBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-	};
-	restartBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-		current = 0;
-		score = 0;
-		// Reset to original questions without shuffling
-		showQuestion();
-		document.getElementById('quiz-progress-bar').style.width = '0%';
-	};
-	exitBtn.onclick = function() {
-		window.location.href = '../levels/rookie.html';
-	};
+  // ---------- Part D ----------
+  { type:'mcq', q:'Q21: “裤子” means:', options:['shirt','pants','hat','coat'], answer:1 },
+  { type:'mcq', q:'Q22: How do you say “He wears white shoes”?', options:['他喜欢白色的鞋子。','他是白色的鞋子。','他穿白色的鞋子。','他买白色的鞋子。'], answer:2 },
+  { type:'mcq', q:'Q23: Which is correct for “blue jeans”?', options:['蓝色的牛仔裤','蓝色的衬衫','蓝色的外套','蓝色的鞋子'], answer:0 },
+  { type:'mcq', q:'Q24: “好看” means:', options:['expensive','small','old','looks nice'], answer:3 },
+  { type:'mcq', q:'Q25: How to say “This coat is too big”?', options:['这个外套太贵了。','这个外套太大了。','这个外套太好看了。','这个外套太小了。'], answer:1 },
 
-	function showQuestion() {
-		if (originalQuestions.length === 0) {
-			document.getElementById('quiz-question').innerHTML = 'Questions not yet added to this quiz.';
-			document.getElementById('quiz-answers').innerHTML = '';
-			document.getElementById('quiz-feedback').innerHTML = '<button onclick="window.location.href=\'../levels/rookie.html\'" style="padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back to Level</button>';
-			return;
-		}
+ // ---------- Part E: Short Dialogue Practice (with English hints for answers) ----------
+{ type:'fill', q:'Q26: A: 你穿什么？ B: 我穿____。 (red T-shirt)', answer:['红色的T恤','红T恤'] },
+{ type:'fill', q:'Q27: A: 她穿什么裤子？ B: 她穿____。 (blue jeans)', answer:['蓝色的牛仔裤','蓝牛仔裤'] },
+{ type:'fill', q:'Q28: A: 这件衣服好看吗？ B: ____，很漂亮。 (good-looking)', answer:['好看','很好看'] },
+{ type:'fill', q:'Q29: A: 你喜欢黑色的鞋子吗？ B: 喜欢，我喜欢____。 (black shoes)', answer:['黑色的鞋子','黑鞋子'] },
+{ type:'fill', q:'Q30: A: 那个帽子怎么样？ B: ____。 (very nice-looking)', answer:['很好看','好看'] },
+];
 
-		const q = questions[current];
-		const questionDiv = document.getElementById('quiz-question');
-		const answersDiv = document.getElementById('quiz-answers');
-		questionDiv.innerHTML = q.q;
-		answersDiv.innerHTML = '';
+let current = 0;
+let score = 0;
 
-		// Don't shuffle options, keep original order
-		q.options.forEach((opt, i) => {
-			const btn = document.createElement('button');
-			btn.className = `answer-btn-custom border-c${i + 1}`;
-			btn.textContent = opt;
-			btn.onclick = () => checkAnswer(i);
-			const fill = document.createElement('div');
-			fill.className = `answer-fill c${i + 1}`;
-			btn.appendChild(fill);
-			answersDiv.appendChild(btn);
-		});
-		document.getElementById('quiz-feedback').textContent = '';
-		updateProgress();
+/* match state */
+let matchState = { connections:{}, pathMap:{}, leftSelected:null, rightSelected:null };
+
+/* helpers */
+const byId = id => document.getElementById(id);
+const svg = byId('connection-svg');
+const Q_ANS = byId('quiz-answers');
+const Q_FB = byId('quiz-feedback');
+const Q_Q = byId('quiz-question');
+
+function clearSVG(){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+
+function drawAnimatedPath(elA, elB, color='#ffd54f'){
+  if(!elA || !elB) return null;
+  const svgRect = svg.getBoundingClientRect();
+  const aRect = elA.getBoundingClientRect();
+  const bRect = elB.getBoundingClientRect();
+  const ax = aRect.left + aRect.width/2 - svgRect.left;
+  const ay = aRect.top + aRect.height/2 - svgRect.top;
+  const bx = bRect.left + bRect.width/2 - svgRect.left;
+  const by = bRect.top + bRect.height/2 - svgRect.top;
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  const cx = Math.max(40, Math.abs(bx-ax)/2);
+  const d = `M ${ax} ${ay} C ${ax+cx} ${ay} ${bx-cx} ${by} ${bx} ${by}`;
+  path.setAttribute('d', d);
+  path.setAttribute('stroke', color);
+  path.setAttribute('stroke-width', 4);
+  path.setAttribute('fill','none');
+  path.setAttribute('stroke-linecap','round');
+  svg.appendChild(path);
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  requestAnimationFrame(()=>{ path.style.transition = 'stroke-dashoffset 480ms cubic-bezier(.2,.9,.2,1)'; path.style.strokeDashoffset = '0'; });
+  return path;
+}
+
+window.addEventListener('resize', ()=>{ redrawMatchPaths(); });
+
+function redrawMatchPaths(){
+  clearSVG();
+  for(const leftId in matchState.connections){
+    const rightId = matchState.connections[leftId];
+    const leftEl = byId('left-'+leftId);
+    const rightEl = byId('right-'+rightId);
+    if(leftEl && rightEl){
+      matchState.pathMap[leftId] = drawAnimatedPath(leftEl, rightEl);
+    }
+  }
+}
+
+function initMatchState(){
+  matchState.connections = {};
+  matchState.pathMap = {};
+  matchState.leftSelected = null;
+  matchState.rightSelected = null;
+  clearSVG();
+  Q_FB.innerHTML = '';
+}
+
+/* ---------- Render questions ---------- */
+function showQuestion(){
+  if(paused) return;
+  // if reached end -> finish
+  if(current >= questions.length){ finishQuiz(); return; }
+
+  const q = questions[current];
+  Q_Q.innerHTML=''; Q_ANS.innerHTML=''; Q_FB.innerHTML=''; Q_ANS.style.gridTemplateColumns='1fr 1fr';
+  updateProgress();
+
+  // ensure no leftover mcq-control
+  const oldControl = document.getElementById('mcq-control');
+  if(oldControl) oldControl.remove();
+
+  if(q.type === 'match'){
+    initMatchState();
+    Q_Q.innerHTML = q.pageTitle;
+
+    // build columns
+    const matchArea = document.createElement('div'); matchArea.className='match-area';
+    const leftCol = document.createElement('div'); leftCol.className='match-column';
+    const rightCol = document.createElement('div'); rightCol.className='match-column';
+    const rightPool = q.items.slice().sort(()=>Math.random()-0.5);
+
+    // left boxes (Chinese)
+    q.items.forEach(it=>{
+      const l = document.createElement('div');
+      l.className = 'match-box';
+      if(window.innerWidth < 900) l.classList.add('small');
+      l.textContent = it.cn;
+      l.id = 'left-'+it.id;
+      l.dataset.id = it.id;
+      l.dataset.side = 'left';
+      l.addEventListener('click', ()=> {
+        if(paused) return;
+        // ✨ Visual pop animation
+        l.style.transform = 'scale(1.2)';
+        setTimeout(() => l.style.transform = '', 150);
+
+        // 🟡 If this left box is matched → cancel its connection (both sides)
+        if (l.classList.contains('matched')) {
+          const matchedRightId = matchState.connections[it.id];
+          if (matchedRightId) removeConnection(it.id, matchedRightId);
+          return;
+        }
+
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => { 
+          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        });
+        l.classList.add('selected');
+        matchState.leftSelected = it.id;
+
+        // If right is already selected → create connection
+        if(matchState.rightSelected){
+          createOrRemap(matchState.leftSelected, matchState.rightSelected);
+          document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
+          matchState.leftSelected = null;
+          matchState.rightSelected = null;
+        }
+      });
+      leftCol.appendChild(l);
+    });
+
+    // right boxes (English) (random order)
+    rightPool.forEach(it=>{
+      const r = document.createElement('div');
+      r.className = 'match-box';
+      if(window.innerWidth < 900) r.classList.add('small');
+      r.textContent = it.en;
+      r.id = 'right-'+it.id;
+      r.dataset.id = it.id;
+      r.dataset.side = 'right';
+      r.addEventListener('click', ()=> {
+        if(paused) return;
+        // ✨ Visual pop animation
+        r.style.transform = 'scale(1.2)';
+        setTimeout(() => r.style.transform = '', 150);
+
+        // 🟡 If this right box is matched → cancel its connection (both sides)
+        const matchedLeftId = Object.keys(matchState.connections)
+          .find(lid => matchState.connections[lid] === it.id);
+        if (matchedLeftId) {
+          removeConnection(matchedLeftId, it.id);
+          return;
+        }
+
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => { 
+          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        });
+        r.classList.add('selected');
+        matchState.rightSelected = it.id;
+
+        // If left is already selected → create connection
+        if(matchState.leftSelected){
+          createOrRemap(matchState.leftSelected, matchState.rightSelected);
+          document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
+          matchState.leftSelected = null;
+          matchState.rightSelected = null;
+        }
+      });
+      rightCol.appendChild(r);
+    });
+
+    matchArea.appendChild(leftCol);
+    matchArea.appendChild(rightCol);
+
+    Q_ANS.style.gridTemplateColumns = '1fr';
+    Q_ANS.appendChild(matchArea);
+
+    const note = document.createElement('div');
+    note.className = 'small-note';
+    note.textContent = 'Click a Chinese box (left), then an English box (right) to connect. Remap by connecting again. Connect all 5 then press Submit.';
+    Q_ANS.appendChild(note);
+
+    // Create a fresh submit button for this match page
+    const submit = document.createElement('button');
+    submit.className = 'submit-btn';
+    submit.textContent = 'Submit';
+    submit.disabled = false;
+
+    let matchScored = false; // Prevent double scoring
+
+    submit.addEventListener('click', function onMatchSubmit(){
+      if(paused) return;
+      if(!matchScored) {
+        // Only allow submit if all 5 are connected
+        const total = q.items.length;
+        const userConnections = Object.keys(matchState.connections).length;
+        if(userConnections < total) {
+          Q_FB.innerHTML = `<span class="wrong">❗ Connect all ${total} pairs before submitting.</span>`;
+          setTimeout(()=> Q_FB.textContent='', 1200);
+          return;
+        }
+        // grade
+        let correct = 0;
+        q.items.forEach(it => { if(matchState.connections[it.id] === it.id) correct++; });
+        Q_FB.innerHTML = `<div style="font-weight:700;color:#ffe600;text-align:center">You connected ${correct} / ${total}</div>`;
+        score += correct;
+        matchScored = true;
+        // switch to Next state
+        submit.textContent = 'Next';
+      } else {
+        // clear visuals & paths
+        clearSVG();
+        document.querySelectorAll('.match-box').forEach(m => { m.classList.remove('matched','selected'); });
+        // advance
+        current++;
+        showQuestion();
+      }
+    });
+    Q_ANS.appendChild(submit);
+    return;
+  }
+
+  // MCQ block (submit disabled until user selects an option)
+    if(q.type === 'mcq'){
+        Q_Q.innerHTML = q.q;
+        Q_ANS.style.gridTemplateColumns='1fr 1fr';
+        (q.options || []).forEach((opt,i)=>{
+        const btn = document.createElement('button'); btn.className='answer-btn-custom';
+        btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
+        const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
+        btn.addEventListener('click', ()=> {
+            if(paused) return;
+            if(btn.disabled) return;
+            document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
+            btn.classList.add('selected-option');
+            let control = document.getElementById('mcq-control');
+            if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
+            control.dataset.selected = String(i); // store as non-empty string
+        });
+        Q_ANS.appendChild(btn);
+        });
+        const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
+        const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
+        submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
+        controls.appendChild(submitBtn);
+        Q_ANS.appendChild(controls);
+        return;
+    }
+
+  // arrange/drag questions (part C)
+  if(q.type === 'drag'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns='1fr';
+    const selectedDiv = document.createElement('div'); selectedDiv.id = 'selectedWords';
+    const poolDiv = document.createElement('div'); poolDiv.className = 'word-pool';
+    const shuffled = q.words.slice().sort(()=>Math.random()-0.5);
+
+    shuffled.forEach((word, idx) => {
+      const btn = document.createElement('button');
+      btn.textContent = word;
+      btn.type = 'button';
+      btn.className = 'answer-btn-custom border-c1'; // Use same box style as MCQ/match
+      btn.style.width = "110px";
+      btn.style.minHeight = "38px";
+      btn.style.fontSize = "1.1rem";
+      btn.style.margin = "0 4px 4px 0";
+      btn.style.textAlign = "center";
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains('selected')) return;
+        const ansBtn = document.createElement('button');
+        ansBtn.textContent = word;
+        ansBtn.className = 'answer-btn-custom border-c1'; // Use same box style
+        ansBtn.style.width = "110px";
+        ansBtn.style.minHeight = "38px";
+        ansBtn.style.fontSize = "1.1rem";
+        ansBtn.style.margin = "0 4px 4px 0";
+        ansBtn.style.textAlign = "center";
+        ansBtn.setAttribute('draggable', 'true');
+
+        ansBtn.addEventListener('click', () => {
+          selectedDiv.removeChild(ansBtn);
+          btn.classList.remove('selected');
+        });
+
+        ansBtn.addEventListener('dragstart', (e) => {
+          ansBtn.classList.add('dragging');
+          e.dataTransfer.setData('text/plain', 'dragging'); // marker
+          window._dragging = ansBtn;
+        });
+        ansBtn.addEventListener('dragend', (e) => {
+          ansBtn.classList.remove('dragging');
+          window._dragging = null;
+        });
+
+        selectedDiv.appendChild(ansBtn);
+        btn.classList.add('selected');
+      });
+      poolDiv.appendChild(btn);
+    });
+
+    selectedDiv.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const dragging = window._dragging;
+      if(!dragging) return;
+      const children = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom'));
+      let insertBefore = null;
+      for(const child of children){
+        if(child === dragging) continue;
+        const rect = child.getBoundingClientRect();
+        const mid = rect.left + rect.width/2;
+        if(e.clientX < mid){ insertBefore = child; break; }
+      }
+      if(insertBefore) selectedDiv.insertBefore(dragging, insertBefore); else selectedDiv.appendChild(dragging);
+    });
+    selectedDiv.addEventListener('drop', e => e.preventDefault());
+
+    Q_ANS.appendChild(selectedDiv);
+    Q_ANS.appendChild(poolDiv);
+
+    const submit = document.createElement('button'); submit.className='submit-btn'; submit.textContent='Submit';
+    submit.addEventListener('click', ()=> {
+      if(paused) return;
+      if(submit.textContent === 'Submit'){
+        const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
+        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Support multiple correct answers
+        const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+
+        if (isCorrect) {
+          Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+          score++;
+        } else {
+          Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
+          const buz = document.createElement('div'); 
+          buz.className='buzzer-effect'; 
+          byId('buzzer-effect-root').appendChild(buz);
+          setTimeout(()=> buz.remove(),700);
+        }
+        submit.textContent = 'Next';
+        submit.onclick = ()=> { current++; showQuestion(); };
+      }
+    });
+    Q_ANS.appendChild(submit);
+    return;
+  }
+
+    // ---------- FILL-IN-THE-BLANK QUESTION ----------
+  if(q.type === 'fill'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns = '1fr';
+
+    // Input box
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Type your answer here...';
+    input.style.width = '70%';
+    input.style.margin = '12px auto';
+    input.style.padding = '14px';
+    input.style.fontSize = '1.2rem';
+    input.style.textAlign = 'center';
+    input.style.borderRadius = '10px';
+    input.style.border = '2px solid var(--accent)';
+    input.style.background = '#fff';
+    input.style.color = '#000';
+    input.style.display = 'block';
+    Q_ANS.appendChild(input);
+
+    // Submit button
+    const submit = document.createElement('button');
+    submit.className = 'submit-btn';
+    submit.textContent = 'Submit';
+    Q_ANS.appendChild(submit);
+
+    submit.addEventListener('click', () => {
+      if(paused) return;
+
+      const userAns = input.value.trim();
+      if(!userAns){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please type your answer first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+      }
+
+      // normalize both answers (remove spaces and punctuation)
+      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
+      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+
+      if(isCorrect){
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++;
+        input.style.borderColor = '#4caf50';
+      } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
+        input.style.borderColor = '#ff3b3b';
+        const buz = document.createElement('div');
+        buz.className='buzzer-effect';
+        byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+      }
+
+      // Change to Next button
+      submit.textContent = 'Next';
+      submit.onclick = ()=> { current++; showQuestion(); };
+    });
+
+    return;
+  }
+
+  Q_Q.innerHTML = 'Unknown question type';
+}
+
+	/* ---------- Matching helpers ---------- */
+	function createOrRemap(leftId,rightId){
+	// remove any existing connection for leftId or rightId (one-to-one)
+	if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
+	for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
+	matchState.connections[leftId] = rightId;
+	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
+	if(leftEl) leftEl.classList.add('matched');
+	if(rightEl) rightEl.classList.add('matched');
+	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
+	const p = drawAnimatedPath(leftEl, rightEl);
+	matchState.pathMap[leftId] = p;
+	}
+  function removeConnection(leftId, rightId) {
+    // Remove stored link
+    delete matchState.connections[leftId];
+
+    // Get the line path and connected boxes
+    const leftEl = byId('left-' + leftId);
+    const rightEl = byId('right-' + rightId);
+    const path = matchState.pathMap[leftId];
+    delete matchState.pathMap[leftId];
+
+    // 🧊 Smooth line fade-out before removal
+    if (path) {
+      path.style.transition = 'opacity 0.25s ease-out';
+      path.style.opacity = '0';
+      setTimeout(() => {
+        try { path.remove(); } catch (e) {}
+      }, 250);
+    }
+
+    // 🟢 Smoothly un-highlight both boxes
+    [leftEl, rightEl].forEach(el => {
+      if (el) {
+        el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
+        el.classList.remove('matched', 'selected');
+        el.style.transform = 'scale(0.92)';
+        setTimeout(() => {
+          el.style.transform = 'scale(1)';
+        }, 150);
+      }
+    });
+  }
+
+	/* ---------- MCQ handler with robust selection check ---------- */
+	function handleMcqSubmitToggle(submitBtn, qObj){
+    if(paused) return;
+    if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+
+    const control = document.getElementById('mcq-control');
+    const sel = control ? control.dataset.selected : undefined;
+    if(!control || sel === undefined || sel === ''){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const selectedIndex = parseInt(sel,10);
+    if(isNaN(selectedIndex)){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
+    allBtns.forEach((b, idx) => {
+        if(idx === qObj.answer) b.style.borderColor = '#4caf50';
+        if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
+        b.disabled = true;
+    });
+    if(selectedIndex === qObj.answer){
+        const fill = allBtns[selectedIndex].querySelector('.answer-fill');
+        if(fill) fill.style.height = '100%';
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++; // Only increment once
+    } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
+        const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+    }
+    submitBtn.textContent = 'Next';
+    submitBtn.dataset.answered = "true"; // Mark as answered
+    submitBtn.onclick = ()=> {
+        const control2 = document.getElementById('mcq-control');
+        if(control2) control2.remove();
+        current++;
+        showQuestion();
+    };
 	}
 
-	function checkAnswer(idx) {
-		if (paused) return;
-		const q = questions[current];
-		let correct = false;
-		if(idx === q.answer) {
-			correct = true;
-			score++;
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;">🎉</span></span>';
-			const answersDiv = document.getElementById('quiz-answers');
-			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
-			const btn = btns[idx];
-			const fill = btn.querySelector('.answer-fill');
-			fill.style.height = '100%';
-			btns.forEach(b => b.disabled = true);
-			setTimeout(() => {
-				if (!paused) nextQuestion();
-			}, 850);
-		} else {
-			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Oops! Try again.</span>';
-			feedback.classList.add('wrong');
-			const buzzerRoot = document.getElementById('buzzer-effect-root');
-			const buzzerDiv = document.createElement('div');
-			buzzerDiv.className = 'buzzer-effect';
-			buzzerRoot.appendChild(buzzerDiv);
-			setTimeout(() => {
-				feedback.classList.remove('wrong');
-				feedback.textContent = '';
-				buzzerDiv.remove();
-			}, 700);
-		}
-	}
-
-	function nextQuestion() {
-		current++;
-		if(current < questions.length) {
-			showQuestion();
-		} else {
-			finishQuiz();
-		}
-	}
-
+/* ---------- Progress & finish ---------- */
 	function updateProgress() {
 		const bar = document.getElementById('quiz-progress-bar');
 		bar.style.width = ((current / questions.length) * 100) + '%';
@@ -338,24 +685,27 @@
 		}
 	}
 
-	function finishQuiz() {
-		document.getElementById('quiz-question').innerHTML = '';
-		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
-		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(12); // Unlock next level
-		setTimeout(function() {
-			var btn = document.getElementById('nextLevelBtn');
-			if (btn) {
-				btn.onclick = function() {
-					window.location.href = 'rookie_quiz12.html';
-				};
-			}
-		}, 100);
-	}
+	// Calculate total possible score (1 point per item in match, 1 per other question)
+	const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
 
-	// Initialize quiz
+	function finishQuiz() {
+    document.getElementById('quiz-question').innerHTML = '';
+    document.getElementById('quiz-answers').innerHTML = '';
+    document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+    document.getElementById('quiz-progress-bar').style.width = '100%';
+    setUnlockedLevel(2);
+    setTimeout(function() {
+        var btn = document.getElementById('nextLevelBtn');
+        if (btn) {
+            btn.onclick = function() {
+                window.location.href = 'rookie_quiz12.html';
+            };
+        }
+    }, 100);
+}
+	// Start the quiz
+	paused = false;
 	showQuestion();
-	</script>
+</script>
 </body>
 </html>
