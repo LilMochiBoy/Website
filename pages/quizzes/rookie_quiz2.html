@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 2 — Numbers</title>
+<title>Rookie Quiz Level 2 — Numbers & Age</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 2: Numbers</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 2: Numbers & Age</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -129,33 +129,79 @@ const questions = [
     {id:'m4',cn:'九',en:'nine'},
     {id:'m5',cn:'二十',en:"twenty"}
   ]},
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6',cn:'七',en:'seven'},
-    {id:'m7',cn:'十三',en:"thirteen"},
-    {id:'m8',cn:'四',en:'four'},
-    {id:'m9',cn:'十六',en:'sixteen'},
-    {id:'m10',cn:'零',en:'zero'}
-  ]},
-  { type:'mcq', q:'Q11: 12 — which is correct?', options:['十二','十三','十四','十五'], answer:0 },
-  { type:'mcq', q:'Q12: 17 — which is correct?', options:['十六','十七','十八','十九'], answer:1 },
-  { type:'fill', q:'Q13: "3 Apples" in Chinese →', answer:'三个苹果' },
-  { type:'fill', q:'Q14: "2 People" in Chinese →', answer:'两个人' },
-  { type:'fill', q:'Q15: "I am 15 years old" in Chinese →', answer:'我十五岁' },
-  { type:'mcq', q:'Q16: 8 in Chinese:', options:['六','七','八','九'], answer:2 },
-  { type:'mcq', q:'Q17: 14 in Chinese:', options:['十一','二十','十二','十四'], answer:3 },
-  { type:'mcq', q:'Q18: 20 in Chinese:', options:['十一','二十','十二','十四'], answer:1 },
-  { type:'drag', q:'Q19: How many students?', words:['学生','几','个','?'], correct:'几 个 学生 ?' },
-  { type:'drag', q:"Q20: How much is this?", words:['这','多少','钱','个','?'], correct:'这 个 多少 钱?' },
-  { type:'mcq', q:'Q21: “十八” means:', options:['8','18','28','38'], answer:1 },
-  { type:'mcq', q:'Q22: How to say “zero”?', options:['二','十','五','零'], answer:3 },
-  { type:'mcq', q:'Q23: Which is correct for "two people"?', options:['二个人','七个人','两个人','几个人'], answer:2 },
-  { type:'mcq', q:'Q24: “你几岁？” is asking:', options:['How old are you?','How are you?','How much is this?','Where are you'], answer:0 },
-  { type:'mcq', q:'Q25: “多少” is used for:', options:['Small numbers','Only ages','Big numbers/money','Decimal'], answer:2 },
-  { type:'fill', q:'Q26: Write the number “11” in Chinese →', answer:'十一' },
-  { type:'fill', q:'Q27: Write the number “19” in Chinese →', answer:'十九' },
-  { type:'fill', q:'Q28: Say: “I have one friend.” →', answer:['我有一个朋友','我有一个朋友。','我有一个朋友.' ]},
-  { type:'fill', q:'Q29: Say: “She is 7 years old.” →', answer:['她七岁','她七岁。','她七岁.' ]},
-  { type:'fill', q:'Q30: Ask: “How many apples?” →', answer:['几个苹果?','几个苹果？'] }
+
+  { type:'mcq', q:'Q6: What is the Chinese for “zero”?', options:['零','十','一','百'], answer:0 },
+  { type:'fill', q:'Q7: Write the Chinese for the number “7” (character only).', answer:['七'] },
+  { type:'mcq', q:'Q8: Which phrase is used to ask “How old (any age)?”', options:['几岁','多大','多少','谁'], answer:1 },
+  { type:'mcq', q:'Q4: Which one means “years old”?', options:['岁','几','大','天'], answer:0 },
+  { type:'fill', q:'Q10: Translate into Chinese: “nine” = ___.', answer:['九'] },
+
+  // ---------- Part B: Grammar / Sentences (11–20) ----------
+  { type:'mcq', q:'Q11: Which is correct for “I am 15 years old”?', options:['我十五岁。','我十五大。','我十五。','我岁十五。'], answer:0 },
+  { type:'mcq', q:'Q12: “How old are you?” (formal/general way)', options:['你多少？','你几岁？','你多大？','你几大？'], answer:2 },
+  { type:'mcq', q:'Q13: Which sentence is correct?', options:['你几岁？','你岁几？','几岁你？','岁你几？'], answer:0 },
+  { type:'fill', q:'Q14: Fill the blank: “I am 20 years old” = 我___岁。', answer:['二十'] },
+  { type:'mcq', q:'Q15: Which is a natural short reply to “你多大？”', options:['十','我十八岁。','岁','我好。'], answer:1 },
+  { type:'drag', q:'Q16: Reorder into correct sentence: (岁 / 我 / 十五)', words:['岁','我','十五'], correct:['我 十五 岁'] },
+  { type:'mcq', q:'Q17: How do you say “And you?” politely after an age answer?', options:['你呢？','你吗？','你不？','你也？'], answer:0 },
+  { type:'mcq', q:'Q18: Translate into Chinese: “He is 25 years old.”', options:['他二十五岁。','他二十岁。','他五岁。','他十五岁。'], answer:0 },
+  { type:'mcq', q:'Q19: Which is the correct way to ask a child’s age (under 10)?', options:['你多大？','你几岁？','你多少？','你岁几？'], answer:1 },
+  { type:'fill', q:'Q20: 我二十三岁。 means “I am ___ years old.”', answer:['23','twenty-three','Twenty-three'] },
+
+  // ---------- Part C: Translation (21–25) ----------
+  { type:'fill', q:'Q21: Translate into Chinese: “I am 18 years old.”', answer:['我十八岁。'] },
+  { type:'fill', q:'Q22: Translate into English: 你几岁？', answer:['How old are you?','How old are you'] },
+  { type:'fill', q:'Q23: Translate into Chinese: “She is 9 years old.”', answer:['她九岁。'] },
+  { type:'fill', q:'Q24: Translate into English: 我二十岁。', answer:['I am 20 years old.','I am twenty years old.'] },
+  { type:'fill', q:'Q25: Translate into Chinese: “How old is he?” (general form)', answer:['他多大？'] },
+
+  // ---------- Part D: Comprehension (26–30) ----------
+  {
+    type:'mcq',
+    q:`Q26: Dialogue A:<br>
+    A: 你几岁？<br>
+    B: 我七岁。<br><br>
+    How old is B?`,
+    options:['7','17','70','Not mentioned'],
+    answer:0
+  },
+  {
+    type:'mcq',
+    q:`Q27: Dialogue B:<br>
+    A: 你多大？<br>
+    B: 我二十一岁。你呢？<br>
+    A: 我二十岁。<br><br>
+    How old is B?`,
+    options:['21','20','12','22'],
+    answer:0
+  },
+  {
+    type:'mcq',
+    q:`Q28: Dialogue B (continued):<br>
+    A: 你多大？<br>
+    B: 我二十一岁。你呢？<br>
+    A: 我二十岁。<br><br>
+    How old is A?`,
+    options:['12','22','20','21'],
+    answer:2
+  },
+  {
+    type:'mcq',
+    q:`Q29: Dialogue C:<br>
+    A: 他多大？<br>
+    B: 他三十岁。<br><br>
+    What is his age?`,
+    options:['13','30','31','Not sure'],
+    answer:1
+  },
+  {
+    type:'fill',
+    q:`Q30: Dialogue D:<br>
+    A: 你多大？<br>
+    B: 我十八岁。<br><br>
+    Translate B’s reply into English.`,
+    answer:['I am 18 years old.','I’m 18 years old']
+  }
 ];
 
 let current = 0;
@@ -221,6 +267,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -268,8 +349,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -309,8 +390,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -479,18 +560,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -539,10 +623,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -552,7 +638,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }

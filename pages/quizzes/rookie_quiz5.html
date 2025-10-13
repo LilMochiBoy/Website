@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 5 — Occupations</title>
+<title>Rookie Quiz Level 5 — Colors & Adjectives</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 5: Occupations</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 5: Colors & Adjectives</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,50 +122,72 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-		// ---------- Part A: Vocabulary Match ----------
-		{ type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-			{id:'m1', cn:'老师', en:'teacher'},
-			{id:'m2', cn:'医生', en:'doctor'},
-			{id:'m3', cn:'学生', en:'student'},
-			{id:'m4', cn:'警察', en:'police officer'},
-			{id:'m5', cn:'农民', en:'farmer'}
-		]},
-		{ type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-			{id:'m6', cn:'司机', en:'driver'},
-			{id:'m7', cn:'服务员', en:'waiter/waitress'},
-			{id:'m8', cn:'老板', en:'boss'},
-			{id:'m9', cn:'经理', en:'manager'},
-			{id:'m10', cn:'公司', en:'company'}
-		]},
+  // ---------- Part A: Vocabulary (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'红色', en:'red'},
+      {id:'m2', cn:'蓝色', en:'blue'},
+      {id:'m3', cn:'白色', en:'white'},
+      {id:'m4', cn:'黑色', en:'black'},
+      {id:'m5', cn:'大', en:'big'}
+    ] 
+  },
 
-		// ---------- Part B: Fill in the Blank ----------
-		{ type:'fill', q:'Q11: I am a doctor → 我是____。', answer:'医生' },
-		{ type:'fill', q:'Q12: She is a teacher → 她是____。', answer:'老师' },
-		{ type:'fill', q:'Q13: He is a student → 他是____。', answer:'学生' },
-		{ type:'fill', q:'Q14: What job do you do? → 你做什么____？', answer:'工作' },
-		{ type:'fill', q:'Q15: I work at a hospital → 我在____工作。', answer:'医院' },
+  { type:'fill', q:'Q6: Translate: “小” → ?', answer:['Small'] },
+  { type:'mcq', q:'Q7: 高 means…', options:['Tall','Short','Big','Pretty'], answer:0 },
+  { type:'fill', q:'Q8: Translate: “矮” → ?', answer:['Short'] },
+  { type:'fill', q:'Q9: Translate: “漂亮” → ?', answer:['Pretty'] },
+  { type:'fill', q:'Q10: Translate: “绿色” → ?', answer:['Green'] },
 
-		// ---------- Part C: Translation ----------
-		{ type:'fill', q:'Q16: I am a nurse. →', answer:['我是护士','我是护士。','我是护士.' ]},
-		{ type:'fill', q:'Q17: He is a farmer. →', answer:['他是农民','他是农民。','他是农民.' ] },
-		{ type:'fill', q:'Q18: She is a manager. →', answer:['她是经理','他是经理。','他是经理.' ]},
-		{ type:'fill', q:'Q19: I work at a shop. →', answer:['我在商店工作','我在商店工作。','我在商店工作.'] },
-		{ type:'fill', q:'Q20: What is his job? →', answer:['他做什么工作','他做什么工作。','他做什么工作.' ]},
+  // ---------- Part B: Grammar (Q11–20) ----------
+  { type:'fill', q:'Q11: Fill in: 这是 ___ 书。 (red)', answer:['红色的'] },
+  { type:'fill', q:'Q12: Translate: “That is a white chair.”', answer:['那是白色的椅子。'] },
+  { type:'fill', q:'Q13: Translate: “He is very tall.”', answer:['他很高。'] },
+  { type:'fill', q:'Q14: Translate: “This phone is very small.”', answer:['这个手机很小。'] },
+  { type:'mcq', q:'Q15: Which is correct?', options:['蓝色书。','蓝色书是。','书蓝色的。','蓝色的书。'], answer:3 },
+  { type:'mcq', q:'Q16: True or False: 很 is always needed before adjectives in simple sentences.', options:['True','False','Sometimes','Depends'], answer:0 },
+  { type:'drag', q:'Q17: Rearrange: (漂亮的 / 她是 / 女孩) →', words:['漂亮的','她是','女孩'], correct:['她是 漂亮的 女孩'] },
+  { type:'fill', q:'Q18: Fill in: 这是 ___ 包。(blue)', answer:['蓝色的'] },
+  { type:'fill', q:'Q19: Translate: “The bag is very big.”', answer:['包很大。'] },
+  { type:'fill', q:'Q20: Translate: “That is a black computer.”', answer:['那是黑色的电脑。'] },
 
-		// ---------- Part D: Multiple Choice ----------
-		{ type:'mcq', q:'Q21: “学生” means:', options:['Teacher','Student','Doctor','Police officer'], answer:1 },
-		{ type:'mcq', q:'Q22: How to say “I am a teacher”?', options:['我做老师','我是老师','我工作老师','我是司机'], answer:1 },
-		{ type:'mcq', q:'Q23: “司机” refers to:', options:['Farmer','Teacher','Driver','Police officer'], answer:2 },
-		{ type:'mcq', q:'Q24: Which is correct for “She works at a hospital”?', options:['她在公司工作。','她在学校工作','她是医生。','她在医院工作。'], answer:3 },
-		{ type:'mcq', q:'Q25: “老板” means:', options:['Boss','Manager','Worker','Farmer'], answer:0 },
+  // ---------- Part C: Sentence Practice (Q21–30) ----------
+  { type:'fill', q:'Q21: Write in Chinese: “This is a pretty dress.”', answer:['这是漂亮的衣服。'] },
+  { type:'fill', q:'Q22: Write in Chinese: “That is a tall person.”', answer:['那是高的人。'] },
+  { type:'fill', q:'Q23: Write in Chinese: “The book is very small.”', answer:['书很小。'] },
+  { type:'fill', q:'Q24: Write in Chinese: “The table is very big.”', answer:['桌子很大。'] },
 
-		// ---------- Part E: Short Dialogue Practice ----------
-		{ type:'fill', q:'Q26: A: 你做什么工作？ B: 我是____。 (I am a teacher)', answer:'老师' },
-		{ type:'fill', q:'Q27: A: 他在哪儿工作？ B: 他在____工作。 (He works at a school)', answer:'学校' },
-		{ type:'fill', q:'Q28: A: 她是护士吗？ B: 是，她是____。 (Yes, she is a nurse)', answer:'护士' },
-		{ type:'fill', q:'Q29: A: 你是学生吗？ B: 不是，我是____。 (No, I am an office worker)', answer:'职员' },
-		{ type:'fill', q:'Q30: A: 他做什么工作？ B: 他是____。 (He is a driver)', answer:'司机' }
-	];
+  // 👇 Q25–Q28 are drag questions
+  {
+    type:'drag',
+    q:'Q25: Arrange the words to translate: “He is tall.”',
+    words:['他','很','高','。'],
+    correct:['他 很 高 。']
+  },
+  {
+    type:'drag',
+    q:'Q26: Arrange the words to translate: “She is pretty.”',
+    words:['她','很','漂亮','。'],
+    correct:['她 很 漂亮 。']
+  },
+  {
+    type:'drag',
+    q:'Q27: Arrange the words to translate: “This is a red cellphone.”',
+    words:['这','是','红色的','手机','。'],
+    correct:['这 是 红色的 手机 。']
+  },
+  {
+    type:'drag',
+    q:'Q28: Arrange the words to translate: “That is a white chair.”',
+    words:['那','是','白色的','椅子','。'],
+    correct:['那 是 白色的 椅子 。']
+  },
+
+  { type:'fill', q:'Q29: Write in Chinese: “This is a black bag.”', answer:['这是黑色的包。'] },
+  { type:'fill', q:'Q30: Write in Chinese: “That is a blue pen.”', answer:['那是蓝色的笔。'] }
+];
 
 let current = 0;
 let score = 0;
@@ -230,6 +252,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -277,8 +334,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -318,8 +375,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -488,18 +545,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -548,10 +608,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -561,7 +623,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }

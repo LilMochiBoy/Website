@@ -122,49 +122,67 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-	// ---------- Part A: Vocabulary Match ----------
-	{ type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-		{id:'m1', cn:'中国', en:'China'},
-		{id:'m2', cn:'美国', en:'USA'},
-		{id:'m3', cn:'日本', en:'Japan'},
-		{id:'m4', cn:'德国', en:'Germany'},
-		{id:'m5', cn:'韩国', en:'Korea'}
-	]},
-	{ type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-		{id:'m6', cn:'英国', en:'UK'},
-		{id:'m7', cn:'加拿大', en:'Canada'},
-		{id:'m8', cn:'澳大利亚', en:'Australia'},
-		{id:'m9', cn:'法国', en:'France'},
-		{id:'m10', cn:'国家', en:'country'}
-	]},
+  // ---------- Part A: Vocabulary Match ----------
+  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
+    {id:'m1', cn:'书', en:'book'},
+    {id:'m2', cn:'笔', en:'pen'},
+    {id:'m3', cn:'包', en:'bag'},
+    {id:'m4', cn:'桌子', en:'table'},
+    {id:'m5', cn:'椅子', en:'chair'}
+  ]},
 
-	// ---------- Part B: Fill in the Blank ----------
-	{ type:'fill', q:'Q11: I am Chinese → 我是____人。', answer:'中国' },
-	{ type:'fill', q:'Q12: She is American → 她是____人。', answer:'美国' },
-	{ type:'fill', q:'Q13: He is Japanese → 他是____人。', answer:'日本' },
-	{ type:'fill', q:'Q14: Which nationality are you? → 你是____人？', answer:'哪国' },
-	{ type:'fill', q:'Q15: This is my friend, he is French → 这是我的朋友，他是____人。', answer:'法国' },
+  { type:'mcq', q:'Q6: 手机 is…', options:['Computer','Cellphone','Pen','Book'], answer:1 },
+  { type:'fill', q:'Q7: 电脑 means…', answer:['Computer'] },
+  { type:'fill', q:'Q8: Translate: “这” → ?', answer:['This'] },
+  { type:'fill', q:'Q9: Translate: “那” → ?', answer:['That'] },
+  { type:'fill', q:'Q10: “什么” means…', answer:['What'] },
 
-	// ---------- Part C: Translation ----------
-	{ type:'fill', q:'Q16: I am British. →', answer:['我是英国人','我是英国人。','我是英国人.'] },
-	{ type:'fill', q:'Q17: He is German. →', answer:['他是德国人','他是德国人。','他是德国人.'] },
-	{ type:'fill', q:'Q18: She is Korean. →', answer:['她是韩国人','她是韩国人。','她是韩国人.'] },
-	{ type:'fill', q:'Q19: Are you Indian? →', answer:['你是印度人吗','你是印度人吗？','你是印度人吗?'] },
-	{ type:'fill', q:'Q20: This is my teacher, she is Canadian. →', answer:['这是我的老师，她是加拿大人','这是我的老师，她是加拿大人。','这是我的老师，她是加拿大人.'] },
+  // ---------- Part B: Grammar (Q11–20) ----------
+  { type:'fill', q:'Q11: Fill in the blank: ___ 是书。 (This)', answer:['这'] },
+  { type:'fill', q:'Q12: Translate: “What is that?”', answer:['那是什么？'] },
+  { type:'fill', q:'Q13: Translate: “This is a chair.”', answer:['这是椅子。'] },
+  { type:'fill', q:'Q14: Translate: “That is not a bag.”', answer:['那不是包。'] },
+  { type:'mcq', q:'Q15: Which is correct?', options:['那是手机。','手机是那。','这是电脑。','那是笔。'], answer:0 },
+  { type:'mcq', q:'Q16: True or False: 不是 is used for negation.', options:['True','False','Maybe','Not sure'], answer:0 },
+  { type:'drag', q:'Q17: Rearrange: (电脑 / 是 / 这) →', words:['电脑','是','这'], correct:['这 是 电脑'] },
+  { type:'fill', q:'Q18: Fill in: 那 ___ 笔吗？(is)', answer:['是'] },
+  { type:'fill', q:'Q19: Answer: 这是书吗？ → Yes, it is.', answer:['是的。','对。'] },
+  { type:'fill', q:'Q20: Answer: 那是电脑吗？ → No, it is not.', answer:['不是。'] },
 
-	// ---------- Part D: Multiple Choice ----------
-	{ type:'mcq', q:'Q21: “法国” means:', options:['Germany','Canada','France','Australia'], answer:2 },
-	{ type:'mcq', q:'Q22: “他是美国人” means:', options:['He is American','He is Chinese','He is English','He is Korean'], answer:0 },
-	{ type:'mcq', q:'Q23: How do you ask “What nationality are you?”', options:['你是谁？','你是哪国人？','你是人吗？','你是谁国人？'], answer:1 },
-	{ type:'mcq', q:'Q24: “澳大利亚人” is:', options:['Canadian','Indonesian','American','Australian'], answer:3 },
-	{ type:'mcq', q:'Q25: Which is correct?', options:['我是学生人。','我是中国人。','我中国是人。','我是中国'], answer:1 },
+  // ---------- Part C: Sentence Practice (Q21–30) ----------
+  { type:'fill', q:'Q21: Write in Chinese: “This is a pen.”', answer:['这是笔。'] },
+  { type:'fill', q:'Q22: Write in Chinese: “That is a book.”', answer:['那是书。'] },
+  { type:'fill', q:'Q23: Write in Chinese: “This is not a cellphone.”', answer:['这不是手机。'] },
+  { type:'fill', q:'Q24: Write in Chinese: “That is a computer.”', answer:['那是电脑。'] },
 
-	// ---------- Part E: Short Dialogue Practice ----------
-	{ type:'fill', q:'Q26: A: 你是哪国人？ B: 我是____人。 (I am Chinese)', answer:'中国' },
-	{ type:'fill', q:'Q27: A: 他是哪国人？ B: 他是____人。 (He is Japanese)', answer:'日本' },
-	{ type:'fill', q:'Q28: A: 这是我的朋友。 B: 他是____人吗？ (Is he American?)', answer:'美国' },
-	{ type:'fill', q:'Q29: A: 她是法国人吗？ B: 不是，她是____人。 (No, she is German)', answer:'德国' },
-	{ type:'fill', q:'Q30: A: 你是学生吗？ B: 是，我是____。 (Yes, I am a student)', answer:'学生' }
+  // 👇 Q25–Q28 are drag questions
+  {
+    type:'drag',
+    q:'Q25: Arrange the words to translate: “This is a table.”',
+    words:['这','是','桌子','。'],
+    correct:['这 是 桌子 。']
+  },
+  {
+    type:'drag',
+    q:'Q26: Arrange the words to translate: “That is not a chair.”',
+    words:['那','不是','椅子','。'],
+    correct:['那 不是 椅子 。']
+  },
+  {
+    type:'drag',
+    q:'Q27: Arrange the words to translate: “What is this?”',
+    words:['这','是','什么','？'],
+    correct:['这 是 什么 ？']
+  },
+  {
+    type:'drag',
+    q:'Q28: Arrange the words to translate: “What is that?”',
+    words:['那','是','什么','？'],
+    correct:['那 是 什么 ？']
+  },
+
+  { type:'fill', q:'Q29: Write in Chinese: “This is not a bag.”', answer:['这不是包。'] },
+  { type:'fill', q:'Q30: Write in Chinese: “That is a chair.”', answer:['那是椅子。'] }
 ];
 
 let current = 0;
@@ -230,6 +248,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -277,8 +330,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -318,8 +371,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -488,18 +541,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -548,10 +604,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -561,7 +619,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }
