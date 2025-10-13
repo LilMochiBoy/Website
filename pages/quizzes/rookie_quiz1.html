@@ -123,11 +123,14 @@ exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
   // ---------- Part A: Vocabulary Recall (1–10) ----------
-  { type:'mcq', q:'Q1: 你好 means:', options:['Goodbye','Hello','Thank you','Sorry'], answer:1 },
-  { type:'fill', q:'Q2: ___ (nǐ) = you. (Type the Chinese character)', answer:['你'] },
-  { type:'mcq', q:'Q3: Which one is “goodbye”?', options:['早上好','晚上好','再见','你好'], answer:2 },
-  { type:'mcq', q:'Q4: What is the pinyin for 我?', options:['nǐ','wǒ','tā','jiào'], answer:1 },
-  { type:'mcq', q:'Q5: 他 and 她 are pronounced the same. How do you say “she” in characters?', options:['他','她','它','伊'], answer:1 },
+  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
+    {id:'m1',cn:'你好',en:'hello'},
+    {id:'m2',cn:'再见',en:'goodbye'},
+    {id:'m3',cn:'谢谢',en:'thank you'},
+    {id:'m4',cn:'对不起',en:'sorry'},
+    {id:'m5',cn:'没关系',en:"no problem"}
+  ]},
+
   { type:'fill', q:'Q6: 我 ___ Lifen。 (use 叫)', answer:['叫'] },
   { type:'mcq', q:'Q7: What does 很好 (hěn hǎo) mean?', options:['Not good','Very good / fine','Good morning','Hello'], answer:1 },
   { type:'mcq', q:'Q8: Choose the question particle (used for yes/no questions):', options:['的','吗','了','在'], answer:1 },
