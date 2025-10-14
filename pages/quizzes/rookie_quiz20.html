@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 20 — Jobs & Professions</title>
+<title>Rookie Quiz Level 20 — Daily Routines</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 20: Jobs & Professions</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 20: Daily Routines</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,51 +122,55 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A: Vocabulary Match (1–5) ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1',cn:'老师',en:'teacher'},
-    {id:'m2',cn:'医生',en:'doctor'},
-    {id:'m3',cn:'护士',en:'nurse'},
-    {id:'m4',cn:'工程师',en:'engineer'},
-    {id:'m5',cn:'厨师',en:'chef / cook'}
-  ]},
+  // ---------- Part A: Vocabulary / Matching (Q1–10) ----------
+  {
+    type: 'match',
+    pageTitle: 'Part A: Vocabulary (1–5)',
+    items: [
+      { id: 'm1', cn: '起床', en: 'get up' },
+      { id: 'm2', cn: '上课', en: 'attend class' },
+      { id: 'm3', cn: '吃饭', en: 'eat (meal)' },
+      { id: 'm4', cn: '睡觉', en: 'sleep' },
+      { id: 'm5', cn: '上班', en: 'go to work' },
+    ]
+  },
+  {
+    type: 'match',
+    pageTitle: 'Part A: Vocabulary (6–10)',
+    items: [
+      { id: 'm6', cn: '下班', en: 'finish work' },
+      { id: 'm7', cn: '洗澡', en: 'take a shower' },
+      { id: 'm8', cn: '刷牙', en: 'brush teeth' },
+      { id: 'm9', cn: '早上', en: 'morning' },
+      { id: 'm10', cn: '晚上', en: 'evening' },
+    ]
+  },
 
-  // ---------- Part A: Vocabulary Match (6–10) ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6',cn:'司机',en:'driver'},
-    {id:'m7',cn:'服务员',en:'waiter / waitress'},
-    {id:'m8',cn:'警察',en:'police officer'},
-    {id:'m9',cn:'农民',en:'farmer'},
-    {id:'m10',cn:'音乐家',en:'musician'}
-  ]},
+// ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+{ type: 'mcq', q: 'Q11: 我___七点起床。', options: ['在', '早上', '有', '是'], answer: 1 },
+{ type: 'mcq', q: 'Q12: 我___七点半刷牙。', options: ['上午', '早上', '下午', '晚上'], answer: 1 },
+{ type: 'mcq', q: 'Q13: 我八点___早饭。', options: ['起床', '睡觉', '吃', '上班'], answer: 2 },
+{ type: 'mcq', q: 'Q14: 我上午九点___课。', options: ['吃', '上', '洗', '睡'], answer: 1 },
+{ type: 'mcq', q: 'Q15: 我晚上十点___觉。', options: ['吃', '上', '睡', '洗'], answer: 2 },
+{ type: 'mcq', q: 'Q16: 我下午三点___班。', options: ['上', '下', '去', '来'], answer: 1 },
+{ type: 'mcq', q: 'Q17: 他早上七点___。(wake up)', options: ['起床', '刷牙', '睡觉', '下班'], answer: 0 },
+{ type: 'mcq', q: 'Q18: 我___回家。', options: ['上', '去', '下', '在'], answer: 1 },
+{ type: 'mcq', q: 'Q19: 他早上七点半___牙。', options: ['吃', '上', '睡', '刷'], answer: 3 },
+{ type: 'mcq', q: 'Q20: 我晚上九点___澡。', options: ['睡', '洗', '上', '吃'], answer: 1 },
 
-  // ---------- Part B: Fill in the Blank (11–15) ----------
-  { type:'fill', q:'Q11: I am a teacher = 我是____。', answer:['老师'] },
-  { type:'fill', q:'Q12: He is a doctor = 他是____。', answer:['医生'] },
-  { type:'fill', q:'Q13: She works as a nurse = 她____护士。', answer:['做'] },
-  { type:'fill', q:'Q14: I like my job = 我____我的工作。', answer:['喜欢'] },
-  { type:'fill', q:'Q15: He doesn’t like his profession = 他不____他的职业。', answer:['喜欢'] },
+  // ---------- Part C: Fill in the blanks (Q21–25) ----------
+  { type: 'fill', q: 'Q21: 我早上七点___。 (wake up)', answer: ['起床'] },
+  { type: 'fill', q: 'Q22: 我早上七点半___。 (brush teeth)', answer: ['刷牙'] },
+  { type: 'fill', q: 'Q23: 我八点___早饭。 (eat)', answer: ['吃'] },
+  { type: 'fill', q: 'Q24: 我上午九点___课。 (attend)', answer: ['上'] },
+  { type: 'fill', q: 'Q25: 我晚上十点___觉。 (sleep)', answer: ['睡'] },
 
-  // ---------- Part C: Drag & Drop Translation Assembly (16–20) ----------
-  { type:'drag', q:'Q16: (Translate) I am an engineer.', words:['我','是','工程师','。'], correct:'我 是 工程师 。' },
-  { type:'drag', q:'Q17: (Translate) She is a chef.', words:['她','是','厨师','。'], correct:'她 是 厨师 。' },
-  { type:'drag', q:'Q18: (Translate) He is a police officer.', words:['他','是','警察','。'], correct:'他 是 警察 。' },
-  { type:'drag', q:'Q19: (Translate) I work as a driver.', words:['我','做','司机','。'], correct:'我 做 司机 。' },
-  { type:'drag', q:'Q20: (Translate) Do you like your job?', words:['你','喜欢','你的','工作','吗','？'], correct:'你 喜欢 你的 工作 吗 ？' },
-
-  // ---------- Part D: Multiple Choice (21–25) ----------
-  { type:'mcq', q:'Q21: “上班” means:', options:['go to work','go to school','attend class','take a break'], answer:0 },
-  { type:'mcq', q:'Q22: How do you say “I am a nurse”?', options:['我是医生。','我是护士。','我是老师。','我是司机。'], answer:1 },
-  { type:'mcq', q:'Q23: Which is correct for “She doesn’t like her job”?', options:['她不喜欢她的职业。','她喜欢她的职业。','她做她的职业。','她上班。'], answer:0 },
-  { type:'mcq', q:'Q24: “做工程师” means:', options:['work as a teacher','work as an engineer','study engineering','drive a car'], answer:1 },
-  { type:'mcq', q:'Q25: How to say “He likes his job”?', options:['他不喜欢他的工作。','他工作。','他喜欢他的工作。','他是老师。'], answer:2 },
-
-  // ---------- Part E: Short Dialogue Practice (26–30) ----------
-  { type:'fill', q:'Q26: A: 你是做什么的？ B: 我是____。 (teacher)', answer:['老师'] },
-  { type:'fill', q:'Q27: A: 他做什么工作？ B: 他做____。 (doctor)', answer:['医生'] },
-  { type:'fill', q:'Q28: A: 你喜欢你的工作吗？ B: 喜欢，我____我的工作。 (like)', answer:['喜欢'] },
-  { type:'fill', q:'Q29: A: 她是音乐家吗？ B: 是的，她是____。 (musician)', answer:['音乐家'] },
-  { type:'fill', q:'Q30: A: 他上班了吗？ B: 是的，他____了。 (go to work)', answer:['上班'] },
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type: 'fill', q: 'Q26: Translate: “I get up at 7 a.m.” →', answer: ['我早上七点起床。'] },
+  { type: 'fill', q: 'Q27: Translate: “I brush my teeth at 7:30 a.m.” →', answer: ['我早上七点半刷牙。'] },
+  { type: 'fill', q: 'Q28: Translate: “I eat breakfast at 8 a.m.” →', answer: ['我八点吃早饭。'] },
+  { type: 'fill', q: 'Q29: Translate: “I attend class at 9 a.m.” →', answer: ['我上午九点上课。'] },
+  { type: 'fill', q: 'Q30: Translate: “I go to sleep at 10 p.m.” →', answer: ['我晚上十点睡觉。'] },
 ];
 
 let current = 0;
@@ -232,6 +236,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -267,21 +306,25 @@ function showQuestion(){
       l.dataset.side = 'left';
       l.addEventListener('click', ()=> {
         if(paused) return;
+        // ✨ Visual pop animation
         l.style.transform = 'scale(1.2)';
         setTimeout(() => l.style.transform = '', 150);
 
+        // 🟡 If this left box is matched → cancel its connection (both sides)
         if (l.classList.contains('matched')) {
           const matchedRightId = matchState.connections[it.id];
           if (matchedRightId) removeConnection(it.id, matchedRightId);
           return;
         }
 
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
 
+        // If right is already selected → create connection
         if(matchState.rightSelected){
           createOrRemap(matchState.leftSelected, matchState.rightSelected);
           document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
@@ -303,9 +346,11 @@ function showQuestion(){
       r.dataset.side = 'right';
       r.addEventListener('click', ()=> {
         if(paused) return;
+        // ✨ Visual pop animation
         r.style.transform = 'scale(1.2)';
         setTimeout(() => r.style.transform = '', 150);
 
+        // 🟡 If this right box is matched → cancel its connection (both sides)
         const matchedLeftId = Object.keys(matchState.connections)
           .find(lid => matchState.connections[lid] === it.id);
         if (matchedLeftId) {
@@ -313,12 +358,14 @@ function showQuestion(){
           return;
         }
 
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
 
+        // If left is already selected → create connection
         if(matchState.leftSelected){
           createOrRemap(matchState.leftSelected, matchState.rightSelected);
           document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
@@ -381,33 +428,33 @@ function showQuestion(){
   }
 
   // MCQ block (submit disabled until user selects an option)
-  if(q.type === 'mcq'){
-    Q_Q.innerHTML = q.q;
-    Q_ANS.style.gridTemplateColumns='1fr 1fr';
-    (q.options || []).forEach((opt,i)=>{
-      const btn = document.createElement('button'); btn.className='answer-btn-custom';
-      btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
-      const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
-      btn.addEventListener('click', ()=> {
-        if(paused) return;
-        if(btn.disabled) return;
-        document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
-        btn.classList.add('selected-option');
-        let control = document.getElementById('mcq-control');
-        if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
-        control.dataset.selected = String(i); // store as non-empty string
-      });
-      Q_ANS.appendChild(btn);
-    });
-    const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
-    const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
-    submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
-    controls.appendChild(submitBtn);
-    Q_ANS.appendChild(controls);
-    return;
-  }
+    if(q.type === 'mcq'){
+        Q_Q.innerHTML = q.q;
+        Q_ANS.style.gridTemplateColumns='1fr 1fr';
+        (q.options || []).forEach((opt,i)=>{
+        const btn = document.createElement('button'); btn.className='answer-btn-custom';
+        btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
+        const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
+        btn.addEventListener('click', ()=> {
+            if(paused) return;
+            if(btn.disabled) return;
+            document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
+            btn.classList.add('selected-option');
+            let control = document.getElementById('mcq-control');
+            if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
+            control.dataset.selected = String(i); // store as non-empty string
+        });
+        Q_ANS.appendChild(btn);
+        });
+        const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
+        const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
+        submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
+        controls.appendChild(submitBtn);
+        Q_ANS.appendChild(controls);
+        return;
+    }
 
-  // arrange/drag questions (Part E)
+  // arrange/drag questions (part C)
   if(q.type === 'drag'){
     Q_Q.innerHTML = q.q;
     Q_ANS.style.gridTemplateColumns='1fr';
@@ -419,21 +466,21 @@ function showQuestion(){
       const btn = document.createElement('button');
       btn.textContent = word;
       btn.type = 'button';
-      btn.className = 'answer-btn-custom border-c1';
-      btn.style.width = "140px";
-      btn.style.minHeight = "42px";
-      btn.style.fontSize = "1.05rem";
-      btn.style.margin = "0 6px 6px 0";
+      btn.className = 'answer-btn-custom border-c1'; // Use same box style as MCQ/match
+      btn.style.width = "110px";
+      btn.style.minHeight = "38px";
+      btn.style.fontSize = "1.1rem";
+      btn.style.margin = "0 4px 4px 0";
       btn.style.textAlign = "center";
       btn.addEventListener('click', () => {
         if(btn.classList.contains('selected')) return;
         const ansBtn = document.createElement('button');
         ansBtn.textContent = word;
-        ansBtn.className = 'answer-btn-custom border-c1';
-        ansBtn.style.width = "140px";
-        ansBtn.style.minHeight = "42px";
-        ansBtn.style.fontSize = "1.05rem";
-        ansBtn.style.margin = "0 6px 6px 0";
+        ansBtn.className = 'answer-btn-custom border-c1'; // Use same box style
+        ansBtn.style.width = "110px";
+        ansBtn.style.minHeight = "38px";
+        ansBtn.style.fontSize = "1.1rem";
+        ansBtn.style.margin = "0 4px 4px 0";
         ansBtn.style.textAlign = "center";
         ansBtn.setAttribute('draggable', 'true');
 
@@ -482,9 +529,13 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
+        // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -504,7 +555,7 @@ function showQuestion(){
     return;
   }
 
-  // ---------- FILL-IN-THE-BLANK QUESTION ----------
+    // ---------- FILL-IN-THE-BLANK QUESTION ----------
   if(q.type === 'fill'){
     Q_Q.innerHTML = q.q;
     Q_ANS.style.gridTemplateColumns = '1fr';
@@ -541,10 +592,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -554,7 +607,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }
@@ -570,136 +623,135 @@ function showQuestion(){
   Q_Q.innerHTML = 'Unknown question type';
 }
 
-/* ---------- Matching helpers ---------- */
-function createOrRemap(leftId,rightId){
-  // remove any existing connection for leftId or rightId (one-to-one)
-  if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
-  for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
-  matchState.connections[leftId] = rightId;
-  const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
-  if(leftEl) leftEl.classList.add('matched');
-  if(rightEl) rightEl.classList.add('matched');
-  if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
-  const p = drawAnimatedPath(leftEl, rightEl);
-  matchState.pathMap[leftId] = p;
-}
-function removeConnection(leftId, rightId) {
-  // Remove stored link
-  delete matchState.connections[leftId];
+	/* ---------- Matching helpers ---------- */
+	function createOrRemap(leftId,rightId){
+	// remove any existing connection for leftId or rightId (one-to-one)
+	if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
+	for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
+	matchState.connections[leftId] = rightId;
+	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
+	if(leftEl) leftEl.classList.add('matched');
+	if(rightEl) rightEl.classList.add('matched');
+	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
+	const p = drawAnimatedPath(leftEl, rightEl);
+	matchState.pathMap[leftId] = p;
+	}
+  function removeConnection(leftId, rightId) {
+    // Remove stored link
+    delete matchState.connections[leftId];
 
-  // Get the line path and connected boxes
-  const leftEl = byId('left-' + leftId);
-  const rightEl = byId('right-' + rightId);
-  const path = matchState.pathMap[leftId];
-  delete matchState.pathMap[leftId];
+    // Get the line path and connected boxes
+    const leftEl = byId('left-' + leftId);
+    const rightEl = byId('right-' + rightId);
+    const path = matchState.pathMap[leftId];
+    delete matchState.pathMap[leftId];
 
-  // Smooth line fade-out before removal
-  if (path) {
-    path.style.transition = 'opacity 0.25s ease-out';
-    path.style.opacity = '0';
-    setTimeout(() => {
-      try { path.remove(); } catch (e) {}
-    }, 250);
-  }
-
-  // Smoothly un-highlight both boxes
-  [leftEl, rightEl].forEach(el => {
-    if (el) {
-      el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
-      el.classList.remove('matched', 'selected');
-      el.style.transform = 'scale(0.92)';
+    // 🧊 Smooth line fade-out before removal
+    if (path) {
+      path.style.transition = 'opacity 0.25s ease-out';
+      path.style.opacity = '0';
       setTimeout(() => {
-        el.style.transform = 'scale(1)';
-      }, 150);
+        try { path.remove(); } catch (e) {}
+      }, 250);
     }
-  });
-}
 
-/* ---------- MCQ handler with robust selection check ---------- */
-function handleMcqSubmitToggle(submitBtn, qObj){
-  if(paused) return;
-  if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+    // 🟢 Smoothly un-highlight both boxes
+    [leftEl, rightEl].forEach(el => {
+      if (el) {
+        el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
+        el.classList.remove('matched', 'selected');
+        el.style.transform = 'scale(0.92)';
+        setTimeout(() => {
+          el.style.transform = 'scale(1)';
+        }, 150);
+      }
+    });
+  }
 
-  const control = document.getElementById('mcq-control');
-  const sel = control ? control.dataset.selected : undefined;
-  if(!control || sel === undefined || sel === ''){
-      Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
-      setTimeout(()=> Q_FB.textContent='',900);
-      return;
-  }
-  const selectedIndex = parseInt(sel,10);
-  if(isNaN(selectedIndex)){
-      Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
-      setTimeout(()=> Q_FB.textContent='',900);
-      return;
-  }
-  const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
-  allBtns.forEach((b, idx) => {
-      if(idx === qObj.answer) b.style.borderColor = '#4caf50';
-      if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
-      b.disabled = true;
-  });
-  if(selectedIndex === qObj.answer){
-      const fill = allBtns[selectedIndex].querySelector('.answer-fill');
-      if(fill) fill.style.height = '100%';
-      Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
-      score++; // Only increment once
-  } else {
-      Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
-      const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
-      setTimeout(()=> buz.remove(),700);
-  }
-  submitBtn.textContent = 'Next';
-  submitBtn.dataset.answered = "true"; // Mark as answered
-  submitBtn.onclick = ()=> {
-      const control2 = document.getElementById('mcq-control');
-      if(control2) control2.remove();
-      current++;
-      showQuestion();
-  };
-}
+	/* ---------- MCQ handler with robust selection check ---------- */
+	function handleMcqSubmitToggle(submitBtn, qObj){
+    if(paused) return;
+    if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+
+    const control = document.getElementById('mcq-control');
+    const sel = control ? control.dataset.selected : undefined;
+    if(!control || sel === undefined || sel === ''){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const selectedIndex = parseInt(sel,10);
+    if(isNaN(selectedIndex)){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
+    allBtns.forEach((b, idx) => {
+        if(idx === qObj.answer) b.style.borderColor = '#4caf50';
+        if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
+        b.disabled = true;
+    });
+    if(selectedIndex === qObj.answer){
+        const fill = allBtns[selectedIndex].querySelector('.answer-fill');
+        if(fill) fill.style.height = '100%';
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++; // Only increment once
+    } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
+        const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+    }
+    submitBtn.textContent = 'Next';
+    submitBtn.dataset.answered = "true"; // Mark as answered
+    submitBtn.onclick = ()=> {
+        const control2 = document.getElementById('mcq-control');
+        if(control2) control2.remove();
+        current++;
+        showQuestion();
+    };
+	}
 
 /* ---------- Progress & finish ---------- */
-function updateProgress() {
-  const bar = document.getElementById('quiz-progress-bar');
-  bar.style.width = ((current / questions.length) * 100) + '%';
+	function updateProgress() {
+		const bar = document.getElementById('quiz-progress-bar');
+		bar.style.width = ((current / questions.length) * 100) + '%';
+	}
+
+	function setUnlockedLevel(level) {
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
+		}
+	}
+
+	// Calculate total possible score (1 point per item in match, 1 per other question)
+	const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
+
+	function finishQuiz() {
+    document.getElementById('quiz-question').innerHTML = '';
+    document.getElementById('quiz-answers').innerHTML = '';
+    document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+    document.getElementById('quiz-progress-bar').style.width = '100%';
+    setUnlockedLevel(2);
+    setTimeout(function() {
+        var btn = document.getElementById('nextLevelBtn');
+        if (btn) {
+            btn.onclick = function() {
+                window.location.href = 'rookie_quiz21.html';
+            };
+        }
+    }, 100);
 }
-
-function setUnlockedLevel(level) {
-  localStorage.setItem('rookieUnlockedLevel', String(level));
-  // If logged in, update backend
-  var username = localStorage.getItem('rookieUserId');
-  if (username) {
-    fetch('http://localhost:3000/api/updateProgress', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ username, unlockedLevel: level })
-    }).catch(()=>{});
-  }
-}
-
-// Calculate total possible score (1 point per item in match, 1 per other question)
-const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
-
-function finishQuiz() {
-  document.getElementById('quiz-question').innerHTML = '';
-  document.getElementById('quiz-answers').innerHTML = '';
-  document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
-  document.getElementById('quiz-progress-bar').style.width = '100%';
-  setUnlockedLevel(17); // unlock next level (example)
-  setTimeout(function() {
-      var btn = document.getElementById('nextLevelBtn');
-      if (btn) {
-          btn.onclick = function() {
-              window.location.href = 'rookie_quiz21.html';
-          };
-      }
-  }, 100);
-}
-
-// Start the quiz
-paused = false;
-showQuestion();
+	// Start the quiz
+	paused = false;
+	showQuestion();
 </script>
 </body>
 </html>

@@ -122,50 +122,57 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1', cn:'热', en:'hot'},
-    {id:'m2', cn:'冷', en:'cold'},
-    {id:'m3', cn:'暖和', en:'warm'},
-    {id:'m4', cn:'凉快', en:'cool'},
-    {id:'m5', cn:'下雨', en:'to rain'}
-  ]},
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6', cn:'下雪', en:'to snow'},
-    {id:'m7', cn:'刮风', en:'windy'},
-    {id:'m8', cn:'春天', en:'spring'},
-    {id:'m9', cn:'秋天', en:'autumn/fall'},
-    {id:'m10', cn:'天气预报', en:'weather forecast'}
-  ]},
+  // ---------- Part A: Vocabulary Match (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'天气', en:'weather'},
+      {id:'m2', cn:'热', en:'hot'},
+      {id:'m3', cn:'冷', en:'cold'},
+      {id:'m4', cn:'下雨', en:'raining'},
+      {id:'m5', cn:'下雪', en:'snowing'}
+    ]  
+  },
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (6–10)', 
+    items:[
+      {id:'m6', cn:'风', en:'wind'},
+      {id:'m7', cn:'晴', en:'sunny'},
+      {id:'m8', cn:'阴', en:'cloudy'},
+      {id:'m9', cn:'多云', en:'partly cloudy'},
+      {id:'m10', cn:'刮风', en:'windy'}
+    ]
+  },
 
-  // ---------- Part B ----------
-  { type:'fill', q:'Q11: Today’s weather is hot → 今天____很热。', answer:'天气' },
-  { type:'fill', q:'Q12: It will snow tomorrow → 明天会____。', answer:'下雪' },
-  { type:'fill', q:'Q13: Winter is very cold → ____天很冷。', answer:'冬' },
-  { type:'fill', q:'Q14: I like summer → 我喜欢____天。', answer:'夏' },
-  { type:'fill', q:'Q15: Cloudy day → ____天', answer:'阴' },
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type:'mcq', q:'Q11: 今天___怎么样？', options:['秋天','天气','春天','冬天'], answer:1 },
+  { type:'mcq', q:'Q12: 今天很___。(hot)', options:['冷','热','多云','刮风'], answer:1 },
+  { type:'mcq', q:'Q13: 今天不太___。(cold)', options:['冷','热','多云','刮风'], answer:0 },
+  { type:'mcq', q:'Q14: 今天会___。(raining)', options:['下雪','下雨','夏天','上雨'], answer:1 },
+  { type:'mcq', q:'Q15: 今天天气___。(sunny)', options:['请','多云','刮风','下雨'], answer:0 },
+  { type:'mcq', q:'Q16: 今天___。(windy)', options:['请','多云','刮风','下雨'], answer:2 },
+  { type:'mcq', q:'Q17: 天气___？', options:['很','是','怎么样','在'], answer:2 },
+  { type:'mcq', q:'Q18: 今天___下雪吗？', options:['很','不太','是','会'], answer:3 },
+  { type:'mcq', q:'Q19: 明天天气___？', options:['怎么样','很','不太','在'], answer:0 },
+  { type:'mcq', q:'Q20: 今天___。(partly clody)', options:['请','多云','刮风','下雨'], answer:1 },
 
-  // ---------- Part C ----------
-  { type:'fill', q:'Q16: Today is sunny. →', answer:['今天是晴天','今天是晴天。'] },
-  { type:'fill', q:'Q17: Tomorrow will rain. →', answer:['明天会下雨','明天会下雨。'] },
-  { type:'fill', q:'Q18: I like autumn. →', answer:['我喜欢秋天','我喜欢秋天。'] },
-  { type:'fill', q:'Q19: Yesterday was cold. →', answer:['昨天很冷','昨天很冷。'] },
-  { type:'fill', q:'Q20: Spring is warm. →', answer:['春天很暖和','春天很暖和。'] },
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type:'fill', q:'Q21: 今天天气___？ (ask)', answer:['怎么样'] },
+  { type:'fill', q:'Q22: 今天___。 (very hot)', answer:['很热'] },
+  { type:'fill', q:'Q23: 今天会___。 (snowing)', answer:['下雪'] },
+  { type:'fill', q:'Q24: 今天___。 (not that cold)', answer:['不太冷'] },
+  { type:'fill', q:'Q25: 今天___。 (windy)', answer:['刮风'] },
 
-  // ---------- Part D ----------
-  { type:'mcq', q:'Q21: “下雪” means:', options:['to snow','to rain','to be hot','to wind'], answer:0 },
-  { type:'mcq', q:'Q22: How do you say “Today is very hot”?', options:['今天冷。','今天下雨。','今天很热。','今天会下雪。'], answer:2 },
-  { type:'mcq', q:'Q23: Which is correct for “Tomorrow will be windy”?', options:['明天会下雪。','明天会刮风。','明天很冷。','明天是晴天。'], answer:1 },
-  { type:'mcq', q:'Q24: “阴天” is:', options:['sunny day','rainy day','windy day','cloudy day'], answer:3 },
-  { type:'mcq', q:'Q25: How do you say “I like winter”?', options:['我喜欢春天。','我喜欢夏天。','我喜欢冬天。','我喜欢秋天。'], answer:2 },
-
-// ---------- Part E: Short Dialogue Practice (with English hints) ----------
-{ type:'fill', q:'Q26: A: 今天天气怎么样？ B: 今天____。 (very cold)', answer:['很冷'] },
-{ type:'fill', q:'Q27: A: 明天会下雨吗？ B: 会，明天会____。 (rain)', answer:['下雨'] },
-{ type:'fill', q:'Q28: A: 你喜欢哪个季节？ B: 我喜欢____天。 (spring)', answer:['春'] },
-{ type:'fill', q:'Q29: A: 昨天天气好吗？ B: 不好，____。 (very hot)', answer:['很热'] },
-{ type:'fill', q:'Q30: A: 天气预报说什么？ B: 天气预报说明天是____天。 (sunny)', answer:['晴'] },
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type:'fill', q:'Q26: Translate: “How is the weather today?” →', answer:['今天天气怎么样？'] },
+  { type:'fill', q:'Q27: Translate: “Today is very hot.” →', answer:['今天天气很热。'] },
+  { type:'fill', q:'Q28: Translate: “It’s raining today.” →', answer:['今天下雨。'] },
+  { type:'fill', q:'Q29: Translate: “It’s not very cold today.” →', answer:['今天不太冷。'] },
+  { type:'fill', q:'Q30: Translate: “It’s windy today.” →', answer:['今天刮风。'] }
 ];
+
 
 let current = 0;
 let score = 0;
@@ -230,6 +237,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -277,8 +319,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -318,8 +360,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -488,18 +530,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -548,10 +593,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -561,7 +608,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }

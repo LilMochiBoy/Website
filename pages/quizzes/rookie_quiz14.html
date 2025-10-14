@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 14 — Transportation & Directions</title>
+<title>Rookie Quiz Level 14 — Shopping</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 14: Transportation & Directions</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 14: Shopping</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,51 +122,55 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A: Vocabulary Match (1–5) ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1', cn:'公共汽车', en:'bus'},
-    {id:'m2', cn:'出租车', en:'taxi'},
-    {id:'m3', cn:'地铁', en:'subway'},
-    {id:'m4', cn:'火车', en:'train'},
-    {id:'m5', cn:'飞机', en:'airplane'}
-  ]},
+  // ---------- Part A: Vocabulary Match (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'商店', en:'store / shop'},
+      {id:'m2', cn:'钱', en:'money'},
+      {id:'m3', cn:'多少', en:'how much'},
+      {id:'m4', cn:'贵', en:'expensive'},
+      {id:'m5', cn:'便宜', en:'cheap'}
+    ]  
+  },
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (6–10)', 
+    items:[
+      {id:'m6', cn:'这个', en:'this one'},
+      {id:'m7', cn:'那个', en:'that one'},
+      {id:'m8', cn:'买', en:'buy'},
+      {id:'m9', cn:'卖', en:'sell'},
+      {id:'m10', cn:'东西', en:'thing / item'}
+    ]
+  },
 
-  // ---------- Part A: Vocabulary Match (6–10) ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6', cn:'自行车', en:'bicycle'},
-    {id:'m7', cn:'走路', en:'to walk'},
-    {id:'m8', cn:'左边', en:'left side'},
-    {id:'m9', cn:'右边', en:'right side'},
-    {id:'m10', cn:'前面', en:'front'}
-  ]},
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type:'mcq', q:'Q11: 这个___钱？', options:['小大','少多','多少','大小'], answer:2 },
+  { type:'mcq', q:'Q12: 那个___十块钱。', options:['是','有','在','去'], answer:0 },
+  { type:'mcq', q:'Q13: 太___了！ (too expensive)', options:['贵','便宜','钱','买'], answer:0 },
+  { type:'mcq', q:'Q14: 太___了！ (too cheap)', options:['贵','便宜','钱','卖'], answer:1 },
+  { type:'mcq', q:'Q15: 我想___这个。(buy)', options:['买','卖','是','在'], answer:0 },
+  { type:'mcq', q:'Q16: 请___我那个。(give)', options:['给','买','卖','在'], answer:0 },
+  { type:'mcq', q:'Q17: 便宜___可以吗？', options:['一点','很','太','多'], answer:0 },
+  { type:'mcq', q:'Q18: 这个多少___？', options:['钱','找','我','钥'], answer:0 },
+  { type:'mcq', q:'Q19: 我想买___。', options:['东西','钱','贵','太'], answer:0 },
+  { type:'mcq', q:'Q20: 请给我___。(that)', options:['这个','那个','钱','东西'], answer:1 },
 
-  // ---------- Part B: Fill in the Blank (11–15) ----------
-  { type:'fill', q:'Q11: Where is the shop? = 商店在____儿？ (where)', answer:['哪'] },
-  { type:'fill', q:'Q12: The school is in front = 学校在____面。 (front)', answer:['前'] },
-  { type:'fill', q:'Q13: I go to Beijing = 我____北京。 (go to)', answer:['去'] },
-  { type:'fill', q:'Q14: He comes here = 他____这儿。 (come)', answer:['来'] },
-  { type:'fill', q:'Q15: The bank is on the left = 银行在____边。 (left)', answer:['左'] },
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type:'fill', q:'Q21: ___多少钱？ (ask)', answer:['这个'] },
+  { type:'fill', q:'Q22: 那个十块___。 (yuan / money)', answer:['钱'] },
+  { type:'fill', q:'Q23: 太___了！ (expensive)', answer:['贵'] },
+  { type:'fill', q:'Q24: 我想___这个。 (buy)', answer:['买'] },
+  { type:'fill', q:'Q25: 请___我那个。 (give)', answer:['给'] },
 
-  // ---------- Part C: Translation (16–20) ----------
-  { type:'fill', q:'Q16: Where is the subway station? →', answer:['地铁站在哪儿','地铁站在哪里'] },
-  { type:'fill', q:'Q17: The bus is here. →', answer:['公共汽车在这儿','公交车在这儿'] },
-  { type:'fill', q:'Q18: The library is far. →', answer:['图书馆很远'] },
-  { type:'fill', q:'Q19: The train station is behind the school. →', answer:['火车站在学校后面'] },
-  { type:'fill', q:'Q20: How do I get to the airport? →', answer:['去飞机场怎么走','怎么去飞机场'] },
-
-  // ---------- Part D: Multiple Choice (21–25) ----------
-  { type:'mcq', q:'Q21: “走路” means:', options:['to walk','take a bus','to fly','to drive'], answer:0 },
-  { type:'mcq', q:'Q22: How do you say “I go to school”?', options:['我来学校。','我去学校。','我在学校。','我有学校。'], answer:1 },
-  { type:'mcq', q:'Q23: Which is correct for “The supermarket is near”?', options:['超市很远。','超市在哪儿？','超市很近。','超市不在这儿。'], answer:2 },
-  { type:'mcq', q:'Q24: “右边” is:', options:['right side','left side','back','front'], answer:0 },
-  { type:'mcq', q:'Q25: How to say “The park is there”?', options:['公园在这儿。','公园在哪儿？','公园很远。','公园在那儿。'], answer:3 },
-
-  // ---------- Part E: Short Dialogue Practice (26–30) ----------
-  { type:'fill', q:'Q26: A: 地铁站在哪儿？ B: 在____。 (front)', answer:['前面'] },
-  { type:'fill', q:'Q27: A: 你怎么去学校？ B: 我坐____去学校。 (bus)', answer:['公共汽车','公交车'] },
-  { type:'fill', q:'Q28: A: 公园远吗？ B: 不远，很____。 (near)', answer:['近'] },
-  { type:'fill', q:'Q29: A: 银行在左边吗？ B: 是的，银行在____。 (left side)', answer:['左边'] },
-  { type:'fill', q:'Q30: A: 你去北京吗？ B: 是的，我____北京。 (go to)', answer:['去'] }
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type:'fill', q:'Q26: Translate: “How much is this?” →', answer:['这个多少钱？'] },
+  { type:'fill', q:'Q27: Translate: “This is 5 yuan.” →', answer:['这个五块钱。'] },
+  { type:'fill', q:'Q28: Translate: “Too expensive!” →', answer:['太贵了！'] },
+  { type:'fill', q:'Q29: Translate: “I want to buy this.” →', answer:['我想买这个。'] },
+  { type:'fill', q:'Q30: Translate: “Please give me that one.” →', answer:['请给我那个。'] }
 ];
 
 let current = 0;
@@ -232,6 +236,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -279,8 +318,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -320,8 +359,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -490,18 +529,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -550,10 +592,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -563,7 +607,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 21 — Weather & Daily Life (Review)</title>
+<title>Rookie Quiz Level 21 — Clothes</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 21: Weather & Daily Life (Review)</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 21: Clothes</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,51 +122,55 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A: Vocabulary Match (1–5) ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1',cn:'天气',en:'weather'},
-    {id:'m2',cn:'晴',en:'sunny'},
-    {id:'m3',cn:'阴',en:'cloudy'},
-    {id:'m4',cn:'雨',en:'rain'},
-    {id:'m5',cn:'雪',en:'snow'}
-  ]},
+  // ---------- Part A: Vocabulary / Matching (Q1–10) ----------
+  {
+    type: 'match',
+    pageTitle: 'Part A: Vocabulary (1–5)',
+    items: [
+      { id: 'm1', cn: '衣服', en: 'clothes' },
+      { id: 'm2', cn: '裤子', en: 'pants' },
+      { id: 'm3', cn: '裙子', en: 'skirt' },
+      { id: 'm4', cn: '外套', en: 'coat / jacket' },
+      { id: 'm5', cn: '鞋子', en: 'shoes' },
+    ]
+  },
+  {
+    type: 'match',
+    pageTitle: 'Part A: Vocabulary (6–10)',
+    items: [
+      { id: 'm6', cn: '帽子', en: 'hat' },
+      { id: 'm7', cn: '手套', en: 'gloves' },
+      { id: 'm8', cn: '袜子', en: 'socks' },
+      { id: 'm9', cn: '眼镜', en: 'glasses' },
+      { id: 'm10', cn: '领带', en: 'tie' },
+    ]
+  },
 
-  // ---------- Part A: Vocabulary Match (6–10) ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6',cn:'热',en:'hot'},
-    {id:'m7',cn:'冷',en:'cold'},
-    {id:'m8',cn:'衣服',en:'clothes'},
-    {id:'m9',cn:'外套',en:'coat / jacket'},
-    {id:'m10',cn:'帽子',en:'hat'}
-  ]},
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type: 'mcq', q: 'Q11: 我穿___。 (clothes)', options: ['帽子', '衣服', '袜子', '鞋子'], answer: 1 },
+  { type: 'mcq', q: 'Q12: 他戴___。 (hat)', options: ['裙子', '鞋子', '帽子', '裤子'], answer: 2 },
+  { type: 'mcq', q: 'Q13: 我穿___去学校。 (pants)', options: ['袜子', '裤子', '裙子', '衬衫'], answer: 1 },
+  { type: 'mcq', q: 'Q14: 她戴___。 (gloves)', options: ['手套', '眼镜', '鞋子', '裙子'], answer: 0 },
+  { type: 'mcq', q: 'Q15: 我穿___。 (socks)', options: ['帽子', '袜子', '裤子', '裙子'], answer: 1 },
+  { type: 'mcq', q: 'Q16: 他戴___去上班。 (glasses)', options: ['帽子', '鞋子', '眼镜', '衬衫'], answer: 2 },
+  { type: 'mcq', q: 'Q17: 我穿___。 (sneakers)', options: ['鞋子', '裙子', '裤子', '帽子'], answer: 0 },
+  { type: 'mcq', q: 'Q18: 她穿___去商店。 (skirt)', options: ['鞋子', '裤子', '裙子', '袜子'], answer: 2 },
+  { type: 'mcq', q: 'Q19: 我___帽子。 (wear)', options: ['要', '用', '穿', '戴'], answer: 3 },
+  { type: 'mcq', q: 'Q20: 他___衬衫去学校。 (wear)', options: ['要', '用', '穿', '戴'], answer: 2 },
 
-  // ---------- Part B: Fill in the Blank (11–15) ----------
-  { type:'fill', q:'Q11: It’s very cold today = 今天很____。', answer:['冷'] },
-  { type:'fill', q:'Q12: Will it rain tomorrow? = 明天会____吗？', answer:['下雨'] },
-  { type:'fill', q:'Q13: I wear gloves = 我戴____。', answer:['手套'] },
-  { type:'fill', q:'Q14: Go out = ____去。', answer:['出'] },
-  { type:'fill', q:'Q15: After going home, I read a book = ____后，我看书。', answer:['回家'] },
+  // ---------- Part C: Fill in the blanks (Q21–25) ----------
+  { type: 'fill', q: 'Q21: 我穿红色的___。 (clothes)', answer: ['衣服'] },
+  { type: 'fill', q: 'Q22: 他戴___。 (hat)', answer: ['帽子'] },
+  { type: 'fill', q: 'Q23: 她穿___去上班。 (skirt)', answer: ['裙子'] },
+  { type: 'fill', q: 'Q24: 我穿运动___去学校。 (shoes)', answer: ['鞋'] },
+  { type: 'fill', q: 'Q25: 他戴___。 (glasses)', answer: ['眼镜'] },
 
-  // ---------- Part C: Drag & Drop Translation Assembly (16–20) ----------
-  { type:'drag', q:'Q16: (Translate) It’s sunny today.', words:['今天','晴','。'], correct:'今天 晴 。' },
-  { type:'drag', q:'Q17: (Translate) The weather is hot.', words:['天气','很','热','。'], correct:'天气 很 热 。' },
-  { type:'drag', q:'Q18: (Translate) I wear a coat.', words:['我','穿','外套','。'], correct:'我 穿 外套 。' },
-  { type:'drag', q:'Q19: (Translate) Tomorrow it will snow.', words:['明天','会','下雪','。'], correct:'明天 会 下雪 。' },
-  { type:'drag', q:'Q20: (Translate) What’s the temperature today?', words:['今天','几','度','？'], correct:'今天 几 度 ？' },
-
-  // ---------- Part D: Multiple Choice (21–25) ----------
-  { type:'mcq', q:'Q21: “下雪” means:', options:['raining','snowing','sunny','windy'], answer:1 },
-  { type:'mcq', q:'Q22: How do you say “I go out”?', options:['我回家','我看书','我出去','我穿衣服'], answer:2 },
-  { type:'mcq', q:'Q23: Which is correct for “Wear a hat”?', options:['戴帽子','戴手套','穿外套','戴衣服'], answer:0 },
-  { type:'mcq', q:'Q24: “天气” is:', options:['temperature','clothing','rain','weather'], answer:3 },
-  { type:'mcq', q:'Q25: How to say “After going home, I watch TV”?', options:['回家后，我看电视。','回家后，我吃饭。','出去后，我看电视。','我回家。'], answer:0 },
-
-  // ---------- Part E: Short Dialogue Practice (26–30) ----------
-  { type:'fill', q:'Q26: A: 今天冷吗？ B: 是的，很____。 (cold)', answer:['冷'] },
-  { type:'fill', q:'Q27: A: 明天会下雨吗？ B: 会，____。 (rain)', answer:['下雨'] },
-  { type:'fill', q:'Q28: A: 你穿什么？ B: 我穿____。 (coat)', answer:['外套'] },
-  { type:'fill', q:'Q29: A: 天气怎么样？ B: 今天____，很热。 (sunny)', answer:['晴'] },
-  { type:'fill', q:'Q30: A: 你回家后做什么？ B: 回家后，我____。 (read a book)', answer:['看书'] },
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type: 'fill', q: 'Q26: Translate: “I wear clothes.” →', answer: ['我穿衣服。'] },
+  { type: 'fill', q: 'Q27: Translate: “He wears a hat.” →', answer: ['他戴帽子。'] },
+  { type: 'fill', q: 'Q28: Translate: “She wears a skirt to work.” →', answer: ['她穿裙子去上班。'] },
+  { type: 'fill', q: 'Q29: Translate: “I wear sneakers to school.” →', answer: ['我穿运动鞋去学校。'] },
+  { type: 'fill', q: 'Q30: Translate: “He wears glasses.” →', answer: ['他戴眼镜。'] },
 ];
 
 let current = 0;
@@ -232,6 +236,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -267,21 +306,25 @@ function showQuestion(){
       l.dataset.side = 'left';
       l.addEventListener('click', ()=> {
         if(paused) return;
+        // ✨ Visual pop animation
         l.style.transform = 'scale(1.2)';
         setTimeout(() => l.style.transform = '', 150);
 
+        // 🟡 If this left box is matched → cancel its connection (both sides)
         if (l.classList.contains('matched')) {
           const matchedRightId = matchState.connections[it.id];
           if (matchedRightId) removeConnection(it.id, matchedRightId);
           return;
         }
 
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
 
+        // If right is already selected → create connection
         if(matchState.rightSelected){
           createOrRemap(matchState.leftSelected, matchState.rightSelected);
           document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
@@ -303,9 +346,11 @@ function showQuestion(){
       r.dataset.side = 'right';
       r.addEventListener('click', ()=> {
         if(paused) return;
+        // ✨ Visual pop animation
         r.style.transform = 'scale(1.2)';
         setTimeout(() => r.style.transform = '', 150);
 
+        // 🟡 If this right box is matched → cancel its connection (both sides)
         const matchedLeftId = Object.keys(matchState.connections)
           .find(lid => matchState.connections[lid] === it.id);
         if (matchedLeftId) {
@@ -313,12 +358,14 @@ function showQuestion(){
           return;
         }
 
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
 
+        // If left is already selected → create connection
         if(matchState.leftSelected){
           createOrRemap(matchState.leftSelected, matchState.rightSelected);
           document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
@@ -381,33 +428,33 @@ function showQuestion(){
   }
 
   // MCQ block (submit disabled until user selects an option)
-  if(q.type === 'mcq'){
-    Q_Q.innerHTML = q.q;
-    Q_ANS.style.gridTemplateColumns='1fr 1fr';
-    (q.options || []).forEach((opt,i)=>{
-      const btn = document.createElement('button'); btn.className='answer-btn-custom';
-      btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
-      const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
-      btn.addEventListener('click', ()=> {
-        if(paused) return;
-        if(btn.disabled) return;
-        document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
-        btn.classList.add('selected-option');
-        let control = document.getElementById('mcq-control');
-        if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
-        control.dataset.selected = String(i); // store as non-empty string
-      });
-      Q_ANS.appendChild(btn);
-    });
-    const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
-    const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
-    submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
-    controls.appendChild(submitBtn);
-    Q_ANS.appendChild(controls);
-    return;
-  }
+    if(q.type === 'mcq'){
+        Q_Q.innerHTML = q.q;
+        Q_ANS.style.gridTemplateColumns='1fr 1fr';
+        (q.options || []).forEach((opt,i)=>{
+        const btn = document.createElement('button'); btn.className='answer-btn-custom';
+        btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
+        const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
+        btn.addEventListener('click', ()=> {
+            if(paused) return;
+            if(btn.disabled) return;
+            document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
+            btn.classList.add('selected-option');
+            let control = document.getElementById('mcq-control');
+            if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
+            control.dataset.selected = String(i); // store as non-empty string
+        });
+        Q_ANS.appendChild(btn);
+        });
+        const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
+        const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
+        submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
+        controls.appendChild(submitBtn);
+        Q_ANS.appendChild(controls);
+        return;
+    }
 
-  // arrange/drag questions (Part E)
+  // arrange/drag questions (part C)
   if(q.type === 'drag'){
     Q_Q.innerHTML = q.q;
     Q_ANS.style.gridTemplateColumns='1fr';
@@ -419,21 +466,21 @@ function showQuestion(){
       const btn = document.createElement('button');
       btn.textContent = word;
       btn.type = 'button';
-      btn.className = 'answer-btn-custom border-c1';
-      btn.style.width = "140px";
-      btn.style.minHeight = "42px";
-      btn.style.fontSize = "1.05rem";
-      btn.style.margin = "0 6px 6px 0";
+      btn.className = 'answer-btn-custom border-c1'; // Use same box style as MCQ/match
+      btn.style.width = "110px";
+      btn.style.minHeight = "38px";
+      btn.style.fontSize = "1.1rem";
+      btn.style.margin = "0 4px 4px 0";
       btn.style.textAlign = "center";
       btn.addEventListener('click', () => {
         if(btn.classList.contains('selected')) return;
         const ansBtn = document.createElement('button');
         ansBtn.textContent = word;
-        ansBtn.className = 'answer-btn-custom border-c1';
-        ansBtn.style.width = "140px";
-        ansBtn.style.minHeight = "42px";
-        ansBtn.style.fontSize = "1.05rem";
-        ansBtn.style.margin = "0 6px 6px 0";
+        ansBtn.className = 'answer-btn-custom border-c1'; // Use same box style
+        ansBtn.style.width = "110px";
+        ansBtn.style.minHeight = "38px";
+        ansBtn.style.fontSize = "1.1rem";
+        ansBtn.style.margin = "0 4px 4px 0";
         ansBtn.style.textAlign = "center";
         ansBtn.setAttribute('draggable', 'true');
 
@@ -482,9 +529,13 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
+        // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -504,7 +555,7 @@ function showQuestion(){
     return;
   }
 
-  // ---------- FILL-IN-THE-BLANK QUESTION ----------
+    // ---------- FILL-IN-THE-BLANK QUESTION ----------
   if(q.type === 'fill'){
     Q_Q.innerHTML = q.q;
     Q_ANS.style.gridTemplateColumns = '1fr';
@@ -541,10 +592,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -554,7 +607,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }
@@ -570,136 +623,135 @@ function showQuestion(){
   Q_Q.innerHTML = 'Unknown question type';
 }
 
-/* ---------- Matching helpers ---------- */
-function createOrRemap(leftId,rightId){
-  // remove any existing connection for leftId or rightId (one-to-one)
-  if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
-  for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
-  matchState.connections[leftId] = rightId;
-  const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
-  if(leftEl) leftEl.classList.add('matched');
-  if(rightEl) rightEl.classList.add('matched');
-  if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
-  const p = drawAnimatedPath(leftEl, rightEl);
-  matchState.pathMap[leftId] = p;
-}
-function removeConnection(leftId, rightId) {
-  // Remove stored link
-  delete matchState.connections[leftId];
+	/* ---------- Matching helpers ---------- */
+	function createOrRemap(leftId,rightId){
+	// remove any existing connection for leftId or rightId (one-to-one)
+	if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
+	for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
+	matchState.connections[leftId] = rightId;
+	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
+	if(leftEl) leftEl.classList.add('matched');
+	if(rightEl) rightEl.classList.add('matched');
+	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
+	const p = drawAnimatedPath(leftEl, rightEl);
+	matchState.pathMap[leftId] = p;
+	}
+  function removeConnection(leftId, rightId) {
+    // Remove stored link
+    delete matchState.connections[leftId];
 
-  // Get the line path and connected boxes
-  const leftEl = byId('left-' + leftId);
-  const rightEl = byId('right-' + rightId);
-  const path = matchState.pathMap[leftId];
-  delete matchState.pathMap[leftId];
+    // Get the line path and connected boxes
+    const leftEl = byId('left-' + leftId);
+    const rightEl = byId('right-' + rightId);
+    const path = matchState.pathMap[leftId];
+    delete matchState.pathMap[leftId];
 
-  // Smooth line fade-out before removal
-  if (path) {
-    path.style.transition = 'opacity 0.25s ease-out';
-    path.style.opacity = '0';
-    setTimeout(() => {
-      try { path.remove(); } catch (e) {}
-    }, 250);
-  }
-
-  // Smoothly un-highlight both boxes
-  [leftEl, rightEl].forEach(el => {
-    if (el) {
-      el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
-      el.classList.remove('matched', 'selected');
-      el.style.transform = 'scale(0.92)';
+    // 🧊 Smooth line fade-out before removal
+    if (path) {
+      path.style.transition = 'opacity 0.25s ease-out';
+      path.style.opacity = '0';
       setTimeout(() => {
-        el.style.transform = 'scale(1)';
-      }, 150);
+        try { path.remove(); } catch (e) {}
+      }, 250);
     }
-  });
-}
 
-/* ---------- MCQ handler with robust selection check ---------- */
-function handleMcqSubmitToggle(submitBtn, qObj){
-  if(paused) return;
-  if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+    // 🟢 Smoothly un-highlight both boxes
+    [leftEl, rightEl].forEach(el => {
+      if (el) {
+        el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
+        el.classList.remove('matched', 'selected');
+        el.style.transform = 'scale(0.92)';
+        setTimeout(() => {
+          el.style.transform = 'scale(1)';
+        }, 150);
+      }
+    });
+  }
 
-  const control = document.getElementById('mcq-control');
-  const sel = control ? control.dataset.selected : undefined;
-  if(!control || sel === undefined || sel === ''){
-      Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
-      setTimeout(()=> Q_FB.textContent='',900);
-      return;
-  }
-  const selectedIndex = parseInt(sel,10);
-  if(isNaN(selectedIndex)){
-      Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
-      setTimeout(()=> Q_FB.textContent='',900);
-      return;
-  }
-  const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
-  allBtns.forEach((b, idx) => {
-      if(idx === qObj.answer) b.style.borderColor = '#4caf50';
-      if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
-      b.disabled = true;
-  });
-  if(selectedIndex === qObj.answer){
-      const fill = allBtns[selectedIndex].querySelector('.answer-fill');
-      if(fill) fill.style.height = '100%';
-      Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
-      score++; // Only increment once
-  } else {
-      Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
-      const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
-      setTimeout(()=> buz.remove(),700);
-  }
-  submitBtn.textContent = 'Next';
-  submitBtn.dataset.answered = "true"; // Mark as answered
-  submitBtn.onclick = ()=> {
-      const control2 = document.getElementById('mcq-control');
-      if(control2) control2.remove();
-      current++;
-      showQuestion();
-  };
-}
+	/* ---------- MCQ handler with robust selection check ---------- */
+	function handleMcqSubmitToggle(submitBtn, qObj){
+    if(paused) return;
+    if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+
+    const control = document.getElementById('mcq-control');
+    const sel = control ? control.dataset.selected : undefined;
+    if(!control || sel === undefined || sel === ''){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const selectedIndex = parseInt(sel,10);
+    if(isNaN(selectedIndex)){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
+    allBtns.forEach((b, idx) => {
+        if(idx === qObj.answer) b.style.borderColor = '#4caf50';
+        if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
+        b.disabled = true;
+    });
+    if(selectedIndex === qObj.answer){
+        const fill = allBtns[selectedIndex].querySelector('.answer-fill');
+        if(fill) fill.style.height = '100%';
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++; // Only increment once
+    } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
+        const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+    }
+    submitBtn.textContent = 'Next';
+    submitBtn.dataset.answered = "true"; // Mark as answered
+    submitBtn.onclick = ()=> {
+        const control2 = document.getElementById('mcq-control');
+        if(control2) control2.remove();
+        current++;
+        showQuestion();
+    };
+	}
 
 /* ---------- Progress & finish ---------- */
-function updateProgress() {
-  const bar = document.getElementById('quiz-progress-bar');
-  bar.style.width = ((current / questions.length) * 100) + '%';
+	function updateProgress() {
+		const bar = document.getElementById('quiz-progress-bar');
+		bar.style.width = ((current / questions.length) * 100) + '%';
+	}
+
+	function setUnlockedLevel(level) {
+		localStorage.setItem('rookieUnlockedLevel', String(level));
+		// If logged in, update backend
+		var username = localStorage.getItem('rookieUserId');
+		if (username) {
+			fetch('http://localhost:3000/api/updateProgress', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ username, unlockedLevel: level })
+			});
+		}
+	}
+
+	// Calculate total possible score (1 point per item in match, 1 per other question)
+	const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
+
+	function finishQuiz() {
+    document.getElementById('quiz-question').innerHTML = '';
+    document.getElementById('quiz-answers').innerHTML = '';
+    document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+    document.getElementById('quiz-progress-bar').style.width = '100%';
+    setUnlockedLevel(2);
+    setTimeout(function() {
+        var btn = document.getElementById('nextLevelBtn');
+        if (btn) {
+            btn.onclick = function() {
+                window.location.href = 'rookie_quiz22.html';
+            };
+        }
+    }, 100);
 }
-
-function setUnlockedLevel(level) {
-  localStorage.setItem('rookieUnlockedLevel', String(level));
-  // If logged in, update backend
-  var username = localStorage.getItem('rookieUserId');
-  if (username) {
-    fetch('http://localhost:3000/api/updateProgress', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ username, unlockedLevel: level })
-    }).catch(()=>{});
-  }
-}
-
-// Calculate total possible score (1 point per item in match, 1 per other question)
-const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
-
-function finishQuiz() {
-  document.getElementById('quiz-question').innerHTML = '';
-  document.getElementById('quiz-answers').innerHTML = '';
-  document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
-  document.getElementById('quiz-progress-bar').style.width = '100%';
-  setUnlockedLevel(17); // unlock next level (example)
-  setTimeout(function() {
-      var btn = document.getElementById('nextLevelBtn');
-      if (btn) {
-          btn.onclick = function() {
-              window.location.href = 'rookie_quiz22.html';
-          };
-      }
-  }, 100);
-}
-
-// Start the quiz
-paused = false;
-showQuestion();
+	// Start the quiz
+	paused = false;
+	showQuestion();
 </script>
 </body>
 </html>

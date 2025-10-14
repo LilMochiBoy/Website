@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 11 — Colors & Clothing</title>
+<title>Rookie Quiz Level 11 — Hobbies</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 11: Colors & Clothing</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 11: Hobbies</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,49 +122,55 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1', cn:'红色', en:'red'},
-    {id:'m2', cn:'蓝色', en:'blue'},
-    {id:'m3', cn:'绿色', en:'green'},
-    {id:'m4', cn:'黑色', en:'black'},
-    {id:'m5', cn:'白色', en:'white'}
-  ]},
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6', cn:'衣服', en:'clothes'},
-    {id:'m7', cn:'裙子', en:'skirt'},
-    {id:'m8', cn:'鞋子', en:'shoes'},
-    {id:'m9', cn:'帽子', en:'hat'},
-    {id:'m10', cn:'外套', en:'coat/jacket'}
-  ]},
+  // ---------- Part A: Vocabulary Match (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'点', en:'hour / o’clock'},
+      {id:'m2', cn:'分', en:'minute'},
+      {id:'m3', cn:'半', en:'half (30 min)'},
+      {id:'m4', cn:'现在', en:'now'},
+      {id:'m5', cn:'上午', en:'morning'},
+    ]  
+  },
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (6–10)', 
+    items:[
+      {id:'m6', cn:'下午', en:'afternoon'},
+      {id:'m7', cn:'晚上', en:'evening/night'},
+      {id:'m8', cn:'分钟', en:'minute (duration)'},
+      {id:'m9', cn:'小时', en:'hour'},
+      {id:'m10', cn:'什么时候', en:'when'}
+    ]
+  },
 
-  // ---------- Part B ----------
-  { type:'fill', q:'Q11: He wears black shoes → 他穿____的鞋子。', answer:'黑色' },
-  { type:'fill', q:'Q12: Red skirt → ____色的裙子', answer:'红' },
-  { type:'fill', q:'Q13: White shirt → ____色的衬衫', answer:'白' },
-  { type:'fill', q:'Q14: These clothes look nice → 这件衣服很____。', answer:'好看' },
-  { type:'fill', q:'Q15: She wears blue pants → 她穿____的裤子。', answer:'蓝色' },
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type:'mcq', q:'Q11: 现在___几点？', options:['是','有','在','去'], answer:0 },
+  { type:'mcq', q:'Q12: 现在三点___。', options:['分','半','点','小时'], answer:1 },
+  { type:'mcq', q:'Q13: 十点一刻 = ___', options:['10:15','10:30','11:15','9:15'], answer:0 },
+  { type:'mcq', q:'Q14: 三点半 = ___', options:['3:15','3:30','3:45','4:30'], answer:1 },
+  { type:'mcq', q:'Q15: 下午两点 = ___', options:['2 AM','2 PM','14:00','b & c'], answer:3 },
+  { type:'mcq', q:'Q16: 上午八点 = ___', options:['8 PM','8 AM','20:00','18:00'], answer:1 },
+  { type:'mcq', q:'Q17: 你___去上课？ (when)', options:['什么时候','点','分','半'], answer:0 },
+  { type:'mcq', q:'Q18: 现在五点十___。', options:['分','半','点','小时'], answer:0 },
+  { type:'mcq', q:'Q19: 晚上七点半 = ___', options:['19:30','7:30 AM','7:15 PM','18:30'], answer:0 },
+  { type:'mcq', q:'Q20: 现在___十二点一刻。', options:['是','在','有','去'], answer:0 },
 
-  // ---------- Part C ----------
-  { type:'fill', q:'Q16: I wear a yellow T-shirt. →', answer:['我穿黄色的T恤','我穿黄色的T恤。'] },
-  { type:'fill', q:'Q17: He wears jeans. →', answer:['他穿牛仔裤','他穿牛仔裤。'] },
-  { type:'fill', q:'Q18: She has a red coat. →', answer:['她有红色的外套','她有红色的外套。'] },
-  { type:'fill', q:'Q19: The skirt is green. →', answer:['裙子是绿色的','裙子是绿色的。'] },
-  { type:'fill', q:'Q20: This hat looks nice. →', answer:['这个帽子很好看','这个帽子很好看。'] },
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type:'fill', q:'Q21: 现在___几点？ (ask)', answer:['是'] },
+  { type:'fill', q:'Q22: 现在三点___。 (half)', answer:['半'] },
+  { type:'fill', q:'Q23: 上午八点 = ___ AM。', answer:['08:00','8:00','8'] },
+  { type:'fill', q:'Q24: 十点一刻 = ___ (time)', answer:['10:15'] },
+  { type:'fill', q:'Q25: 晚上七点半 = ___ PM。', answer:['07:30','19:30','7:30'] },
 
-  // ---------- Part D ----------
-  { type:'mcq', q:'Q21: “裤子” means:', options:['shirt','pants','hat','coat'], answer:1 },
-  { type:'mcq', q:'Q22: How do you say “He wears white shoes”?', options:['他喜欢白色的鞋子。','他是白色的鞋子。','他穿白色的鞋子。','他买白色的鞋子。'], answer:2 },
-  { type:'mcq', q:'Q23: Which is correct for “blue jeans”?', options:['蓝色的牛仔裤','蓝色的衬衫','蓝色的外套','蓝色的鞋子'], answer:0 },
-  { type:'mcq', q:'Q24: “好看” means:', options:['expensive','small','old','looks nice'], answer:3 },
-  { type:'mcq', q:'Q25: How to say “This coat is too big”?', options:['这个外套太贵了。','这个外套太大了。','这个外套太好看了。','这个外套太小了。'], answer:1 },
-
- // ---------- Part E: Short Dialogue Practice (with English hints for answers) ----------
-{ type:'fill', q:'Q26: A: 你穿什么？ B: 我穿____。 (red T-shirt)', answer:['红色的T恤','红T恤'] },
-{ type:'fill', q:'Q27: A: 她穿什么裤子？ B: 她穿____。 (blue jeans)', answer:['蓝色的牛仔裤','蓝牛仔裤'] },
-{ type:'fill', q:'Q28: A: 这件衣服好看吗？ B: ____，很漂亮。 (good-looking)', answer:['好看','很好看'] },
-{ type:'fill', q:'Q29: A: 你喜欢黑色的鞋子吗？ B: 喜欢，我喜欢____。 (black shoes)', answer:['黑色的鞋子','黑鞋子'] },
-{ type:'fill', q:'Q30: A: 那个帽子怎么样？ B: ____。 (very nice-looking)', answer:['很好看','好看'] },
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type:'fill', q:'Q26: Translate: “What time is it now?” →', answer:['现在几点？'] },
+  { type:'fill', q:'Q27: Translate: “It’s 8 o’clock now.” →', answer:['现在八点。'] },
+  { type:'fill', q:'Q28: Translate: “It’s 3:30 now.” →', answer:['现在三点半。'] },
+  { type:'fill', q:'Q29: Translate: “It’s 10:15 in the morning.” →', answer:['上午十点一刻。'] },
+  { type:'fill', q:'Q30: Translate: “It’s 7:30 in the evening.” →', answer:['晚上七点半。'] }
 ];
 
 let current = 0;
@@ -230,6 +236,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -277,8 +318,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -318,8 +359,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -488,18 +529,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -548,10 +592,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -561,7 +607,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 13 — Time & Daily Routine</title>
+<title>Rookie Quiz Level 13 — Animals</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 13: Time & Daily Routine</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 13: Animals</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -121,53 +121,58 @@ resumeBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; }
 restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; current=0; score=0; initMatchState(); showQuestion(); document.getElementById('quiz-progress-bar').style.width='0%'; }
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
-  const questions = [
-    // ---------- Part A: Vocabulary Match (1–5) ----------
-    { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-      {id:'m1', cn:'起床', en:'get up'},
-      {id:'m2', cn:'吃饭', en:'eat a meal'},
-      {id:'m3', cn:'上学', en:'go to school'},
-      {id:'m4', cn:'上班', en:'go to work'},
-      {id:'m5', cn:'下班', en:'get off work'}
-    ]},
+const questions = [
+  // ---------- Part A: Vocabulary Match (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'猫', en:'cat'},
+      {id:'m2', cn:'狗', en:'dog'},
+      {id:'m3', cn:'鸟', en:'bird'},
+      {id:'m4', cn:'鱼', en:'fish'},
+      {id:'m5', cn:'马', en:'horse'}
+    ]  
+  },
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (6–10)', 
+    items:[
+      {id:'m6', cn:'牛', en:'cow'},
+      {id:'m7', cn:'兔子', en:'rabbit'},
+      {id:'m8', cn:'鸡', en:'chicken'},
+      {id:'m9', cn:'宠物', en:'pet'},
+      {id:'m10', cn:'动物', en:'animal'}
+    ]
+  },
 
-    // ---------- Part A: Vocabulary Match (6–10) ----------
-    { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-      {id:'m6', cn:'睡觉', en:'sleep'},
-      {id:'m7', cn:'看书', en:'read a book'},
-      {id:'m8', cn:'看电视', en:'watch TV'},
-      {id:'m9', cn:'吃早饭', en:'eat breakfast'},
-      {id:'m10', cn:'回家', en:'go home'}
-    ]},
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type:'mcq', q:'Q11: 这___什么？', options:['是','在','有','去'], answer:0 },
+  { type:'mcq', q:'Q12: 这是___。(cat)', options:['猫','狗','鸟','鱼'], answer:0 },
+  { type:'mcq', q:'Q13: 那___什么？', options:['是','在','有','去'], answer:0 },
+  { type:'mcq', q:'Q14: 那是___。(dog)', options:['狗','猫','兔子','鸡'], answer:0 },
+  { type:'mcq', q:'Q15: 我有一___鱼。', options:['只','杯 ','个','条'], answer:3 },
+  { type:'mcq', q:'Q16: 我喜欢___。(animals)', options:['动物','宠物','猫','狗'], answer:0 },
+  { type:'mcq', q:'Q17: 这是一只___。(bird)', options:['鸡','狗','鸟','兔子'], answer:2 },
+  { type:'mcq', q:'Q18: 那是一条___。(fish)', options:['猫','狗','鱼','鸟'], answer:2 },
+  { type:'mcq', q:'Q19: 这些都是我的___。(pets)', options:['动物','宠物','鱼','鸟'], answer:1 },
+  { type:'mcq', q:'Q20: 我家有一___狗。', options:['只','杯 ','个','条'], answer:0 },
 
-    // ---------- Part B: Fill in the Blank (11–15) ----------
-    { type:'fill', q:'Q11: What time is it now? = 现在____点？', answer:['几'] },
-    { type:'fill', q:'Q12: It’s 5 o’clock now = 现在____点。', answer:['五','五点'] },
-    { type:'fill', q:'Q13: I get up at 7 = 我早上七点____。', answer:['起床'] },
-    { type:'fill', q:'Q14: He goes to school at 8 = 他八点____。', answer:['上学'] },
-    { type:'fill', q:'Q15: She sleeps at 10 = 她十点____。', answer:['睡觉'] },
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type:'fill', q:'Q21: 这是什么？ → ___猫。(This is)', answer:['这是'] },
+  { type:'fill', q:'Q22: 那是什么？ → ___狗。(That is)', answer:['那是'] },
+  { type:'fill', q:'Q23: 我喜欢___。 (animals)', answer:['动物'] },
+  { type:'fill', q:'Q24: 我有一只___。 (pet)', answer:['宠物'] },
+  { type:'fill', q:'Q25: 这是一只___。 (bird)', answer:['鸟'] },
 
-    // ---------- Part C: Translation (16–20) ----------
-    { type:'fill', q:'Q16: I eat breakfast at 7. →', answer:['我七点吃早饭','我早上七点吃早饭'] },
-    { type:'fill', q:'Q17: He goes to work at 9. →', answer:['他九点上班','他上午九点上班'] },
-    { type:'fill', q:'Q18: We go home at 6. →', answer:['我们六点回家'] },
-    { type:'fill', q:'Q19: She watches TV in the evening. →', answer:['她晚上看电视'] },
-    { type:'fill', q:'Q20: What time do you sleep? →', answer:['你几点睡觉','你什么时候睡觉'] },
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type:'fill', q:'Q26: Translate: “What is this?” →', answer:['这是什么？'] },
+  { type:'fill', q:'Q27: Translate: “This is a cat.” →', answer:['这是猫。'] },
+  { type:'fill', q:'Q28: Translate: “What is that?” →', answer:['那是什么？'] },
+  { type:'fill', q:'Q29: Translate: “That is a dog.” →', answer:['那是狗。'] },
+  { type:'fill', q:'Q30: Translate: “I like animals.” →', answer:['我喜欢动物。'] }
+];
 
-    // ---------- Part D: Multiple Choice (21–25) ----------
-    { type:'mcq', q:'Q21: “晚上” means:', options:['morning','afternoon','evening/night','midday'], answer:2 },
-    { type:'mcq', q:'Q22: How do you say “It’s 3 o’clock now”?', options:['现在五点。','现在十点。','现在三点。','现在两点。'], answer:2 },
-    { type:'mcq', q:'Q23: Which is correct for “I get up at 6”?', options:['我六点吃饭。','我六点起床。','我六点上班。','我六点睡觉。'], answer:1 },
-    { type:'mcq', q:'Q24: “看书” means:', options:['read a book','watch TV','sleep','go to work'], answer:0 },
-    { type:'mcq', q:'Q25: How do you say “Tomorrow I will go to school”?', options:['昨天我去学校。','今天我去学校。','我去学校。','明天我去学校。'], answer:3 },
-
-    // ---------- Part E: Short Dialogue Practice (26–30) ----------
-    { type:'fill', q:'Q26: A: 现在几点？ B: 现在____。 (8 o’clock)', answer:['八点'] },
-    { type:'fill', q:'Q27: A: 你早上几点起床？ B: 我____起床。 (7 o’clock)', answer:['七点'] },
-    { type:'fill', q:'Q28: A: 他什么时候上班？ B: 他____上班。 (9 o’clock)', answer:['九点'] },
-    { type:'fill', q:'Q29: A: 你晚上做什么？ B: 我晚上____。 (watch TV)', answer:['看电视'] },
-    { type:'fill', q:'Q30: A: 你几点睡觉？ B: 我____睡觉。 (10 o’clock)', answer:['十点'] }
-  ];
 
 let current = 0;
 let score = 0;
@@ -232,6 +237,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -279,8 +319,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -320,8 +360,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -490,18 +530,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -550,10 +593,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -563,7 +608,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }
