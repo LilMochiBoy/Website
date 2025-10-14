@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 10 — Shopping & Money</title>
+<title>Rookie Quiz Level 10 — Time Telling</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 10: Shopping & Money</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 10: Time Telling</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,49 +122,55 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1', cn:'钱', en:'money'},
-    {id:'m2', cn:'买', en:'to buy'},
-    {id:'m3', cn:'卖', en:'to sell'},
-    {id:'m4', cn:'贵', en:'expensive'},
-    {id:'m5', cn:'便宜', en:'cheap'}
-  ]},
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6', cn:'超市', en:'supermarket'},
-    {id:'m7', cn:'商店', en:'shop, store'},
-    {id:'m8', cn:'衣服', en:'clothes'},
-    {id:'m9', cn:'鞋子', en:'shoes'},
-    {id:'m10', cn:'包', en:'bag'}
-  ]},
+  // ---------- Part A: Vocabulary Match (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'点', en:'hour / o’clock'},
+      {id:'m2', cn:'分', en:'minute'},
+      {id:'m3', cn:'半', en:'half (30 min)'},
+      {id:'m4', cn:'现在', en:'now'},
+      {id:'m5', cn:'上午', en:'morning'},
+    ]  
+  },
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (6–10)', 
+    items:[
+      {id:'m6', cn:'下午', en:'afternoon'},
+      {id:'m7', cn:'晚上', en:'evening/night'},
+      {id:'m8', cn:'分钟', en:'minute (duration)'},
+      {id:'m9', cn:'小时', en:'hour'},
+      {id:'m10', cn:'什么时候', en:'when'}
+    ]
+  },
 
-  // ---------- Part B ----------
-  { type:'fill', q:'Q11: How much is this? → 这个____钱？', answer:'多少' },
-  { type:'fill', q:'Q12: Too expensive! → ____贵了！', answer:'太' },
-  { type:'fill', q:'Q13: I want to buy a bag → 我____买一个包。', answer:'要' },
-  { type:'fill', q:'Q14: He sells shoes → 他____鞋子。', answer:'卖' },
-  { type:'fill', q:'Q15: Here’s 3 yuan change → ____你三块。', answer:'找' },
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type:'mcq', q:'Q11: 现在___几点？', options:['是','有','在','去'], answer:0 },
+  { type:'mcq', q:'Q12: 现在三点___。', options:['分','半','点','小时'], answer:1 },
+  { type:'mcq', q:'Q13: 十点一刻 = ___', options:['10:15','10:30','11:15','9:15'], answer:0 },
+  { type:'mcq', q:'Q14: 三点半 = ___', options:['3:15','3:30','3:45','4:30'], answer:1 },
+  { type:'mcq', q:'Q15: 下午两点 = ___', options:['2 AM','2 PM','14:00','b & c'], answer:3 },
+  { type:'mcq', q:'Q16: 上午八点 = ___', options:['8 PM','8 AM','20:00','18:00'], answer:1 },
+  { type:'mcq', q:'Q17: 你___去上课？ (when)', options:['什么时候','点','分','半'], answer:0 },
+  { type:'mcq', q:'Q18: 现在五点十___。', options:['分','半','点','小时'], answer:0 },
+  { type:'mcq', q:'Q19: 晚上七点半 = ___', options:['19:30','7:30 AM','7:15 PM','18:30'], answer:0 },
+  { type:'mcq', q:'Q20: 现在___十二点一刻。', options:['是','在','有','去'], answer:0 },
 
-  // ---------- Part C ----------
-  { type:'fill', q:'Q16: How much is this book? →', answer:['这本书多少钱','这本书多少钱？'] },
-  { type:'fill', q:'Q17: I want to buy some apples. →', answer:['我要买苹果','我要买苹果。'] },
-  { type:'fill', q:'Q18: Too cheap! →', answer:['太便宜了','太便宜了！'] },
-  { type:'fill', q:'Q19: How much in total? →', answer:['一共多少钱','一共多少钱？'] },
-  { type:'fill', q:'Q20: This bag is expensive. →', answer:['这个包很贵','这个包很贵。'] },
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type:'fill', q:'Q21: 现在___几点？ (ask)', answer:['是'] },
+  { type:'fill', q:'Q22: 现在三点___。 (half)', answer:['半'] },
+  { type:'fill', q:'Q23: 上午八点 = ___ AM。', answer:['08:00','8:00','8'] },
+  { type:'fill', q:'Q24: 十点一刻 = ___ (time)', answer:['10:15'] },
+  { type:'fill', q:'Q25: 晚上七点半 = ___ PM。', answer:['07:30','19:30','7:30'] },
 
-  // ---------- Part D ----------
-  { type:'mcq', q:'Q21: “便宜” means:', options:['cheap','expensive','big','beautiful'], answer:0 },
-  { type:'mcq', q:'Q22: How do you say “I want to buy clothes”?', options:['我要卖衣服。','我有衣服。','我要买衣服。','我穿衣服。'], answer:2 },
-  { type:'mcq', q:'Q23: “找你十块” means:', options:['give me 10 yuan','here’s your change: 10 yuan','I want 10 yuan','you owe 10 yuan'], answer:1 },
-  { type:'mcq', q:'Q24: Which is correct for “This is too expensive”?', options:['这个便宜了。','这个太贵了。','这个多少钱？','这个卖了。'], answer:1 },
-  { type:'mcq', q:'Q25: “多少钱” asks about:', options:['where','when','who','how much'], answer:3 },
-
-  // ---------- Part E ----------
-  { type:'fill', q:'Q26: A: 这个多少钱？ B: 二十块。', answer:['二十块','20块'] },
-  { type:'fill', q:'Q27: A: 太贵了！ B: 这个____一点。 (cheaper)', answer:'便宜' },
-  { type:'fill', q:'Q28: A: 我要买水果。 B: 好的，请给我____。 (money)', answer:'钱' },
-  { type:'fill', q:'Q29: A: 一共多少钱？ B: 一共____块。 (35)', answer:'三十五' },
-  { type:'fill', q:'Q30: A: 给你五十块。 B: 找你____块。 (15)', answer:'十五' }
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type:'fill', q:'Q26: Translate: “What time is it now?” →', answer:['现在几点？'] },
+  { type:'fill', q:'Q27: Translate: “It’s 8 o’clock now.” →', answer:['现在八点。'] },
+  { type:'fill', q:'Q28: Translate: “It’s 3:30 now.” →', answer:['现在三点半。'] },
+  { type:'fill', q:'Q29: Translate: “It’s 10:15 in the morning.” →', answer:['上午十点一刻。'] },
+  { type:'fill', q:'Q30: Translate: “It’s 7:30 in the evening.” →', answer:['晚上七点半。'] }
 ];
 
 let current = 0;
@@ -230,6 +236,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -277,8 +318,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -318,8 +359,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -488,18 +529,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -548,10 +592,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -561,7 +607,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }

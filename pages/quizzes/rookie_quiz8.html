@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Rookie Quiz Level 8 — Family & Relationships</title>
+<title>Rookie Quiz Level 8 — School & Classroom</title>
 <style>
 :root{
   --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
@@ -90,7 +90,7 @@ html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial
   </div>
 </div>
 
-<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 8: Family & Relationships</div></div>
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Rookie Quiz 8: School & Classroom</div></div>
 <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
 
 <div class="container-wrap">
@@ -122,49 +122,55 @@ restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; curren
 exitBtn.onclick = ()=> window.location.href='../levels/rookie.html';
 
 const questions = [
-  // ---------- Part A ----------
-  { type:'match', pageTitle:'Part A: Vocabulary Match (1–5)', items:[
-    {id:'m1', cn:'爸爸', en:'father'},
-    {id:'m2', cn:'妈妈', en:'mother'},
-    {id:'m3', cn:'哥哥', en:'older brother'},
-    {id:'m4', cn:'弟弟', en:'younger brother'},
-    {id:'m5', cn:'姐姐', en:'older sister'}
-  ]},
-  { type:'match', pageTitle:'Part A: Vocabulary Match (6–10)', items:[
-    {id:'m6', cn:'妹妹', en:'younger sister'},
-    {id:'m7', cn:'儿子', en:'son'},
-    {id:'m8', cn:'女儿', en:'daughter'},
-    {id:'m9', cn:'朋友', en:'friend'},
-    {id:'m10', cn:'同学', en:'classmate'}
-  ]},
+  // ---------- Part A: Vocabulary Match (Q1–10) ----------
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (1–5)', 
+    items:[
+      {id:'m1', cn:'老师', en:'teacher'},
+      {id:'m2', cn:'学生', en:'student'},
+      {id:'m3', cn:'教室', en:'classroom'},
+      {id:'m4', cn:'书包', en:'schoolbag'},
+      {id:'m5', cn:'黑板', en:'blackboard'},
+    ]  
+  },
+  { 
+    type:'match', 
+    pageTitle:'Part A: Vocabulary Match (6–10)', 
+    items:[
+      {id:'m6', cn:'桌子', en:'desk'},
+      {id:'m7', cn:'椅子', en:'chair'},
+      {id:'m8', cn:'本子', en:'notebook'},
+      {id:'m9', cn:'笔', en:'pen'},
+      {id:'m10', cn:'电脑', en:'computer'}
+    ]
+  },
 
-  // ---------- Part B ----------
-  { type:'fill', q:'Q11: This is my mom → 这是我的____。', answer:'妈妈' },
-  { type:'fill', q:'Q12: He is my brother → 他是我的____。', answer:['哥哥','弟弟'] },
-  { type:'fill', q:'Q13: She is my daughter → 她是我的____。', answer:'女儿' },
-  { type:'fill', q:'Q14: My family has 4 people → 我家有____口人。', answer:'四' },
-  { type:'fill', q:'Q15: His friend → 他的____。', answer:'朋友' },
+  // ---------- Part B: Multiple Choice Grammar (Q11–20) ----------
+  { type:'mcq', q:'Q11: 老师___教室。', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q12: 教室里___桌子和椅子。', options:['在','有'], answer:1 },
+  { type:'mcq', q:'Q13: 我的书包___椅子上。', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q14: 学生___上课。', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q15: 老师___哪里？', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q16: 教室里___学生。', options:['有','在'], answer:0 },
+  { type:'mcq', q:'Q17: 桌子___教室里。', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q18: 老师___学校。', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q19: 我的本子___桌子上。', options:['在','有'], answer:0 },
+  { type:'mcq', q:'Q20: 电脑___桌子上。', options:['在','有'], answer:0 },
 
-  // ---------- Part C ----------
-  { type:'fill', q:'Q16: This is my dad. →', answer:['这是我的爸爸','这是我的爸爸。'] },
-  { type:'fill', q:'Q17: She is my older sister. →', answer:['她是我的姐姐','她是我的姐姐。'] },
-  { type:'fill', q:'Q18: He is my classmate. →', answer:['他是我的同学','他是我的同学。'] },
-  { type:'fill', q:'Q19: My family has six people. →', answer:['我家有六口人','我家有六口人。'] },
-  { type:'fill', q:'Q20: That is my grandfather. →', answer:['那是我的爷爷','那是我的爷爷。'] },
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type:'fill', q:'Q21: 教室里___很多学生。 (have / there are)', answer:['有'] },
+  { type:'fill', q:'Q22: 老师___办公室。 (at)', answer:['在'] },
+  { type:'fill', q:'Q23: 我的书包___椅子上。 (at / on)', answer:['在'] },
+  { type:'fill', q:'Q24: 桌子___教室里。 (at / in)', answer:['在'] },
+  { type:'fill', q:'Q25: 学生___上课。 (attending class)', answer:['在'] },
 
-  // ---------- Part D ----------
-  { type:'mcq', q:'Q21: “奶奶” means:', options:['grandmother (father’s side)','grandmother (mother’s side)','grandfather (mother’s side)','grandfather (father’s side)'], answer:0 },
-  { type:'mcq', q:'Q22: How do you say “This is my friend”?', options:['这是我朋友的。','这是我家。','这是我的朋友。','这是我朋友'], answer:2 },
-  { type:'mcq', q:'Q23: “外婆” is:', options:['mother’s mother','father’s mother','father’s father','mother’s father'], answer:0 },
-  { type:'mcq', q:'Q24: Which is correct for “My family has 5 people”?', options:['我有五个人。','我家五个人。','我是五个人。','我家有五口人。'], answer:3 },
-  { type:'mcq', q:'Q25: “丈夫” refers to:', options:['wife','husband (formal)','father','teacher'], answer:1 },
-
-  // ---------- Part E ----------
-  { type:'fill', q:'Q26: A: 你家有几口人？ B: 我家有____口人。 (4 people)', answer:'四' },
-  { type:'fill', q:'Q27: A: 这是你的妈妈吗？ B: 是，这是我的____。 (mom)', answer:'妈妈' },
-  { type:'fill', q:'Q28: A: 他是谁？ B: 他是我的____。 (older brother)', answer:'哥哥' },
-  { type:'fill', q:'Q29: A: 她是你朋友吗？ B: 是，她是我的____。 (friend)', answer:'朋友' },
-  { type:'fill', q:'Q30: A: 那是你的爷爷吗？ B: 不是，那是我的____。 (maternal grandfather)', answer:'外公' }
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type:'fill', q:'Q26: Translate: “Where is the teacher?” →', answer:['老师在哪里？'] },
+  { type:'fill', q:'Q27: Translate: “There are desks and chairs in the classroom.” →', answer:['教室里有桌子和椅子。'] },
+  { type:'fill', q:'Q28: Translate: “The notebook is on the desk.” →', answer:['本子在桌子上。'] },
+  { type:'fill', q:'Q29: Translate: “The students are attending class.” →', answer:['学生在上课。'] },
+  { type:'fill', q:'Q30: Translate: “My schoolbag is in the classroom.” →', answer:['我的书包在教室里。'] }
 ];
 
 let current = 0;
@@ -230,6 +236,41 @@ function initMatchState(){
   Q_FB.innerHTML = '';
 }
 
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
 /* ---------- Render questions ---------- */
 function showQuestion(){
   if(paused) return;
@@ -277,8 +318,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'left') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
         });
         l.classList.add('selected');
         matchState.leftSelected = it.id;
@@ -318,8 +359,8 @@ function showQuestion(){
         }
 
         // Normal select behavior
-        document.querySelectorAll('.match-box.selected').forEach(el => { 
-          if(el.dataset.side === 'right') el.classList.remove('selected'); 
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
         });
         r.classList.add('selected');
         matchState.rightSelected = it.id;
@@ -488,18 +529,21 @@ function showQuestion(){
       if(paused) return;
       if(submit.textContent === 'Submit'){
         const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
-        const normalize = s => s.replace(/[，。,!?？!。]/g, '').replace(/\s+/g, ' ').trim();
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
         // Support multiple correct answers
         const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
-        const isCorrect = correctAnswers.some(ans => normalize(arranged) === normalize(ans));
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
 
         if (isCorrect) {
           Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
           score++;
         } else {
           Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
-          const buz = document.createElement('div'); 
-          buz.className='buzzer-effect'; 
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
           byId('buzzer-effect-root').appendChild(buz);
           setTimeout(()=> buz.remove(),700);
         }
@@ -548,10 +592,12 @@ function showQuestion(){
         return;
       }
 
-      // normalize both answers (remove spaces and punctuation)
-      const normalize = s => s.replace(/[\s。，！?？]/g,'').trim();
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
       const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
-      const isCorrect = correctAnswers.some(ans => normalize(userAns) === normalize(ans));
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
 
       if(isCorrect){
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
@@ -561,7 +607,7 @@ function showQuestion(){
         Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
         input.style.borderColor = '#ff3b3b';
         const buz = document.createElement('div');
-        buz.className='buzzer-effect';
+        buz.className = 'buzzer-effect';
         byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
       }
