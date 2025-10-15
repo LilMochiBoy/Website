@@ -1,538 +1,744 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Challenger Quiz Level 25: Review</title>
-	<link rel="stylesheet" href="../../assets/css/style.css">
-	<style>
-	/* Make quiz page fit viewport and remove vertical scrolling */
-	html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
-	body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Master Quiz Level 25 — Chinese Classics</title>
+<style>
+:root{
+  --bg:#232946; --accent:#4a90e2; --accent2:#7f9cf5; --panel:#1b2138; --white:#f7f7fa;
+}
+html,body{height:100%;margin:0;background:var(--bg);font-family:"Segoe UI",Arial,sans-serif;color:var(--white);-webkit-font-smoothing:antialiased}
+.duo-header{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px;margin-bottom:12px}
+.duo-img{width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:0 2px 8px #1e3c72}
+.duo-title{font-size:2.0rem;font-weight:700;color:var(--accent);text-shadow:0 2px 8px #000}
 
-	/* Tighter header */
-	.duo-header { margin-top: 12px; margin-bottom: 8px; }
-	.duo-img { width: 48px; height: 48px; }
-	.duo-title { font-size: 1.6rem; }
+/* progress */
+.quiz-progress{margin:12px auto;width:80%;height:18px;background:#111426;border-radius:12px;overflow:hidden}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;border-radius:12px;transition:width .28s}
 
-	/* Reduce large spacings so content fits without scroll */
-	.quiz-question { margin: 24px 0 16px 0; margin-bottom: 24px; font-size: 1.4rem; max-width: 92vw; }
-	.quiz-answers { gap: 12px; margin-top: 20px; margin-bottom: 8px; width: calc(100vw - 32px); padding-left: 16px; padding-right: 16px; max-width: 900px; }
-	.answer-btn-custom { padding: 12px 10px; font-size: 1.05rem; min-height: 52px; }
+/* card */
+.container-wrap{display:flex;justify-content:center}
+.quiz-card{width:100%;max-width:1100px;margin:22px auto 60px;padding:28px 20px 48px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(0,0,0,0.45);position:relative}
+.quiz-question{font-size:1.6rem;font-weight:700;margin:18px 0 12px;text-align:center;color:var(--white);line-height:1.35}
+.quiz-feedback{font-size:1.05rem;font-weight:600;color:#ffeb3b;min-height:28px;text-align:center;margin-bottom:8px}
+.quiz-feedback.wrong{color:#ff3b3b;animation:buzz .3s linear 1}
+@keyframes buzz{0%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}100%{transform:translateX(0)}}
 
-	/* Progress and HUD spacing */
-	.quiz-progress { margin: 8px auto 0 auto; width: 90%; }
-	.quiz-progress-bar { height: 14px; }
+/* answers area */
+.quiz-answers{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-left:20px;padding-right:20px;margin-top:12px}
 
-	/* Boss image: remove rounded box/box-shadow and make background transparent */
-	#bossImg { border-radius: 0 !important; box-shadow: none !important; background: transparent !important; width: 110px; height: 110px; }
-	/* Boss hearts smaller to preserve space */
-	#bossHearts img { width: 28px; height: 28px; margin: 0 3px; }
+/* answer buttons (MCQ) */
+.answer-btn-custom{width:100%;border-radius:8px;font-size:1.15rem;padding:18px 14px;background:var(--panel);color:var(--white);font-weight:700;border:3px solid transparent;box-shadow:0 6px 22px rgba(0,0,0,0.35);min-height:64px;position:relative;overflow:hidden;text-align:left;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,outline-color .12s}
+.answer-btn-custom:disabled{opacity:.75;cursor:default}
+.answer-btn-custom.selected-option{transform:scale(1.06);box-shadow:0 12px 30px rgba(74,144,226,0.18);outline:3px solid rgba(74,144,226,0.12)}
+.answer-fill{position:absolute;left:0;bottom:0;width:100%;height:0%;z-index:1;transition:height .6s cubic-bezier(.4,1.4,.4,1)}
+.answer-fill.c1{background:linear-gradient(0deg,#e57373 80%,#ffb3b3 100%)}
+.answer-fill.c2{background:linear-gradient(0deg,#64b5f6 80%,#b3e0ff 100%)}
+.answer-fill.c3{background:linear-gradient(0deg,#81c784 80%,#c8e6c9 100%)}
+.answer-fill.c4{background:linear-gradient(0deg,#ffd54f 80%,#fff9c4 100%)}
 
-		.buzzer-effect {
-			position: fixed;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: rgba(255, 59, 59, 0.25);
-			pointer-events: none;
-			z-index: 9999;
-			animation: screenBuzz 0.4s linear 1;
-		}
-		@keyframes screenBuzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-16px); }
-			40% { transform: translateX(16px); }
-			60% { transform: translateX(-16px); }
-			80% { transform: translateX(16px); }
-			100% { transform: translateX(0); }
-		}
-		.duo-header {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 18px;
-			margin-top: 32px;
-			margin-bottom: 18px;
-		}
-		.duo-img {
-			width: 64px;
-			height: 64px;
-			border-radius: 50%;
-			background: #fff;
-			box-shadow: 0 2px 8px #1e3c72;
-		}
-		.duo-title {
-			font-size: 2.2rem;
-			font-weight: 700;
-			color: #4a90e2;
-			font-family: 'Segoe UI', Arial, sans-serif;
-			text-shadow: 0 2px 8px #222;
-		}
-		.quiz-progress {
-			margin: 18px auto 0 auto;
-			width: 80%;
-			height: 18px;
-			background: #232946;
-			border-radius: 12px;
-			overflow: hidden;
-		}
-		.quiz-progress-bar {
-			height: 100%;
-			background: linear-gradient(90deg, #4a90e2, #7f9cf5);
-			width: 0%;
-			border-radius: 12px;
-			transition: width 0.3s;
-		}
-		.quiz-question {
-			font-size: 1.6rem;
-			font-weight: 700;
-			/* tighter spacing so feedback appears just under the question */
-			margin: 28px 0 6px 0;
-			color: #f7f7fa;
-			text-align: center;
-			line-height: 1.3;
-		}
-		.quiz-answers {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 20px;
-			/* keep answers closer to question and feedback */
-			margin-top: 8px;
-			margin-bottom: 36px;
-			width: calc(100vw - 80px);
-			max-width: calc(100vw - 80px);
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-		.answer-btn-custom {
-			width: 100%;
-			min-width: 0;
-			border-radius: 8px;
-			font-size: 1.3rem;
-			padding: 20px 16px;
-			margin: 0;
-			box-sizing: border-box;
-			background: #232946;
-			color: #f7f7fa;
-			font-weight: 600;
-			border-width: 3px;
-			border-style: solid;
-			transition: box-shadow 0.2s, transform 0.1s, border-color 0.2s;
-			box-shadow: 0 4px 16px #23294655;
-			min-height: 64px;
-			position: relative;
-			overflow: hidden;
-			text-align: left;
-		}
-		.answer-btn-custom:hover {
-			transform: scale(1.04);
-			box-shadow: 0 8px 32px #23294699;
-			opacity: 0.97;
-		}
-		.answer-fill {
-			position: absolute;
-			left: 0; bottom: 0;
-			width: 100%;
-			height: 0%;
-			z-index: 1;
-			transition: height 0.8s cubic-bezier(.4,1.6,.4,1);
-		}
-		.answer-btn-custom .answer-fill {
-			border-radius: 0;
-		}
-		.answer-fill.c1 { background: linear-gradient(0deg, #e57373 80%, #ffb3b3 100%); }
-		.answer-fill.c2 { background: linear-gradient(0deg, #64b5f6 80%, #b3e0ff 100%); }
-		.answer-fill.c3 { background: linear-gradient(0deg, #81c784 80%, #c8e6c9 100%); }
-		.answer-fill.c4 { background: linear-gradient(0deg, #ffd54f 80%, #fff9c4 100%); }
-		.border-c1 { border-color: #e57373; }
-		.border-c2 { border-color: #64b5f6; }
-		.border-c3 { border-color: #81c784; }
-		.border-c4 { border-color: #ffd54f; }
-		.quiz-feedback {
-			font-size: 1.1rem;
-			font-weight: 500;
-			color: #ffeb3b;
-			margin: 6px 0 12px 0; /* small top margin so feedback sits just under the question */
-			min-height: 24px;
-			transition: color 0.2s;
-			text-align: center;
-		}
-		.quiz-feedback.wrong {
-			color: #ff3b3b;
-			animation: buzz 0.3s linear 1;
-		}
-		@keyframes buzz {
-			0% { transform: translateX(0); }
-			20% { transform: translateX(-8px); }
-			40% { transform: translateX(8px); }
-			60% { transform: translateX(-8px); }
-			80% { transform: translateX(8px); }
-			100% { transform: translateX(0); }
-		}
-		.quiz-finish {
-			font-size: 1.5rem;
-			color: #4a90e2;
-			font-weight: 700;
-			margin-top: 24px;
-		}
+/* submit / next */
+.submit-btn{background:var(--accent);color:#fff;padding:12px 30px;border-radius:10px;border:none;cursor:pointer;font-weight:800;display:block;margin:18px auto 0;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.submit-btn:disabled{opacity:.6;cursor:default}
+.next-btn{background:#2d9a44;color:#fff;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-weight:800;display:block;margin:12px auto 0;box-shadow:0 6px 18px rgba(0,0,0,.2)}
 
-		/* center block for vertically centering question area */
-		#quiz-center-block {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			/* slightly smaller min-height and a small upward nudge so the block sits higher */
-			min-height: calc(54vh);
-			transform: translateY(-3vh);
-			width: 100%;
-			box-sizing: border-box;
-			padding: 8px 16px;
-		}
-	</style>
+/* ---------- Matching area adjustments (smaller boxes moved higher) ---------- */
+.match-area{width:100%;display:flex;justify-content:center;align-items:flex-start;gap:28px;margin-top:6px;position:relative}
+.match-column{display:flex;flex-direction:column;gap:10px;align-items:center}
+.match-box{width:150px;height:40px;border-radius:10px;background:#fff;color:#232946;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.25);cursor:pointer;user-select:none;transition:transform .14s ease,box-shadow .14s ease,background .14s ease,outline-color .12s;z-index:10}
+.match-box.small{width:130px;height:36px;font-size:.98rem}
+.match-box.matched{background:#81c784;color:#fff;cursor:default;box-shadow:0 6px 12px rgba(0,0,0,.12)}
+.match-box.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(74, 144, 226, 0.55);
+  outline: 3px solid rgba(74, 144, 226, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, outline 0.3s ease;
+  z-index: 15;
+}
+
+/* svg overlay wrap (absolute within card) */
+.svg-wrap{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:visible;z-index:5}
+
+/* buzzer effect */
+.buzzer-effect { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 59, 59, 0.25); pointer-events: none; z-index: 9999; animation: screenBuzz 0.4s linear 1; }
+@keyframes screenBuzz { 0% { transform: translateX(0); } 20% { transform: translateX(-16px); } 40% { transform: translateX(16px); } 60% { transform: translateX(-16px); } 80% { transform: translateX(16px); } 100% { transform: translateX(0); } }
+
+/* arrange */
+#selectedWords { margin: 5px 0; min-height: 40px; border: 1px dashed #aaa; padding: 8px; display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; align-items: center; background: rgba(255,255,255,0.03); box-sizing: border-box; max-height: none; overflow-y: auto; }
+.word-pool { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; }
+.word-pool button.selected { opacity: 0.3; pointer-events: none; }
+.answer-word { background: #3498db; color: white; padding: 8px 14px; border: none; border-radius: 8px; font-size: 16px; cursor: grab; box-shadow: 0 3px 6px rgba(0,0,0,0.2); transition: transform 0.15s; user-select: none; }
+.answer-word.dragging { opacity: 0.7; transform: scale(1.03); }
+.placeholder-word { min-width: 60px; height: 36px; border: 2px dashed #aaa; border-radius: 8px; margin: 4px; }
+
+/* small note */
+.small-note{text-align:center;color:#cbd5e1;margin-top:8px;font-size:.95rem}
+
+/* responsive tweaks */
+@media(max-width:900px){ .match-box{width:120px;height:36px} .match-box.small{width:110px;height:32px} .quiz-card{padding:18px} .duo-title{font-size:1.6rem} .quiz-answers{gap:16px;padding-left:12px;padding-right:12px} }
+</style>
 </head>
-<body style="margin:0; padding:0; overflow-x:hidden; background:#232946;">
-	<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
-	<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
-		<div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
-			<h2 style="color:#4a90e2;margin-bottom:24px;">Game Paused</h2>
-			<button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
-			<button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
-			<button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
-		</div>
-	</div>
-	<div class="duo-header">
-		<img src="../../assets/images/Panda.png" alt="DuoLingo Panda" class="duo-img">
-		<span class="duo-title">Challenger Quiz 25: Review</span>
-	</div>
-	<!-- Boss fight HUD -->
-	<div style="display:flex;gap:28px;align-items:flex-end;justify-content:center;margin-top:12px;padding-bottom:1vh;">
-		<div style="text-align:center;color:#fff;">
-			<div style="font-weight:700;margin-bottom:6px;transform:translateY(12px);">You</div>
-			<img id="playerImg" src="../../assets/images/Panda/Idle.png" alt="Player" width="180" height="180" style="width:180px;height:180px;border-radius:0;background:transparent;box-shadow:none;transform:translateY(6px);">
-			<div id="playerHearts" style="display:flex;gap:6px;justify-content:center;margin-top:6px;align-items:center;">
-				<!-- hearts rendered by updatePlayerHealthBar() -->
-			</div>
-		</div>
-		<div style="text-align:center;color:#fff;">
-			<div style="font-weight:700;margin-bottom:6px;">Boss</div>
-			<img id="bossImg" src="../../assets/images/Master Boss/01_demon_idle/demon_idle_1.png" alt="Boss" width="450" height="250" style="width:450px;height:250px;border-radius:12px;box-shadow:0 8px 26px #0009;transform:translateY(10px) scaleX(1);">
-			<div id="bossHealth" style="width:340px;margin:8px auto 0 auto;background:#333;border-radius:12px;padding:6px;box-sizing:border-box;">
-				<div id="bossHealthBar" style="width:100%;height:18px;background:linear-gradient(90deg,#4a90e2,#7f9cf5);border-radius:8px;transition:width 0.25s;"></div>
-			</div>
-		</div>
-	</div>
-	<!-- center block keeps question/feedback/answers vertically centered inside viewport -->
-	<div id="quiz-center-block">
-		<div class="quiz-progress">
-			<div class="quiz-progress-bar" id="quiz-progress-bar"></div>
-		</div>
-		<div class="quiz-question" id="quiz-question"></div>
-		<div class="quiz-feedback" id="quiz-feedback"></div>
-		<div class="quiz-answers" id="quiz-answers"></div>
-	</div>
-	<div id="buzzer-effect-root"></div>
-	<script src="../../assets/js/master_boss_anim.js"></script>
-	<script>
+<body>
+<button id="pause-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.4rem;border-radius:8px;background:var(--accent);color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">&#124; &#124;</button>
+<div id="pause-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:2000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:40px 32px;box-shadow:0 8px 32px #23294699;min-width:280px;max-width:90vw;text-align:center;">
+    <h2 style="color:var(--accent);margin-bottom:24px;">Game Paused</h2>
+    <button id="resume-btn" style="margin:12px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:var(--accent);color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Resume</button><br>
+    <button id="restart-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#ffd54f;color:#232946;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Restart</button><br>
+    <button id="exit-btn" style="margin:18px 0 0 0;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#e57373;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Exit</button>
+  </div>
+</div>
 
-const originalQuestions = [
-{ q: "Match the word: 仁", options: ["strategy / tactics", "military strategy", "general", "benevolence / kindness"], answer: 3 },
-{ q: "Match the word: 礼", options: ["courage", "offense and defense", "ritual / propriety", "wisdom"], answer: 2 },
-{ q: "Match the word: 智", options: ["know yourself and the enemy", "wisdom", "Sun Tzu", "benevolence / kindness"], answer: 1 },
-{ q: "Match the word: 勇", options: ["strategy / tactics", "military strategy", "courage", "general"], answer: 2 },
-{ q: "Match the word: 孙子", options: ["offense and defense", "ritual / propriety", "Sun Tzu", "wisdom"], answer: 2 },
-{ q: "Match the word: 兵法", options: ["know yourself and the enemy", "military strategy", "benevolence / kindness", "strategy / tactics"], answer: 1 },
-{ q: "Match the word: 谋略", options: ["strategy / tactics", "general", "courage", "offense and defense"], answer: 0 },
-{ q: "Match the word: 上将", options: ["ritual / propriety", "general", "wisdom", "know yourself and the enemy"], answer: 1 },
-{ q: "Match the word: 攻守", options: ["Sun Tzu", "offense and defense", "benevolence / kindness", "strategy / tactics"], answer: 1 },
-{ q: "Match the word: 知己知彼", options: ["military strategy", "know yourself and the enemy", "general", "courage"], answer: 1 },
-{ q: "___是儒家思想的重要原则。 (Benevolence)", options: ["仁", "礼", "智", "勇"], answer: 0 },
-{ q: "用谋略来___敌人。 (defeat)", options: ["战胜", "支持", "反对", "总结"], answer: 0 },
-{ q: "如果敌人强大，___采取防守策略。 (then)", options: ["就", "虽然", "既", "因为"], answer: 0 },
-{ q: "___爱人。 (The benevolent person)", options: ["仁者", "智者", "勇者", "孙子"], answer: 0 },
-{ q: "孙子写了___这本书。 (military strategy)", options: ["兵法", "谋略", "攻守", "上将"], answer: 0 },
-{ q: "兵法强调___和防守的重要性。 (offense)", options: ["攻守", "仁", "礼", "智"], answer: 0 },
-{ q: "___是智慧的象征。 (Wisdom)", options: ["智", "勇", "礼", "仁"], answer: 0 },
-{ q: "将军是军队中的___。 (general)", options: ["上将", "孙子", "攻守", "谋略"], answer: 0 },
-{ q: "___，百战不殆。 (know yourself and your enemy)", options: ["知己知彼", "仁", "礼", "智"], answer: 0 },
-{ q: "___在古代战争中非常重要。 (Strategy / tactics)", options: ["谋略", "攻守", "仁", "礼"], answer: 0 },
-{ q: "___是儒家思想的重要原则。 (Benevolence)", options: ["仁", "谋略", "就", "仁者"], answer: 0 },
-{ q: "将军使用___来战胜敌人。 (strategy)", options: ["兵法", "谋略", "就", "仁者"], answer: 1 },
-{ q: "如果敌人强大，___采取防守策略。 (then)", options: ["仁", "谋略", "就", "仁者"], answer: 2 },
-{ q: "___爱人。 (Benevolent person)", options: ["仁", "谋略", "兵法", "仁者"], answer: 3 },
-{ q: "孙子写了___这本书。 (military strategy)", options: ["兵法", "谋略", "就", "仁者"], answer: 0 },
-{ q: "Benevolence is an important principle of Confucianism.  ______", options: ["仁是儒家思想的重要原则。", "将军使用谋略来战胜敌人。", "如果敌人强大，就采取防守策略。", "仁者爱人。"], answer: 0 },
-{ q: "The general uses strategy to defeat the enemy.  ______", options: ["孙子写了《孙子兵法》。", "将军使用谋略来战胜敌人。", "如果敌人强大，就采取防守策略。", "仁者爱人。"], answer: 1 },
-{ q: "If the enemy is strong, then adopt a defensive strategy.  ______", options: ["仁是儒家思想的重要原则。", "将军使用谋略来战胜敌人。", "如果敌人强大，就采取防守策略。", "仁者爱人。"], answer: 2 },
-{ q: "The benevolent person loves others.  ______", options: ["仁是儒家思想的重要原则。", "将军使用谋略来战胜敌人。", "孙子写了《孙子兵法》。", "仁者爱人。"], answer: 3 },
-{ q: "Sun Tzu wrote the book \"The Art of War.\"  ______", options: ["孙子写了《孙子兵法》。", "将军使用谋略来战胜敌人。", "如果敌人强大，就采取防守策略。", "仁者爱人。"], answer: 0 }
+<div class="duo-header"><img class="duo-img" src="../../assets/images/Panda.png" alt="Panda"/><div class="duo-title">Master Quiz 25: Chinese Classics</div></div>
+<div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
+
+<div class="container-wrap">
+  <div class="quiz-card" role="main" aria-live="polite">
+    <div style="position:relative;">
+      <div id="quiz-question" class="quiz-question"></div>
+      <div class="svg-wrap" aria-hidden="true">
+        <svg id="connection-svg" width="100%" height="100%"></svg>
+      </div>
+    </div>
+
+    <div id="quiz-feedback" class="quiz-feedback"></div>
+    <div id="quiz-answers" class="quiz-answers"></div>
+    <div id="buzzer-effect-root"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- Pause logic ---------- */
+let paused = false;
+const pauseBtn = document.getElementById('pause-btn');
+const pauseModal = document.getElementById('pause-modal');
+const resumeBtn = document.getElementById('resume-btn');
+const restartBtn = document.getElementById('restart-btn');
+const exitBtn = document.getElementById('exit-btn');
+pauseBtn.onclick = ()=>{ paused=true; pauseModal.style.display='flex'; }
+resumeBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; }
+restartBtn.onclick = ()=>{ paused=false; pauseModal.style.display='none'; current=0; score=0; initMatchState(); showQuestion(); document.getElementById('quiz-progress-bar').style.width='0%'; }
+exitBtn.onclick = ()=> window.location.href='../levels/master.html';
+
+const questions = [
+  // ---------- Part A: Vocabulary Matching (Q1–10) ----------
+  {
+    type: 'match',
+    pageTitle: 'Part A: Vocabulary (1–5)',
+    items: [
+      { id: 'm1', cn: '仁', en: 'benevolence / kindness' },
+      { id: 'm2', cn: '礼', en: 'ritual / propriety' },
+      { id: 'm3', cn: '智', en: 'wisdom' },
+      { id: 'm4', cn: '勇', en: 'courage' },
+      { id: 'm5', cn: '孙子', en: 'Sun Tzu' },
+    ]
+  },
+  {
+    type: 'match',
+    pageTitle: 'Part A: Vocabulary (6–10)',
+    items: [
+      { id: 'm6', cn: '兵法', en: 'military strategy' },
+      { id: 'm7', cn: '谋略', en: 'strategy / tactics' },
+      { id: 'm8', cn: '上将', en: 'general' },
+      { id: 'm9', cn: '攻守', en: 'offense and defense' },
+      { id: 'm10', cn: '知己知彼', en: 'know yourself and the enemy' },
+    ]
+  },
+
+  // ---------- Part B: Multiple Choice Grammar / Sentences (Q11–20) ----------
+  { type: 'mcq', q: 'Q11: ___是儒家思想的重要原则。 (Benevolence)', options: ['仁', '礼', '智', '勇'], answer: 0 },
+  { type: 'mcq', q: 'Q12: 用谋略来___敌人。 (defeat)', options: ['战胜', '支持', '反对', '总结'], answer: 0 },
+  { type: 'mcq', q: 'Q13: 如果敌人强大，___采取防守策略。 (then)', options: ['就', '虽然', '既', '因为'], answer: 0 },
+  { type: 'mcq', q: 'Q14: ___爱人。 (The benevolent person)', options: ['仁者', '智者', '勇者', '孙子'], answer: 0 },
+  { type: 'mcq', q: 'Q15: 孙子写了___这本书。 (military strategy)', options: ['兵法', '谋略', '攻守', '上将'], answer: 0 },
+  { type: 'mcq', q: 'Q16: 兵法强调___和防守的重要性。 (offense)', options: ['攻守', '仁', '礼', '智'], answer: 0 },
+  { type: 'mcq', q: 'Q17: ___是智慧的象征。 (Wisdom)', options: ['智', '勇', '礼', '仁'], answer: 0 },
+  { type: 'mcq', q: 'Q18: 将军是军队中的___。 (general)', options: ['上将', '孙子', '攻守', '谋略'], answer: 0 },
+  { type: 'mcq', q: 'Q19: ___，百战不殆。 (know yourself and your enemy)', options: ['知己知彼', '仁', '礼', '智'], answer: 0 },
+  { type: 'mcq', q: 'Q20: ___在古代战争中非常重要。 (Strategy / tactics)', options: ['谋略', '攻守', '仁', '礼'], answer: 0 },
+
+  // ---------- Part C: Fill in the Blanks (Q21–25) ----------
+  { type: 'fill', q: 'Q21: ___是儒家思想的重要原则。 (Benevolence)', answer: ['仁'] },
+  { type: 'fill', q: 'Q22: 将军使用___来战胜敌人。 (strategy)', answer: ['谋略'] },
+  { type: 'fill', q: 'Q23: 如果敌人强大，___采取防守策略。 (then)', answer: ['就'] },
+  { type: 'fill', q: 'Q24: ___爱人。 (Benevolent person)', answer: ['仁者'] },
+  { type: 'fill', q: 'Q25: 孙子写了___这本书。 (military strategy)', answer: ['兵法'] },
+
+  // ---------- Part D: Translation (Q26–30) ----------
+  { type: 'fill', q: 'Q26: Benevolence is an important principle of Confucianism.', answer: ['仁是儒家思想的重要原则。'] },
+  { type: 'fill', q: 'Q27: The general uses strategy to defeat the enemy.', answer: ['将军使用谋略来战胜敌人。'] },
+  { type: 'fill', q: 'Q28: If the enemy is strong, then adopt a defensive strategy.', answer: ['如果敌人强大，就采取防守策略。'] },
+  { type: 'fill', q: 'Q29: The benevolent person loves others.', answer: ['仁者爱人。'] },
+  { type: 'fill', q: 'Q30: Sun Tzu wrote the book “The Art of War.”', answer: ['孙子写了《孙子兵法》。'] },
 ];
 
-	const questions = [...originalQuestions];
+let current = 0;
+let score = 0;
 
-	let current = 0;
-	let score = 0;
-	let paused = false;
+/* match state */
+let matchState = { connections:{}, pathMap:{}, leftSelected:null, rightSelected:null };
 
-	// Helper: Fisher-Yates shuffle - used to randomize option display order
-	function shuffleArray(arr) {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
+/* helpers */
+const byId = id => document.getElementById(id);
+const svg = byId('connection-svg');
+const Q_ANS = byId('quiz-answers');
+const Q_FB = byId('quiz-feedback');
+const Q_Q = byId('quiz-question');
+
+function clearSVG(){ while(svg.firstChild) svg.removeChild(svg.firstChild); }
+
+function drawAnimatedPath(elA, elB, color='#ffd54f'){
+  if(!elA || !elB) return null;
+  const svgRect = svg.getBoundingClientRect();
+  const aRect = elA.getBoundingClientRect();
+  const bRect = elB.getBoundingClientRect();
+  const ax = aRect.left + aRect.width/2 - svgRect.left;
+  const ay = aRect.top + aRect.height/2 - svgRect.top;
+  const bx = bRect.left + bRect.width/2 - svgRect.left;
+  const by = bRect.top + bRect.height/2 - svgRect.top;
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  const cx = Math.max(40, Math.abs(bx-ax)/2);
+  const d = `M ${ax} ${ay} C ${ax+cx} ${ay} ${bx-cx} ${by} ${bx} ${by}`;
+  path.setAttribute('d', d);
+  path.setAttribute('stroke', color);
+  path.setAttribute('stroke-width', 4);
+  path.setAttribute('fill','none');
+  path.setAttribute('stroke-linecap','round');
+  svg.appendChild(path);
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  requestAnimationFrame(()=>{ path.style.transition = 'stroke-dashoffset 480ms cubic-bezier(.2,.9,.2,1)'; path.style.strokeDashoffset = '0'; });
+  return path;
+}
+
+window.addEventListener('resize', ()=>{ redrawMatchPaths(); });
+
+function redrawMatchPaths(){
+  clearSVG();
+  for(const leftId in matchState.connections){
+    const rightId = matchState.connections[leftId];
+    const leftEl = byId('left-'+leftId);
+    const rightEl = byId('right-'+rightId);
+    if(leftEl && rightEl){
+      matchState.pathMap[leftId] = drawAnimatedPath(leftEl, rightEl);
+    }
+  }
+}
+
+function initMatchState(){
+  matchState.connections = {};
+  matchState.pathMap = {};
+  matchState.leftSelected = null;
+  matchState.rightSelected = null;
+  clearSVG();
+  Q_FB.innerHTML = '';
+}
+
+/* ---------- Improved normalization helpers ----------
+   This normalization:
+   - trims & unicode-normalizes,
+   - removes punctuation/symbols,
+   - collapses whitespace,
+   - lowercases Latin text,
+   - removes combining diacritics (accents)
+   - works for Chinese (won't break Chinese characters)
+*/
+function normalizeAnswer(s){
+  if(!s) return '';
+  // NFKC to collapse compatibility chars
+  let t = String(s).trim().normalize('NFKC');
+
+  // Remove punctuation & symbols (Unicode property escapes)
+  // Note: requires modern JS engines; if unsupported, fallback below
+  try {
+    t = t.replace(/[\p{P}\p{S}]+/gu, '');
+  } catch(e){
+    // Fallback: basic ascii + common Chinese punctuation removal
+    t = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\"'<>?¡¿，。？！、；：]/g,'');
+  }
+
+  // Collapse whitespace
+  t = t.replace(/\s+/g, ' ').trim();
+
+  // Remove combining diacritics (accents)
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+
+  // Lowercase for latin scripts (won't affect Chinese)
+  t = t.toLowerCase();
+
+  return t;
+}
+
+/* ---------- Render questions ---------- */
+function showQuestion(){
+  if(paused) return;
+  // if reached end -> finish
+  if(current >= questions.length){ finishQuiz(); return; }
+
+  const q = questions[current];
+  Q_Q.innerHTML=''; Q_ANS.innerHTML=''; Q_FB.innerHTML=''; Q_ANS.style.gridTemplateColumns='1fr 1fr';
+  updateProgress();
+
+  // ensure no leftover mcq-control
+  const oldControl = document.getElementById('mcq-control');
+  if(oldControl) oldControl.remove();
+
+  if(q.type === 'match'){
+    initMatchState();
+    Q_Q.innerHTML = q.pageTitle;
+
+    // build columns
+    const matchArea = document.createElement('div'); matchArea.className='match-area';
+    const leftCol = document.createElement('div'); leftCol.className='match-column';
+    const rightCol = document.createElement('div'); rightCol.className='match-column';
+    const rightPool = q.items.slice().sort(()=>Math.random()-0.5);
+
+    // left boxes (Chinese)
+    q.items.forEach(it=>{
+      const l = document.createElement('div');
+      l.className = 'match-box';
+      if(window.innerWidth < 900) l.classList.add('small');
+      l.textContent = it.cn;
+      l.id = 'left-'+it.id;
+      l.dataset.id = it.id;
+      l.dataset.side = 'left';
+      l.addEventListener('click', ()=> {
+        if(paused) return;
+        // ✨ Visual pop animation
+        l.style.transform = 'scale(1.2)';
+        setTimeout(() => l.style.transform = '', 150);
+
+        // 🟡 If this left box is matched → cancel its connection (both sides)
+        if (l.classList.contains('matched')) {
+          const matchedRightId = matchState.connections[it.id];
+          if (matchedRightId) removeConnection(it.id, matchedRightId);
+          return;
+        }
+
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'left') el.classList.remove('selected');
+        });
+        l.classList.add('selected');
+        matchState.leftSelected = it.id;
+
+        // If right is already selected → create connection
+        if(matchState.rightSelected){
+          createOrRemap(matchState.leftSelected, matchState.rightSelected);
+          document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
+          matchState.leftSelected = null;
+          matchState.rightSelected = null;
+        }
+      });
+      leftCol.appendChild(l);
+    });
+
+    // right boxes (English) (random order)
+    rightPool.forEach(it=>{
+      const r = document.createElement('div');
+      r.className = 'match-box';
+      if(window.innerWidth < 900) r.classList.add('small');
+      r.textContent = it.en;
+      r.id = 'right-'+it.id;
+      r.dataset.id = it.id;
+      r.dataset.side = 'right';
+      r.addEventListener('click', ()=> {
+        if(paused) return;
+        // ✨ Visual pop animation
+        r.style.transform = 'scale(1.2)';
+        setTimeout(() => r.style.transform = '', 150);
+
+        // 🟡 If this right box is matched → cancel its connection (both sides)
+        const matchedLeftId = Object.keys(matchState.connections)
+          .find(lid => matchState.connections[lid] === it.id);
+        if (matchedLeftId) {
+          removeConnection(matchedLeftId, it.id);
+          return;
+        }
+
+        // Normal select behavior
+        document.querySelectorAll('.match-box.selected').forEach(el => {
+          if(el.dataset.side === 'right') el.classList.remove('selected');
+        });
+        r.classList.add('selected');
+        matchState.rightSelected = it.id;
+
+        // If left is already selected → create connection
+        if(matchState.leftSelected){
+          createOrRemap(matchState.leftSelected, matchState.rightSelected);
+          document.querySelectorAll('.match-box.selected').forEach(el=>el.classList.remove('selected'));
+          matchState.leftSelected = null;
+          matchState.rightSelected = null;
+        }
+      });
+      rightCol.appendChild(r);
+    });
+
+    matchArea.appendChild(leftCol);
+    matchArea.appendChild(rightCol);
+
+    Q_ANS.style.gridTemplateColumns = '1fr';
+    Q_ANS.appendChild(matchArea);
+
+    const note = document.createElement('div');
+    note.className = 'small-note';
+    note.textContent = 'Click a Chinese box (left), then an English box (right) to connect. Remap by connecting again. Connect all 5 then press Submit.';
+    Q_ANS.appendChild(note);
+
+    // Create a fresh submit button for this match page
+    const submit = document.createElement('button');
+    submit.className = 'submit-btn';
+    submit.textContent = 'Submit';
+    submit.disabled = false;
+
+    let matchScored = false; // Prevent double scoring
+
+    submit.addEventListener('click', function onMatchSubmit(){
+      if(paused) return;
+      if(!matchScored) {
+        // Only allow submit if all 5 are connected
+        const total = q.items.length;
+        const userConnections = Object.keys(matchState.connections).length;
+        if(userConnections < total) {
+          Q_FB.innerHTML = `<span class="wrong">❗ Connect all ${total} pairs before submitting.</span>`;
+          setTimeout(()=> Q_FB.textContent='', 1200);
+          return;
+        }
+        // grade
+        let correct = 0;
+        q.items.forEach(it => { if(matchState.connections[it.id] === it.id) correct++; });
+        Q_FB.innerHTML = `<div style="font-weight:700;color:#ffe600;text-align:center">You connected ${correct} / ${total}</div>`;
+        score += correct;
+        matchScored = true;
+        // switch to Next state
+        submit.textContent = 'Next';
+      } else {
+        // clear visuals & paths
+        clearSVG();
+        document.querySelectorAll('.match-box').forEach(m => { m.classList.remove('matched','selected'); });
+        // advance
+        current++;
+        showQuestion();
+      }
+    });
+    Q_ANS.appendChild(submit);
+    return;
+  }
+
+  // MCQ block (submit disabled until user selects an option)
+  if(q.type === 'mcq'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns='1fr 1fr';
+
+    // Shuffle options and track the new answer index
+    const optionObjs = (q.options || []).map((opt, i) => ({
+        text: opt,
+        origIndex: i
+    }));
+    // Fisher-Yates shuffle
+    for (let i = optionObjs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [optionObjs[i], optionObjs[j]] = [optionObjs[j], optionObjs[i]];
+    }
+    // Find new answer index
+    const newAnswerIndex = optionObjs.findIndex(o => o.origIndex === q.answer);
+
+    optionObjs.forEach((optObj,i)=>{
+        const btn = document.createElement('button'); btn.className='answer-btn-custom';
+        btn.textContent = `${String.fromCharCode(65+i)}. ${optObj.text}`;
+        const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
+        btn.addEventListener('click', ()=> {
+            if(paused) return;
+            if(btn.disabled) return;
+            document.querySelectorAll('.answer-btn-custom').forEach(b=> b.classList.remove('selected-option'));
+            btn.classList.add('selected-option');
+            let control = document.getElementById('mcq-control');
+            if(!control){ control = document.createElement('div'); control.id='mcq-control'; control.style.display='none'; document.body.appendChild(control); }
+            control.dataset.selected = String(i); // store as non-empty string
+        });
+        Q_ANS.appendChild(btn);
+    });
+
+    const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
+    const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
+    // Pass newAnswerIndex and optionObjs to handler
+    submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q, newAnswerIndex, optionObjs));
+    controls.appendChild(submitBtn);
+    Q_ANS.appendChild(controls);
+    return;
+  }
+
+  // arrange/drag questions (part C)
+  if(q.type === 'drag'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns='1fr';
+    const selectedDiv = document.createElement('div'); selectedDiv.id = 'selectedWords';
+    const poolDiv = document.createElement('div'); poolDiv.className = 'word-pool';
+    const shuffled = q.words.slice().sort(()=>Math.random()-0.5);
+
+    shuffled.forEach((word, idx) => {
+      const btn = document.createElement('button');
+      btn.textContent = word;
+      btn.type = 'button';
+      btn.className = 'answer-btn-custom border-c1'; // Use same box style as MCQ/match
+      btn.style.width = "110px";
+      btn.style.minHeight = "38px";
+      btn.style.fontSize = "1.1rem";
+      btn.style.margin = "0 4px 4px 0";
+      btn.style.textAlign = "center";
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains('selected')) return;
+        const ansBtn = document.createElement('button');
+        ansBtn.textContent = word;
+        ansBtn.className = 'answer-btn-custom border-c1'; // Use same box style
+        ansBtn.style.width = "110px";
+        ansBtn.style.minHeight = "38px";
+        ansBtn.style.fontSize = "1.1rem";
+        ansBtn.style.margin = "0 4px 4px 0";
+        ansBtn.style.textAlign = "center";
+        ansBtn.setAttribute('draggable', 'true');
+
+        ansBtn.addEventListener('click', () => {
+          selectedDiv.removeChild(ansBtn);
+          btn.classList.remove('selected');
+        });
+
+        ansBtn.addEventListener('dragstart', (e) => {
+          ansBtn.classList.add('dragging');
+          e.dataTransfer.setData('text/plain', 'dragging'); // marker
+          window._dragging = ansBtn;
+        });
+        ansBtn.addEventListener('dragend', (e) => {
+          ansBtn.classList.remove('dragging');
+          window._dragging = null;
+        });
+
+        selectedDiv.appendChild(ansBtn);
+        btn.classList.add('selected');
+      });
+      poolDiv.appendChild(btn);
+    });
+
+    selectedDiv.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const dragging = window._dragging;
+      if(!dragging) return;
+      const children = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom'));
+      let insertBefore = null;
+      for(const child of children){
+        if(child === dragging) continue;
+        const rect = child.getBoundingClientRect();
+        const mid = rect.left + rect.width/2;
+        if(e.clientX < mid){ insertBefore = child; break; }
+      }
+      if(insertBefore) selectedDiv.insertBefore(dragging, insertBefore); else selectedDiv.appendChild(dragging);
+    });
+    selectedDiv.addEventListener('drop', e => e.preventDefault());
+
+    Q_ANS.appendChild(selectedDiv);
+    Q_ANS.appendChild(poolDiv);
+
+    const submit = document.createElement('button'); submit.className='submit-btn'; submit.textContent='Submit';
+    submit.addEventListener('click', ()=> {
+      if(paused) return;
+      if(submit.textContent === 'Submit'){
+        const arranged = Array.from(selectedDiv.querySelectorAll('.answer-btn-custom')).map(b => b.textContent.trim()).join(' ');
+        // Use same normalization for drag-type comparison
+        const normalize = s => normalizeAnswer(s).replace(/\s+/g,' ').trim();
+        const arrangedNorm = normalize(arranged);
+
+        // Support multiple correct answers
+        const correctAnswers = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctAnswers.some(ans => normalize(ans) === arrangedNorm);
+
+        if (isCorrect) {
+          Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+          score++;
+        } else {
+          Q_FB.innerHTML = `<span class="wrong">Incorrect — correct answer(s): ${correctAnswers.join('  /  ')}</span>`;
+          const buz = document.createElement('div');
+          buz.className='buzzer-effect';
+          byId('buzzer-effect-root').appendChild(buz);
+          setTimeout(()=> buz.remove(),700);
+        }
+        submit.textContent = 'Next';
+        submit.onclick = ()=> { current++; showQuestion(); };
+      }
+    });
+    Q_ANS.appendChild(submit);
+    return;
+  }
+
+    // ---------- FILL-IN-THE-BLANK QUESTION ----------
+  if(q.type === 'fill'){
+    Q_Q.innerHTML = q.q;
+    Q_ANS.style.gridTemplateColumns = '1fr';
+
+    // Input box
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Type your answer here...';
+    input.style.width = '70%';
+    input.style.margin = '12px auto';
+    input.style.padding = '14px';
+    input.style.fontSize = '1.2rem';
+    input.style.textAlign = 'center';
+    input.style.borderRadius = '10px';
+    input.style.border = '2px solid var(--accent)';
+    input.style.background = '#fff';
+    input.style.color = '#000';
+    input.style.display = 'block';
+    Q_ANS.appendChild(input);
+
+    // Submit button
+    const submit = document.createElement('button');
+    submit.className = 'submit-btn';
+    submit.textContent = 'Submit';
+    Q_ANS.appendChild(submit);
+
+    submit.addEventListener('click', () => {
+      if(paused) return;
+
+      const userAns = input.value.trim();
+      if(!userAns){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please type your answer first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+      }
+
+      // Use improved normalization
+      const normalize = normalizeAnswer;
+      const userNorm = normalize(userAns);
+
+      const correctAnswers = Array.isArray(q.answer) ? q.answer : [q.answer];
+      const isCorrect = correctAnswers.some(ans => normalize(ans) === userNorm);
+
+      if(isCorrect){
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++;
+        input.style.borderColor = '#4caf50';
+      } else {
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${correctAnswers.join(' / ')}</span>`;
+        input.style.borderColor = '#ff3b3b';
+        const buz = document.createElement('div');
+        buz.className = 'buzzer-effect';
+        byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+      }
+
+      // Change to Next button
+      submit.textContent = 'Next';
+      submit.onclick = ()=> { current++; showQuestion(); };
+    });
+
+    return;
+  }
+
+  Q_Q.innerHTML = 'Unknown question type';
+}
+
+	/* ---------- Matching helpers ---------- */
+	function createOrRemap(leftId,rightId){
+	// remove any existing connection for leftId or rightId (one-to-one)
+	if(matchState.connections[leftId]) removeConnection(leftId, matchState.connections[leftId]);
+	for(const l in matchState.connections){ if(matchState.connections[l] === rightId){ removeConnection(l,rightId); break; } }
+	matchState.connections[leftId] = rightId;
+	const leftEl = byId('left-'+leftId); const rightEl = byId('right-'+rightId);
+	if(leftEl) leftEl.classList.add('matched');
+	if(rightEl) rightEl.classList.add('matched');
+	if(matchState.pathMap[leftId]){ try{ matchState.pathMap[leftId].remove(); }catch(e){} }
+	const p = drawAnimatedPath(leftEl, rightEl);
+	matchState.pathMap[leftId] = p;
+	}
+  function removeConnection(leftId, rightId) {
+    // Remove stored link
+    delete matchState.connections[leftId];
+
+    // Get the line path and connected boxes
+    const leftEl = byId('left-' + leftId);
+    const rightEl = byId('right-' + rightId);
+    const path = matchState.pathMap[leftId];
+    delete matchState.pathMap[leftId];
+
+    // 🧊 Smooth line fade-out before removal
+    if (path) {
+      path.style.transition = 'opacity 0.25s ease-out';
+      path.style.opacity = '0';
+      setTimeout(() => {
+        try { path.remove(); } catch (e) {}
+      }, 250);
+    }
+
+    // 🟢 Smoothly un-highlight both boxes
+    [leftEl, rightEl].forEach(el => {
+      if (el) {
+        el.style.transition = 'background 0.25s, color 0.25s, transform 0.25s';
+        el.classList.remove('matched', 'selected');
+        el.style.transform = 'scale(0.92)';
+        setTimeout(() => {
+          el.style.transform = 'scale(1)';
+        }, 150);
+      }
+    });
+  }
+
+	/* ---------- MCQ handler with robust selection check ---------- */
+	function handleMcqSubmitToggle(submitBtn, qObj, answerIndex, optionObjs){
+    if(paused) return;
+    if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
+
+    const control = document.getElementById('mcq-control');
+    const sel = control ? control.dataset.selected : undefined;
+    if(!control || sel === undefined || sel === ''){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const selectedIndex = parseInt(sel,10);
+    if(isNaN(selectedIndex)){
+        Q_FB.innerHTML = `<span class="wrong">❗ Please select an option first</span>`;
+        setTimeout(()=> Q_FB.textContent='',900);
+        return;
+    }
+    const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
+    allBtns.forEach((b, idx) => {
+        if(idx === answerIndex) b.style.borderColor = '#4caf50';
+        if(idx === selectedIndex && idx !== answerIndex) b.style.borderColor = '#ff3b3b';
+        b.disabled = true;
+    });
+    if(selectedIndex === answerIndex){
+        const fill = allBtns[selectedIndex].querySelector('.answer-fill');
+        if(fill) fill.style.height = '100%';
+        Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
+        score++; // Only increment once
+    } else {
+        // Show correct answer text
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+answerIndex)}. ${optionObjs[answerIndex].text}</span>`;
+        const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
+        setTimeout(()=> buz.remove(),700);
+    }
+    submitBtn.textContent = 'Next';
+    submitBtn.dataset.answered = "true"; // Mark as answered
+    submitBtn.onclick = ()=> {
+        const control2 = document.getElementById('mcq-control');
+        if(control2) control2.remove();
+        current++;
+        showQuestion();
+    };
 	}
 
-	// Pause modal logic
-	const pauseBtn = document.getElementById('pause-btn');
-	const pauseModal = document.getElementById('pause-modal');
-	const resumeBtn = document.getElementById('resume-btn');
-	const restartBtn = document.getElementById('restart-btn');
-	const exitBtn = document.getElementById('exit-btn');
-
-	pauseBtn.onclick = function() {
-		paused = true;
-		pauseModal.style.display = 'flex';
-	};
-	resumeBtn.onclick = function() {
-		paused = false;
-		pauseModal.style.display = 'none';
-	};
-	restartBtn.onclick = function() {
-		// Restart the boss fight and resume the game (hide pause modal)
-		try {
-			restartBossFight();
-		} catch(e) {
-			// fallback: basic reset
-			playerHP = 100; bossHP = 100; current = 0; score = 0;
-			updatePlayerHealthBar(); renderBossHeartsLocal();
-			document.getElementById('quiz-feedback').textContent = '';
-			showQuestion();
-			document.getElementById('quiz-progress-bar').style.width = '0%';
-		}
-		// restore resume button and hide modal so game continues
-		try { resumeBtn.style.display = ''; } catch(e){}
-		try { paused = false; pauseModal.style.display = 'none'; } catch(e){}
-};
-	exitBtn.onclick = function() {
-		window.location.href = '../levels/master.html';
-	};
-
-	function showQuestion() {
-		if (originalQuestions.length === 0) {
-			document.getElementById('quiz-question').innerHTML = 'Questions not yet added to this quiz.';
-			document.getElementById('quiz-answers').innerHTML = '';
-			document.getElementById('quiz-feedback').innerHTML = '<button onclick="window.location.href=\'../levels/rookie.html\'" style="padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back to Level</button>';
-			return;
-		}
-
-		const q = questions[current];
-		const questionDiv = document.getElementById('quiz-question');
-		const answersDiv = document.getElementById('quiz-answers');
-		questionDiv.innerHTML = q.q;
-		answersDiv.innerHTML = '';
-
-		// Shuffle options so the correct answer doesn't always appear in the same position
-		try {
-			const optionObjs = q.options.map((opt, i) => ({ text: opt, origIdx: i }));
-			const shuffled = shuffleArray(optionObjs.slice());
-			// store shuffled options and the displayed index of the correct answer
-		q._shuffledOptions = shuffled;
-		q._shuffledAnswerIdx = shuffled.findIndex(o => o.origIdx === q.answer);
-		// debug: log shuffled order to console so you can verify visually
-		try { console.log('shuffled options for question', current, shuffled.map(o => o.text)); } catch(e) {}
-			shuffled.forEach((optObj, i) => {
-				const btn = document.createElement('button');
-				btn.className = `answer-btn-custom border-c${i + 1}`;
-				btn.textContent = optObj.text;
-				btn.onclick = () => checkAnswer(i);
-				const fill = document.createElement('div');
-				fill.className = `answer-fill c${i + 1}`;
-				btn.appendChild(fill);
-				answersDiv.appendChild(btn);
-			});
-		} catch (e) {
-			// fallback: render in original order if anything goes wrong
-			try { console.warn('shuffling options failed, rendering in original order', e); } catch(e) {}
-			q.options.forEach((opt, i) => {
-				const btn = document.createElement('button');
-				btn.className = `answer-btn-custom border-c${i + 1}`;
-				btn.textContent = opt;
-				btn.onclick = () => checkAnswer(i);
-				const fill = document.createElement('div');
-				fill.className = `answer-fill c${i + 1}`;
-				btn.appendChild(fill);
-				answersDiv.appendChild(btn);
-			});
-		}
-		document.getElementById('quiz-feedback').textContent = '';
-		updateProgress();
-	}
-
-	// Boss fight state
-	let playerHP = 100;
-	// boss uses hit-count: 30 correct answers to defeat
-	let bossHP = 30; // 30 hits required
-
-	function renderBossHealthBar() {
-		const bar = document.getElementById('bossHealthBar');
-		if (!bar) return;
-		const total = 30;
-		const pct = Math.max(0, Math.min(100, (bossHP / total) * 100));
-		bar.style.width = pct + '%';
-		// change color as boss gets low
-		if (pct > 60) bar.style.background = 'linear-gradient(90deg,#4a90e2,#7f9cf5)';
-		else if (pct > 30) bar.style.background = 'linear-gradient(90deg,#ffd54f,#ffb74d)';
-		else bar.style.background = 'linear-gradient(90deg,#ff6b6b,#ff3b3b)';
-	}
-
-	function updatePlayerHealthBar() {
-		const container = document.getElementById('playerHearts');
-		if (!container) return;
-		container.innerHTML = '';
-		const hearts = 5;
-		const hpPerHeart = 100 / hearts; // 20
-		for (let i = 0; i < hearts; i++) {
-			const img = document.createElement('img');
-			const filled = playerHP > i * hpPerHeart;
-			img.src = filled ? '../../assets/images/Heart.png' : '../../assets/images/Emptyheart.png';
-			img.style.width = '34px'; img.style.height = '34px'; img.style.margin = '0 4px';
-			container.appendChild(img);
-		}
-	}
-
-	function checkAnswer(idx) {
-		if (paused) return;
-		const q = questions[current];
-		// prefer shuffled index when present
-		const correctIdx = (typeof q._shuffledAnswerIdx === 'number') ? q._shuffledAnswerIdx : q.answer;
-		if(idx === correctIdx) {
-			// correct -> damage boss
-			score++;
-			// each correct hit counts as 1 toward the 30 required hits
-			bossHP = Math.max(0, bossHP - 1);
-				try {
-					try { const b = window._masterBossSprite || window._challengerBossSprite || window._rookieBossSprite; if (b) { try { if (typeof b._stop === 'function') b._stop(); } catch(e){} try { b.takeHit(); } catch(e){} } } catch(e){}
-				} catch(e){}
-				// player does attack animation (right hook)
-				try { if (window._rookiePlayerSprite) window._rookiePlayerSprite.attackRightHook(); } catch(e){}
-			document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Hit! Boss takes damage. <span style="font-size:1.5rem;">⚔️</span></span>';
-			renderBossHealthBar();
-			if (bossHP <= 0) {
-				// boss defeated
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#4caf50;font-weight:800;font-size:1.6rem;display:inline-block;text-align:center;width:100%">Boss Defeated! 🏆</span>';
-				try { const b = window._masterBossSprite || window._challengerBossSprite || window._rookieBossSprite; if (b && typeof b.die === 'function') b.die(); } catch(e){}
-				// allow death animation to play then finish
-				setTimeout(finishBossFight, 1400);
-				return;
-			}
-			const answersDiv = document.getElementById('quiz-answers');
-			const btns = answersDiv.querySelectorAll('.answer-btn-custom');
-			const btn = btns[idx];
-			const fill = btn.querySelector('.answer-fill');
-			fill.style.height = '100%';
-			btns.forEach(b => b.disabled = true);
-			setTimeout(() => {
-				if (!paused) nextQuestion();
-			}, 850);
-		} else {
-			// wrong -> damage player
-			playerHP = Math.max(0, playerHP - 20);
-			try { const b = window._masterBossSprite || window._challengerBossSprite || window._rookieBossSprite; if (b && typeof b.attack === 'function') b.attack(); } catch(e){}
-			// If player still has HP after this hit, play get-hit animation.
-			// If playerHP reached 0 (last heart), play death spritesheet instead.
-			try {
-				if (playerHP > 0) {
-					if (window._rookiePlayerSprite && typeof window._rookiePlayerSprite.playGetHit === 'function') {
-						// small delay so the hit animation lines up with the boss attack animation
-						setTimeout(function(){
-							try { window._rookiePlayerSprite.playGetHit(600); } catch(e){}
-						}, 220);
-					}
-				} else {
-					// last heart -> play death spritesheet (delayed slightly to sync)
-					setTimeout(function(){
-						try {
-							if (window._rookiePlayerSprite && typeof window._rookiePlayerSprite.playOneShotImage === 'function') {
-								window._rookiePlayerSprite.playOneShotImage('../../assets/images/Panda/Death.png', 1200);
-							}
-						} catch(e) { console.warn('failed to play player death', e); }
-					}, 220);
-				}
-			} catch(e){}
-			updatePlayerHealthBar();
-			const feedback = document.getElementById('quiz-feedback');
-			feedback.innerHTML = '<span style="color:#ff3b3b;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Wrong! You take damage. <span style="font-size:1.5rem;">💥</span></span>';
-			feedback.classList.add('wrong');
-			const buzzerRoot = document.getElementById('buzzer-effect-root') || document.body;
-			const buzzerDiv = document.createElement('div');
-			buzzerDiv.className = 'buzzer-effect';
-			// append to root that is outside the scaled wrapper so overlay covers the full viewport
-			buzzerRoot.appendChild(buzzerDiv);
-			setTimeout(() => {
-				feedback.classList.remove('wrong');
-				feedback.textContent = '';
-				try { buzzerDiv.remove(); } catch(e) { if (buzzerDiv.parentNode) buzzerDiv.parentNode.removeChild(buzzerDiv); }
-			}, 700);
-			if (playerHP <= 0) {
-				// player defeated
-				document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ff3b3b;font-weight:800;font-size:1.6rem;display:inline-block;text-align:center;width:100%">You were defeated! Try again.</span>';
-				// play panda death spritesheet (if available) then show modal with only Restart and Exit
-				try {
-					if (window._rookiePlayerSprite && typeof window._rookiePlayerSprite.playOneShotImage === 'function') {
-						// Death spritesheet path
-						window._rookiePlayerSprite.playOneShotImage('../../assets/images/Panda/Death.png', 1200);
-					}
-				} catch(e) { console.warn('failed to play player death', e); }
-				// show pause modal but hide Resume so player can only Restart or Exit
-				setTimeout(function(){
-					try { resumeBtn.style.display = 'none'; } catch(e){}
-					paused = true;
-					pauseModal.style.display = 'flex';
-				}, 600);
-				return;
-			}
-		}
-	}
-
-	function finishBossFight() {
-		// unlock next level and show finish screen
-		setUnlockedLevel(16); // unlock next level in rookie sequence
-		document.getElementById('quiz-question').innerHTML = '';
-		document.getElementById('quiz-answers').innerHTML = '';
-		document.getElementById('quiz-feedback').innerHTML += `<div class='quiz-finish' style='margin-top:12px;'>Boss beaten!<br>Your score: ${score} / ${questions.length}<br><br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;cursor:pointer;'>Next Level</button></div>`;
-		setTimeout(function() {
-			var btn = document.getElementById('nextLevelBtn');
-			if (btn) btn.onclick = function() { window.location.href = 'rookie_quiz26.html'; };
-		}, 100);
-	}
-
-	function restartBossFight() {
-	// reset HP and restart
-	playerHP = 100; bossHP = 30; score = 0; current = 0;
-	updatePlayerHealthBar(); renderBossHealthBar();
-		document.getElementById('quiz-feedback').textContent = '';
-		showQuestion();
-		try { const b = window._challengerBossSprite || window._rookieBossSprite; if (b && typeof b.idleStart === 'function') { b.idleStart(); } } catch(e){}
-	}
-
-	function nextQuestion() {
-		current++;
-		if(current < questions.length) {
-			showQuestion();
-		} else {
-			finishQuiz();
-		}
-	}
-
+/* ---------- Progress & finish ---------- */
 	function updateProgress() {
 		const bar = document.getElementById('quiz-progress-bar');
 		bar.style.width = ((current / questions.length) * 100) + '%';
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
+		localStorage.setItem('masterUnlockedLevel', String(level));
 		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
+		var username = localStorage.getItem('masterUserId');
 		if (username) {
 			fetch('http://localhost:3000/api/updateProgress', {
 				method: 'POST',
@@ -542,277 +748,27 @@ const originalQuestions = [
 		}
 	}
 
+	// Calculate total possible score (1 point per item in match, 1 per other question)
+	const totalScore = questions.reduce((sum, q) => sum + (q.type === 'match' ? q.items.length : 1), 0);
+
 	function finishQuiz() {
-		document.getElementById('quiz-question').innerHTML = '';
-		document.getElementById('quiz-answers').innerHTML = '';
-		// Ensure boss is removed/defeated when quiz finishes
-		try { const b = window._challengerBossSprite || window._rookieBossSprite; if (b && typeof b.die === 'function') { b.die(); } } catch(e){}
-		try { var bhbar = document.getElementById('bossHealthBar'); if (bhbar) { bhbar.style.width = '0%'; bhbar.style.background = 'linear-gradient(90deg,#ff6b6b,#ff3b3b)'; } } catch(e) {}
-		document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${questions.length}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
-		document.getElementById('quiz-progress-bar').style.width = '100%';
-		setUnlockedLevel(16); // Unlock next level
-		setTimeout(function() {
-			var btn = document.getElementById('nextLevelBtn');
-			if (btn) {
-				btn.onclick = function() {
-					window.location.href = 'rookie_quiz16.html';
-				};
-			}
-		}, 100);
-	}
-
-		// Initialize quiz
-		showQuestion();
-
-		// Initialize boss sprite controller (prefer MasterBossSprite)
-		try {
-			if (typeof MasterBossSprite === 'function') {
-				window._masterBossSprite = new MasterBossSprite('bossImg');
-				try { renderBossHealthBar(); } catch(e){}
-				try { updatePlayerHealthBar(); } catch(e){}
-				if (window._masterBossSprite) window._masterBossSprite.idleStart();
-			} else if (typeof ChallengerBossSprite === 'function') {
-				window._challengerBossSprite = new ChallengerBossSprite('bossImg');
-				try { renderBossHealthBar(); } catch(e){}
-				try { updatePlayerHealthBar(); } catch(e){}
-				if (window._challengerBossSprite) window._challengerBossSprite.idleStart();
-			} else {
-				window._rookieBossSprite = new RookieBossSprite('bossImg');
-				renderBossHealthBar();
-				updatePlayerHealthBar();
-				if (window._rookieBossSprite) window._rookieBossSprite.idleStart();
-			}
-
-			// Player sprite controller that supports single-image spritesheets (frames left-to-right)
-			(function(){
-				function PlayerSprite(imgId) {
-					this.origImg = document.getElementById(imgId);
-					if (!this.origImg) { console.warn('Player sprite img not found:', imgId); return; }
-					this.src = this.origImg.getAttribute('src') || '../../assets/images/Panda/Idle.png';
-					this.frames = 1;
-					this.currentFrame = 0;
-					this.interval = 120; // ms per frame
-					this._running = false;
-					this._timer = null;
-					this.canvas = null;
-					// one-shot animation state (for attacks/hits that are spritesheets)
-					this._oneShotTimer = null;
-					this._oneShotInterval = null;
-					this._oneShotRunning = false;
-					this.imgLoader = new Image();
-					var self = this;
-					this.imgLoader.onload = function(){
-						// detect spritesheet: if width > height and integer multiple, use frames = width/height
-						var nw = self.imgLoader.naturalWidth, nh = self.imgLoader.naturalHeight;
-						var approx = Math.round(nw / nh);
-						if (approx >= 2 && Math.abs((nw / approx) - nh) < 2) {
-							self.frames = approx;
-						} else {
-							self.frames = 1;
-						}
-						// create canvas to replace the original img for smoother frame cropping
-						self.canvas = document.createElement('canvas');
-						// preserve inline styles for size/transform
-						self.canvas.style.cssText = self.origImg.style.cssText;
-						// prefer computed style sizes so canvas matches visible size
-						try {
-							var cs = window.getComputedStyle(self.origImg);
-							var cw = parseFloat(cs.width);
-							var ch = parseFloat(cs.height);
-							if (cw && ch) {
-								self.canvas.width = Math.round(cw);
-								self.canvas.height = Math.round(ch);
-							} else {
-								self.canvas.width = self.origImg.width || Math.round(self.origImg.getBoundingClientRect().width) || nh;
-								self.canvas.height = self.origImg.height || Math.round(self.origImg.getBoundingClientRect().height) || nh;
-							}
-						} catch(e) {
-							self.canvas.width = self.origImg.width || Math.round(self.origImg.getBoundingClientRect().width) || nh;
-							self.canvas.height = self.origImg.height || Math.round(self.origImg.getBoundingClientRect().height) || nh;
-						}
-						self.ctx = self.canvas.getContext('2d');
-						// replace DOM node
-						try { self.origImg.parentNode.replaceChild(self.canvas, self.origImg); } catch(e){ console.warn('replaceChild failed', e); }
-						// draw first frame
-						self.drawFrame(0);
-					};
-					this.imgLoader.onerror = function(){ console.warn('Failed to load player sprite', self.src); };
-					this.imgLoader.src = this.src;
-				}
-
-				PlayerSprite.prototype.drawFrame = function(i){
-					if (!this.ctx || !this.imgLoader) return;
-					var sw = this.imgLoader.naturalWidth;
-					var sh = this.imgLoader.naturalHeight;
-					var frames = this.frames || 1;
-					var fw = Math.floor(sw / frames);
-					var fh = sh;
-					var sx = i * fw;
-					this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-					this.ctx.drawImage(this.imgLoader, sx, 0, fw, fh, 0, 0, this.canvas.width, this.canvas.height);
-				};
-
-				PlayerSprite.prototype._step = function(){
-					this.currentFrame = (this.currentFrame + 1) % this.frames;
-					this.drawFrame(this.currentFrame);
-				};
-
-				PlayerSprite.prototype.idleStart = function(){
-					var self = this;
-					if (this._running) return;
-					this._running = true;
-					// if frames == 1, keep single frame; otherwise animate
-					if (this.frames <= 1) return;
-					this._timer = setInterval(function(){ self._step(); }, this.interval);
-				};
-
-				PlayerSprite.prototype.idleStop = function(){
-					if (this._timer) { clearInterval(this._timer); this._timer = null; }
-					this._running = false;
-				};
-
-				// Play a single-image one-shot animation (draw image then revert to idle)
-				PlayerSprite.prototype.playOneShotImage = function(imgPath, ms) {
-					var self = this;
-					try {
-						// stop any idle animation and any running one-shot
-						this.idleStop();
-						if (this._oneShotTimer) { clearInterval(this._oneShotTimer); this._oneShotTimer = null; }
-						this._oneShotRunning = false;
-
-						var one = new Image();
-						one.onload = function(){
-							if (!self.ctx) return;
-							var nw = one.naturalWidth, nh = one.naturalHeight;
-							// detect horizontal spritesheet (frames left-to-right)
-							var approx = Math.round(nw / nh) || 1;
-							var isSheet = approx >= 2 && Math.abs((nw / approx) - nh) < 4;
-							if (!isSheet) {
-								// single image: draw and resume idle after ms
-								self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
-								self.ctx.drawImage(one, 0, 0, nw, nh, 0, 0, self.canvas.width, self.canvas.height);
-								setTimeout(function(){ try { self.idleStart(); } catch(e){} }, ms || 700);
-								return;
-							}
-
-							// spritesheet case: play frames once
-							var frames = approx;
-							var fw = Math.floor(nw / frames);
-							var fh = nh;
-							var totalMs = ms || Math.max(80 * frames, 400);
-							var frameMs = Math.max(40, Math.round(totalMs / frames));
-							var idx = 0;
-							self._oneShotRunning = true;
-							// draw first frame
-							self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
-							self.ctx.drawImage(one, 0, 0, fw, fh, 0, 0, self.canvas.width, self.canvas.height);
-							// step through remaining frames
-							self._oneShotTimer = setInterval(function(){
-								idx++;
-								if (idx >= frames) {
-									// finished
-									clearInterval(self._oneShotTimer);
-									self._oneShotTimer = null;
-									self._oneShotRunning = false;
-									try { self.idleStart(); } catch(e){}
-									return;
-								}
-								var sx = idx * fw;
-								self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
-								self.ctx.drawImage(one, sx, 0, fw, fh, 0, 0, self.canvas.width, self.canvas.height);
-							}, frameMs);
-						};
-						one.onerror = function(){ console.warn('failed to load one-shot', imgPath); try { self.idleStart(); } catch(e){} };
-						one.src = imgPath;
-					} catch (e) { console.warn('playOneShotImage failed', e); try { this.idleStart(); } catch(e){} }
-				};
-
-				// Attack: right hook (uses separate image file)
-				PlayerSprite.prototype.attackRightHook = function() {
-					// path to the right hook image
-					var path = '../../assets/images/Panda/RightHook.png';
-					this.playOneShotImage(path, 800);
-				};
-
-				// Play 'get hit' one-shot spritesheet
-				PlayerSprite.prototype.playGetHit = function(ms) {
-					var path = '../../assets/images/Panda/Hit.png';
-					this.playOneShotImage(path, ms || 500);
-				};
-
-				window.RookiePlayerSprite = PlayerSprite;
-			})();
-
-			// initialize player sprite on the small player img (first matching img in HUD)
-			try {
-				var pImg = document.querySelector('img[alt="Player"]');
-				// ensure the player element uses the Panda spritesheet (left-to-right frames)
-				if (pImg) {
-					if (!pImg.id) pImg.id = 'playerImg';
-					// set spritesheet source explicitly so the PlayerSprite can detect frames
-					pImg.src = '../../assets/images/Panda/Idle.png';
-				}
-				if (window.RookiePlayerSprite) {
-					window._rookiePlayerSprite = new window.RookiePlayerSprite('playerImg');
-					// wait briefly for loader to initialize canvas, then start idle loop
-					setTimeout(function(){ try { if (window._rookiePlayerSprite) window._rookiePlayerSprite.idleStart(); } catch(e){} }, 160);
-				}
-			} catch(e) { console.warn('Player sprite init failed', e); }
-		} catch (e) {
-			console.warn('Boss sprite init failed', e);
-		}
-
-// Fit-to-viewport scaler (taskbar-aware)
-(function(){
-	function getAvailableHeight(){
-		// Use screen.availHeight when available (excludes taskbar on many systems). Fallback to window.innerHeight.
-		try { if (window.screen && window.screen.availHeight) return window.screen.availHeight; } catch(e){}
-		return window.innerHeight;
-	}
-	function wrapAndScale(){
-		const root = document.body; // page roots differ; using body ensures we cover all content
-		if (!root) return;
-			if (!document.getElementById('quiz-wrap')) {
-				const wrap = document.createElement('div');
-				wrap.id = 'quiz-wrap';
-				wrap.style.width = '100%';
-				wrap.style.transformOrigin = 'top center';
-				wrap.style.willChange = 'transform';
-				// keep pause controls and the buzzer root outside the scaled wrapper so fixed overlays cover the viewport
-				const keepIds = ['pause-btn','pause-modal','buzzer-effect-root'];
-				const nodes = Array.from(root.childNodes);
-				nodes.forEach(n => {
-					if (n.id && keepIds.includes(n.id)) return;
-					wrap.appendChild(n);
-				});
-				root.appendChild(wrap);
-			}
-		const wrapEl = document.getElementById('quiz-wrap');
-		if (!wrapEl) return;
-		wrapEl.style.transform = 'none';
-		// measure content height
-		const contentH = wrapEl.scrollHeight || wrapEl.offsetHeight || wrapEl.getBoundingClientRect().height;
-		const viewH = getAvailableHeight();
-		let scale = 1;
-		const minScale = 0.85;
-		scale = Math.min(1, viewH / contentH);
-		if (scale < minScale) scale = minScale;
-		wrapEl.style.transform = 'scale(' + scale + ')';
-		wrapEl.style.marginTop = Math.max(0, (viewH - (contentH * scale)) / 2) + 'px';
-		// set debug overlay values if present
-		const dbgScale = document.getElementById('dbg-scale');
-		const q = document.querySelector('.quiz-question');
-		if (dbgScale) dbgScale.textContent = 'scale: ' + scale.toFixed(3);
-		const dbgQfs = document.getElementById('dbg-qfs');
-		if (dbgQfs && q) dbgQfs.textContent = 'q font: ' + window.getComputedStyle(q).fontSize;
-	}
-	window.wrapAndScale = wrapAndScale; // expose for debug button
-	window.addEventListener('load', wrapAndScale);
-	window.addEventListener('resize', function(){ setTimeout(wrapAndScale,40); });
-	setTimeout(wrapAndScale,80);
-})();
-
-// debug overlay removed
-	</script>
+    document.getElementById('quiz-question').innerHTML = '';
+    document.getElementById('quiz-answers').innerHTML = '';
+    document.getElementById('quiz-feedback').innerHTML = `<div class='quiz-finish'>Quiz Complete!<br>Your score: ${score} / ${totalScore}<br><br>🐼 Panda is proud of you!<br><button id='nextLevelBtn' style='margin-top:18px;padding:12px 32px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;'>Next Level</button></div>`;
+    document.getElementById('quiz-progress-bar').style.width = '100%';
+    setUnlockedLevel(2);
+    setTimeout(function() {
+        var btn = document.getElementById('nextLevelBtn');
+        if (btn) {
+            btn.onclick = function() {
+                window.location.href = 'master_quiz26.html';
+            };
+        }
+    }, 100);
+}
+	// Start the quiz
+	paused = false;
+	showQuestion();
+</script>
 </body>
 </html>
