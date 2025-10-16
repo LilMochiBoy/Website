@@ -431,9 +431,23 @@ function showQuestion(){
     if(q.type === 'mcq'){
         Q_Q.innerHTML = q.q;
         Q_ANS.style.gridTemplateColumns='1fr 1fr';
-        (q.options || []).forEach((opt,i)=>{
+
+        // Shuffle options and track the new answer index
+        const optionObjs = (q.options || []).map((opt, i) => ({
+            text: opt,
+            origIndex: i
+        }));
+        // Fisher-Yates shuffle
+        for (let i = optionObjs.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [optionObjs[i], optionObjs[j]] = [optionObjs[j], optionObjs[i]];
+        }
+        // Find new answer index
+        const newAnswerIndex = optionObjs.findIndex(o => o.origIndex === q.answer);
+
+        optionObjs.forEach((optObj,i)=>{
         const btn = document.createElement('button'); btn.className='answer-btn-custom';
-        btn.textContent = `${String.fromCharCode(65+i)}. ${opt}`;
+        btn.textContent = `${String.fromCharCode(65+i)}. ${optObj.text}`;
         const fill = document.createElement('div'); fill.className = `answer-fill c${(i%4)+1}`; btn.appendChild(fill);
         btn.addEventListener('click', ()=> {
             if(paused) return;
@@ -448,7 +462,8 @@ function showQuestion(){
         });
         const controls = document.createElement('div'); controls.style.gridColumn='1 / -1'; controls.style.display='flex'; controls.style.justifyContent='center'; controls.style.flexDirection='column'; controls.style.alignItems='center';
         const submitBtn = document.createElement('button'); submitBtn.className='submit-btn'; submitBtn.textContent='Submit'; submitBtn.id='mcq-submit';
-        submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q));
+        // Pass newAnswerIndex and optionObjs to handler
+        submitBtn.addEventListener('click', ()=> handleMcqSubmitToggle(submitBtn, q, newAnswerIndex, optionObjs));
         controls.appendChild(submitBtn);
         Q_ANS.appendChild(controls);
         return;
@@ -669,7 +684,7 @@ function showQuestion(){
   }
 
 	/* ---------- MCQ handler with robust selection check ---------- */
-	function handleMcqSubmitToggle(submitBtn, qObj){
+	function handleMcqSubmitToggle(submitBtn, qObj, answerIndex, optionObjs){
     if(paused) return;
     if(submitBtn.dataset.answered === "true") return; // Prevent double scoring
 
@@ -688,17 +703,18 @@ function showQuestion(){
     }
     const allBtns = Array.from(document.querySelectorAll('.answer-btn-custom'));
     allBtns.forEach((b, idx) => {
-        if(idx === qObj.answer) b.style.borderColor = '#4caf50';
-        if(idx === selectedIndex && idx !== qObj.answer) b.style.borderColor = '#ff3b3b';
+        if(idx === answerIndex) b.style.borderColor = '#4caf50';
+        if(idx === selectedIndex && idx !== answerIndex) b.style.borderColor = '#ff3b3b';
         b.disabled = true;
     });
-    if(selectedIndex === qObj.answer){
+    if(selectedIndex === answerIndex){
         const fill = allBtns[selectedIndex].querySelector('.answer-fill');
         if(fill) fill.style.height = '100%';
         Q_FB.innerHTML = `<span style="color:#ffe600;font-weight:700">Correct! 🎉</span>`;
         score++; // Only increment once
     } else {
-        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+qObj.answer)}. ${qObj.options[qObj.answer]}</span>`;
+        // Show correct answer text
+        Q_FB.innerHTML = `<span class="wrong">Incorrect — correct: ${String.fromCharCode(65+answerIndex)}. ${optionObjs[answerIndex].text}</span>`;
         const buz = document.createElement('div'); buz.className='buzzer-effect'; byId('buzzer-effect-root').appendChild(buz);
         setTimeout(()=> buz.remove(),700);
     }
@@ -719,9 +735,9 @@ function showQuestion(){
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
+		localStorage.setItem('challengerUnlockedLevel', String(level));
 		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
+		var username = localStorage.getItem('challengerUserId');
 		if (username) {
 			fetch('http://localhost:3000/api/updateProgress', {
 				method: 'POST',
@@ -744,7 +760,7 @@ function showQuestion(){
         var btn = document.getElementById('nextLevelBtn');
         if (btn) {
             btn.onclick = function() {
-                window.location.href = 'challenger_quiz5.html';
+                window.location.href = 'challenger_quiz6.html';
             };
         }
     }, 100);
