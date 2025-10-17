@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Progress</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body { background: #232946; color: #f7f7fa; font-family: 'Segoe UI', Arial, sans-serif; }
+        .container { max-width: 480px; margin: 48px auto; background: #181818; border-radius: 18px; box-shadow: 0 4px 24px #23294699; padding: 32px; }
+        h2 { color: #4a90e2; margin-bottom: 18px; }
+        .progress-info { font-size: 1.2em; margin-bottom: 24px; }
+        .main-btn { padding: 12px 32px; font-size: 1.1rem; border-radius: 8px; background: #4a90e2; color: #fff; border: none; box-shadow: 0 2px 8px #222; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Account Progress</h2>
+        <div id="progressInfo" class="progress-info">Loading...</div>
+        <button class="main-btn" id="logoutBtn">Log Out</button>
+    </div>
+    <script>
+    // Simulate getting logged-in user from localStorage
+    const username = localStorage.getItem('rookieUserId');
+    if (!username) {
+        document.getElementById('progressInfo').textContent = 'Not logged in.';
+    } else {
+        // Fetch progress from backend
+        fetch('http://localhost:3000/api/getProgress', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ username })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('progressInfo').textContent = `Highest unlocked level: ${data.unlockedLevel}`;
+                // Sync localStorage with backend
+                localStorage.setItem('rookieUnlockedLevel', String(data.unlockedLevel));
+            } else {
+                document.getElementById('progressInfo').textContent = 'Could not load progress.';
+            }
+        })
+        .catch(() => {
+            document.getElementById('progressInfo').textContent = 'Server error.';
+        });
+    }
+    document.getElementById('logoutBtn').onclick = function() {
+        localStorage.removeItem('rookieUserId');
+        localStorage.setItem('rookieUnlockedLevel', '1');
+        window.location.href = 'index.html';
+    };
+    </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Zendo Achievements</title>
+	<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<style>
+		body {
+			background: linear-gradient(120deg, #232946 0%, #ffd580 100%);
+			font-family: 'Montserrat', Arial, sans-serif;
+			margin: 0;
+			color: #232946;
+		}
+		.achievements-container {
+			max-width: 900px;
+			margin: 48px auto 0 auto;
+			padding: 36px 18px 48px 18px;
+			background: #f4f4fb;
+			border-radius: 24px;
+			box-shadow: 0 6px 32px #23294655;
+		}
+		.achievements-title {
+			font-size: 2.3rem;
+			font-weight: 800;
+			text-align: center;
+			margin-bottom: 18px;
+			font-family: 'Satisfy', cursive;
+			background: linear-gradient(90deg, #ffd580 0%, #ffb3ba 100%);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			letter-spacing: 2px;
+		}
+		.achievement-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 28px 24px;
+			justify-content: center;
+		}
+		.achievement-card {
+			background: linear-gradient(120deg, #fffbe6 0%, #ffd6e0 100%);
+			border-radius: 18px;
+			box-shadow: 0 2px 12px #ffd58033;
+			width: 220px;
+			padding: 28px 18px 22px 18px;
+			text-align: center;
+			position: relative;
+			transition: transform 0.18s;
+			opacity: 0.7;
+		}
+		.achievement-card.locked {
+			filter: grayscale(0.7);
+			opacity: 0.5;
+		}
+		.achievement-icon {
+			font-size: 2.3em;
+			margin-bottom: 12px;
+			color: #ffd580;
+			text-shadow: 0 2px 8px #ffd58055;
+		}
+		.achievement-title {
+			font-size: 1.18em;
+			font-weight: 700;
+			margin-bottom: 8px;
+			color: #d76d77;
+		}
+		.achievement-desc {
+			font-size: 1em;
+			color: #232946;
+			margin-bottom: 10px;
+		}
+		.achievement-locked {
+			font-size: 1.1em;
+			color: #bdbec8;
+			font-weight: 700;
+			margin-top: 8px;
+			letter-spacing: 1px;
+		}
+		@media (max-width: 600px) {
+			.achievements-container {
+				padding: 12px 2vw 24px 2vw;
+			}
+			.achievement-card {
+				width: 98vw;
+				max-width: 320px;
+				padding: 18px 8px 14px 8px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="achievements-container">
+		<div class="achievements-title">Achievements</div>
+		<div class="achievement-list">
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🏆</div>
+				<div class="achievement-title">First Steps</div>
+				<div class="achievement-desc">Complete your first lesson.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🎯</div>
+				<div class="achievement-title">Quiz Novice</div>
+				<div class="achievement-desc">Score 80%+ on any quiz.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">📚</div>
+				<div class="achievement-title">Bookworm</div>
+				<div class="achievement-desc">Read 10 learning materials.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">💬</div>
+				<div class="achievement-title">Conversation Starter</div>
+				<div class="achievement-desc">Finish your first speaking exercise.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🔥</div>
+				<div class="achievement-title">Streak Master</div>
+				<div class="achievement-desc">Study 7 days in a row.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🌏</div>
+				<div class="achievement-title">Globetrotter</div>
+				<div class="achievement-desc">Complete lessons in both Chinese and English.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🧠</div>
+				<div class="achievement-title">Memory Champ</div>
+				<div class="achievement-desc">Score 100% on a vocabulary test.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">👑</div>
+				<div class="achievement-title">Level Up!</div>
+				<div class="achievement-desc">Reach Explorer level.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">⚔️</div>
+				<div class="achievement-title">Boss Defeated</div>
+				<div class="achievement-desc">Win a boss level challenge.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🕹️</div>
+				<div class="achievement-title">Game On</div>
+				<div class="achievement-desc">Unlock the game mode.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🥇</div>
+				<div class="achievement-title">Leaderboard Top 10</div>
+				<div class="achievement-desc">Reach the top 10 in the leaderboard.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🧩</div>
+				<div class="achievement-title">Puzzle Solver</div>
+				<div class="achievement-desc">Complete a sentence arrangement puzzle.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">🎓</div>
+				<div class="achievement-title">Master Learner</div>
+				<div class="achievement-desc">Reach Master level.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+			<div class="achievement-card locked">
+				<div class="achievement-icon">💡</div>
+				<div class="achievement-title">Insightful</div>
+				<div class="achievement-desc">Leave feedback or a suggestion.</div>
+				<div class="achievement-locked">Locked</div>
+			</div>
+
+		</div>
+	<!-- Close button removed as requested -->
+	</div>
+	<script>
+	(function(){
+		// Achievement definitions with id and rules that inspect progress data
+		const ACHIEVEMENTS = [
+			{ id: 'first_steps', icon: '🏆', title: 'First Steps', desc: 'Complete your first lesson.', rule: d => (d.completedLevels || []).includes(1) || (d.unlockedLevel || 0) > 1 },
+			{ id: 'quiz_novice', icon: '🎯', title: 'Quiz Novice', desc: 'Score 80%+ on any quiz.', rule: d => {
+				try { const scores = JSON.parse(localStorage.getItem('quizScores')||'[]'); return scores.some(s=>s>=80); } catch(e){return false}
+			}},
+			{ id: 'bookworm', icon: '📚', title: 'Bookworm', desc: 'Read 10 learning materials.', rule: d => { const n = parseInt(localStorage.getItem('readMaterials')||'0'); return n>=10;} },
+			{ id: 'conversation_starter', icon: '💬', title: 'Conversation Starter', desc: 'Finish your first speaking exercise.', rule: d => { const n = parseInt(localStorage.getItem('speakingExercises')||'0'); return n>=1;} },
+			{ id: 'streak_master', icon: '🔥', title: 'Streak Master', desc: 'Study 7 days in a row.', rule: d => { const s = parseInt(localStorage.getItem('streakDays')||'0'); return s>=7;} },
+			{ id: 'globetrotter', icon: '🌏', title: 'Globetrotter', desc: 'Complete lessons in both Chinese and English.', rule: d => { try { const langs = JSON.parse(localStorage.getItem('completedLanguages')||'[]'); return langs.includes('en') && langs.includes('zh'); } catch(e){return false} } },
+			{ id: 'memory_champ', icon: '🧠', title: 'Memory Champ', desc: 'Score 100% on a vocabulary test.', rule: d => { const n = parseInt(localStorage.getItem('vocabPerfects')||'0'); return n>=1;} },
+			{ id: 'level_up', icon: '👑', title: 'Level Up!', desc: 'Reach Explorer level.', rule: d => (d.unlockedLevel || 0) >= 11 },
+			{ id: 'boss_defeated', icon: '⚔️', title: 'Boss Defeated', desc: 'Win a boss level challenge.', rule: d => {
+				const completed = d.completedLevels || [];
+				// treat levels 10,20,30 as boss levels by convention
+				return completed.some(l => [10,20,30].includes(l)) || (d.achievements && (d.achievements.includes && d.achievements.includes('complete_challenger_5') || d.achievements.includes('complete_master_1')));
+			}},
+			{ id: 'game_on', icon: '🕹️', title: 'Game On', desc: 'Unlock the game mode.', rule: d => { return localStorage.getItem('gameUnlocked') === 'true' } },
+			{ id: 'leaderboard_top10', icon: '🥇', title: 'Leaderboard Top 10', desc: 'Reach the top 10 in the leaderboard.', rule: d => { const r = parseInt(localStorage.getItem('leaderboardRank')||'9999'); return r>0 && r<=10;} },
+			{ id: 'puzzle_solver', icon: '🧩', title: 'Puzzle Solver', desc: 'Complete a sentence arrangement puzzle.', rule: d => { const n = parseInt(localStorage.getItem('puzzlesSolved')||'0'); return n>=1;} },
+			{ id: 'master_learner', icon: '🎓', title: 'Master Learner', desc: 'Reach Master level.', rule: d => (d.unlockedLevel || 0) >= 21 || (d.achievements && (d.achievements.includes && d.achievements.includes('complete_master_1')) ) },
+			{ id: 'insightful', icon: '💡', title: 'Insightful', desc: 'Leave feedback or a suggestion.', rule: d => localStorage.getItem('feedbackGiven') === 'true' },
+		];
+
+		const container = document.querySelector('.achievement-list');
+
+		function render(earnedSet) {
+			if (!container) return;
+			container.innerHTML = ACHIEVEMENTS.map(a => {
+				const unlocked = earnedSet.has(a.id);
+				if (unlocked) {
+					return `<div class="achievement-card unlocked" data-id="${a.id}"><div class="achievement-icon">${a.icon}</div><div class="achievement-title">${a.title}</div><div class="achievement-desc">${a.desc}</div></div>`;
+				}
+				return `<div class="achievement-card locked" data-id="${a.id}"><div class="achievement-icon">${a.icon}</div><div class="achievement-title">${a.title}</div><div class="achievement-desc">${a.desc}</div><div class="achievement-locked">Locked</div></div>`;
+			}).join('\n');
+		}
+
+		function getLoggedUsername(){
+			const keys = ['rookieUserId','masterUserId','challengerUserId','activeUser'];
+			for (let k of keys) { const v = localStorage.getItem(k); if (v) return v; }
+			return null;
+		}
+
+		function normalizeServerAchievements(raw){
+			if (!raw) return [];
+			if (Array.isArray(raw)) {
+				if (raw.length === 0) return [];
+				if (typeof raw[0] === 'string') return raw;
+				if (typeof raw[0] === 'object') return raw.filter(a=>a.earned).map(a=>a.id);
+			}
+			return [];
+		}
+
+		// Map server achievement ids to our UI ids where possible
+		const SERVER_TO_UI = {
+			'complete_first_level': 'first_steps',
+			'complete_rookie_5': null,
+			'complete_rookie_10': 'level_up',
+			'complete_challenger_5': 'boss_defeated',
+			'complete_master_1': 'master_learner'
+		};
+
+		function mapServerIdsToUi(serverIds){
+			const out = new Set();
+			(serverIds||[]).forEach(sid => {
+				if (SERVER_TO_UI[sid]) out.add(SERVER_TO_UI[sid]);
+			});
+			return out;
+		}
+
+		function loadLocalFallback(){
+			// try to assemble a data object from localStorage
+			try {
+				return {
+					completedLevels: JSON.parse(localStorage.getItem('completedLevels')||'[]'),
+					unlockedLevel: parseInt(localStorage.getItem('rookieUnlockedLevel')||localStorage.getItem('unlockedLevel')||'0') || 0,
+					achievements: JSON.parse(localStorage.getItem('achievements')||'[]')
+				};
+			} catch(e){ return {completedLevels:[], unlockedLevel:0, achievements:[]}; }
+		}
+
+		function awardServerAchievement(username, uiId) {
+			// Only award if mapped to a server id
+			const serverId = Object.keys(SERVER_TO_UI).find(k => SERVER_TO_UI[k] === uiId);
+			if (!serverId) return Promise.resolve();
+			return fetch('/api/awardAchievement', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ username, achievementId: serverId }) }).catch(()=>{});
+		}
+
+		function computeEarned(data){
+			const earned = new Set();
+			const serverIds = normalizeServerAchievements(data.achievements || []);
+			mapServerIdsToUi(serverIds).forEach(id=>earned.add(id));
+			ACHIEVEMENTS.forEach(a => { try { if (a.rule(data)) earned.add(a.id); } catch(e){} });
+			return { earned, serverIds };
+		}
+
+		let lastEarned = new Set();
+		let lastServerIds = [];
+
+		function refreshFromServer(username){
+			return fetch('/api/getProgress', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username }) })
+			.then(r=>r.json())
+			.then(res => {
+				const data = { completedLevels: res.completedLevels || [], unlockedLevel: res.unlockedLevel || 0, achievements: Array.isArray(res.achievements) ? res.achievements : [] };
+				const { earned, serverIds } = computeEarned(data);
+				// detect newly earned
+				const newly = Array.from(earned).filter(x => !lastEarned.has(x));
+				if (newly.length) {
+					render(earned);
+					// award mapped ones on server if missing
+					newly.forEach(uiId => {
+						const mapped = Object.keys(SERVER_TO_UI).find(k=>SERVER_TO_UI[k]===uiId);
+						if (mapped && !serverIds.includes(mapped)) awardServerAchievement(username, uiId);
+					});
+					lastEarned = earned;
+				}
+				lastServerIds = serverIds;
+				return { earned, serverIds };
+			})
+			.catch(() => {
+				// on error use local fallback
+				const local = loadLocalFallback();
+				const { earned } = computeEarned(local);
+				if (JSON.stringify(Array.from(earned)) !== JSON.stringify(Array.from(lastEarned))) { render(earned); lastEarned = earned; }
+				return { earned, serverIds: [] };
+			});
+		}
+
+		function refreshLocalOnly(){
+			const local = loadLocalFallback();
+			const { earned } = computeEarned(local);
+			if (JSON.stringify(Array.from(earned)) !== JSON.stringify(Array.from(lastEarned))) { render(earned); lastEarned = earned; }
+		}
+
+		// setup polling and storage listeners
+		(function init(){
+			const username = getLoggedUsername();
+			if (!username) { refreshLocalOnly(); }
+			else { refreshFromServer(username); }
+
+			// Poll every 5s to pick up changes made by other pages or backend updates
+			setInterval(() => {
+				const u = getLoggedUsername();
+				if (u) refreshFromServer(u); else refreshLocalOnly();
+			}, 5000);
+
+			// Listen for localStorage changes (other tabs) and update
+			window.addEventListener('storage', (e) => {
+				if (!e.key) { refreshLocalOnly(); return; }
+				// If any of the keys we depend on changed, refresh
+				const interesting = ['completedLevels','rookieUnlockedLevel','unlockedLevel','achievements','quizScores','readMaterials','speakingExercises','streakDays','completedLanguages','vocabPerfects','gameUnlocked','leaderboardRank','puzzlesSolved','feedbackGiven','groupChallenges'];
+				if (interesting.includes(e.key)) {
+					const u = getLoggedUsername();
+					if (u) refreshFromServer(u); else refreshLocalOnly();
+				}
+			});
+		})();
+
+	})();
+	</script>
+</body>
+</html>

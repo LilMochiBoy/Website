@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenger Level - Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #181818;
+        }
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: #222;
+        }
+        .map-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            max-width: 90vw;
+            aspect-ratio: 1536 / 1024;
+            max-height: 90vh;
+            transform: translate(-50%, -50%);
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .challenger-map-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            z-index: 0;
+        }
+        .back-btn {
+            margin-top: 32px;
+            padding: 14px 32px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: #1565c0;
+            transform: scale(1.05);
+        }
+        .level-btn {
+            position: absolute;
+            width: 3.0%;
+            height: 5.0%;
+            min-width: 30px;
+            min-height: 30px;
+            max-width: 50px;
+            max-height: 50px;
+            border-radius: 50%;
+            background: #fffbe6;
+            color: #222;
+            border: 2px solid #222;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            cursor: pointer;
+            z-index: 2;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .level-btn:hover {
+            background: #ffe082;
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body>
+    <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#1976d2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
+    <div class="map-wrapper">
+    <img src="../../assets/images/Lastbg.png" alt="Challenger Map" class="challenger-map-bg">
+    <!-- Level buttons positioned at specified coordinates -->
+    <button class="level-btn" id="challenger-level-1" style="left:10px;top:180px;">1</button>
+    <button class="level-btn" id="challenger-level-2" style="left:73px;top:170px;">2</button>
+    <button class="level-btn" id="challenger-level-3" style="left:140px;top:165px;">3</button>
+    <button class="level-btn" id="challenger-level-4" style="left:215px;top:165px;">4</button>
+    <button class="level-btn" id="challenger-level-5" style="left:290px;top:170px;">5</button>
+    <button class="level-btn" id="challenger-level-6" style="left:360px;top:180px;">6</button>
+    <button class="level-btn" id="challenger-level-7" style="left:425px;top:195px;">7</button>
+    <button class="level-btn" id="challenger-level-8" style="left:470px;top:235px;">8</button>
+    <button class="level-btn" id="challenger-level-9" style="left:450px;top:290px;">9</button>
+    <button class="level-btn" id="challenger-level-10" style="left:430px;top:350px;">10</button>
+    <button class="level-btn" id="challenger-level-11" style="left:475px;top:390px;">11</button>
+    <button class="level-btn" id="challenger-level-12" style="left:535px;top:415px;">12</button>
+    <button class="level-btn" id="challenger-level-13" style="left:605px;top:425px;">13</button>
+    <button class="level-btn" id="challenger-level-14" style="left:670px;top:420px;">14</button>
+    <button class="level-btn" id="challenger-level-15" style="left:730px;top:400px;">15</button>
+    <button class="level-btn" id="challenger-level-16" style="left:780px;top:380px;">16</button>
+    <button class="level-btn" id="challenger-level-17" style="left:840px;top:375px;">17</button>
+    <button class="level-btn" id="challenger-level-18" style="left:895px;top:390px;">18</button>
+    <button class="level-btn" id="challenger-level-19" style="left:940px;top:430px;">19</button>
+    <button class="level-btn" id="challenger-level-20" style="left:990px;top:455px;">20</button>
+    <button class="level-btn" id="challenger-level-21" style="left:1030px;top:490px;">21</button>
+    <button class="level-btn" id="challenger-level-22" style="left:1035px;top:545px;">22</button>
+    <button class="level-btn" id="challenger-level-23" style="left:990px;top:575px;">23</button>
+    <button class="level-btn" id="challenger-level-24" style="left:930px;top:590px;">24</button>
+    <button class="level-btn" id="challenger-level-25" style="left:870px;top:600px;">25</button>
+    <button class="level-btn" id="challenger-level-26" style="left:810px;top:610px;">26</button>
+    <button class="level-btn" id="challenger-level-27" style="left:750px;top:620px;">27</button>
+    <button class="level-btn" id="challenger-level-28" style="left:700px;top:630px;">28</button>
+    <button class="level-btn" id="challenger-level-29" style="left:655px;top:660px;">29</button>
+    <button class="level-btn" id="challenger-level-30" style="left:640px;top:710px;">30</button>
+    </div>
+    <script>
+        document.getElementById('back-btn').onclick = function() {
+            window.location.href = '../chinese.html';
+        };
+        
+        // Event handlers for all 30 levels
+        for (let i = 1; i <= 30; i++) {
+            const levelBtn = document.getElementById(`challenger-level-${i}`);
+            if (levelBtn) {
+                levelBtn.onclick = function() {
+                    window.location.href = `../quizzes/challenger_quiz${i}.html`;
+                };
+            }
+        }
+    </script>
+</body>
+</html>

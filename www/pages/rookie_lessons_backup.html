@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rookie Level Lessons | Zendo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #e3f0ff 0%, #f7faff 100%);
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            color: #232946;
+        }
+        .lessons-container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 36px 18px 48px 18px;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 6px 32px #bdbec855;
+            overflow-y: auto;
+        }
+        .lesson-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 18px;
+            font-family: 'Satisfy', cursive;
+            background: linear-gradient(90deg, #1976d2 0%, #3b8dd4 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        .lesson-section {
+            margin-bottom: 38px;
+            padding: 24px 18px;
+            border-radius: 18px;
+            background: linear-gradient(90deg, #e3f0ff 0%, #cbdffc 100%);
+            box-shadow: 0 2px 12px #bdbec855;
+        }
+        .lesson-level {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1976d2;
+        }
+        .lesson-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #3b8dd4;
+        }
+        .lesson-list {
+            margin: 0 0 12px 0;
+            padding-left: 18px;
+        }
+        .lesson-list li {
+            margin-bottom: 6px;
+            font-size: 1.08rem;
+        }
+        .lesson-example {
+            background: #f7faff;
+            border-left: 4px solid #1976d2;
+            padding: 10px 16px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1.08rem;
+        }
+        .lesson-practice {
+            background: #e6f7ff;
+            border-left: 4px solid #3b8dd4;
+            padding: 10px 16px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1.08rem;
+        }
+        @media (max-width: 600px) {
+            .lessons-container {
+                padding: 12px 2vw 24px 2vw;
+            }
+            .lesson-section {
+                padding: 12px 6px;
+            }
+        }
+        
+        /* Page Scroller Styles */
+        .page-scroller {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 15px 10px;
+            box-shadow: 0 4px 20px rgba(25, 118, 210, 0.4);
+            z-index: 9999;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(25, 118, 210, 0.2);
+            min-height: 300px;
+            opacity: 1;
+        }
+        
+
+        
+
+        
+        .lesson-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .lesson-nav-btn {
+            min-width: 35px;
+            height: 25px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(25, 118, 210, 0.1);
+            color: #1976d2;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0 8px;
+        }
+        
+        .lesson-nav-btn:hover {
+            background: rgba(25, 118, 210, 0.2);
+            transform: translateX(-2px);
+        }
+        
+        .lesson-nav-btn.active {
+            background: linear-gradient(135deg, #1976d2 0%, #3b8dd4 100%);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .page-scroller {
+                right: 10px;
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Scroller -->
+    <div class="page-scroller" id="pageScroller">
+        <div class="lesson-nav" id="lessonNav">
+            <!-- Lesson navigation buttons will be generated here -->
+        </div>
+    </div>
+
+    <div class="lessons-container">
+        <div class="lesson-title">📘 Rookie (Beginner) — 30 Levels Syllabus</div>
+        
+        <!-- Unit 1 – Foundations (Levels 1–5) -->
+        <div class="lesson-section">
+            <div class="lesson-level">Unit 1 – Foundations (Levels 1–5)</div>
+            
+            <div class="lesson-subtitle">Level 1: Greetings & Self-introduction</div>
+            <div class="lesson-example">Vocab: hello, goodbye, I, you, he/she, to be called, question particle 吗, negation 不</div>
+            <div class="lesson-practice">Grammar: SVO word order, 叫 for names, 吗 for yes/no, 不 for negation</div>
+            
+            <div class="lesson-subtitle">Level 2: Numbers & Age</div>
+            <div class="lesson-example">Vocab: 0–10, 十–100, 岁, 几, 多大</div>
+            <div class="lesson-practice">Grammar: number formation, asking/telling age, 你几岁？/你多大？</div>
+            
+            <div class="lesson-subtitle">Level 3: Family Members</div>
+            <div class="lesson-example">Vocab: 爸爸, 妈妈, 哥哥, 姐姐, 弟弟, 妹妹, 这是…</div>
+            <div class="lesson-practice">Grammar: possessive 的, introducing family, 这/那</div>
+            
+            <div class="lesson-subtitle">Level 4: Daily Objects</div>
+            <div class="lesson-example">Vocab: 书, 笔, 包, 桌子, 椅子, 手机</div>
+            <div class="lesson-practice">Grammar: 这是什么？那是什么？; 是的 / 不是</div>
+            
+            <div class="lesson-subtitle">Level 5: Colors & Adjectives</div>
+            <div class="lesson-example">Vocab: 红色, 蓝色, 白色, 大, 小, 高, 矮</div>
+            <div class="lesson-practice">Grammar: 的 for modification, adjectives after 很</div>
+        </div>
+
+        <!-- Unit 2 – Daily Life (Levels 6–10) -->
+        <div class="lesson-section">
+            <div class="lesson-level">Unit 2 – Daily Life (Levels 6–10)</div>
+            
+            <div class="lesson-subtitle">Level 6: Food & Drinks</div>
+            <div class="lesson-example">Vocab: 水, 米饭, 面条, 苹果, 茶, 咖啡</div>
+            <div class="lesson-practice">Grammar: 想要, 请, measure words (杯, 个)</div>
+            
+            <div class="lesson-subtitle">Level 7: Ordering in a Restaurant</div>
+            <div class="lesson-example">Vocab: 菜单, 服务员, 鸡肉, 牛肉, 请给我…</div>
+            <div class="lesson-practice">Grammar: polite requests, 请, 我要</div>
+            
+            <div class="lesson-subtitle">Level 8: School & Classroom</div>
+            <div class="lesson-example">Vocab: 老师, 学生, 教室, 书包, 黑板</div>
+            <div class="lesson-practice">Grammar: 在 (location), 有 (there is/are)</div>
+            
+            <div class="lesson-subtitle">Level 9: Days, Months, Dates</div>
+            <div class="lesson-example">Vocab: 今天, 明天, 昨天, 星期一–日, 月, 号, 日</div>
+            <div class="lesson-practice">Grammar: Saying the date, 今天是几月几号？</div>
+            
+            <div class="lesson-subtitle">Level 10: Time Telling</div>
+            <div class="lesson-example">Vocab: 点, 分, 半, 现在, 上午, 下午</div>
+            <div class="lesson-practice">Grammar: 现在几点？ Expressing time</div>
+        </div>
+
+        <!-- Unit 3 – Lifestyle (Levels 11–15) -->
+        <div class="lesson-section">
+            <div class="lesson-level">Unit 3 – Lifestyle (Levels 11–15)</div>
+            
+            <div class="lesson-subtitle">Level 11: Hobbies</div>
+            <div class="lesson-example">Vocab: 喜欢, 看书, 听音乐, 打篮球, 唱歌</div>
+            <div class="lesson-practice">Grammar: 喜欢 + verb, questions with 什么</div>
+            
+            <div class="lesson-subtitle">Level 12: Weather</div>
+            <div class="lesson-example">Vocab: 天气, 热, 冷, 下雨, 下雪, 风</div>
+            <div class="lesson-practice">Grammar: 今天天气怎么样？很/不太</div>
+            
+            <div class="lesson-subtitle">Level 13: Animals</div>
+            <div class="lesson-example">Vocab: 狗, 猫, 鸟, 鱼, 马, 牛</div>
+            <div class="lesson-practice">Grammar: 有 (to have), measure words for animals (只, 条)</div>
+            
+            <div class="lesson-subtitle">Level 14: Shopping</div>
+            <div class="lesson-example">Vocab: 商店, 钱, 多少, 贵, 便宜</div>
+            <div class="lesson-practice">Grammar: 多少钱？太…了</div>
+            
+            <div class="lesson-subtitle">Level 15: Boss 1 — Review (Levels 1–14)</div>
+        </div>
+
+        <!-- Unit 4 – Places & Routines (Levels 16–20) -->
+        <div class="lesson-section">
+            <div class="lesson-level">Unit 4 – Places & Routines (Levels 16–20)</div>
+            
+            <div class="lesson-subtitle">Level 16: Locations</div>
+            <div class="lesson-example">Vocab: 在, 上, 下, 里, 外, 前, 后</div>
+            <div class="lesson-practice">Grammar: location structure: A 在 B + position</div>
+            
+            <div class="lesson-subtitle">Level 17: Transportation</div>
+            <div class="lesson-example">Vocab: 坐车, 坐地铁, 坐飞机, 骑车</div>
+            <div class="lesson-practice">Grammar: 坐/骑 + vehicle</div>
+            
+            <div class="lesson-subtitle">Level 18: Directions</div>
+            <div class="lesson-example">Vocab: 左, 右, 往前, 往后, 走</div>
+            <div class="lesson-practice">Grammar: 往 + direction + 走</div>
+            
+            <div class="lesson-subtitle">Level 19: House & Rooms</div>
+            <div class="lesson-example">Vocab: 房子, 房间, 客厅, 厨房, 卧室</div>
+            <div class="lesson-practice">Grammar: 里有 / 没有, describing rooms</div>
+            
+            <div class="lesson-subtitle">Level 20: Daily Routines</div>
+            <div class="lesson-example">Vocab: 起床, 上课, 吃饭, 睡觉, 上班, 下班</div>
+            <div class="lesson-practice">Grammar: Time + Subject + Verb + Object</div>
+        </div>
+
+        <!-- Unit 5 – People & Activities (Levels 21–25) -->
+        <div class="lesson-section">
+            <div class="lesson-level">Unit 5 – People & Activities (Levels 21–25)</div>
+            
+            <div class="lesson-subtitle">Level 21: Clothes</div>
+            <div class="lesson-example">Vocab: 衣服, 裤子, 鞋子, 穿, 戴</div>
+            <div class="lesson-practice">Grammar: 穿 vs 戴</div>
+            
+            <div class="lesson-subtitle">Level 22: Body Parts</div>
+            <div class="lesson-example">Vocab: 头, 眼睛, 手, 脚, 耳朵</div>
+            <div class="lesson-practice">Grammar: …疼 (My … hurts)</div>
+            
+            <div class="lesson-subtitle">Level 23: Simple Health</div>
+            <div class="lesson-example">Vocab: 医生, 医院, 生病, 感冒, 发烧</div>
+            <div class="lesson-practice">Grammar: 我不舒服, 去看医生</div>
+            
+            <div class="lesson-subtitle">Level 24: Festivals</div>
+            <div class="lesson-example">Vocab: 春节, 中秋节, 元宵节, 月饼</div>
+            <div class="lesson-practice">Grammar: cultural sentences, 过节</div>
+            
+            <div class="lesson-subtitle">Level 25: Friends & Social Life</div>
+            <div class="lesson-example">Vocab: 朋友, 一起, 聊天, 玩, 去哪里</div>
+            <div class="lesson-practice">Grammar: 一起 + verb</div>
+        </div>
+
+        <!-- Unit 6 – Expression & Comparison (Levels 26–30) -->
+        <div class="lesson-section">
+            <div class="lesson-level">Unit 6 – Expression & Comparison (Levels 26–30)</div>
+            
+            <div class="lesson-subtitle">Level 26: Likes & Dislikes</div>
+            <div class="lesson-example">Vocab: 喜欢, 不喜欢, 最喜欢</div>
+            <div class="lesson-practice">Grammar: expressing preference</div>
+            
+            <div class="lesson-subtitle">Level 27: Making Plans</div>
+            <div class="lesson-example">Vocab: 打算, 明天, 后天, 去, 想</div>
+            <div class="lesson-practice">Grammar: 打算 + verb, 去 + place</div>
+            
+            <div class="lesson-subtitle">Level 28: Past & Future</div>
+            <div class="lesson-example">Vocab: 了, 要, 将来, 昨天, 明年</div>
+            <div class="lesson-practice">Grammar: 了 (completed action), 要 (future intention)</div>
+            
+            <div class="lesson-subtitle">Level 29: Comparatives</div>
+            <div class="lesson-example">Vocab: 比, 更, 最</div>
+            <div class="lesson-practice">Grammar: A 比 B + adj, A 没有 B + adj</div>
+            
+            <div class="lesson-subtitle">Level 30: Boss 2 — Review (Levels 1–29)</div>
+        </div>
+
+        <!-- Detailed Level 1 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">Rookie — Level 1: Greetings & Self-introduction (你好，我叫…）</div>
+            
+            <div class="lesson-subtitle">1) Goal of this level</div>
+            <div class="lesson-example">Students will be able to:</div>
+            <ul class="lesson-list">
+                <li>Greet people and respond politely.</li>
+                <li>Introduce themselves: say their name, ask and answer "How are you?", say where they are from (basic).</li>
+                <li>Use simple pronouns and the basic sentence order: Subject + Verb + Object (SVO).</li>
+                <li>Use question particle 吗 (ma) for yes/no questions and negative 不 (bù).</li>
+            </ul>
+            
+            <div class="lesson-subtitle">2) Vocabulary (with Pinyin + English) — 12 core words/phrases</div>
+            <ul class="lesson-list">
+                <li>你好 — nǐ hǎo — Hello</li>
+                <li>早上好 — zǎo shang hǎo — Good morning</li>
+                <li>晚上好 — wǎn shang hǎo — Good evening</li>
+                <li>再见 — zài jiàn — Goodbye</li>
+                <li>我 — wǒ — I / me</li>
+                <li>你 — nǐ — you</li>
+                <li>他 / 她 — tā — he / she (same pronunciation)</li>
+                <li>叫 — jiào — to be called / to call (used in 叫 + name)</li>
+                <li>什么 — shén me — what</li>
+                <li>吗 — ma — question particle (yes/no questions)</li>
+                <li>不 — bù — not / no (negation)</li>
+                <li>很好 — hěn hǎo — very good / fine</li>
+            </ul>
+            
+            <div class="lesson-subtitle">3) Pronunciation & tones (quick notes)</div>
+            <div class="lesson-example">Mandarin has 4 tones + neutral. Example: mā (1) má (2) mǎ (3) mà (4).<br>
+            In this level, focus on tone of 你好: nǐ (3rd tone) hǎo (3rd tone).</div>
+            
+            <div class="lesson-subtitle">4) Grammar points (simple and essential)</div>
+            
+            <div class="lesson-example">A. Basic sentence word order: SVO<br>
+            我 (subject) + 叫 (verb) + Lifen (object/name).<br>
+            Example: 我叫 吴丽翡。 — Wǒ jiào Wú Lìfěi. — My name is Wu Lifei.</div>
+            
+            <div class="lesson-example">B. Using 叫 to introduce a name<br>
+            Structure: 我叫 + Name。<br>
+            Polite reply to "What's your name?": 你叫什么名字？ (we'll practice simplified forms: 你叫什么？)</div>
+            
+            <div class="lesson-example">C. Yes/no questions with 吗<br>
+            Add 吗 (ma) to a statement to form a yes/no question.<br>
+            你是学生。 → 你是学生吗？ — Are you a student?</div>
+            
+            <div class="lesson-example">D. Negation with 不<br>
+            Place 不 before a verb or adjective to negate.<br>
+            我 不 是 学生。 — I am not a student.<br>
+            For feelings, use 我 不 太 好 (I'm not very good).</div>
+            
+            <div class="lesson-example">E. Simple adjectives and linking: 很 + adj<br>
+            When describing state: 我 很 好。 — I am fine. (lit. very good)</div>
+            
+            <div class="lesson-subtitle">5) Short learning dialogues & examples</div>
+            
+            <div class="lesson-practice">Dialogue 1 — Meeting someone:<br>
+            A: 你好！(Nǐ hǎo!)<br>
+            B: 你好！我叫 李明。你呢？(Wǒ jiào Lǐ Míng. Nǐ ne?)<br>
+            A: 我叫 安娜。(Wǒ jiào Ānnà.)<br>
+            B: 很高兴认识你！(Hěn gāoxìng rènshì nǐ. — Nice to meet you!)</div>
+            
+            <div class="lesson-practice">Dialogue 2 — Asking if someone is a student:<br>
+            A: 你是学生吗？(Nǐ shì xuéshēng ma?)<br>
+            B: 我是。或 我不是。(Wǒ shì. / Wǒ bú shì.)</div>
+        </div>
+
+        <!-- Detailed Level 2 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">Rookie – Level 2: Numbers & Age (几岁, 多大)</div>
+            
+            <div class="lesson-subtitle">1) Goal of this level</div>
+            <div class="lesson-example">Students will be able to:</div>
+            <ul class="lesson-list">
+                <li>Count from 0–100 in Chinese.</li>
+                <li>Say their age and ask others' age.</li>
+                <li>Use 几 (jǐ) and 多大 (duō dà) for age-related questions.</li>
+                <li>Introduce family ages in simple sentences.</li>
+                <li>Practice measure word 岁 (suì) = years old.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">2) Vocabulary — 14 core words/phrases</div>
+            <ul class="lesson-list">
+                <li>零 — líng — zero</li>
+                <li>一 — yī — one</li>
+                <li>二 — èr — two</li>
+                <li>三 — sān — three</li>
+                <li>四 — sì — four</li>
+                <li>五 — wǔ — five</li>
+                <li>六 — liù — six</li>
+                <li>七 — qī — seven</li>
+                <li>八 — bā — eight</li>
+                <li>九 — jiǔ — nine</li>
+                <li>十 — shí — ten</li>
+                <li>岁 — suì — years old</li>
+                <li>几 — jǐ — how many (for small number, often &lt;10)</li>
+                <li>多大 — duō dà — how old (general, any age)</li>
+            </ul>
+            <div class="lesson-example">(We will expand later to 11–99 using 十: 11 = 十一 (shí yī), 20 = 二十 (èr shí), 25 = 二十五 (èr shí wǔ).)</div>
+            
+            <div class="lesson-subtitle">3) Grammar points</div>
+            
+            <div class="lesson-example">A. Numbers formation<br>
+            11–19: 十 + number (十一, 十二, …)<br>
+            Tens: number + 十 (二十 = 20, 三十 = 30, …)<br>
+            Other numbers: combine (e.g., 25 = 二十五).<br>
+            Zero in the middle: 105 = 一百零五 (but for this level, we focus 0–100).</div>
+            
+            <div class="lesson-example">B. Asking & telling age<br>
+            你几岁？ — Nǐ jǐ suì? — How old are you? (for kids, usually &lt;10).<br>
+            你多大？ — Nǐ duō dà? — How old are you? (general).<br>
+            Answer: 我 + number + 岁。 → 我十八岁。— I'm 18 years old.</div>
+            
+            <div class="lesson-example">C. Adding "呢" for short return questions<br>
+            你呢？ — And you?</div>
+            
+            <div class="lesson-subtitle">4) Example sentences</div>
+            <ul class="lesson-list">
+                <li>我五岁。 (Wǒ wǔ suì.) — I am five years old.</li>
+                <li>你几岁？(Nǐ jǐ suì?) — How old are you? (for child).</li>
+                <li>你多大？(Nǐ duō dà?) — How old are you? (general).</li>
+                <li>我十八岁。 (Wǒ shí bā suì.) — I'm 18 years old.</li>
+                <li>他二十五岁。 (Tā èr shí wǔ suì.) — He is 25 years old.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">5) Short dialogue</div>
+            <div class="lesson-practice">A: 你多大？<br>
+            B: 我二十岁。你呢？<br>
+            A: 我十九岁。</div>
+            
+            <div class="lesson-subtitle">6) Study tips</div>
+            <ul class="lesson-list">
+                <li>Practice counting 0–30 aloud every day.</li>
+                <li>Write your age in Chinese characters.</li>
+                <li>Ask friends/family their age in Chinese.</li>
+                <li>Use flashcards for numbers.</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 3 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🏠 Level 3: Family Members</div>
+            
+            <div class="lesson-subtitle">🎯 Learning Objectives</div>
+            <ul class="lesson-list">
+                <li>Learn Chinese words for family members.</li>
+                <li>Practice using 的 for possession.</li>
+                <li>Practice using 这/那 to point things/people.</li>
+                <li>Be able to introduce your family members.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📖 Vocabulary</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">爸爸</td><td style="padding:6px;">bàba</td><td style="padding:6px;">dad</td></tr>
+                <tr><td style="padding:6px;">妈妈</td><td style="padding:6px;">māma</td><td style="padding:6px;">mom</td></tr>
+                <tr><td style="padding:6px;">哥哥</td><td style="padding:6px;">gēge</td><td style="padding:6px;">elder brother</td></tr>
+                <tr><td style="padding:6px;">姐姐</td><td style="padding:6px;">jiějie</td><td style="padding:6px;">elder sister</td></tr>
+                <tr><td style="padding:6px;">弟弟</td><td style="padding:6px;">dìdi</td><td style="padding:6px;">younger brother</td></tr>
+                <tr><td style="padding:6px;">妹妹</td><td style="padding:6px;">mèimei</td><td style="padding:6px;">younger sister</td></tr>
+                <tr><td style="padding:6px;">家</td><td style="padding:6px;">jiā</td><td style="padding:6px;">family/home</td></tr>
+                <tr><td style="padding:6px;">这是…</td><td style="padding:6px;">zhè shì…</td><td style="padding:6px;">this is…</td></tr>
+                <tr><td style="padding:6px;">那是…</td><td style="padding:6px;">nà shì…</td><td style="padding:6px;">that is…</td></tr>
+                <tr><td style="padding:6px;">的</td><td style="padding:6px;">de</td><td style="padding:6px;">possessive marker ("'s")</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">🧩 Grammar Focus</div>
+            
+            <div class="lesson-example">Possession with 的<br>
+            我的爸爸 = my dad<br>
+            她的妈妈 = her mom</div>
+            
+            <div class="lesson-example">这 / 那<br>
+            这是我的哥哥 = This is my elder brother<br>
+            那是我的妹妹 = That is my younger sister</div>
+            
+            <div class="lesson-example">Introducing family members<br>
+            这是我的家。= This is my family.<br>
+            他是我的弟弟。= He is my younger brother.</div>
+            
+            <div class="lesson-subtitle">🗣 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>这是我的爸爸。Zhè shì wǒ de bàba. = This is my dad.</li>
+                <li>那是我的妈妈。Nà shì wǒ de māma. = That is my mom.</li>
+                <li>他是我的哥哥。Tā shì wǒ de gēge. = He is my elder brother.</li>
+                <li>她是我的姐姐。Tā shì wǒ de jiějie. = She is my elder sister.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">Practice Dialogue</div>
+            <div class="lesson-practice">A: 这是谁？(Zhè shì shéi?) = Who is this?<br>
+            B: 这是我的妹妹。(Zhè shì wǒ de mèimei.) = This is my younger sister.<br>
+            A: 她几岁？(Tā jǐ suì?) = How old is she?<br>
+            B: 她五岁。(Tā wǔ suì.) = She is five years old.</div>
+        </div>
+
+        <!-- Detailed Level 4 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">📚 Level 4: Daily Objects</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, you can:</div>
+            <ul class="lesson-list">
+                <li>Recognize and say words for common classroom and personal objects.</li>
+                <li>Use 这是什么？/那是什么？ to ask about things.</li>
+                <li>Answer with 是 / 不是 correctly.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📖 Vocabulary List</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">汉字</td><td style="padding:8px; font-weight:bold;">拼音</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">书</td><td style="padding:6px;">shū</td><td style="padding:6px;">book</td></tr>
+                <tr><td style="padding:6px;">笔</td><td style="padding:6px;">bǐ</td><td style="padding:6px;">pen</td></tr>
+                <tr><td style="padding:6px;">包</td><td style="padding:6px;">bāo</td><td style="padding:6px;">bag</td></tr>
+                <tr><td style="padding:6px;">桌子</td><td style="padding:6px;">zhuōzi</td><td style="padding:6px;">table</td></tr>
+                <tr><td style="padding:6px;">椅子</td><td style="padding:6px;">yǐzi</td><td style="padding:6px;">chair</td></tr>
+                <tr><td style="padding:6px;">手机</td><td style="padding:6px;">shǒujī</td><td style="padding:6px;">cellphone</td></tr>
+                <tr><td style="padding:6px;">电脑</td><td style="padding:6px;">diànnǎo</td><td style="padding:6px;">computer</td></tr>
+                <tr><td style="padding:6px;">这</td><td style="padding:6px;">zhè</td><td style="padding:6px;">this</td></tr>
+                <tr><td style="padding:6px;">那</td><td style="padding:6px;">nà</td><td style="padding:6px;">that</td></tr>
+                <tr><td style="padding:6px;">什么</td><td style="padding:6px;">shénme</td><td style="padding:6px;">what</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">🧩 Grammar Focus</div>
+            
+            <div class="lesson-example">Asking about objects<br>
+            这是什么？= What is this?<br>
+            那是什么？= What is that?</div>
+            
+            <div class="lesson-example">Answering with 是 / 不是<br>
+            这是书。= This is a book.<br>
+            那不是电脑。= That is not a computer.</div>
+            
+            <div class="lesson-example">Noun identification pattern<br>
+            Structure: 这/那 + 是 + noun<br>
+            Negative: 这/那 + 不是 + noun</div>
+            
+            <div class="lesson-subtitle">🗣️ Example Sentences</div>
+            <ul class="lesson-list">
+                <li>这是什么？= What is this?</li>
+                <li>这是手机。= This is a cellphone.</li>
+                <li>那是什么？= What is that?</li>
+                <li>那是桌子。= That is a table.</li>
+                <li>这不是椅子。= This is not a chair.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">Practice Dialogue</div>
+            <div class="lesson-practice">A: 这是什么？(Zhè shì shénme?) = What is this?<br>
+            B: 这是我的书。(Zhè shì wǒ de shū.) = This is my book.<br>
+            A: 那是什么？(Nà shì shénme?) = What is that?<br>
+            B: 那是电脑。(Nà shì diànnǎo.) = That is a computer.<br>
+            A: 这是你的包吗？(Zhè shì nǐ de bāo ma?) = Is this your bag?<br>
+            B: 不是，那不是我的包。(Bù shì, nà bù shì wǒ de bāo.) = No, that is not my bag.</div>
+        </div>
+
+        <!-- Detailed Level 5 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🎨 Level 5: Colors & Adjectives</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, you can:</div>
+            <ul class="lesson-list">
+                <li>Name basic colors in Chinese.</li>
+                <li>Use adjectives like big, small, tall, short to describe objects.</li>
+                <li>Use 很 + adjective for simple descriptions.</li>
+                <li>Use 的 to modify nouns with adjectives.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📖 Vocabulary List</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">汉字</td><td style="padding:8px; font-weight:bold;">拼音</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">红色</td><td style="padding:6px;">hóngsè</td><td style="padding:6px;">red</td></tr>
+                <tr><td style="padding:6px;">蓝色</td><td style="padding:6px;">lánsè</td><td style="padding:6px;">blue</td></tr>
+                <tr><td style="padding:6px;">白色</td><td style="padding:6px;">báisè</td><td style="padding:6px;">white</td></tr>
+                <tr><td style="padding:6px;">黑色</td><td style="padding:6px;">hēisè</td><td style="padding:6px;">black</td></tr>
+                <tr><td style="padding:6px;">大</td><td style="padding:6px;">dà</td><td style="padding:6px;">big</td></tr>
+                <tr><td style="padding:6px;">小</td><td style="padding:6px;">xiǎo</td><td style="padding:6px;">small</td></tr>
+                <tr><td style="padding:6px;">高</td><td style="padding:6px;">gāo</td><td style="padding:6px;">tall</td></tr>
+                <tr><td style="padding:6px;">矮</td><td style="padding:6px;">ǎi</td><td style="padding:6px;">short</td></tr>
+                <tr><td style="padding:6px;">漂亮</td><td style="padding:6px;">piàoliang</td><td style="padding:6px;">pretty</td></tr>
+                <tr><td style="padding:6px;">的</td><td style="padding:6px;">de</td><td style="padding:6px;">(linking word: adjective + 的 + noun)</td></tr>
+                <tr><td style="padding:6px;">很</td><td style="padding:6px;">hěn</td><td style="padding:6px;">very</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">🧩 Grammar Focus</div>
+            
+            <div class="lesson-example">Adjectives with 很<br>
+            这本书很大。= This book is big.<br>
+            他很高。= He is tall.</div>
+            
+            <div class="lesson-example">的 for modification<br>
+            红色的书 = red book<br>
+            漂亮的衣服 = pretty clothes</div>
+            
+            <div class="lesson-example">Basic adjective sentences<br>
+            Subject + 很 + adjective<br>
+            Noun + 的 + Noun → describes the object</div>
+            
+            <div class="lesson-subtitle">🗣️ Example Sentences</div>
+            <ul class="lesson-list">
+                <li>这是红色的书。= This is a red book.</li>
+                <li>那是蓝色的包。= That is a blue bag.</li>
+                <li>他很高。= He is tall.</li>
+                <li>她很漂亮。= She is pretty.</li>
+                <li>我的手机很小。= My cellphone is small.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">Practice Dialogue</div>
+            <div class="lesson-practice">A: 你的包是什么颜色的？(Nǐ de bāo shì shénme yánsè de?) = What color is your bag?<br>
+            B: 我的包是红色的。(Wǒ de bāo shì hóngsè de.) = My bag is red.<br>
+            A: 这本书大吗？(Zhè běn shū dà ma?) = Is this book big?<br>
+            B: 这本书很大。(Zhè běn shū hěn dà.) = This book is big.<br>
+            A: 那个人高不高？(Nàge rén gāo bù gāo?) = Is that person tall?<br>
+            B: 他很高。(Tā hěn gāo.) = He is tall.</div>
+        </div>
+
+        <!-- Detailed Level 6 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🥢 Rookie Level 6 — 吃饭与喝饮料 (Food & Drinks)</div>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">米饭</td><td style="padding:6px;">mǐfàn</td><td style="padding:6px;">rice</td></tr>
+                <tr><td style="padding:6px;">面条</td><td style="padding:6px;">miàntiáo</td><td style="padding:6px;">noodles</td></tr>
+                <tr><td style="padding:6px;">包子</td><td style="padding:6px;">bāozi</td><td style="padding:6px;">steamed bun</td></tr>
+                <tr><td style="padding:6px;">饺子</td><td style="padding:6px;">jiǎozi</td><td style="padding:6px;">dumpling</td></tr>
+                <tr><td style="padding:6px;">鸡肉</td><td style="padding:6px;">jīròu</td><td style="padding:6px;">chicken</td></tr>
+                <tr><td style="padding:6px;">牛肉</td><td style="padding:6px;">niúròu</td><td style="padding:6px;">beef</td></tr>
+                <tr><td style="padding:6px;">鱼</td><td style="padding:6px;">yú</td><td style="padding:6px;">fish</td></tr>
+                <tr><td style="padding:6px;">水</td><td style="padding:6px;">shuǐ</td><td style="padding:6px;">water</td></tr>
+                <tr><td style="padding:6px;">茶</td><td style="padding:6px;">chá</td><td style="padding:6px;">tea</td></tr>
+                <tr><td style="padding:6px;">咖啡</td><td style="padding:6px;">kāfēi</td><td style="padding:6px;">coffee</td></tr>
+                <tr><td style="padding:6px;">牛奶</td><td style="padding:6px;">niúnǎi</td><td style="padding:6px;">milk</td></tr>
+                <tr><td style="padding:6px;">果汁</td><td style="padding:6px;">guǒzhī</td><td style="padding:6px;">juice</td></tr>
+                <tr><td style="padding:6px;">苹果</td><td style="padding:6px;">píngguǒ</td><td style="padding:6px;">apple</td></tr>
+                <tr><td style="padding:6px;">香蕉</td><td style="padding:6px;">xiāngjiāo</td><td style="padding:6px;">banana</td></tr>
+                <tr><td style="padding:6px;">蔬菜</td><td style="padding:6px;">shūcài</td><td style="padding:6px;">vegetables</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Using 要 to express "want"<br>
+            我要米饭。 → I want rice.<br>
+            你要咖啡吗？ → Do you want coffee?</div>
+            
+            <div class="lesson-example">2. Simple sentences with 喜欢 (like)<br>
+            我喜欢吃饺子。 → I like to eat dumplings.<br>
+            他不喜欢喝咖啡。 → He doesn't like coffee.</div>
+            
+            <div class="lesson-example">3. Measure word for food and drinks: 个 / 杯 / 瓶<br>
+            一个苹果 → one apple<br>
+            一杯水 → one cup of water<br>
+            一瓶牛奶 → one bottle of milk</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我喜欢吃面条。 (I like to eat noodles.)</li>
+                <li>你要喝茶吗？ (Do you want to drink tea?)</li>
+                <li>他要一杯咖啡。 (He wants a cup of coffee.)</li>
+                <li>我不喜欢喝牛奶。 (I don't like to drink milk.)</li>
+                <li>请给我两个包子。 (Please give me two buns.)</li>
+            </ul>
+            
+            <div class="lesson-subtitle">Practice Dialogue</div>
+            <div class="lesson-practice">A: 你喜欢吃什么？(Nǐ xǐhuān chī shénme?) = What do you like to eat?<br>
+            B: 我喜欢吃饺子。你呢？(Wǒ xǐhuān chī jiǎozi. Nǐ ne?) = I like to eat dumplings. How about you?<br>
+            A: 我喜欢吃面条。你要喝什么？(Wǒ xǐhuān chī miàntiáo. Nǐ yào hē shénme?) = I like to eat noodles. What do you want to drink?<br>
+            B: 我要一杯茶。(Wǒ yào yī bēi chá.) = I want a cup of tea.</div>
+        </div>
+
+        <!-- Detailed Level 7 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🍽 Rookie Level 7 — Ordering in a Restaurant</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Ask for menus and prices politely.</li>
+                <li>Order food and drinks in Chinese.</li>
+                <li>Use 请, 我要, and 给我 correctly.</li>
+                <li>Recognize common restaurant vocabulary.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">菜单</td><td style="padding:6px;">càidān</td><td style="padding:6px;">menu</td></tr>
+                <tr><td style="padding:6px;">服务员</td><td style="padding:6px;">fúwùyuán</td><td style="padding:6px;">waiter/waitress</td></tr>
+                <tr><td style="padding:6px;">鸡肉</td><td style="padding:6px;">jīròu</td><td style="padding:6px;">chicken</td></tr>
+                <tr><td style="padding:6px;">牛肉</td><td style="padding:6px;">niúròu</td><td style="padding:6px;">beef</td></tr>
+                <tr><td style="padding:6px;">猪肉</td><td style="padding:6px;">zhūròu</td><td style="padding:6px;">pork</td></tr>
+                <tr><td style="padding:6px;">鱼</td><td style="padding:6px;">yú</td><td style="padding:6px;">fish</td></tr>
+                <tr><td style="padding:6px;">米饭</td><td style="padding:6px;">mǐfàn</td><td style="padding:6px;">rice</td></tr>
+                <tr><td style="padding:6px;">面条</td><td style="padding:6px;">miàntiáo</td><td style="padding:6px;">noodles</td></tr>
+                <tr><td style="padding:6px;">蔬菜</td><td style="padding:6px;">shūcài</td><td style="padding:6px;">vegetables</td></tr>
+                <tr><td style="padding:6px;">水</td><td style="padding:6px;">shuǐ</td><td style="padding:6px;">water</td></tr>
+                <tr><td style="padding:6px;">茶</td><td style="padding:6px;">chá</td><td style="padding:6px;">tea</td></tr>
+                <tr><td style="padding:6px;">咖啡</td><td style="padding:6px;">kāfēi</td><td style="padding:6px;">coffee</td></tr>
+                <tr><td style="padding:6px;">请给我…</td><td style="padding:6px;">qǐng gěi wǒ…</td><td style="padding:6px;">please give me…</td></tr>
+                <tr><td style="padding:6px;">我要…</td><td style="padding:6px;">wǒ yào…</td><td style="padding:6px;">I want…</td></tr>
+                <tr><td style="padding:6px;">多少钱</td><td style="padding:6px;">duōshǎo qián</td><td style="padding:6px;">how much</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Polite requests<br>
+            请 + verb → 请给我菜单。 (Please give me the menu.)</div>
+            
+            <div class="lesson-example">2. Expressing what you want<br>
+            我要 + food/drink → 我要鸡肉。 (I want chicken.)<br>
+            我想要 + food/drink → 我想要米饭。 (I would like rice.)</div>
+            
+            <div class="lesson-example">3. Asking prices<br>
+            …多少钱？ → 这个菜多少钱？ (How much is this dish?)</div>
+            
+            <div class="lesson-example">4. Using measure words for food<br>
+            一碗面条 → one bowl of noodles<br>
+            一盘蔬菜 → one plate of vegetables</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>服务员，请给我菜单。 (Waiter, please give me the menu.)</li>
+                <li>我要一碗米饭。 (I want a bowl of rice.)</li>
+                <li>这个菜多少钱？ (How much is this dish?)</li>
+                <li>请给我一杯茶。 (Please give me a cup of tea.)</li>
+                <li>我想要一盘蔬菜。 (I would like a plate of vegetables.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 8 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🏫 Rookie Level 8 — School & Classroom</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name common school objects and roles.</li>
+                <li>Describe classroom locations.</li>
+                <li>Use 在 (location) and 有 (there is/are).</li>
+                <li>Ask and answer simple classroom-related questions.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">老师</td><td style="padding:6px;">lǎoshī</td><td style="padding:6px;">teacher</td></tr>
+                <tr><td style="padding:6px;">学生</td><td style="padding:6px;">xuéshēng</td><td style="padding:6px;">student</td></tr>
+                <tr><td style="padding:6px;">教室</td><td style="padding:6px;">jiàoshì</td><td style="padding:6px;">classroom</td></tr>
+                <tr><td style="padding:6px;">书包</td><td style="padding:6px;">shūbāo</td><td style="padding:6px;">schoolbag</td></tr>
+                <tr><td style="padding:6px;">黑板</td><td style="padding:6px;">hēibǎn</td><td style="padding:6px;">blackboard</td></tr>
+                <tr><td style="padding:6px;">桌子</td><td style="padding:6px;">zhuōzi</td><td style="padding:6px;">desk/table</td></tr>
+                <tr><td style="padding:6px;">椅子</td><td style="padding:6px;">yǐzi</td><td style="padding:6px;">chair</td></tr>
+                <tr><td style="padding:6px;">本子</td><td style="padding:6px;">běnzi</td><td style="padding:6px;">notebook</td></tr>
+                <tr><td style="padding:6px;">笔</td><td style="padding:6px;">bǐ</td><td style="padding:6px;">pen/pencil</td></tr>
+                <tr><td style="padding:6px;">电脑</td><td style="padding:6px;">diànnǎo</td><td style="padding:6px;">computer</td></tr>
+                <tr><td style="padding:6px;">有</td><td style="padding:6px;">yǒu</td><td style="padding:6px;">have/there is</td></tr>
+                <tr><td style="padding:6px;">在</td><td style="padding:6px;">zài</td><td style="padding:6px;">at/in/on</td></tr>
+                <tr><td style="padding:6px;">上课</td><td style="padding:6px;">shàngkè</td><td style="padding:6px;">attend class</td></tr>
+                <tr><td style="padding:6px;">学校</td><td style="padding:6px;">xuéxiào</td><td style="padding:6px;">school</td></tr>
+                <tr><td style="padding:6px;">问题</td><td style="padding:6px;">wèntí</td><td style="padding:6px;">question</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Location with 在<br>
+            Structure: A 在 B → 老师在教室。 (The teacher is in the classroom.)<br>
+            可用于物品或人: 桌子在教室里。 (The desk is in the classroom.)</div>
+            
+            <div class="lesson-example">2. Existential 有<br>
+            Structure: B 里有 A → 教室里有桌子和椅子。 (There are desks and chairs in the classroom.)</div>
+            
+            <div class="lesson-example">3. Asking about location<br>
+            A 在哪里？ → 老师在哪里？ (Where is the teacher?)<br>
+            Answer: 老师在教室。</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>教室里有学生。 (There are students in the classroom.)</li>
+                <li>桌子在教室里。 (The desk is in the classroom.)</li>
+                <li>老师在办公室。 (The teacher is in the office.)</li>
+                <li>我的书包在椅子上。 (My schoolbag is on the chair.)</li>
+                <li>学生在上课。 (The students are attending class.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 9 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">📅 Rookie Level 9 — Days, Months, Dates</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name days of the week, months, and date expressions in Chinese.</li>
+                <li>Ask and answer questions about the date.</li>
+                <li>Use 今天, 明天, 昨天, 号/日, and 星期 correctly.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">今天</td><td style="padding:6px;">jīntiān</td><td style="padding:6px;">today</td></tr>
+                <tr><td style="padding:6px;">明天</td><td style="padding:6px;">míngtiān</td><td style="padding:6px;">tomorrow</td></tr>
+                <tr><td style="padding:6px;">昨天</td><td style="padding:6px;">zuótiān</td><td style="padding:6px;">yesterday</td></tr>
+                <tr><td style="padding:6px;">星期一</td><td style="padding:6px;">xīngqī yī</td><td style="padding:6px;">Monday</td></tr>
+                <tr><td style="padding:6px;">星期二</td><td style="padding:6px;">xīngqī èr</td><td style="padding:6px;">Tuesday</td></tr>
+                <tr><td style="padding:6px;">星期三</td><td style="padding:6px;">xīngqī sān</td><td style="padding:6px;">Wednesday</td></tr>
+                <tr><td style="padding:6px;">星期四</td><td style="padding:6px;">xīngqī sì</td><td style="padding:6px;">Thursday</td></tr>
+                <tr><td style="padding:6px;">星期五</td><td style="padding:6px;">xīngqī wǔ</td><td style="padding:6px;">Friday</td></tr>
+                <tr><td style="padding:6px;">星期六</td><td style="padding:6px;">xīngqī liù</td><td style="padding:6px;">Saturday</td></tr>
+                <tr><td style="padding:6px;">星期天 / 星期日</td><td style="padding:6px;">xīngqī tiān / rì</td><td style="padding:6px;">Sunday</td></tr>
+                <tr><td style="padding:6px;">月</td><td style="padding:6px;">yuè</td><td style="padding:6px;">month</td></tr>
+                <tr><td style="padding:6px;">号 / 日</td><td style="padding:6px;">hào / rì</td><td style="padding:6px;">day of month</td></tr>
+                <tr><td style="padding:6px;">今天是…</td><td style="padding:6px;">jīntiān shì…</td><td style="padding:6px;">Today is…</td></tr>
+                <tr><td style="padding:6px;">几号</td><td style="padding:6px;">jǐ hào</td><td style="padding:6px;">What day (date)</td></tr>
+                <tr><td style="padding:6px;">星期几</td><td style="padding:6px;">xīngqī jǐ</td><td style="padding:6px;">What day of the week</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Asking and telling the date<br>
+            今天是几月几号？ → What's today's date?<br>
+            今天是三月五号。 → Today is March 5th.</div>
+            
+            <div class="lesson-example">2. Asking and telling the day of the week<br>
+            今天星期几？ → What day of the week is it today?<br>
+            今天星期三。 → Today is Wednesday.</div>
+            
+            <div class="lesson-example">3. Using yesterday and tomorrow<br>
+            昨天 → yesterday<br>
+            明天 → tomorrow<br>
+            Example: 昨天是星期一，明天是星期三。</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>今天是几月几号？ (What's today's date?)</li>
+                <li>今天是五月十号。 (Today is May 10th.)</li>
+                <li>今天星期几？ (What day of the week is it today?)</li>
+                <li>今天星期五。 (Today is Friday.)</li>
+                <li>明天是星期六。 (Tomorrow is Saturday.)</li>
+                <li>昨天是三月一号。 (Yesterday was March 1st.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 10 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">⏰ Rookie Level 10 — Time Telling</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Ask and tell the time in Chinese.</li>
+                <li>Use 点, 分, 半, 现在, 上午, 下午 correctly.</li>
+                <li>Form sentences like 现在几点？ and 现在…点…分.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">点</td><td style="padding:6px;">diǎn</td><td style="padding:6px;">o'clock / hour</td></tr>
+                <tr><td style="padding:6px;">分</td><td style="padding:6px;">fēn</td><td style="padding:6px;">minute</td></tr>
+                <tr><td style="padding:6px;">半</td><td style="padding:6px;">bàn</td><td style="padding:6px;">half (30 minutes)</td></tr>
+                <tr><td style="padding:6px;">现在</td><td style="padding:6px;">xiànzài</td><td style="padding:6px;">now</td></tr>
+                <tr><td style="padding:6px;">上午</td><td style="padding:6px;">shàngwǔ</td><td style="padding:6px;">morning</td></tr>
+                <tr><td style="padding:6px;">下午</td><td style="padding:6px;">xiàwǔ</td><td style="padding:6px;">afternoon</td></tr>
+                <tr><td style="padding:6px;">早上</td><td style="padding:6px;">zǎoshang</td><td style="padding:6px;">early morning</td></tr>
+                <tr><td style="padding:6px;">晚上</td><td style="padding:6px;">wǎnshang</td><td style="padding:6px;">evening/night</td></tr>
+                <tr><td style="padding:6px;">分钟</td><td style="padding:6px;">fēnzhōng</td><td style="padding:6px;">minute</td></tr>
+                <tr><td style="padding:6px;">小时</td><td style="padding:6px;">xiǎoshí</td><td style="padding:6px;">hour</td></tr>
+                <tr><td style="padding:6px;">什么时候</td><td style="padding:6px;">shénme shíhou</td><td style="padding:6px;">when</td></tr>
+                <tr><td style="padding:6px;">现在几点？</td><td style="padding:6px;">xiànzài jǐ diǎn?</td><td style="padding:6px;">What time is it now?</td></tr>
+                <tr><td style="padding:6px;">八点</td><td style="padding:6px;">bā diǎn</td><td style="padding:6px;">8 o'clock</td></tr>
+                <tr><td style="padding:6px;">三点半</td><td style="padding:6px;">sān diǎn bàn</td><td style="padding:6px;">3:30</td></tr>
+                <tr><td style="padding:6px;">十点一刻</td><td style="padding:6px;">shí diǎn yí kè</td><td style="padding:6px;">10:15</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Asking the time<br>
+            现在几点？ → What time is it now?<br>
+            现在 + hour + 点 + minute + 分/半 → 现在三点半。 (It's 3:30 now.)</div>
+            
+            <div class="lesson-example">2. Using 上午 / 下午 / 晚上<br>
+            上午 → morning, 下午 → afternoon, 晚上 → evening<br>
+            Example: 下午两点 → 2 PM<br>
+            上午八点 → 8 AM</div>
+            
+            <div class="lesson-example">3. Expressing minutes<br>
+            一刻 = 15 minutes → 十点一刻 = 10:15<br>
+            半 = 30 minutes → 三点半 = 3:30</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>现在几点？ (What time is it now?)</li>
+                <li>现在八点。 (It's 8 o'clock now.)</li>
+                <li>现在三点半。 (It's 3:30 now.)</li>
+                <li>上午十点一刻。 (It's 10:15 in the morning.)</li>
+                <li>下午两点。 (It's 2 PM.)</li>
+                <li>晚上七点半。 (It's 7:30 PM.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 11 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🎨 Rookie Level 11 — Hobbies (你喜欢什么？)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Ask and answer about hobbies and interests.</li>
+                <li>Use 喜欢 / 不喜欢 / 最喜欢 correctly.</li>
+                <li>Express preferences for activities like reading, sports, or music.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">喜欢</td><td style="padding:6px;">xǐhuān</td><td style="padding:6px;">like</td></tr>
+                <tr><td style="padding:6px;">不喜欢</td><td style="padding:6px;">bù xǐhuān</td><td style="padding:6px;">dislike</td></tr>
+                <tr><td style="padding:6px;">最喜欢</td><td style="padding:6px;">zuì xǐhuān</td><td style="padding:6px;">like the most / favorite</td></tr>
+                <tr><td style="padding:6px;">看书</td><td style="padding:6px;">kàn shū</td><td style="padding:6px;">read books</td></tr>
+                <tr><td style="padding:6px;">听音乐</td><td style="padding:6px;">tīng yīnyuè</td><td style="padding:6px;">listen to music</td></tr>
+                <tr><td style="padding:6px;">打篮球</td><td style="padding:6px;">dǎ lánqiú</td><td style="padding:6px;">play basketball</td></tr>
+                <tr><td style="padding:6px;">唱歌</td><td style="padding:6px;">chàng gē</td><td style="padding:6px;">sing</td></tr>
+                <tr><td style="padding:6px;">跳舞</td><td style="padding:6px;">tiào wǔ</td><td style="padding:6px;">dance</td></tr>
+                <tr><td style="padding:6px;">游泳</td><td style="padding:6px;">yóuyǒng</td><td style="padding:6px;">swim</td></tr>
+                <tr><td style="padding:6px;">足球</td><td style="padding:6px;">zúqiú</td><td style="padding:6px;">soccer</td></tr>
+                <tr><td style="padding:6px;">网球</td><td style="padding:6px;">wǎngqiú</td><td style="padding:6px;">tennis</td></tr>
+                <tr><td style="padding:6px;">画画</td><td style="padding:6px;">huà huà</td><td style="padding:6px;">draw / painting</td></tr>
+                <tr><td style="padding:6px;">玩游戏</td><td style="padding:6px;">wán yóuxì</td><td style="padding:6px;">play games</td></tr>
+                <tr><td style="padding:6px;">运动</td><td style="padding:6px;">yùndòng</td><td style="padding:6px;">sports / exercise</td></tr>
+                <tr><td style="padding:6px;">朋友</td><td style="padding:6px;">péngyǒu</td><td style="padding:6px;">friend</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Expressing likes and dislikes<br>
+            我喜欢 + activity → 我喜欢看书。 (I like reading.)<br>
+            我不喜欢 + activity → 我不喜欢打篮球。 (I don't like basketball.)<br>
+            我最喜欢 + activity → 我最喜欢唱歌。 (I like singing the most.)</div>
+            
+            <div class="lesson-example">2. Asking about hobbies<br>
+            你喜欢什么？ → What do you like?<br>
+            你最喜欢做什么？ → What do you like doing the most?</div>
+            
+            <div class="lesson-example">3. Expressing frequency (optional for advanced Rookie)<br>
+            有时候 / 经常 / 不常 → sometimes / often / not often</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>你喜欢什么？ (What do you like?)</li>
+                <li>我喜欢听音乐。 (I like listening to music.)</li>
+                <li>我不喜欢游泳。 (I don't like swimming.)</li>
+                <li>我最喜欢打篮球。 (I like playing basketball the most.)</li>
+                <li>你最喜欢做什么？ (What do you like doing the most?)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 12 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">☀️ Rookie Level 12 — Weather (今天天气怎么样？)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Ask and answer about the weather in Chinese.</li>
+                <li>Use 今天天气怎么样？ and expressions like 很 / 不太.</li>
+                <li>Learn vocabulary for different weather conditions.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">天气</td><td style="padding:6px;">tiānqì</td><td style="padding:6px;">weather</td></tr>
+                <tr><td style="padding:6px;">今天</td><td style="padding:6px;">jīntiān</td><td style="padding:6px;">today</td></tr>
+                <tr><td style="padding:6px;">热</td><td style="padding:6px;">rè</td><td style="padding:6px;">hot</td></tr>
+                <tr><td style="padding:6px;">冷</td><td style="padding:6px;">lěng</td><td style="padding:6px;">cold</td></tr>
+                <tr><td style="padding:6px;">下雨</td><td style="padding:6px;">xià yǔ</td><td style="padding:6px;">rain / raining</td></tr>
+                <tr><td style="padding:6px;">下雪</td><td style="padding:6px;">xià xuě</td><td style="padding:6px;">snow / snowing</td></tr>
+                <tr><td style="padding:6px;">风</td><td style="padding:6px;">fēng</td><td style="padding:6px;">wind</td></tr>
+                <tr><td style="padding:6px;">晴</td><td style="padding:6px;">qíng</td><td style="padding:6px;">sunny</td></tr>
+                <tr><td style="padding:6px;">阴</td><td style="padding:6px;">yīn</td><td style="padding:6px;">cloudy</td></tr>
+                <tr><td style="padding:6px;">多云</td><td style="padding:6px;">duōyún</td><td style="padding:6px;">partly cloudy</td></tr>
+                <tr><td style="padding:6px;">雷</td><td style="padding:6px;">léi</td><td style="padding:6px;">thunder</td></tr>
+                <tr><td style="padding:6px;">刮风</td><td style="padding:6px;">guā fēng</td><td style="padding:6px;">windy</td></tr>
+                <tr><td style="padding:6px;">很</td><td style="padding:6px;">hěn</td><td style="padding:6px;">very</td></tr>
+                <tr><td style="padding:6px;">不太</td><td style="padding:6px;">bù tài</td><td style="padding:6px;">not very / not too</td></tr>
+                <tr><td style="padding:6px;">怎么样</td><td style="padding:6px;">zěnmeyàng</td><td style="padding:6px;">how / what about</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Asking about the weather<br>
+            今天天气怎么样？ → How is the weather today?</div>
+            
+            <div class="lesson-example">2. Answering about the weather<br>
+            很 + adj → 今天天气很热。 (The weather is very hot.)<br>
+            不太 + adj → 今天天气不太冷。 (The weather is not very cold.)</div>
+            
+            <div class="lesson-example">3. Using verbs for weather<br>
+            下雨 / 下雪 → It's raining / It's snowing.<br>
+            Example: 今天下雨。 (It's raining today.)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>今天天气怎么样？ (How is the weather today?)</li>
+                <li>今天天气很热。 (Today's weather is very hot.)</li>
+                <li>今天下雨。 (It's raining today.)</li>
+                <li>今天不太冷。 (It's not very cold today.)</li>
+                <li>今天刮风。 (It's windy today.)</li>
+                <li>明天会下雪吗？ (Will it snow tomorrow?)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 13 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🐶 Rookie Level 13 — Animals (这是猫)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name common animals in Chinese.</li>
+                <li>Use 这/那 + 是 + noun to identify animals.</li>
+                <li>Ask and answer 这是什么？ / 那是什么？</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">猫</td><td style="padding:6px;">māo</td><td style="padding:6px;">cat</td></tr>
+                <tr><td style="padding:6px;">狗</td><td style="padding:6px;">gǒu</td><td style="padding:6px;">dog</td></tr>
+                <tr><td style="padding:6px;">鸟</td><td style="padding:6px;">niǎo</td><td style="padding:6px;">bird</td></tr>
+                <tr><td style="padding:6px;">鱼</td><td style="padding:6px;">yú</td><td style="padding:6px;">fish</td></tr>
+                <tr><td style="padding:6px;">马</td><td style="padding:6px;">mǎ</td><td style="padding:6px;">horse</td></tr>
+                <tr><td style="padding:6px;">牛</td><td style="padding:6px;">niú</td><td style="padding:6px;">cow</td></tr>
+                <tr><td style="padding:6px;">羊</td><td style="padding:6px;">yáng</td><td style="padding:6px;">sheep / goat</td></tr>
+                <tr><td style="padding:6px;">猪</td><td style="padding:6px;">zhū</td><td style="padding:6px;">pig</td></tr>
+                <tr><td style="padding:6px;">兔子</td><td style="padding:6px;">tùzi</td><td style="padding:6px;">rabbit</td></tr>
+                <tr><td style="padding:6px;">鸡</td><td style="padding:6px;">jī</td><td style="padding:6px;">chicken</td></tr>
+                <tr><td style="padding:6px;">这是</td><td style="padding:6px;">zhè shì</td><td style="padding:6px;">this is</td></tr>
+                <tr><td style="padding:6px;">那是</td><td style="padding:6px;">nà shì</td><td style="padding:6px;">that is</td></tr>
+                <tr><td style="padding:6px;">什么</td><td style="padding:6px;">shénme</td><td style="padding:6px;">what</td></tr>
+                <tr><td style="padding:6px;">宠物</td><td style="padding:6px;">chǒngwù</td><td style="padding:6px;">pet</td></tr>
+                <tr><td style="padding:6px;">动物</td><td style="padding:6px;">dòngwù</td><td style="padding:6px;">animal</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Identifying animals<br>
+            这是什么？ → What is this?<br>
+            这是 + noun → This is a cat.<br>
+            那是什么？ → What is that?<br>
+            那是 + noun → That is a dog.</div>
+            
+            <div class="lesson-example">2. Using measure words (optional)<br>
+            一只猫 → one cat, 一条鱼 → one fish</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>这是什么？ (What is this?)</li>
+                <li>这是猫。 (This is a cat.)</li>
+                <li>那是什么？ (What is that?)</li>
+                <li>那是狗。 (That is a dog.)</li>
+                <li>我有一只鱼。 (I have a fish.)</li>
+                <li>我喜欢动物。 (I like animals.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 14 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🛒 Rookie Level 14 — Shopping (多少钱？)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Ask and answer about prices in Chinese.</li>
+                <li>Use 多少钱？, 太…了, 便宜 / 贵.</li>
+                <li>Learn vocabulary for items commonly bought in shops.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">商店</td><td style="padding:6px;">shāngdiàn</td><td style="padding:6px;">store / shop</td></tr>
+                <tr><td style="padding:6px;">钱</td><td style="padding:6px;">qián</td><td style="padding:6px;">money</td></tr>
+                <tr><td style="padding:6px;">多少</td><td style="padding:6px;">duōshǎo</td><td style="padding:6px;">how much / how many</td></tr>
+                <tr><td style="padding:6px;">贵</td><td style="padding:6px;">guì</td><td style="padding:6px;">expensive</td></tr>
+                <tr><td style="padding:6px;">便宜</td><td style="padding:6px;">piányi</td><td style="padding:6px;">cheap</td></tr>
+                <tr><td style="padding:6px;">这个</td><td style="padding:6px;">zhège</td><td style="padding:6px;">this one</td></tr>
+                <tr><td style="padding:6px;">那个</td><td style="padding:6px;">nàge</td><td style="padding:6px;">that one</td></tr>
+                <tr><td style="padding:6px;">请给我…</td><td style="padding:6px;">qǐng gěi wǒ…</td><td style="padding:6px;">Please give me…</td></tr>
+                <tr><td style="padding:6px;">买</td><td style="padding:6px;">mǎi</td><td style="padding:6px;">buy</td></tr>
+                <tr><td style="padding:6px;">卖</td><td style="padding:6px;">mài</td><td style="padding:6px;">sell</td></tr>
+                <tr><td style="padding:6px;">东西</td><td style="padding:6px;">dōngxi</td><td style="padding:6px;">thing / item</td></tr>
+                <tr><td style="padding:6px;">价格</td><td style="padding:6px;">jiàgé</td><td style="padding:6px;">price</td></tr>
+                <tr><td style="padding:6px;">太…了</td><td style="padding:6px;">tài…le</td><td style="padding:6px;">too…</td></tr>
+                <tr><td style="padding:6px;">便宜一点</td><td style="padding:6px;">piányi yīdiǎn</td><td style="padding:6px;">a little cheaper</td></tr>
+                <tr><td style="padding:6px;">可以</td><td style="padding:6px;">kěyǐ</td><td style="padding:6px;">can / may</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Asking about price<br>
+            这个多少钱？ → How much is this?<br>
+            那个多少钱？ → How much is that?</div>
+            
+            <div class="lesson-example">2. Answering about price<br>
+            ……块钱。 → It's … yuan.<br>
+            Example: 这个五块钱。 (This is 5 yuan.)</div>
+            
+            <div class="lesson-example">3. Expressing opinion about price<br>
+            太贵了！ → Too expensive!<br>
+            太便宜了！ → Too cheap!<br>
+            便宜一点 → A little cheaper</div>
+            
+            <div class="lesson-example">4. Polite request<br>
+            请给我… → Please give me…</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>这个多少钱？ (How much is this?)</li>
+                <li>这个十块钱。 (This is 10 yuan.)</li>
+                <li>太贵了！ (Too expensive!)</li>
+                <li>请给我那个。 (Please give me that one.)</li>
+                <li>便宜一点可以吗？ (Can it be a little cheaper?)</li>
+                <li>我想买这个。 (I want to buy this.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 16 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">📍 Rookie Level 16 — Locations (在, 上, 下)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Describe the location of objects and people in Chinese.</li>
+                <li>Use 在 with positional words like 上, 下, 里, 外, 前, 后.</li>
+                <li>Form sentences like A 在 B 的位置.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">在</td><td style="padding:6px;">zài</td><td style="padding:6px;">at / in / on</td></tr>
+                <tr><td style="padding:6px;">上</td><td style="padding:6px;">shàng</td><td style="padding:6px;">on / above</td></tr>
+                <tr><td style="padding:6px;">下</td><td style="padding:6px;">xià</td><td style="padding:6px;">under / below</td></tr>
+                <tr><td style="padding:6px;">里</td><td style="padding:6px;">lǐ</td><td style="padding:6px;">inside</td></tr>
+                <tr><td style="padding:6px;">外</td><td style="padding:6px;">wài</td><td style="padding:6px;">outside</td></tr>
+                <tr><td style="padding:6px;">前</td><td style="padding:6px;">qián</td><td style="padding:6px;">front</td></tr>
+                <tr><td style="padding:6px;">后</td><td style="padding:6px;">hòu</td><td style="padding:6px;">back / behind</td></tr>
+                <tr><td style="padding:6px;">左</td><td style="padding:6px;">zuǒ</td><td style="padding:6px;">left</td></tr>
+                <tr><td style="padding:6px;">右</td><td style="padding:6px;">yòu</td><td style="padding:6px;">right</td></tr>
+                <tr><td style="padding:6px;">桌子</td><td style="padding:6px;">zhuōzi</td><td style="padding:6px;">table</td></tr>
+                <tr><td style="padding:6px;">椅子</td><td style="padding:6px;">yǐzi</td><td style="padding:6px;">chair</td></tr>
+                <tr><td style="padding:6px;">房间</td><td style="padding:6px;">fángjiān</td><td style="padding:6px;">room</td></tr>
+                <tr><td style="padding:6px;">门</td><td style="padding:6px;">mén</td><td style="padding:6px;">door</td></tr>
+                <tr><td style="padding:6px;">学校</td><td style="padding:6px;">xuéxiào</td><td style="padding:6px;">school</td></tr>
+                <tr><td style="padding:6px;">教室</td><td style="padding:6px;">jiàoshì</td><td style="padding:6px;">classroom</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Location structure<br>
+            A 在 B + 位置 → The structure to describe where something is:<br>
+            桌子在椅子上。 (The table is on the chair.)<br>
+            书在桌子里。 (The book is inside the table.)<br>
+            学校在房子外。 (The school is outside the house.)</div>
+            
+            <div class="lesson-example">2. Positional words<br>
+            上 → on / above<br>
+            下 → under / below<br>
+            里 → inside<br>
+            外 → outside<br>
+            前 → front<br>
+            后 → back / behind<br>
+            左 → left<br>
+            右 → right</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>书在桌子上。 (The book is on the table.)</li>
+                <li>猫在椅子下。 (The cat is under the chair.)</li>
+                <li>我在教室里。 (I am in the classroom.)</li>
+                <li>门在房间外。 (The door is outside the room.)</li>
+                <li>桌子在房间前。 (The table is in front of the room.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 17 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🚌 Rookie Level 17 — Transportation (坐车, 坐地铁)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name common modes of transportation in Chinese.</li>
+                <li>Use 坐 / 骑 + vehicle to say how they travel.</li>
+                <li>Form sentences like 我坐车去学校 or 我骑自行车去公园.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">坐</td><td style="padding:6px;">zuò</td><td style="padding:6px;">to ride / take (transport)</td></tr>
+                <tr><td style="padding:6px;">骑</td><td style="padding:6px;">qí</td><td style="padding:6px;">to ride (bike / horse)</td></tr>
+                <tr><td style="padding:6px;">车</td><td style="padding:6px;">chē</td><td style="padding:6px;">car / vehicle</td></tr>
+                <tr><td style="padding:6px;">自行车</td><td style="padding:6px;">zìxíngchē</td><td style="padding:6px;">bicycle</td></tr>
+                <tr><td style="padding:6px;">地铁</td><td style="padding:6px;">dìtiě</td><td style="padding:6px;">subway / metro</td></tr>
+                <tr><td style="padding:6px;">公共汽车</td><td style="padding:6px;">gōnggòng qìchē</td><td style="padding:6px;">bus</td></tr>
+                <tr><td style="padding:6px;">出租车</td><td style="padding:6px;">chūzūchē</td><td style="padding:6px;">taxi</td></tr>
+                <tr><td style="padding:6px;">飞机</td><td style="padding:6px;">fēijī</td><td style="padding:6px;">airplane</td></tr>
+                <tr><td style="padding:6px;">火车</td><td style="padding:6px;">huǒchē</td><td style="padding:6px;">train</td></tr>
+                <tr><td style="padding:6px;">轮船</td><td style="padding:6px;">lúnchuán</td><td style="padding:6px;">ship / boat</td></tr>
+                <tr><td style="padding:6px;">去</td><td style="padding:6px;">qù</td><td style="padding:6px;">go</td></tr>
+                <tr><td style="padding:6px;">上班</td><td style="padding:6px;">shàngbān</td><td style="padding:6px;">go to work</td></tr>
+                <tr><td style="padding:6px;">上学</td><td style="padding:6px;">shàngxué</td><td style="padding:6px;">go to school</td></tr>
+                <tr><td style="padding:6px;">公园</td><td style="padding:6px;">gōngyuán</td><td style="padding:6px;">park</td></tr>
+                <tr><td style="padding:6px;">学校</td><td style="padding:6px;">xuéxiào</td><td style="padding:6px;">school</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Using 坐 and 骑<br>
+            坐 + vehicle → to take a vehicle (bus, taxi, subway, train, car)<br>
+            我坐地铁去学校。 (I take the subway to school.)<br>
+            骑 + vehicle → to ride a vehicle (bike, horse)<br>
+            我骑自行车去公园。 (I ride a bicycle to the park.)</div>
+            
+            <div class="lesson-example">2. Talking about destination<br>
+            去 + place → go to a place<br>
+            我坐车去公司。 (I take a car to the company.)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我坐公共汽车去学校。 (I take the bus to school.)</li>
+                <li>我骑自行车去公园。 (I ride a bicycle to the park.)</li>
+                <li>他坐飞机去北京。 (He takes a plane to Beijing.)</li>
+                <li>我每天坐地铁上班。 (I take the subway to work every day.)</li>
+                <li>我喜欢骑车去学校。 (I like riding a bike to school.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 18 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🧭 Rookie Level 18 — Directions (往左, 往右, 往前走)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Give and understand basic directions in Chinese.</li>
+                <li>Use 往 + direction + 走 to tell someone how to go.</li>
+                <li>Learn vocabulary for directions and basic movement verbs.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">往</td><td style="padding:6px;">wǎng</td><td style="padding:6px;">towards / to</td></tr>
+                <tr><td style="padding:6px;">左</td><td style="padding:6px;">zuǒ</td><td style="padding:6px;">left</td></tr>
+                <tr><td style="padding:6px;">右</td><td style="padding:6px;">yòu</td><td style="padding:6px;">right</td></tr>
+                <tr><td style="padding:6px;">前</td><td style="padding:6px;">qián</td><td style="padding:6px;">front / forward</td></tr>
+                <tr><td style="padding:6px;">后</td><td style="padding:6px;">hòu</td><td style="padding:6px;">back / backward</td></tr>
+                <tr><td style="padding:6px;">走</td><td style="padding:6px;">zǒu</td><td style="padding:6px;">walk / go</td></tr>
+                <tr><td style="padding:6px;">直走</td><td style="padding:6px;">zhí zǒu</td><td style="padding:6px;">go straight</td></tr>
+                <tr><td style="padding:6px;">停</td><td style="padding:6px;">tíng</td><td style="padding:6px;">stop</td></tr>
+                <tr><td style="padding:6px;">拐</td><td style="padding:6px;">guǎi</td><td style="padding:6px;">turn</td></tr>
+                <tr><td style="padding:6px;">红绿灯</td><td style="padding:6px;">hónglǜdēng</td><td style="padding:6px;">traffic light</td></tr>
+                <tr><td style="padding:6px;">街</td><td style="padding:6px;">jiē</td><td style="padding:6px;">street</td></tr>
+                <tr><td style="padding:6px;">路口</td><td style="padding:6px;">lùkǒu</td><td style="padding:6px;">intersection</td></tr>
+                <tr><td style="padding:6px;">公园</td><td style="padding:6px;">gōngyuán</td><td style="padding:6px;">park</td></tr>
+                <tr><td style="padding:6px;">学校</td><td style="padding:6px;">xuéxiào</td><td style="padding:6px;">school</td></tr>
+                <tr><td style="padding:6px;">商店</td><td style="padding:6px;">shāngdiàn</td><td style="padding:6px;">shop / store</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Direction sentence structure<br>
+            往 + direction + 走 → Go in the direction:<br>
+            往左走。 (Go left.)<br>
+            往右走。 (Go right.)<br>
+            往前走。 (Go forward / straight ahead.)<br>
+            往后走。 (Go back.)</div>
+            
+            <div class="lesson-example">2. Combining with landmarks<br>
+            往 + direction + 走 + 到 + place → Go in a direction until a place:<br>
+            往前走到红绿灯。 (Go straight to the traffic light.)<br>
+            往右走到商店。 (Go right to the shop.)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>往左走。 (Go left.)</li>
+                <li>往右走。 (Go right.)</li>
+                <li>往前走。 (Go straight / forward.)</li>
+                <li>往后走。 (Go back.)</li>
+                <li>往前走到学校。 (Go straight to the school.)</li>
+                <li>往右走到商店。 (Go right to the shop.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 19 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🏠 Rookie Level 19 — House & Rooms (房子, 房间)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name common rooms and places in a house.</li>
+                <li>Describe what is inside or not inside a room using 里有 / 里没有.</li>
+                <li>Form sentences describing rooms and locations of objects.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">房子</td><td style="padding:6px;">fángzi</td><td style="padding:6px;">house</td></tr>
+                <tr><td style="padding:6px;">房间</td><td style="padding:6px;">fángjiān</td><td style="padding:6px;">room</td></tr>
+                <tr><td style="padding:6px;">客厅</td><td style="padding:6px;">kètīng</td><td style="padding:6px;">living room</td></tr>
+                <tr><td style="padding:6px;">厨房</td><td style="padding:6px;">chúfáng</td><td style="padding:6px;">kitchen</td></tr>
+                <tr><td style="padding:6px;">卧室</td><td style="padding:6px;">wòshì</td><td style="padding:6px;">bedroom</td></tr>
+                <tr><td style="padding:6px;">浴室</td><td style="padding:6px;">yùshì</td><td style="padding:6px;">bathroom</td></tr>
+                <tr><td style="padding:6px;">书房</td><td style="padding:6px;">shūfáng</td><td style="padding:6px;">study room</td></tr>
+                <tr><td style="padding:6px;">里</td><td style="padding:6px;">lǐ</td><td style="padding:6px;">inside</td></tr>
+                <tr><td style="padding:6px;">外</td><td style="padding:6px;">wài</td><td style="padding:6px;">outside</td></tr>
+                <tr><td style="padding:6px;">有</td><td style="padding:6px;">yǒu</td><td style="padding:6px;">have / there is</td></tr>
+                <tr><td style="padding:6px;">没有</td><td style="padding:6px;">méiyǒu</td><td style="padding:6px;">don't have / there isn't</td></tr>
+                <tr><td style="padding:6px;">桌子</td><td style="padding:6px;">zhuōzi</td><td style="padding:6px;">table</td></tr>
+                <tr><td style="padding:6px;">椅子</td><td style="padding:6px;">yǐzi</td><td style="padding:6px;">chair</td></tr>
+                <tr><td style="padding:6px;">床</td><td style="padding:6px;">chuáng</td><td style="padding:6px;">bed</td></tr>
+                <tr><td style="padding:6px;">沙发</td><td style="padding:6px;">shāfā</td><td style="padding:6px;">sofa</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Describing rooms<br>
+            房间里有… → There is … in the room.<br>
+            卧室里有床。 (There is a bed in the bedroom.)<br>
+            厨房里有桌子和椅子。 (There is a table and chairs in the kitchen.)<br>
+            房间里没有… → There isn't … in the room.<br>
+            浴室里没有沙发。 (There isn't a sofa in the bathroom.)</div>
+            
+            <div class="lesson-example">2. Basic sentence structure<br>
+            A 里有 B → In A, there is B.<br>
+            A 里没有 B → In A, there isn't B.</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>客厅里有沙发。 (There is a sofa in the living room.)</li>
+                <li>厨房里有桌子和椅子。 (There is a table and chairs in the kitchen.)</li>
+                <li>卧室里有床。 (There is a bed in the bedroom.)</li>
+                <li>书房里没有床。 (There isn't a bed in the study room.)</li>
+                <li>浴室里有洗手台。 (There is a sink in the bathroom.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 20 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">⏰ Rookie Level 20 — Daily Routines (我早上七点起床)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Talk about their daily routines in Chinese.</li>
+                <li>Use Time + Subject + Verb + Object sentence structure.</li>
+                <li>Learn common verbs for daily activities.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">起床</td><td style="padding:6px;">qǐchuáng</td><td style="padding:6px;">get up / wake up</td></tr>
+                <tr><td style="padding:6px;">上课</td><td style="padding:6px;">shàngkè</td><td style="padding:6px;">attend class</td></tr>
+                <tr><td style="padding:6px;">吃饭</td><td style="padding:6px;">chīfàn</td><td style="padding:6px;">eat (meal)</td></tr>
+                <tr><td style="padding:6px;">睡觉</td><td style="padding:6px;">shuìjiào</td><td style="padding:6px;">sleep</td></tr>
+                <tr><td style="padding:6px;">上班</td><td style="padding:6px;">shàngbān</td><td style="padding:6px;">go to work</td></tr>
+                <tr><td style="padding:6px;">下班</td><td style="padding:6px;">xiàbān</td><td style="padding:6px;">finish work</td></tr>
+                <tr><td style="padding:6px;">洗澡</td><td style="padding:6px;">xǐzǎo</td><td style="padding:6px;">take a shower</td></tr>
+                <tr><td style="padding:6px;">刷牙</td><td style="padding:6px;">shuā yá</td><td style="padding:6px;">brush teeth</td></tr>
+                <tr><td style="padding:6px;">早上</td><td style="padding:6px;">zǎoshang</td><td style="padding:6px;">morning</td></tr>
+                <tr><td style="padding:6px;">下午</td><td style="padding:6px;">xiàwǔ</td><td style="padding:6px;">afternoon</td></tr>
+                <tr><td style="padding:6px;">晚上</td><td style="padding:6px;">wǎnshang</td><td style="padding:6px;">evening</td></tr>
+                <tr><td style="padding:6px;">七点</td><td style="padding:6px;">qī diǎn</td><td style="padding:6px;">7 o'clock</td></tr>
+                <tr><td style="padding:6px;">八点</td><td style="padding:6px;">bā diǎn</td><td style="padding:6px;">8 o'clock</td></tr>
+                <tr><td style="padding:6px;">回家</td><td style="padding:6px;">huí jiā</td><td style="padding:6px;">go home</td></tr>
+                <tr><td style="padding:6px;">学校</td><td style="padding:6px;">xuéxiào</td><td style="padding:6px;">school</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Time + Subject + Verb + Object<br>
+            In Chinese, the time usually comes first in a sentence:<br>
+            我早上七点起床。 (I get up at 7 a.m.)<br>
+            我下午三点下班。 (I finish work at 3 p.m.)</div>
+            
+            <div class="lesson-example">2. Talking about routines<br>
+            Use verbs for daily activities: 起床, 上课, 吃饭, 睡觉, 上班, 下班, 洗澡, 刷牙<br>
+            Combine with time of day: 早上, 上午, 下午, 晚上</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我早上七点起床。 (I get up at 7 a.m.)</li>
+                <li>我早上七点半刷牙。 (I brush my teeth at 7:30 a.m.)</li>
+                <li>我八点吃早饭。 (I eat breakfast at 8 a.m.)</li>
+                <li>我上午九点上课。 (I attend class at 9 a.m.)</li>
+                <li>我晚上十点睡觉。 (I go to sleep at 10 p.m.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 21 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">👕 Rookie Level 21 — Clothes (衣服, 穿, 戴)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name common clothing items and accessories in Chinese.</li>
+                <li>Use 穿 for clothes and 戴 for accessories.</li>
+                <li>Form sentences like 我穿衣服 or 我戴帽子.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">衣服</td><td style="padding:6px;">yīfu</td><td style="padding:6px;">clothes</td></tr>
+                <tr><td style="padding:6px;">裤子</td><td style="padding:6px;">kùzi</td><td style="padding:6px;">pants</td></tr>
+                <tr><td style="padding:6px;">裙子</td><td style="padding:6px;">qúnzi</td><td style="padding:6px;">skirt</td></tr>
+                <tr><td style="padding:6px;">上衣</td><td style="padding:6px;">shàngyī</td><td style="padding:6px;">top / jacket</td></tr>
+                <tr><td style="padding:6px;">外套</td><td style="padding:6px;">wàitào</td><td style="padding:6px;">coat / jacket</td></tr>
+                <tr><td style="padding:6px;">鞋子</td><td style="padding:6px;">xiézi</td><td style="padding:6px;">shoes</td></tr>
+                <tr><td style="padding:6px;">帽子</td><td style="padding:6px;">màozi</td><td style="padding:6px;">hat</td></tr>
+                <tr><td style="padding:6px;">手套</td><td style="padding:6px;">shǒutào</td><td style="padding:6px;">gloves</td></tr>
+                <tr><td style="padding:6px;">袜子</td><td style="padding:6px;">wàzi</td><td style="padding:6px;">socks</td></tr>
+                <tr><td style="padding:6px;">眼镜</td><td style="padding:6px;">yǎnjìng</td><td style="padding:6px;">glasses</td></tr>
+                <tr><td style="padding:6px;">戴</td><td style="padding:6px;">dài</td><td style="padding:6px;">wear (accessories)</td></tr>
+                <tr><td style="padding:6px;">穿</td><td style="padding:6px;">chuān</td><td style="padding:6px;">wear (clothes / shoes)</td></tr>
+                <tr><td style="padding:6px;">衬衫</td><td style="padding:6px;">chènshān</td><td style="padding:6px;">shirt</td></tr>
+                <tr><td style="padding:6px;">领带</td><td style="padding:6px;">lǐngdài</td><td style="padding:6px;">tie</td></tr>
+                <tr><td style="padding:6px;">运动鞋</td><td style="padding:6px;">yùndòng xié</td><td style="padding:6px;">sneakers / sports shoes</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. 穿 vs 戴<br>
+            穿 + clothes/shoes → 穿衣服, 穿鞋, 穿裤子<br>
+            戴 + accessories → 戴帽子, 戴手套, 戴眼镜</div>
+            
+            <div class="lesson-example">2. Sentence structure<br>
+            Subject + 穿/戴 + object<br>
+            我穿红色的衣服。 (I wear red clothes.)<br>
+            他戴帽子。 (He wears a hat.)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我穿衣服。 (I wear clothes.)</li>
+                <li>我穿裤子。 (I wear pants.)</li>
+                <li>他戴帽子。 (He wears a hat.)</li>
+                <li>我戴眼镜。 (I wear glasses.)</li>
+                <li>我穿运动鞋去学校。 (I wear sneakers to school.)</li>
+                <li>她穿裙子去上班。 (She wears a skirt to work.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 22 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🦴 Rookie Level 22 — Body Parts (头, 手, 脚)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name common body parts in Chinese.</li>
+                <li>Describe feelings or conditions using …疼 (… hurts).</li>
+                <li>Form simple sentences like 我头疼 or 我手疼.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">头</td><td style="padding:6px;">tóu</td><td style="padding:6px;">head</td></tr>
+                <tr><td style="padding:6px;">眼睛</td><td style="padding:6px;">yǎnjīng</td><td style="padding:6px;">eyes</td></tr>
+                <tr><td style="padding:6px;">耳朵</td><td style="padding:6px;">ěrduo</td><td style="padding:6px;">ears</td></tr>
+                <tr><td style="padding:6px;">鼻子</td><td style="padding:6px;">bízi</td><td style="padding:6px;">nose</td></tr>
+                <tr><td style="padding:6px;">嘴巴</td><td style="padding:6px;">zuǐba</td><td style="padding:6px;">mouth</td></tr>
+                <tr><td style="padding:6px;">手</td><td style="padding:6px;">shǒu</td><td style="padding:6px;">hand</td></tr>
+                <tr><td style="padding:6px;">手指</td><td style="padding:6px;">shǒuzhǐ</td><td style="padding:6px;">finger</td></tr>
+                <tr><td style="padding:6px;">腿</td><td style="padding:6px;">tuǐ</td><td style="padding:6px;">leg</td></tr>
+                <tr><td style="padding:6px;">脚</td><td style="padding:6px;">jiǎo</td><td style="padding:6px;">foot</td></tr>
+                <tr><td style="padding:6px;">脚趾</td><td style="padding:6px;">jiǎozhǐ</td><td style="padding:6px;">toe</td></tr>
+                <tr><td style="padding:6px;">脖子</td><td style="padding:6px;">bózi</td><td style="padding:6px;">neck</td></tr>
+                <tr><td style="padding:6px;">背</td><td style="padding:6px;">bèi</td><td style="padding:6px;">back</td></tr>
+                <tr><td style="padding:6px;">肩膀</td><td style="padding:6px;">jiānbǎng</td><td style="padding:6px;">shoulder</td></tr>
+                <tr><td style="padding:6px;">疼</td><td style="padding:6px;">téng</td><td style="padding:6px;">hurt / ache</td></tr>
+                <tr><td style="padding:6px;">我</td><td style="padding:6px;">wǒ</td><td style="padding:6px;">I / me</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Expressing pain / discomfort<br>
+            Subject + body part + 疼 → … hurts:<br>
+            我头疼。 (My head hurts.)<br>
+            我的手疼。 (My hand hurts.)</div>
+            
+            <div class="lesson-example">2. Asking about pain<br>
+            你哪里疼？ → Where does it hurt?<br>
+            我…疼。 → My … hurts.</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我头疼。 (My head hurts.)</li>
+                <li>我的手疼。 (My hand hurts.)</li>
+                <li>我脚疼。 (My foot hurts.)</li>
+                <li>你哪里疼？ (Where does it hurt?)</li>
+                <li>我的背疼。 (My back hurts.)</li>
+                <li>我肩膀疼。 (My shoulder hurts.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 23 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🏥 Rookie Level 23 — Simple Health (我不舒服, 看医生)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Express feeling unwell in Chinese.</li>
+                <li>Understand and use basic medical vocabulary.</li>
+                <li>Form sentences like 我不舒服 or 我要去看医生.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">医生</td><td style="padding:6px;">yīshēng</td><td style="padding:6px;">doctor</td></tr>
+                <tr><td style="padding:6px;">医院</td><td style="padding:6px;">yīyuàn</td><td style="padding:6px;">hospital</td></tr>
+                <tr><td style="padding:6px;">生病</td><td style="padding:6px;">shēngbìng</td><td style="padding:6px;">be sick / fall ill</td></tr>
+                <tr><td style="padding:6px;">感冒</td><td style="padding:6px;">gǎnmào</td><td style="padding:6px;">cold / flu</td></tr>
+                <tr><td style="padding:6px;">发烧</td><td style="padding:6px;">fāshāo</td><td style="padding:6px;">have a fever</td></tr>
+                <tr><td style="padding:6px;">头疼</td><td style="padding:6px;">tóuténg</td><td style="padding:6px;">headache</td></tr>
+                <tr><td style="padding:6px;">咳嗽</td><td style="padding:6px;">késou</td><td style="padding:6px;">cough</td></tr>
+                <tr><td style="padding:6px;">喉咙痛</td><td style="padding:6px;">hóulóngtòng</td><td style="padding:6px;">sore throat</td></tr>
+                <tr><td style="padding:6px;">打针</td><td style="padding:6px;">dǎzhēn</td><td style="padding:6px;">get an injection</td></tr>
+                <tr><td style="padding:6px;">吃药</td><td style="padding:6px;">chī yào</td><td style="padding:6px;">take medicine</td></tr>
+                <tr><td style="padding:6px;">我</td><td style="padding:6px;">wǒ</td><td style="padding:6px;">I / me</td></tr>
+                <tr><td style="padding:6px;">不舒服</td><td style="padding:6px;">bù shūfú</td><td style="padding:6px;">not feeling well</td></tr>
+                <tr><td style="padding:6px;">要</td><td style="padding:6px;">yào</td><td style="padding:6px;">want / need</td></tr>
+                <tr><td style="padding:6px;">去</td><td style="padding:6px;">qù</td><td style="padding:6px;">go</td></tr>
+                <tr><td style="padding:6px;">看医生</td><td style="padding:6px;">kàn yīshēng</td><td style="padding:6px;">see a doctor</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Expressing not feeling well<br>
+            我不舒服 → I don't feel well.<br>
+            我生病了 → I am sick.</div>
+            
+            <div class="lesson-example">2. Talking about actions to get better<br>
+            我要去看医生。 → I want to see a doctor.<br>
+            我需要吃药。 → I need to take medicine.</div>
+            
+            <div class="lesson-example">3. Sentence patterns<br>
+            Subject + 不舒服 / 生病 / 发烧 / 头疼 / 咳嗽<br>
+            Subject + 要 / 需要 + verb</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我不舒服。 (I don't feel well.)</li>
+                <li>我生病了。 (I am sick.)</li>
+                <li>我发烧。 (I have a fever.)</li>
+                <li>我头疼。 (My head hurts.)</li>
+                <li>我要去看医生。 (I want to see a doctor.)</li>
+                <li>我需要吃药。 (I need to take medicine.)</li>
+                <li>他感冒了。 (He has a cold.)</li>
+                <li>她喉咙痛。 (She has a sore throat.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 24 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🎉 Rookie Level 24 — Festivals (春节, 中秋节)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Name major Chinese festivals.</li>
+                <li>Learn key vocabulary and cultural elements related to festivals.</li>
+                <li>Form sentences about celebrating festivals.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">春节</td><td style="padding:6px;">Chūnjié</td><td style="padding:6px;">Spring Festival / Chinese New Year</td></tr>
+                <tr><td style="padding:6px;">中秋节</td><td style="padding:6px;">Zhōngqiū Jié</td><td style="padding:6px;">Mid-Autumn Festival</td></tr>
+                <tr><td style="padding:6px;">元宵节</td><td style="padding:6px;">Yuánxiāo Jié</td><td style="padding:6px;">Lantern Festival</td></tr>
+                <tr><td style="padding:6px;">月饼</td><td style="padding:6px;">yuèbǐng</td><td style="padding:6px;">mooncake</td></tr>
+                <tr><td style="padding:6px;">红包</td><td style="padding:6px;">hóngbāo</td><td style="padding:6px;">red envelope</td></tr>
+                <tr><td style="padding:6px;">放鞭炮</td><td style="padding:6px;">fàng biānpào</td><td style="padding:6px;">set off firecrackers</td></tr>
+                <tr><td style="padding:6px;">舞狮</td><td style="padding:6px;">wǔshī</td><td style="padding:6px;">lion dance</td></tr>
+                <tr><td style="padding:6px;">灯笼</td><td style="padding:6px;">dēnglóng</td><td style="padding:6px;">lantern</td></tr>
+                <tr><td style="padding:6px;">家人</td><td style="padding:6px;">jiārén</td><td style="padding:6px;">family members</td></tr>
+                <tr><td style="padding:6px;">吃</td><td style="padding:6px;">chī</td><td style="padding:6px;">eat</td></tr>
+                <tr><td style="padding:6px;">过节</td><td style="padding:6px;">guò jié</td><td style="padding:6px;">celebrate a festival</td></tr>
+                <tr><td style="padding:6px;">年夜饭</td><td style="padding:6px;">niányèfàn</td><td style="padding:6px;">New Year's Eve dinner</td></tr>
+                <tr><td style="padding:6px;">团圆</td><td style="padding:6px;">tuányuán</td><td style="padding:6px;">reunion / gather together</td></tr>
+                <tr><td style="padding:6px;">快乐</td><td style="padding:6px;">kuàilè</td><td style="padding:6px;">happy</td></tr>
+                <tr><td style="padding:6px;">庆祝</td><td style="padding:6px;">qìngzhù</td><td style="padding:6px;">celebrate</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Talking about festivals<br>
+            过春节 → celebrate Spring Festival<br>
+            过中秋节 → celebrate Mid-Autumn Festival</div>
+            
+            <div class="lesson-example">2. Sentence structure<br>
+            Subject + 在 + festival / time + verb / activity<br>
+            我们在春节吃年夜饭。 (We eat New Year's Eve dinner during Spring Festival.)<br>
+            家人在中秋节吃月饼。 (Family eats mooncakes at Mid-Autumn Festival.)</div>
+            
+            <div class="lesson-example">3. Expressing happiness<br>
+            节日快乐 → Happy festival!<br>
+            过…节快乐 → Happy [festival]!<br>
+            春节快乐！(Happy Spring Festival!)<br>
+            中秋节快乐！(Happy Mid-Autumn Festival!)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我们在春节吃年夜饭。 (We eat New Year's Eve dinner during Spring Festival.)</li>
+                <li>春节我们放鞭炮。 (We set off firecrackers during Spring Festival.)</li>
+                <li>家人在中秋节吃月饼。 (Family eats mooncakes at Mid-Autumn Festival.)</li>
+                <li>春节快乐！ (Happy Spring Festival!)</li>
+                <li>中秋节快乐！ (Happy Mid-Autumn Festival!)</li>
+                <li>我们在元宵节赏灯笼。 (We enjoy lanterns during Lantern Festival.)</li>
+                <li>小孩子喜欢收红包。 (Children like receiving red envelopes.)</li>
+                <li>我们在春节舞狮。 (We do the lion dance during Spring Festival.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 25 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">👥 Rookie Level 25 — Friends & Social (朋友, 一起)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Talk about friends and social activities in Chinese.</li>
+                <li>Use 一起 + verb to indicate doing activities together.</li>
+                <li>Ask and answer questions about social life.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">朋友</td><td style="padding:6px;">péngyǒu</td><td style="padding:6px;">friend</td></tr>
+                <tr><td style="padding:6px;">一起</td><td style="padding:6px;">yìqǐ</td><td style="padding:6px;">together</td></tr>
+                <tr><td style="padding:6px;">聊天</td><td style="padding:6px;">liáotiān</td><td style="padding:6px;">chat</td></tr>
+                <tr><td style="padding:6px;">玩</td><td style="padding:6px;">wán</td><td style="padding:6px;">play</td></tr>
+                <tr><td style="padding:6px;">去</td><td style="padding:6px;">qù</td><td style="padding:6px;">go</td></tr>
+                <tr><td style="padding:6px;">哪儿 / 哪里</td><td style="padding:6px;">nǎr / nǎlǐ</td><td style="padding:6px;">where</td></tr>
+                <tr><td style="padding:6px;">吃饭</td><td style="padding:6px;">chīfàn</td><td style="padding:6px;">eat (meal)</td></tr>
+                <tr><td style="padding:6px;">看电影</td><td style="padding:6px;">kàn diànyǐng</td><td style="padding:6px;">watch a movie</td></tr>
+                <tr><td style="padding:6px;">买东西</td><td style="padding:6px;">mǎi dōngxi</td><td style="padding:6px;">shopping / buy things</td></tr>
+                <tr><td style="padding:6px;">学习</td><td style="padding:6px;">xuéxí</td><td style="padding:6px;">study</td></tr>
+                <tr><td style="padding:6px;">打球</td><td style="padding:6px;">dǎqiú</td><td style="padding:6px;">play ball / sports</td></tr>
+                <tr><td style="padding:6px;">电话</td><td style="padding:6px;">diànhuà</td><td style="padding:6px;">phone / call</td></tr>
+                <tr><td style="padding:6px;">给</td><td style="padding:6px;">gěi</td><td style="padding:6px;">give / for</td></tr>
+                <tr><td style="padding:6px;">请</td><td style="padding:6px;">qǐng</td><td style="padding:6px;">invite</td></tr>
+                <tr><td style="padding:6px;">玩游戏</td><td style="padding:6px;">wán yóuxì</td><td style="padding:6px;">play games</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Doing activities together<br>
+            一起 + verb → do something together<br>
+            我们一起吃饭。 (We eat together.)<br>
+            我们一起看电影。 (We watch a movie together.)</div>
+            
+            <div class="lesson-example">2. Asking where to go<br>
+            你想去哪儿？ → Where do you want to go?<br>
+            我们去…好吗？ → Shall we go to …?</div>
+            
+            <div class="lesson-example">3. Asking/Inviting friends<br>
+            你想和朋友一起…吗？ → Do you want to … with friends?<br>
+            我请你… → I invite you to …</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我跟朋友一起玩。 (I play with my friends.)</li>
+                <li>我们一起吃饭。 (We eat together.)</li>
+                <li>你想去哪儿？ (Where do you want to go?)</li>
+                <li>我们去看电影，好吗？ (Shall we go watch a movie?)</li>
+                <li>她和朋友一起学习。 (She studies together with friends.)</li>
+                <li>我请你玩游戏。 (I invite you to play a game.)</li>
+                <li>我们一起买东西。 (We go shopping together.)</li>
+                <li>你想和朋友一起聊天吗？ (Do you want to chat with friends?)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 26 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">❤️ Rookie Level 26 — Likes & Dislikes (我很喜欢…, 不喜欢…)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Express likes and dislikes in Chinese.</li>
+                <li>Use 我很喜欢…, 我喜欢…, and 我不喜欢… correctly.</li>
+                <li>Ask and answer questions about preferences.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">喜欢</td><td style="padding:6px;">xǐhuān</td><td style="padding:6px;">like</td></tr>
+                <tr><td style="padding:6px;">不喜欢</td><td style="padding:6px;">bù xǐhuān</td><td style="padding:6px;">dislike</td></tr>
+                <tr><td style="padding:6px;">很</td><td style="padding:6px;">hěn</td><td style="padding:6px;">very</td></tr>
+                <tr><td style="padding:6px;">最喜欢</td><td style="padding:6px;">zuì xǐhuān</td><td style="padding:6px;">favorite</td></tr>
+                <tr><td style="padding:6px;">吃</td><td style="padding:6px;">chī</td><td style="padding:6px;">eat</td></tr>
+                <tr><td style="padding:6px;">喝</td><td style="padding:6px;">hē</td><td style="padding:6px;">drink</td></tr>
+                <tr><td style="padding:6px;">看</td><td style="padding:6px;">kàn</td><td style="padding:6px;">watch / look</td></tr>
+                <tr><td style="padding:6px;">玩</td><td style="padding:6px;">wán</td><td style="padding:6px;">play</td></tr>
+                <tr><td style="padding:6px;">音乐</td><td style="padding:6px;">yīnyuè</td><td style="padding:6px;">music</td></tr>
+                <tr><td style="padding:6px;">电影</td><td style="padding:6px;">diànyǐng</td><td style="padding:6px;">movie</td></tr>
+                <tr><td style="padding:6px;">水果</td><td style="padding:6px;">shuǐguǒ</td><td style="padding:6px;">fruit</td></tr>
+                <tr><td style="padding:6px;">苹果</td><td style="padding:6px;">píngguǒ</td><td style="padding:6px;">apple</td></tr>
+                <tr><td style="padding:6px;">茶</td><td style="padding:6px;">chá</td><td style="padding:6px;">tea</td></tr>
+                <tr><td style="padding:6px;">咖啡</td><td style="padding:6px;">kāfēi</td><td style="padding:6px;">coffee</td></tr>
+                <tr><td style="padding:6px;">篮球</td><td style="padding:6px;">lánqiú</td><td style="padding:6px;">basketball</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Expressing likes and dislikes<br>
+            我喜欢 + noun / verb → I like …<br>
+            我喜欢吃苹果。 (I like eating apples.)<br>
+            我喜欢看电影。 (I like watching movies.)<br>
+            我不喜欢 + noun / verb → I don't like …<br>
+            我不喜欢喝咖啡。 (I don't like drinking coffee.)<br>
+            我很喜欢 + noun / verb → I like … very much / really like<br>
+            我很喜欢篮球。 (I really like basketball.)<br>
+            我最喜欢 + noun / verb → My favorite …<br>
+            我最喜欢音乐。 (My favorite is music.)</div>
+            
+            <div class="lesson-example">2. Asking about preferences<br>
+            你喜欢…吗？ → Do you like …?<br>
+            你最喜欢什么？ → What do you like the most?</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我喜欢吃苹果。 (I like eating apples.)</li>
+                <li>我不喜欢喝咖啡。 (I don't like drinking coffee.)</li>
+                <li>我很喜欢篮球。 (I really like basketball.)</li>
+                <li>我最喜欢音乐。 (My favorite is music.)</li>
+                <li>你喜欢看电影吗？ (Do you like watching movies?)</li>
+                <li>你最喜欢什么？ (What do you like the most?)</li>
+                <li>他不喜欢吃水果。 (He doesn't like eating fruit.)</li>
+                <li>她很喜欢茶。 (She really likes tea.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 27 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">📅 Rookie Level 27 — Making Plans (明天去不去？)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Make and respond to simple plans in Chinese.</li>
+                <li>Use 打算 + verb and 想 + verb to express intentions.</li>
+                <li>Ask questions about plans using 明天去不去？</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">打算</td><td style="padding:6px;">dǎsuàn</td><td style="padding:6px;">plan / intend to</td></tr>
+                <tr><td style="padding:6px;">想</td><td style="padding:6px;">xiǎng</td><td style="padding:6px;">want / think / would like</td></tr>
+                <tr><td style="padding:6px;">明天</td><td style="padding:6px;">míngtiān</td><td style="padding:6px;">tomorrow</td></tr>
+                <tr><td style="padding:6px;">后天</td><td style="padding:6px;">hòutiān</td><td style="padding:6px;">the day after tomorrow</td></tr>
+                <tr><td style="padding:6px;">今天</td><td style="padding:6px;">jīntiān</td><td style="padding:6px;">today</td></tr>
+                <tr><td style="padding:6px;">去</td><td style="padding:6px;">qù</td><td style="padding:6px;">go</td></tr>
+                <tr><td style="padding:6px;">做</td><td style="padding:6px;">zuò</td><td style="padding:6px;">do</td></tr>
+                <tr><td style="padding:6px;">玩</td><td style="padding:6px;">wán</td><td style="padding:6px;">play</td></tr>
+                <tr><td style="padding:6px;">吃饭</td><td style="padding:6px;">chīfàn</td><td style="padding:6px;">eat a meal</td></tr>
+                <tr><td style="padding:6px;">看电影</td><td style="padding:6px;">kàn diànyǐng</td><td style="padding:6px;">watch a movie</td></tr>
+                <tr><td style="padding:6px;">朋友</td><td style="padding:6px;">péngyǒu</td><td style="padding:6px;">friend</td></tr>
+                <tr><td style="padding:6px;">一起</td><td style="padding:6px;">yìqǐ</td><td style="padding:6px;">together</td></tr>
+                <tr><td style="padding:6px;">好吗</td><td style="padding:6px;">hǎo ma</td><td style="padding:6px;">okay? / shall we?</td></tr>
+                <tr><td style="padding:6px;">可以</td><td style="padding:6px;">kěyǐ</td><td style="padding:6px;">can / may</td></tr>
+                <tr><td style="padding:6px;">不可以</td><td style="padding:6px;">bù kěyǐ</td><td style="padding:6px;">cannot / may not</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Expressing plans / intentions<br>
+            我打算 + verb → I plan to …<br>
+            我打算明天去看电影。 (I plan to go watch a movie tomorrow.)<br>
+            我想 + verb → I want to … / I would like to …<br>
+            我想和朋友一起玩游戏。 (I want to play games with friends.)</div>
+            
+            <div class="lesson-example">2. Asking about plans<br>
+            明天去不去？ → Are you going tomorrow?<br>
+            你打算 + verb 吗？ → Do you plan to …?<br>
+            我们一起 + verb，好吗？ → Shall we … together?</div>
+            
+            <div class="lesson-example">3. Answering plans<br>
+            可以 / 不可以 → Can / Cannot<br>
+            好 / 不好 → Good / Not good</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我打算明天去看电影。 (I plan to go watch a movie tomorrow.)</li>
+                <li>我想和朋友一起吃饭。 (I want to eat with friends.)</li>
+                <li>明天去不去？ (Are you going tomorrow?)</li>
+                <li>我们一起玩，好吗？ (Shall we play together?)</li>
+                <li>可以，我明天去。 (Okay, I'm going tomorrow.)</li>
+                <li>不可以，我明天有事。 (No, I have something tomorrow.)</li>
+                <li>后天你打算做什么？ (What do you plan to do the day after tomorrow?)</li>
+                <li>我想今天去商店。 (I want to go to the store today.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 28 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">⏳ Rookie Level 28 — Past & Future Tense (了, 要)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Express completed actions using 了.</li>
+                <li>Express future intentions using 要.</li>
+                <li>Form simple sentences about past and future activities.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">了</td><td style="padding:6px;">le</td><td style="padding:6px;">(particle indicating completed action)</td></tr>
+                <tr><td style="padding:6px;">要</td><td style="padding:6px;">yào</td><td style="padding:6px;">want / will / intend to</td></tr>
+                <tr><td style="padding:6px;">昨天</td><td style="padding:6px;">zuótiān</td><td style="padding:6px;">yesterday</td></tr>
+                <tr><td style="padding:6px;">今天</td><td style="padding:6px;">jīntiān</td><td style="padding:6px;">today</td></tr>
+                <tr><td style="padding:6px;">明天</td><td style="padding:6px;">míngtiān</td><td style="padding:6px;">tomorrow</td></tr>
+                <tr><td style="padding:6px;">吃</td><td style="padding:6px;">chī</td><td style="padding:6px;">eat</td></tr>
+                <tr><td style="padding:6px;">喝</td><td style="padding:6px;">hē</td><td style="padding:6px;">drink</td></tr>
+                <tr><td style="padding:6px;">玩</td><td style="padding:6px;">wán</td><td style="padding:6px;">play</td></tr>
+                <tr><td style="padding:6px;">去</td><td style="padding:6px;">qù</td><td style="padding:6px;">go</td></tr>
+                <tr><td style="padding:6px;">看</td><td style="padding:6px;">kàn</td><td style="padding:6px;">watch / see</td></tr>
+                <tr><td style="padding:6px;">学习</td><td style="padding:6px;">xuéxí</td><td style="padding:6px;">study</td></tr>
+                <tr><td style="padding:6px;">上课</td><td style="padding:6px;">shàng kè</td><td style="padding:6px;">attend class</td></tr>
+                <tr><td style="padding:6px;">回家</td><td style="padding:6px;">huí jiā</td><td style="padding:6px;">go home</td></tr>
+                <tr><td style="padding:6px;">看电影</td><td style="padding:6px;">kàn diànyǐng</td><td style="padding:6px;">watch a movie</td></tr>
+                <tr><td style="padding:6px;">朋友</td><td style="padding:6px;">péngyǒu</td><td style="padding:6px;">friend</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Completed actions (Past tense)<br>
+            Verb + 了 → action completed<br>
+            我昨天吃了苹果。 (I ate an apple yesterday.)<br>
+            他上课了。 (He attended class.)</div>
+            
+            <div class="lesson-example">2. Future intentions<br>
+            要 + verb → intend to / will / want to<br>
+            我明天要去看电影。 (I will go watch a movie tomorrow.)<br>
+            我们要一起玩游戏。 (We will play games together.)</div>
+            
+            <div class="lesson-example">3. Time + Verb + 了 / 要 + Verb<br>
+            昨天 / 今天 / 明天 + Verb + 了 / 要 + Verb<br>
+            Example:<br>
+            昨天我看了电影。 (Yesterday I watched a movie.)<br>
+            明天我想要吃苹果。 (Tomorrow I want to eat an apple.)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>我昨天吃了苹果。 (I ate an apple yesterday.)</li>
+                <li>他上课了。 (He attended class.)</li>
+                <li>我明天要去看电影。 (I will go watch a movie tomorrow.)</li>
+                <li>我们要一起玩游戏。 (We will play games together.)</li>
+                <li>昨天我看了书。 (Yesterday I read a book.)</li>
+                <li>明天我想要喝茶。 (Tomorrow I want to drink tea.)</li>
+                <li>她昨天回家了。 (She went home yesterday.)</li>
+                <li>我们明天要学习。 (We will study tomorrow.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 29 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">📏 Rookie Level 29 — Comparative Sentences (比)</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners can:</div>
+            <ul class="lesson-list">
+                <li>Make simple comparative sentences in Chinese using 比.</li>
+                <li>Express "A is more … than B" and "A is not as … as B."</li>
+                <li>Compare objects, people, and activities.</li>
+            </ul>
+            
+            <div class="lesson-subtitle">📘 Vocabulary (15 words)</div>
+            <div class="lesson-example">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#e3f0ff;"><td style="padding:8px; font-weight:bold;">Chinese</td><td style="padding:8px; font-weight:bold;">Pinyin</td><td style="padding:8px; font-weight:bold;">English</td></tr>
+                <tr><td style="padding:6px;">比</td><td style="padding:6px;">bǐ</td><td style="padding:6px;">compare / than</td></tr>
+                <tr><td style="padding:6px;">没有</td><td style="padding:6px;">méiyǒu</td><td style="padding:6px;">not have / not as … as</td></tr>
+                <tr><td style="padding:6px;">大</td><td style="padding:6px;">dà</td><td style="padding:6px;">big</td></tr>
+                <tr><td style="padding:6px;">小</td><td style="padding:6px;">xiǎo</td><td style="padding:6px;">small</td></tr>
+                <tr><td style="padding:6px;">高</td><td style="padding:6px;">gāo</td><td style="padding:6px;">tall / high</td></tr>
+                <tr><td style="padding:6px;">矮</td><td style="padding:6px;">ǎi</td><td style="padding:6px;">short / low</td></tr>
+                <tr><td style="padding:6px;">快</td><td style="padding:6px;">kuài</td><td style="padding:6px;">fast</td></tr>
+                <tr><td style="padding:6px;">慢</td><td style="padding:6px;">màn</td><td style="padding:6px;">slow</td></tr>
+                <tr><td style="padding:6px;">好</td><td style="padding:6px;">hǎo</td><td style="padding:6px;">good</td></tr>
+                <tr><td style="padding:6px;">漂亮</td><td style="padding:6px;">piàoliang</td><td style="padding:6px;">pretty</td></tr>
+                <tr><td style="padding:6px;">便宜</td><td style="padding:6px;">piányi</td><td style="padding:6px;">cheap</td></tr>
+                <tr><td style="padding:6px;">贵</td><td style="padding:6px;">guì</td><td style="padding:6px;">expensive</td></tr>
+                <tr><td style="padding:6px;">我</td><td style="padding:6px;">wǒ</td><td style="padding:6px;">I / me</td></tr>
+                <tr><td style="padding:6px;">他</td><td style="padding:6px;">tā</td><td style="padding:6px;">he / him</td></tr>
+                <tr><td style="padding:6px;">她</td><td style="padding:6px;">tā</td><td style="padding:6px;">she / her</td></tr>
+            </table>
+            </div>
+            
+            <div class="lesson-subtitle">📘 Grammar Focus</div>
+            
+            <div class="lesson-example">1. Basic comparison<br>
+            A 比 B + adjective → A is more … than B<br>
+            他比我高。 (He is taller than me.)<br>
+            苹果比橘子贵。 (Apples are more expensive than oranges.)</div>
+            
+            <div class="lesson-example">2. Negative comparison<br>
+            A 没有 B + adjective → A is not as … as B<br>
+            我没有他高。 (I am not as tall as him.)<br>
+            这个包没有那个包漂亮。 (This bag is not as pretty as that bag.)</div>
+            
+            <div class="lesson-example">3. Question form<br>
+            谁比谁 + adjective？ → Who is more … than whom?<br>
+            谁比谁高？ (Who is taller than whom?)</div>
+            
+            <div class="lesson-subtitle">📘 Example Sentences</div>
+            <ul class="lesson-list">
+                <li>他比我高。 (He is taller than me.)</li>
+                <li>苹果比橘子贵。 (Apples are more expensive than oranges.)</li>
+                <li>我没有他高。 (I am not as tall as him.)</li>
+                <li>这个房子比那个房子大。 (This house is bigger than that house.)</li>
+                <li>她比我漂亮。 (She is prettier than me.)</li>
+                <li>这本书没有那本书好。 (This book is not as good as that book.)</li>
+                <li>今天比昨天热。 (Today is hotter than yesterday.)</li>
+                <li>我的电脑比他的快。 (My computer is faster than his.)</li>
+            </ul>
+        </div>
+
+        <!-- Detailed Level 30 Lesson -->
+        <div class="lesson-section">
+            <div class="lesson-level">🏆 Rookie Level 30 — Boss 2: Review Rookie Final</div>
+            
+            <div class="lesson-subtitle">🎯 Goals</div>
+            <div class="lesson-example">By the end of this lesson, learners should be able to:</div>
+            <ul class="lesson-list">
+                <li>Review and recall vocabulary from Levels 1–14.</li>
+                <li>Apply key grammar structures: SVO sentences, 吗 questions, negation 不, 了, 要, 比, 一起, 喜欢, 打算.</li>
+                <li>Translate and understand daily life, school, social activities, plans, past/future, and comparisons.</li>
+            </ul>
+        </div>
+        
+    <button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="window.location.href='../index.html'">Back to Home</button>
+    </div>
+
+    <script>
+        // Scroll function for lesson navigation
+        function scrollToLesson(index) {
+            const lessonSections = document.querySelectorAll('.lesson-section');
+            if (lessonSections[index]) {
+                lessonSections[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // Page Scroller Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing page scroller...');
+            const lessonNav = document.getElementById('lessonNav');
+            const lessonSections = document.querySelectorAll('.lesson-section');
+            const pageScroller = document.getElementById('pageScroller');
+            
+            console.log('Found elements:', {
+                lessonNav: !!lessonNav,
+                lessonSections: lessonSections.length,
+                pageScroller: !!pageScroller
+            });
+            
+            // Generate lesson navigation buttons
+            lessonSections.forEach((section, index) => {
+                const levelElement = section.querySelector('.lesson-level');
+                if (levelElement) {
+                    const levelText = levelElement.textContent;
+                    let displayText;
+                    
+                    // First 6 sections are Units (U1-U6)
+                    if (index < 6) {
+                        displayText = `U${index + 1}`;
+                    } 
+                    // Next sections are lessons: L1-L14, then L16-L30
+                    else {
+                        const lessonIndex = index - 6; // Subtract 6 for the units
+                        if (lessonIndex < 14) {
+                            displayText = `L${lessonIndex + 1}`; // L1-L14
+                        } else {
+                            displayText = `L${lessonIndex + 2}`; // L16-L30 (skip L15)
+                        }
+                    }
+                    
+                    const navBtn = document.createElement('button');
+                    navBtn.className = 'lesson-nav-btn';
+                    navBtn.textContent = displayText;
+                    navBtn.title = levelText;
+                    navBtn.onclick = () => scrollToLesson(index);
+                    lessonNav.appendChild(navBtn);
+                }
+            });
+            
+            // Update active lesson button
+            function updateActiveLesson() {
+                const navButtons = document.querySelectorAll('.lesson-nav-btn');
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                lessonSections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                        navButtons[index]?.classList.add('active');
+                    }
+                });
+            }
+            
+            // Scroll event listener
+            window.addEventListener('scroll', updateActiveLesson);
+            
+            // Initial update
+            updateActiveLesson();
+        });
+        
+        // Scroll function for lesson navigation
+        function scrollToLesson(index) {
+            const lessonSections = document.querySelectorAll('.lesson-section');
+            if (lessonSections[index]) {
+                lessonSections[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+
+    </script>
+</body>
+</html>

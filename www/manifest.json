@@ -1,0 +1,21 @@
+{
+  "name": "Zendo",
+  "short_name": "Zendo",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#232946",
+  "description": "Learn Chinese the fun way — simple, interactive, and effective.",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

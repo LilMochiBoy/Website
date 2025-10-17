@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zendo</title>
+    <!-- PWA meta -->
+    <meta name="theme-color" content="#232946">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="logo-zendo" id="logoZendo">
+        <button id="menuBtn" style="background:none; border:none; margin-right:18px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;">
+            <span style="display:block; width:28px; height:22px;">
+                <span style="display:block; height:4px; width:100%; background:#1976d2; border-radius:2px; margin-bottom:5px;"></span>
+                <span style="display:block; height:4px; width:100%; background:#1976d2; border-radius:2px; margin-bottom:5px;"></span>
+                <span style="display:block; height:4px; width:100%; background:#1976d2; border-radius:2px;"></span>
+            </span>
+        </button>
+        <img src="assets/images/Zendo.png" alt="Logo" class="logo" id="appLogo">
+        <span class="logo-zendo-text">Zendo</span>
+        <span class="nav-separator"></span>
+        <nav class="navbar">
+            <a href="#home-section" class="nav-link">Home</a>
+            <a href="#team-section" class="nav-link">Team</a>
+            <a href="#about-section" class="nav-link">About</a>
+            <a href="#contact-section" class="nav-link">Contact</a>
+        </nav>
+    </div>
+    <div class="login-btn">
+        <button class="main-btn" id="loginBtn">Log In</button>
+    </div>
+    <!-- Install button for PWA (hidden until available) -->
+    <div style="position:fixed; right:18px; bottom:18px; z-index:15000;">
+        <button id="installBtn" style="display:none; background:#3ea6ff; color:#fff; border:none; padding:12px 16px; border-radius:12px; font-weight:700; box-shadow:0 6px 20px rgba(62,166,255,0.22); cursor:pointer;">Install Zendo</button>
+    </div>
+    <div class="center-content">
+        <div class="section" id="home-section">
+            <div class="home-flex-row">
+                <div class="home-hero">
+                    <h1 class="home-title">Welcome to</h1>
+                    <div class="home-zendo">Zendo</div>
+                    <div class="home-desc">Learn Chinese the fun way —<br>simple, interactive, and effective.</div>
+                    <div class="home-btn-row">
+                        <button class="main-btn" id="chineseBtn" style="font-size:1.35rem; padding: 22px 48px; min-width:260px;">
+                            <img src="assets/images/China flag.png" alt="China Flag" class="flag-img"> Start Learning Chinese
+                        </button>
+                    </div>
+                </div>
+                <div class="home-panda-area">
+                    <img src="assets/images/Panda.png" alt="Learning Character" class="panda-img">
+                    <div class="panda-oval-shadow"></div>
+                    <span class="panda-word panda-word-1">朋友</span>
+                    <span class="panda-word panda-word-2">欢迎</span>
+                    <span class="panda-word panda-word-3">Hello!</span>
+                    <span class="panda-word panda-word-4">Welcomee</span>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="team-section">
+            <h1>Team <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Members</span></h1>
+            <div class="team-grid team-grid-3x2" style="gap: 36px 32px; justify-content: center; align-items: stretch;">
+                <div class="team-card">
+                    <img src="assets/images/Photo 2.jpg" alt="Richard Alexander" class="team-photo">
+                    <h2>刘明坚</h2>
+                    <p><strong>ID:</strong> 1820242128</p>
+                    <p><strong>Role:</strong> CEO</p>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/Photo 3.jpg" alt="Vanessa Minerva" class="team-photo">
+                    <h2>陈惠怡</h2>
+                    <p><strong>ID:</strong> 1820242114</p>
+                    <p><strong>Role:</strong> CIO & Writer</p>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/Photo 4.jpg" alt="Member 3" class="team-photo">
+                    <h2>吴丽翡</h2>
+                    <p><strong>ID:</strong> 1820242121</p>
+                    <p><strong>Role:</strong> Designer & Writer</p>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/Photo 5.jpg" alt="Timothy Nathanael" class="team-photo">
+                    <h2>吴家锦</h2>
+                    <p><strong>ID:</strong> 1820242141</p>
+                    <p><strong>Role:</strong> Designer & Progammer</p>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/Photo 6.jpg" alt="Reynard" class="team-photo">
+                    <h2>廖泰诚</h2>
+                    <p><strong>ID:</strong> 1820242123</p>
+                    <p><strong>Role:</strong> Programmer</p>
+                </div>
+                <div class="team-card">
+                    <img src="assets/images/Photo 1.jpg" alt="Valentino Jovan" class="team-photo">
+                    <h2>黄友帆</h2>
+                    <p><strong>ID:</strong> 1820242130</p>
+                    <p><strong>Role:</strong> Programmer</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="about-section" style="display: flex; flex-direction: column; align-items: center;">
+    <div style="max-width: 700px; width: 100%; text-align: justify; margin: 0 auto;">
+        <h1 style="text-align: center;">About <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Zendo</span></h1>
+        <p>Welcome to Zendo, where language learning feels like playing a game!</p>
+        <div style="display: flex; flex-direction: column; gap: 24px; align-items: center; margin: 32px 0;">
+            <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffd58055; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #3a2a5a; position: relative;">
+                <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🎉</span>
+                Fun Learning Experience<br>
+                <span style='font-size:1.05rem; font-weight:400; color:#6a3a5a;'>Language learning becomes <span style='background: #fffbe6; border-radius: 6px; padding: 2px 8px;'>exciting</span> and not boring!</span>
+            </div>
+            <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #bdbec855; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #2a3a5a; position: relative;">
+                <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🕹️</span>
+                Game-Like Journey<br>
+                <span style='font-size:1.05rem; font-weight:400; color:#3b8dd4;'>Study is transformed into an <span style='background: #e6f7ff; border-radius: 6px; padding: 2px 8px;'>adventure</span> with levels, challenges, and rewards.</span>
+            </div>
+            <div style="background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 40px 32px; width: 100%; max-width: 650px; text-align: center; font-size: 1.25rem; font-weight: 600; color: #2a5a3a; position: relative;">
+                <span style='font-size:2.2rem; position:absolute; left:24px; top:18px;'>🚀</span>
+                Skill Growth & Progress<br>
+                <span style='font-size:1.05rem; font-weight:400; color:#2a5a3a;'>Level up, unlock abilities, and <span style='background: #e6fff7; border-radius: 6px; padding: 2px 8px;'>track progress</span> step by step.</span>
+            </div>
+        </div>
+    <h1 style="margin-top:32px; text-align: center; font-size:2.3rem; font-weight:700;">How It <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Works</span></h1>
+        <div id="level-squares" style="display: flex; flex-direction: column; gap: 24px; align-items: center; margin: 32px 0;">
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(240px, 1fr)); column-gap: 64px; row-gap: 32px; justify-items: center; align-items: stretch; margin: 0 auto; transform: translateX(-50px);">
+                <div class="level-square" style="background: linear-gradient(90deg, #322a53 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #00000055; padding: 32px 24px; min-width: 220px; max-width: 320px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    Rookie 🐣<br>
+                    <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
+                        Welcome to the beginning of your journey! As a Rookie, you’ll learn the essentials — the alphabet or pinyin, greetings, numbers, and simple daily phrases. Every new word is a small victory that prepares you for the road ahead.
+                    </span>
+                </div>
+                <div class="level-square" style="background: linear-gradient(90deg, #283b3b 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #bae1ff55; padding: 32px 24px; min-width: 220px; max-width: 320px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    Challenger ⚔️<br>
+                    <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
+                        You’re growing stronger! As a Challenger, you face deeper quests: real conversations, reading short texts, and expressing your own thoughts. Grammar, vocabulary, and culture become your battlegrounds, sharpening your skills as you push forward.
+                    </span>
+                </div>
+                <div class="level-square" style="background: linear-gradient(90deg, #5f3f43 0%, #23294655 100%); border-radius: 22px; box-shadow: 0 4px 18px #ffb3ba55; padding: 32px 24px; min-width: 220px; max-width: 320px; text-align: left; font-size: 1.22rem; font-weight: 700; color: #d1d8e4; position: relative;">
+                    Master 🏆<br>
+                    <span style="font-size:1.05rem; font-weight:400; color:#fff; display:block; margin-top:10px; text-align:justify;">
+                        You’ve reached the summit! As a Master, you command the language with confidence and fluency. From casual conversations to complex discussions, you speak naturally and with cultural understanding. This is where you truly shine as a language hero.
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
+    <h1 style="margin-top:50px; margin-bottom:-10px;text-align: center; font-size:2.3rem; font-weight:700;">Why Learn with <span style="font-family: 'Satisfy', cursive; background: linear-gradient(90deg, #cbdffc 0%, #bdbec8 100%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; letter-spacing:2px; text-shadow: 0 2px 8px #7883d0, 0 0 2px #3b8dd4;">Zendo</span>?</h1>
+        <div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 0;">
+  <!-- Timeline line -->
+  <div style="position: absolute; top: 50%; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, #7883d0 0%, #3b8dd4 100%); border-radius: 3px; z-index: 0;"></div>
+  <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 32px; position: relative; z-index: 1;">
+    <div style="background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Gamified Experience</div>
+      <div style="font-size: 1rem; text-align: justify;">Earn points, badges, and achievements as you learn.<span style='float:right;'>🎮</span></div>
+    </div>
+    <div style="background: linear-gradient(135deg, #232946 0%, #282a36 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Clear Progression</div>
+      <div style="font-size: 1rem; text-align: justify;">Move through levels step by step, just like in your favorite game.<span style='float:right;'>📈</span></div>
+    </div>
+    <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Choose Your Path</div>
+      <div style="font-size: 1rem; text-align: justify;">Learn Chinese at your own pace.<span style='float:right;'>🛤️</span></div>
+    </div>
+    <div style="background: linear-gradient(135deg, #232946 0%, #22223b 100%); border-radius: 18px; box-shadow: 0 2px 10px #23294655; padding: 28px 22px; min-width: 210px; max-width: 260px; color: #f4f4fb; position: relative;">
+      <div style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Motivation Built In</div>
+      <div style="font-size: 1rem; text-align: justify;">Learning becomes addictive when progress feels like winning.<span style='float:right;'>🏆</span></div>
+    </div>
+  </div>
+</div>
+    </div>
+</div>
+        <div class="section" id="contact-section" style="margin-top:-80px; display: flex; flex-direction: column; align-items: center;">
+    <div class="contact-box">
+        <h1 class="contact-header">Contact <span class="contact-header-us">Us</span></h1>
+        <div class="contact-subtitle">Have questions or need support? We’re here to help!</div>
+    <div class="contact-row" style="justify-content: flex-start;">
+            <div class="contact-method" style="align-items: center; text-align: center;">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-detail">zendo.support@mail.com</div>
+            </div>
+            <div class="contact-method" style="align-items: center; text-align: center;">
+                <div class="contact-icon">☎️</div>
+                <div class="contact-label">Telephone</div>
+                <div class="contact-detail">+86 135-7924-6581</div>
+            </div>
+            <div class="contact-method" style="align-items: center; text-align: center;">
+                <div class="contact-icon">📸</div>
+                <div class="contact-label">Instagram</div>
+                <div class="contact-detail">@Zendo.ign</div>
+            </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="contact-form-row">
+                <input type="text" placeholder="Your Name" class="contact-input" id="contactName">
+                <input type="email" placeholder="Your Email" class="contact-input" id="contactEmail">
+            </div>
+            <textarea placeholder="Message" class="contact-textarea" id="contactMessage"></textarea>
+            <button type="submit" class="contact-btn">Send Message</button>
+        </form>
+    </div>
+</div>
+        <div class="modal-bg" id="loginModalBg">
+            <div class="modal">
+                <h2>Log In</h2>
+                <input type="text" id="loginUsername" placeholder="Username">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <button class="main-btn" onclick="loginSubmit()">Log In</button>
+                <div style="margin-top:16px; font-size:15px; color:#ccc;">
+                    Don't have an account yet? <a href="#" style="color:#357abd; font-weight:600; text-decoration:none;" onclick="showSignUp()">Sign up</a>
+                </div>
+                <button class="main-btn" style="margin-top:10px;" onclick="closeLoginModal()">Close</button>
+            </div>
+        </div>
+        <div class="modal-bg" id="signupModalBg">
+            <div class="modal">
+                <h2>Sign Up</h2>
+                <input type="text" id="signupUsername" placeholder="Username">
+                <input type="email" id="signupEmail" placeholder="Email">
+                <input type="password" id="signupPassword" placeholder="Password">
+                <input type="password" id="signupConfirm" placeholder="Confirmation Password">
+                <button class="main-btn" onclick="signupSubmit()">Sign Up</button>
+                <button class="main-btn" style="margin-top:10px;" onclick="closeSignUpModal()">Close</button>
+            </div>
+        </div>
+    <div class="modal-bg" id="modalBg">
+        <div class="modal" id="modalContent">
+            <span id="modalText"></span><br>
+            <button class="main-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    </div>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/progress.js"></script>
+            <script src="assets/js/friends.js"></script>
+                <script>
+                    // Register service worker and handle PWA install prompt
+                    (function() {
+                        // Service worker registration
+                        if ('serviceWorker' in navigator) {
+                            window.addEventListener('load', function() {
+                                navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                                    console.log('ServiceWorker registered:', reg.scope);
+                                }).catch(function(err) { console.warn('ServiceWorker registration failed:', err); });
+                            });
+                        }
+
+                        // Handle beforeinstallprompt to show custom install button
+                        let deferredPrompt;
+                        const installBtn = document.getElementById('installBtn');
+                        window.addEventListener('beforeinstallprompt', (e) => {
+                            e.preventDefault();
+                            deferredPrompt = e;
+                            if (installBtn) {
+                                installBtn.style.display = 'inline-block';
+                                installBtn.addEventListener('click', async () => {
+                                    installBtn.style.display = 'none';
+                                    deferredPrompt.prompt();
+                                    const choiceResult = await deferredPrompt.userChoice;
+                                    console.log('User choice', choiceResult);
+                                    deferredPrompt = null;
+                                });
+                            }
+                        });
+
+                        // Hide install button on successful install
+                        window.addEventListener('appinstalled', () => {
+                            console.log('PWA was installed');
+                            if (installBtn) installBtn.style.display = 'none';
+                        });
+                    })();
+                </script>
+            <!-- App Logo Sidebar Tab -->
+            <div id="logoSidebarBg" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,40,60,0.35); z-index:9999;">
+                <div id="logoSidebar" style="position:fixed; top:0; left:0; height:100vh; width:270px; background:#181818; color:#fff; box-shadow:2px 0 16px #0008; display:flex; flex-direction:column; padding:18px 0 0 0; transition:transform 0.3s cubic-bezier(.4,0,.2,1); transform:translateX(0); z-index:10000;">
+                    <button onclick="document.getElementById('logoSidebarBg').style.display='none'; document.getElementById('achievementsPanel').style.display='none';" style="background:none; border:none; color:#fff; font-size:1.7em; position:absolute; top:14px; right:14px; cursor:pointer;">&times;</button>
+                    <div style="padding:0 0 18px 0; border-bottom:1px solid #333;">
+                        <div style="display:flex; align-items:center; gap:12px; padding:0 24px 18px 24px;">
+                            <img src='assets/images/Zendo.png' alt='Logo' style='width:38px; height:38px; border-radius:8px;'>
+                            <span style='font-family:Montserrat,sans-serif; font-size:1.35em; font-weight:800;'>Zendo</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:2px;">
+                            <a href="#home-section" id="sidebarHomeLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:4px 12px 0 12px;">
+                                <span style="font-size:1.3em;">🏠</span> Home
+                            </a>
+                            <a href="profile.html" id="sidebarProfileLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px;">
+                                <span style="font-size:1.3em;">👤</span> Profile
+                            </a>
+                            <script>
+                            // Profile sidebar logic
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var profileLink = document.getElementById('sidebarProfileLink');
+                                if (profileLink) {
+                                    profileLink.onclick = function(e) {
+                                        e.preventDefault();
+                                        document.getElementById('profilePanel').style.display = 'block';
+                                        document.getElementById('logoSidebarBg').style.display = 'block';
+                                    };
+                                }
+                            });
+                            </script>
+    <!-- Profile Panel -->
+    <div id="profilePanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:#181c23; overflow-y:auto;">
+        <div class="profile-container" style="margin:48px auto 0 auto; max-width:1200px; display:flex; flex-wrap:wrap; gap:32px;">
+            <div style="flex:2; min-width:340px; max-width:520px;">
+                <div style="background:#202a36; border-radius:18px; padding:32px 28px 24px 28px; box-shadow:0 2px 16px #0003; display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:120px; height:120px; background:#232a33; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:18px; position:relative;">
+                        <img src="assets/images/chara.png" alt="Avatar" style="width:90px; height:90px; border-radius:50%; object-fit:cover;">
+                        <button style="position:absolute; top:8px; right:8px; background:#232a33; border:none; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#fff; font-size:1.2em;">✎</button>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:1.5em; font-weight:700; color:#fff;">Valentino Jovan</div>
+                        <div style="color:#6fa3ff; font-size:1em; margin-bottom:2px;">Valent</div>
+                        <div style="color:#b0b8c1; font-size:0.98em; margin-bottom:6px;">Joined March 2023</div>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:10px;">
+                            <span style="color:#6fa3ff; font-weight:600;">0 Following</span>
+                            <span style="color:#6fa3ff; font-weight:600;">0 Followers</span>
+                            <img src="assets/images/China flag.png" alt="Country" style="width:22px; height:16px; border-radius:3px; margin-left:8px;">
+                        </div>
+                    </div>
+                    <div style="width:100%; height:1px; background:#263040; margin:18px 0 18px 0;"></div>
+                    <div style="width:100%; display:flex; flex-direction:column; gap:10px;">
+                        <button style="background:#3ea6ff; color:#fff; border:none; border-radius:12px; padding:10px 0; font-size:1.1em; font-weight:600; margin-bottom:2px; cursor:pointer;">+ Add Friends</button>
+                        <button style="background:#232a33; color:#6fa3ff; border:1px solid #3ea6ff; border-radius:12px; padding:10px 0; font-size:1.1em; font-weight:600; cursor:pointer;">Share Profile</button>
+                    </div>
+                </div>
+                <!-- Statistics -->
+                <div style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.2em; font-weight:700; color:#fff; margin-bottom:18px;">Statistics</div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Day streak
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div id="levelsCompletedCount" style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Levels completed
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div id="totalXPCount" style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Total XP
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.1em; color:#fff; font-weight:700;">None</div>
+                            Current league
+                        </div>
+                        <div style="background:#232a33; border-radius:12px; padding:18px 0; text-align:center; color:#b0b8c1; font-size:1.1em;">
+                            <div style="font-size:1.3em; color:#fff; font-weight:700;">0</div>
+                            Top 3 finishes
+                        </div>
+                    </div>
+                </div>
+                <!-- Achievements (moved to right column) -->
+            </div>
+            <!-- Right Column -->
+            <div style="flex:1.2; min-width:320px; max-width:420px; display:flex; flex-direction:column; gap:28px;">
+                <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+                        <img src="assets/images/China flag.png" alt="Lang" style="width:22px; height:16px; border-radius:3px;">
+                        <span style="color:#fff; font-weight:700; font-size:1.1em;">Following</span>
+                        <span style="color:#b0b8c1; font-weight:600; font-size:1.1em;">Followers</span>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:center; margin-bottom:12px;">
+                        <img src="assets/images/Panda.png" alt="Friends" style="width:120px; height:80px;">
+                    </div>
+                    <div style="color:#b0b8c1; text-align:center; font-size:1.05em;">Learning is more fun and effective when you connect with others.</div>
+                </div>
+                <div style="background:#202a36; border-radius:18px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="font-size:1.1em; font-weight:700; color:#fff; margin-bottom:12px;">Add friends</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <button id="findFriendsBtn" style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                            <span style="font-size:1.2em;">🔍</span> Find friends
+                        </button>
+                        <button id="inviteFriendsBtn" style="display:flex; align-items:center; gap:10px; background:#232a33; color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:1em; font-weight:600; cursor:pointer;">
+                            <span style="font-size:1.2em;">🐼</span> Invite friends
+                        </button>
+                    </div>
+                </div>
+                <!-- Achievements (moved here to right column) -->
+                <div id="profileAchievements" style="background:#202a36; border-radius:18px; margin-top:28px; padding:24px 24px 18px 24px; box-shadow:0 2px 16px #0002;">
+                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                        <div style="font-size:1.2em; font-weight:700; color:#fff;">Achievements</div>
+                        <a href="#" style="color:#6fa3ff; font-weight:600; font-size:1em; text-decoration:none;">VIEW ALL</a>
+                    </div>
+                    <!-- badges will be injected here -->
+                </div>
+            </div>
+            <!-- Close button removed as requested -->
+        </div>
+        </div>
+    </div>
+<script>
+// Hide Profile link in sidebar if on profile.html
+if (window.location.pathname.endsWith('profile.html')) {
+    var profileLink = document.getElementById('sidebarProfileLink');
+    if (profileLink) profileLink.style.display = 'none';
+}
+</script>
+<script>
+// Refresh the profile statistics (levels completed, total XP)
+function refreshProfileStats(){
+    try{
+        var lvlEl = document.getElementById('levelsCompletedCount');
+        var xpEl = document.getElementById('totalXPCount');
+        var levels = [];
+        if (window.Zendo_getCompletedLevels) levels = window.Zendo_getCompletedLevels();
+        else {
+            try{ levels = JSON.parse(localStorage.getItem('completedLevels')||'[]') }catch(e){ levels = []; }
+        }
+        if (lvlEl) lvlEl.textContent = String((levels && levels.length) || 0);
+        var totalXP = 0;
+        if (window.Zendo_getTotalXP) totalXP = window.Zendo_getTotalXP();
+        else totalXP = Number(localStorage.getItem('totalXP')||0);
+        if (xpEl) xpEl.textContent = String(totalXP || 0);
+    }catch(e){ /* ignore */ }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    refreshProfileStats();
+    // Try to subscribe to XP changes if API exists
+    if (window.Zendo_onXPChange){ try{ window.Zendo_onXPChange(refreshProfileStats); }catch(e){} }
+    if (window.Zendo_onChange){ try{ window.Zendo_onChange(refreshProfileStats); }catch(e){} }
+});
+
+// storage events from other tabs
+window.addEventListener('storage', function(e){
+    if (!e.key) return;
+    if (['completedLevels','lastCompletedLevelsUpdate','totalXP','xpByLevel','lastQuizResult'].includes(e.key)) refreshProfileStats();
+});
+</script>
+<script>
+// show transient +XP when awarded
+window.addEventListener('zendo-xp-awarded', function(ev){
+    try{
+        var detail = ev && ev.detail;
+        if (!detail) return;
+        var xp = detail.xp || 0;
+        var xpEl = document.getElementById('totalXPCount');
+        if (!xpEl) return;
+        // create floating badge
+        var badge = document.createElement('div');
+        badge.textContent = '+' + xp + ' XP';
+        badge.style.position = 'absolute';
+        badge.style.background = '#3ea6ff';
+        badge.style.color = '#fff';
+        badge.style.padding = '6px 10px';
+        badge.style.borderRadius = '8px';
+        badge.style.fontWeight = '800';
+        badge.style.fontSize = '0.95rem';
+        badge.style.zIndex = 12000;
+        badge.style.boxShadow = '0 6px 18px rgba(0,0,0,0.3)';
+        // position near xpEl
+        var rect = xpEl.getBoundingClientRect();
+        badge.style.left = (rect.left + rect.width/2) + 'px';
+        badge.style.top = (rect.top - 30) + 'px';
+        document.body.appendChild(badge);
+        // animate up and fade
+        badge.animate([
+            { transform: 'translateY(0)', opacity: 1 },
+            { transform: 'translateY(-32px)', opacity: 0 }
+        ], { duration: 1200, easing: 'cubic-bezier(.2,.9,.2,1)' });
+        setTimeout(()=> badge.remove(), 1300);
+        // then refresh stats to show new total
+        setTimeout(refreshProfileStats, 400);
+    }catch(e){}
+});
+
+// Also expose a manual recompute helper for same-tab completion
+if (window.Zendo_recomputeXPFromUnlocked) {
+    document.addEventListener('DOMContentLoaded', function(){ try{ window.Zendo_recomputeXPFromUnlocked(); }catch(e){} });
+}
+</script>
+                            <a href="achievements.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
+                                <span style="font-size:1.3em;">🏅</span> Achievements
+                            </a>
+    <!-- Leaderboard Panel -->
+    <div id="leaderboardPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #ffd580 100%); overflow-y:auto;">
+        <div class="leaderboard-container" style="max-width:900px; margin:48px auto 0 auto; padding:36px 18px 48px 18px; background:#f4f4fb; border-radius:24px; box-shadow:0 6px 32px #23294655;">
+            <div class="leaderboard-title" style="font-size:2.3rem; font-weight:800; text-align:center; margin-bottom:18px; font-family:'Satisfy',cursive; background:linear-gradient(90deg,#ffd580 0%,#ffb3ba 100%); background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; letter-spacing:2px;">Leaderboard</div>
+            <style>
+            /* Sidebar active button highlight */
+            .sidebar-btn-active {
+                background: linear-gradient(90deg, #ffd580 0%, #bae1ff 100%);
+                color: #232946 !important;
+                box-shadow: 0 2px 12px #ffd58055;
+                font-weight: 800;
+            }
+            .leaderboard-card {
+                background: linear-gradient(120deg, #232946 0%, #ffd58033 100%);
+                border-radius: 22px;
+                box-shadow: 0 6px 24px #ffd58055, 0 0 0 4px #23294622;
+                padding: 36px 32px;
+                width: 100%;
+                max-width: 420px;
+                text-align: center;
+                color: #232946;
+                position: relative;
+                font-size: 1.18em;
+                margin: 0 auto;
+                transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+                overflow: hidden;
+            }
+            .leaderboard-card:hover {
+                transform: translateY(-6px) scale(1.03);
+                box-shadow: 0 12px 32px #ffd58099, 0 0 0 6px #ffd58044;
+                z-index: 2;
+            }
+            .leaderboard-card.top-1 {
+                background: linear-gradient(120deg,#ffd700 0%,#fffbe6 100%);
+                border: 3px solid #ffd700;
+                color: #b8860b;
+                box-shadow: 0 0 32px #ffd70099, 0 0 0 6px #fffbe6cc;
+            }
+            .leaderboard-card.top-2 {
+                background: linear-gradient(120deg,#c0c0c0 0%,#fffbe6 100%);
+                border: 3px solid #c0c0c0;
+                color: #232946;
+                box-shadow: 0 0 32px #c0c0c099, 0 0 0 6px #fffbe6cc;
+            }
+            .leaderboard-card.top-3 {
+                background: linear-gradient(120deg,#cd7f32 0%,#fffbe6 100%);
+                border: 3px solid #cd7f32;
+                color: #232946;
+                box-shadow: 0 0 32px #cd7f3299, 0 0 0 6px #fffbe6cc;
+            }
+            .leaderboard-rank {
+                font-size: 2em;
+                font-weight: 900;
+                color: #ffd580;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+                text-shadow: 0 2px 8px #ffd58088, 0 0 2px #232946;
+                position: relative;
+            }
+            .leaderboard-username {
+                font-size: 1.25em;
+                font-weight: 800;
+                margin-bottom: 8px;
+                color: #357abd;
+                letter-spacing: 1px;
+                text-shadow: 0 2px 8px #bae1ff88;
+            }
+            .leaderboard-points {
+                font-size: 1.13em;
+                color: #232946;
+                margin-bottom: 8px;
+                font-weight: 700;
+                background: linear-gradient(90deg, #ffd580 0%, #fffbe6 100%);
+                border-radius: 8px;
+                padding: 2px 12px;
+                display: inline-block;
+                box-shadow: 0 2px 8px #ffd58033;
+            }
+            .leaderboard-level {
+                font-size: 1.08em;
+                color: #ffd580;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-shadow: 0 2px 8px #ffd58088;
+            }
+            /* Animated gradient border for top 1 */
+            .leaderboard-card.top-1::before {
+                content: '';
+                position: absolute;
+                top: -4px; left: -4px; right: -4px; bottom: -4px;
+                border-radius: 26px;
+                background: linear-gradient(120deg, #ffd700, #ffd580, #fffbe6, #ffd700);
+                z-index: 0;
+                opacity: 0.5;
+                filter: blur(8px);
+                animation: borderGlow 2.5s linear infinite;
+            }
+            @keyframes borderGlow {
+                0% { opacity: 0.5; }
+                50% { opacity: 0.8; }
+                100% { opacity: 0.5; }
+            }
+            /* Icon for top 3 */
+            .leaderboard-card.top-1 .leaderboard-rank::after {
+                content: ' 🥇';
+                font-size: 1.1em;
+                margin-left: 6px;
+            }
+            .leaderboard-card.top-2 .leaderboard-rank::after {
+                content: ' 🥈';
+                font-size: 1.1em;
+                margin-left: 6px;
+            }
+            .leaderboard-card.top-3 .leaderboard-rank::after {
+                content: ' 🥉';
+                font-size: 1.1em;
+                margin-left: 6px;
+            }
+            /* Add a subtle animated background to all cards */
+            .leaderboard-card {
+                background-size: 200% 200%;
+                animation: cardBgMove 6s ease-in-out infinite;
+            }
+            @keyframes cardBgMove {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            </style>
+            <div class="leaderboard-list" style="display:flex; flex-wrap:wrap; gap:28px; justify-content:center;">
+                <div style="width:100%; display:flex; flex-direction:column; gap:18px; align-items:center;">
+                    <div class="leaderboard-card top-1">
+                        <div class="leaderboard-rank">🥇 #1</div>
+                        <div class="leaderboard-username">PandaPro</div>
+                        <div class="leaderboard-points">9275 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
+                    </div>
+                    <div class="leaderboard-card top-2">
+                        <div class="leaderboard-rank">🥈 #2</div>
+                        <div class="leaderboard-username">MandarinMaverick</div>
+                        <div class="leaderboard-points">9100 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
+                    </div>
+                    <div class="leaderboard-card top-3">
+                        <div class="leaderboard-rank">🥉 #3</div>
+                        <div class="leaderboard-username">PandaPro</div>
+                        <div class="leaderboard-points">9275 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#4</div>
+                        <div class="leaderboard-username">MandarinMaverick</div>
+                        <div class="leaderboard-points">9100 pts</div>
+                        <div class="leaderboard-level">Challenger ⚔️</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#ffd580 0%,#6fa3ff 100%); border-radius:18px; box-shadow:0 0 24px #ffd58099; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#5</div>
+                        <div class="leaderboard-username">QuizWhiz</div>
+                        <div class="leaderboard-points">8990 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                        <div style="position:absolute; right:18px; top:18px; font-size:1.7em; filter:drop-shadow(0 0 8px #ffd580cc);">✨</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#6</div>
+                        <div class="leaderboard-username">DragonDuo</div>
+                        <div class="leaderboard-points">8825 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#7</div>
+                        <div class="leaderboard-username">LuckyLotus</div>
+                        <div class="leaderboard-points">8700 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#8</div>
+                        <div class="leaderboard-username">HanHero</div>
+                        <div class="leaderboard-points">8600 pts</div>
+                        <div class="leaderboard-level">Explorer 🧭</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#9</div>
+                        <div class="leaderboard-username">QuizCrane</div>
+                        <div class="leaderboard-points">8500 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#10</div>
+                        <div class="leaderboard-username">FirePhoenix</div>
+                        <div class="leaderboard-points">8450 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#11</div>
+                        <div class="leaderboard-username">MoonRabbit</div>
+                        <div class="leaderboard-points">8300 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#12</div>
+                        <div class="leaderboard-username">BambooKnight</div>
+                        <div class="leaderboard-points">8250 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#13</div>
+                        <div class="leaderboard-username">QuizTiger</div>
+                        <div class="leaderboard-points">8200 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#14</div>
+                        <div class="leaderboard-username">LotusLeaf</div>
+                        <div class="leaderboard-points">8150 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#15</div>
+                        <div class="leaderboard-username">MandarinMongoose</div>
+                        <div class="leaderboard-points">8100 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#16</div>
+                        <div class="leaderboard-username">QuizDragon</div>
+                        <div class="leaderboard-points">8050 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#17</div>
+                        <div class="leaderboard-username">MandarinFalcon</div>
+                        <div class="leaderboard-points">8000 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#18</div>
+                        <div class="leaderboard-username">QuizPhoenix</div>
+                        <div class="leaderboard-points">7950 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#19</div>
+                        <div class="leaderboard-username">LotusTiger</div>
+                        <div class="leaderboard-points">7900 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#20</div>
+                        <div class="leaderboard-username">QuizLeaf</div>
+                        <div class="leaderboard-points">7850 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#21</div>
+                        <div class="leaderboard-username">MandarinCrane</div>
+                        <div class="leaderboard-points">7800 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#22</div>
+                        <div class="leaderboard-username">QuizFalcon</div>
+                        <div class="leaderboard-points">7750 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#23</div>
+                        <div class="leaderboard-username">LotusPhoenix</div>
+                        <div class="leaderboard-points">7700 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#24</div>
+                        <div class="leaderboard-username">MandarinRabbit</div>
+                        <div class="leaderboard-points">7650 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#ffd580 0%,#6fa3ff 100%); border-radius:18px; box-shadow:0 0 24px #ffd58099; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#25</div>
+                        <div class="leaderboard-username">QuizKnight</div>
+                        <div class="leaderboard-points">7600 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#26</div>
+                        <div class="leaderboard-username">LotusRabbit</div>
+                        <div class="leaderboard-points">7550 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#27</div>
+                        <div class="leaderboard-username">MandarinKnight</div>
+                        <div class="leaderboard-points">7500 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#28</div>
+                        <div class="leaderboard-username">QuizMongoose</div>
+                        <div class="leaderboard-points">7450 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#29</div>
+                        <div class="leaderboard-username">LotusMongoose</div>
+                        <div class="leaderboard-points">7400 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#30</div>
+                        <div class="leaderboard-username">MandarinLeaf</div>
+                        <div class="leaderboard-points">7350 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#31</div>
+                        <div class="leaderboard-username">QuizRabbit</div>
+                        <div class="leaderboard-points">7300 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#32</div>
+                        <div class="leaderboard-username">LotusKnight</div>
+                        <div class="leaderboard-points">7250 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#33</div>
+                        <div class="leaderboard-username">MandarinTiger</div>
+                        <div class="leaderboard-points">7200 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#34</div>
+                        <div class="leaderboard-username">QuizFalconer</div>
+                        <div class="leaderboard-points">7150 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#35</div>
+                        <div class="leaderboard-username">LotusFalcon</div>
+                        <div class="leaderboard-points">7100 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#36</div>
+                        <div class="leaderboard-username">MandarinPhoenix</div>
+                        <div class="leaderboard-points">7050 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#37</div>
+                        <div class="leaderboard-username">QuizLeafy</div>
+                        <div class="leaderboard-points">7000 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#38</div>
+                        <div class="leaderboard-username">LotusDragon</div>
+                        <div class="leaderboard-points">6950 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#39</div>
+                        <div class="leaderboard-username">MandarinLion</div>
+                        <div class="leaderboard-points">6900 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                    <div class="leaderboard-card" style="background:linear-gradient(120deg,#232946 0%,#ffd58033 100%); border-radius:18px; box-shadow:0 4px 18px #ffd58055; padding:32px 28px; width:100%; max-width:420px; text-align:center; color:#fff; position:relative; font-size:1.15em;">
+                        <div class="leaderboard-rank">#40</div>
+                        <div class="leaderboard-username">QuizMaster</div>
+                        <div class="leaderboard-points">6850 pts</div>
+                        <div class="leaderboard-level">Rookie 🐣</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Lessons Panel -->
+    <div id="lessonsPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #1a1a2e 100%); overflow-y:auto;">
+        <div class="lessons-container" style="margin:48px auto 0 auto; max-width:1200px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
+                <div style="font-size:2.1em; font-weight:800; color:#ffd580; margin-bottom:12px;">Lessons</div>
+                <div style="display:flex; gap:16px; margin-bottom:18px;">
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">All Lessons</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/rookie_lessons_backup.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bae1ff; color:#232946; font-weight:700; cursor:pointer;">Rookie</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/explorer_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#bdbec8; color:#232946; font-weight:700; cursor:pointer;">Explorer</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/challenger_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#ffd580; color:#232946; font-weight:700; cursor:pointer;">Challenger</button>
+                    <button onclick="document.getElementById('lessonsFrame').src='pages/master_lessons.html'" style="padding:10px 22px; border-radius:12px; border:none; background:#cd7f32; color:#fffbe6; font-weight:700; cursor:pointer;">Master</button>
+                </div>
+                <iframe id="lessonsFrame" src="pages/lessons.html" style="width:100%; min-height:700px; border-radius:18px; border:none; box-shadow:0 4px 24px #23294633; background:#fff;" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+                            <script>
+                            // Sidebar menu logic for panel transitions
+                            document.addEventListener('DOMContentLoaded', function() {
+                                function showPanel(panelId) {
+                                    var panels = ['homePanel', 'profilePanel', 'achievementsPanel', 'leaderboardPanel', 'lessonsPanel'];
+                                    panels.forEach(function(id) {
+                                        var el = document.getElementById(id);
+                                        if (el) el.style.display = (id === panelId) ? 'block' : 'none';
+                                    });
+                                    document.getElementById('logoSidebarBg').style.display = 'block';
+                                    // Highlight active sidebar button
+                                    var sidebarBtns = [
+                                        document.querySelector('#logoSidebar a[href="#home-section"]'),
+                                        document.getElementById('sidebarProfileLink'),
+                                        document.querySelector('#logoSidebar a[href="achievements.html"]'),
+                                        document.getElementById('sidebarLeaderboardLink'),
+                                        document.getElementById('sidebarLessonsLink')
+                                    ];
+                                    sidebarBtns.forEach(function(btn, idx) {
+                                        if (!btn) return;
+                                        btn.classList.remove('sidebar-btn-active');
+                                        if (panelId === panels[idx]) btn.classList.add('sidebar-btn-active');
+                                    });
+                                }
+                                var homeLink = document.getElementById('sidebarHomeLink');
+                                var profileLink = document.getElementById('sidebarProfileLink');
+                                var achievementsLink = document.querySelector('#logoSidebar a[href="achievements.html"]');
+                                var leaderboardLink = document.getElementById('sidebarLeaderboardLink');
+                                var lessonsLink = document.getElementById('sidebarLessonsLink');
+                                if (homeLink) homeLink.onclick = function(e) { e.preventDefault(); showPanel('homePanel'); };
+                                if (profileLink) profileLink.onclick = function(e) { e.preventDefault(); showPanel('profilePanel'); };
+                                if (achievementsLink) achievementsLink.onclick = function(e) { e.preventDefault(); showPanel('achievementsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
+                                if (leaderboardLink) leaderboardLink.onclick = function(e) { e.preventDefault(); showPanel('leaderboardPanel'); };
+                                if (lessonsLink) lessonsLink.onclick = function(e) { e.preventDefault(); showPanel('lessonsPanel'); document.getElementById('logoSidebarBg').style.display = 'block'; };
+                            });
+                            </script>
+                            <a href="#" id="sidebarLeaderboardLink" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px; cursor:pointer;">
+                                <span style="font-size:1.3em;">📊</span> Leaderboard
+                            </a>
+                            <a href="pages/lessons.html" style="display:flex; align-items:center; gap:14px; padding:10px 24px; color:#fff; text-decoration:none; border-radius:8px; font-weight:600; margin:0 12px 8px 12px; cursor:pointer;">
+                                <span style="font-size:1.3em;">📚</span> Lessons
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- Achievements Panel -->
+    <div id="achievementsPanel" style="display:none; position:fixed; top:0; left:270px; height:100vh; width:calc(100vw - 270px); z-index:10001; background:linear-gradient(120deg, #232946 0%, #ffd580 100%); overflow-y:auto;">
+        <div class="achievements-container" style="margin:48px auto 0 auto;">
+            <div class="achievements-title">Achievements</div>
+            <div class="achievement-list">
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🏆</div>
+                    <div class="achievement-title">First Steps</div>
+                    <div class="achievement-desc">Complete your first lesson.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🎯</div>
+                    <div class="achievement-title">Quiz Novice</div>
+                    <div class="achievement-desc">Score 80%+ on any quiz.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">📚</div>
+                    <div class="achievement-title">Bookworm</div>
+                    <div class="achievement-desc">Read 10 learning materials.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">💬</div>
+                    <div class="achievement-title">Conversation Starter</div>
+                    <div class="achievement-desc">Finish your first speaking exercise.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🔥</div>
+                    <div class="achievement-title">Streak Master</div>
+                    <div class="achievement-desc">Study 7 days in a row.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🧠</div>
+                    <div class="achievement-title">Memory Champ</div>
+                    <div class="achievement-desc">Score 100% on a vocabulary test.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">👑</div>
+                    <div class="achievement-title">Level Up!</div>
+                    <div class="achievement-desc">Reach Explorer level.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">⚔️</div>
+                    <div class="achievement-title">Boss Defeated</div>
+                    <div class="achievement-desc">Win a boss level challenge.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🕹️</div>
+                    <div class="achievement-title">Game On</div>
+                    <div class="achievement-desc">Unlock the game mode.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🥇</div>
+                    <div class="achievement-title">Leaderboard Top 10</div>
+                    <div class="achievement-desc">Reach the top 10 in the leaderboard.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🧩</div>
+                    <div class="achievement-title">Puzzle Solver</div>
+                    <div class="achievement-desc">Complete a sentence arrangement puzzle.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">💡</div>
+                    <div class="achievement-title">Insightful</div>
+                    <div class="achievement-desc">Leave feedback or a suggestion.</div>
+                    <div class="achievement-locked">Locked</div>
+                </div>
+            </div>
+            <button class="main-btn" style="margin:36px auto 0 auto; display:block; font-size:1.15rem; padding:16px 38px;" onclick="document.getElementById('achievementsPanel').style.display='none'">Close</button>
+        </div>
+    </div>
+    <div id="levelModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,30,50,0.85);z-index:3000;align-items:center;justify-content:center;">
+        <div style="background:#fff;border-radius:18px;padding:24px 16px;box-shadow:0 4px 18px #23294699;min-width:220px;max-width:340px;text-align:left;animation:popIn 0.5s cubic-bezier(.4,1.6,.4,1);">
+            <h2 id="levelModalTitle" style="color:#4f8cff;font-size:1.15rem;margin-bottom:12px;"></h2>
+            <p id="levelModalDesc" style="font-size:0.98rem;color:#232946;margin-bottom:18px;line-height:1.5;"></p>
+            <button onclick="closeLevelModal()" style="padding:8px 18px;font-size:0.98rem;border-radius:8px;background:#4f8cff;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Close</button>
+        </div>
+    </div>
+    <!-- Find Friends Modal -->
+    <div id="findFriendsModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,12,18,0.7);z-index:99999;align-items:center;justify-content:center;pointer-events:auto;">
+        <div style="background:#101217;border-radius:12px;padding:18px;min-width:320px;max-width:520px;color:#e6eefc;box-shadow:0 8px 30px #0008;z-index:100000;pointer-events:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="font-size:1.15rem;font-weight:700;">Find Friends</div>
+                <button onclick="document.getElementById('findFriendsModal').style.display='none'" style="background:none;border:none;color:#9fb7ff;font-weight:700;cursor:pointer;">Close</button>
+            </div>
+            <div style="margin-bottom:12px;"><input id="friendSearchInput" placeholder="Search friends by name..." style="width:100%;padding:10px;border-radius:8px;border:1px solid #263040;background:#0f1418;color:#e6eefc;font-size:1rem;" /></div>
+            <div id="friendResults" style="display:flex;flex-direction:column;gap:8px;max-height:320px;overflow:auto;padding-right:6px;"></div>
+            <div style="margin-top:12px;display:flex;justify-content:flex-end;gap:8px;">
+                <button id="friendAddClose" onclick="document.getElementById('findFriendsModal').style.display='none'" class="main-btn" style="background:#2b3948;padding:8px 14px;border-radius:8px;border:none;">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite Friends Modal -->
+    <div id="inviteFriendsModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,12,18,0.7);z-index:99999;align-items:center;justify-content:center;pointer-events:auto;">
+        <div style="background:#101217;border-radius:12px;padding:18px;min-width:320px;max-width:520px;color:#e6eefc;box-shadow:0 8px 30px #0008;z-index:100000;pointer-events:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="font-size:1.15rem;font-weight:700;">Invite Friend</div>
+                <button onclick="document.getElementById('inviteFriendsModal').style.display='none'" style="background:none;border:none;color:#9fb7ff;font-weight:700;cursor:pointer;">Close</button>
+            </div>
+            <div style="margin-bottom:8px;color:#bcd3ff;">Send an invite by entering the recipient's name or email:</div>
+            <input id="inviteInput" placeholder="Name or email" style="width:100%;padding:10px;border-radius:8px;border:1px solid #263040;background:#0f1418;color:#e6eefc;font-size:1rem;" />
+            <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end;">
+                <button id="sendInviteBtn" class="main-btn" style="background:#3ea6ff;color:#fff;padding:8px 14px;border-radius:8px;border:none;">Send Invite</button>
+                <button onclick="document.getElementById('inviteFriendsModal').style.display='none'" class="main-btn" style="background:#232a33;color:#9fb7ff;padding:8px 14px;border-radius:8px;border:none;">Cancel</button>
+            </div>
+            <div id="inviteFeedback" style="margin-top:10px;color:#9fb7ff;font-size:0.95rem;"></div>
+        </div>
+    </div>
+    <style>
+        @keyframes popIn {
+            0% { transform: scale(0.7); opacity: 0; }
+            80% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var chineseBtn = document.getElementById('chineseBtn');
+            if (chineseBtn) chineseBtn.onclick = function() {
+                window.location.href = 'pages/chinese.html';
+            };
+            var englishBtn = document.getElementById('englishBtn');
+            if (englishBtn) englishBtn.onclick = function() {
+                window.location.href = 'english.html';
+            };
+            // Sidebar menu logic
+            var menuBtn = document.getElementById('menuBtn');
+            var logoSidebarBg = document.getElementById('logoSidebarBg');
+            if (menuBtn && logoSidebarBg) {
+                menuBtn.addEventListener('click', function(e) {
+                    logoSidebarBg.style.display = 'block';
+                });
+                logoSidebarBg.addEventListener('click', function(e) {
+                    if (e.target === logoSidebarBg) logoSidebarBg.style.display = 'none';
+                });
+            } else {
+                console.error('Sidebar menu elements not found:', {menuBtn, logoSidebarBg});
+            }
+        });
+    </script>
+    <style>
+    /* shining animation for earned badges */
+    @keyframes zendoShine {
+        0% { box-shadow: 0 0 0 rgba(255,255,255,0); transform: translateY(0); }
+        50% { box-shadow: 0 6px 20px rgba(255,255,255,0.08); transform: translateY(-3px); }
+        100% { box-shadow: 0 0 0 rgba(255,255,255,0); transform: translateY(0); }
+    }
+    .zendo-badge.shining { animation: zendoShine 1.8s ease-in-out infinite; }
+    /* Achievements panel — unlocked (glowing) state */
+    #achievementsPanel .achievement-card { transition: box-shadow 0.24s ease, transform 0.18s ease, opacity 0.18s ease, border 0.18s ease; }
+    #achievementsPanel .achievement-card.locked { opacity: 0.36; }
+    #achievementsPanel .achievement-card.unlocked { opacity: 1; transform: translateY(-3px); border: 1px solid rgba(255,215,0,0.06); box-shadow: 0 12px 36px rgba(255,215,0,0.08), 0 0 0 6px rgba(255,215,0,0.02); animation: zendoShine 2s ease-in-out infinite; }
+    #achievementsPanel .achievement-card.unlocked .achievement-title { color: #fffbe6; }
+    #achievementsPanel .achievement-card.unlocked .achievement-locked { color: #ffd580; font-weight:700; }
+    </style>
+    <script>
+    // Render earned achievement badges inside the small profile achievements card.
+    (function(){
+        const ACHIEVEMENTS = [
+            { id: 'first_steps', icon: '🏆', title: 'First Steps', rule: d => (d.completedLevels || []).includes(1) || (d.unlockedLevel || 0) > 1 },
+            { id: 'quiz_novice', icon: '🎯', title: 'Quiz Novice', rule: d => { try { const scores = JSON.parse(localStorage.getItem('quizScores')||'[]'); return scores.some(s=>s>=80); } catch(e){return false} } },
+            { id: 'bookworm', icon: '📚', title: 'Bookworm', rule: d => { const n = parseInt(localStorage.getItem('readMaterials')||'0'); return n>=10;} },
+            { id: 'conversation_starter', icon: '💬', title: 'Conversation Starter', rule: d => { const n = parseInt(localStorage.getItem('speakingExercises')||'0'); return n>=1;} },
+            { id: 'streak_master', icon: '🔥', title: 'Streak Master', rule: d => { const s = parseInt(localStorage.getItem('streakDays')||'0'); return s>=7;} },
+            { id: 'memory_champ', icon: '🧠', title: 'Memory Champ', rule: d => { const n = parseInt(localStorage.getItem('vocabPerfects')||'0'); return n>=1;} },
+            { id: 'level_up', icon: '👑', title: 'Level Up!', rule: d => (d.unlockedLevel || 0) >= 11 },
+            { id: 'boss_defeated', icon: '⚔️', title: 'Boss Defeated', rule: d => { const completed = d.completedLevels || []; return completed.some(l => [10,20,30].includes(l)); } },
+            { id: 'game_on', icon: '🕹️', title: 'Game On', rule: d => { return localStorage.getItem('gameUnlocked') === 'true' } },
+            { id: 'leaderboard_top10', icon: '🥇', title: 'Leaderboard Top 10', rule: d => { const r = parseInt(localStorage.getItem('leaderboardRank')||'9999'); return r>0 && r<=10;} },
+            { id: 'puzzle_solver', icon: '🧩', title: 'Puzzle Solver', rule: d => { const n = parseInt(localStorage.getItem('puzzlesSolved')||'0'); return n>=1;} },
+            { id: 'master_learner', icon: '🎓', title: 'Master Learner', rule: d => (d.unlockedLevel || 0) >= 21 },
+            { id: 'insightful', icon: '💡', title: 'Insightful', rule: d => localStorage.getItem('feedbackGiven') === 'true' },
+        ];
+
+        function loadLocalData(){
+            try {
+                return {
+                    completedLevels: JSON.parse(localStorage.getItem('completedLevels')||'[]'),
+                    unlockedLevel: parseInt(localStorage.getItem('rookieUnlockedLevel')||localStorage.getItem('unlockedLevel')||'0') || 0,
+                    achievements: JSON.parse(localStorage.getItem('achievements')||'[]')
+                };
+            } catch(e){ return { completedLevels: [], unlockedLevel: 0, achievements: [] }; }
+        }
+
+        function computeEarnedLocal(){
+            const data = loadLocalData();
+            const earned = ACHIEVEMENTS.filter(a => { try { return !!a.rule(data); } catch(e){ return false; } });
+            return earned;
+        }
+
+        function ensureBadgesContainer() {
+            const ach = document.getElementById('profileAchievements');
+            if (!ach) return null;
+            let badges = document.getElementById('profileAchievementBadges');
+            if (!badges) {
+                badges = document.createElement('div');
+                badges.id = 'profileAchievementBadges';
+                badges.style.display = 'flex';
+                badges.style.flexWrap = 'wrap';
+                badges.style.gap = '8px';
+                badges.style.marginTop = '12px';
+                // insert badges at top, before existing children (so controls remain visible)
+                ach.insertBefore(badges, ach.firstChild.nextSibling);
+            }
+            return badges;
+        }
+
+        function renderProfileBadges(){
+            const badges = ensureBadgesContainer();
+            if (!badges) return;
+            const earned = computeEarnedLocal();
+            if (!earned.length) {
+                badges.innerHTML = '<div style="color:#b0b8c1;">No achievements yet.</div>';
+                return;
+            }
+            badges.innerHTML = earned.map(a => {
+                return `<div class="zendo-badge shining" title="${a.title}" style="display:flex;flex-direction:column;align-items:center;padding:8px 10px;background:#232a33;border-radius:10px;color:#fff;min-width:72px;">
+                    <div style="font-size:1.4rem;margin-bottom:6px;">${a.icon}</div>
+                    <div style="font-size:0.8rem;color:#9fb7ff;text-align:center;">${a.title}</div>
+                </div>`;
+            }).join('');
+        }
+
+        // update when local progress changes or when refresh invoked
+        function updateProfileAchievements(){ renderProfileBadges(); }
+
+        // initial render
+        updateProfileAchievements();
+
+        // hook into refresh and storage events
+        if (window) {
+            const prev = window.Zendo_refreshCount;
+            window.Zendo_refreshCount = function(){ if (typeof prev === 'function') prev(); updateProfileAchievements(); };
+        }
+        window.addEventListener('storage', function(e){
+            const interesting = ['completedLevels','rookieUnlockedLevel','unlockedLevel','achievements','quizScores','readMaterials','speakingExercises','streakDays','completedLanguages','vocabPerfects','gameUnlocked','leaderboardRank','puzzlesSolved','feedbackGiven','groupChallenges'];
+            if (!e.key || interesting.includes(e.key)) updateProfileAchievements();
+        });
+    })();
+    </script>
+    <script>
+    // Sync the big Achievements panel cards with local progress — make completed cards glow/unlocked.
+    (function(){
+        // same rules used in the compact profile list (kept minimal but consistent)
+        const ACH_RULES = [
+            { title: 'First Steps', check: d => (d.completedLevels || []).includes(1) || (d.unlockedLevel || 0) > 1 },
+            { title: 'Quiz Novice', check: d => { try { const scores = JSON.parse(localStorage.getItem('quizScores')||'[]'); return scores.some(s=>s>=80); } catch(e){return false} } },
+            { title: 'Bookworm', check: d => { const n = parseInt(localStorage.getItem('readMaterials')||'0'); return n>=10;} },
+            { title: 'Conversation Starter', check: d => { const n = parseInt(localStorage.getItem('speakingExercises')||'0'); return n>=1;} },
+            { title: 'Streak Master', check: d => { const s = parseInt(localStorage.getItem('streakDays')||'0'); return s>=7;} },
+            { title: 'Memory Champ', check: d => { const n = parseInt(localStorage.getItem('vocabPerfects')||'0'); return n>=1;} },
+            { title: 'Level Up!', check: d => (d.unlockedLevel || 0) >= 11 },
+            { title: 'Boss Defeated', check: d => { const completed = d.completedLevels || []; return completed.some(l => [10,20,30].includes(l)); } },
+            { title: 'Game On', check: d => { return localStorage.getItem('gameUnlocked') === 'true' } },
+            { title: 'Leaderboard Top 10', check: d => { const r = parseInt(localStorage.getItem('leaderboardRank')||'9999'); return r>0 && r<=10;} },
+            { title: 'Puzzle Solver', check: d => { const n = parseInt(localStorage.getItem('puzzlesSolved')||'0'); return n>=1;} },
+            { title: 'Insightful', check: d => localStorage.getItem('feedbackGiven') === 'true' }
+        ];
+
+        function loadData() {
+            try {
+                return {
+                    completedLevels: JSON.parse(localStorage.getItem('completedLevels')||'[]'),
+                    unlockedLevel: parseInt(localStorage.getItem('rookieUnlockedLevel')||localStorage.getItem('unlockedLevel')||'0') || 0
+                };
+            } catch(e) { return { completedLevels: [], unlockedLevel: 0 }; }
+        }
+
+        function normalizeTitle(t){ return t && t.toString().trim().toLowerCase(); }
+
+        function refreshAchievementsPanel(){
+            var panel = document.getElementById('achievementsPanel');
+            if (!panel) return;
+            var cards = Array.from(panel.querySelectorAll('.achievement-card'));
+            if (!cards.length) return;
+            var data = loadData();
+            // build a map of title -> result
+            var results = {};
+            ACH_RULES.forEach(r => { try { results[normalizeTitle(r.title)] = !!r.check(data); } catch(e){ results[normalizeTitle(r.title)] = false; } });
+
+            cards.forEach(card => {
+                var titleEl = card.querySelector('.achievement-title');
+                if (!titleEl) return;
+                var key = normalizeTitle(titleEl.textContent || titleEl.innerText || '');
+                var unlocked = !!results[key];
+                if (unlocked) {
+                    card.classList.remove('locked');
+                    card.classList.add('unlocked');
+                    var lockedEl = card.querySelector('.achievement-locked');
+                    if (lockedEl) lockedEl.textContent = 'Unlocked';
+                } else {
+                    card.classList.remove('unlocked');
+                    card.classList.add('locked');
+                    var lockedEl = card.querySelector('.achievement-locked');
+                    if (lockedEl) lockedEl.textContent = 'Locked';
+                }
+            });
+        }
+
+        // initial run
+        refreshAchievementsPanel();
+
+        // re-run when storage changes or manual refresh invoked
+        window.addEventListener('storage', function(e){
+            const interesting = ['completedLevels','rookieUnlockedLevel','unlockedLevel','quizScores','readMaterials','speakingExercises','streakDays','vocabPerfects','gameUnlocked','leaderboardRank','puzzlesSolved','feedbackGiven'];
+            if (!e.key || interesting.includes(e.key)) refreshAchievementsPanel();
+        });
+        // also expose a manual refresh for other scripts
+        var prev = window.Zendo_refreshAchievementsPanel;
+        window.Zendo_refreshAchievementsPanel = function(){ if (typeof prev === 'function') prev(); refreshAchievementsPanel(); };
+        // poll occasionally in case some pages don't trigger storage (every 6s)
+        setInterval(refreshAchievementsPanel, 6000);
+    })();
+    </script>
+    <script>
+    // Levels completed counter for profile panel
+    (function() {
+        function getLoggedUsername() {
+            // existing keys used in this project for different role storages
+            return localStorage.getItem('activeUser') || localStorage.getItem('rookieUserId') || localStorage.getItem('masterUserId') || localStorage.getItem('challengerUserId') || null;
+        }
+
+        async function fetchProgressFromServer(username) {
+            try {
+                var res = await fetch('/api/getProgress', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ username: username })
+                });
+                if (!res.ok) throw new Error('Network response not ok');
+                var data = await res.json();
+                return data && data.completedLevels ? data.completedLevels : [];
+            } catch (e) {
+                console.warn('Failed to fetch progress from server:', e);
+                return null;
+            }
+        }
+
+        function readProgressFromLocal() {
+            try {
+                var raw = localStorage.getItem('completedLevels');
+                if (!raw) return [];
+                var parsed = JSON.parse(raw);
+                // If parsed is an array of level ids or an object mapping, support both
+                if (Array.isArray(parsed)) return parsed;
+                if (typeof parsed === 'object' && parsed !== null) return Object.keys(parsed).filter(k => parsed[k]);
+                return [];
+            } catch (e) {
+                console.warn('Failed to read completedLevels from localStorage', e);
+                return [];
+            }
+        }
+
+        function updateUI(count) {
+            var el = document.getElementById('levelsCompletedCount');
+            if (!el) return;
+            el.textContent = String(count);
+        }
+
+        var lastCount = -1;
+
+        async function refreshCount() {
+            var username = getLoggedUsername();
+            var levels = [];
+            if (username) {
+                var serverLevels = await fetchProgressFromServer(username);
+                if (serverLevels === null) {
+                    // server failed, fallback to local
+                    levels = readProgressFromLocal();
+                } else {
+                    levels = serverLevels;
+                }
+            } else {
+                levels = readProgressFromLocal();
+            }
+            var uniqueCount = 0;
+            try {
+                // support array or object
+                if (Array.isArray(levels)) uniqueCount = new Set(levels).size;
+                else if (typeof levels === 'object' && levels !== null) uniqueCount = Object.keys(levels).filter(k => levels[k]).length;
+                else uniqueCount = 0;
+            } catch (e) { uniqueCount = 0; }
+
+            if (uniqueCount !== lastCount) {
+                lastCount = uniqueCount;
+                updateUI(uniqueCount);
+            }
+        }
+
+    // initial load
+    refreshCount();
+
+    // expose for other scripts (so local-only setters can trigger an update)
+    window.Zendo_refreshCount = refreshCount;
+
+        // poll every 6 seconds
+        var pollTimer = setInterval(refreshCount, 6000);
+
+        // update when other tabs modify localStorage
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'completedLevels' || e.key === 'activeUser' || e.key === 'rookieUserId' || e.key === 'masterUserId' || e.key === 'challengerUserId') {
+                refreshCount();
+            }
+        });
+    })();
+    </script>
+    
+</body>
+</html>

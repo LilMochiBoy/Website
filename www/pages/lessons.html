@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rookie Lessons | Zendo</title>
+	<link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<style>
+		body {
+			background: linear-gradient(120deg, #232946 0%, #1a1a2e 100%);
+			font-family: 'Montserrat', Arial, sans-serif;
+			margin: 0;
+			color: #f4f4fb;
+		}
+		.lessons-container {
+			max-width: 820px;
+			margin: 0 auto;
+			padding: 36px 18px 48px 18px;
+			background: #232946;
+			border-radius: 24px;
+			box-shadow: 0 6px 32px #0008;
+			overflow-y: auto;
+		}
+		.lesson-title {
+			font-size: 2.3rem;
+			font-weight: 800;
+			text-align: center;
+			margin-bottom: 18px;
+			font-family: 'Satisfy', cursive;
+			background: linear-gradient(90deg, #ffd580 0%, #ffb3ba 100%);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			-webkit-text-fill-color: transparent;
+			letter-spacing: 2px;
+		}
+		.lesson-section {
+			margin-bottom: 38px;
+			padding: 24px 18px;
+			border-radius: 18px;
+			background: #1a1a2e;
+			box-shadow: 0 2px 12px #0006;
+		}
+		.lesson-level {
+			font-size: 1.45rem;
+			font-weight: 700;
+			margin-bottom: 10px;
+			color: #ffd580;
+		}
+		.lesson-subtitle {
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin-bottom: 12px;
+			color: #ffb3ba;
+		}
+		.lesson-list {
+			margin: 0 0 12px 0;
+			padding-left: 18px;
+		}
+		.lesson-list li {
+			margin-bottom: 6px;
+			font-size: 1.08rem;
+		}
+		.lesson-example {
+			background: #232946;
+			border-left: 4px solid #ffd580;
+			padding: 10px 16px;
+			margin: 10px 0;
+			border-radius: 8px;
+			font-size: 1.08rem;
+		}
+		.lesson-practice {
+			background: #232946;
+			border-left: 4px solid #ffb3ba;
+			padding: 10px 16px;
+			margin: 10px 0;
+			border-radius: 8px;
+			font-size: 1.08rem;
+		}
+		@media (max-width: 600px) {
+			.lessons-container {
+				padding: 12px 2vw 24px 2vw;
+			}
+			.lesson-section {
+				padding: 12px 6px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="logo-zendo">
+		<img src="../assets/images/Zendo.png" alt="Logo" class="logo">
+		<span class="logo-zendo-text">Zendo</span>
+	</div>
+	<div class="center-content">
+		<h1>Choose Your Chinese Proficiency Level</h1>
+		<p>Select the level that best matches your current Chinese skills:</p>
+		<div style="display: flex; flex-direction: column; gap: 24px; max-width: 600px; width: 100%; align-items: center;">
+			<button class="main-btn" id="rookieBtn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;"
+				onclick="window.location.href='rookie_lessons_backup.html'">
+				<span style="font-weight:bold; font-size:1.3em;">Rookie 🐣</span>
+				<ul style="margin-top:12px;">
+					<li>Learning pinyin, tones, greetings, numbers, and simple daily expressions.</li>
+					<li>Can introduce yourself, order food, and handle very basic conversations.</li>
+				</ul>
+			</button>
+			<button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;"
+				onclick="window.location.href='challenger_lessons.html'">
+				<span style="font-weight:bold; font-size:1.3em;">Challenger ⚔️</span>
+				<ul style="margin-top:12px;">
+					<li>Comfortable discussing abstract topics, culture, and professional subjects.</li>
+					<li>Can read news, short stories, and write more complex sentences.</li>
+				</ul>
+			</button>
+			<button class="main-btn" style="width:100%; padding:32px; font-size:1.25rem; text-align:left; display:flex; flex-direction:column; align-items:flex-start; background:rgba(30,60,114,0.15); border-radius:12px;"
+				onclick="window.location.href='master_lessons.html'">
+				<span style="font-weight:bold; font-size:1.3em;">Master 🏆</span>
+				<ul style="margin-top:12px;">
+					<li>Near-native fluency, able to use Chinese naturally and with cultural nuance.</li>
+					<li>Can understand literature, formal texts, and express yourself almost like a native.</li>
+				</ul>
+			</button>
+		</div>
+		<button class="main-btn" style="margin-top:32px;" onclick="window.location.href='../index.html'">Back to Home</button>
+	</div>
+</body>
+</html>
