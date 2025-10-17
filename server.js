@@ -116,4 +116,8 @@ app.post('/api/contact', (req, res) => {
   res.json({ success: true });
 });
 
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server running on http://localhost:3000');
+  console.log('Network access: http://10.195.167.138:3000');
+  console.log('Make sure Windows Firewall allows Node.js');
+});

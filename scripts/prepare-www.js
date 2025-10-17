@@ -12,7 +12,7 @@ function copyDir(src, dest) {
     const destPath = path.join(dest, item);
     const stat = fs.statSync(srcPath);
     if (stat.isDirectory()) {
-      if (item === 'android' || item === 'ios' || item === 'node_modules' || item === '.git') continue;
+      if (item === 'android' || item === 'ios' || item === 'node_modules' || item === '.git' || item === 'www') continue;
       copyDir(srcPath, destPath);
     } else {
       fs.copyFileSync(srcPath, destPath);
