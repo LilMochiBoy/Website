@@ -1,0 +1,24 @@
+{
+  "name": "zendo-website",
+  "version": "1.0.0",
+  "description": "Zendo website prepared for PWA/Capacitor",
+  "scripts": {
+    "prepare-www": "node ./scripts/prepare-www.js",
+    "gen:icons": "node ./scripts/generate-icons.js",
+    "cap:init": "npx cap init Zendo com.lilmochiboy.zendo --web-dir=www",
+    "cap:add-android": "npx cap add android",
+    "cap:copy": "npx cap copy android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/core": "^7.4.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "sharp": "^0.34.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.0",
+    "typescript": "^5.9.3"
+  }
+}
