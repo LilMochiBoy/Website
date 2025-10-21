@@ -216,10 +216,10 @@ const questions = [
 { q: "Match the word: 文学", options: ["news", "literature", "freedom", "passport"], answer: 1 },
 { q: "Match the word: 成语", options: ["idiom", "pollution", "professor", "Tang poetry"], answer: 0 },
 { q: "Match the word: 邮件", options: ["internet", "email", "idiom", "literature"], answer: 1 },
-{ q: "Match the word: 唐诗", options: ["news", "Tang poetry", "freedom", "passport"], answer: 1 },
-{ q: "我___去北京出差。 (plan / intend)", options: ["打算", "喜欢", "决定", "需要"], answer: 0 },
-{ q: "这件事让他___生气。 (make)", options: ["使", "让", "被", "更"], answer: 0 },
-{ q: "___下雨，我也要去跑步。 (even if)", options: ["即使", "虽然", "尽管", "哪怕"], answer: 0 },
+	{ q: "Match the word: 唐诗", options: ["news", "Tang poetry", "freedom", "passport"], answer: 1 },
+	{ q: "我___去北京出差。 (plan / intend)", options: ["打算", "喜欢", "决定", "需要"], answer: 0 },
+	{ q: "这件事让他___生气。 (make)", options: ["使", "让", "被", "更"], answer: 1 },
+	{ q: "___下雨，我也要去跑步。 (even if)", options: ["即使", "虽然", "尽管", "哪怕"], answer: 0 },
 { q: "中文比英文___。 (harder)", options: ["难", "简单", "有趣", "快乐"], answer: 0 },
 { q: "这本书以文学和艺术___。 (famous for)", options: ["著名", "更", "比", "没有"], answer: 0 },
 { q: "虽然天气冷，___我们还是出门了。 (but)", options: ["但是", "依然", "比", "让"], answer: 0 },
@@ -289,7 +289,9 @@ function checkAnswer(idx) {
 if (paused) return;
 const q = questions[current];
 
-if(idx === q.answer) {
+const correctIdx = q._shuffledAnswerIdx !== undefined ? q._shuffledAnswerIdx : q.answer;
+
+if(idx === correctIdx) {
 score++;
 document.getElementById('quiz-feedback').innerHTML = '<span style="color:#ffe600;font-weight:700;font-size:1.5rem;display:inline-block;text-align:center;width:100%">Correct! <span style="font-size:1.5rem;"></span></span>';
 
