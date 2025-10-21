@@ -751,15 +751,19 @@ function showQuestion(){
 	}
 
 	function setUnlockedLevel(level) {
-		localStorage.setItem('rookieUnlockedLevel', String(level));
-		// If logged in, update backend
-		var username = localStorage.getItem('rookieUserId');
-		if (username) {
-			fetch('http://localhost:3000/api/updateProgress', {
-				method: 'POST',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify({ username, unlockedLevel: level })
-			});
+		if (window.ZendoLevels) {
+			window.ZendoLevels.setUnlockedLevel('rookie', level);
+		} else {
+			// Fallback if levels.js not loaded
+			localStorage.setItem('rookieUnlockedLevel', String(level));
+			var username = localStorage.getItem('rookieUserId');
+			if (username) {
+				fetch('http://localhost:3000/api/updateProgress', {
+					method: 'POST',
+					headers: {'Content-Type': 'application/json'},
+					body: JSON.stringify({ username, unlockedLevel: level })
+				});
+			}
 		}
 	}
 
@@ -785,5 +789,6 @@ function showQuestion(){
 	paused = false;
 	showQuestion();
 </script>
+<script src="../../assets/js/levels.js"></script>
 </body>
 </html>

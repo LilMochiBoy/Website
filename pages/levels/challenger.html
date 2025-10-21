@@ -66,24 +66,38 @@
             max-width: 50px;
             max-height: 50px;
             border-radius: 50%;
-            background: #fffbe6;
+            background: rgba(255,235,59,0.85);
             color: #222;
-            border: 2px solid #222;
+            border: 2px solid #fff;
             font-size: 1.2em;
             font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.30);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            pointer-events: auto;
             z-index: 2;
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.2s, transform 0.2s, opacity 0.2s;
         }
-        .level-btn:hover {
-            background: #ffe082;
-            transform: scale(1.08);
+        .level-btn:hover:not(.locked) {
+            background: #fdd835;
+            transform: scale(1.12);
+        }
+        .level-btn.locked {
+            background: #bdbec8;
+            color: #888;
+            border: 3px solid #aaa;
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
     <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#1976d2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
+    <button id="unlock-all-btn" style="position:fixed;top:24px;right:220px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#27ae60;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Unlock All</button>
+    <button id="reset-btn" style="position:fixed;top:24px;right:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#e74c3c;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Reset Progress</button>
     <div class="map-wrapper">
     <img src="../../assets/images/Lastbg.png" alt="Challenger Map" class="challenger-map-bg">
     <!-- Level buttons positioned at specified coordinates -->
@@ -123,15 +137,62 @@
             window.location.href = '../chinese.html';
         };
         
-        // Event handlers for all 30 levels
-        for (let i = 1; i <= 30; i++) {
-            const levelBtn = document.getElementById(`challenger-level-${i}`);
-            if (levelBtn) {
-                levelBtn.onclick = function() {
-                    window.location.href = `../quizzes/challenger_quiz${i}.html`;
-                };
+        // Update level locks based on progress
+        function updateLevelLocks() {
+            const unlockedLevel = (window.ZendoLevels && window.ZendoLevels.getUnlockedLevel) ? window.ZendoLevels.getUnlockedLevel('challenger') : 1;
+            for (let i = 1; i <= 30; i++) {
+                const btn = document.getElementById('challenger-level-' + i);
+                if (!btn) continue;
+                if (i <= unlockedLevel) {
+                    btn.classList.remove('locked');
+                    btn.style.background = 'rgba(255,235,59,0.85)';
+                    btn.style.color = '#222';
+                    btn.style.border = '2px solid #fff';
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                    btn.onclick = function() {
+                        window.location.href = '../quizzes/challenger_quiz' + i + '.html';
+                    };
+                } else {
+                    btn.classList.add('locked');
+                    btn.style.background = '#bdbec8';
+                    btn.style.color = '#888';
+                    btn.style.border = '3px solid #aaa';
+                    btn.style.opacity = '0.6';
+                    btn.style.cursor = 'not-allowed';
+                    btn.onclick = null;
+                }
             }
         }
+
+        // Call on page load
+        function initPage() {
+            updateLevelLocks();
+        }
+        if (window.ZendoLevels) initPage(); else setTimeout(initPage, 120);
+
+        // Unlock all levels button
+        document.getElementById('unlock-all-btn').onclick = function() {
+            if (confirm('Unlock all 30 Challenger levels?')) {
+                localStorage.setItem('challengerUnlockedLevel', '30');
+                if (window.ZendoLevels) {
+                    window.ZendoLevels.setUnlockedLevel('challenger', 30);
+                }
+                location.reload();
+            }
+        };
+
+        // Reset progress button
+        document.getElementById('reset-btn').onclick = function() {
+            if (confirm('Are you sure you want to reset all Challenger progress back to Level 1?')) {
+                localStorage.setItem('challengerUnlockedLevel', '1');
+                if (window.ZendoLevels) {
+                    window.ZendoLevels.setUnlockedLevel('challenger', 1);
+                }
+                location.reload();
+            }
+        };
     </script>
+    <script src="../../assets/js/levels.js"></script>
 </body>
 </html>

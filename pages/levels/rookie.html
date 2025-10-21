@@ -82,6 +82,8 @@
 </head>
 <body>
     <button id="back-btn" style="position:fixed;top:24px;left:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#4a90e2;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Back</button>
+    <button id="unlock-all-btn" style="position:fixed;top:24px;right:220px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#27ae60;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Unlock All</button>
+    <button id="reset-btn" style="position:fixed;top:24px;right:32px;z-index:1000;padding:12px 24px;font-size:1.1rem;border-radius:8px;background:#e74c3c;color:#fff;border:none;box-shadow:0 2px 8px #222;cursor:pointer;">Reset Progress</button>
     <div class="map-wrapper">
         <img src="../../assets/images/rookie map.png" alt="Rookie Map" class="rookie-map-bg">
         <div class="map-btns-container">
@@ -130,7 +132,7 @@
         // Use centralized levels helper (assets/js/levels.js)
         // Ensure helper is loaded before calling updateLevelLocks
         function updateLevelLocks() {
-            const unlockedLevel = (window.ZendoLevels && window.ZendoLevels.getUnlockedLevel) ? window.ZendoLevels.getUnlockedLevel('rookie') : (function(){ return 30; })();
+            const unlockedLevel = (window.ZendoLevels && window.ZendoLevels.getUnlockedLevel) ? window.ZendoLevels.getUnlockedLevel('rookie') : 1;
             for (let i = 1; i <= 30; i++) {
                 const btn = document.getElementById('level' + i);
                 if (!btn) continue;
@@ -166,6 +168,28 @@
         // Back button leads to Chinese proficiency selection (chinese.html)
         document.getElementById('back-btn').onclick = function() {
             window.location.href = '../chinese.html';
+        };
+
+        // Unlock all levels button
+        document.getElementById('unlock-all-btn').onclick = function() {
+            if (confirm('Unlock all 30 Rookie levels?')) {
+                localStorage.setItem('rookieUnlockedLevel', '30');
+                if (window.ZendoLevels) {
+                    window.ZendoLevels.setUnlockedLevel('rookie', 30);
+                }
+                location.reload();
+            }
+        };
+
+        // Reset progress button
+        document.getElementById('reset-btn').onclick = function() {
+            if (confirm('Are you sure you want to reset all Rookie progress back to Level 1?')) {
+                localStorage.setItem('rookieUnlockedLevel', '1');
+                if (window.ZendoLevels) {
+                    window.ZendoLevels.setUnlockedLevel('rookie', 1);
+                }
+                location.reload();
+            }
         };
 
         // After quiz completion, each quiz page should call:
