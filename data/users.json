@@ -44,5 +44,21 @@
     "unlockedLevel": 1,
     "completedLevels": [],
     "achievements": []
+  },
+  {
+    "username": "tester",
+    "password": "tester123",
+    "email": "tester@gmail.com",
+    "unlockedLevel": 1,
+    "completedLevels": [],
+    "achievements": []
+  },
+  {
+    "username": "tester123",
+    "password": "testerpassword",
+    "email": "tester@gmail.com",
+    "unlockedLevel": 1,
+    "completedLevels": [],
+    "achievements": []
   }
 ]
