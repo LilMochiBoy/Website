@@ -28,5 +28,21 @@
     "username": "User1",
     "password": "123",
     "email": "User1@gmail.com"
+  },
+  {
+    "username": "Test12345",
+    "password": "Password",
+    "email": "reynardjh.2102@gmail.com",
+    "unlockedLevel": 1,
+    "completedLevels": [],
+    "achievements": []
+  },
+  {
+    "username": "Username12345",
+    "password": "12345",
+    "email": "12345@gmail.com",
+    "unlockedLevel": 1,
+    "completedLevels": [],
+    "achievements": []
   }
 ]
